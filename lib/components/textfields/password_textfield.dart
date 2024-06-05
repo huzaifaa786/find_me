@@ -2,6 +2,7 @@
 
 import 'package:find_me/utils/box_decoration/box_decoration.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
+import 'package:find_me/utils/images/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -51,8 +52,7 @@ class PasswordTextFields extends StatelessWidget {
           fontSize: 12.sp,
           fontWeight: FontWeight.w400,
         ),
-        contentPadding:
-            EdgeInsets.symmetric(vertical: 16.h, horizontal: 20.w),
+        contentPadding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 20.w),
         fillColor: AppColors.white,
         border: inputDecoration,
         enabledBorder: inputDecoration,
@@ -65,16 +65,14 @@ class PasswordTextFields extends StatelessWidget {
           },
           child: obscure
               ? SvgPicture.asset(
-                  'assets/icons/eye-off.svg',
+                  ImagesConst.eyeOff,
                   height: 24,
                   fit: BoxFit.scaleDown,
-                  // color: darkblue,
                 )
               : SvgPicture.asset(
-                  'assets/icons/eye.svg',
+                  ImagesConst.eye,
                   height: 24,
                   fit: BoxFit.scaleDown,
-                  // color: darkblue,
                 ),
         ),
       ),
