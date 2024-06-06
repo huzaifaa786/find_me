@@ -3,32 +3,29 @@ import 'package:find_me/utils/images/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-AppBar topBar({String? name}) {
-  return AppBar(
-    automaticallyImplyLeading: false,
-    forceMaterialTransparency: true,
-    centerTitle: true,
-    leading: GestureDetector(
-      onTap: () {
-        Get.back();
-      },
-      child: Padding(
-        padding: EdgeInsets.only(left: 20.w),
-        child: SvgPicture.asset(
+Widget topBar({String? name}) {
+  return Padding(
+    padding: EdgeInsets.only(left: 25.w),
+    child: Row(
+      children: [
+        SvgPicture.asset(
           ImagesConst.backIcon,
           height: 28.h,
           width: 28.w,
           fit: BoxFit.scaleDown,
         ),
-      ),
+        Gap(68.w),
+        Text(
+          name!,
+          style: TextStyle(
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w600,
+          ),
+        )
+      ],
     ),
-    title: AppText(
-      title: name ?? '',
-      size: 16.sp,
-      fontWeight: FontWeight.w600,
-    ),
-    titleSpacing: 15,
   );
 }
