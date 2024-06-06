@@ -4,6 +4,8 @@ import 'package:find_me/app/auth/signup/signup_binding.dart';
 import 'package:find_me/app/auth/signup/signup_view.dart';
 import 'package:find_me/app/intro/intro_binding.dart';
 import 'package:find_me/app/intro/intro_view.dart';
+import 'package:find_me/app/notifications/notifications_binding.dart';
+import 'package:find_me/app/notifications/notifications_view.dart';
 import 'package:find_me/app/splash/splash_binding.dart';
 import 'package:find_me/app/splash/splash_view.dart';
 import 'package:find_me/routes/app_routes.dart';
@@ -46,5 +48,14 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
+    //TODO: [notification Route]
+    GetPage(
+      name: AppRoutes.notifications,
+      page: () => const NotificationsView(),
+      binding: NotificationsBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 350),
+    ),
+    
   ];
 }

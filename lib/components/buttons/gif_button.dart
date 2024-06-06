@@ -16,14 +16,14 @@ class GifButton extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            height: 131.h,
-            width: 131.w,
+            height: 130.h,
+            width: 130.w,
             decoration: BoxDecoration(
               border: Border.all(
                 width: 1.5,
                 color: AppColors.black,
               ),
-              shape: BoxShape.circle,
+              borderRadius: BorderRadius.circular(100.r),
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(100.r),
@@ -31,6 +31,7 @@ class GifButton extends StatelessWidget {
                 ImagesConst.introGif,
                 height: 131.h,
                 width: 131.w,
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -40,7 +41,7 @@ class GifButton extends StatelessWidget {
               width: 131.w,
               decoration: BoxDecoration(
                 color: AppColors.primary_color.withOpacity(0.4),
-                shape: BoxShape.circle,
+                borderRadius: BorderRadius.circular(100.r),
                 border: Border.all(
                   width: 1.5,
                   color: AppColors.primary_color,

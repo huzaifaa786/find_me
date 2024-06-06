@@ -1,0 +1,10 @@
+import 'package:find_me/app/notifications/notifications_controller.dart';
+import 'package:get/get.dart';
+
+class NotificationsBinding extends Bindings{
+  @override
+  @override
+  void dependencies() {
+    Get.lazyPut(() => NotificationsController());
+  }
+}
