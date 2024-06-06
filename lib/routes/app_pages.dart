@@ -1,5 +1,5 @@
-import 'package:find_me/app/account/account_binding.dart';
-import 'package:find_me/app/account/account_view.dart';
+import 'package:find_me/app/account/profile/account_binding.dart';
+import 'package:find_me/app/account/profile/account_view.dart';
 import 'package:find_me/app/auth/signup/signup_binding.dart';
 import 'package:find_me/app/auth/signup/signup_view.dart';
 import 'package:find_me/app/intro/intro_binding.dart';

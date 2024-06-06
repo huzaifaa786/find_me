@@ -1,4 +1,4 @@
-import 'package:find_me/app/account/account_controller.dart';
+import 'package:find_me/app/account/profile/account_controller.dart';
 import 'package:get/get.dart';
 
 class AccountBinding extends Bindings {
