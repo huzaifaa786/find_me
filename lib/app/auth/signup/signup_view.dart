@@ -128,7 +128,7 @@ class _SignUpViewState extends State<SignUpView> {
                     title: 'Already have an account ? ',
                     description: 'Sign in',
                     onTap: () {
-                      Get.toNamed(AppRoutes.account);
+                      Get.toNamed(AppRoutes.home);
                     },
                   )
                 ],

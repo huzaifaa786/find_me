@@ -1,7 +1,9 @@
-import 'package:find_me/app/account/profile/account_binding.dart';
-import 'package:find_me/app/account/profile/account_view.dart';
+import 'package:find_me/app/account/profile/profile_binding.dart';
+import 'package:find_me/app/account/profile/profile_view.dart';
 import 'package:find_me/app/auth/signup/signup_binding.dart';
 import 'package:find_me/app/auth/signup/signup_view.dart';
+import 'package:find_me/app/home/home_binding.dart';
+import 'package:find_me/app/home/home_view.dart';
 import 'package:find_me/app/intro/intro_binding.dart';
 import 'package:find_me/app/intro/intro_view.dart';
 import 'package:find_me/app/notifications/notifications_binding.dart';
@@ -42,9 +44,9 @@ class AppPages {
 
     //TODO: [Account Route]
     GetPage(
-      name: AppRoutes.account,
-      page: () => const AccountView(),
-      binding: AccountBinding(),
+      name: AppRoutes.profile,
+      page: () => const ProfileView(),
+      binding: ProfileBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
@@ -53,6 +55,14 @@ class AppPages {
       name: AppRoutes.notifications,
       page: () => const NotificationsView(),
       binding: NotificationsBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 350),
+    ),
+      //TODO: [home Route]
+    GetPage(
+      name: AppRoutes.home,
+      page: () => const HomeView(),
+      binding: HomeBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
