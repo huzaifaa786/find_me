@@ -31,7 +31,7 @@ class PhoneInputField extends StatelessWidget {
       children: [
         Container(
           width: Get.width,
-          height: 50,
+          height: 50.h,
           decoration: errorText!.isNotEmpty
               ? errorInputContainerDecoration
               : inputContainerDecoration,
@@ -46,12 +46,12 @@ class PhoneInputField extends StatelessWidget {
             ),
             dropdownIconPosition: IconPosition.trailing,
             flagsButtonMargin:
-                const EdgeInsets.only(left: 10, right: 10, top: 16, bottom: 8),
+                EdgeInsets.only(left: 10.w, right: 10.w, top: 16.h, bottom: 8.h),
             dropdownDecoration: BoxDecoration(
               border: Border(
                 right: BorderSide(
                     color: AppColors.inputBorderColor.withOpacity(0.1),
-                    width: 1.5),
+                    width: 1.5.w),
               ),
             ),
             style: TextStyle(
@@ -69,11 +69,11 @@ class PhoneInputField extends StatelessWidget {
               filled: true,
               border: OutlineInputBorder(
                 borderSide: const BorderSide(color: Colors.transparent),
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(30.r),
               ),
               errorBorder: OutlineInputBorder(
                 borderSide:
-                    const BorderSide(color: Colors.transparent, width: 0.5),
+                     BorderSide(color: Colors.transparent, width: 0.5.w),
                 borderRadius: BorderRadius.circular(30.r),
               ),
               focusedErrorBorder: OutlineInputBorder(
