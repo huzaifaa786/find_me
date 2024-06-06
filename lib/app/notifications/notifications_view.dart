@@ -1,10 +1,14 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/app/auth/components/auth_appbar.dart';
 import 'package:find_me/app/notifications/notifications_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
+import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 
@@ -27,11 +31,56 @@ class NotificationsView extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 50.w),
             child: Column(
               children: [
-                // Container(
-                //     decoration: BoxDecoration(border: Border.all()),
-                //     child: topBar(name: 'Notifications')),
+                Gap(15.h),
                 Row(
-                  children: [Text('data')],
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          color: AppColors.primary_color,
+                          borderRadius: BorderRadius.circular(6.r)),
+                      height: 6.h,
+                      width: 6.w,
+                    ),
+                    Gap(5.w),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(34.r),
+                      child: CachedNetworkImage(
+                        imageUrl:
+                            'https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
+                        placeholder: (context, url) =>
+                            CircularProgressIndicator(),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
+                        height: 34.h,
+                        width: 34.w,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Gap(5.w),
+                    Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Ahmed mohammed',
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 10.sp),
+                            ),
+                            Gap(5.w),
+                            Text(
+                              'wants to send you a file',
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 10.sp),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
                 )
               ],
             ),
