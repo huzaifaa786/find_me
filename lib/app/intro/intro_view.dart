@@ -1,6 +1,7 @@
 import 'package:find_me/app/auth/components/auth_rich_text.dart';
 import 'package:find_me/app/intro/intro_controller.dart';
 import 'package:find_me/components/buttons/app_button.dart';
+import 'package:find_me/components/buttons/gif_button.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
@@ -15,7 +16,6 @@ class IntroView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<IntroController>(
-      autoRemove: false,
       builder: (controller) => Scaffold(
         body: SizedBox(
           height: 844.h,
@@ -37,11 +37,7 @@ class IntroView extends StatelessWidget {
                 color: AppColors.black.withOpacity(0.81),
               ),
               Gap(138.h),
-              Image.asset(
-                'assets/gifs/intro.gif',
-                height: 132.h,
-                width: 131.w,
-              ),
+              GifButton(onTap: () {}, showOpacity: true),
               Gap(94.h),
               AppButton(
                 title: 'Sign Up',
@@ -49,7 +45,7 @@ class IntroView extends StatelessWidget {
                 width: 304.0.w,
                 color: AppColors.black,
                 borderColor: AppColors.black,
-                onTap: (){
+                onTap: () {
                   Get.toNamed(AppRoutes.signup);
                 },
               ),
@@ -57,7 +53,7 @@ class IntroView extends StatelessWidget {
               AuthRichText(
                 title: 'Already have an account ? ',
                 description: 'Sign in',
-                onTap: (){},
+                onTap: () {},
               ),
             ],
           ),

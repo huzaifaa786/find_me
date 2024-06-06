@@ -19,4 +19,5 @@ class ImagesConst {
 
   //* Gifs
   static const splashGif = "assets/gifs/splash.gif";
+  static const introGif = 'assets/gifs/intro.gif';
 }
