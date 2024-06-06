@@ -120,6 +120,7 @@ class NotificationsView extends StatelessWidget {
                 )
               ],
             ),
+            
           ),
         )),
       ),
