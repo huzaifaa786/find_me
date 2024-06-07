@@ -7,5 +7,6 @@ class AppRoutes {
   static const profile = '/profile';
   static const notifications = '/notifications';
   static const home = '/home';
+  static const report = '/report';
 
 }

@@ -14,6 +14,8 @@ class ImagesConst {
   static const edutIc = "assets/icons/edit-3.svg";
   static const eye = 'assets/icons/eye.svg';
   static const eyeOff = 'assets/icons/eye-off.svg';
+  static const imageicon = 'assets/images/image (1).png';
+  static const tickicon = 'assets/images/Check.png';
 
   //* images
 

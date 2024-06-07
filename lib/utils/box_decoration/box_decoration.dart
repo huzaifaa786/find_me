@@ -36,3 +36,14 @@ var inputErrorDecoration = OutlineInputBorder(
   borderRadius: BorderRadius.circular(45.r),
   borderSide: const BorderSide(width: 1, color: AppColors.red),
 );
+
+//! INPUT OUTLINED DEOCRATION
+var roundedInputDecoration = OutlineInputBorder(
+  borderRadius: BorderRadius.circular(8.r),
+  borderSide: BorderSide(width: 1, color: AppColors.inputBorderColor),
+);
+
+var roundedInputErrorDecoration = OutlineInputBorder(
+  borderRadius: BorderRadius.circular(8.r),
+  borderSide: const BorderSide(width: 1, color: AppColors.red),
+);
