@@ -1,3 +1,5 @@
+import 'package:find_me/app/account/change_phonenumber/change_phonenumber_binding.dart';
+import 'package:find_me/app/account/change_phonenumber/change_phonenumber_view.dart';
 import 'package:find_me/app/auth/forgetpassword/forgetpassword_binding.dart';
 import 'package:find_me/app/auth/forgetpassword/forgetpassword_view.dart';
 import 'package:find_me/app/auth/signin/signin_binding.dart';
@@ -10,10 +12,14 @@ import 'package:find_me/app/home/home_binding.dart';
 import 'package:find_me/app/home/home_view.dart';
 import 'package:find_me/app/intro/intro_binding.dart';
 import 'package:find_me/app/intro/intro_view.dart';
+import 'package:find_me/app/main_view/main_binding.dart';
+import 'package:find_me/app/main_view/main_view.dart';
 import 'package:find_me/app/notifications/notifications_binding.dart';
 import 'package:find_me/app/notifications/notifications_view.dart';
 import 'package:find_me/app/report/report_binding.dart';
 import 'package:find_me/app/report/report_view.dart';
+import 'package:find_me/app/setting/setting_binding.dart';
+import 'package:find_me/app/setting/setting_view.dart';
 import 'package:find_me/app/splash/splash_binding.dart';
 import 'package:find_me/app/splash/splash_view.dart';
 import 'package:find_me/routes/app_routes.dart';
@@ -59,10 +65,26 @@ class AppPages {
     //TODO: [notification Route]
     GetPage(
       name: AppRoutes.notifications,
-      page: () => const NotificationsView(),
+      page: () =>  NotificationsView(),
       binding: NotificationsBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
+    ),
+     //TODO: [change phone number Route]
+    GetPage(
+      name: AppRoutes.changephonenumber,
+      page: () => const ChangePhoneNumberView(),
+      binding: ChangePhoneNumberBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+
+     GetPage(
+      name: AppRoutes.setting,
+      page: () => const SettingView(),
+      binding: SettingBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
     ),
 
     //TODO: [SignIn Route]
@@ -99,5 +121,15 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
+     //? BOTTOM NAVIGATION VIEW Route
+    GetPage(
+      name: AppRoutes.mainview,
+      page: () => const MainView(),
+      binding: MainBinding(),
+       transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 350),
+   
+    ),
+
   ];
 }
