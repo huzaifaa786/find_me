@@ -4,4 +4,8 @@ class AppRoutes {
   static const signup = '/signup';
   static const signin = '/signin';
   static const forgetpassword = '/forgetpassword';
+  static const profile = '/profile';
+  static const notifications = '/notifications';
+  static const home = '/home';
+
 }

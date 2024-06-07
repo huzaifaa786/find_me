@@ -2,10 +2,16 @@ import 'package:find_me/app/auth/forgetpassword/forgetpassword_binding.dart';
 import 'package:find_me/app/auth/forgetpassword/forgetpassword_view.dart';
 import 'package:find_me/app/auth/signin/signin_binding.dart';
 import 'package:find_me/app/auth/signin/signin_view.dart';
+import 'package:find_me/app/account/profile/profile_binding.dart';
+import 'package:find_me/app/account/profile/profile_view.dart';
 import 'package:find_me/app/auth/signup/signup_binding.dart';
 import 'package:find_me/app/auth/signup/signup_view.dart';
+import 'package:find_me/app/home/home_binding.dart';
+import 'package:find_me/app/home/home_view.dart';
 import 'package:find_me/app/intro/intro_binding.dart';
 import 'package:find_me/app/intro/intro_view.dart';
+import 'package:find_me/app/notifications/notifications_binding.dart';
+import 'package:find_me/app/notifications/notifications_view.dart';
 import 'package:find_me/app/splash/splash_binding.dart';
 import 'package:find_me/app/splash/splash_view.dart';
 import 'package:find_me/routes/app_routes.dart';
@@ -19,7 +25,7 @@ class AppPages {
       page: () => const SplashView(),
       binding: SplashBinding(),
       transition: Transition.downToUp,
-      transitionDuration: const Duration(milliseconds: 350),
+      transitionDuration: const Duration(milliseconds: 100),
     ),
 
     //TODO:  [Choose login or signup]
@@ -28,7 +34,7 @@ class AppPages {
       page: () => const IntroView(),
       binding: IntroBinding(),
       transition: Transition.rightToLeft,
-      transitionDuration: const Duration(milliseconds: 350),
+      transitionDuration: const Duration(milliseconds: 100),
     ),
 
     //TODO: [Signup Route]
@@ -37,8 +43,26 @@ class AppPages {
       page: () => const SignUpView(),
       binding: SignUpBinding(),
       transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+
+    //TODO: [Account Route]
+    GetPage(
+      name: AppRoutes.profile,
+      page: () => const ProfileView(),
+      binding: ProfileBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+    //TODO: [notification Route]
+    GetPage(
+      name: AppRoutes.notifications,
+      page: () => const NotificationsView(),
+      binding: NotificationsBinding(),
+      transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
+<<<<<<< HEAD
 
     //TODO: [SignIn Route]
     GetPage(
@@ -57,5 +81,16 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
+=======
+      //TODO: [home Route]
+    GetPage(
+      name: AppRoutes.home,
+      page: () => const HomeView(),
+      binding: HomeBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 350),
+    ),
+    
+>>>>>>> 8fb89ad95baeff2a48aa430b91388ef42108834e
   ];
 }

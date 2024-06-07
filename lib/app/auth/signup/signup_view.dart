@@ -7,6 +7,7 @@ import 'package:find_me/components/buttons/prefix_icon_button.dart';
 import 'package:find_me/components/textfields/app_textfields.dart';
 import 'package:find_me/components/textfields/password_textfield.dart';
 import 'package:find_me/components/textfields/phone_inputfield.dart';
+import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/images/images.dart';
@@ -32,7 +33,7 @@ class _SignUpViewState extends State<SignUpView> {
           child: SafeArea(
             child: Container(
               width: 390.w,
-              padding:  EdgeInsets.symmetric(horizontal: 50.w),
+              padding: EdgeInsets.symmetric(horizontal: 50.w),
               child: Column(
                 children: [
                   Gap(40.h),
@@ -126,7 +127,9 @@ class _SignUpViewState extends State<SignUpView> {
                   AuthRichText(
                     title: 'Already have an account ? ',
                     description: 'Sign in',
-                    onTap: () {},
+                    onTap: () {
+                      Get.toNamed(AppRoutes.home);
+                    },
                   )
                 ],
               ),
