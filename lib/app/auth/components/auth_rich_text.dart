@@ -4,28 +4,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AuthRichText extends StatelessWidget {
-  const AuthRichText({super.key, this.title, this.description, this.onTap});
+  const AuthRichText(
+      {super.key,
+      this.title,
+      this.description,
+      this.onTap,
+      this.descriptiosize,
+      this.titlesize,
+      this.descriptionfontweight,
+      this.descriptionColor,
+      this.titlefontweight});
   final String? title;
+  final double? titlesize;
+  final double? descriptiosize;
   final String? description;
   final Function()? onTap;
-
+  final FontWeight? titlefontweight;
+  final FontWeight? descriptionfontweight;
+  final Color? descriptionColor;
   @override
   Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(
         text: '$title ',
         style: TextStyle(
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w400,
+            fontSize: titlesize,
+            fontWeight: titlefontweight,
             color: AppColors.black,
             fontFamily: 'Inter'),
         children: <TextSpan>[
           TextSpan(
             text: '$description',
             style: TextStyle(
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w600,
-              color: AppColors.primary_color,
+              fontSize: descriptiosize,
+              fontWeight: descriptionfontweight,
+              color: descriptionColor,
               fontFamily: 'Inter',
             ),
             recognizer: TapGestureRecognizer()..onTap = onTap,

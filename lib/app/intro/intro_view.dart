@@ -53,6 +53,12 @@ class IntroView extends StatelessWidget {
               AuthRichText(
                 title: 'Already have an account ? ',
                 description: 'Sign in',
+                titlesize: 14.sp,
+                titlefontweight: FontWeight.w400,
+                descriptionfontweight: FontWeight.w600,
+                descriptiosize: 14.sp,
+                      descriptionColor: AppColors.primary_color,
+
                 onTap: () {},
               ),
             ],

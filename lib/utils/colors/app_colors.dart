@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static const primary_color = Color(0xFF148EFF);
+  static const light_purple = Color(0xFFB478FF);
   static const orange = Color(0xFFFBA705);
   static const black = Color(0xFF000000);
   static const white = Color(0xFFFFFFFF);
@@ -20,6 +21,14 @@ class AppColors {
     colors: [
       Color(0xff2412A9),
       Color(0XFFFFFFFF),
+    ],
+  );
+  static Gradient notification_gradient = const LinearGradient(
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+    colors: [
+      primary_color,
+      light_purple,
     ],
   );
 }
