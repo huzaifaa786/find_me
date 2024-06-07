@@ -63,7 +63,7 @@ class AppPages {
     //TODO: [notification Route]
     GetPage(
       name: AppRoutes.notifications,
-      page: () => const NotificationsView(),
+      page: () =>  NotificationsView(),
       binding: NotificationsBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
@@ -115,6 +115,9 @@ class AppPages {
       name: AppRoutes.mainview,
       page: () => const MainView(),
       binding: MainBinding(),
+       transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 350),
+   
     ),
 
   ];
