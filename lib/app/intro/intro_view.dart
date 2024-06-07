@@ -53,7 +53,9 @@ class IntroView extends StatelessWidget {
               AuthRichText(
                 title: 'Already have an account ? ',
                 description: 'Sign in',
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed(AppRoutes.signin);
+                },
               ),
             ],
           ),
