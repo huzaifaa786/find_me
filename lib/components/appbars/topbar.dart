@@ -1,5 +1,6 @@
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/images/images.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,19 +12,22 @@ Widget topBar({String? name}) {
     padding: EdgeInsets.only(left: 25.w),
     child: Row(
       children: [
-        SvgPicture.asset(
-          ImagesConst.backIcon,
-          height: 28.h,
-          width: 28.w,
-          fit: BoxFit.scaleDown,
+        GestureDetector(
+          onTap: () {
+            Get.back();
+          },
+          child: SvgPicture.asset(
+            ImagesConst.backIcon,
+            height: 28.h,
+            width: 28.w,
+            fit: BoxFit.scaleDown,
+          ),
         ),
         Gap(68.w),
-        Text(
-          name!,
-          style: TextStyle(
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w600,
-          ),
+        AppText(
+          title: name!,
+          size: 16.sp,
+          fontWeight: FontWeight.w600,
         )
       ],
     ),

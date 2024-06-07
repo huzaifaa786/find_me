@@ -1,7 +1,7 @@
 import 'package:find_me/app/auth/components/auth_appbar.dart';
 import 'package:find_me/app/auth/components/auth_rich_text.dart';
 import 'package:find_me/app/auth/components/dob_textfield.dart';
-import 'package:find_me/app/auth/signup/signup_controller.dart';
+import 'package:find_me/app/auth/signin/signin_controller.dart';
 import 'package:find_me/components/buttons/app_button.dart';
 import 'package:find_me/components/buttons/prefix_icon_button.dart';
 import 'package:find_me/components/textfields/app_textfields.dart';
@@ -16,19 +16,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-class SignUpView extends StatefulWidget {
-  const SignUpView({super.key});
+class SignInView extends StatefulWidget {
+  const SignInView({super.key});
 
   @override
-  State<SignUpView> createState() => _SignUpViewState();
+  State<SignInView> createState() => _SignInViewState();
 }
 
-class _SignUpViewState extends State<SignUpView> {
+class _SignInViewState extends State<SignInView> {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<SignUpController>(
+    return GetBuilder<SignInController>(
       builder: (controller) => Scaffold(
-        appBar: authAppBar(name: 'Sign Up'),
+        appBar: authAppBar(name: 'Sign In'),
         body: SingleChildScrollView(
           child: SafeArea(
             child: Container(
@@ -38,15 +38,10 @@ class _SignUpViewState extends State<SignUpView> {
                 children: [
                   Gap(40.h),
                   AppTextFields(
-                    hintText: 'User name',
-                    controller: controller.nameController,
-                  ),
-                  Gap(16.h),
-                  AppTextFields(
                     hintText: 'Email',
                     controller: controller.emailController,
                   ),
-                  Gap(16.h),
+                  Gap(14.h),
                   PasswordTextFields(
                     hintText: 'Password',
                     obscure: controller.obscureTextPassword,
@@ -54,61 +49,37 @@ class _SignUpViewState extends State<SignUpView> {
                     toggle: controller.toggle,
                   ),
                   Gap(16.h),
-                  PasswordTextFields(
-                    hintText: 'Confirm Password',
-                    obscure: controller.obscureTextCPassword,
-                    controller: controller.confirmPasswordController,
-                    toggle: controller.ctoggle,
-                  ),
-                  Gap(16.h),
-                  PhoneInputField(
-                    onCountryChanged: controller.onCountryChanged,
-                    errorText: controller.invalidNumberMessage,
-                    onChanged: controller.phoneValidation,
-                    controller: controller.pcontroller,
-                  ),
-                  Gap(14.h),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: Row(
-                      children: [
-                        AppText(
-                          title: 'Date of birth',
-                          size: 12.sp,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Gap(8.h),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      buildTextField(
-                          controller.dayController, 'dd', context, controller),
-                      Gap(10.w),
-                      buildTextField(controller.monthController, 'mm', context,
-                          controller),
-                      Gap(10.w),
-                      buildTextField(controller.yearController, 'yyyy', context,
-                          controller),
+                      InkWell(
+                        onTap: () {
+                          Get.toNamed(AppRoutes.forgetpassword);
+                        },
+                        child: AppText(
+                          title: 'Forget password ?',
+                          color: Colors.blue,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      )
                     ],
                   ),
-                  Gap(30.h),
+                  Gap(35.h),
                   AppButton(
-                    title: 'Sign Up',
+                    title: 'Sign In',
                     height: 50.0.h,
                     width: 304.0.w,
                     onTap: () {},
                   ),
-                  Gap(12.h),
+                  Gap(20.h),
                   const AppText(
                     title: 'Or',
                     size: 12,
                     fontWeight: FontWeight.w400,
                   ),
-                  Gap(12.h),
+                  Gap(20.h),
                   PrefixIconButton(
-                    title: 'Sign up with Apple',
+                    title: 'Sign In with Apple',
                     height: 50.0.h,
                     width: 304.0.w,
                     borderColor: AppColors.black,
@@ -118,18 +89,16 @@ class _SignUpViewState extends State<SignUpView> {
                   ),
                   Gap(12.h),
                   PrefixIconButton(
-                    title: 'Sign up with Google',
+                    title: 'Sign In with Google',
                     height: 50.0.h,
                     width: 304.0.w,
                     borderColor: AppColors.borderGrey,
                   ),
                   Gap(30.h),
                   AuthRichText(
-                    title: 'Already have an account ? ',
-                    description: 'Sign in',
-                    onTap: () {
-                      Get.toNamed(AppRoutes.home);
-                    },
+                    title: 'Don’t have an account ? ',
+                    description: 'Sign Up',
+                    onTap: () {},
                   )
                 ],
               ),
