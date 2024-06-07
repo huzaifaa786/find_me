@@ -98,7 +98,12 @@ class _SignInViewState extends State<SignInView> {
                   AuthRichText(
                     title: 'Don’t have an account ? ',
                     description: 'Sign Up',
-                    onTap: () {},
+                     titlesize: 14.sp,
+                      titlefontweight: FontWeight.w400,
+                      descriptionfontweight: FontWeight.w600,
+                      descriptiosize: 14.sp,
+                      descriptionColor: AppColors.primary_color,
+                    onTap: () {Get.toNamed(AppRoutes.signup);},
                   )
                 ],
               ),

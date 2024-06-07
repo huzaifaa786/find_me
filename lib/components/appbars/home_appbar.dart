@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:find_me/routes/app_routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
@@ -31,14 +33,25 @@ Widget homeAppBar({String? name}) {
             //   height: 32.h,
             // )
             //  :
-            SvgPicture.asset(
-              'assets/icons/bell.svg',
-              fit: BoxFit.scaleDown,
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(AppRoutes.notifications);
+              },
+              child: SvgPicture.asset(
+                'assets/icons/bell.svg',
+                fit: BoxFit.scaleDown,
+              ),
             ),
             Gap(10),
-            SvgPicture.asset(
-              'assets/icons/menu (2).svg',
-              fit: BoxFit.scaleDown,
+
+            GestureDetector(
+              onTap: () {
+               Get.toNamed(AppRoutes.setting);
+              },
+              child: SvgPicture.asset(
+                'assets/icons/menu (2).svg',
+                fit: BoxFit.scaleDown,
+              ),
             ),
           ],
         )

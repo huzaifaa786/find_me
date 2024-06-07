@@ -2,10 +2,8 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/app/account/profile/profile_controller.dart';
-import 'package:find_me/app/auth/signup/signup_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/textfields/app_textfields.dart';
-import 'package:find_me/components/textfields/password_textfield.dart';
 import 'package:find_me/components/textfields/phone_inputfield.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
