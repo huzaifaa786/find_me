@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:find_me/components/appbars/home_appbar.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:flutter/material.dart';
 
@@ -9,14 +10,19 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(automaticallyImplyLeading: false,
-      scrolledUnderElevation: 0,title: topBar(name: ''),),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        scrolledUnderElevation: 0,
+        title: homeAppBar(),
+      ),
       body: SafeArea(
           child: SingleChildScrollView(
-            child: Column(
-                    children: [],
-                  ),
-          )),
+        child: Column(
+          children: [
+            
+          ],
+        ),
+      )),
     );
   }
 }
