@@ -62,7 +62,6 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
-<<<<<<< HEAD
 
     //TODO: [SignIn Route]
     GetPage(
@@ -81,7 +80,6 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
-=======
       //TODO: [home Route]
     GetPage(
       name: AppRoutes.home,
@@ -91,6 +89,5 @@ class AppPages {
       transitionDuration: const Duration(milliseconds: 350),
     ),
     
->>>>>>> 8fb89ad95baeff2a48aa430b91388ef42108834e
   ];
 }
