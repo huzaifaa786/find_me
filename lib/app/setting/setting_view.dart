@@ -11,12 +11,14 @@ class SettingView extends StatelessWidget {
     return GetBuilder<SettingController>(
         builder: (controller) => Scaffold(
           appBar: AppBar(
-          title: topBar(name: 'Change phone number'),
+          title: topBar(name: 'Settings'),
           automaticallyImplyLeading: false,
         ),
               body: SafeArea(
                   child: Column(
-                children: [],
+                children: [
+                  Row(children: [],)
+                ],
               )),
             ));
   }
