@@ -18,7 +18,6 @@ class IntroView extends StatelessWidget {
     return GetBuilder<IntroController>(
       builder: (controller) => Scaffold(
         body: SizedBox(
-          height: 844.h,
           width: 390.w,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -53,13 +52,9 @@ class IntroView extends StatelessWidget {
               AuthRichText(
                 title: 'Already have an account ? ',
                 description: 'Sign in',
-                titlesize: 14.sp,
-                titlefontweight: FontWeight.w400,
-                descriptionfontweight: FontWeight.w600,
-                descriptiosize: 14.sp,
-                      descriptionColor: AppColors.primary_color,
-
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed(AppRoutes.signin);
+                },
               ),
             ],
           ),

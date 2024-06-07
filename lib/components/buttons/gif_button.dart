@@ -16,32 +16,32 @@ class GifButton extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            height: 130.h,
-            width: 130.w,
+            height: 120,
+            width: 120,
             decoration: BoxDecoration(
               border: Border.all(
                 width: 1.5,
                 color: AppColors.black,
               ),
-              borderRadius: BorderRadius.circular(100.r),
+              borderRadius: BorderRadius.circular(65),
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(100.r),
+              borderRadius: BorderRadius.circular(65),
               child: Image.asset(
                 ImagesConst.introGif,
-                height: 131.h,
-                width: 131.w,
+                height: 120,
+                width: 120,
                 fit: BoxFit.cover,
               ),
             ),
           ),
           if (showOpacity)
             Container(
-              height: 131.h,
-              width: 131.w,
+              height: 120,
+              width: 120,
               decoration: BoxDecoration(
                 color: AppColors.primary_color.withOpacity(0.4),
-                borderRadius: BorderRadius.circular(100.r),
+                borderRadius: BorderRadius.circular(60),
                 border: Border.all(
                   width: 1.5,
                   color: AppColors.primary_color,

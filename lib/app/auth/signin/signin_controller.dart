@@ -4,8 +4,8 @@ import 'package:intl_phone_field/countries.dart';
 import 'package:intl_phone_field/helpers.dart';
 import 'package:intl_phone_field/phone_number.dart';
 
-class AccountController extends GetxController {
-  static AccountController instance = Get.find();
+class SignInController extends GetxController {
+  static SignInController instance = Get.find();
     TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
 
