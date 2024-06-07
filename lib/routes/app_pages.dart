@@ -1,3 +1,5 @@
+import 'package:find_me/app/account/change_phonenumber/change_phonenumber_binding.dart';
+import 'package:find_me/app/account/change_phonenumber/change_phonenumber_view.dart';
 import 'package:find_me/app/account/profile/account_binding.dart';
 import 'package:find_me/app/account/profile/account_view.dart';
 import 'package:find_me/app/auth/signup/signup_binding.dart';
@@ -6,6 +8,8 @@ import 'package:find_me/app/intro/intro_binding.dart';
 import 'package:find_me/app/intro/intro_view.dart';
 import 'package:find_me/app/notifications/notifications_binding.dart';
 import 'package:find_me/app/notifications/notifications_view.dart';
+import 'package:find_me/app/setting/setting_binding.dart';
+import 'package:find_me/app/setting/setting_view.dart';
 import 'package:find_me/app/splash/splash_binding.dart';
 import 'package:find_me/app/splash/splash_view.dart';
 import 'package:find_me/routes/app_routes.dart';
@@ -56,6 +60,21 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
-    
+     //TODO: [change phone number Route]
+    GetPage(
+      name: AppRoutes.changephonenumber,
+      page: () => const ChangePhoneNumberView(),
+      binding: ChangePhoneNumberBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+
+     GetPage(
+      name: AppRoutes.setting,
+      page: () => const SettingView(),
+      binding: SettingBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
   ];
 }

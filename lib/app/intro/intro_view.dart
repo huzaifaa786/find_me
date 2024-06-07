@@ -18,7 +18,6 @@ class IntroView extends StatelessWidget {
     return GetBuilder<IntroController>(
       builder: (controller) => Scaffold(
         body: SizedBox(
-          height: 844.h,
           width: 390.w,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,

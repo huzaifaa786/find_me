@@ -4,5 +4,7 @@ class AppRoutes {
   static const signup = '/signup';
   static const account = '/account';
   static const notifications = '/notifications';
-
+  static const changephonenumber = '/changephonenumber';
+ static const setting = '/setting';
+ 
 }
