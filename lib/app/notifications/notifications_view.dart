@@ -22,8 +22,6 @@ class NotificationsView extends StatelessWidget {
   const NotificationsView({super.key});
   @override
   Widget build(BuildContext context) {
-    bool? isrejected = false;
-
     return GetBuilder<NotificationsController>(
       builder: (controller) => Scaffold(
         appBar: AppBar(
