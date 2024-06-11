@@ -27,6 +27,7 @@ class EditProfileView extends StatelessWidget {
       ),
       body: SafeArea(
         child: GetBuilder<EditProfileController>(
+          autoRemove: false,
           builder: (controller) {
             return Column(
               children: [
@@ -59,7 +60,8 @@ class EditProfileView extends StatelessWidget {
                         child: Row(
                           children: [
                             Checkbox(
-                              shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(1)),
+                              shape: BeveledRectangleBorder(
+                                  borderRadius: BorderRadius.circular(1)),
                               side: BorderSide(
                                 color: AppColors.primary_color,
                                 // width: 1,
@@ -118,7 +120,7 @@ class EditProfileView extends StatelessWidget {
                     ),
                   ],
                 ),
-               Row(
+                Row(
                   children: [
                     Gap(36.w),
                     GestureDetector(
@@ -135,7 +137,8 @@ class EditProfileView extends StatelessWidget {
                         child: Row(
                           children: [
                             Checkbox(
-                              shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(1)),
+                              shape: BeveledRectangleBorder(
+                                  borderRadius: BorderRadius.circular(1)),
                               side: BorderSide(
                                 color: AppColors.primary_color,
                                 // width: 1,
@@ -194,8 +197,6 @@ class EditProfileView extends StatelessWidget {
                     ),
                   ],
                 ),
-             
-             
               ],
             );
           },

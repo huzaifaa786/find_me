@@ -23,6 +23,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
+      autoRemove: false,
       builder: (controller) => Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,

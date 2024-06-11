@@ -2,6 +2,7 @@
 
 import 'package:find_me/app/account/profile/profile_view.dart';
 import 'package:find_me/app/auth/signup/signup_view.dart';
+import 'package:find_me/app/edit_profile/edit_profile_view.dart';
 import 'package:find_me/app/home/home_controller.dart';
 import 'package:find_me/app/home/home_view.dart';
 import 'package:find_me/app/notifications/notifications_view.dart';
@@ -29,7 +30,7 @@ class _MainViewState extends State<MainView> with RouteAware {
     const HomeView(),
     ReportView(),
     ProfileView(),
-    SignUpView(),
+    EditProfileView(),
   ];
 
   Widget _buildNavigationBarItem(
