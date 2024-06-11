@@ -12,5 +12,7 @@ class AppRoutes {
  static const otp = '/otp';
   static const home = '/home';
   static const report = '/report';
+ static const language = '/language';
+
 
 }

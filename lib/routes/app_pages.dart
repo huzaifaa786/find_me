@@ -14,6 +14,8 @@ import 'package:find_me/app/home/home_binding.dart';
 import 'package:find_me/app/home/home_view.dart';
 import 'package:find_me/app/intro/intro_binding.dart';
 import 'package:find_me/app/intro/intro_view.dart';
+import 'package:find_me/app/languages/languages_binding.dart';
+import 'package:find_me/app/languages/languages_view.dart';
 import 'package:find_me/app/main_view/main_binding.dart';
 import 'package:find_me/app/main_view/main_view.dart';
 import 'package:find_me/app/notifications/notifications_binding.dart';
@@ -139,6 +141,13 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
-
+ //TODO: [language Route]
+    GetPage(
+      name: AppRoutes.language,
+      page: () => const LanguagesView(),
+      binding: LanguagesBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 350),
+    ),
   ];
 }
