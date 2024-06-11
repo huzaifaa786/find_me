@@ -31,13 +31,12 @@ class EditProfileView extends StatelessWidget {
           builder: (controller) {
             return Column(
               children: [
-                Gap(55.h),
                 Row(
                   children: [
                     Gap(49.h),
                     AppText(
                       title: 'Mark as default',
-                      size: 8,
+                      size: 10,
                       fontWeight: FontWeight.w500,
                     ),
                   ],
