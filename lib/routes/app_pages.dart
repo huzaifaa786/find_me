@@ -16,6 +16,8 @@ import 'package:find_me/app/main_view/main_binding.dart';
 import 'package:find_me/app/main_view/main_view.dart';
 import 'package:find_me/app/notifications/notifications_binding.dart';
 import 'package:find_me/app/notifications/notifications_view.dart';
+import 'package:find_me/app/report/report_binding.dart';
+import 'package:find_me/app/report/report_view.dart';
 import 'package:find_me/app/setting/setting_binding.dart';
 import 'package:find_me/app/setting/setting_view.dart';
 import 'package:find_me/app/splash/splash_binding.dart';
@@ -63,7 +65,7 @@ class AppPages {
     //TODO: [notification Route]
     GetPage(
       name: AppRoutes.notifications,
-      page: () => const NotificationsView(),
+      page: () =>  NotificationsView(),
       binding: NotificationsBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
@@ -102,11 +104,20 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
-      //TODO: [home Route]
+    //TODO: [home Route]
     GetPage(
       name: AppRoutes.home,
       page: () => const HomeView(),
       binding: HomeBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 350),
+    ),
+
+    //TODO: [report Route]
+    GetPage(
+      name: AppRoutes.report,
+      page: () => const ReportView(),
+      binding: ReportsBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
@@ -115,6 +126,9 @@ class AppPages {
       name: AppRoutes.mainview,
       page: () => const MainView(),
       binding: MainBinding(),
+       transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 350),
+   
     ),
 
   ];

@@ -19,7 +19,7 @@ import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class NotificationsView extends StatelessWidget {
-  const NotificationsView({super.key});
+   NotificationsView({super.key});
   @override
   Widget build(BuildContext context) {
     return GetBuilder<NotificationsController>(

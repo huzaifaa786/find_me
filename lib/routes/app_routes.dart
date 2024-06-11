@@ -11,5 +11,6 @@ class AppRoutes {
   static const mainview = '/mainview';
  
   static const home = '/home';
+  static const report = '/report';
 
 }
