@@ -2,6 +2,8 @@ import 'package:find_me/app/account/change_phonenumber/change_phonenumber_bindin
 import 'package:find_me/app/account/change_phonenumber/change_phonenumber_view.dart';
 import 'package:find_me/app/auth/forgetpassword/forgetpassword_binding.dart';
 import 'package:find_me/app/auth/forgetpassword/forgetpassword_view.dart';
+import 'package:find_me/app/auth/otp/otp_binding.dart';
+import 'package:find_me/app/auth/otp/otp_view.dart';
 import 'package:find_me/app/auth/signin/signin_binding.dart';
 import 'package:find_me/app/auth/signin/signin_view.dart';
 import 'package:find_me/app/account/profile/profile_binding.dart';
@@ -128,7 +130,14 @@ class AppPages {
       binding: MainBinding(),
        transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
-   
+    ),
+    //TODO: [Otp Route]
+    GetPage(
+      name: AppRoutes.otp,
+      page: () => const OtpView(),
+      binding: OtpBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 350),
     ),
 
   ];
