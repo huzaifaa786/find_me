@@ -12,6 +12,8 @@ import 'package:find_me/app/account/profile/profile_binding.dart';
 import 'package:find_me/app/account/profile/profile_view.dart';
 import 'package:find_me/app/auth/signup/signup_binding.dart';
 import 'package:find_me/app/auth/signup/signup_view.dart';
+import 'package:find_me/app/change_email/change_email_binding.dart';
+import 'package:find_me/app/change_email/change_email_view.dart';
 import 'package:find_me/app/home/home_binding.dart';
 import 'package:find_me/app/home/home_view.dart';
 import 'package:find_me/app/intro/intro_binding.dart';
@@ -168,6 +170,22 @@ class AppPages {
       name: AppRoutes.location,
       page: () => const LocationView(),
       binding: LocationBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 350),
+    ),
+    //TODO: [change email Route]
+    GetPage(
+      name: AppRoutes.change_email,
+      page: () => const ChangeEmailView(),
+      binding: ChangeEmailBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 350),
+    ),
+     //TODO: [change phone Route]
+    GetPage(
+      name: AppRoutes.change_phone,
+      page: () => const ChangePhoneNumberView(),
+      binding: ChangePhoneNumberBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),

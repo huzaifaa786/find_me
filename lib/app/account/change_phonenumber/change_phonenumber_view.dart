@@ -5,6 +5,7 @@ import 'package:find_me/app/auth/components/auth_appbar.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/buttons/app_button.dart';
 import 'package:find_me/components/textfields/phone_inputfield.dart';
+import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -44,13 +45,15 @@ class ChangePhoneNumberView extends StatelessWidget {
                 onChanged: controller.phoneValidation,
                 controller: controller.pcontroller,
               ),
-               Gap(173.h),
-               AppButton(
-                    title: 'Confirm',
-                    height: 50.0.h,
-                    width: 304.0.w,
-                    onTap: () {},
-                  ),
+              Gap(173.h),
+              AppButton(
+                title: 'Confirm',
+                height: 50.0.h,
+                width: 304.0.w,
+                onTap: () {
+                  Get.toNamed(AppRoutes.otp);
+                },
+              ),
             ],
           ),
         )),

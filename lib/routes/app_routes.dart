@@ -15,6 +15,9 @@ class AppRoutes {
   static const report = '/report';
  static const language = '/language';
  static const location = '/location';
+ static const change_email = '/change_email';
+ static const change_phone = '/change_phone';
+
 
 
 
