@@ -27,6 +27,7 @@ class EditProfileView extends StatelessWidget {
       ),
       body: SafeArea(
         child: GetBuilder<EditProfileController>(
+          autoRemove: false,
           builder: (controller) {
             return Column(
               children: [
