@@ -28,6 +28,8 @@ import 'package:find_me/app/main_view/main_binding.dart';
 import 'package:find_me/app/main_view/main_view.dart';
 import 'package:find_me/app/notifications/notifications_binding.dart';
 import 'package:find_me/app/notifications/notifications_view.dart';
+import 'package:find_me/app/policies/policies_binding.dart';
+import 'package:find_me/app/policies/policies_view.dart';
 import 'package:find_me/app/report/report_binding.dart';
 import 'package:find_me/app/report/report_view.dart';
 import 'package:find_me/app/setting/setting_binding.dart';
@@ -203,6 +205,14 @@ class AppPages {
       name: AppRoutes.editProfile,
       page: () => const EditProfileView(),
       binding: EditProfileBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 350),
+    ),
+       //TODO: [policies Route]
+    GetPage(
+      name: AppRoutes.policies,
+      page: () => const PoliciesView(),
+      binding: PoliciesBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
