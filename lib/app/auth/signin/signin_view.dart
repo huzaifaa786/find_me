@@ -74,7 +74,7 @@ class _SignInViewState extends State<SignInView> {
                     title: 'Sign In',
                     height: 50.0.h,
                     width: 304.0.w,
-                    onTap: () {},
+                    onTap: () {Get.toNamed(AppRoutes.mainview);},
                   ),
                   Gap(20.h),
                   const AppText(

@@ -96,7 +96,7 @@ class _LanguagesViewState extends State<LanguagesView> {
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.primary_color,
                                 ),
-                                Gap(235.w),
+                                Gap(224.w),
                                 Radio(
                                   value: 1,
                                   groupValue: controller.selectedLanguage,
