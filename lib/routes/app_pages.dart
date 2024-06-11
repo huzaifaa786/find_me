@@ -1,5 +1,7 @@
 import 'package:find_me/app/account/change_phonenumber/change_phonenumber_binding.dart';
 import 'package:find_me/app/account/change_phonenumber/change_phonenumber_view.dart';
+import 'package:find_me/app/auth/changepassword/changepassword_binding.dart';
+import 'package:find_me/app/auth/changepassword/changepassword_view.dart';
 import 'package:find_me/app/auth/forgetpassword/forgetpassword_binding.dart';
 import 'package:find_me/app/auth/forgetpassword/forgetpassword_view.dart';
 import 'package:find_me/app/auth/signin/signin_binding.dart';
@@ -126,6 +128,15 @@ class AppPages {
       name: AppRoutes.mainview,
       page: () => const MainView(),
       binding: MainBinding(),
+       transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 350),
+   
+    ),
+      //? change password Route
+    GetPage(
+      name: AppRoutes.changepassword,
+      page: () => const ChangePasswordView(),
+      binding: ChangePasswordBinding(),
        transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
    

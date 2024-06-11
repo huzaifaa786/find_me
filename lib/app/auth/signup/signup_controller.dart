@@ -6,7 +6,7 @@ import 'package:intl_phone_field/phone_number.dart';
 
 class SignUpController extends GetxController {
   static SignUpController instance = Get.find();
-    TextEditingController nameController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
 
   //! Password And Confirm Password Variable and Functions
