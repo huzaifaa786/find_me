@@ -149,7 +149,7 @@ class ProfileView extends StatelessWidget {
                         Gap(33.w),
                         InkWell(
                           onTap: () {
-                            Get.toNamed(AppRoutes.changephonenumber);
+                            Get.toNamed(AppRoutes.changee);
                           },
                           child: Row(
                             children: [
