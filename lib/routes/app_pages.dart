@@ -12,6 +12,8 @@ import 'package:find_me/app/account/profile/profile_binding.dart';
 import 'package:find_me/app/account/profile/profile_view.dart';
 import 'package:find_me/app/auth/signup/signup_binding.dart';
 import 'package:find_me/app/auth/signup/signup_view.dart';
+import 'package:find_me/app/edit_profile/edit_profile_binding.dart';
+import 'package:find_me/app/edit_profile/edit_profile_view.dart';
 import 'package:find_me/app/home/home_binding.dart';
 import 'package:find_me/app/home/home_view.dart';
 import 'package:find_me/app/intro/intro_binding.dart';
@@ -178,6 +180,14 @@ class AppPages {
       name: AppRoutes.support,
       page: () => const SupportView(),
       binding: SupportBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 350),
+    ),
+      //TODO: [editProfile Route]
+    GetPage(
+      name: AppRoutes.editProfile,
+      page: () => const EditProfileView(),
+      binding: EditProfileBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
