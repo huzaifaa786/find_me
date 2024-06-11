@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 import 'location_controller.dart';
 
 class LocationView extends StatefulWidget {
-  const LocationView({super.key});
+  const LocationView({Key? key}) : super(key: key);
 
   @override
   _LocationViewState createState() => _LocationViewState();
@@ -24,6 +24,7 @@ class _LocationViewState extends State<LocationView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 110.h,
         title: topBar(name: 'Location'),
         automaticallyImplyLeading: false,
         scrolledUnderElevation: 0,
@@ -37,19 +38,30 @@ class _LocationViewState extends State<LocationView> {
                 Row(
                   children: [
                     Gap(59.w),
-                    Expanded(
-                      child: AppText(
-                        title: 'Allow the application to access your location',
-                        size: 10,
-                        fontWeight: FontWeight.w500,
-                      ),
+                    AppText(
+                      title: 'Allow the application to access your location',
+                      size: 10,
+                      fontWeight: FontWeight.w500,
                     ),
-                    Switch(
-                      value: controller.isLocationEnabled,
-                      onChanged: (value) {
-                        controller.toggleLocation(value);
-                      },
-                      activeColor: AppColors.primary_color,
+                    Gap(40.w),
+                    SizedBox(
+                      height: 16.h,
+                      width: 35.w,
+                      child: Theme(
+                        data: ThemeData(
+                          // Customize the color scheme
+                          colorScheme: ColorScheme.light(
+                            primary: AppColors.green,
+                            secondary: Colors.grey,
+                          ),
+                        ),
+                        child: Switch(
+                          value: controller.isLocationEnabled,
+                          onChanged: (value) {
+                            controller.toggleLocation(value);
+                          },
+                        ),
+                      ),
                     ),
                   ],
                 ),
