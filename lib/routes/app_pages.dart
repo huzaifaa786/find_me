@@ -32,6 +32,8 @@ import 'package:find_me/app/setting/setting_binding.dart';
 import 'package:find_me/app/setting/setting_view.dart';
 import 'package:find_me/app/splash/splash_binding.dart';
 import 'package:find_me/app/splash/splash_view.dart';
+import 'package:find_me/app/support/support_binding.dart';
+import 'package:find_me/app/support/support_view.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:get/get.dart';
 
@@ -185,7 +187,12 @@ class AppPages {
     GetPage(
       name: AppRoutes.change_phone,
       page: () => const ChangePhoneNumberView(),
-      binding: ChangePhoneNumberBinding(),
+      binding: ChangePhoneNumberBinding(),),
+     //TODO: [support Route]
+    GetPage(
+      name: AppRoutes.support,
+      page: () => const SupportView(),
+      binding: SupportBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),

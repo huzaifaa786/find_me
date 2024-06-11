@@ -24,6 +24,7 @@ class _LanguagesViewState extends State<LanguagesView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 110.h,
         title: topBar(name: 'Languages'),
         automaticallyImplyLeading: false,
         scrolledUnderElevation: 0,
