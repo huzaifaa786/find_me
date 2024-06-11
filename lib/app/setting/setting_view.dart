@@ -2,10 +2,14 @@ import 'package:find_me/app/setting/setting_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/buttons/prefix_icon_button.dart';
 import 'package:find_me/components/cards/settings_card.dart';
+import 'package:find_me/routes/app_routes.dart';
+import 'package:find_me/utils/ui_utils.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class SettingView extends StatelessWidget {
   const SettingView({super.key});
@@ -24,32 +28,87 @@ class SettingView extends StatelessWidget {
                 child: Column(
                   children: [
                     Gap(4.h),
-                  
+
                     //Gap(12.h),
-                   
-                   CardSetting(text: 'Subscriptions', image: 'assets/icons/star.svg', ontap: (){}),
+
+                    CardSetting(
+                        text: 'Subscriptions',
+                        image: 'assets/icons/star.svg',
+                        ontap: () {}),
                     Gap(12.h),
-                     CardSetting(text: 'Account', image: 'assets/icons/user.svg', ontap: (){}),
+                    CardSetting(
+                        text: 'Account',
+                        image: 'assets/icons/user.svg',
+                        ontap: () {
+                          Get.toNamed(AppRoutes.profile);
+                        }),
                     Gap(12.h),
-                     CardSetting(text: 'Privacy', image: 'assets/icons/lock (1).svg', ontap: (){}),
+                    CardSetting(
+                        text: 'Privacy',
+                        image: 'assets/icons/lock (1).svg',
+                        ontap: () {}),
                     Gap(12.h),
-                     CardSetting(text: 'Notifications', image: 'assets/icons/bell (1).svg', ontap: (){}),
+                    CardSetting(
+                        text: 'Notifications',
+                        image: 'assets/icons/bell (1).svg',
+                        ontap: () {
+                          Get.toNamed(AppRoutes.notifications);
+                        }),
                     Gap(12.h),
-                     CardSetting(text: 'Language', image: 'assets/icons/globe.svg', ontap: (){}),
+                    CardSetting(
+                        text: 'Language',
+                        image: 'assets/icons/globe.svg',
+                        ontap: () {
+                          Get.toNamed(AppRoutes.language);
+                        }),
                     Gap(12.h),
-                     CardSetting(text: 'Report a problem', image: 'assets/icons/help-circle.svg', ontap: (){}),
+                    CardSetting(
+                        text: 'Report a problem',
+                        image: 'assets/icons/help-circle.svg',
+                        ontap: () {
+                          Get.toNamed(AppRoutes.report);
+                        }),
                     Gap(12.h),
-                     CardSetting(text: 'Location', image: 'assets/icons/map-pin.svg', ontap: (){}),
+                    CardSetting(
+                        text: 'Location',
+                        image: 'assets/icons/map-pin.svg',
+                        ontap: () {
+                          Get.toNamed(AppRoutes.location);
+                        }),
                     Gap(12.h),
-                     CardSetting(text: 'Support', image: 'assets/icons/headphones.svg', ontap: (){}),
+                    CardSetting(
+                        text: 'Support',
+                        image: 'assets/icons/headphones.svg',
+                        ontap: () {
+                          Get.toNamed(AppRoutes.support);
+                        }),
                     Gap(12.h),
-                     CardSetting(text: 'Terms & Policies', image: 'assets/icons/shield.svg', ontap: (){}),
+                    CardSetting(
+                        text: 'Terms & Policies',
+                        image: 'assets/icons/shield.svg',
+                        ontap: () {
+                          Get.toNamed(AppRoutes.policies);
+                        }),
                     Gap(90.h),
-                    PrefixIconButton(height: 50.h, width: 304.w, title:'Log out',textColors: Colors.red,borderColor: Colors.red,image:'assets/icons/log-out.svg' ,)
-                    
-                 
-                    
-                    
+                    GestureDetector(
+                       onTap: () async {
+                          UiUtilites.logoutSuccessAlert(context, () async {
+                            GetStorage box = GetStorage();
+                            await box.remove('api_token');
+                            Get.offAllNamed(AppRoutes.signup);
+                          }, () {
+                            Get.back();
+                          });
+                        },
+                      child: PrefixIconButton(
+                        height: 50.h,
+                        width: 304.w,
+                        title: 'Log out',
+                        textColors: Colors.red,
+                        borderColor: Colors.red,
+                        image: 'assets/icons/log-out.svg',
+                      ),
+                    )
                   ],
                 ),
               )),
