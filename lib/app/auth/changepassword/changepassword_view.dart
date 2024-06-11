@@ -1,5 +1,6 @@
 import 'package:find_me/app/auth/changepassword/changepassword_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
+import 'package:find_me/components/buttons/app_button.dart';
 import 'package:find_me/components/textfields/password_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,10 +28,10 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
               body: SafeArea(
                   child: Container(
                 width: 390.w,
-                padding: EdgeInsets.symmetric(horizontal: 50.w),
+                padding: EdgeInsets.symmetric(horizontal: 40.w),
                 child: Column(
                   children: [
-                    Gap(30.h),
+                    Gap(70.h),
                     PasswordTextFields(
                       hintText: 'Old Password',
                       obscure: controller.obscureTextOldPassword,
@@ -50,6 +51,13 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                       obscure: controller.obscureTextCPassword,
                       controller: controller.confirmPasswordController,
                       toggle: controller.ctoggle,
+                    ),
+                    Gap(70.h),
+                    AppButton(
+                      title: 'Submit',
+                      height: 50.0.h,
+                      width: 304.0.w,
+                      onTap: () {},
                     ),
                   ],
                 ),
