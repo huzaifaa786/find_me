@@ -10,17 +10,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-class ReportView extends StatefulWidget {
+class ReportView extends StatelessWidget {
   const ReportView({super.key});
 
   @override
-  State<ReportView> createState() => _ReportViewState();
-}
-
-class _ReportViewState extends State<ReportView> {
-  @override
   Widget build(BuildContext context) {
     return GetBuilder<ReportController>(
+      autoRemove: false,
         builder: (controller) => Scaffold(
               appBar: AppBar(
                 centerTitle: true,
