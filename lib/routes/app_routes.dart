@@ -18,6 +18,8 @@ class AppRoutes {
  static const change_email = '/change_email';
  static const change_phone = '/change_phone';
  static const support = '/support';
+ static const editProfile = '/editProfile';
+
 
 
 
