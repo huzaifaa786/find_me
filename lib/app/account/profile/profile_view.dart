@@ -8,7 +8,9 @@ import 'package:find_me/components/textfields/phone_inputfield.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
@@ -147,9 +149,9 @@ class ProfileView extends StatelessWidget {
                           controller: controller.phonecontroller,
                         ),
                         Gap(33.w),
-                        InkWell(
+                        GestureDetector(
                           onTap: () {
-                            Get.toNamed(AppRoutes.changee);
+                            Get.toNamed(AppRoutes.change_email);
                           },
                           child: Row(
                             children: [
@@ -166,9 +168,10 @@ class ProfileView extends StatelessWidget {
                           ),
                         ),
                         Gap(12.w),
-                        InkWell(
+                        GestureDetector(
                           onTap: () {
-                            Get.toNamed(AppRoutes.changephonenumber);
+                            Get.toNamed(AppRoutes.change_phone);
+                            
                           },
                           child: Row(
                             children: [
