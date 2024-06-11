@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, unused_field, unused_element, deprecated_member_use
 
+import 'package:find_me/app/account/profile/profile_view.dart';
 import 'package:find_me/app/home/home_controller.dart';
 import 'package:find_me/app/home/home_view.dart';
 import 'package:find_me/app/notifications/notifications_view.dart';
@@ -23,10 +24,10 @@ class _MainViewState extends State<MainView> with RouteAware {
   int _navigationMenuIndex = 0;
 
   final List<Widget> _fragments = [
-     const HomeView(),
+    const HomeView(),
     NotificationsView(),
-     HomeView(),
-    NotificationsView(),
+    ProfileView(),
+    ProfileView(),
   ];
 
   Widget _buildNavigationBarItem(
