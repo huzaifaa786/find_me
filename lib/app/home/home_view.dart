@@ -2,9 +2,9 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/app/home/components/swipe.dart';
-import 'package:find_me/components/buttons/home_gif_button.dart';
-import 'package:find_me/components/appbars/home_appbar.dart';
-import 'package:find_me/components/cards/user_card.dart';
+import 'package:find_me/app/home/components/home_gif_button.dart';
+import 'package:find_me/app/home/components/home_appbar.dart';
+import 'package:find_me/app/home/components/user_card.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/cupertino.dart';

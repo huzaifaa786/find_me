@@ -4,6 +4,8 @@ import 'package:find_me/app/auth/changepassword/changepassword_binding.dart';
 import 'package:find_me/app/auth/changepassword/changepassword_view.dart';
 import 'package:find_me/app/auth/forgetpassword/forgetpassword_binding.dart';
 import 'package:find_me/app/auth/forgetpassword/forgetpassword_view.dart';
+import 'package:find_me/app/auth/otp/otp_binding.dart';
+import 'package:find_me/app/auth/otp/otp_view.dart';
 import 'package:find_me/app/auth/signin/signin_binding.dart';
 import 'package:find_me/app/auth/signin/signin_view.dart';
 import 'package:find_me/app/account/profile/profile_binding.dart';
@@ -14,6 +16,8 @@ import 'package:find_me/app/home/home_binding.dart';
 import 'package:find_me/app/home/home_view.dart';
 import 'package:find_me/app/intro/intro_binding.dart';
 import 'package:find_me/app/intro/intro_view.dart';
+import 'package:find_me/app/languages/languages_binding.dart';
+import 'package:find_me/app/languages/languages_view.dart';
 import 'package:find_me/app/main_view/main_binding.dart';
 import 'package:find_me/app/main_view/main_view.dart';
 import 'package:find_me/app/notifications/notifications_binding.dart';
@@ -130,7 +134,6 @@ class AppPages {
       binding: MainBinding(),
        transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
-   
     ),
       //? change password Route
     GetPage(
@@ -142,5 +145,21 @@ class AppPages {
    
     ),
 
+    //TODO: [Otp Route]
+    GetPage(
+      name: AppRoutes.otp,
+      page: () => const OtpView(),
+      binding: OtpBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 350),
+    ),
+ //TODO: [language Route]
+    GetPage(
+      name: AppRoutes.language,
+      page: () => const LanguagesView(),
+      binding: LanguagesBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 350),
+    ),
   ];
 }
