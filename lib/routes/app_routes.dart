@@ -9,6 +9,7 @@ class AppRoutes {
   static const changephonenumber = '/changephonenumber';
  static const setting = '/setting';
   static const mainview = '/mainview';
+ static const changepassword = '/changepassword';
  static const otp = '/otp';
   static const home = '/home';
   static const report = '/report';
