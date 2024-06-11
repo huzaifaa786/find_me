@@ -56,10 +56,15 @@ class _SignInViewState extends State<SignInView> {
                         onTap: () {
                           Get.toNamed(AppRoutes.forgetpassword);
                         },
-                        child: AppText(
-                          title: 'Forget password ?',
-                          color: Colors.blue,
-                          fontWeight: FontWeight.w500,
+                        child: InkWell(
+                          onTap: () {
+                            Get.toNamed(AppRoutes.forgetpassword);
+                          },
+                          child: AppText(
+                            title: 'Forget password ?',
+                            color: Colors.blue,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       )
                     ],

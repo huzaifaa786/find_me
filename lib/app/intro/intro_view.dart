@@ -49,13 +49,18 @@ class IntroView extends StatelessWidget {
                 },
               ),
               Gap(30.h),
-              AuthRichText(
-                title: 'Already have an account ? ',
-                description: 'Sign in',
-                onTap: () {
-                  Get.toNamed(AppRoutes.signin);
-                },
-              ),
+               AuthRichText(
+                    title: 'Already have an account ? ',
+                    description: 'Sign in',
+                     titlesize: 14.sp,
+                      titlefontweight: FontWeight.w400,
+                      descriptionfontweight: FontWeight.w600,
+                      descriptiosize: 14.sp,
+                      descriptionColor: AppColors.primary_color,
+                    onTap: () {
+                      Get.toNamed(AppRoutes.signin);
+                    },
+                  )
             ],
           ),
         ),

@@ -22,7 +22,7 @@ class SplashController extends GetxController {
 
     if (apiToken != '') {
     } else {
-      Get.toNamed(AppRoutes.language);
+      Get.toNamed(AppRoutes.intro);
     }
   }
 }
