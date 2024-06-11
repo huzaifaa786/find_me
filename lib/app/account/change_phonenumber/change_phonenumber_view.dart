@@ -19,11 +19,12 @@ class ChangePhoneNumberView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<ChangePhoneNumberController>(
       builder: (controller) => Scaffold(
-        // appBar: AppBar(
-        //   title: topBar(name: 'Change phone number'),
-        //   automaticallyImplyLeading: false,
-        // ),
-        appBar: authAppBar(name: 'Change phone number'),
+        appBar: AppBar(
+          centerTitle: true,
+          automaticallyImplyLeading: false,
+          forceMaterialTransparency: true,
+          title: topBar(name: 'Change phone unmber'),
+        ),
         body: SafeArea(
             child: Container(
           padding: EdgeInsets.symmetric(horizontal: 50.w),

@@ -23,6 +23,7 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ProfileController>(
+        autoRemove: false,
         builder: (controller) => Scaffold(
               appBar: AppBar(
                 scrolledUnderElevation: 0,
@@ -187,21 +188,26 @@ class ProfileView extends StatelessWidget {
                           ),
                         ),
                         Gap(12.w),
-                        Row(
-                          children: [
-                            Gap(17.w),
-                            SvgPicture.asset(
-                              'assets/icons/lock (1).svg',
-                              color: AppColors.primary_color,
-                            ),
-                            Gap(10.w),
-                            AppText(
-                              title: 'Change password',
-                              color: AppColors.primary_color,
-                              size: 12,
-                              fontWeight: FontWeight.w400,
-                            )
-                          ],
+                        InkWell(
+                          onTap: () {
+                            Get.toNamed(AppRoutes.changepassword);
+                          },
+                          child: Row(
+                            children: [
+                              Gap(17.w),
+                              SvgPicture.asset(
+                                'assets/icons/lock (1).svg',
+                                color: AppColors.primary_color,
+                              ),
+                              Gap(10.w),
+                              AppText(
+                                title: 'Change password',
+                                color: AppColors.primary_color,
+                                size: 12,
+                                fontWeight: FontWeight.w400,
+                              )
+                            ],
+                          ),
                         ),
                         Gap(30.w),
                         Row(
