@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, unused_field, unused_element, deprecated_member_use
 
 import 'package:find_me/app/account/profile/profile_view.dart';
+import 'package:find_me/app/auth/signup/signup_view.dart';
 import 'package:find_me/app/home/home_controller.dart';
 import 'package:find_me/app/home/home_view.dart';
 import 'package:find_me/app/notifications/notifications_view.dart';
+import 'package:find_me/app/report/report_view.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -25,9 +27,9 @@ class _MainViewState extends State<MainView> with RouteAware {
 
   final List<Widget> _fragments = [
     const HomeView(),
-    NotificationsView(),
+    ReportView(),
     ProfileView(),
-    ProfileView(),
+    SignUpView(),
   ];
 
   Widget _buildNavigationBarItem(
