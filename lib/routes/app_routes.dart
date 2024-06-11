@@ -14,6 +14,8 @@ class AppRoutes {
   static const home = '/home';
   static const report = '/report';
  static const language = '/language';
+ static const location = '/location';
+
 
 
 }

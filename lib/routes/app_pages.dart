@@ -18,6 +18,8 @@ import 'package:find_me/app/intro/intro_binding.dart';
 import 'package:find_me/app/intro/intro_view.dart';
 import 'package:find_me/app/languages/languages_binding.dart';
 import 'package:find_me/app/languages/languages_view.dart';
+import 'package:find_me/app/location/location_binding.dart';
+import 'package:find_me/app/location/location_view.dart';
 import 'package:find_me/app/main_view/main_binding.dart';
 import 'package:find_me/app/main_view/main_view.dart';
 import 'package:find_me/app/notifications/notifications_binding.dart';
@@ -158,6 +160,14 @@ class AppPages {
       name: AppRoutes.language,
       page: () => const LanguagesView(),
       binding: LanguagesBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 350),
+    ),
+    //TODO: [location Route]
+    GetPage(
+      name: AppRoutes.location,
+      page: () => const LocationView(),
+      binding: LocationBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
