@@ -98,7 +98,9 @@ class _SignUpViewState extends State<SignUpView> {
                     title: 'Sign Up',
                     height: 50.0.h,
                     width: 304.0.w,
-                    onTap: () {},
+                    onTap: () {
+                      Get.toNamed(AppRoutes.mainview);
+                    },
                   ),
                   Gap(12.h),
                   const AppText(
@@ -133,7 +135,7 @@ class _SignUpViewState extends State<SignUpView> {
                       descriptiosize: 14.sp,
                       descriptionColor: AppColors.primary_color,
                     onTap: () {
-                      Get.toNamed(AppRoutes.home);
+                      Get.toNamed(AppRoutes.signin);
                     },
                   )
                 ],

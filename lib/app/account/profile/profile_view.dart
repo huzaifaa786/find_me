@@ -187,7 +187,7 @@ class ProfileView extends StatelessWidget {
                             )
                           ],
                         ),
-                        Gap(55.w),
+                        Gap(30.w),
                         Row(
                           children: [
                             Gap(17.w),

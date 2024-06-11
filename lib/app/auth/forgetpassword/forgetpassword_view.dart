@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:find_me/app/auth/forgetpassword/forgetpassword_controller.dart';
+import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/buttons/app_button.dart';
 import 'package:find_me/components/textfields/app_textfields.dart';
+import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/images/images.dart';
 import 'package:flutter/material.dart';
@@ -24,17 +26,9 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
     return GetBuilder<ForgetPaswordController>(
         builder: (controller) => Scaffold(
               appBar: AppBar(
-                leading: InkWell(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: SvgPicture.asset(
-                    ImagesConst.backIcon,
-                    height: 28.h,
-                    width: 28.w,
-                    fit: BoxFit.scaleDown,
-                  ),
-                ),
+                automaticallyImplyLeading: false,
+                scrolledUnderElevation: 0,
+                title: topBar(name: ''),
               ),
               body: SafeArea(
                   child: Container(
@@ -70,12 +64,14 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                       controller: controller.emailController,
                     ),
                     Gap(40.h),
-                       AppButton(
-                    title: 'Confirm',
-                    height: 50.0.h,
-                    width: 304.0.w,
-                    onTap: () {},
-                  ),
+                    AppButton(
+                      title: 'Confirm',
+                      height: 50.0.h,
+                      width: 304.0.w,
+                      onTap: () {
+                        Get.toNamed(AppRoutes.otp);
+                      },
+                    ),
                   ],
                 ),
               )),
