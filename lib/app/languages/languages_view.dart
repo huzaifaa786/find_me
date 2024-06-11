@@ -34,7 +34,6 @@ class _LanguagesViewState extends State<LanguagesView> {
           builder: (controller) {
             return Column(
               children: [
-                Gap(63.h),
                 GestureDetector(
                   onTap: () {
                     controller.changeLanguage(0);
