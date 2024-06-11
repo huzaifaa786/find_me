@@ -1,119 +1,458 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_interpolation_to_compose_strings, deprecated_member_use, avoid_unnecessary_containers, sized_box_for_whitespace
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:find_me/app/home/components/swipe.dart';
+import 'package:find_me/components/buttons/home_gif_button.dart';
 import 'package:find_me/components/appbars/home_appbar.dart';
+import 'package:find_me/components/cards/user_card.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'home_controller.dart'; // Ensure this path is correct
+import 'home_controller.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+  const HomeView({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    final HomeController controller = HomeController.instance;
-
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        scrolledUnderElevation: 0,
-        title: homeAppBar(),
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
+    return GetBuilder<HomeController>(
+      builder: (controller) => Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          scrolledUnderElevation: 0,
+          title: homeAppBar(),
+        ),
+        body: SafeArea(
           child: Column(
             children: [
               Gap(35.h),
               Row(
                 children: [
-                  Obx(() {
-                    return Container(
-                      height: 77,
-                      width: 77,
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0x66000000), // #00000040 with 40 being the alpha value in hexadecimal
-                            blurRadius: 1.2,
-                            spreadRadius: 0,
-                            offset: Offset(0, 0),
-                          ),
-                        ],
-                        borderRadius: BorderRadius.circular(40.r),
-                        image: DecorationImage(
-                          image: CachedNetworkImageProvider(
-                            controller.selectedItem.value.avatarUrl,
-                          ),
-                          fit: BoxFit.cover,
+                  Gap(34.w),
+                  Container(
+                    height: 77,
+                    width: 77,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.shadow_black.withOpacity(0.25),
+                          spreadRadius: 1,
+                          blurRadius: 10.7,
+                          offset: Offset(0, 0),
                         ),
+                      ],
+                      borderRadius: BorderRadius.circular(80.r),
+                      image: DecorationImage(
+                        image: CachedNetworkImageProvider(
+                          controller.selectedItem.avatarUrl,
+                        ),
+                        fit: BoxFit.cover,
                       ),
-                    );
-                  }),
-                  Gap(15.w),
+                    ),
+                  ),
+                  Gap(11.w),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Obx(() {
-                        return DropdownButton<DropdownItem>(
-                          iconEnabledColor: AppColors.primary_color,
-                          icon: SvgPicture.asset('assets/icons/arrow_down.svg'),
-                          iconDisabledColor: AppColors.primary_color,
-                          iconSize: 20,
-                          hint: AppText(
-                            title: "Appears as",
-                            color: AppColors.primary_color,
-                            size: 14,
-                            fontWeight: FontWeight.w500,
-                          ),
-                          borderRadius: BorderRadius.circular(20.r),
-                          items: controller.dropdownItems.map((item) {
-                            return DropdownMenuItem<DropdownItem>(
-                              value: item,
-                              child: Row(
-                                children: [
-                                  CircleAvatar(
-                                    backgroundImage: CachedNetworkImageProvider(item.avatarUrl),
-                                    radius: 15,
-                                  ),
-                                  Gap(10.w),
-                                  Text(item.text),
-                                  Gap(5.w),
-                                  if (item.verified)
-                                    SvgPicture.asset('assets/icons/verified.svg'),
-                                ],
-                              ),
-                            );
-                          }).toList(),
-                          onChanged: (value) {
-                            if (value != null) {
-                              controller.selectItem(value);
-                            }
-                          },
-                        );
-                      }),
-                      Gap(13),
-                      Obx(() {
-                        return Row(
-                          children: [
-                            AppText(
-                              title: controller.selectedItem.value.text,
+                      ConstrainedBox(
+                        constraints: BoxConstraints(minWidth: 120.w),
+                        child: SizedBox(
+                          height: 50.h,
+                          child: DropdownButton<DropdownItem>(
+                            icon: SvgPicture.asset(
+                              'assets/icons/arrow_down.svg',
+                              color: AppColors.primary_color,
+                              fit: BoxFit.scaleDown,
+                            ),
+                            elevation: 1,
+                            hint: AppText(
+                              title: "Appears as",
+                              color: AppColors.primary_color,
                               size: 14.sp,
                               fontWeight: FontWeight.w500,
                             ),
-                            Gap(15),
-                            if (controller.selectedItem.value.verified)
-                              SvgPicture.asset('assets/icons/verified.svg')
-                          ],
-                        );
-                      }),
+                            borderRadius: BorderRadius.circular(20.r),
+                            items: controller.dropdownItems.map((item) {
+                              return DropdownMenuItem<DropdownItem>(
+                                value: item,
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        CircleAvatar(
+                                          backgroundImage:
+                                              CachedNetworkImageProvider(
+                                            item.avatarUrl,
+                                          ),
+                                          radius: 15.r,
+                                        ),
+                                        Gap(10.w),
+                                        Text(
+                                          item.text,
+                                          overflow: TextOverflow.visible,
+                                        ),
+                                        Gap(5.w),
+                                        if (item.verified)
+                                          SvgPicture.asset(
+                                              'assets/icons/verified.svg'),
+                                      ],
+                                    ),
+                                    Divider(
+                                      thickness: 0.3,
+                                      color: Color(0x13000000),
+                                      indent: 16.0,
+                                      endIndent: 16.0,
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }).toList(),
+                            onChanged: (value) {
+                              if (value != null) {
+                                controller.selectItem(value);
+                              }
+                            },
+                            underline: Container(),
+                          ),
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          AppText(
+                            title: controller.selectedItem.text,
+                            size: 14.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          Gap(15),
+                          if (controller.selectedItem.verified)
+                            SvgPicture.asset('assets/icons/verified.svg')
+                        ],
+                      ),
+                      Gap(10.h),
                     ],
                   ),
                 ],
+              ),
+              SizedBox(
+                height: 200,
+                width: 200,
+                child: HomeGif(),
+              ),
+              Gap(25.h),
+              Divider(
+                color: AppColors.border_grey,
+                endIndent: 16.w,
+                indent: 16.w,
+                thickness: 3.h,
+                height: 1.h,
+              ),
+              Gap(20.h),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 48),
+                    child: controller.isSearching
+                        ? Center(
+                            heightFactor: 10.h,
+                            child: AppText(
+                              title: 'Keep searching..',
+                              color: AppColors.black,
+                              textAlign: TextAlign.center,
+                              size: 14.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          )
+                        : GridView.builder(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            physics: NeverScrollableScrollPhysics(),
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3,
+                              mainAxisSpacing: 41.0,
+                              crossAxisSpacing: 36.0,
+                              mainAxisExtent: 99,
+                            ),
+                            itemCount: controller.dropdownItems.length,
+                            itemBuilder: (context, index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        surfaceTintColor:
+                                            AppColors.white.withOpacity(0.25),
+                                        alignment: Alignment.bottomCenter,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(38.0)),
+                                        ),
+                                        title: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            SizedBox(
+                                              height: 30.h,
+                                              width: 100.w,
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 10.0, right: 10.0),
+                                                child: DropdownButton<String>(
+                                                  hint: AppText(
+                                                    title: 'Send',
+                                                    size: 16,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                  alignment:
+                                                      Alignment.bottomCenter,
+                                                  isExpanded: true,
+                                                  iconEnabledColor:
+                                                      AppColors.primary_color,
+                                                  iconDisabledColor:
+                                                      AppColors.primary_color,
+                                                  iconSize: 30,
+                                                  underline: Container(),
+                                                  style: TextStyle(
+                                                    fontSize: 8,
+                                                    fontWeight: FontWeight.w400,
+                                                    color:
+                                                        AppColors.primary_color,
+                                                  ),
+                                                  icon: Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 15.0),
+                                                    child: SvgPicture.asset(
+                                                      'assets/icons/arrow_down.svg',
+                                                      color: AppColors.black,
+                                                      fit: BoxFit.scaleDown,
+                                                    ),
+                                                  ),
+                                                  onChanged:
+                                                      (String? newValue) {
+                                                    print(
+                                                        'Selected: $newValue');
+                                                  },
+                                                  items: <String>[
+                                                    'Send document',
+                                                    'Send photo',
+                                                    'Send emoji'
+                                                  ].map<
+                                                      DropdownMenuItem<String>>(
+                                                    (String value) {
+                                                      return DropdownMenuItem<
+                                                          String>(
+                                                        onTap: () {},
+                                                        alignment:
+                                                            Alignment.center,
+                                                        value: value,
+                                                        child: Row(
+                                                          children: [
+                                                            GestureDetector(
+                                                              onTap: () {
+                                                                controller
+                                                                    .openDocumentPicker();
+                                                              },
+                                                              child: Row(
+                                                                children: [
+                                                                  if (value ==
+                                                                      'Send document')
+                                                                    SvgPicture
+                                                                        .asset(
+                                                                      'assets/icons/file-text_icon.svg',
+                                                                      height:
+                                                                          13,
+                                                                      width: 13,
+                                                                    ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            GestureDetector(
+                                                              onTap: () {
+                                                                // controller
+                                                                //     .getImage();
+                                                              },
+                                                              child: Row(
+                                                                children: [
+                                                                  if (value ==
+                                                                      'Send photo')
+                                                                    SvgPicture
+                                                                        .asset(
+                                                                      'assets/icons/camera.svg',
+                                                                      height:
+                                                                          13,
+                                                                      width: 13,
+                                                                    ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            GestureDetector(
+                                                              onTap: () {},
+                                                              child: Row(
+                                                                children: [
+                                                                  if (value ==
+                                                                      'Send emoji')
+                                                                    SvgPicture
+                                                                        .asset(
+                                                                      'assets/icons/emoji_icon.svg',
+                                                                      height:
+                                                                          13,
+                                                                      width: 13,
+                                                                    ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            SizedBox(width: 8),
+                                                            AppText(
+                                                              title: value,
+                                                              color: AppColors
+                                                                  .primary_color,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).toList(),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        content: ConstrainedBox(
+                                          constraints:
+                                              BoxConstraints(maxHeight: 260),
+                                          child: Container(
+                                            width: 420.w,
+                                            // padding:EdgeInsets.symmetric(horizontal: 20),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Gap(50.h),
+                                                ConstrainedBox(
+                                                  constraints: BoxConstraints(
+                                                      minHeight: 75,
+                                                      minWidth: 75,
+                                                      maxHeight: 100,
+                                                      maxWidth: 100),
+                                                  child: SizedBox(
+                                                    // height: 100,
+                                                    // width: 100,
+                                                    child: CircleAvatar(
+                                                      backgroundImage:
+                                                          NetworkImage(controller
+                                                              .dropdownItems[
+                                                                  index]
+                                                              .avatarUrl),
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(height: 10.h),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    if (controller
+                                                        .dropdownItems[index]
+                                                        .verified)
+                                                      Container(
+                                                        width: 7.w,
+                                                        height: 7.h,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              AppColors.green,
+                                                          shape:
+                                                              BoxShape.circle,
+                                                        ),
+                                                      ),
+                                                    Gap(5.w),
+                                                    AppText(
+                                                      title: controller
+                                                          .dropdownItems[index]
+                                                          .text,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      size: 10.sp,
+                                                    ),
+                                                  ],
+                                                ),
+                                                Gap(18.h),
+                                                Container(
+                                                  height: 43.h,
+                                                  width: 183.w,
+                                                  decoration: BoxDecoration(
+                                                      color:
+                                                          AppColors.light_blue,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              11)),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      SvgPicture.asset(
+                                                          'assets/icons/emoji_icon.svg',
+                                                          height: 10,
+                                                          width: 10),
+                                                      Gap(5.w),
+                                                      AppText(
+                                                        title: controller
+                                                            .dropdownItems[
+                                                                index]
+                                                            .text,
+                                                        size: 8,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                                Gap(31.h),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        actions: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              SwipeToSendButton(
+                                                onSend: () {
+                                                  // Handle send action here
+                                                  print(
+                                                      'Send action triggered!');
+                                                },
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                },
+                                child: UserCard(
+                                  user: controller.dropdownItems[index],
+                                ),
+                              );
+                            },
+                          ),
+                  ),
+                ),
               ),
             ],
           ),
