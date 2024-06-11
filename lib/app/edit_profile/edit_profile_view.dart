@@ -47,7 +47,7 @@ class EditProfileView extends StatelessWidget {
                     Gap(36.w),
                     GestureDetector(
                       onTap: () {
-                        controller.toggleDefault(!controller.isDefault);
+                        controller.toggleDefault1(!controller.isDefault1);
                       },
                       child: Container(
                         height: 68.h,
@@ -65,9 +65,9 @@ class EditProfileView extends StatelessWidget {
                                 color: AppColors.primary_color,
                                 // width: 1,
                               ),
-                              value: controller.isDefault,
+                              value: controller.isDefault1,
                               onChanged: (value) {
-                                controller.toggleDefault(value ?? false);
+                                controller.toggleDefault1(value ?? false);
                               },
                             ),
                             Container(
@@ -125,7 +125,7 @@ class EditProfileView extends StatelessWidget {
                     Gap(36.w),
                     GestureDetector(
                       onTap: () {
-                        controller.toggleDefault(!controller.isDefault);
+                        controller.toggleDefault3(!controller.isDefault2);
                       },
                       child: Container(
                         height: 68.h,
@@ -143,9 +143,9 @@ class EditProfileView extends StatelessWidget {
                                 color: AppColors.primary_color,
                                 // width: 1,
                               ),
-                              value: controller.isDefault,
+                              value: controller.isDefault2,
                               onChanged: (value) {
-                                controller.toggleDefault(value ?? false);
+                                controller.toggleDefault2(value ?? false);
                               },
                             ),
                             Container(
@@ -198,13 +198,12 @@ class EditProfileView extends StatelessWidget {
                   ],
                 ),
                 Gap(16.w),
-                
                 Row(
                   children: [
                     Gap(36.w),
                     GestureDetector(
                       onTap: () {
-                        controller.toggleDefault(!controller.isDefault);
+                        controller.toggleDefault3(!controller.isDefault3);
                       },
                       child: Container(
                         height: 68.h,
@@ -222,9 +221,9 @@ class EditProfileView extends StatelessWidget {
                                 color: AppColors.primary_color,
                                 // width: 1,
                               ),
-                              value: controller.isDefault,
+                              value: controller.isDefault3,
                               onChanged: (value) {
-                                controller.toggleDefault(value ?? false);
+                                controller.toggleDefault3(value ?? false);
                               },
                             ),
                             Container(
@@ -282,7 +281,7 @@ class EditProfileView extends StatelessWidget {
                     Gap(36.w),
                     GestureDetector(
                       onTap: () {
-                        controller.toggleDefault(!controller.isDefault);
+                        controller.toggleDefault4(!controller.isDefault4);
                       },
                       child: Container(
                         height: 68.h,
@@ -300,9 +299,9 @@ class EditProfileView extends StatelessWidget {
                                 color: AppColors.primary_color,
                                 // width: 1,
                               ),
-                              value: controller.isDefault,
+                              value: controller.isDefault4,
                               onChanged: (value) {
-                                controller.toggleDefault(value ?? false);
+                                controller.toggleDefault4(value ?? false);
                               },
                             ),
                             Container(
