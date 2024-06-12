@@ -34,6 +34,8 @@ import 'package:find_me/app/report/report_binding.dart';
 import 'package:find_me/app/report/report_view.dart';
 import 'package:find_me/app/setting/setting_binding.dart';
 import 'package:find_me/app/setting/setting_view.dart';
+import 'package:find_me/app/social_login/social_login_binding.dart';
+import 'package:find_me/app/social_login/social_login_view.dart';
 import 'package:find_me/app/splash/splash_binding.dart';
 import 'package:find_me/app/splash/splash_view.dart';
 import 'package:find_me/app/support/support_binding.dart';
@@ -215,6 +217,14 @@ class AppPages {
       binding: PoliciesBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
+    ),
+       //TODO: [Social Login Route]
+    GetPage(
+      name: AppRoutes.sociallogin,
+      page: () => const SocialLoginView(),
+      binding: SocialLoginBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
     ),
   ];
 }

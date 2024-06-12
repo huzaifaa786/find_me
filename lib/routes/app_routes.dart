@@ -20,7 +20,7 @@ class AppRoutes {
  static const support = '/support';
  static const editProfile = '/editProfile';
  static const policies = '/policies';
-
+ static const sociallogin = '/sociallogin';
 
 
 
