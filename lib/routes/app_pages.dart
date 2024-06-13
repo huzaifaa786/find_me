@@ -14,6 +14,8 @@ import 'package:find_me/app/auth/signup/signup_binding.dart';
 import 'package:find_me/app/auth/signup/signup_view.dart';
 import 'package:find_me/app/change_email/change_email_binding.dart';
 import 'package:find_me/app/change_email/change_email_view.dart';
+import 'package:find_me/app/create_business_card/create_card_binding.dart';
+import 'package:find_me/app/create_business_card/create_card_view.dart';
 import 'package:find_me/app/edit_profile/edit_profile_binding.dart';
 import 'package:find_me/app/edit_profile/edit_profile_view.dart';
 import 'package:find_me/app/home/home_binding.dart';
@@ -81,12 +83,12 @@ class AppPages {
     //TODO: [notification Route]
     GetPage(
       name: AppRoutes.notifications,
-      page: () =>  NotificationsView(),
+      page: () => NotificationsView(),
       binding: NotificationsBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
-     //TODO: [change phone number Route]
+    //TODO: [change phone number Route]
     GetPage(
       name: AppRoutes.changephonenumber,
       page: () => const ChangePhoneNumberView(),
@@ -95,7 +97,7 @@ class AppPages {
       transitionDuration: const Duration(milliseconds: 100),
     ),
 
-     GetPage(
+    GetPage(
       name: AppRoutes.setting,
       page: () => const SettingView(),
       binding: SettingBinding(),
@@ -137,22 +139,23 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
-     //? BOTTOM NAVIGATION VIEW Route
+
+    //TODO: [NavBar Route]   //? BOTTOM NAVIGATION VIEW Route
     GetPage(
       name: AppRoutes.mainview,
       page: () => const MainView(),
       binding: MainBinding(),
-       transition: Transition.rightToLeft,
+      transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
-      //? change password Route
+
+    //TODO: [Change Password Route]  //? change password Route
     GetPage(
       name: AppRoutes.changepassword,
       page: () => const ChangePasswordView(),
       binding: ChangePasswordBinding(),
-       transition: Transition.rightToLeft,
+      transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
-   
     ),
 
     //TODO: [Otp Route]
@@ -163,7 +166,7 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
- //TODO: [language Route]
+    //TODO: [language Route]
     GetPage(
       name: AppRoutes.language,
       page: () => const LanguagesView(),
@@ -187,12 +190,13 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
-     //TODO: [change phone Route]
+    //TODO: [change phone Route]
     GetPage(
       name: AppRoutes.change_phone,
       page: () => const ChangePhoneNumberView(),
-      binding: ChangePhoneNumberBinding(),),
-     //TODO: [support Route]
+      binding: ChangePhoneNumberBinding(),
+    ),
+    //TODO: [support Route]
     GetPage(
       name: AppRoutes.support,
       page: () => const SupportView(),
@@ -200,7 +204,7 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
-      //TODO: [editProfile Route]
+    //TODO: [editProfile Route]
     GetPage(
       name: AppRoutes.editProfile,
       page: () => const EditProfileView(),
@@ -208,11 +212,19 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
-       //TODO: [policies Route]
+    //TODO: [policies Route]
     GetPage(
       name: AppRoutes.policies,
       page: () => const PoliciesView(),
       binding: PoliciesBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 350),
+    ),
+     //TODO: [createCard Route]
+    GetPage(
+      name: AppRoutes.createcard,
+      page: () => const CreateCardView(),
+      binding: CreateCardBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),

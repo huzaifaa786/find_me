@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 
 Widget topBar({String? name}) {
   return Padding(
-    padding: EdgeInsets.only(left: 25.w),
+    padding: EdgeInsets.only(left: 40.w, right: 40.w),
     child: Row(
       children: [
         GestureDetector(
@@ -23,12 +23,12 @@ Widget topBar({String? name}) {
             fit: BoxFit.scaleDown,
           ),
         ),
-        Gap(68.w),
+        Gap(35.w),
         AppText(
           title: name!,
           size: 16.sp,
           fontWeight: FontWeight.w600,
-        )
+        ),
       ],
     ),
   );

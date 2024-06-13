@@ -19,7 +19,7 @@ import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class NotificationsView extends StatelessWidget {
-   NotificationsView({super.key});
+  NotificationsView({super.key});
   @override
   Widget build(BuildContext context) {
     return GetBuilder<NotificationsController>(
@@ -28,6 +28,7 @@ class NotificationsView extends StatelessWidget {
           centerTitle: true,
           automaticallyImplyLeading: false,
           forceMaterialTransparency: true,
+          toolbarHeight: 83.h,
           title: topBar(name: 'Notifications'),
         ),
         body: SafeArea(
@@ -131,7 +132,7 @@ class NotificationsView extends StatelessWidget {
                   msg: 'Ahmed mohammed wants to send you a file',
                   onAccepttap: () {
                     print('accept');
-                  },  
+                  },
                   onRejecttap: () {
                     print('reject');
                   },

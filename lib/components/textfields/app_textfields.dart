@@ -4,10 +4,12 @@ import 'package:find_me/utils/box_decoration/box_decoration.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
 class AppTextFields extends StatelessWidget {
   const AppTextFields({
     Key? key,
+    this.icon,
     this.controller,
     this.hintText,
     this.type,
@@ -16,6 +18,7 @@ class AppTextFields extends StatelessWidget {
     this.enabled,
   }) : super(key: key);
 
+  final icon;
   final controller;
   final hintText;
   final type;
@@ -36,6 +39,17 @@ class AppTextFields extends StatelessWidget {
         fontWeight: FontWeight.w500,
       ),
       decoration: InputDecoration(
+        prefixIcon: icon != null
+            ? Padding(
+                padding:  EdgeInsets.only(left: 23.w),
+                child: SvgPicture.asset(
+                  icon!,
+                  fit: BoxFit.scaleDown,
+                  width: 20.w,
+                  height: 20.h,
+                ),
+              )
+            : null,
         filled: true,
         hintText: hintText,
         hintStyle: TextStyle(

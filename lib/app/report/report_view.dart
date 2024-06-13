@@ -16,10 +16,11 @@ class ReportView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ReportController>(
-      autoRemove: false,
+        autoRemove: false,
         builder: (controller) => Scaffold(
               appBar: AppBar(
                 centerTitle: true,
+                toolbarHeight: 83.h,
                 automaticallyImplyLeading: false,
                 forceMaterialTransparency: true,
                 title: topBar(name: 'Report a problem'),

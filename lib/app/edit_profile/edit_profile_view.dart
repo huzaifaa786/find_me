@@ -22,7 +22,7 @@ class EditProfileView extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         scrolledUnderElevation: 0,
-        toolbarHeight: 110.h,
+        toolbarHeight: 83.h,
         title: topBar(name: 'My profiles'),
       ),
       body: SafeArea(
