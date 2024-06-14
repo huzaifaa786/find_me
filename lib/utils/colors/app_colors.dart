@@ -13,6 +13,8 @@ class AppColors {
   static const border_grey = Color(0xFFE8E8E8);
   static const green = Color(0xFF00CD2D);
   static const light_grey = Color(0xFFB8B8B8);
+  static const transparent = Colors.transparent;
+
   static const red = Color(0xFFFF0000);
   static const hintGrey = Color(0xFF8F8F8F);
   static Color borderGrey = const Color(0xFF000000).withOpacity(0.31);
