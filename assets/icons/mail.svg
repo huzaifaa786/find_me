@@ -1,0 +1,53 @@
+<svg width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="11" height="10" fill="#9CAFFF"/>
+<g id="Create business card">
+<g clip-path="url(#clip0_0_1)">
+<rect x="-76" y="-348" width="390" height="877" rx="33" fill="white"/>
+<g id="Group 97">
+<g id="Group 95">
+<g id="Group 93">
+<g id="Group 91">
+<g id="Group 86">
+<g id="Rectangle 65">
+<rect x="-19" y="3" width="277" height="47" rx="23.5" fill="#F2F2F2"/>
+<rect x="-19.5" y="2.5" width="278" height="48" rx="24" stroke="black" stroke-opacity="0.13"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Rectangle 92" filter="url(#filter0_b_0_1)">
+<rect x="-76" y="-348" width="390" height="877" fill="black" fill-opacity="0.2"/>
+</g>
+<g id="Card" filter="url(#filter1_d_0_1)">
+<rect x="-33" y="-92" width="312" height="190" rx="19" fill="black"/>
+<g id="mail">
+<path id="Vector" d="M1.83268 1.66602H9.16602C9.67018 1.66602 10.0827 2.04102 10.0827 2.49935V7.49935C10.0827 7.95768 9.67018 8.33268 9.16602 8.33268H1.83268C1.32852 8.33268 0.916016 7.95768 0.916016 7.49935V2.49935C0.916016 2.04102 1.32852 1.66602 1.83268 1.66602Z" stroke="white" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M10.0827 2.5L5.49935 5.41667L0.916016 2.5" stroke="white" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_b_0_1" x="-102.9" y="-374.9" width="443.8" height="930.8" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="13.45"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_0_1"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_0_1" result="shape"/>
+</filter>
+<filter id="filter1_d_0_1" x="-45.9" y="-100.9" width="337.8" height="215.8" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="6.45"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+</filter>
+<clipPath id="clip0_0_1">
+<rect x="-76" y="-348" width="390" height="877" rx="33" fill="white"/>
+</clipPath>
+</defs>
+</svg>

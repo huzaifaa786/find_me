@@ -19,8 +19,10 @@ class SettingView extends StatelessWidget {
     return GetBuilder<SettingController>(
         builder: (controller) => Scaffold(
               appBar: AppBar(
+                toolbarHeight: 83.h,
                 title: topBar(name: 'Settings'),
                 automaticallyImplyLeading: false,
+                scrolledUnderElevation: 0,
               ),
               body: SafeArea(
                   child: Padding(
@@ -91,15 +93,15 @@ class SettingView extends StatelessWidget {
                         }),
                     Gap(90.h),
                     GestureDetector(
-                       onTap: () async {
-                          UiUtilites.logoutSuccessAlert(context, () async {
-                            GetStorage box = GetStorage();
-                            await box.remove('api_token');
-                            Get.offAllNamed(AppRoutes.signup);
-                          }, () {
-                            Get.back();
-                          });
-                        },
+                      onTap: () async {
+                        UiUtilites.logoutSuccessAlert(context, () async {
+                          GetStorage box = GetStorage();
+                          await box.remove('api_token');
+                          Get.offAllNamed(AppRoutes.signup);
+                        }, () {
+                          Get.back();
+                        });
+                      },
                       child: PrefixIconButton(
                         height: 50.h,
                         width: 304.w,

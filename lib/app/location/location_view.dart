@@ -24,7 +24,7 @@ class _LocationViewState extends State<LocationView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 110.h,
+        toolbarHeight: 83.h,
         title: topBar(name: 'Location'),
         automaticallyImplyLeading: false,
         scrolledUnderElevation: 0,

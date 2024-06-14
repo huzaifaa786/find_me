@@ -20,7 +20,7 @@ class SupportView extends StatelessWidget {
     return GetBuilder<SupportController>(
         builder: (controller) => Scaffold(
               appBar: AppBar(
-                toolbarHeight: 110.h,
+                toolbarHeight: 83.h,
                 title: topBar(name: 'Support'),
                 automaticallyImplyLeading: false,
                 scrolledUnderElevation: 0,

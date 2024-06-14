@@ -14,7 +14,7 @@ class PoliciesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 110.h,
+        toolbarHeight: 83.h,
         automaticallyImplyLeading: false,
         scrolledUnderElevation: 0,
         title: topBar(name: 'Terms & Policies'),

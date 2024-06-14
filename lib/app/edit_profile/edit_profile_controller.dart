@@ -4,6 +4,11 @@ import 'package:get/get.dart';
 class EditProfileController extends GetxController {
   static EditProfileController get instance => Get.find();
 
+  bool isSelected1 = false;
+  bool isSelected2 = false;
+  bool isSelected3 = false;
+  bool isSelected4 = false;
+
   var isDefault1 = false;
   var isDefault2 = false;
   var isDefault3 = false;
@@ -18,21 +23,25 @@ class EditProfileController extends GetxController {
 
   void toggleDefault1(bool value) {
     isDefault1 = value;
+    isSelected1 = value;
     update();
   }
 
   void toggleDefault2(bool value) {
     isDefault2 = value;
+    isSelected2 = value;
     update();
   }
 
   void toggleDefault3(bool value) {
     isDefault3 = value;
+    isSelected3 = value;
     update();
   }
 
   void toggleDefault4(bool value) {
     isDefault4 = value;
+    isSelected4 = value;
     update();
   }
 }

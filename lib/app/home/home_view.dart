@@ -50,10 +50,11 @@ class HomeView extends StatelessWidget {
                         ),
                       ],
                       borderRadius: BorderRadius.circular(80.r),
-                      image: DecorationImage(
-                        image: CachedNetworkImageProvider(
-                          controller.selectedItem.avatarUrl,
-                        ),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(80.r),
+                      child: CachedNetworkImage(
+                        imageUrl: controller.selectedItem.avatarUrl,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -70,12 +71,11 @@ class HomeView extends StatelessWidget {
                           child: DropdownButton<DropdownItem>(
                             icon: SvgPicture.asset(
                               'assets/icons/arrow_down.svg',
-                              color: AppColors.primary_color,
-                              fit: BoxFit.scaleDown,
+                              color: Colors.transparent,
                             ),
                             elevation: 1,
                             hint: AppText(
-                              title: "Appears as",
+                              title: "Appears as   \u25BC",
                               color: AppColors.primary_color,
                               size: 14.sp,
                               fontWeight: FontWeight.w500,
@@ -89,11 +89,15 @@ class HomeView extends StatelessWidget {
                                     Row(
                                       children: [
                                         CircleAvatar(
-                                          backgroundImage:
-                                              CachedNetworkImageProvider(
-                                            item.avatarUrl,
-                                          ),
                                           radius: 15.r,
+                                          child: ClipOval(
+                                            child: CachedNetworkImage(
+                                              imageUrl: item.avatarUrl,
+                                              fit: BoxFit.cover,
+                                              width: 30.r,
+                                              height: 30.r,
+                                            ),
+                                          ),
                                         ),
                                         Gap(10.w),
                                         Text(
@@ -155,7 +159,7 @@ class HomeView extends StatelessWidget {
                 thickness: 3.h,
                 height: 1.h,
               ),
-              Gap(20.h),
+              Gap(15.h),
               Expanded(
                 child: SingleChildScrollView(
                   child: Padding(
@@ -180,7 +184,7 @@ class HomeView extends StatelessWidget {
                               crossAxisCount: 3,
                               mainAxisSpacing: 41.0,
                               crossAxisSpacing: 36.0,
-                              mainAxisExtent: 99,
+                              mainAxisExtent: 96,
                             ),
                             itemCount: controller.dropdownItems.length,
                             itemBuilder: (context, index) {
@@ -344,19 +348,27 @@ class HomeView extends StatelessWidget {
                                                 Gap(50.h),
                                                 ConstrainedBox(
                                                   constraints: BoxConstraints(
-                                                      minHeight: 75,
-                                                      minWidth: 75,
-                                                      maxHeight: 100,
-                                                      maxWidth: 100),
+                                                    minHeight: 75,
+                                                    minWidth: 75,
+                                                    maxHeight: 100,
+                                                    maxWidth: 100,
+                                                  ),
                                                   child: SizedBox(
-                                                    // height: 100,
-                                                    // width: 100,
                                                     child: CircleAvatar(
-                                                      backgroundImage:
-                                                          NetworkImage(controller
+                                                      backgroundColor: Colors
+                                                          .transparent, // To avoid any background color issues
+                                                      child: ClipOval(
+                                                        child:
+                                                            CachedNetworkImage(
+                                                          imageUrl: controller
                                                               .dropdownItems[
                                                                   index]
-                                                              .avatarUrl),
+                                                              .avatarUrl,
+                                                          fit: BoxFit.cover,
+                                                          width: 100,
+                                                          height: 100,
+                                                        ),
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
@@ -455,6 +467,7 @@ class HomeView extends StatelessWidget {
                   ),
                 ),
               ),
+              Gap(25.h),
             ],
           ),
         ),
