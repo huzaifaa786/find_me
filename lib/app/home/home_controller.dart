@@ -73,6 +73,21 @@ class HomeController extends GetxController {
         text: 'Ramei 9898989',
         verified: true,
       ),
+       DropdownItem(
+        avatarUrl: 'https://dummyimage.com/600x400/fcf9fc/2847e0.png',
+        text: 'Mohammed 101010101',
+        verified: true,
+      ),
+      DropdownItem(
+        avatarUrl: 'https://dummyimage.com/600x400/a323a3/2847e0.png',
+        text: 'Mohammed x343434',
+        verified: false,
+      ),
+      DropdownItem(
+        avatarUrl: 'https://dummyimage.com/600x400/4dd620/2847e0.png',
+        text: 'Ramei 9898989',
+        verified: true,
+      ),
     ]);
     super.onInit();
   }
