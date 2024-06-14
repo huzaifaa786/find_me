@@ -20,8 +20,8 @@ class BusinessCard extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.symmetric(horizontal: 30, vertical: 22),
-            width: 312,
-            height: 130,
+            width: 312.w,
+            height: 130.h,
             decoration: BoxDecoration(
                 color: Colors.black,
                 borderRadius:
@@ -215,6 +215,7 @@ class BusinessCard extends StatelessWidget {
           ),
         ],
       ),
-    ));
+    )
+    );
   }
 }
