@@ -10,13 +10,15 @@ class ImagesConst {
   static const cartNav = "assets/icons/cart.svg";
   static const cart = "assets/icons/cart_ic.svg";
   static const mail = "assets/icons/contact_mail.svg";
+  static const download = "assets/icons/download-cloud.svg";
   static const creditCard = "assets/icons/credit_card.svg";
   static const edutIc = "assets/icons/edit-3.svg";
   static const eye = 'assets/icons/eye.svg';
   static const eyeOff = 'assets/icons/eye-off.svg';
   static const imageicon = 'assets/images/image (1).png';
   static const tickicon = 'assets/images/Check.png';
-
+ 
+ 
   //* images
 
   //* Gifs
