@@ -95,6 +95,27 @@ class UiUtilites {
       },
     );
   }
+  static errorSnackbar(String title, String message) {
+    Get.snackbar(
+      title.tr,
+      message.tr,
+      colorText: AppColors.white,
+      backgroundColor: Colors.red,
+      duration: const Duration(seconds: 2),
+      snackPosition: SnackPosition.BOTTOM,
+    );
+  }
+
+  static successSnackbar(String message, String title) {
+    Get.snackbar(
+      title.tr,
+      message.tr,
+      backgroundColor: AppColors.green,
+      colorText: AppColors.white,
+      duration: const Duration(seconds: 2),
+      snackPosition: SnackPosition.BOTTOM,
+    );
+  }
 
   static logoutSuccessAlert(context, ontap, ontapno) {
     return showDialog(

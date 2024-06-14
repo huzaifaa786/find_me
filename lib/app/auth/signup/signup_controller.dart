@@ -1,5 +1,8 @@
+import 'package:find_me/api/auth_api.dart/register_api.dart';
+import 'package:find_me/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:intl_phone_field/countries.dart';
 import 'package:intl_phone_field/helpers.dart';
 import 'package:intl_phone_field/phone_number.dart';
@@ -8,6 +11,7 @@ class SignUpController extends GetxController {
   static SignUpController instance = Get.find();
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  GetStorage box = GetStorage();
 
   //! Password And Confirm Password Variable and Functions
   bool obscureTextPassword = true;
@@ -101,4 +105,18 @@ class SignUpController extends GetxController {
     yearController.dispose();
     super.dispose();
   }
+    registerUser() async {
+    Map<String, dynamic> response = await RegisterApi.registerUser(
+      name: nameController.text,
+      password: passwordController.text,
+      email: emailController.text,
+      phone:completePhone,
+    );
+    if (response.isNotEmpty) {
+      box.write('api_token', response['user']['token']);
+      Get.offAllNamed(AppRoutes.mainview);
+    }
+  }
 }
+
+
