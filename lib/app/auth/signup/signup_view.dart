@@ -11,6 +11,7 @@ import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/images/images.dart';
+import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -124,16 +125,39 @@ class _SignUpViewState extends State<SignUpView> {
                     height: 50.0.h,
                     width: 304.0.w,
                     borderColor: AppColors.borderGrey,
+                    onTap: () async {
+                      // var response = await GoogleSignUpApi().signUpWithGoogle();
+                      // GoogleSignIn().disconnect();
+                      // if (response[0].isNotEmpty) {
+                      //   var responce = await controller.loginGoogleUser(
+                      //       response[0], response[1]);
+                      //   if (!responce['error']) {
+                      //     controller.user =
+                      //         UserModel.fromJson(responce['user']);
+                      //     if (controller.user!.login_type == 'GOOGLE') {
+                      //       print(controller.user!.api_token);
+                      //       await box.write(
+                      //           'api_token', controller.user!.api_token);
+                      //       UiUtilites.successSnackbar(
+                      //           'Signin Successfully.'.tr, 'Success!'.tr);
+                      //       Get.toNamed(AppRoutes.mainview);
+                      //     } else {
+                      //       UiUtilites.errorSnackbar('ERROR!'.tr,
+                      //           'Email register for some other user'.tr);
+                      //     }
+                      //   }
+                      // }
+                    },
                   ),
                   Gap(30.h),
                   AuthRichText(
                     title: 'Already have an account ? ',
                     description: 'Sign in',
-                     titlesize: 14.sp,
-                      titlefontweight: FontWeight.w400,
-                      descriptionfontweight: FontWeight.w600,
-                      descriptiosize: 14.sp,
-                      descriptionColor: AppColors.primary_color,
+                    titlesize: 14.sp,
+                    titlefontweight: FontWeight.w400,
+                    descriptionfontweight: FontWeight.w600,
+                    descriptiosize: 14.sp,
+                    descriptionColor: AppColors.primary_color,
                     onTap: () {
                       Get.toNamed(AppRoutes.signin);
                     },

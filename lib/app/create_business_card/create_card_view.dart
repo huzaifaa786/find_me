@@ -3,11 +3,13 @@
 import 'package:find_me/app/create_business_card/create_card_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/buttons/app_button.dart';
+import 'package:find_me/components/buttons/prefix_icon_button.dart';
 import 'package:find_me/components/textfields/app_textfields.dart';
 import 'package:find_me/components/textfields/phone_inputfield.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
+import 'package:find_me/utils/images/images.dart';
 import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -239,8 +241,10 @@ class _CreateCardViewState extends State<CreateCardView> {
                         width: 304.0.w,
                         onTap: () {
                           Get.toNamed(AppRoutes.mainview);
+                          // UiUtilites.showBusinessCardDialog(
+                          //     context, 'aaaaaahwt', 'email@yagoooooo','');
                           UiUtilites.showBusinessCardDialog(
-                              context, 'aaaaaahwt', 'email@yagoooooo');
+                              name: 'usama', email: 'ali@gmail.com', image: 'assets/images/person.png');
                         },
                       ),
                       Gap(30.h),
@@ -251,3 +255,13 @@ class _CreateCardViewState extends State<CreateCardView> {
             ));
   }
 }
+
+  // PrefixIconButton(
+  //                           title: 'Download',
+  //                           height: 53.0.h,
+  //                           width: 268.0.w,
+  //                           color: AppColors.primary_color,
+  //                           textColors: AppColors.white,
+  //                           image: ImagesConst.mail,
+  //                           onTap: () {},
+  //                         );
