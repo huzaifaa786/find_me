@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:ui'; // Importing dart:ui for ImageFilter
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
@@ -42,9 +44,7 @@ class _ProfileContainerState extends State<ProfileContainer> {
           height: 68.h,
           width: 290.w,
           decoration: BoxDecoration(
-            color: widget.isSelected
-                ? (isEditSelected ? AppColors.white : AppColors.border_grey)
-                : AppColors.border_grey,
+            color: isEditSelected ? AppColors.white : AppColors.profile_grey,
             borderRadius: BorderRadius.circular(40),
             border: Border.all(
               width: 1,
@@ -55,7 +55,7 @@ class _ProfileContainerState extends State<ProfileContainer> {
           ),
           child: Row(
             children: [
-              Gap(31.w),
+              Gap(20.w),
               Checkbox(
                 shape: BeveledRectangleBorder(
                     borderRadius: BorderRadius.circular(1)),
@@ -88,10 +88,26 @@ class _ProfileContainerState extends State<ProfileContainer> {
                         fit: BoxFit.cover,
                         placeholder: (context, url) =>
                             CircularProgressIndicator(),
-                        errorWidget: (context, url, error) => Icon(Icons.error),
+                        errorWidget: (context, url, error) =>
+                            Icon(Icons.error),
                       ),
                     ),
                   ),
+                  if (isEditSelected)
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(80.r),
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Colors.black.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(80.r),
+                          ),
+                        ),
+                      ),
+                    ),
                   if (isEditSelected)
                     SvgPicture.asset(
                       'assets/icons/image_upload.svg',
@@ -121,9 +137,11 @@ class _ProfileContainerState extends State<ProfileContainer> {
         Gap(8.w),
         GestureDetector(
           onTap: () {
-            setState(() {
-              isEditSelected = !isEditSelected;
-            });
+            setState(
+              () {
+                isEditSelected = !isEditSelected;
+              },
+            );
           },
           child: AppText(
             title: 'Edit',

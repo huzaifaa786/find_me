@@ -102,7 +102,8 @@ class HomeView extends StatelessWidget {
                                         Gap(10.w),
                                         Text(
                                           item.text,
-                                          overflow: TextOverflow.visible,
+                                          overflow: TextOverflow.ellipsis,
+                                          textAlign: TextAlign.justify,
                                         ),
                                         Gap(5.w),
                                         if (item.verified)
