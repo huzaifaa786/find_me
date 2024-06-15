@@ -15,18 +15,18 @@ class ProfileContainer extends StatefulWidget {
   final bool isSelected;
   final bool isDefault;
   final String avatarUrl;
-  final String title;
   final bool verified;
   final Function(bool) onToggle;
+  final TextEditingController textController;
 
   const ProfileContainer({
     Key? key,
     required this.isSelected,
     required this.isDefault,
     required this.avatarUrl,
-    required this.title,
     required this.verified,
     required this.onToggle,
+    required this.textController,
   }) : super(key: key);
 
   @override
@@ -88,8 +88,7 @@ class _ProfileContainerState extends State<ProfileContainer> {
                         fit: BoxFit.cover,
                         placeholder: (context, url) =>
                             CircularProgressIndicator(),
-                        errorWidget: (context, url, error) =>
-                            Icon(Icons.error),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
                       ),
                     ),
                   ),
@@ -119,13 +118,26 @@ class _ProfileContainerState extends State<ProfileContainer> {
               ),
               Gap(10.h),
               Expanded(
-                child: AppText(
-                  title: widget.title,
-                  overFlow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.justify,
-                  size: 10,
-                  fontWeight: FontWeight.w500,
-                ),
+                child: isEditSelected
+                    ? TextField(
+                        controller: widget.textController,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          isDense: true,
+                          contentPadding: EdgeInsets.symmetric(vertical: 8.h),
+                        ),
+                        style: TextStyle(
+                          fontSize: 10.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      )
+                    : AppText(
+                        title: widget.textController.text,
+                        overFlow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.justify,
+                        size: 10,
+                        fontWeight: FontWeight.w500,
+                      ),
               ),
               Gap(10.h),
               if (widget.verified)
@@ -137,14 +149,16 @@ class _ProfileContainerState extends State<ProfileContainer> {
         Gap(8.w),
         GestureDetector(
           onTap: () {
-            setState(
-              () {
-                isEditSelected = !isEditSelected;
-              },
-            );
+            setState(() {
+              isEditSelected = !isEditSelected;
+              if (!isEditSelected) {
+                // Save the edited text when exiting edit mode
+                widget.onToggle(widget.isDefault);
+              }
+            });
           },
           child: AppText(
-            title: 'Edit',
+            title: isEditSelected ? 'Save' : 'Edit',
             size: 11,
             color: AppColors.primary_color,
             fontWeight: FontWeight.w500,
