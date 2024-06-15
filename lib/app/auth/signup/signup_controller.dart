@@ -1,4 +1,5 @@
 import 'package:find_me/api/auth_api.dart/register_api.dart';
+import 'package:find_me/models/user_model.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ class SignUpController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   GetStorage box = GetStorage();
+  UserModel? user;
 
   //! Password And Confirm Password Variable and Functions
   bool obscureTextPassword = true;
@@ -116,6 +118,12 @@ class SignUpController extends GetxController {
       box.write('api_token', response['user']['token']);
       Get.offAllNamed(AppRoutes.mainview);
     }
+  }
+    
+    final _authApi = RegisterApi();
+    loginGoogleUser(name, email) async {
+    var responce = await _authApi.googleLogin(name, email);
+    return responce;
   }
 }
 
