@@ -105,7 +105,7 @@ class _SignUpViewState extends State<SignUpView> {
                     height: 50.0.h,
                     width: 304.0.w,
                     onTap: () {
-                      Get.toNamed(AppRoutes.mainview);
+                      controller.registerUser();
                     },
                   ),
                   Gap(12.h),

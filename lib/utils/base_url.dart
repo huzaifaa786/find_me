@@ -1,1 +1,1 @@
-const baseUrl = 'https://furas.nubesproperty.com/api/user';
+const baseUrl = 'https://findme.nubesproperty.com/api';

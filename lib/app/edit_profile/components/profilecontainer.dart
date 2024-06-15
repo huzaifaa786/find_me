@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:ui'; // Importing dart:ui for ImageFilter
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
@@ -13,18 +15,18 @@ class ProfileContainer extends StatefulWidget {
   final bool isSelected;
   final bool isDefault;
   final String avatarUrl;
-  final String title;
   final bool verified;
   final Function(bool) onToggle;
+  final TextEditingController textController;
 
   const ProfileContainer({
     Key? key,
     required this.isSelected,
     required this.isDefault,
     required this.avatarUrl,
-    required this.title,
     required this.verified,
     required this.onToggle,
+    required this.textController,
   }) : super(key: key);
 
   @override
@@ -42,9 +44,7 @@ class _ProfileContainerState extends State<ProfileContainer> {
           height: 68.h,
           width: 290.w,
           decoration: BoxDecoration(
-            color: widget.isSelected
-                ? (isEditSelected ? AppColors.white : AppColors.border_grey)
-                : AppColors.border_grey,
+            color: isEditSelected ? AppColors.white : AppColors.profile_grey,
             borderRadius: BorderRadius.circular(40),
             border: Border.all(
               width: 1,
@@ -55,7 +55,7 @@ class _ProfileContainerState extends State<ProfileContainer> {
           ),
           child: Row(
             children: [
-              Gap(31.w),
+              Gap(20.w),
               Checkbox(
                 shape: BeveledRectangleBorder(
                     borderRadius: BorderRadius.circular(1)),
@@ -93,6 +93,21 @@ class _ProfileContainerState extends State<ProfileContainer> {
                     ),
                   ),
                   if (isEditSelected)
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(80.r),
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Colors.black.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(80.r),
+                          ),
+                        ),
+                      ),
+                    ),
+                  if (isEditSelected)
                     SvgPicture.asset(
                       'assets/icons/image_upload.svg',
                       color: AppColors.white,
@@ -103,13 +118,26 @@ class _ProfileContainerState extends State<ProfileContainer> {
               ),
               Gap(10.h),
               Expanded(
-                child: AppText(
-                  title: widget.title,
-                  overFlow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.justify,
-                  size: 10,
-                  fontWeight: FontWeight.w500,
-                ),
+                child: isEditSelected
+                    ? TextField(
+                        controller: widget.textController,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          isDense: true,
+                          contentPadding: EdgeInsets.symmetric(vertical: 8.h),
+                        ),
+                        style: TextStyle(
+                          fontSize: 10.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      )
+                    : AppText(
+                        title: widget.textController.text,
+                        overFlow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.justify,
+                        size: 10,
+                        fontWeight: FontWeight.w500,
+                      ),
               ),
               Gap(10.h),
               if (widget.verified)
@@ -123,10 +151,14 @@ class _ProfileContainerState extends State<ProfileContainer> {
           onTap: () {
             setState(() {
               isEditSelected = !isEditSelected;
+              if (!isEditSelected) {
+                // Save the edited text when exiting edit mode
+                widget.onToggle(widget.isDefault);
+              }
             });
           },
           child: AppText(
-            title: 'Edit',
+            title: isEditSelected ? 'Save' : 'Edit',
             size: 11,
             color: AppColors.primary_color,
             fontWeight: FontWeight.w500,
