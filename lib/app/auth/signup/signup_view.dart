@@ -99,7 +99,7 @@ class _SignUpViewState extends State<SignUpView> {
                     height: 50.0.h,
                     width: 304.0.w,
                     onTap: () {
-                      Get.toNamed(AppRoutes.mainview);
+                      controller.registerUser();
                     },
                   ),
                   Gap(12.h),
@@ -129,11 +129,11 @@ class _SignUpViewState extends State<SignUpView> {
                   AuthRichText(
                     title: 'Already have an account ? ',
                     description: 'Sign in',
-                     titlesize: 14.sp,
-                      titlefontweight: FontWeight.w400,
-                      descriptionfontweight: FontWeight.w600,
-                      descriptiosize: 14.sp,
-                      descriptionColor: AppColors.primary_color,
+                    titlesize: 14.sp,
+                    titlefontweight: FontWeight.w400,
+                    descriptionfontweight: FontWeight.w600,
+                    descriptiosize: 14.sp,
+                    descriptionColor: AppColors.primary_color,
                     onTap: () {
                       Get.toNamed(AppRoutes.signin);
                     },

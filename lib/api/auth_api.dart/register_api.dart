@@ -7,6 +7,7 @@ class RegisterApi {
     String? password,
     String? email,
     String? phone,
+    String? dob,
   }) async {
     //* URL
     String url = '${baseUrl}/register';
@@ -19,7 +20,8 @@ class RegisterApi {
       'password': password,
       'phone':phone,
       'email': email,
-      'login_type': 'EMAIL',
+      // 'login_type': 'EMAIL',
+      'dob': dob
       // 'fcm_token': token,
     };
 

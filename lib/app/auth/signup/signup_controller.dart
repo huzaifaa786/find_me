@@ -105,12 +105,16 @@ class SignUpController extends GetxController {
     yearController.dispose();
     super.dispose();
   }
-    registerUser() async {
+
+  registerUser() async {
+    String dob =
+        '${yearController.text}-${monthController.text}-${dayController.text}';
     Map<String, dynamic> response = await RegisterApi.registerUser(
       name: nameController.text,
       password: passwordController.text,
       email: emailController.text,
-      phone:completePhone,
+      phone: phoneController,
+      dob: dob,
     );
     if (response.isNotEmpty) {
       box.write('api_token', response['user']['token']);
@@ -118,5 +122,3 @@ class SignUpController extends GetxController {
     }
   }
 }
-
-
