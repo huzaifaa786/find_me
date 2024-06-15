@@ -21,15 +21,19 @@ class UserCard extends StatelessWidget {
         child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CircleAvatar(
-          radius: 40.r,
-          backgroundColor: Colors.transparent,
-          child: ClipOval(
-            child: CachedNetworkImage(
-              imageUrl: user.avatarUrl,
-              fit: BoxFit.cover,
-              width: 80.r,
-              height: 80.r,
+        SizedBox(
+          height: 77.h,
+          width: 77.w,
+          child: CircleAvatar(
+            radius: 40.r,
+            backgroundColor: Colors.transparent,
+            child: ClipOval(
+              child: CachedNetworkImage(
+                imageUrl: user.avatarUrl,
+                fit: BoxFit.cover,
+                width: 80.r,
+                height: 80.r,
+              ),
             ),
           ),
         ),

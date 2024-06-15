@@ -21,27 +21,29 @@ class EditProfileController extends GetxController {
     verified: true,
   );
 
-  void toggleDefault1(bool value) {
-    isDefault1 = value;
-    isSelected1 = value;
-    update();
-  }
+  void toggleDefault(int index, bool value) {
+    isDefault1 = isDefault2 = isDefault3 = isDefault4 = false;
+    isSelected1 = isSelected2 = isSelected3 = isSelected4 = false;
 
-  void toggleDefault2(bool value) {
-    isDefault2 = value;
-    isSelected2 = value;
-    update();
-  }
+    switch (index) {
+      case 1:
+        isDefault1 = value;
+        isSelected1 = value;
+        break;
+      case 2:
+        isDefault2 = value;
+        isSelected2 = value;
+        break;
+      case 3:
+        isDefault3 = value;
+        isSelected3 = value;
+        break;
+      case 4:
+        isDefault4 = value;
+        isSelected4 = value;
+        break;
+    }
 
-  void toggleDefault3(bool value) {
-    isDefault3 = value;
-    isSelected3 = value;
-    update();
-  }
-
-  void toggleDefault4(bool value) {
-    isDefault4 = value;
-    isSelected4 = value;
     update();
   }
 }

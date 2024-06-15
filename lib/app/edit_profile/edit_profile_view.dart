@@ -28,6 +28,7 @@ class EditProfileView extends StatelessWidget {
           builder: (controller) {
             return Column(
               children: [
+                Gap(53.h),
                 Row(
                   children: [
                     Gap(49.h),
@@ -42,85 +43,64 @@ class EditProfileView extends StatelessWidget {
                 Row(
                   children: [
                     Gap(36.w),
-                    GestureDetector(
-                        onTap: () {
-                          controller.toggleDefault1(!controller.isDefault1);
-                        },
-                        child: ProfileContainer(
-                          isSelected: controller.isSelected1,
-                          isDefault: controller.isDefault1,
-                          avatarUrl: controller.selectedItem.avatarUrl,
-                          title: 'Abdulllaaaaaaaaaaaaaahhhhhhhhhhhhhhhhhh',
-                          verified: false,
-                        
-                          onToggle: (value) {
-                            controller.toggleDefault1(value);
-                          },
-                        )),
-                    
+                    ProfileContainer(
+                      isSelected: controller.isSelected1,
+                      isDefault: controller.isDefault1,
+                      avatarUrl: controller.selectedItem.avatarUrl,
+                      title: 'Abdulllaaaaaaaaaaaaaahhhhhhhhhhhhhhhhhh',
+                      verified: false,
+                      onToggle: (value) {
+                        controller.toggleDefault(1, value);
+                      },
+                    ),
                   ],
                 ),
                 Gap(16.w),
                 Row(
                   children: [
                     Gap(36.w),
-                    GestureDetector(
-                        onTap: () {
-                          controller.toggleDefault2(!controller.isDefault2);
-                        },
-                        child: ProfileContainer(
-                          isSelected: controller.isSelected2,
-                          isDefault: controller.isDefault2,
-                          avatarUrl: controller.selectedItem.avatarUrl,
-                          title: controller.selectedItem.text,
-                          verified: true,
-                          onToggle: (value) {
-                            controller.toggleDefault2(value);
-                          },
-                        )),
-                    
+                    ProfileContainer(
+                      isSelected: controller.isSelected2,
+                      isDefault: controller.isDefault2,
+                      avatarUrl: controller.selectedItem.avatarUrl,
+                      title: controller.selectedItem.text,
+                      verified: true,
+                      onToggle: (value) {
+                        controller.toggleDefault(2, value);
+                      },
+                    ),
                   ],
                 ),
                 Gap(16.w),
                 Row(
                   children: [
                     Gap(36.w),
-                    GestureDetector(
-                        onTap: () {
-                          controller.toggleDefault3(!controller.isDefault3);
-                        },
-                        child: ProfileContainer(
-                          isSelected: controller.isSelected3,
-                          isDefault: controller.isDefault3,
-                          avatarUrl: controller.selectedItem.avatarUrl,
-                          title: controller.selectedItem.text,
-                          verified: false,
-                          onToggle: (value) {
-                            controller.toggleDefault3(value);
-                          },
-                        )),
-                   
+                    ProfileContainer(
+                      isSelected: controller.isSelected3,
+                      isDefault: controller.isDefault3,
+                      avatarUrl: controller.selectedItem.avatarUrl,
+                      title: controller.selectedItem.text,
+                      verified: false,
+                      onToggle: (value) {
+                        controller.toggleDefault(3, value);
+                      },
+                    ),
                   ],
                 ),
                 Gap(16.w),
                 Row(
                   children: [
                     Gap(36.w),
-                    GestureDetector(
-                        onTap: () {
-                          controller.toggleDefault4(!controller.isDefault4);
-                        },
-                        child: ProfileContainer(
-                          isSelected: controller.isSelected4,
-                          isDefault: controller.isDefault4,
-                          avatarUrl: controller.selectedItem.avatarUrl,
-                          title: controller.selectedItem.text,
-                          verified: true,
-                          onToggle: (value) {
-                            controller.toggleDefault4(value);
-                          },
-                        )),
-                   
+                    ProfileContainer(
+                      isSelected: controller.isSelected4,
+                      isDefault: controller.isDefault4,
+                      avatarUrl: controller.selectedItem.avatarUrl,
+                      title: controller.selectedItem.text,
+                      verified: true,
+                      onToggle: (value) {
+                        controller.toggleDefault(4, value);
+                      },
+                    ),
                   ],
                 ),
               ],
