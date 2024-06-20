@@ -244,7 +244,17 @@ class _CreateCardViewState extends State<CreateCardView> {
                           // UiUtilites.showBusinessCardDialog(
                           //     context, 'aaaaaahwt', 'email@yagoooooo','');
                           UiUtilites.showBusinessCardDialog(
-                              name: 'usama', email: 'ali@gmail.com', image: 'assets/images/person.png');
+                              context: context,
+                              name: 'usama',
+                              email: 'ali@gmail.com',
+                              image: 'assets/images/person.png',
+                              instagram: '@wiliamX2',
+                              twitter: '@wiliamX2',
+                              facebook: '@wiliamX2',
+                              tiktok: '@wiliamX2',
+                              notification: '@wiliamX2',
+                              smartphoneNumber: '@+971 8876 5467'
+                              );
                         },
                       ),
                       Gap(30.h),

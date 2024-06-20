@@ -95,10 +95,6 @@ class UiUtilites {
       },
     );
   }
- 
-
-
-
   static logoutSuccessAlert(context, ontap, ontapno) {
     return showDialog(
       context: context,
@@ -177,6 +173,13 @@ class UiUtilites {
     String? name,
     String? email,
     String? image,
+    String? instagram,
+    String? twitter,
+    String? facebook,
+    String? tiktok,
+    String? notification,
+    String? smartphoneNumber,
+
   }) {
     return showDialog(
       context: context!,
@@ -311,7 +314,8 @@ class UiUtilites {
                                         ),
                                         Gap(5.w),
                                         Expanded(
-                                          child: Text('@wiliamX2',
+                                          child: Text(instagram!,
+                                          //'@wiliamX2'
                                               style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 7.sp,
@@ -332,7 +336,8 @@ class UiUtilites {
                                         ),
                                         Gap(5.w),
                                         Expanded(
-                                          child: Text('@wiliamX2',
+                                          child: Text(twitter!,
+                                          //'@wiliamX2'
                                               style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 7.sp,
@@ -355,7 +360,8 @@ class UiUtilites {
                                         ),
                                         Gap(5.w),
                                         Expanded(
-                                          child: Text('@wiliamX2',
+                                          child: Text(facebook!,
+                                          //'@wiliamX2'
                                               style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 7.sp,
@@ -381,7 +387,8 @@ class UiUtilites {
                                         ),
                                         Gap(5.w),
                                         Expanded(
-                                          child: Text('@wiliamX2',
+                                          child: Text(tiktok!,
+                                          //'@wiliamX2'
                                               style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 7.sp,
@@ -398,7 +405,8 @@ class UiUtilites {
                                         'assets/icons/notification.svg',
                                       ),
                                       Gap(5.w),
-                                      Text('@wiliamX2',
+                                      Text(notification!,
+                                      //'@wiliamX2'
                                           style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 7.sp,
@@ -413,7 +421,8 @@ class UiUtilites {
                                         'assets/icons/smartphone.svg',
                                       ),
                                       Gap(5.w),
-                                      Text('@+971 8876 5467',
+                                      Text(smartphoneNumber!,
+                                      //'@+971 8876 5467'
                                           style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 7.sp,
