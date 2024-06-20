@@ -7,6 +7,7 @@ import 'package:find_me/components/buttons/prefix_icon_button.dart';
 import 'package:find_me/components/textfields/app_textfields.dart';
 import 'package:find_me/components/textfields/password_textfield.dart';
 import 'package:find_me/components/textfields/phone_inputfield.dart';
+import 'package:find_me/helpers/validator.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
@@ -46,6 +47,7 @@ class _SignUpViewState extends State<SignUpView> {
                   AppTextFields(
                     hintText: 'Email',
                     controller: controller.emailController,
+                    fieldValidator: (value) => Validators.emailValidator(value),
                   ),
                   Gap(16.h),
                   PasswordTextFields(
@@ -53,6 +55,8 @@ class _SignUpViewState extends State<SignUpView> {
                     obscure: controller.obscureTextPassword,
                     controller: controller.passwordController,
                     toggle: controller.toggle,
+                    fieldValidator: (value) =>
+                        Validators.passwordValidator(value),
                   ),
                   Gap(16.h),
                   PasswordTextFields(
@@ -60,6 +64,9 @@ class _SignUpViewState extends State<SignUpView> {
                     obscure: controller.obscureTextCPassword,
                     controller: controller.confirmPasswordController,
                     toggle: controller.ctoggle,
+                    fieldValidator: (value) =>
+                        Validators.confrimPasswordValidator(
+                            controller.passwordController.text, value),
                   ),
                   Gap(16.h),
                   PhoneInputField(

@@ -101,4 +101,17 @@ class SignInController extends GetxController {
     yearController.dispose();
     super.dispose();
   }
+  //  loginUser() async {
+  //     //  final token = await FirebaseMessaging.instance.getToken();
+
+  //   Map<String, dynamic> response = await LoginApi.loginUser(
+  //     password: passwordController.text,
+  //     email: emailController.text,
+  //     token: token
+  //   );
+  //   if (response.isNotEmpty) {
+  //     box.write('api_token', response['user']['token']);
+  //     Get.toNamed(AppRoutes.mainview);
+  //   }
+  // }
 }
