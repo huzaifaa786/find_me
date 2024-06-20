@@ -116,4 +116,10 @@ class SignInController extends GetxController {
   //     Get.toNamed(AppRoutes.mainview);
   //   }
   // }
+
+  final _authApi = RegisterApi();
+  loginGoogleUser(name, email) async {
+    var responce = await _authApi.googleLogin(name, email);
+    return responce;
+  }
 }
