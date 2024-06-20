@@ -7,6 +7,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:intl_phone_field/countries.dart';
 import 'package:intl_phone_field/helpers.dart';
 import 'package:intl_phone_field/phone_number.dart';
+import 'package:uuid/uuid.dart';
 
 class SignUpController extends GetxController {
   static SignUpController instance = Get.find();
@@ -111,21 +112,25 @@ class SignUpController extends GetxController {
   registerUser() async {
     String dob =
         '${yearController.text}-${monthController.text}-${dayController.text}';
+    // Generate a UUID for the device's beacon ID
+    var uuid = const Uuid();
+    String beaconId = uuid.v4();
     Map<String, dynamic> response = await RegisterApi.registerUser(
-      name: nameController.text,
-      password: passwordController.text,
-      email: emailController.text,
-      phone: phoneController,
-      dob: dob,
-    );
+        name: nameController.text,
+        password: passwordController.text,
+        email: emailController.text,
+        phone: phoneController,
+        dob: dob,
+        beaconId: beaconId);
     if (response.isNotEmpty) {
       box.write('api_token', response['user']['token']);
+      box.write('beacon_id', beaconId);
       Get.offAllNamed(AppRoutes.mainview);
     }
   }
-    
-    final _authApi = RegisterApi();
-    loginGoogleUser(name, email) async {
+
+  final _authApi = RegisterApi();
+  loginGoogleUser(name, email) async {
     var responce = await _authApi.googleLogin(name, email);
     return responce;
   }
