@@ -81,6 +81,7 @@ class _SignInViewState extends State<SignInView> {
                     height: 50.0.h,
                     width: 304.0.w,
                     onTap: () {
+                      
                       Get.toNamed(AppRoutes.mainview);
                     },
                   ),

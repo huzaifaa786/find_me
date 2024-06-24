@@ -4,6 +4,7 @@ import 'package:find_me/app/beacon/beacon_scanner/beacon_scanner_controller.dart
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_beacon/flutter_beacon.dart';
+import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:get/get.dart';
 
 class BeaconScannerView extends StatelessWidget {
@@ -18,24 +19,18 @@ class BeaconScannerView extends StatelessWidget {
                 scrolledUnderElevation: 0,
                 title: topBar(name: 'Beacon Scanner'),
               ),
-              body: controller.streamRanging == null
+              body: controller.devices.isEmpty
                   ? Center(child: CircularProgressIndicator())
-                  : StreamBuilder<RangingResult>(
-                      stream: controller.streamRanging,
-                      builder: (context, snapshot) {
-                        if (!snapshot.hasData) {
-                          return Center(child: CircularProgressIndicator());
-                        }
-
-                        return ListView(
-                          children: snapshot.data!.beacons.map((beacon) {
-                            return ListTile(
-                              title:
-                                  Text('Beacon UUID: ${beacon.proximityUUID}'),
-                              subtitle: Text(
-                                  'Major: ${beacon.major}, Minor: ${beacon.minor}'),
-                            );
-                          }).toList(),
+                  : ListView.builder(
+                      itemCount: controller.devices.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          onTap: () async {
+                            await controller.devices[index].connect();
+                          },
+                          title: Text(controller.devices[index].localName),
+                          subtitle: Text(
+                              controller.devices[index].remoteId.toString()),
                         );
                       },
                     ),

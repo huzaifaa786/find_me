@@ -60,6 +60,8 @@ class BeaconBroadcasterView extends StatelessWidget {
                           advertiseData: controller.advertiseData,
                           advertiseSetParameters:
                               controller.advertiseSetParameters,
+                          advertisePeriodicData: controller.advertiseData,
+                          periodicAdvertiseSettings: controller.periodicAdvertiseSettings,
                         );
                       },
                       child: Text(

@@ -171,7 +171,6 @@ class ProfileView extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             Get.toNamed(AppRoutes.change_phone);
-                            
                           },
                           child: Row(
                             children: [
@@ -225,6 +224,50 @@ class ProfileView extends StatelessWidget {
                               fontWeight: FontWeight.w500,
                             )
                           ],
+                        ),
+                        Gap(12.w),
+                        InkWell(
+                          onTap: () {
+                            Get.toNamed(AppRoutes.beaconBroadcaster);
+                          },
+                          child: Row(
+                            children: [
+                              Gap(17.w),
+                              SvgPicture.asset(
+                                'assets/icons/lock (1).svg',
+                                color: AppColors.primary_color,
+                              ),
+                              Gap(10.w),
+                              AppText(
+                                title: 'BroadCast',
+                                color: AppColors.primary_color,
+                                size: 12,
+                                fontWeight: FontWeight.w400,
+                              )
+                            ],
+                          ),
+                        ),
+                        Gap(12.w),
+                        InkWell(
+                          onTap: () {
+                            Get.toNamed(AppRoutes.beaconScanner);
+                          },
+                          child: Row(
+                            children: [
+                              Gap(17.w),
+                              SvgPicture.asset(
+                                'assets/icons/lock (1).svg',
+                                color: AppColors.primary_color,
+                              ),
+                              Gap(10.w),
+                              AppText(
+                                title: 'Scanner',
+                                color: AppColors.primary_color,
+                                size: 12,
+                                fontWeight: FontWeight.w400,
+                              )
+                            ],
+                          ),
                         ),
                       ],
                     ),

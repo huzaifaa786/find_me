@@ -1,4 +1,4 @@
-import 'package:flutter_beacon/flutter_beacon.dart';
+
 
 class AppRoutes {
   static const splash = '/splash';
