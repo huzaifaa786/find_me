@@ -59,7 +59,7 @@ dependencies:
       url: https://github.com/huzaifaa786/intl_phone_field
   permission_handler: ^11.3.1
   uuid: ^4.4.0
-
+  workmanager: ^0.5.2
 dev_dependencies:
   flutter_lints: ^3.0.0
   flutter_test:

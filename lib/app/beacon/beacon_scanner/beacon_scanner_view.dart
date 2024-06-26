@@ -5,6 +5,7 @@ import 'package:find_me/components/appbars/topbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_beacon/flutter_beacon.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 class BeaconScannerView extends StatelessWidget {
@@ -19,21 +20,47 @@ class BeaconScannerView extends StatelessWidget {
                 scrolledUnderElevation: 0,
                 title: topBar(name: 'Beacon Scanner'),
               ),
-              body: controller.devices.isEmpty
-                  ? Center(child: CircularProgressIndicator())
-                  : ListView.builder(
-                      itemCount: controller.devices.length,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          onTap: () async {
-                            await controller.devices[index].connect();
-                          },
-                          title: Text(controller.devices[index].localName),
-                          subtitle: Text(
-                              controller.devices[index].remoteId.toString()),
-                        );
-                      },
+              body: Container(
+                height: Get.height,
+                child: Column(
+                  children: [
+                    Container(
+                      height: Get.height * 0.5,
+                      child: ListView.builder(
+                        itemCount: controller.users.length,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            onTap: () async {},
+                            title: Text(controller.users[index].name!),
+                            subtitle:
+                                Text(controller.users[index].phone.toString()),
+                          );
+                        },
+                      ),
                     ),
+                    ElevatedButton(
+                      onPressed: () {
+                        controller.initFlutterBlue();
+                      },
+                      child: FlutterBluePlus.isScanningNow
+                          ? Container(
+                              width: Get.width * 0.3,
+                              padding: EdgeInsets.all(8),
+                              child: Row(
+                                children: [
+                                  Text("Scaning"),
+                                  Gap(10),
+                                  CircularProgressIndicator(
+                                    strokeWidth: 1,
+                                  ),
+                                ],
+                              ),
+                            )
+                          : Text("Scan Now"),
+                    )
+                  ],
+                ),
+              ),
             ));
   }
 }

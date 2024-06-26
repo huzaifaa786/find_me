@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:find_me/api/bluetooth_api/bluetooth_users_api.dart';
+import 'package:find_me/models/user_model.dart';
 import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,6 +16,7 @@ class BeaconScannerController extends GetxController {
 
   List<ScanResult> scanResult = [];
   List<String> serviceDataKeys = [];
+  List<UserModel> users = [];
 
   List<BluetoothDevice> devices = [];
 
@@ -40,7 +43,8 @@ class BeaconScannerController extends GetxController {
   void initFlutterBlue() async {
     await Permission.bluetoothScan.request();
     // FlutterBluePlus.setLogLevel(LogLevel.verbose, color: true);
-
+    serviceDataKeys = [];
+    update();
     if (await FlutterBluePlus.isSupported == false) {
       print("Bluetooth not supported by this device");
       return;
@@ -55,19 +59,19 @@ class BeaconScannerController extends GetxController {
                 update();
 
                 for (var ee in results) {
-                  // print("serviceData: ${ee.advertisementData.serviceData.keys.toList()}");
+                  print("serviceData: ${ee.advertisementData.serviceData.keys.toList()}");
                   print("*************** DEVICE START ********************");
-                  // print("Advname: ${ee.advertisementData.advName}");
-                  // print("appearance: ${ee.advertisementData.appearance}");
-                  // print("connectable: ${ee.advertisementData.connectable}");
-                  // print(
-                  //     "manufacturerData: ${ee.advertisementData.manufacturerData}");
+                  print("Advname: ${ee.advertisementData.advName}");
+                  print("appearance: ${ee.advertisementData.appearance}");
+                  print("connectable: ${ee.advertisementData.connectable}");
+                  print(
+                      "manufacturerData: ${ee.advertisementData.manufacturerData}");
 
                   print("serviceUuids: ${ee.advertisementData.serviceUuids}");
-                  // print("txPowerLevel: ${ee.advertisementData.txPowerLevel}");
-                  // print("device: ${ee.device}");
-                  // print("rssi: ${ee.rssi}");
-                  // print("device: ${ee.timeStamp}");
+                  print("txPowerLevel: ${ee.advertisementData.txPowerLevel}");
+                  print("device: ${ee.device}");
+                  print("rssi: ${ee.rssi}");
+                  print("device: ${ee.timeStamp}");
                   print("*************** DEVICE END ********************");
 
                   // print('$ee found!');
@@ -125,19 +129,23 @@ class BeaconScannerController extends GetxController {
     }
     await FlutterBluePlus.startScan(
         // *or* any of the specified names
-        timeout: Duration(seconds: 30));
-    // await FlutterBluePlus.isScanning.where((val) => val == false).first;
+        timeout: Duration(seconds: 5));
+    await FlutterBluePlus.isScanning.where((val) => val == false).first;
 
-    // serviceDataKeys = serviceDataKeys.toSet().toList();
-    // update();
-    // await sendServiceDataKeysToApi();
+    serviceDataKeys = serviceDataKeys.toSet().toList();
+    update();
+    await sendServiceDataKeysToApi();
   }
 
   Future<void> sendServiceDataKeysToApi() async {
+    users = [];
     final response =
         await BluethoohUsersApi.getUsersList(keys: serviceDataKeys);
     if (response.isNotEmpty) {
-      print(response);
+      for (var element in response['users']) {
+        users.add(UserModel.fromJson(element));
+      }
     }
+    update();
   }
 }
