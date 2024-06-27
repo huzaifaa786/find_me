@@ -31,31 +31,41 @@ final AdvertiseSettings advertiseSettings = AdvertiseSettings(
 
 void callbackDispatcher() {
   Workmanager().executeTask((task, inputData) async {
-    print(inputData);
-    initPlatformState(inputData!['id']);
+    print("Task: $task, Input DATA: $inputData");
+
+    // Check if inputData is null or doesn't contain the expected key
+    if (inputData == null || !inputData.containsKey('beacon_id')) {
+      print("Input data is null or does not contain 'beacon_id'");
+      return Future.value(false);
+    }
+
+    // Initialize the platform state with the provided beacon ID
+    await initPlatformState(inputData['beacon_id']);
     return Future.value(true);
   });
 }
 
 Future<void> initPlatformState(String? id) async {
   final _isSupported = await FlutterBlePeripheral().isSupported;
+  print("BLE Peripheral Supported: $_isSupported");
 
   if (id != null) {
     advertiseData = AdvertiseData(
       serviceUuid: id,
       manufacturerId: 1234,
-      localName: "MEEEEEEEEEEEEEEEEEEEEEEE",
+      localName: "MEEEEEEEEE",
       includePowerLevel: true,
       manufacturerData: Uint8List.fromList([1, 2, 3]),
     );
+
     await FlutterBlePeripheral().start(
       advertiseData: advertiseData,
       advertiseSetParameters: advertiseSetParameters,
       advertisePeriodicData: advertiseData,
-    ); 
+    );
+    print("Started advertising with ID: $id");
   } else {
-    print(
-        "HELLLLO.................................................................");
+    print("No beacon ID provided.");
   }
 }
 
@@ -69,19 +79,27 @@ void main() async {
   await Permission.bluetoothAdvertise.request();
   await Permission.bluetoothConnect.request();
   await Permission.locationWhenInUse.request();
+
   Workmanager().initialize(callbackDispatcher, isInDebugMode: true);
+
   GetStorage box = GetStorage();
-
   String? id = box.read('beacon_id');
+  print("Beacon ID from storage: $id");
 
-  Workmanager().registerPeriodicTask(
-    "task-identifier",
-    "simpleTask",
-    constraints: Constraints(
-      networkType: NetworkType.connected,
-      requiresDeviceIdle: true,
-    ),
-    inputData: <String, dynamic>{"beacon_id": id},
-  );
+  // Ensure beacon ID is available before registering the task
+  if (id != null) {
+    Workmanager().registerPeriodicTask(
+      "task-identifier",
+      "simpleTask",
+      constraints: Constraints(
+        networkType: NetworkType.connected,
+        requiresDeviceIdle: true,
+      ),
+      inputData: {"beacon_id": id},
+    );
+  } else {
+    print("No beacon ID found in storage.");
+  }
+
   runApp(const App());
 }
