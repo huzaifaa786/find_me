@@ -1,3 +1,5 @@
+
+
 class AppRoutes {
   static const splash = '/splash';
   static const intro = '/intro';
@@ -22,6 +24,8 @@ class AppRoutes {
  static const policies = '/policies';
  static const createcard = '/createcard';
  static const sociallogin = '/sociallogin';
+ static const beaconScanner = '/beaconScanner';
+ static const beaconBroadcaster = '/beaconBroadcaster';
 
 
 

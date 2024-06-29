@@ -1,5 +1,6 @@
 import 'package:find_me/routes/app_routes.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class SplashController extends GetxController {
   static SplashController instance = Get.find();
@@ -16,14 +17,15 @@ class SplashController extends GetxController {
       checkFirstSeen();
     });
   }
+  GetStorage box = GetStorage();
 
   Future checkFirstSeen() async {
-    String? apiToken = '';
+    String? apiToken = box.read('api_token');
 
-    if (apiToken != '') {
-    } else {
-      Get.toNamed(AppRoutes.intro
-    );
-    }
+    if (apiToken != null) {
+        Get.offNamed(AppRoutes.mainview);
+      } else {
+        Get.offNamed(AppRoutes.intro);
+      }
   }
 }

@@ -1,5 +1,7 @@
 import 'package:find_me/services/dio_service.dart';
 import 'package:find_me/utils/base_url.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+
 
 class RegisterApi {
   static Future<Map<String, dynamic>> registerUser({
@@ -7,6 +9,8 @@ class RegisterApi {
     String? password,
     String? email,
     String? phone,
+    String? dob,
+    String? beaconId, 
   }) async {
     //* URL
     String url = '${baseUrl}/register';
@@ -19,7 +23,9 @@ class RegisterApi {
       'password': password,
       'phone':phone,
       'email': email,
-      'login_type': 'EMAIL',
+      // 'login_type': 'EMAIL',
+      'dob': dob,
+      'beacon_id': beaconId,
       // 'fcm_token': token,
     };
 
@@ -27,4 +33,21 @@ class RegisterApi {
     var response = await DioService.post(url: url, data: data);
     return response;
   }
+
+  googleLogin(String email, String name) async {
+    var url = '$baseUrl/verifyemail';
+    final token = await FirebaseMessaging.instance.getToken();
+
+    var data = {
+      'email': email,
+      'name': name,
+      'login_type': 'GOOGLE',
+      'fcm_token': token,
+    };
+
+    var response = await DioService.post(url: url, data: data);
+    return response;
+  }
+
+
 }

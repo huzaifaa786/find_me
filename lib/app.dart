@@ -3,6 +3,7 @@ import 'package:find_me/app/splash/splash_view.dart';
 import 'package:find_me/routes/app_pages.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,7 +35,7 @@ class App extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        // builder: EasyLoading.init(),
+        builder: EasyLoading.init(),
         
         title: "FIND ME",
         initialBinding: SplashBinding(),

@@ -12,6 +12,10 @@ import 'package:find_me/app/account/profile/profile_binding.dart';
 import 'package:find_me/app/account/profile/profile_view.dart';
 import 'package:find_me/app/auth/signup/signup_binding.dart';
 import 'package:find_me/app/auth/signup/signup_view.dart';
+import 'package:find_me/app/beacon/beacon_broadcaster/beacon_broadcaster_binding.dart';
+import 'package:find_me/app/beacon/beacon_broadcaster/beacon_broadcaster_view.dart';
+import 'package:find_me/app/beacon/beacon_scanner/beacon_scanner_binding.dart';
+import 'package:find_me/app/beacon/beacon_scanner/beacon_scanner_view.dart';
 import 'package:find_me/app/change_email/change_email_binding.dart';
 import 'package:find_me/app/change_email/change_email_view.dart';
 import 'package:find_me/app/create_business_card/create_card_binding.dart';
@@ -61,6 +65,21 @@ class AppPages {
       name: AppRoutes.intro,
       page: () => const IntroView(),
       binding: IntroBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+
+    GetPage(
+      name: AppRoutes.beaconScanner,
+      page: () => const BeaconScannerView(),
+      binding: BeaconScannerBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+    GetPage(
+      name: AppRoutes.beaconBroadcaster,
+      page: () => const BeaconBroadcasterView(),
+      binding: BeaconBroadcasterBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
@@ -222,7 +241,7 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
-     //TODO: [createCard Route]
+    //TODO: [createCard Route]
     GetPage(
       name: AppRoutes.createcard,
       page: () => const CreateCardView(),
@@ -230,7 +249,7 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
-       //TODO: [Social Login Route]
+    //TODO: [Social Login Route]
     GetPage(
       name: AppRoutes.sociallogin,
       page: () => const SocialLoginView(),

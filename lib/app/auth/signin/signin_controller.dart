@@ -1,3 +1,5 @@
+import 'package:find_me/api/auth_api.dart/register_api.dart';
+import 'package:find_me/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/countries.dart';
@@ -6,7 +8,7 @@ import 'package:intl_phone_field/phone_number.dart';
 
 class SignInController extends GetxController {
   static SignInController instance = Get.find();
-    TextEditingController nameController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
 
   //! Password And Confirm Password Variable and Functions
@@ -17,7 +19,7 @@ class SignInController extends GetxController {
   String? completePhone;
   String phone = '';
   bool isCompleteNumber = false;
-
+  UserModel? user;
   void toggle() {
     obscureTextPassword = !obscureTextPassword;
     update();
@@ -100,5 +102,24 @@ class SignInController extends GetxController {
     monthController.dispose();
     yearController.dispose();
     super.dispose();
+  }
+  //  loginUser() async {
+  //     //  final token = await FirebaseMessaging.instance.getToken();
+
+  //   Map<String, dynamic> response = await LoginApi.loginUser(
+  //     password: passwordController.text,
+  //     email: emailController.text,
+  //     token: token
+  //   );
+  //   if (response.isNotEmpty) {
+  //     box.write('api_token', response['user']['token']);
+  //     Get.toNamed(AppRoutes.mainview);
+  //   }
+  // }
+
+  final _authApi = RegisterApi();
+  loginGoogleUser(name, email) async {
+    var responce = await _authApi.googleLogin(name, email);
+    return responce;
   }
 }
