@@ -1,11 +1,8 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'dart:ui'; // Importing dart:ui for ImageFilter
+import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -15,7 +12,7 @@ class ProfileContainer extends StatefulWidget {
   final bool isSelected;
   final bool isDefault;
   final String avatarUrl;
-  final bool verified;
+  final bool verified; // Ensure verified is correctly used here
   final Function(bool) onToggle;
   final TextEditingController textController;
 
@@ -40,6 +37,7 @@ class _ProfileContainerState extends State<ProfileContainer> {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        Gap(36.w),
         Container(
           height: 68.h,
           width: 290.w,
@@ -58,7 +56,8 @@ class _ProfileContainerState extends State<ProfileContainer> {
               Gap(20.w),
               Checkbox(
                 shape: BeveledRectangleBorder(
-                    borderRadius: BorderRadius.circular(1)),
+                  borderRadius: BorderRadius.circular(1),
+                ),
                 side: BorderSide(
                   color: AppColors.primary_color,
                   width: 0.5,
