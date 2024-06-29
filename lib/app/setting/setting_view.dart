@@ -36,7 +36,7 @@ class SettingView extends StatelessWidget {
                     CardSetting(
                         text: 'Subscriptions',
                         image: 'assets/icons/star.svg',
-                        ontap: () {}),
+                        ontap: () {Get.toNamed(AppRoutes.subscriptions);}),
                     Gap(12.h),
                     CardSetting(
                         text: 'Account',
@@ -103,7 +103,7 @@ class SettingView extends StatelessWidget {
                         });
                       },
                       child: PrefixIconButton(
-                        height: 50.h,
+                        height: 55.h,
                         width: 304.w,
                         title: 'Log out',
                         textColors: Colors.red,

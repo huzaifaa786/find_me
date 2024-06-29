@@ -22,6 +22,8 @@ import 'package:find_me/app/create_business_card/create_card_binding.dart';
 import 'package:find_me/app/create_business_card/create_card_view.dart';
 import 'package:find_me/app/edit_profile/edit_profile_binding.dart';
 import 'package:find_me/app/edit_profile/edit_profile_view.dart';
+import 'package:find_me/app/edit_url/edit_url_binding.dart';
+import 'package:find_me/app/edit_url/edit_url_view.dart';
 import 'package:find_me/app/home/home_binding.dart';
 import 'package:find_me/app/home/home_view.dart';
 import 'package:find_me/app/intro/intro_binding.dart';
@@ -44,6 +46,8 @@ import 'package:find_me/app/social_login/social_login_binding.dart';
 import 'package:find_me/app/social_login/social_login_view.dart';
 import 'package:find_me/app/splash/splash_binding.dart';
 import 'package:find_me/app/splash/splash_view.dart';
+import 'package:find_me/app/subscriptions/subscriptions_binding.dart';
+import 'package:find_me/app/subscriptions/subscriptions_view.dart';
 import 'package:find_me/app/support/support_binding.dart';
 import 'package:find_me/app/support/support_view.dart';
 import 'package:find_me/routes/app_routes.dart';
@@ -257,5 +261,22 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
+    //TODO: [EditUrlView Route]
+    GetPage(
+      name: AppRoutes.editurl,
+      page: () => const EditUrlView(),
+      binding: EditUrlBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+  //TODO: [EditUrlView Route]
+    GetPage(
+      name: AppRoutes.subscriptions,
+      page: () => const SubscriptionsView(),
+      binding: SubscriptionsBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+
   ];
 }

@@ -22,7 +22,7 @@ Widget homeAppBar({String? name}) {
               'assets/icons/find_me.svg',
               fit: BoxFit.scaleDown,
             )),
-        Gap(153.w),
+        Gap(150.w),
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -42,11 +42,11 @@ Widget homeAppBar({String? name}) {
                 fit: BoxFit.scaleDown,
               ),
             ),
-            Gap(10),
+            Gap(4),
 
             GestureDetector(
               onTap: () {
-               Get.toNamed(AppRoutes.setting);
+                Get.toNamed(AppRoutes.setting);
               },
               child: SvgPicture.asset(
                 'assets/icons/menu (2).svg',

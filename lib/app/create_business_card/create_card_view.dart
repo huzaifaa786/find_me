@@ -185,15 +185,17 @@ class _CreateCardViewState extends State<CreateCardView> {
                               icon: 'assets/icons/Instagram.svg',
                               hintText: ' Instagram',
                               controller: controller.instagramController,
+                              color: AppColors.primary_color,
                             ),
                           ),
                           Gap(7.h),
                           SizedBox(
                             width: 135.w,
                             child: AppTextFields(
-                              icon: 'assets/icons/twitter.svg',
+                              icon: 'assets/icons/twitter-x 1.svg',
                               hintText: 'Twitter',
                               controller: controller.twitterController,
+                              color: AppColors.primary_color,
                             ),
                           ),
                         ],
@@ -207,6 +209,7 @@ class _CreateCardViewState extends State<CreateCardView> {
                               icon: 'assets/icons/tiktok.svg',
                               hintText: 'Tiktok',
                               controller: controller.tiktokController,
+                              color: AppColors.primary_color,
                             ),
                           ),
                           Gap(7.h),
@@ -216,6 +219,7 @@ class _CreateCardViewState extends State<CreateCardView> {
                               icon: 'assets/icons/snapchat.svg',
                               hintText: 'Snapchat',
                               controller: controller.snapchatController,
+                              color: AppColors.primary_color,
                             ),
                           ),
                         ],
@@ -230,6 +234,7 @@ class _CreateCardViewState extends State<CreateCardView> {
                               icon: 'assets/icons/facebook.svg',
                               hintText: 'Facebook',
                               controller: controller.facebookController,
+                              color: AppColors.primary_color,
                             ),
                           ),
                         ],
@@ -253,8 +258,7 @@ class _CreateCardViewState extends State<CreateCardView> {
                               facebook: '@wiliamX2',
                               tiktok: '@wiliamX2',
                               notification: '@wiliamX2',
-                              smartphoneNumber: '@+971 8876 5467'
-                              );
+                              smartphoneNumber: '@+971 8876 5467');
                         },
                       ),
                       Gap(30.h),

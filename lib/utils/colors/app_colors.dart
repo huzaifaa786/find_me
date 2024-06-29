@@ -3,8 +3,19 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
+  
+  static const shadepurple = Color(0xFFF6D4FF);
+  static const shadeblue = Color(0xFFD9E9FF);
+  static const shadeLightCyan1 = Color(0xFFDEFBFF);
+  static const shade_light_cyan2 = Color(0xFFF1FFF7);
+  static const shadelightcyan3 = Color(0xFFFFFFFF);
+
+  static const light_white = Color(0xFFF6F9FF);
+  
+ static const dark_blue = Color(0xFF1270C7);
   static const primary_color = Color(0xFF148EFF);
   static const light_blue = Color(0xFFB8D9FE);
+  static const lightSkyBlue = Color(0xFF92C8FF);
   static const light_purple = Color(0xFFB478FF);
   static const orange = Color(0xFFFBA705);
   static const black = Color(0xFF000000);
