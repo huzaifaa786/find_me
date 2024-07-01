@@ -19,7 +19,7 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
   Widget build(BuildContext context) {
     return GetBuilder<EmojiMenuController>(
         builder: (controller) => Scaffold(
-              backgroundColor: AppColors.black,
+              backgroundColor: AppColors.white,
               appBar: AppBar(
                 automaticallyImplyLeading: false,
                 forceMaterialTransparency: true,
@@ -31,9 +31,27 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
               body: SafeArea(
                   child: SingleChildScrollView(
                       child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 34.w),
+                // padding: EdgeInsets.symmetric(horizontal: 34.w),
                 child: Column(
                   children: [
+                    Container(
+                      height: Get.height * 20.0,
+                      decoration: BoxDecoration(color: AppColors.light_black),
+                      child: Row(
+                        children: [
+                          Column(
+                            children: [
+                              Text("usama"),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Text("usama"),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                     Container(
                       height: Get.height * 40.0,
                       decoration: BoxDecoration(color: AppColors.light_black),
@@ -41,30 +59,22 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                         children: [
                           Column(
                             children: [
-                            
+                              Text("usama"),
+                              Text("usama"),
+                              Text("usama"),
+                              Text("usama"),
+                              Text("usama"),
+                              Text("usama"),
+                              Text("usama"),
                             ],
                           ),
                           Column(
                             children: [
-                              
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      // height: Get.height * 20.0,
-                      decoration: BoxDecoration(color: AppColors.light_black),
-                      child: Row(
-                        children: [
-                          Column(
-                            children: [
-                             
-                            ],
-                          ),
-                          Column(
-                            children: [
-                            
+                              Text("usama"),
+                              Text("usama"),
+                              Text("usama"),
+                              Text("usama"),
+                              Text("usama"),
                             ],
                           ),
                         ],
