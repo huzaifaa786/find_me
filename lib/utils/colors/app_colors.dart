@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  
   static const shadepurple = Color(0xFFF6D4FF);
   static const shadeblue = Color(0xFFD9E9FF);
   static const shadeLightCyan1 = Color(0xFFDEFBFF);
@@ -11,10 +10,11 @@ class AppColors {
   static const shadelightcyan3 = Color(0xFFFFFFFF);
 
   static const light_white = Color(0xFFF6F9FF);
-  
- static const dark_blue = Color(0xFF1270C7);
+  static const light_black = Color(0xFF1F1F0B);
+  static const dark_blue = Color(0xFF1270C7);
   static const primary_color = Color(0xFF148EFF);
   static const light_blue = Color(0xFFB8D9FE);
+  static const lightly_blue = Color(0xFFA6D2FF);
   static const lightSkyBlue = Color(0xFF92C8FF);
   static const light_purple = Color(0xFFB478FF);
   static const orange = Color(0xFFFBA705);
@@ -46,6 +46,14 @@ class AppColors {
     colors: [
       primary_color,
       light_purple,
+    ],
+  );
+  static Gradient emojie_store_card_gradient = const LinearGradient(
+    begin: Alignment.topRight,
+    end: Alignment.bottomLeft,
+    colors: [
+      Color(0xFF00FFFF),
+      Color(0xFF0085FF),
     ],
   );
 }

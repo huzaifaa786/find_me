@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'location_controller.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 
 class LocationView extends StatefulWidget {
   const LocationView({Key? key}) : super(key: key);
@@ -37,32 +38,25 @@ class _LocationViewState extends State<LocationView> {
                 Gap(63.h),
                 Row(
                   children: [
-                    Gap(59.w),
+                    Gap(50.w),
                     AppText(
                       title: 'Allow the application to access your location',
                       size: 10,
                       fontWeight: FontWeight.w500,
                     ),
-                    Gap(40.w),
-                    SizedBox(
-                      height: 16.h,
-                      width: 35.w,
-                      child: Theme(
-                        data: ThemeData(
-                          // Customize the color scheme
-                          colorScheme: ColorScheme.light(
-                            primary: AppColors.green,
-                            secondary: Colors.grey,
-                          ),
-                        ),
-                        child: Switch(
-                          value: controller.isLocationEnabled,
-                          onChanged: (value) {
-                            controller.toggleLocation(value);
-                          },
-                        ),
-                      ),
+                    Gap(20.w),
+                    FlutterSwitch(
+                      height: 25.h,
+                      width: 45.w,
+                      activeColor: AppColors.green,
+                      inactiveColor: Colors.grey,
+                      value: controller.isLocationEnabled,
+                      onToggle: (value) {
+                        controller.toggleLocation(value);
+                      },
                     ),
+
+                    // Gap(62.w),
                   ],
                 ),
               ],

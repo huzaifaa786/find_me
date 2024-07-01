@@ -24,7 +24,7 @@ class ReportTextFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      maxLines: 6,
+      maxLines: 8,
       controller: controller,
       keyboardType: type,
       autovalidateMode: fieldValidator == true
@@ -51,7 +51,7 @@ class ReportTextFields extends StatelessWidget {
             color: AppColors.primary_color,
             width: 1.0,
           ),
-          borderRadius: BorderRadius.all(Radius.circular(8.r)),
+          borderRadius: BorderRadius.all(Radius.circular(13.r)),
         ),
         errorBorder: roundedInputDecoration,
         focusedErrorBorder: roundedInputDecoration,

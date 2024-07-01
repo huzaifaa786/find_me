@@ -25,5 +25,8 @@ class AppRoutes {
   static const beaconScanner = '/beaconScanner';
   static const beaconBroadcaster = '/beaconBroadcaster';
   static const editurl = '/editurl';
-   static const subscriptions = '/subscriptions';
+  static const subscriptions = '/subscriptions';
+  static const privacy = '/privacy';
+  static const notificationsPermissions = '/notificationsPermissions';
+  static const edit_menu = '/edit_menu';
 }

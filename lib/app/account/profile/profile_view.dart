@@ -184,7 +184,7 @@ class ProfileView extends StatelessWidget {
                             Divider(
                               thickness: 1,
                               color: AppColors.black.withOpacity(0.08),
-                              height: 1,
+                  
                             ),
                             Gap(20.h),
                             Align(

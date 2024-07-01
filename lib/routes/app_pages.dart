@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:find_me/app/account/change_phonenumber/change_phonenumber_binding.dart';
 import 'package:find_me/app/account/change_phonenumber/change_phonenumber_view.dart';
 import 'package:find_me/app/auth/changepassword/changepassword_binding.dart';
@@ -24,6 +26,8 @@ import 'package:find_me/app/edit_profile/edit_profile_binding.dart';
 import 'package:find_me/app/edit_profile/edit_profile_view.dart';
 import 'package:find_me/app/edit_url/edit_url_binding.dart';
 import 'package:find_me/app/edit_url/edit_url_view.dart';
+import 'package:find_me/app/emoji_menu/emoji_menu_bindings.dart';
+import 'package:find_me/app/emoji_menu/emoji_menu_view.dart';
 import 'package:find_me/app/home/home_binding.dart';
 import 'package:find_me/app/home/home_view.dart';
 import 'package:find_me/app/intro/intro_binding.dart';
@@ -36,8 +40,12 @@ import 'package:find_me/app/main_view/main_binding.dart';
 import 'package:find_me/app/main_view/main_view.dart';
 import 'package:find_me/app/notifications/notifications_binding.dart';
 import 'package:find_me/app/notifications/notifications_view.dart';
+import 'package:find_me/app/notifications_permissions/notifications_permissions_binding.dart';
+import 'package:find_me/app/notifications_permissions/notifications_permissions_view.dart';
 import 'package:find_me/app/policies/policies_binding.dart';
 import 'package:find_me/app/policies/policies_view.dart';
+import 'package:find_me/app/privacy/privacy_binding.dart';
+import 'package:find_me/app/privacy/privacy_view.dart';
 import 'package:find_me/app/report/report_binding.dart';
 import 'package:find_me/app/report/report_view.dart';
 import 'package:find_me/app/setting/setting_binding.dart';
@@ -269,7 +277,7 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
-  //TODO: [EditUrlView Route]
+  //TODO: [Subscriptions Route]
     GetPage(
       name: AppRoutes.subscriptions,
       page: () => const SubscriptionsView(),
@@ -277,6 +285,30 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
+    //TODO: [Privacy  Route]
+    GetPage(
+      name: AppRoutes.privacy,
+      page: () =>  PrivacyView(),
+      binding: PrivacyBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+    //TODO: [NotificationsPermissions  Route]
+    GetPage(
+      name: AppRoutes.notificationsPermissions,
+      page: () =>  NotificationsPermissionsView(),
+      binding: NotificationsPermissionsBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+     GetPage(
+      name: AppRoutes.edit_menu,
+      page: () => EmojiMenuView(),
+      binding:EmojiMenuBindings(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+    
 
   ];
 }

@@ -42,8 +42,9 @@ class ReportView extends StatelessWidget {
                     Gap(30.h),
                     ReportTextFields(
                       hintText: 'Type here',
+                      
                     ),
-                    Gap(20.h),
+                    Gap(27.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -64,7 +65,7 @@ class ReportView extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Gap(30.h),
+                    Gap(151.h),
                     AppButton(
                       title: 'Send',
                       height: 50.0.h,

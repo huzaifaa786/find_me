@@ -36,7 +36,9 @@ class SettingView extends StatelessWidget {
                     CardSetting(
                         text: 'Subscriptions',
                         image: 'assets/icons/star.svg',
-                        ontap: () {Get.toNamed(AppRoutes.subscriptions);}),
+                        ontap: () {
+                          Get.toNamed(AppRoutes.subscriptions);
+                        }),
                     Gap(12.h),
                     CardSetting(
                         text: 'Account',
@@ -48,13 +50,15 @@ class SettingView extends StatelessWidget {
                     CardSetting(
                         text: 'Privacy',
                         image: 'assets/icons/lock (1).svg',
-                        ontap: () {}),
+                        ontap: () {
+                          Get.toNamed(AppRoutes.privacy);
+                        }),
                     Gap(12.h),
                     CardSetting(
                         text: 'Notifications',
                         image: 'assets/icons/bell (1).svg',
                         ontap: () {
-                          Get.toNamed(AppRoutes.notifications);
+                          Get.toNamed(AppRoutes.notificationsPermissions);
                         }),
                     Gap(12.h),
                     CardSetting(

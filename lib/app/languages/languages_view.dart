@@ -58,6 +58,8 @@ class _LanguagesViewState extends State<LanguagesView> {
                                 value: 0,
                                 groupValue: controller.selectedLanguage,
                                 activeColor: AppColors.primary_color,
+                                fillColor: WidgetStateProperty.all(
+                                    AppColors.primary_color),
                                 onChanged: (value) {
                                   controller.changeLanguage(value as int);
                                 },
@@ -94,12 +96,13 @@ class _LanguagesViewState extends State<LanguagesView> {
                                   title: 'العربية',
                                   size: 14,
                                   fontWeight: FontWeight.w400,
-                                  color: AppColors.primary_color,
                                 ),
                                 Gap(224.w),
                                 Radio(
                                   value: 1,
                                   groupValue: controller.selectedLanguage,
+                                  fillColor: WidgetStateProperty.all(
+                                      AppColors.primary_color),
                                   activeColor: AppColors.primary_color,
                                   onChanged: (value) {
                                     controller.changeLanguage(value as int);

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:ui';
 
 import 'package:find_me/components/buttons/prefix_icon_button.dart';
@@ -13,7 +15,6 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 class UiUtilites {
- 
   static errorSnackbar(String title, String message) {
     Get.snackbar(
       title.tr,
@@ -52,11 +53,13 @@ class UiUtilites {
             shape: RoundedRectangleBorder(
                 side: BorderSide(
                   //color: Colors.transparent, style: BorderStyle.solid
-                  color: Colors.red,
+                  color: AppColors.primary_color,
                 ),
                 borderRadius: BorderRadius.all(Radius.circular(20))),
             // contentPadding: EdgeInsets.only(top: 10.0),
             content: Container(
+              height: 105.h,
+              width: 100.w,
               padding: EdgeInsets.only(left: 20, right: 20),
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -79,7 +82,7 @@ class UiUtilites {
                       ),
                     ],
                   ),
-                  Gap(30),
+                  Gap(11),
                   AppText(
                     title:
                         'Your feedback helps make the app\n better for everyone. ',
@@ -95,6 +98,7 @@ class UiUtilites {
       },
     );
   }
+
   static logoutSuccessAlert(context, ontap, ontapno) {
     return showDialog(
       context: context,
@@ -132,7 +136,7 @@ class UiUtilites {
                         height: 35,
                         width: 55,
                         decoration: BoxDecoration(
-                            color: AppColors.primary_color,
+                            color: AppColors.light_blue,
                             borderRadius: BorderRadius.circular(10)),
                         child: Center(
                           child: Text(
@@ -148,12 +152,15 @@ class UiUtilites {
                         height: 35,
                         width: 50,
                         decoration: BoxDecoration(
-                            color: AppColors.primary_color,
+                            color: AppColors.light_blue,
                             borderRadius: BorderRadius.circular(10)),
                         child: Center(
                           child: Text(
                             'No'.tr,
-                            style: TextStyle(fontSize: 20.0),
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              // color: AppColors.black,
+                            ),
                           ),
                         ),
                       ),
@@ -179,7 +186,6 @@ class UiUtilites {
     String? tiktok,
     String? notification,
     String? smartphoneNumber,
-
   }) {
     return showDialog(
       context: context!,
@@ -315,7 +321,7 @@ class UiUtilites {
                                         Gap(5.w),
                                         Expanded(
                                           child: Text(instagram!,
-                                          //'@wiliamX2'
+                                              //'@wiliamX2'
                                               style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 7.sp,
@@ -337,7 +343,7 @@ class UiUtilites {
                                         Gap(5.w),
                                         Expanded(
                                           child: Text(twitter!,
-                                          //'@wiliamX2'
+                                              //'@wiliamX2'
                                               style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 7.sp,
@@ -361,7 +367,7 @@ class UiUtilites {
                                         Gap(5.w),
                                         Expanded(
                                           child: Text(facebook!,
-                                          //'@wiliamX2'
+                                              //'@wiliamX2'
                                               style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 7.sp,
@@ -388,7 +394,7 @@ class UiUtilites {
                                         Gap(5.w),
                                         Expanded(
                                           child: Text(tiktok!,
-                                          //'@wiliamX2'
+                                              //'@wiliamX2'
                                               style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 7.sp,
@@ -406,7 +412,7 @@ class UiUtilites {
                                       ),
                                       Gap(5.w),
                                       Text(notification!,
-                                      //'@wiliamX2'
+                                          //'@wiliamX2'
                                           style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 7.sp,
@@ -422,7 +428,7 @@ class UiUtilites {
                                       ),
                                       Gap(5.w),
                                       Text(smartphoneNumber!,
-                                      //'@+971 8876 5467'
+                                          //'@+971 8876 5467'
                                           style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 7.sp,

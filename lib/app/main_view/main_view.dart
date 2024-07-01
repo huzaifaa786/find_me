@@ -1,8 +1,9 @@
-// ignore_for_file: prefer_typing_uninitialized_variables, unused_field, unused_element, deprecated_member_use
+// ignore_for_file: prefer_typing_uninitialized_variables, unused_field, unused_element, deprecated_member_use, prefer_const_constructors
 
 import 'package:find_me/app/account/profile/profile_view.dart';
 import 'package:find_me/app/auth/signup/signup_view.dart';
 import 'package:find_me/app/edit_profile/edit_profile_view.dart';
+import 'package:find_me/app/emoji_store/emoji_store_view.dart';
 import 'package:find_me/app/home/home_controller.dart';
 import 'package:find_me/app/home/home_view.dart';
 import 'package:find_me/app/notifications/notifications_view.dart';
@@ -27,8 +28,8 @@ class _MainViewState extends State<MainView> with RouteAware {
   int _navigationMenuIndex = 0;
 
   final List<Widget> _fragments = [
-    const HomeView(),
-    ReportView(),
+     HomeView(),
+    EmojiStoreView(),
     ProfileView(),
     EditProfileView(),
   ];
