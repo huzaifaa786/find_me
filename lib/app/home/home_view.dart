@@ -183,9 +183,9 @@ class HomeView extends StatelessWidget {
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 3,
-                              mainAxisSpacing: 41.0,
+                              mainAxisSpacing: 15.h,
                               crossAxisSpacing: 36.0,
-                              mainAxisExtent: 96,
+                              mainAxisExtent: 100.h,
                             ),
                             itemCount: controller.dropdownItems.length,
                             itemBuilder: (context, index) {
@@ -337,7 +337,7 @@ class HomeView extends StatelessWidget {
                                         ),
                                         content: ConstrainedBox(
                                           constraints:
-                                              BoxConstraints(maxHeight: 260),
+                                              BoxConstraints(maxHeight: 260.h, minHeight: 150.h),
                                           child: Container(
                                             width: 420.w,
                                             // padding:EdgeInsets.symmetric(horizontal: 20),
@@ -346,7 +346,7 @@ class HomeView extends StatelessWidget {
                                                   CrossAxisAlignment.center,
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
-                                                Gap(50.h),
+                                                Gap(10.h),
                                                 ConstrainedBox(
                                                   constraints: BoxConstraints(
                                                     minHeight: 75,
@@ -403,13 +403,13 @@ class HomeView extends StatelessWidget {
                                                     ),
                                                   ],
                                                 ),
-                                                Gap(18.h),
+                                                Gap(17.h),
                                                 Container(
                                                   height: 43.h,
                                                   width: 183.w,
                                                   decoration: BoxDecoration(
                                                       color:
-                                                          AppColors.light_blue,
+                                                          AppColors.light_blue.withOpacity(0.25),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               11)),
@@ -435,7 +435,7 @@ class HomeView extends StatelessWidget {
                                                     ],
                                                   ),
                                                 ),
-                                                Gap(31.h),
+                                                Gap(5.h),
                                               ],
                                             ),
                                           ),

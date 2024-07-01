@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:ui';
 
 import 'package:find_me/components/buttons/prefix_icon_button.dart';
@@ -13,7 +15,6 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 class UiUtilites {
- 
   static errorSnackbar(String title, String message) {
     Get.snackbar(
       title.tr,
@@ -132,7 +133,7 @@ class UiUtilites {
                         height: 35,
                         width: 55,
                         decoration: BoxDecoration(
-                            color: AppColors.primary_color,
+                            color: AppColors.light_blue,
                             borderRadius: BorderRadius.circular(10)),
                         child: Center(
                           child: Text(
@@ -148,12 +149,15 @@ class UiUtilites {
                         height: 35,
                         width: 50,
                         decoration: BoxDecoration(
-                            color: AppColors.primary_color,
+                            color: AppColors.light_blue,
                             borderRadius: BorderRadius.circular(10)),
                         child: Center(
                           child: Text(
                             'No'.tr,
-                            style: TextStyle(fontSize: 20.0),
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              // color: AppColors.black,
+                            ),
                           ),
                         ),
                       ),

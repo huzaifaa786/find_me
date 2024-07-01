@@ -2,6 +2,7 @@
 
 import 'package:find_me/app/auth/otp/otp_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
+import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -98,10 +99,10 @@ class OtpView extends StatelessWidget {
                 Gap(30),
                 GestureDetector(
                   onTap: () {
-                    controller.resendOtp();
+                    Get.toNamed(AppRoutes.sociallogin);
                   },
                   child: AppText(
-                    title: 'Resend'.tr,
+                    title: 'send code'.tr,
                     size: 14,
                     fontWeight: FontWeight.w600,
                     color: AppColors.primary_color,
