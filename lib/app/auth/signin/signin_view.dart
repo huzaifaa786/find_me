@@ -8,6 +8,7 @@ import 'package:find_me/components/buttons/prefix_icon_button.dart';
 import 'package:find_me/components/textfields/app_textfields.dart';
 import 'package:find_me/components/textfields/password_textfield.dart';
 import 'package:find_me/components/textfields/phone_inputfield.dart';
+import 'package:find_me/helpers/validator.dart';
 import 'package:find_me/models/user_model.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
@@ -46,14 +47,21 @@ class _SignInViewState extends State<SignInView> {
                   AppTextFields(
                     hintText: 'Email',
                     controller: controller.emailController,
+                    fieldValidator: (value) => Validators.emailValidator(value),
                   ),
                   Gap(14.h),
                   PasswordTextFields(
-                    hintText: 'Password',
-                    obscure: controller.obscureTextPassword,
-                    controller: controller.passwordController,
-                    toggle: controller.toggle,
-                  ),
+                      hintText: 'Password',
+                      obscure: controller.obscureTextPassword,
+                      controller: controller.passwordController,
+                      toggle: controller.toggle,
+                      fieldValidator: (value) {
+                        if (value!.isEmpty) {
+                          return "Password can't be empty";
+                        } else {
+                          return null;
+                        }
+                      }),
                   Gap(16.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -81,8 +89,7 @@ class _SignInViewState extends State<SignInView> {
                     height: 50.0.h,
                     width: 304.0.w,
                     onTap: () {
-                      
-                      Get.toNamed(AppRoutes.mainview);
+                      controller.loginUser();
                     },
                   ),
                   Gap(20.h),
@@ -116,16 +123,16 @@ class _SignInViewState extends State<SignInView> {
                         if (!responce['error']) {
                           controller.user =
                               UserModel.fromJson(responce['user']);
-                          if (controller.user!.login_type == 'GOOGLE') {
-                            print(controller.user!.api_token);
+                          if (controller.user!.loginType == 'GOOGLE') {
+                       
                             await box.write(
-                                'api_token', controller.user!.api_token);
+                                'api_token', responce['user']['token']);
                             UiUtilites.successSnackbar(
                                 'Signin Successfully.', 'Success!');
                             Get.toNamed(AppRoutes.mainview);
                           } else {
-                            UiUtilites.errorSnackbar('ERROR!',
-                                'Email register for some other user');
+                            UiUtilites.errorSnackbar(
+                                'ERROR!', 'Email register for some other user');
                           }
                         }
                       }

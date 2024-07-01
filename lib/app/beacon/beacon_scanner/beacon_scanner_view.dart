@@ -40,7 +40,7 @@ class BeaconScannerView extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        controller.initFlutterBlue();
+                        controller.fetchBluetoothAddress();
                       },
                       child: FlutterBluePlus.isScanningNow
                           ? Container(

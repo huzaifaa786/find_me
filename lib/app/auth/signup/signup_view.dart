@@ -145,17 +145,16 @@ class _SignUpViewState extends State<SignUpView> {
                             response[0], response[1]);
                         if (!responce['error']) {
                           controller.user =
-                              UserModel.fromJson(responce['user']);
-                          if (controller.user!.login_type == 'GOOGLE') {
-                            print(controller.user!.api_token);
+                              UserModel.fromJson(response['user']);
+                          if (controller.user!.loginType == 'GOOGLE') {
                             await box.write(
-                                'api_token', controller.user!.api_token);
+                                'api_token', response['user']['token']);
                             UiUtilites.successSnackbar(
                                 'Signin Successfully.', 'Success!');
                             Get.toNamed(AppRoutes.mainview);
                           } else {
-                            UiUtilites.errorSnackbar('ERROR!',
-                                'Email register for some other user');
+                            UiUtilites.errorSnackbar(
+                                'ERROR!', 'Email register for some other user');
                           }
                         }
                       }

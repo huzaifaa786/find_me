@@ -50,7 +50,7 @@ class EditProfileView extends StatelessWidget {
                       child: ProfileContainer(
                         isSelected: controller.isSelected1,
                         isDefault: controller.isDefault1,
-                        avatarUrl: controller.selectedItem.avatarUrl,
+                        avatarUrl: controller.selectedItem.avatarUrl!,
                         verified: false,
                         onToggle: (value) {
                           controller.toggleDefault(1, value);
@@ -71,7 +71,7 @@ class EditProfileView extends StatelessWidget {
                       child: ProfileContainer(
                         isSelected: controller.isSelected2,
                         isDefault: controller.isDefault2,
-                        avatarUrl: controller.selectedItem.avatarUrl,
+                        avatarUrl: controller.selectedItem.avatarUrl!,
                         verified: false,
                         onToggle: (value) {
                           controller.toggleDefault(2, value);
@@ -92,7 +92,7 @@ class EditProfileView extends StatelessWidget {
                       child: ProfileContainer(
                         isSelected: controller.isSelected3,
                         isDefault: controller.isDefault3,
-                        avatarUrl: controller.selectedItem.avatarUrl,
+                        avatarUrl: controller.selectedItem.avatarUrl!,
                         verified: false,
                         onToggle: (value) {
                           controller.toggleDefault(3, value);
@@ -113,7 +113,7 @@ class EditProfileView extends StatelessWidget {
                       child: ProfileContainer(
                         isSelected: controller.isSelected4,
                         isDefault: controller.isDefault4,
-                        avatarUrl: controller.selectedItem.avatarUrl,
+                        avatarUrl: controller.selectedItem.avatarUrl!,
                         verified: false,
                         onToggle: (value) {
                           controller.toggleDefault(4, value);

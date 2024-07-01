@@ -97,7 +97,8 @@ class SettingView extends StatelessWidget {
                         UiUtilites.logoutSuccessAlert(context, () async {
                           GetStorage box = GetStorage();
                           await box.remove('api_token');
-                          Get.offAllNamed(AppRoutes.signup);
+                          await box.remove('beacon_id');
+                          Get.offAllNamed(AppRoutes.intro);
                         }, () {
                           Get.back();
                         });
