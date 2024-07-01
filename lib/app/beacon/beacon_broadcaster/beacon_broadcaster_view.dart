@@ -84,16 +84,7 @@ class BeaconBroadcasterView extends StatelessWidget {
                             .copyWith(color: Colors.blue),
                       ),
                     ),
-                    MaterialButton(
-                      onPressed: controller.toggleAdvertiseSet,
-                      child: Text(
-                        'Toggle advertising set for 1 second',
-                        style: Theme.of(context)
-                            .primaryTextTheme
-                            .labelLarge!
-                            .copyWith(color: Colors.blue),
-                      ),
-                    ),
+               
                     StreamBuilder(
                       stream: FlutterBlePeripheral().onPeripheralStateChanged,
                       initialData: PeripheralState.unknown,

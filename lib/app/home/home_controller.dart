@@ -1,15 +1,51 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:find_me/api/auth_api.dart/user_api.dart';
+import 'package:find_me/api/bluetooth_api/bluetooth_users_api.dart';
 import 'package:find_me/models/user_model.dart';
 import 'package:find_me/utils/images/ui_utils/ui_utils.dart';
+import 'package:find_me/utils/ui_utils.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_ble_peripheral/flutter_ble_peripheral.dart';
+import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter_ble_peripheral/src/models/periodic_advertise_settings.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class HomeController extends GetxController {
   static HomeController instance = Get.find();
+  GetStorage box = GetStorage();
+  Timer? _advertisingTimer; // Define a Timer variable
+
+  AdvertiseData advertiseData = AdvertiseData(
+    serviceUuid: 'bf27730d-860a-4e09-889c-2d8b6a9e0fe7',
+    manufacturerId: 1234,
+    localName: "MEEEEEEEEEEEEEEEEEEEEEEE",
+    includePowerLevel: true,
+    manufacturerData: Uint8List.fromList([1, 2, 3]),
+  );
+
+  final PeriodicAdvertiseSettings periodicAdvertiseSettings =
+      PeriodicAdvertiseSettings(interval: 10);
+  final AdvertiseSetParameters advertiseSetParameters = AdvertiseSetParameters(
+    scannable: true,
+    txPowerLevel: txPowerHigh,
+    includeTxPowerLevel: true,
+  );
+  final AdvertiseSettings advertiseSettings = AdvertiseSettings(
+      advertiseMode: AdvertiseMode.advertiseModeBalanced,
+      timeout: 180000,
+      txPowerLevel: AdvertiseTxPower.advertiseTxPowerHigh);
+
+  bool isSupported = false;
+
   File? pdfFile;
   File? videoFile;
   File? imageFile;
@@ -21,7 +57,6 @@ class HomeController extends GetxController {
   bool isSearching = false;
 
   var dropdownItems = <DropdownItem>[];
-
   DropdownItem selectedItem = DropdownItem(
     avatarUrl:
         'https://th.bing.com/th/id/OIP.DmAJheE6apJ9IX7pxIRDjgHaFN?pid=ImgDet&w=474&h=333&rs=1',
@@ -31,8 +66,17 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
+    // WidgetsBinding.instance.addObserver(this);
+    initPlatformState();
     getUser();
     super.onInit();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    // WidgetsBinding.instance.removeObserver(this);
+    stopPeriodicAdvertising();
   }
 
   getUser() async {
@@ -56,159 +100,181 @@ class HomeController extends GetxController {
     update();
   }
 
-  Future<void> openDocumentPicker() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: ['pdf', 'doc', 'docx', 'txt'],
-    );
-
-    if (result != null) {
-      PlatformFile file = result.files.first;
-      print('Picked file: ${file.name}');
-      // Handle the selected file
-    } else {
-      // User canceled the picker
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      startPeriodicAdvertising();
+    } else if (state == AppLifecycleState.paused) {
+      stopPeriodicAdvertising();
     }
   }
 
-  // Future getImage() async {
-  //   ImagePicker imagePicker = ImagePicker();
-  //   XFile? pickedFile = await imagePicker
-  //       .pickImage(source: ImageSource.gallery)
-  //       .catchError((err) {
-  //     UiUtilites.errorSnackbar('Error'.tr, err.toString());
-  //     return null;
-  //   });
-  //   if (pickedFile != null) {
-  //     imageFile = File(pickedFile.path);
-  //     if (imageFile != null) {
-  //       bool userConfirmed = await showConfirmationDialog(Get.context!);
-  //       if (userConfirmed) {
-  //         // setState
-  //         (() {
-  //           isLoading = true;
-  //         });
-  //         uploadFile();
-  //       }
-  //     }
-  //   }
-  // }
+  Future<void> initPlatformState() async {
+    isSupported = await FlutterBlePeripheral().isSupported;
+    await Permission.bluetoothAdvertise.request();
+    await Permission.bluetoothConnect.request();
+    await Permission.locationWhenInUse.request();
 
-//  Future getPdf() async {
-//     FilePickerResult? result = await FilePicker.platform.pickFiles(
-//       type: FileType.custom,
-//       allowedExtensions: ['pdf'],
-//     );
-//     print(result);
-//     if (result != null) {
-//       List<File> pickedFiles = result.paths.map((path) => File(path!)).toList();
-//       if (pickedFiles.isNotEmpty) {
-//         pdfFile = pickedFiles.first;
-//         String? fileName = result.files.first.name;
-//         bool userConfirmed = await showConfirmationDialog(Get.context!);
-//         if (userConfirmed) {
-//           // setState(() {
-//           //   isLoading = true;
-//           // });
-//           uploadPdf(pdfFile!, fileName);
-//         }
-//       }
-//     }
-//   }
+    String id = box.read('beacon_id');
+    advertiseData = AdvertiseData(
+      serviceUuid: id,
+      manufacturerId: 1234,
+      localName: "MEEEEEEEEEEEEEEEEEEEEEEE",
+      includePowerLevel: true,
+      manufacturerData: Uint8List.fromList([1, 2, 3]),
+    );
+    update();
+    startPeriodicAdvertising(); // Start the periodic advertising
+  }
 
-//   Future getMp4() async {
-//     FilePickerResult? result = await FilePicker.platform.pickFiles(
-//       type: FileType.custom,
-//       allowedExtensions: ['mp4'],
-//     );
+  void startPeriodicAdvertising() {
+    _advertisingTimer?.cancel(); // Cancel any existing timer
+    _advertisingTimer = Timer.periodic(Duration(seconds: 5), (timer) async {
+      await FlutterBlePeripheral().start(
+        advertiseData: advertiseData,
+        advertiseSetParameters: advertiseSetParameters,
+        advertisePeriodicData: advertiseData,
+        periodicAdvertiseSettings: periodicAdvertiseSettings,
+      );
+    });
+  }
 
-//     if (result != null) {
-//       List<File> pickedFiles = result.paths.map((path) => File(path!)).toList();
-//       if (pickedFiles.isNotEmpty) {
-//         videoFile = pickedFiles.first;
-//         String? fileName = result.files.first.name;
-//         bool userConfirmed = await showConfirmationDialog(Get.context!);
-//         if (userConfirmed) {
-//           // setState
-//           (() {
-//             isLoading = true;
-//           });
-//           uploadVideo(videoFile!, fileName);
-//         }
-//       }
-//     }
-//   }
+  void stopPeriodicAdvertising() async {
+    _advertisingTimer?.cancel(); // Cancel the timer
+    await FlutterBlePeripheral().stop(); // Stop advertising
+  }
 
-//   Future uploadVideo(File videoFile, String fileName) async {
-//     UploadTask uploadTask = chatProvider.uploadVideo(videoFile, fileName);
-//     try {
-//       TaskSnapshot snapshot = await uploadTask;
-//       String videoUrl = await snapshot.ref.getDownloadURL();
-//       print(videoUrl);
-//       setState(() {
-//         isLoading = false;
-//         onSendMessage(videoUrl, TypeMessage.video);
-//       });
-//       Get.back();
-//     } on FirebaseException catch (e) {
-//       setState(() {
-//         isLoading = false;
-//       });
-//       Get.back();
-//       print(e);
-//     }
-//   }
+  Future<void> toggleAdvertise() async {
+    print("HRRRRRR");
+    if (await FlutterBlePeripheral().isAdvertising) {
+      await FlutterBlePeripheral().stop();
+    } else {
+      try {
+        await FlutterBlePeripheral().start(
+          advertiseData: advertiseData,
+          advertiseSetParameters: advertiseSetParameters,
+          advertisePeriodicData: advertiseData,
+          periodicAdvertiseSettings: periodicAdvertiseSettings,
+        );
+      } catch (e) {
+        print('Error starting advertising set: $e');
+      }
+    }
+  }
 
-//   Future uploadPdf(File pdfFile, String fileName) async {
-//     UploadTask uploadTask = chatProvider.uploadPdf(pdfFile, fileName);
-//     try {
-//       TaskSnapshot snapshot = await uploadTask;
-//       String pdfUrl = await snapshot.ref.getDownloadURL();
-//       print(pdfUrl);
-//       setState(() {
-//         isLoading = false;
-//         onSendMessage(pdfUrl, TypeMessage.document);
-//       });
-//       Get.back();
-//     } on FirebaseException catch (e) {
-//       setState(() {
-//         isLoading = false;
-//       });
-//       Get.back();
-//       print(e);
-//     }
-//   }
+  Future<void> requestPermissions() async {
+    final hasPermission = await FlutterBlePeripheral().hasPermission();
+    switch (hasPermission) {
+      case BluetoothPeripheralState.denied:
+        UiUtilites.errorSnackbar(
+            "Permissions!", "We don't have permissions, requesting now!");
+        await requestPermissions();
+        break;
+      default:
+        UiUtilites.successSnackbar("Permissions!", 'State: $hasPermission!');
+        break;
+    }
+  }
 
-//   Future uploadFile() async {
-//     String fileName = DateTime.now().millisecondsSinceEpoch.toString();
-//     UploadTask uploadTask = chatProvider.uploadFile(imageFile!, fileName);
-//     try {
-//       TaskSnapshot snapshot = await uploadTask;
-//       imageUrl = await snapshot.ref.getDownloadURL();
-//       setState(() {
-//         isLoading = false;
-//         onSendMessage(imageUrl, TypeMessage.image);
-//       });
-//       Get.back();
-//     } on FirebaseException catch (e) {
-//       setState(() {
-//         isLoading = false;
-//       });
+  Future<void> hasPermissions() async {
+    final hasPermissions = await FlutterBlePeripheral().hasPermission();
+    Get.showSnackbar(
+      GetSnackBar(
+        message: 'Has permission: $hasPermissions',
+        backgroundColor: hasPermissions == BluetoothPeripheralState.granted
+            ? Colors.green
+            : Colors.red,
+      ),
+    );
+  }
 
-//       print(e);
-//       Get.back();
-//       // Fluttertoast.showToast(msg: e.message ?? e.toString());
-//     }
-//   }
+  //Scanner Start
 
-  // // Method to pick a video from the gallery
-  // Future<void> pickVideo() async {
-  //   final XFile? video = await _picker.pickVideo(source: ImageSource.gallery);
-  //   if (video != null) {
-  //     // Do something with the picked video
-  //     print("Picked Video: ${video.path}");
-  //   }
-  // }
+  List<String> serviceDataKeys = [];
+  List<ScanResult> scanResult = [];
+  List<UserModel> scannedUsers = [];
+
+  void initFlutterBlue() async {
+    isSearching = true;
+    update();
+    await Permission.bluetoothScan.request();
+    // FlutterBluePlus.setLogLevel(LogLevel.verbose, color: true);
+    serviceDataKeys = [];
+    update();
+    if (await FlutterBluePlus.isSupported == false) {
+      print("Bluetooth not supported by this device");
+      return;
+    }
+
+    FlutterBluePlus.adapterState.listen((BluetoothAdapterState state) {
+      if (state == BluetoothAdapterState.on) {
+        FlutterBluePlus.onScanResults.listen(
+            (results) async {
+              if (results.isNotEmpty) {
+                scanResult = results;
+                update();
+
+                for (var ee in results) {
+                  print(
+                      "serviceData: ${ee.advertisementData.serviceData.keys.toList()}");
+                  print("*************** DEVICE START ********************");
+                  print("Advname: ${ee.advertisementData.advName}");
+                  print("appearance: ${ee.advertisementData.appearance}");
+                  print("connectable: ${ee.advertisementData.connectable}");
+                  print(
+                      "manufacturerData: ${ee.advertisementData.manufacturerData}");
+
+                  print("serviceUuids: ${ee.advertisementData.serviceUuids}");
+                  print("txPowerLevel: ${ee.advertisementData.txPowerLevel}");
+                  print("device: ${ee.device}");
+                  print("rssi: ${ee.rssi}");
+                  print("device: ${ee.timeStamp}");
+                  print("*************** DEVICE END ********************");
+
+                  // print('$ee found!');
+                  if (ee.advertisementData.serviceUuids.isNotEmpty) {
+                    serviceDataKeys.add(
+                        ee.advertisementData.serviceUuids.first.toString());
+                  }
+                  update();
+                }
+              }
+            },
+            onError: (e) => print("YEH ERROR HA:$e"),
+            onDone: () async {
+              print("DONE");
+              serviceDataKeys = serviceDataKeys.toSet().toList();
+              await sendServiceDataKeysToApi();
+            });
+      } else {
+        // show an error to the user, etc
+      }
+    });
+
+    if (Platform.isAndroid) {
+      await FlutterBluePlus.turnOn();
+    }
+    await FlutterBluePlus.startScan(
+        // *or* any of the specified names
+        timeout: Duration(seconds: 10));
+    await FlutterBluePlus.isScanning.where((val) => val == false).first;
+
+    serviceDataKeys = serviceDataKeys.toSet().toList();
+    isSearching = false;
+    update();
+    await sendServiceDataKeysToApi();
+  }
+
+  Future<void> sendServiceDataKeysToApi() async {
+    final response =
+        await BluethoohUsersApi.getUsersList(keys: serviceDataKeys);
+    if (response.isNotEmpty) {
+      for (var element in response['users']) {
+        scannedUsers.add(UserModel.fromJson(element));
+      }
+    }
+    update();
+  }
 }
 
 class DropdownItem {

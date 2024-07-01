@@ -2,6 +2,7 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/app/home/home_controller.dart';
+import 'package:find_me/models/user_model.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,7 +12,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
 class UserCard extends StatelessWidget {
-  final DropdownItem user;
+  final UserModel user;
 
   UserCard({required this.user});
 
@@ -29,7 +30,7 @@ class UserCard extends StatelessWidget {
             backgroundColor: Colors.transparent,
             child: ClipOval(
               child: CachedNetworkImage(
-                imageUrl: user.avatarUrl!,
+                imageUrl: user.currentProfile!.imageUrl ?? '',
                 fit: BoxFit.cover,
                 width: 80.r,
                 height: 80.r,
@@ -42,20 +43,19 @@ class UserCard extends StatelessWidget {
           height: 10.h,
           child: Row(
             children: [
-              if (user.verified)
-                Container(
-                  width: 7.w,
-                  height: 7.h,
-                  decoration: BoxDecoration(
-                    color: AppColors.green,
-                    shape: BoxShape.circle,
-                  ),
+              Container(
+                width: 7.w,
+                height: 7.h,
+                decoration: BoxDecoration(
+                  color: AppColors.green,
+                  shape: BoxShape.circle,
                 ),
+              ),
               Gap(4.w),
               Expanded(
                 flex: 2,
                 child: AppText(
-                  title: user.text!,
+                  title: user.currentProfile!.name ?? '',
                   overFlow: TextOverflow.visible,
                   textAlign: TextAlign.justify,
                   size: 10,
