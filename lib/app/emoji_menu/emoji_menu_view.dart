@@ -53,31 +53,18 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                       ),
                     ),
                     Container(
-                      // height: Get.height * 40.0,
+                      // height: Get.height * 20.0,
                       decoration: BoxDecoration(color: AppColors.light_black),
                       child: Row(
                         children: [
                           Column(
                             children: [
-                              Text("usama"),
-                              Text("usama"),
-                              Text("usama"),
-                              Text("usama"),
-                              Text("usama"),
-                              Text("usama"),
-                              Text("usama"),
+                             
                             ],
                           ),
                           Column(
                             children: [
-                              Text("usama"),
-                              Text("usama"),
-                              Text("usama"),
-                              Text("usama"),
-                              Text("usama"),
-                              Text("usama"),
-                              Text("usama"),
-                              Text("usama"),
+                            
                             ],
                           ),
                         ],

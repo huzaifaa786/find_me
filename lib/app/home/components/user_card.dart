@@ -29,7 +29,7 @@ class UserCard extends StatelessWidget {
             backgroundColor: Colors.transparent,
             child: ClipOval(
               child: CachedNetworkImage(
-                imageUrl: user.avatarUrl,
+                imageUrl: user.avatarUrl!,
                 fit: BoxFit.cover,
                 width: 80.r,
                 height: 80.r,
@@ -55,7 +55,7 @@ class UserCard extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: AppText(
-                  title: user.text,
+                  title: user.text!,
                   overFlow: TextOverflow.visible,
                   textAlign: TextAlign.justify,
                   size: 10,

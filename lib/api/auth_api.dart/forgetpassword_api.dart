@@ -18,8 +18,7 @@ class ForgotPasswordApi {
 
     //! Make the POST request using ApiService
     var response = await DioService.post(url: url, data: data);
-    print('fffffffffffffffffffffffff');
-    print(response);
+    
     return response;
   }
 

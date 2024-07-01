@@ -123,9 +123,7 @@ class SignUpController extends GetxController {
         dob: dob,
         beaconId: beaconId);
     if (response.isNotEmpty) {
-      box.write('api_token', response['user']['token']);
-      box.write('beacon_id', response['user']['beacon_id']);
-      Get.offAllNamed(AppRoutes.mainview);
+      Get.offAllNamed(AppRoutes.otp, arguments: phoneController);
     }
   }
 

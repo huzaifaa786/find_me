@@ -24,6 +24,7 @@ final AdvertiseSetParameters advertiseSetParameters = AdvertiseSetParameters(
   txPowerLevel: txPowerHigh,
   includeTxPowerLevel: true,
 );
+
 final AdvertiseSettings advertiseSettings = AdvertiseSettings(
     advertiseMode: AdvertiseMode.advertiseModeBalanced,
     timeout: 180000,
@@ -47,6 +48,7 @@ void callbackDispatcher() {
 
 Future<void> initPlatformState(String? id) async {
   final _isSupported = await FlutterBlePeripheral().isSupported;
+  
   print("BLE Peripheral Supported: $_isSupported");
 
   if (id != null) {

@@ -54,7 +54,7 @@ class HomeView extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(80.r),
                       child: CachedNetworkImage(
-                        imageUrl: controller.selectedItem.avatarUrl,
+                        imageUrl: controller.selectedItem.avatarUrl ?? '',
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -75,7 +75,7 @@ class HomeView extends StatelessWidget {
                             ),
                             elevation: 1,
                             hint: AppText(
-                              title: "Appears as   \u25BC",
+                              title: "Appears as  ${controller.userModel!.name ?? ''}",
                               color: AppColors.primary_color,
                               size: 14.sp,
                               fontWeight: FontWeight.w500,
@@ -92,7 +92,7 @@ class HomeView extends StatelessWidget {
                                           radius: 15.r,
                                           child: ClipOval(
                                             child: CachedNetworkImage(
-                                              imageUrl: item.avatarUrl,
+                                              imageUrl: item.avatarUrl ?? '',
                                               fit: BoxFit.cover,
                                               width: 30.r,
                                               height: 30.r,
@@ -101,7 +101,7 @@ class HomeView extends StatelessWidget {
                                         ),
                                         Gap(10.w),
                                         Text(
-                                          item.text,
+                                          item.text??'',
                                           overflow: TextOverflow.ellipsis,
                                           textAlign: TextAlign.justify,
                                         ),
@@ -133,7 +133,7 @@ class HomeView extends StatelessWidget {
                       Row(
                         children: [
                           AppText(
-                            title: controller.selectedItem.text,
+                            title: controller.selectedItem.text ?? '',
                             size: 14.sp,
                             fontWeight: FontWeight.w500,
                           ),
@@ -364,7 +364,7 @@ class HomeView extends StatelessWidget {
                                                           imageUrl: controller
                                                               .dropdownItems[
                                                                   index]
-                                                              .avatarUrl,
+                                                              .avatarUrl?? '',
                                                           fit: BoxFit.cover,
                                                           width: 100,
                                                           height: 100,
@@ -396,7 +396,7 @@ class HomeView extends StatelessWidget {
                                                     AppText(
                                                       title: controller
                                                           .dropdownItems[index]
-                                                          .text,
+                                                          .text!,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       size: 10.sp,
@@ -427,7 +427,7 @@ class HomeView extends StatelessWidget {
                                                         title: controller
                                                             .dropdownItems[
                                                                 index]
-                                                            .text,
+                                                            .text?? '',
                                                         size: 8,
                                                         fontWeight:
                                                             FontWeight.w500,

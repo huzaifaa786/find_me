@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1049301088125-0g096rnk2barei4jq4cff9r1lh3sqt4u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tritec.find_me",
+            "certificate_hash": "3490111194d59dadd8738cbcfe4a9e21310d0dc3"
+          }
+        },
+        {
           "client_id": "1049301088125-t80itp1fvio4n8c8g3n476s7rt0htkeg.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

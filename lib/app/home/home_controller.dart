@@ -1,5 +1,8 @@
+import 'dart:convert';
 import 'dart:io';
 
+import 'package:find_me/api/auth_api.dart/user_api.dart';
+import 'package:find_me/models/user_model.dart';
 import 'package:find_me/utils/images/ui_utils/ui_utils.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -13,6 +16,7 @@ class HomeController extends GetxController {
   bool isLoading = false;
   bool isShowSticker = false;
   String imageUrl = "";
+  UserModel? userModel;
 
   bool isSearching = false;
 
@@ -27,69 +31,24 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
-    dropdownItems.addAll([
-      DropdownItem(
-        avatarUrl: 'https://dummyimage.com/600x400/fcf9fc/2847e0.png',
-        text: 'Mohammed Abdullah',
-        verified: true,
-      ),
-      DropdownItem(
-        avatarUrl: 'https://dummyimage.com/600x400/a323a3/2847e0.png',
-        text: 'Mohammed x3',
-        verified: false,
-      ),
-      DropdownItem(
-        avatarUrl: 'https://dummyimage.com/600x400/4dd620/2847e0.png',
-        text: 'Ramei 6666',
-        verified: true,
-      ),
-      DropdownItem(
-        avatarUrl: 'https://dummyimage.com/600x400/fcf9fc/2847e0.png',
-        text: 'Mohammed',
-        verified: true,
-      ),
-      DropdownItem(
-        avatarUrl: 'https://dummyimage.com/600x400/a323a3/2847e0.png',
-        text: 'Mohammed x3333',
-        verified: false,
-      ),
-      DropdownItem(
-        avatarUrl: 'https://dummyimage.com/600x400/4dd620/28470.png',
-        text: 'Ramei 9999999',
-        verified: true,
-      ),
-      DropdownItem(
-        avatarUrl: 'https://dummyimage.com/600x400/fcf9fc/2847e0.png',
-        text: 'Mohammed 101010101',
-        verified: true,
-      ),
-      DropdownItem(
-        avatarUrl: 'https://dummyimage.com/600x400/a323a3/2847e0.png',
-        text: 'Mohammed x343434',
-        verified: false,
-      ),
-      DropdownItem(
-        avatarUrl: 'https://dummyimage.com/600x400/4dd620/2847e0.png',
-        text: 'Ramei 9898989',
-        verified: true,
-      ),
-       DropdownItem(
-        avatarUrl: 'https://dummyimage.com/600x400/fcf9fc/2847e0.png',
-        text: 'Mohammed 101010101',
-        verified: true,
-      ),
-      DropdownItem(
-        avatarUrl: 'https://dummyimage.com/600x400/a323a3/2847e0.png',
-        text: 'Mohammed x343434',
-        verified: false,
-      ),
-      DropdownItem(
-        avatarUrl: 'https://dummyimage.com/600x400/4dd620/2847e0.png',
-        text: 'Ramei 9898989',
-        verified: true,
-      ),
-    ]);
+    getUser();
     super.onInit();
+  }
+
+  getUser() async {
+    var response = await UserApi.getUser();
+    if (response.isNotEmpty) {
+      userModel = UserModel.fromJson(response['user']);
+      selectedItem = DropdownItem(
+          avatarUrl: userModel!.currentProfile!.imageUrl,
+          text: userModel!.currentProfile!.name,
+          verified: true);
+      for (var element in userModel!.profiles!) {
+        dropdownItems.add(DropdownItem(
+            avatarUrl: element.imageUrl, text: element.name, verified: true));
+      }
+      update();
+    }
   }
 
   void selectItem(DropdownItem item) {
@@ -253,8 +212,8 @@ class HomeController extends GetxController {
 }
 
 class DropdownItem {
-  final String avatarUrl;
-  final String text;
+  final String? avatarUrl;
+  final String? text;
   final bool verified;
 
   DropdownItem({
