@@ -58,7 +58,7 @@ class _LanguagesViewState extends State<LanguagesView> {
                                 value: 0,
                                 groupValue: controller.selectedLanguage,
                                 activeColor: AppColors.primary_color,
-                                fillColor: WidgetStateProperty.all(
+                                fillColor: MaterialStateProperty.all(
                                     AppColors.primary_color),
                                 onChanged: (value) {
                                   controller.changeLanguage(value as int);
@@ -101,7 +101,7 @@ class _LanguagesViewState extends State<LanguagesView> {
                                 Radio(
                                   value: 1,
                                   groupValue: controller.selectedLanguage,
-                                  fillColor: WidgetStateProperty.all(
+                                  fillColor: MaterialStateProperty.all(
                                       AppColors.primary_color),
                                   activeColor: AppColors.primary_color,
                                   onChanged: (value) {
