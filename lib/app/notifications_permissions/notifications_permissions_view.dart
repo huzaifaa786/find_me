@@ -26,7 +26,8 @@ class _NotificationsPermissionsViewState
               appBar: AppBar(
                 automaticallyImplyLeading: false,
                 scrolledUnderElevation: 0,
-                title: topBar(name: "Notifications", showBackIcon: true),
+                title: topBar(
+                    name: "Notifications Permissions", showBackIcon: true),
               ),
               body: SafeArea(
                 child: SingleChildScrollView(

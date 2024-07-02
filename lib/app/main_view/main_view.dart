@@ -28,7 +28,7 @@ class _MainViewState extends State<MainView> with RouteAware {
   int _navigationMenuIndex = 0;
 
   final List<Widget> _fragments = [
-     HomeView(),
+    HomeView(),
     EmojiStoreView(),
     ProfileView(),
     EditProfileView(),

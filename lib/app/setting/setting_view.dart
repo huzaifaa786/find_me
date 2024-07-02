@@ -55,7 +55,7 @@ class SettingView extends StatelessWidget {
                         }),
                     Gap(12.h),
                     CardSetting(
-                        text: 'Notifications',
+                        text: 'Notifications Permissions',
                         image: 'assets/icons/bell (1).svg',
                         ontap: () {
                           Get.toNamed(AppRoutes.notificationsPermissions);

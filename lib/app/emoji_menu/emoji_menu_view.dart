@@ -49,98 +49,141 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                             borderRadius: BorderRadius.circular(9)),
                         child: Padding(
                           padding: const EdgeInsets.only(top: 14, left: 12),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                children: [
-                                  Image.asset(
-                                    "assets/images/grinning_face.png",
-                                    height: 54.h,
-                                    width: 54.02.w,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/smiling_face_with_horns.png",
-                                    height: 54.h,
-                                    width: 53.w,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/smiling face with smiling eyes.png",
-                                    height: 54.h,
-                                    width: 53.w,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/traget.png",
-                                    height: 54.h,
-                                    width: 53.w,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/stuck_out_tongue _winking_eye.png",
-                                    height: 54.h,
-                                    width: 53.w,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/loving.png",
-                                    height: 54,
-                                    width: 52,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/Squinting face with tongue.png",
-                                    height: 54.h,
-                                    width: 52.w,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/traget.png",
-                                    height: 54.h,
-                                    width: 52.w,
-                                  ),
-                                ],
-                              ),
-                              Column(
-                                children: [
-                                  Image.asset(
-                                    "assets/images/sunglass.png",
-                                    height: 55.h,
-                                    width: 53.w,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/loving.png",
-                                    height: 54.h,
-                                    width: 53.w,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/Squinting face with tongue.png",
-                                    height: 54.h,
-                                    width: 53.w,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/party.png",
-                                    height: 54.h,
-                                    width: 52.w,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/angry.png",
-                                    height: 54.h,
-                                    width: 52.w,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/stuck_out_tongue _winking_eye.png",
-                                    height: 54.h,
-                                    width: 53.w,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/smiling face with smiling eyes.png",
-                                    height: 54.h,
-                                    width: 53.w,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/party.png",
-                                    height: 54.h,
-                                    width: 53.w,
-                                  ),
-                                ],
-                              ),
-                            ],
+                          child: SingleChildScrollView(
+                            physics: PageScrollPhysics(),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  children: [
+                                    Image.asset(
+                                      "assets/images/grinning_face.png",
+                                      height: 54.h,
+                                      width: 54.02.w,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/smiling_face_with_horns.png",
+                                      height: 54.h,
+                                      width: 53.w,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/smiling face with smiling eyes.png",
+                                      height: 54.h,
+                                      width: 53.w,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/traget.png",
+                                      height: 54.h,
+                                      width: 53.w,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/stuck_out_tongue _winking_eye.png",
+                                      height: 54.h,
+                                      width: 53.w,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/loving.png",
+                                      height: 54,
+                                      width: 52,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/Squinting face with tongue.png",
+                                      height: 54.h,
+                                      width: 52.w,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/traget.png",
+                                      height: 54.h,
+                                      width: 52.w,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/stuck_out_tongue _winking_eye.png",
+                                      height: 54.h,
+                                      width: 53.w,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/loving.png",
+                                      height: 54,
+                                      width: 52,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/Squinting face with tongue.png",
+                                      height: 54.h,
+                                      width: 52.w,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/traget.png",
+                                      height: 54.h,
+                                      width: 52.w,
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    Image.asset(
+                                      "assets/images/sunglass.png",
+                                      height: 55.h,
+                                      width: 53.w,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/loving.png",
+                                      height: 54.h,
+                                      width: 53.w,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/Squinting face with tongue.png",
+                                      height: 54.h,
+                                      width: 53.w,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/party.png",
+                                      height: 54.h,
+                                      width: 52.w,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/angry.png",
+                                      height: 54.h,
+                                      width: 52.w,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/stuck_out_tongue _winking_eye.png",
+                                      height: 54.h,
+                                      width: 53.w,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/smiling face with smiling eyes.png",
+                                      height: 54.h,
+                                      width: 53.w,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/party.png",
+                                      height: 54.h,
+                                      width: 53.w,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/stuck_out_tongue _winking_eye.png",
+                                      height: 54.h,
+                                      width: 53.w,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/smiling face with smiling eyes.png",
+                                      height: 54.h,
+                                      width: 53.w,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/party.png",
+                                      height: 54.h,
+                                      width: 53.w,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/smiling face with smiling eyes.png",
+                                      height: 54.h,
+                                      width: 53.w,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -152,6 +195,7 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                             color: AppColors.light_black,
                             borderRadius: BorderRadius.circular(9)),
                         child: SingleChildScrollView(
+                          physics: PageScrollPhysics(),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [

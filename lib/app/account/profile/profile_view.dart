@@ -30,7 +30,7 @@ class ProfileView extends StatelessWidget {
               appBar: AppBar(
                 scrolledUnderElevation: 0,
                 automaticallyImplyLeading: false,
-                title: topBar(name: 'Account'),
+                title: topBar(name: 'Account',showBackIcon: true),
               ),
               body: SafeArea(
                 child: SingleChildScrollView(

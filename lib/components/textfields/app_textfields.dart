@@ -22,8 +22,8 @@ class AppTextFields extends StatelessWidget {
   }) : super(key: key);
 
   final icon;
-  final double? width;
-  final double? height;
+  final width;
+  final height;
   final controller;
   final hintText;
   final type;
@@ -47,10 +47,9 @@ class AppTextFields extends StatelessWidget {
       decoration: InputDecoration(
         prefixIcon: icon != null
             ? Padding(
-                padding: EdgeInsets.only(left: 23.w),
+                padding: EdgeInsets.only(left: 23.w, right: 14),
                 child: SvgPicture.asset(
                   icon!,
-                  fit: BoxFit.scaleDown,
                   width: width,
                   height: height,
                   color: color,
