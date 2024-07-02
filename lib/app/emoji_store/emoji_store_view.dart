@@ -26,6 +26,7 @@ class _EmojiStoreViewState extends State<EmojiStoreView> {
                 forceMaterialTransparency: true,
                 title: topBar(
                   name: "Emoji store",
+                  showBackIcon: false,
                 ),
               ),
               body: SafeArea(

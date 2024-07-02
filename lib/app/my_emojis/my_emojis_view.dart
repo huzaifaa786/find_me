@@ -33,80 +33,131 @@ class _MyEmojisViewState extends State<MyEmojisView> {
               ),
               body: SafeArea(
                   child: SingleChildScrollView(
-                      child: Column(
-                children: [
-                  Gap(61.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      AppText(
-                        title: "Recent",
-                        fontWeight: FontWeight.w600,
-                        size: 16,
-                      ),
-                    ],
-                  ),
-                  Gap(18.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Image.asset(
-                          "assets/images/stuck_out_tongue _winking_eye.png",height: 55.h,width: 55.w,),
-                      Image.asset("assets/images/angry.png",height: 55.h,width: 55.w,),
-                      Image.asset("assets/images/loving.png",height: 55.h,width: 55.w,),
-                      Image.asset("assets/images/sunglass.png",height: 55.h,width: 55.w,),
-                      Image.asset("assets/images/pink_flowers.png",height: 55.h,width: 55.w,),
-                    ],
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Image.asset("assets/images/yellow_ flowers.png",height: 55.h,width: 55.w,),
-                      Image.asset("assets/images/diamond.png",height: 55.h,width: 55.w,),
-                    ],
-                  ),
-                  Gap(32.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      AppText(
-                        title: "Favorites",
-                        fontWeight: FontWeight.w600,
-                        size: 16,
-                      ),
-                    ],
-                  ),
-                  Gap(14.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Image.asset("assets/images/smiling_face_with _halo.png",height: 50.h,width: 52.w,),
-                      Image.asset("assets/images/angry_emoji.png",height: 50.h,width: 52.w),
-                      Image.asset("assets/images/heart_emoji.png",height: 46.h,width: 49.w,),
-                      Image.asset("assets/images/cold_emoji.png",height: 54.h,width: 53.w,),
-                      Image.asset("assets/images/star_struck.png",height: 50.h,width: 52.w,),
-                    ],
-                  ),
-                  Gap(40),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      AppText(
-                        title: "Purchased",
-                        fontWeight: FontWeight.w600,
-                        size: 16,
-                      ),
-                    ],
-                  ),
-                  Gap(25),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Image.asset("assets/images/blue_heart.png"),
-                      Image.asset("assets/images/cold_angry_emoji.png"),
-                    ],
-                  ),
-                ],
+                      child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Column(
+                  children: [
+                    Gap(61.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        AppText(
+                          title: "Recent",
+                          fontWeight: FontWeight.w600,
+                          size: 16,
+                        ),
+                      ],
+                    ),
+                    Gap(18.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Image.asset(
+                          "assets/images/stuck_out_tongue _winking_eye.png",
+                          height: 55.h,
+                          width: 55.w,
+                        ),
+                        Image.asset(
+                          "assets/images/angry.png",
+                          height: 55.h,
+                          width: 55.w,
+                        ),
+                        Image.asset(
+                          "assets/images/loving.png",
+                          height: 55.h,
+                          width: 55.w,
+                        ),
+                        Image.asset(
+                          "assets/images/sunglass.png",
+                          height: 55.h,
+                          width: 55.w,
+                        ),
+                        Image.asset(
+                          "assets/images/pink_flowers.png",
+                          height: 55.h,
+                          width: 55.w,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Gap(16.w),
+                        Image.asset(
+                          "assets/images/yellow_ flowers.png",
+                          height: 55.h,
+                          width: 55.w,
+                        ),
+                        Gap(11.w),
+                        Image.asset(
+                          "assets/images/diamond.png",
+                          height: 55.h,
+                          width: 55.w,
+                        ),
+                      ],
+                    ),
+                    Gap(32.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        AppText(
+                          title: "Favorites",
+                          fontWeight: FontWeight.w600,
+                          size: 16,
+                        ),
+                      ],
+                    ),
+                    Gap(14.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Image.asset(
+                          "assets/images/smiling_face_with _halo.png",
+                          height: 50.h,
+                          width: 52.w,
+                        ),
+                        Image.asset("assets/images/angry_emoji.png",
+                            height: 50.h, width: 52.w),
+                        Image.asset(
+                          "assets/images/heart_emoji.png",
+                          height: 46.h,
+                          width: 49.w,
+                        ),
+                        Image.asset(
+                          "assets/images/cold_emoji.png",
+                          height: 54.h,
+                          width: 53.w,
+                        ),
+                        Image.asset(
+                          "assets/images/star_struck.png",
+                          height: 50.h,
+                          width: 52.w,
+                        ),
+                      ],
+                    ),
+                    Gap(40),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        AppText(
+                          title: "Purchased",
+                          fontWeight: FontWeight.w600,
+                          size: 16.sp,
+                        ),
+                      ],
+                    ),
+                    Gap(25.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Gap(16.w),
+                        Image.asset("assets/images/blue_heart.png"),
+                        Gap(12.w),
+                        Image.asset("assets/images/cold_angry_emoji.png"),
+                      ],
+                    ),
+                  ],
+                ),
               ))),
             ));
   }
