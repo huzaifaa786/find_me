@@ -394,9 +394,10 @@ class HomeView extends StatelessWidget {
                                                               child:
                                                                   CachedNetworkImage(
                                                                 imageUrl: controller
-                                                                        .dropdownItems[
+                                                                        .scannedUsers[
                                                                             index]
-                                                                        .avatarUrl ??
+                                                                        .currentProfile!
+                                                                        .imageUrl ??
                                                                     '',
                                                                 fit: BoxFit
                                                                     .cover,
@@ -431,9 +432,10 @@ class HomeView extends StatelessWidget {
                                                           Gap(5.w),
                                                           AppText(
                                                             title: controller
-                                                                .dropdownItems[
+                                                                .scannedUsers[
                                                                     index]
-                                                                .text!,
+                                                                .currentProfile!
+                                                                .name!,
                                                             fontWeight:
                                                                 FontWeight.w500,
                                                             size: 10.sp,
@@ -465,9 +467,10 @@ class HomeView extends StatelessWidget {
                                                             Gap(5.w),
                                                             AppText(
                                                               title: controller
-                                                                      .dropdownItems[
+                                                                      .scannedUsers[
                                                                           index]
-                                                                      .text ??
+                                                                      .currentProfile!
+                                                                      .name ??
                                                                   '',
                                                               size: 8,
                                                               fontWeight:
@@ -489,9 +492,11 @@ class HomeView extends StatelessWidget {
                                                   children: [
                                                     SwipeToSendButton(
                                                       onSend: () {
-                                                        // Handle send action here
-                                                        print(
-                                                            'Send action triggered!');
+                                                        controller.showPopUp(
+                                                            controller
+                                                                .scannedUsers[
+                                                                    index]
+                                                                .beaconId!);
                                                       },
                                                     ),
                                                   ],

@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:find_me/api/auth_api.dart/user_api.dart';
 import 'package:find_me/api/bluetooth_api/bluetooth_users_api.dart';
+import 'package:find_me/components/popups/profile_request_popup.dart';
 import 'package:find_me/models/user_model.dart';
 import 'package:find_me/utils/images/ui_utils/ui_utils.dart';
 import 'package:find_me/utils/ui_utils.dart';
@@ -16,8 +18,10 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter_ble_peripheral/src/models/periodic_advertise_settings.dart';
 import 'package:permission_handler/permission_handler.dart';
+// ignore: implementation_imports
+import 'package:flutter_ble_peripheral/src/models/periodic_advertise_settings.dart';
+import 'package:pusher_channels_flutter/pusher_channels_flutter.dart';
 
 class HomeController extends GetxController {
   static HomeController instance = Get.find();
@@ -69,6 +73,7 @@ class HomeController extends GetxController {
     // WidgetsBinding.instance.addObserver(this);
     initPlatformState();
     getUser();
+    initPusher();
     super.onInit();
   }
 
@@ -111,9 +116,15 @@ class HomeController extends GetxController {
 
   Future<void> initPlatformState() async {
     isSupported = await FlutterBlePeripheral().isSupported;
-    await Permission.bluetoothAdvertise.request();
-    await Permission.bluetoothConnect.request();
-    await Permission.locationWhenInUse.request();
+    await requestPermissions();
+
+    if (!await FlutterBluePlus.isOn) {
+      await FlutterBluePlus.turnOn();
+    }
+
+    if (!await Permission.locationWhenInUse.isGranted) {
+      await Permission.locationWhenInUse.request();
+    }
 
     String id = box.read('beacon_id');
     advertiseData = AdvertiseData(
@@ -127,7 +138,20 @@ class HomeController extends GetxController {
     startPeriodicAdvertising(); // Start the periodic advertising
   }
 
-  void startPeriodicAdvertising() {
+  Future<void> startPeriodicAdvertising() async {
+    if (!await FlutterBluePlus.isOn) {
+      Get.snackbar("Bluetooth", "Please turn on Bluetooth to start advertising",
+          snackPosition: SnackPosition.BOTTOM);
+      return;
+    }
+
+    if (!await Permission.locationWhenInUse.isGranted) {
+      Get.snackbar(
+          "Location", "Please turn on location services to start advertising",
+          snackPosition: SnackPosition.BOTTOM);
+      return;
+    }
+
     _advertisingTimer?.cancel(); // Cancel any existing timer
     _advertisingTimer = Timer.periodic(Duration(seconds: 5), (timer) async {
       await FlutterBlePeripheral().start(
@@ -145,7 +169,6 @@ class HomeController extends GetxController {
   }
 
   Future<void> toggleAdvertise() async {
-    print("HRRRRRR");
     if (await FlutterBlePeripheral().isAdvertising) {
       await FlutterBlePeripheral().stop();
     } else {
@@ -163,16 +186,16 @@ class HomeController extends GetxController {
   }
 
   Future<void> requestPermissions() async {
-    final hasPermission = await FlutterBlePeripheral().hasPermission();
-    switch (hasPermission) {
-      case BluetoothPeripheralState.denied:
-        UiUtilites.errorSnackbar(
-            "Permissions!", "We don't have permissions, requesting now!");
-        await requestPermissions();
-        break;
-      default:
-        UiUtilites.successSnackbar("Permissions!", 'State: $hasPermission!');
-        break;
+    final permissions = [
+      Permission.bluetoothAdvertise,
+      Permission.bluetoothConnect,
+      Permission.locationWhenInUse,
+    ];
+
+    for (var permission in permissions) {
+      if (!await permission.isGranted) {
+        await permission.request();
+      }
     }
   }
 
@@ -200,6 +223,7 @@ class HomeController extends GetxController {
     await Permission.bluetoothScan.request();
     // FlutterBluePlus.setLogLevel(LogLevel.verbose, color: true);
     serviceDataKeys = [];
+    scannedUsers = [];
     update();
     if (await FlutterBluePlus.isSupported == false) {
       print("Bluetooth not supported by this device");
@@ -256,7 +280,7 @@ class HomeController extends GetxController {
     }
     await FlutterBluePlus.startScan(
         // *or* any of the specified names
-        timeout: Duration(seconds: 10));
+        timeout: Duration(seconds: 5));
     await FlutterBluePlus.isScanning.where((val) => val == false).first;
 
     serviceDataKeys = serviceDataKeys.toSet().toList();
@@ -274,6 +298,87 @@ class HomeController extends GetxController {
       }
     }
     update();
+  }
+
+  showPopUp(String beaconId) async {
+    final response = await UserApi.showPopup(beaconId);
+    if (response.isNotEmpty) {}
+  }
+
+  // pusher start
+  PusherChannelsFlutter pusher = PusherChannelsFlutter.getInstance();
+  initPusher() async {
+    try {
+      await pusher.init(
+        apiKey: "6f60a485866f4c65caac",
+        cluster: "ap2",
+        onConnectionStateChange: onConnectionStateChange,
+        onError: onError,
+        onSubscriptionSucceeded: onSubscriptionSucceeded,
+        onEvent: onEvent,
+        onSubscriptionError: onSubscriptionError,
+        onDecryptionFailure: onDecryptionFailure,
+        onMemberAdded: onMemberAdded,
+        onMemberRemoved: onMemberRemoved,
+        onAuthorizer: onAuthorizer,
+      );
+      String id = box.read('beacon_id');
+      await pusher.subscribe(channelName: 'user.$id');
+      await pusher.connect();
+    } catch (e) {
+      log("error in initialization: $e");
+    }
+  }
+
+  void onError(String message, int? code, dynamic e) {
+    log("onError: $message code: $code exception: $e");
+  }
+
+  void onConnectionStateChange(dynamic currentState, dynamic previousState) {
+    log("Connection: $currentState");
+  }
+
+  void onMemberRemoved(String channelName, PusherMember member) {
+    log("onMemberRemoved: $channelName member: $member");
+  }
+
+  void onMemberAdded(String channelName, PusherMember member) {
+    log("onMemberAdded: $channelName member: $member");
+  }
+
+  void onSubscriptionSucceeded(String channelName, dynamic data) {
+    log("onSubscriptionSucceeded: $channelName data: $data");
+  }
+
+  void onSubscriptionError(String message, dynamic e) {
+    log("onSubscriptionError: $message Exception: $e");
+  }
+
+  void onEvent(PusherEvent event) {
+    if (event.data != null && event.eventName == "my-event") {
+      Map<String, dynamic> data = json.decode(event.data!);
+      UserModel user = UserModel.fromJson(data['user']);
+      showPopup(data['message'],user);
+    }
+  }
+
+  void onDecryptionFailure(String event, String reason) {
+    log("onDecryptionFailure: $event reason: $reason");
+  }
+
+  dynamic onAuthorizer(
+      String channelName, String socketId, dynamic options) async {
+    log('Channel Name: $channelName, Socket Id: $socketId, Options: $options');
+  }
+
+  void showPopup(String message,UserModel user) {
+    Get.dialog(
+      ProfileRequestPopup(
+        name: user.currentProfile!.name!,
+        imageUrl: 'https://avatar.iran.liara.run/public/boy?username=${user.currentProfile!.name!}',
+        requestMessage: 'Would like to take a look at your "Profile".',
+      ),
+    );
   }
 }
 
