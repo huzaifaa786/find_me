@@ -10,7 +10,7 @@ import 'package:permission_handler/permission_handler.dart';
 // ignore: implementation_imports
 import 'package:flutter_ble_peripheral/src/models/periodic_advertise_settings.dart';
 
-class BeaconBroadcasterController extends GetxController {
+class BeaconBroadcasterController extends GetxController with WidgetsBindingObserver {
   static BeaconBroadcasterController instance = Get.find();
   TextEditingController emailController = TextEditingController();
   GetStorage box = GetStorage();
@@ -40,25 +40,32 @@ class BeaconBroadcasterController extends GetxController {
 
   @override
   void onInit() {
-    initPlatformState();
-
     super.onInit();
+    WidgetsBinding.instance.addObserver(this);
+    initPlatformState();
   }
 
   @override
-  void onClose() async {
-    await FlutterBlePeripheral().stop();
-    _advertisingTimer
-        ?.cancel(); // Cancel the timer when the controller is closed
+  void onClose() {
     super.onClose();
+    WidgetsBinding.instance.removeObserver(this);
+    stopPeriodicAdvertising();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      startPeriodicAdvertising();
+    } else if (state == AppLifecycleState.paused) {
+      stopPeriodicAdvertising();
+    }
   }
 
   Future<void> initPlatformState() async {
-    final _isSupported = await FlutterBlePeripheral().isSupported;
+    isSupported = await FlutterBlePeripheral().isSupported;
     await Permission.bluetoothAdvertise.request();
     await Permission.bluetoothConnect.request();
     await Permission.locationWhenInUse.request();
-    isSupported = _isSupported;
 
     String id = box.read('beacon_id');
     advertiseData = AdvertiseData(
@@ -84,6 +91,11 @@ class BeaconBroadcasterController extends GetxController {
     });
   }
 
+  void stopPeriodicAdvertising() async {
+    _advertisingTimer?.cancel(); // Cancel the timer
+    await FlutterBlePeripheral().stop(); // Stop advertising
+  }
+
   Future<void> toggleAdvertise() async {
     print("HRRRRRR");
     if (await FlutterBlePeripheral().isAdvertising) {
@@ -96,21 +108,6 @@ class BeaconBroadcasterController extends GetxController {
           advertisePeriodicData: advertiseData,
           periodicAdvertiseSettings: periodicAdvertiseSettings,
         );
-      } catch (e) {
-        print('Error starting advertising set: $e');
-      }
-    }
-  }
-
-  Future<void> toggleAdvertiseSet() async {
-    if (await FlutterBlePeripheral().isAdvertising) {
-      await FlutterBlePeripheral().stop();
-    } else {
-      try {
-        await FlutterBlePeripheral().start(
-            advertiseData: advertiseData,
-            advertiseSetParameters: advertiseSetParameters,
-            advertiseSettings: advertiseSettings);
       } catch (e) {
         print('Error starting advertising set: $e');
       }

@@ -61,6 +61,7 @@ dependencies:
     git:
       url: https://github.com/huzaifaa786/intl_phone_field
   permission_handler: ^11.3.1
+  pusher_channels_flutter: ^2.2.1
   uuid: ^4.4.0
   workmanager: ^0.5.2
 dev_dependencies:

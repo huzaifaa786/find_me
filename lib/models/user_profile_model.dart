@@ -5,7 +5,6 @@ class UserProfileModel {
   String? imageUrl;
   String? username;
 
-
   UserProfileModel({
     required this.id,
     this.name,
@@ -18,7 +17,8 @@ class UserProfileModel {
     return UserProfileModel(
       id: json['id'],
       name: json['name'] ?? '',
-      imageUrl: json['image'],
+      imageUrl: json['image'] ??
+          'https://avatar.iran.liara.run/public/boy?username=${json['name']}',
       username: json['username'] ?? '',
       bio: json['bio'] ?? '',
     );
