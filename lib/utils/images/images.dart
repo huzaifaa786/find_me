@@ -17,12 +17,12 @@ class ImagesConst {
   static const eyeOff = 'assets/icons/eye-off.svg';
   static const imageicon = 'assets/images/image (1).png';
   static const tickicon = 'assets/images/Check.png';
- 
- 
+
   //* images
 
   //* Gifs
   static const splashGif = "assets/gifs/splash.gif";
   static const introGif = 'assets/gifs/intro.gif';
   static const homeGif = 'assets/gifs/home.gif';
+  static const registreted_successfully_gif = "";
 }

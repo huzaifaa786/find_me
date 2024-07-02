@@ -74,18 +74,17 @@ class UiUtilites {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset(ImagesConst.tickicon),
-                      AppText(
-                        title: 'Thank You!',
-                        textAlign: TextAlign.center,
-                        fontWeight: FontWeight.w500,
+                      Image.asset(
+                        ImagesConst.registreted_successfully_gif,
+                        height: 121,
+                        width: 112,
+                        fit: BoxFit.cover,
                       ),
                     ],
                   ),
                   Gap(11),
                   AppText(
-                    title:
-                        'Your feedback helps make the app\n better for everyone. ',
+                    title: 'You have registreted successfully!',
                     textAlign: TextAlign.center,
                     fontWeight: FontWeight.w400,
                     size: 10.sp,
