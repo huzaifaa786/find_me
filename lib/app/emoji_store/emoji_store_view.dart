@@ -24,7 +24,9 @@ class _EmojiStoreViewState extends State<EmojiStoreView> {
               appBar: AppBar(
                 automaticallyImplyLeading: false,
                 forceMaterialTransparency: true,
-                title: topBar(name: "Emoji store", showBackIcon: true),
+                title: topBar(
+                  name: "Emoji store",
+                ),
               ),
               body: SafeArea(
                   child: Padding(
@@ -60,7 +62,7 @@ class _EmojiStoreViewState extends State<EmojiStoreView> {
                           subtitle: "Favorites & purchased.",
                           show: true,
                           onTap: () {
-                            Get.toNamed(AppRoutes.edit_menu);
+                            Get.toNamed(AppRoutes.my_emojis);
                           },
                         ),
                       ],
@@ -80,7 +82,7 @@ class _EmojiStoreViewState extends State<EmojiStoreView> {
                           iconWidth: 64.0.w,
                           show: false,
                           onTap: () {
-                            Get.toNamed(AppRoutes.edit_menu);
+                            Get.toNamed(AppRoutes.gifted_emoji);
                           },
                         ),
                       ],

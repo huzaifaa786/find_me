@@ -75,7 +75,8 @@ class HomeView extends StatelessWidget {
                             ),
                             elevation: 1,
                             hint: AppText(
-                              title: "Appears as  ${controller.userModel!.name ?? ''}",
+                              title:
+                                  "Appears as  ${controller.userModel!.name ?? ''}",
                               color: AppColors.primary_color,
                               size: 14.sp,
                               fontWeight: FontWeight.w500,
@@ -101,7 +102,7 @@ class HomeView extends StatelessWidget {
                                         ),
                                         Gap(10.w),
                                         Text(
-                                          item.text??'',
+                                          item.text ?? '',
                                           overflow: TextOverflow.ellipsis,
                                           textAlign: TextAlign.justify,
                                         ),
@@ -336,8 +337,9 @@ class HomeView extends StatelessWidget {
                                           ],
                                         ),
                                         content: ConstrainedBox(
-                                          constraints:
-                                              BoxConstraints(maxHeight: 260.h, minHeight: 150.h),
+                                          constraints: BoxConstraints(
+                                              maxHeight: 260.h,
+                                              minHeight: 150.h),
                                           child: Container(
                                             width: 420.w,
                                             // padding:EdgeInsets.symmetric(horizontal: 20),
@@ -362,9 +364,10 @@ class HomeView extends StatelessWidget {
                                                         child:
                                                             CachedNetworkImage(
                                                           imageUrl: controller
-                                                              .dropdownItems[
-                                                                  index]
-                                                              .avatarUrl?? '',
+                                                                  .dropdownItems[
+                                                                      index]
+                                                                  .avatarUrl ??
+                                                              '',
                                                           fit: BoxFit.cover,
                                                           width: 100,
                                                           height: 100,
@@ -408,8 +411,9 @@ class HomeView extends StatelessWidget {
                                                   height: 43.h,
                                                   width: 183.w,
                                                   decoration: BoxDecoration(
-                                                      color:
-                                                          AppColors.light_blue.withOpacity(0.25),
+                                                      color: AppColors
+                                                          .light_blue
+                                                          .withOpacity(0.25),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               11)),
@@ -425,9 +429,10 @@ class HomeView extends StatelessWidget {
                                                       Gap(5.w),
                                                       AppText(
                                                         title: controller
-                                                            .dropdownItems[
-                                                                index]
-                                                            .text?? '',
+                                                                .dropdownItems[
+                                                                    index]
+                                                                .text ??
+                                                            '',
                                                         size: 8,
                                                         fontWeight:
                                                             FontWeight.w500,

@@ -28,6 +28,8 @@ import 'package:find_me/app/edit_url/edit_url_binding.dart';
 import 'package:find_me/app/edit_url/edit_url_view.dart';
 import 'package:find_me/app/emoji_menu/emoji_menu_bindings.dart';
 import 'package:find_me/app/emoji_menu/emoji_menu_view.dart';
+import 'package:find_me/app/gifted_emoji/gifted_emoji_binding.dart';
+import 'package:find_me/app/gifted_emoji/gifted_emoji_view.dart';
 import 'package:find_me/app/home/home_binding.dart';
 import 'package:find_me/app/home/home_view.dart';
 import 'package:find_me/app/intro/intro_binding.dart';
@@ -38,6 +40,8 @@ import 'package:find_me/app/location/location_binding.dart';
 import 'package:find_me/app/location/location_view.dart';
 import 'package:find_me/app/main_view/main_binding.dart';
 import 'package:find_me/app/main_view/main_view.dart';
+import 'package:find_me/app/my_emojis/my_emojis_binding.dart';
+import 'package:find_me/app/my_emojis/my_emojis_view.dart';
 import 'package:find_me/app/notifications/notifications_binding.dart';
 import 'package:find_me/app/notifications/notifications_view.dart';
 import 'package:find_me/app/notifications_permissions/notifications_permissions_binding.dart';
@@ -301,10 +305,27 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
+    //TODO: [EmojiMenu Route]
      GetPage(
       name: AppRoutes.edit_menu,
       page: () => EmojiMenuView(),
       binding:EmojiMenuBindings(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+    //TODO: [Gifted_Emoji Route]
+     GetPage(
+      name: AppRoutes.gifted_emoji,
+      page: () => GiftedEmojiView(),
+      binding:GiftedEmojiBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+    //TODO: [My_Emojis Route]
+     GetPage(
+      name: AppRoutes.my_emojis,
+      page: () => MyEmojisView(),
+      binding:MyEmojisBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),

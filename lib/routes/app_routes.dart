@@ -29,4 +29,6 @@ class AppRoutes {
   static const privacy = '/privacy';
   static const notificationsPermissions = '/notificationsPermissions';
   static const edit_menu = '/edit_menu';
+  static const my_emojis = '/my_emojis';
+  static const gifted_emoji = '/gifted_emoji';
 }
