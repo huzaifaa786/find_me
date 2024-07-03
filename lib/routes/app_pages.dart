@@ -18,8 +18,8 @@ import 'package:find_me/app/beacon/beacon_broadcaster/beacon_broadcaster_binding
 import 'package:find_me/app/beacon/beacon_broadcaster/beacon_broadcaster_view.dart';
 import 'package:find_me/app/beacon/beacon_scanner/beacon_scanner_binding.dart';
 import 'package:find_me/app/beacon/beacon_scanner/beacon_scanner_view.dart';
-import 'package:find_me/app/change_email/change_email_binding.dart';
-import 'package:find_me/app/change_email/change_email_view.dart';
+import 'package:find_me/app/updata_phone_number%5D/updata_phone_number_binding.dart';
+import 'package:find_me/app/updata_phone_number%5D/updata_phone_number_view.dart';
 import 'package:find_me/app/create_business_card/create_card_binding.dart';
 import 'package:find_me/app/create_business_card/create_card_view.dart';
 import 'package:find_me/app/edit_profile/edit_profile_binding.dart';
@@ -221,9 +221,9 @@ class AppPages {
     ),
     //TODO: [change email Route]
     GetPage(
-      name: AppRoutes.change_email,
-      page: () => const ChangeEmailView(),
-      binding: ChangeEmailBinding(),
+      name: AppRoutes.updata_phone_Number,
+      page: () => const UpdataPhoneNumberView(),
+      binding: UpdataPhoneNumberBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
@@ -281,7 +281,7 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
-  //TODO: [Subscriptions Route]
+    //TODO: [Subscriptions Route]
     GetPage(
       name: AppRoutes.subscriptions,
       page: () => const SubscriptionsView(),
@@ -292,7 +292,7 @@ class AppPages {
     //TODO: [Privacy  Route]
     GetPage(
       name: AppRoutes.privacy,
-      page: () =>  PrivacyView(),
+      page: () => PrivacyView(),
       binding: PrivacyBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
@@ -300,36 +300,34 @@ class AppPages {
     //TODO: [NotificationsPermissions  Route]
     GetPage(
       name: AppRoutes.notificationsPermissions,
-      page: () =>  NotificationsPermissionsView(),
+      page: () => NotificationsPermissionsView(),
       binding: NotificationsPermissionsBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
     //TODO: [EmojiMenu Route]
-     GetPage(
+    GetPage(
       name: AppRoutes.edit_menu,
       page: () => EmojiMenuView(),
-      binding:EmojiMenuBindings(),
+      binding: EmojiMenuBindings(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
     //TODO: [Gifted_Emoji Route]
-     GetPage(
+    GetPage(
       name: AppRoutes.gifted_emoji,
       page: () => GiftedEmojiView(),
-      binding:GiftedEmojiBinding(),
+      binding: GiftedEmojiBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
     //TODO: [My_Emojis Route]
-     GetPage(
+    GetPage(
       name: AppRoutes.my_emojis,
       page: () => MyEmojisView(),
-      binding:MyEmojisBinding(),
+      binding: MyEmojisBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
-    
-
   ];
 }

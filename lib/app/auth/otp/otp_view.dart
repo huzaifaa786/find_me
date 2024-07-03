@@ -23,7 +23,10 @@ class OtpView extends StatelessWidget {
           appBar: AppBar(
             automaticallyImplyLeading: false,
             scrolledUnderElevation: 0,
-            title: topBar(name: '', showBackIcon: true,),
+            title: topBar(
+              name: '',
+              showBackIcon: true,
+            ),
           ),
           body: SafeArea(
             child: Padding(
@@ -98,7 +101,7 @@ class OtpView extends StatelessWidget {
                 Gap(30),
                 GestureDetector(
                   onTap: () {
-                    Get.toNamed(AppRoutes.sociallogin);
+                    Get.toNamed(AppRoutes.updata_phone_Number);
                   },
                   child: AppText(
                     title: 'send code'.tr,

@@ -1,59 +1,31 @@
-import 'dart:developer';
-
 import 'package:find_me/services/dio_service.dart';
 import 'package:find_me/utils/base_url.dart';
 
-
 class ForgotPasswordApi {
   static Future<Map<String, dynamic>> forgotpassword({
-    String? email,
+    required String phone,
   }) async {
-    //* URL
-    String url = '${baseUrl}/forgetpassword';
-
-    //* DATA
-    var data = {
-      'email': email,
-    };
-
-    //! Make the POST request using ApiService
+    String url = '$baseUrl/forgetpassword';
+    var data = {'phone': phone};
     var response = await DioService.post(url: url, data: data);
-    
     return response;
   }
 
-  ////////////////////////////////////////////////
   static Future<Map<String, dynamic>> verifyotp({
-    String? otp,
+    required String otp,
   }) async {
-    //* URL
-    String url = '${baseUrl}/verifyOtp';
-
-    //* DATA
-    var data = {
-      'otp': otp,
-    };
-
-    //! Make the POST request using ApiService
+    String url = '$baseUrl/verifyOtp';
+    var data = {'otp': otp};
     var response = await DioService.post(url: url, data: data);
     return response;
   }
 
-  ////////////////////////////////////////////////
   static Future<Map<String, dynamic>> updatepassword({
-    String? email,
-    String? password,
+    required String phone,
+    required String password,
   }) async {
-    //* URL
-    String url = '${baseUrl}/forgetUpdatePassword';
-
-    //* DATA
-    var data = {
-      'email': email,
-      'password': password,
-    };
-
-    //! Make the POST request using ApiService
+    String url = '$baseUrl/forgetUpdatePassword';
+    var data = {'phone': phone, 'password': password};
     var response = await DioService.post(url: url, data: data);
     return response;
   }

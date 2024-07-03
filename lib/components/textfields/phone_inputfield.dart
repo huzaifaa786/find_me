@@ -15,9 +15,11 @@ class PhoneInputField extends StatelessWidget {
   final String? errorText;
   final controller;
   final ValueChanged<Country> onCountryChanged;
+  final double height;
 
   const PhoneInputField({
     super.key,
+    this.height = 50,
     required this.onChanged,
     required this.onCountryChanged,
     this.errorText,
@@ -31,7 +33,7 @@ class PhoneInputField extends StatelessWidget {
       children: [
         Container(
           width: Get.width,
-          height: 50.h,
+          height: height,
           decoration: errorText!.isNotEmpty
               ? errorInputContainerDecoration
               : inputContainerDecoration,
@@ -45,8 +47,8 @@ class PhoneInputField extends StatelessWidget {
               size: 24.h,
             ),
             dropdownIconPosition: IconPosition.trailing,
-            flagsButtonMargin:
-                EdgeInsets.only(left: 10.w, right: 10.w, top: 16.h, bottom: 8.h),
+            flagsButtonMargin: EdgeInsets.only(
+                left: 10.w, right: 10.w, top: 16.h, bottom: 8.h),
             dropdownDecoration: BoxDecoration(
               border: Border(
                 right: BorderSide(
@@ -72,8 +74,7 @@ class PhoneInputField extends StatelessWidget {
                 borderRadius: BorderRadius.circular(30.r),
               ),
               errorBorder: OutlineInputBorder(
-                borderSide:
-                     BorderSide(color: Colors.transparent, width: 0.5.w),
+                borderSide: BorderSide(color: Colors.transparent, width: 0.5.w),
                 borderRadius: BorderRadius.circular(30.r),
               ),
               focusedErrorBorder: OutlineInputBorder(

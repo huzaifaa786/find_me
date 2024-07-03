@@ -48,6 +48,7 @@ class SignUpController extends GetxController {
     pcontroller.clear();
     update();
     if (checkphoneController != null) phoneValidation(checkphoneController);
+    
   }
 
   phoneValidation(phone) {

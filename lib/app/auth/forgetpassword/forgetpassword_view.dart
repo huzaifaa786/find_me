@@ -4,6 +4,7 @@ import 'package:find_me/app/auth/forgetpassword/forgetpassword_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/buttons/app_button.dart';
 import 'package:find_me/components/textfields/app_textfields.dart';
+import 'package:find_me/components/textfields/phone_inputfield.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/images/images.dart';
@@ -23,7 +24,7 @@ class ForgetPasswordView extends StatefulWidget {
 class _ForgetPasswordViewState extends State<ForgetPasswordView> {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<ForgetPaswordController>(
+    return GetBuilder<ForgetPasswordController>(
         builder: (controller) => Scaffold(
               appBar: AppBar(
                 automaticallyImplyLeading: false,
@@ -52,26 +53,39 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         AppText(
-                          title: 'Enter your registered email!',
+                          title: 'Enter your registered Phone Number!',
                           fontWeight: FontWeight.w500,
                           size: 13.sp,
                         )
                       ],
                     ),
                     Gap(50.h),
-                    AppTextFields(
-                      hintText: 'Email',
-                      controller: controller.emailController,
+                    PhoneInputField(
+                      onCountryChanged: controller.onCountryChanged,
+                      errorText: controller.invalidNumberMessage,
+                      onChanged: controller.phoneValidation,
+                      controller: controller.pcontroller,
                     ),
                     Gap(40.h),
                     AppButton(
                       title: 'Confirm',
                       height: 50.0.h,
                       width: 304.0.w,
-                      onTap: () {
-                        Get.toNamed(AppRoutes.otp);
+                      onTap: () async {
+                        await controller.forgetPasswordUser();
+                        if (controller.isCodeEntered) {
+                          Get.toNamed(AppRoutes.otp);
+                        }
                       },
                     ),
+                    if (controller.invalidNumberMessage.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10.0),
+                        child: Text(
+                          controller.invalidNumberMessage,
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      )
                   ],
                 ),
               )),
