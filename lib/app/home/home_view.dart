@@ -518,7 +518,7 @@ class HomeView extends StatelessWidget {
                     Gap(25.h),
                   ],
                 )
-              : CircularProgressIndicator(),
+              : Center(child: Text('')),
         ),
       ),
     );

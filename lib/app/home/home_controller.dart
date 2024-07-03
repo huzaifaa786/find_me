@@ -57,9 +57,7 @@ class HomeController extends GetxController {
   bool isShowSticker = false;
   String imageUrl = "";
   UserModel? userModel;
-
   bool isSearching = false;
-
   var dropdownItems = <DropdownItem>[];
   DropdownItem selectedItem = DropdownItem(
     avatarUrl:

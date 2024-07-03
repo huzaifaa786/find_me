@@ -106,7 +106,13 @@ class _EditUrlViewState extends State<EditUrlView> {
                           height: 30.h,
                         ),
                         Gap(47),
-                        AppButton(height: 46.h, width: 280.w, title: "Update"),
+                        AppButton(
+                            onTap: () {
+                              controller.updateUrls();
+                            },
+                            height: 46.h,
+                            width: 280.w,
+                            title: "Update"),
                         Gap(104),
                       ],
                     ),
