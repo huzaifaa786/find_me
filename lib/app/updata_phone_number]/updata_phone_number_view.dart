@@ -25,7 +25,7 @@ class UpdataPhoneNumberView extends StatelessWidget {
               appBar: AppBar(
                 automaticallyImplyLeading: false,
                 scrolledUnderElevation: 0,
-                title: topBar(name: 'Change email'),
+                title: topBar(name: 'New Password'),
               ),
               body: SafeArea(
                   child: Container(
