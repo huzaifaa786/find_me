@@ -24,5 +24,5 @@ class ImagesConst {
   static const splashGif = "assets/gifs/splash.gif";
   static const introGif = 'assets/gifs/intro.gif';
   static const homeGif = 'assets/gifs/home.gif';
-  static const registreted_successfully_gif = "";
+  static const registreted_successfully_gif = "assets/gifs/Successfully Done.gif";
 }

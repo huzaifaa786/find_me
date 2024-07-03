@@ -23,7 +23,7 @@ class OtpView extends StatelessWidget {
           appBar: AppBar(
             automaticallyImplyLeading: false,
             scrolledUnderElevation: 0,
-            title: topBar(name: ''),
+            title: topBar(name: '', showBackIcon: true,),
           ),
           body: SafeArea(
             child: Padding(
@@ -92,7 +92,6 @@ class OtpView extends StatelessWidget {
                       if (controller.areFieldsFilled) {
                         controller.verifyOtp();
                       }
-                      
                     },
                   ),
                 ),

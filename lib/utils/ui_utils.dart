@@ -52,45 +52,42 @@ class UiUtilites {
             surfaceTintColor: Colors.white,
             shape: RoundedRectangleBorder(
                 side: BorderSide(
-                  //color: Colors.transparent, style: BorderStyle.solid
-                  color: AppColors.primary_color,
-                ),
+                    color: Colors.transparent, style: BorderStyle.solid
+                    // color: AppColors.primary_color,
+                    ),
                 borderRadius: BorderRadius.all(Radius.circular(20))),
             // contentPadding: EdgeInsets.only(top: 10.0),
-            content: Container(
-              height: 105.h,
-              width: 100.w,
-              padding: EdgeInsets.only(left: 20, right: 20),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.all(Radius.circular(20.0)),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Gap(10.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        ImagesConst.registreted_successfully_gif,
-                        height: 121,
-                        width: 112,
-                        fit: BoxFit.cover,
-                      ),
-                    ],
-                  ),
-                  Gap(11),
-                  AppText(
-                    title: 'You have registreted successfully!',
-                    textAlign: TextAlign.center,
-                    fontWeight: FontWeight.w400,
-                    size: 10.sp,
-                  ),
-                ],
-              ),
+            content: Wrap(
+              children: [
+                Column(
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  // mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    // Gap(10.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        SvgPicture.asset("assets/icons/x-circle.svg"),
+                      ],
+                    ),
+                    Image.asset(
+                      ImagesConst.registreted_successfully_gif,
+                      height: 121,
+                      width: 112,
+                      fit: BoxFit.cover,
+                    ),
+                    // Gap(20),
+
+                    AppText(
+                      title: 'You have registreted \n successfully!',
+                      textAlign: TextAlign.center,
+                      fontWeight: FontWeight.w400,
+                      size: 14.sp,
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         );

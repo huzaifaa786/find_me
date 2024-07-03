@@ -107,25 +107,21 @@ class _PrivacyViewState extends State<PrivacyView> {
                                 });
                               },
                             ),
+                            TextSwitchButton(
+                                title: "Receive request",
+                                size: 12.sp,
+                                FontWeight: FontWeight.w400,
+                                value: controller.socialMediaRequest,
+                                ontoggle: (value) {
+                                  setState(() {
+                                    controller.socialMediaRequest = value;
+                                    if (value) {
+                                      controller.socialMediagrantAccess = false;
+                                    }
+                                  });
+                                }),
                           ]),
                       Gap(21),
-                      Row(
-                        children: [
-                          TextSwitchButton(
-                              title: "Receive request",
-                              size: 12.sp,
-                              FontWeight: FontWeight.w400,
-                              value: controller.socialMediaRequest,
-                              ontoggle: (value) {
-                                setState(() {
-                                  controller.socialMediaRequest = value;
-                                  if (value) {
-                                    controller.socialMediagrantAccess = false;
-                                  }
-                                });
-                              }),
-                        ],
-                      ),
                     ],
                   ),
                 ),
