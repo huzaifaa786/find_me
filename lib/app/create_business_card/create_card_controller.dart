@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:find_me/models/user_profile_model.dart';
+import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -11,7 +12,10 @@ import 'package:intl_phone_field/phone_number.dart';
 class CreateCardController extends GetxController {
   static CreateCardController instance = Get.find();
 
-  TextEditingController nameController = TextEditingController();
+  TextEditingController firstnameController = TextEditingController();
+  TextEditingController lastnameController = TextEditingController();
+  TextEditingController companyNameController = TextEditingController();
+  TextEditingController jobTitleController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController titleController = TextEditingController();
   TextEditingController instagramController = TextEditingController();
@@ -45,7 +49,31 @@ class CreateCardController extends GetxController {
     }
   }
 
+  bool _validateFields() {
+    if (firstnameController.text.isEmpty) {
+      UiUtilites.errorSnackbar('Validation Error', 'First name is required');
+      return false;
+    }
+    if (lastnameController.text.isEmpty) {
+      UiUtilites.errorSnackbar('Validation Error', 'Last name is required');
+      return false;
+    }
+    if (phoneController!.isNotEmpty) {
+      UiUtilites.errorSnackbar('Validation Error', 'Phone number is required');
+      return false;
+    }
+    if (emailController.text.isEmpty) {
+      UiUtilites.errorSnackbar('Validation Error', 'Email is required');
+      return false;
+    }
+    return true;
+  }
+
   Future<void> submitBusinessCard() async {
+    if (!_validateFields()) {
+      return;
+    }
+
     
   }
 

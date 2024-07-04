@@ -8,6 +8,7 @@ import 'package:find_me/components/buttons/app_button.dart';
 import 'package:find_me/components/buttons/prefix_icon_button.dart';
 import 'package:find_me/components/textfields/app_textfields.dart';
 import 'package:find_me/components/textfields/phone_inputfield.dart';
+import 'package:find_me/helpers/validator.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
@@ -47,49 +48,54 @@ class _CreateCardViewState extends State<CreateCardView> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Gap(23),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            height: 72.h,
-                            width: 79.w,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                width: 1,
-                                color: AppColors.primary_color,
-                              ),
-                              borderRadius: BorderRadius.circular(11),
+                      GestureDetector(
+                        onTap: () {
+                          controller.pickImageFromGallery();
+                        },
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  height: 72.h,
+                                  width: 79.w,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      width: 1,
+                                      color: AppColors.primary_color,
+                                    ),
+                                    borderRadius: BorderRadius.circular(11),
+                                  ),
+                                  child: Container(
+                                    height: 21.h,
+                                    width: 27.w,
+                                    child: controller.profileImage != null
+                                        ? Image.file(controller.profileImage!)
+                                        : SvgPicture.asset(
+                                            'assets/icons/image_upload.svg',
+                                            fit: BoxFit.scaleDown,
+                                          ),
+                                  ),
+                                ),
+                              ],
                             ),
-                            child: GestureDetector(
-                                onTap: () {
-                                  controller.pickImageFromGallery();
-                                },
-                                child: Container(
-                                  height: 21.h,
-                                  width: 27.w,
-                                  child: controller.profileImage != null
-                                      ? Image.file(controller.profileImage!)
-                                      : SvgPicture.asset(
-                                          'assets/icons/image_upload.svg',
-                                          fit: BoxFit.scaleDown,
-                                        ),
-                                )),
-                          ),
-                        ],
+                            Gap(16.h),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                AppText(
+                                  title: 'Add photo',
+                                  color: AppColors.primary_color,
+                                  size: 12,
+                                  fontWeight: FontWeight.w500,
+                                )
+                              ],
+                            ),
+                            Gap(7.h),
+                          ],
+                        ),
                       ),
-                      Gap(16.h),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          AppText(
-                            title: 'Add photo',
-                            color: AppColors.primary_color,
-                            size: 12,
-                            fontWeight: FontWeight.w500,
-                          )
-                        ],
-                      ),
-                      Gap(7.h),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -115,7 +121,10 @@ class _CreateCardViewState extends State<CreateCardView> {
                             width: 135.w,
                             child: AppTextFields(
                               hintText: 'First name',
-                              controller: controller.nameController,
+                              controller: controller.firstnameController,
+                              fieldValidator: (value) =>
+                                  Validators.emptyStringValidator(
+                                      "First name", value),
                             ),
                           ),
                           Gap(7.h),
@@ -123,7 +132,10 @@ class _CreateCardViewState extends State<CreateCardView> {
                             width: 135.w,
                             child: AppTextFields(
                               hintText: 'Last name',
-                              controller: controller.titleController,
+                              controller: controller.lastnameController,
+                              fieldValidator: (value) =>
+                                  Validators.emptyStringValidator(
+                                      "Last name", value),
                             ),
                           ),
                         ],
@@ -144,12 +156,14 @@ class _CreateCardViewState extends State<CreateCardView> {
                       Gap(10.h),
                       AppTextFields(
                         hintText: 'Company name',
-                        controller: controller.nameController,
+                        controller: controller.companyNameController,
                       ),
                       Gap(19.h),
                       AppTextFields(
                         hintText: 'Job title',
-                        controller: controller.titleController,
+                        controller: controller.jobTitleController,
+                        fieldValidator: (value) =>
+                            Validators.emptyStringValidator("Job title", value),
                       ),
                       Gap(19.h),
                       PhoneInputField(
@@ -161,7 +175,9 @@ class _CreateCardViewState extends State<CreateCardView> {
                       Gap(19.h),
                       AppTextFields(
                         hintText: 'Email',
-                        // controller: controller.nameController,
+                        controller: controller.emailController,
+                        fieldValidator: (value) =>
+                            Validators.emailValidator(value),
                       ),
                       Gap(19.h),
                       Row(
@@ -251,20 +267,20 @@ class _CreateCardViewState extends State<CreateCardView> {
                         height: 50.0.h,
                         width: 304.0.w,
                         onTap: () {
-                          Get.toNamed(AppRoutes.mainview);
+                          controller.submitBusinessCard();
                           // UiUtilites.showBusinessCardDialog(
                           //     context, 'aaaaaahwt', 'email@yagoooooo','');
-                          UiUtilites.showBusinessCardDialog(
-                              context: context,
-                              name: 'usama',
-                              email: 'ali@gmail.com',
-                              image: 'assets/images/person.png',
-                              instagram: '@wiliamX2',
-                              twitter: '@wiliamX2',
-                              facebook: '@wiliamX2',
-                              tiktok: '@wiliamX2',
-                              notification: '@wiliamX2',
-                              smartphoneNumber: '@+971 8876 5467');
+                          // UiUtilites.showBusinessCardDialog(
+                          //     context: context,
+                          //     name: 'usama',
+                          //     email: 'ali@gmail.com',
+                          //     image: 'assets/images/person.png',
+                          //     instagram: '@wiliamX2',
+                          //     twitter: '@wiliamX2',
+                          //     facebook: '@wiliamX2',
+                          //     tiktok: '@wiliamX2',
+                          //     notification: '@wiliamX2',
+                          //     smartphoneNumber: '@+971 8876 5467');
                         },
                       ),
                       Gap(30.h),
