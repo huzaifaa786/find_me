@@ -15,7 +15,7 @@ class ProfileApi {
     String? email,
   }) async {
     // URL
-    String url = '${baseUrl}/updateurls';
+    String url = '$baseUrl/updateurls';
 
     // DATA
     var data = {
@@ -52,7 +52,7 @@ class ProfileApi {
     String? facebook,
   }) async {
     // URL
-    String url = '${baseUrl}/profile/business-card';
+    String url = '$baseUrl/businesscard/create';
 
     // DATA
     var data = {

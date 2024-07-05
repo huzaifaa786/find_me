@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/app/create_business_card/create_card_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/buttons/app_button.dart';
@@ -36,7 +37,10 @@ class _CreateCardViewState extends State<CreateCardView> {
         builder: (controller) => Scaffold(
               appBar: AppBar(
                 toolbarHeight: 83.h,
-                title: topBar(name: 'Create business card'),
+                title: topBar(
+                    name: controller.profileBusinessCardModel != null
+                        ? 'Edit business card'
+                        : 'Create business card'),
                 scrolledUnderElevation: 0,
                 automaticallyImplyLeading: false,
               ),
@@ -71,11 +75,26 @@ class _CreateCardViewState extends State<CreateCardView> {
                                     height: 21.h,
                                     width: 27.w,
                                     child: controller.profileImage != null
-                                        ? Image.file(controller.profileImage!)
-                                        : SvgPicture.asset(
-                                            'assets/icons/image_upload.svg',
+                                        ? Image.file(
+                                            controller.profileImage!,
                                             fit: BoxFit.scaleDown,
-                                          ),
+                                          )
+                                        : controller.profileBusinessCardModel !=
+                                                    null &&
+                                                controller
+                                                        .profileBusinessCardModel!
+                                                        .image !=
+                                                    null
+                                            ? CachedNetworkImage(
+                                                imageUrl: controller
+                                                    .profileBusinessCardModel!
+                                                    .image!,
+                                                fit: BoxFit.scaleDown,
+                                              )
+                                            : SvgPicture.asset(
+                                                'assets/icons/image_upload.svg',
+                                                fit: BoxFit.scaleDown,
+                                              ),
                                   ),
                                 ),
                               ],
@@ -171,6 +190,7 @@ class _CreateCardViewState extends State<CreateCardView> {
                         errorText: controller.invalidNumberMessage,
                         onChanged: controller.phoneValidation,
                         controller: controller.pcontroller,
+                        initialCode: controller.selectedCountry!.code,
                       ),
                       Gap(19.h),
                       AppTextFields(

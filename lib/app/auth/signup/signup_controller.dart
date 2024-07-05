@@ -12,6 +12,8 @@ import 'package:uuid/uuid.dart';
 class SignUpController extends GetxController {
   static SignUpController instance = Get.find();
   TextEditingController nameController = TextEditingController();
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   GetStorage box = GetStorage();
   UserModel? user;
@@ -120,6 +122,8 @@ class SignUpController extends GetxController {
         password: passwordController.text,
         email: emailController.text,
         phone: phoneController,
+        firstName: firstNameController.text,
+        lastName: lastNameController.text,
         dob: dob,
         beaconId: beaconId);
     if (response.isNotEmpty) {

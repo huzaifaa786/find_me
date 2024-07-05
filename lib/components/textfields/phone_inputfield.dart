@@ -13,6 +13,7 @@ import 'package:intl_phone_field/phone_number.dart';
 class PhoneInputField extends StatelessWidget {
   final ValueChanged<PhoneNumber?> onChanged;
   final String? errorText;
+  final String? initialCode;
   final controller;
   final ValueChanged<Country> onCountryChanged;
 
@@ -22,6 +23,7 @@ class PhoneInputField extends StatelessWidget {
     required this.onCountryChanged,
     this.errorText,
     this.controller,
+    this.initialCode,
   });
 
   @override
@@ -37,7 +39,7 @@ class PhoneInputField extends StatelessWidget {
               : inputContainerDecoration,
           child: IntlPhoneField(
             controller: controller,
-            initialCountryCode: 'AE',
+            initialCountryCode: initialCode,
             languageCode: "en",
             isValidation: false,
             dropdownIcon: Icon(

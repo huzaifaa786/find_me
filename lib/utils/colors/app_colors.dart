@@ -25,6 +25,7 @@ class AppColors {
   static const border_grey = Color(0xFFE8E8E8);
   static const green = Color(0xFF00CD2D);
   static const light_grey = Color(0xFFB8B8B8);
+  static Color Icon_grey = const Color(0xFF92C8FF).withOpacity(0.29);
   static const transparent = Colors.transparent;
 
   static const red = Color(0xFFFF0000);
