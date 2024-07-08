@@ -29,6 +29,7 @@ class AppColors {
   static const transparent = Colors.transparent;
 
   static const red = Color(0xFFFF0000);
+  static const pink = Color(0xFFFF21E9);
   static const hintGrey = Color(0xFF8F8F8F);
   static Color borderGrey = const Color(0xFF000000).withOpacity(0.31);
   static Color inputBorderColor = const Color(0xFF000000).withOpacity(0.13);

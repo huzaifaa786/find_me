@@ -5,6 +5,7 @@ import 'package:find_me/app/auth/components/dob_textfield.dart';
 import 'package:find_me/app/auth/signup/signup_controller.dart';
 import 'package:find_me/components/buttons/app_button.dart';
 import 'package:find_me/components/buttons/prefix_icon_button.dart';
+import 'package:find_me/components/radio/gender_radio_button.dart';
 import 'package:find_me/components/textfields/app_textfields.dart';
 import 'package:find_me/components/textfields/password_textfield.dart';
 import 'package:find_me/components/textfields/phone_inputfield.dart';
@@ -44,13 +45,7 @@ class _SignUpViewState extends State<SignUpView> {
               child: Column(
                 children: [
                   Gap(40.h),
-                  AppTextFields(
-                    hintText: 'User name',
-                    controller: controller.nameController,
-                    fieldValidator: (value) =>
-                        Validators.emptyStringValidator("User name", value),
-                  ),
-                  Gap(16.h),
+
                   AppTextFields(
                     hintText: 'First name',
                     controller: controller.firstNameController,
@@ -64,6 +59,14 @@ class _SignUpViewState extends State<SignUpView> {
                     fieldValidator: (value) =>
                         Validators.emptyStringValidator("Last name", value),
                   ),
+                  Gap(16.h),
+                  AppTextFields(
+                    hintText: 'User name',
+                    controller: controller.nameController,
+                    fieldValidator: (value) =>
+                        Validators.emptyStringValidator("User name", value),
+                  ),
+
                   Gap(16.h),
                   AppTextFields(
                     hintText: 'Email',
@@ -110,6 +113,7 @@ class _SignUpViewState extends State<SignUpView> {
                     ),
                   ),
                   Gap(8.h),
+
                   Row(
                     children: [
                       buildTextField(
@@ -121,6 +125,22 @@ class _SignUpViewState extends State<SignUpView> {
                       buildTextField(controller.yearController, 'yyyy', context,
                           controller),
                     ],
+                  ),
+                  Gap(16.h),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    child: Row(
+                      children: [
+                        AppText(
+                          title: 'Gender',
+                          size: 12.sp,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ],
+                    ),
+                  ),
+                  GenderRadioButtons(
+                    onGenderSelected: controller.handleGenderSelected,
                   ),
                   Gap(30.h),
                   AppButton(

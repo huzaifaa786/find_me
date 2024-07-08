@@ -12,6 +12,7 @@ class RegisterApi {
     String? email,
     String? phone,
     String? dob,
+    String? gender,
     String? beaconId, 
   }) async {
     //* URL
@@ -27,6 +28,7 @@ class RegisterApi {
       'email': email,
       'first_name': firstName,
       'last_name': lastName,
+      'gender': gender,
       // 'login_type': 'EMAIL',
       'dob': dob,
       'beacon_id': beaconId,

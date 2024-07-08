@@ -30,4 +30,18 @@ class OtpApi {
     var response = await DioService.post(url: url, data: data);
     return response;
   }
+
+  static Future<Map<String, dynamic>> verifyEmailOtp({
+    String? email,
+    String? otp,
+  }) async {
+    String url = '${baseUrl}/email/otp/verify';
+
+    //* DATA
+    var data = {'email': email, 'otp': otp};
+
+    //! Make the POST request using ApiService
+    var response = await DioService.post(url: url, data: data);
+    return response;
+  }
 }

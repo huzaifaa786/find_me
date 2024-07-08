@@ -4,6 +4,8 @@ import 'package:find_me/app/account/change_phonenumber/change_phonenumber_bindin
 import 'package:find_me/app/account/change_phonenumber/change_phonenumber_view.dart';
 import 'package:find_me/app/auth/changepassword/changepassword_binding.dart';
 import 'package:find_me/app/auth/changepassword/changepassword_view.dart';
+import 'package:find_me/app/auth/email_otp/email_otp_binding.dart';
+import 'package:find_me/app/auth/email_otp/email_otp_view.dart';
 import 'package:find_me/app/auth/forgetpassword/forgetpassword_binding.dart';
 import 'package:find_me/app/auth/forgetpassword/forgetpassword_view.dart';
 import 'package:find_me/app/auth/otp/otp_binding.dart';
@@ -281,7 +283,7 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
-  //TODO: [Subscriptions Route]
+    //TODO: [Subscriptions Route]
     GetPage(
       name: AppRoutes.subscriptions,
       page: () => const SubscriptionsView(),
@@ -292,7 +294,7 @@ class AppPages {
     //TODO: [Privacy  Route]
     GetPage(
       name: AppRoutes.privacy,
-      page: () =>  PrivacyView(),
+      page: () => PrivacyView(),
       binding: PrivacyBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
@@ -300,36 +302,42 @@ class AppPages {
     //TODO: [NotificationsPermissions  Route]
     GetPage(
       name: AppRoutes.notificationsPermissions,
-      page: () =>  NotificationsPermissionsView(),
+      page: () => NotificationsPermissionsView(),
       binding: NotificationsPermissionsBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
     //TODO: [EmojiMenu Route]
-     GetPage(
+    GetPage(
       name: AppRoutes.edit_menu,
       page: () => EmojiMenuView(),
-      binding:EmojiMenuBindings(),
+      binding: EmojiMenuBindings(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
     //TODO: [Gifted_Emoji Route]
-     GetPage(
+    GetPage(
       name: AppRoutes.gifted_emoji,
       page: () => GiftedEmojiView(),
-      binding:GiftedEmojiBinding(),
+      binding: GiftedEmojiBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
     //TODO: [My_Emojis Route]
-     GetPage(
+    GetPage(
       name: AppRoutes.my_emojis,
       page: () => MyEmojisView(),
-      binding:MyEmojisBinding(),
+      binding: MyEmojisBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
-    
-
+    //TODO: [My_Emojis Route]
+    GetPage(
+      name: AppRoutes.email_otp,
+      page: () => EmailOtpView(),
+      binding: EmailOtpBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
   ];
 }

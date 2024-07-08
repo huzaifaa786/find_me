@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:find_me/app/auth/email_otp/email_otp_controller.dart';
 import 'package:find_me/app/auth/otp/otp_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/routes/app_routes.dart';
@@ -13,20 +14,17 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
-class OtpView extends StatelessWidget {
-  const OtpView({super.key});
+class EmailOtpView extends StatelessWidget {
+  const EmailOtpView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<OtpController>(
+    return GetBuilder<EmailOtpController>(
       builder: (controller) => Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
             scrolledUnderElevation: 0,
-            title: topBar(
-              name: '',
-              showBackIcon: true,
-            ),
+            title: topBar(name: '', showBackIcon: true,),
           ),
           body: SafeArea(
             child: Padding(
@@ -40,7 +38,7 @@ class OtpView extends StatelessWidget {
                       height: 48.h,
                       width: 230.w,
                       child: AppText(
-                        title: 'Verify your phone number'.tr,
+                        title: 'Verify your email'.tr,
                         color: AppColors.black,
                         fontWeight: FontWeight.w600,
                         size: 20,
@@ -59,7 +57,7 @@ class OtpView extends StatelessWidget {
                         width: 270.w,
                         child: AppText(
                           title:
-                              'We have sent you an OTP code to your phone number, please enter it to continue'
+                              'We have sent you an OTP code to your new email , please enter it to continue'
                                   .tr,
                           color: AppColors.hintGrey,
                           fontWeight: FontWeight.w500,
@@ -104,7 +102,7 @@ class OtpView extends StatelessWidget {
                     controller.resendOtp();
                   },
                   child: AppText(
-                    title: 'send code'.tr,
+                    title: 'Resend'.tr,
                     size: 14,
                     fontWeight: FontWeight.w600,
                     color: AppColors.primary_color,
