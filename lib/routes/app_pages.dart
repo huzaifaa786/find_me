@@ -4,6 +4,8 @@ import 'package:find_me/app/account/change_phonenumber/change_phonenumber_bindin
 import 'package:find_me/app/account/change_phonenumber/change_phonenumber_view.dart';
 import 'package:find_me/app/auth/changepassword/changepassword_binding.dart';
 import 'package:find_me/app/auth/changepassword/changepassword_view.dart';
+import 'package:find_me/app/auth/email_otp/email_otp_binding.dart';
+import 'package:find_me/app/auth/email_otp/email_otp_view.dart';
 import 'package:find_me/app/auth/forgetpassword/forgetpassword_binding.dart';
 import 'package:find_me/app/auth/forgetpassword/forgetpassword_view.dart';
 import 'package:find_me/app/auth/otp/otp_binding.dart';
@@ -326,6 +328,14 @@ class AppPages {
       name: AppRoutes.my_emojis,
       page: () => MyEmojisView(),
       binding: MyEmojisBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+    //TODO: [My_Emojis Route]
+    GetPage(
+      name: AppRoutes.email_otp,
+      page: () => EmailOtpView(),
+      binding: EmailOtpBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),

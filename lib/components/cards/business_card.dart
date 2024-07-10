@@ -42,8 +42,8 @@ class BusinessCard extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.symmetric(horizontal: 30, vertical: 22),
-            width: 312.w,
-            height: 130.h,
+            width: 315.w,
+            height: 140.h,
             decoration: BoxDecoration(
                 color: Colors.black,
                 borderRadius:
@@ -60,15 +60,15 @@ class BusinessCard extends StatelessWidget {
                       style: TextStyle(
                           color: AppColors.white,
                           fontSize: 20,
-                          fontWeight: FontWeight.w400),
+                          fontWeight: FontWeight.bold),
                     ),
                     Gap(5.h),
                     Text(
                       jobTitle,
                       style: TextStyle(
                           color: AppColors.white,
-                          fontSize: 10,
-                          fontWeight: FontWeight.w500),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600),
                     ),
                     Gap(8.h),
                     Row(
@@ -95,7 +95,7 @@ class BusinessCard extends StatelessWidget {
                             style: TextStyle(
                                 color: AppColors.white,
                                 fontSize: 10,
-                                fontWeight: FontWeight.w400)),
+                                fontWeight: FontWeight.w600)),
                       ],
                     )
                   ],
@@ -110,7 +110,12 @@ class BusinessCard extends StatelessWidget {
                           fontWeight: FontWeight.w600),
                     ),
                     Gap(13.h),
-                    CachedNetworkImage(imageUrl: image,height: 150.h,width: 150.w,)
+                    image.isNotEmpty ?
+                    CachedNetworkImage(
+                      imageUrl: image,
+                      height: 60.h,
+                      width: 60.w,
+                    ):Container(decoration: BoxDecoration(border: Border.all(color: AppColors.Icon_grey)), height: 60.h,width: 60.w,)
                     //
                   ],
                 )
@@ -140,7 +145,7 @@ class BusinessCard extends StatelessWidget {
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 7,
-                              fontWeight: FontWeight.w400,
+                              fontWeight: FontWeight.w600,
                             ))
                       ],
                     ),
@@ -156,7 +161,7 @@ class BusinessCard extends StatelessWidget {
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 7,
-                              fontWeight: FontWeight.w400,
+                              fontWeight: FontWeight.w600,
                             ))
                       ],
                     ),
@@ -172,63 +177,66 @@ class BusinessCard extends StatelessWidget {
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 7,
-                              fontWeight: FontWeight.w400,
+                              fontWeight: FontWeight.w600,
                             ))
                       ],
                     )
                   ],
                 ),
                 Gap(7.h),
-                Row(
-                  children: [
-                    Row(
-                      children: [
-                        SvgPicture.asset(
-                          'assets/icons/tiktok_black.svg',
-                          color: Colors.black,
-                        ),
-                        Gap(5.w),
-                        Text(tiktok,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 7,
-                              fontWeight: FontWeight.w400,
-                            ))
-                      ],
-                    ),
-                    Gap(31.w),
-                    Row(
-                      children: [
-                        SvgPicture.asset(
-                          'assets/icons/notification.svg',
-                          //color: Colors.black,
-                        ),
-                        Gap(5.w),
-                        Text(snapchat,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 7,
-                              fontWeight: FontWeight.w400,
-                            ))
-                      ],
-                    ),
-                    Gap(31.w),
-                    Row(
-                      children: [
-                        SvgPicture.asset(
-                          'assets/icons/smartphone.svg',
-                          // color: Colors.black,
-                        ),
-                        Gap(5.w),
-                        Text(phone,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 7,
-                              fontWeight: FontWeight.w400,
-                            ))
-                      ],
-                    )
-                  ],
+                Padding(
+                  padding: const EdgeInsets.only(left: 3.0),
+                  child: Row(
+                    children: [
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/tiktok_black.svg',
+                            color: Colors.black,
+                          ),
+                          Gap(5.w),
+                          Text(tiktok,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 7,
+                                fontWeight: FontWeight.w600,
+                              ))
+                        ],
+                      ),
+                      Gap(31.w),
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/notification.svg',
+                            //color: Colors.black,
+                          ),
+                          Gap(5.w),
+                          Text(snapchat,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 7,
+                                fontWeight: FontWeight.w600,
+                              ))
+                        ],
+                      ),
+                      Gap(31.w),
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/smartphone.svg',
+                            // color: Colors.black,
+                          ),
+                          Gap(5.w),
+                          Text(phone,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 7,
+                                fontWeight: FontWeight.w600,
+                              ))
+                        ],
+                      )
+                    ],
+                  ),
                 )
               ],
             ),

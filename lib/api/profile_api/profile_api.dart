@@ -15,7 +15,7 @@ class ProfileApi {
     String? email,
   }) async {
     // URL
-    String url = '${baseUrl}/updateurls';
+    String url = '$baseUrl/updateurls';
 
     // DATA
     var data = {
@@ -29,6 +29,46 @@ class ProfileApi {
       'facebook': facebook,
       'youtube': youtube,
       'email': email,
+    };
+
+    // Make the POST request using DioService
+    var response = await DioService.post(url: url, data: data);
+    return response;
+  }
+
+  static Future<Map<String, dynamic>> submitBusinessCard({
+    int? userProfileId,
+    String? image,
+    String? firstName,
+    String? lastName,
+    String? company,
+    String? job,
+    String? phone,
+    String? email,
+    String? instagram,
+    String? x,
+    String? tiktok,
+    String? snapchat,
+    String? facebook,
+  }) async {
+    // URL
+    String url = '$baseUrl/businesscard/create';
+
+    // DATA
+    var data = {
+      'user_profile_id': userProfileId,
+      'image': image,
+      'first_name': firstName,
+      'last_name': lastName,
+      'company': company,
+      'job': job,
+      'phone': phone,
+      'email': email,
+      'instagram': instagram,
+      'x': x,
+      'tiktok': tiktok,
+      'snapchat': snapchat,
+      'facebook': facebook,
     };
 
     // Make the POST request using DioService

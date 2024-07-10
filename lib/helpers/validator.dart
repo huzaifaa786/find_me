@@ -16,6 +16,19 @@ class Validators {
     }
   }
 
+  static String? emptyStringValidator(
+    String key,
+    String? value,
+  ) {
+    if (value == null) {
+      return null;
+    } else if (value.isEmpty) {
+      return "$key can't be empty";
+    } else {
+      return null;
+    }
+  }
+
   static String? passwordValidator(String? password) {
     // ignore: unnecessary_raw_strings
     final digitRegExp =

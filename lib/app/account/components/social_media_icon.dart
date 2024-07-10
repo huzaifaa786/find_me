@@ -6,24 +6,27 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SocialMediaIcon extends StatelessWidget {
-  const SocialMediaIcon({super.key, this.socialMediaIcon});
+  const SocialMediaIcon(
+      {super.key, this.socialMediaIcon, this.isEmpty = false});
   final socialMediaIcon;
+  final bool isEmpty;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 45.h,
       width: 45.w,
+      margin: EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: AppColors.lightSkyBlue,
+        color: isEmpty ? AppColors.Icon_grey : AppColors.lightSkyBlue,
       ),
       child: Center(
         child: SvgPicture.asset(
           socialMediaIcon,
           height: 22.h,
           width: 22.h,
-          color: AppColors.black,
+          color: isEmpty ? AppColors.black.withOpacity(0.30) :AppColors.black,
         ),
       ),
     );

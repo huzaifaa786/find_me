@@ -5,6 +5,7 @@ import 'package:find_me/app/auth/components/dob_textfield.dart';
 import 'package:find_me/app/auth/signup/signup_controller.dart';
 import 'package:find_me/components/buttons/app_button.dart';
 import 'package:find_me/components/buttons/prefix_icon_button.dart';
+import 'package:find_me/components/radio/gender_radio_button.dart';
 import 'package:find_me/components/textfields/app_textfields.dart';
 import 'package:find_me/components/textfields/password_textfield.dart';
 import 'package:find_me/components/textfields/phone_inputfield.dart';
@@ -44,10 +45,28 @@ class _SignUpViewState extends State<SignUpView> {
               child: Column(
                 children: [
                   Gap(40.h),
+
+                  AppTextFields(
+                    hintText: 'First name',
+                    controller: controller.firstNameController,
+                    fieldValidator: (value) =>
+                        Validators.emptyStringValidator("First name", value),
+                  ),
+                  Gap(16.h),
+                  AppTextFields(
+                    hintText: 'Last name',
+                    controller: controller.lastNameController,
+                    fieldValidator: (value) =>
+                        Validators.emptyStringValidator("Last name", value),
+                  ),
+                  Gap(16.h),
                   AppTextFields(
                     hintText: 'User name',
                     controller: controller.nameController,
+                    fieldValidator: (value) =>
+                        Validators.emptyStringValidator("User name", value),
                   ),
+
                   Gap(16.h),
                   AppTextFields(
                     hintText: 'Email',
@@ -94,6 +113,7 @@ class _SignUpViewState extends State<SignUpView> {
                     ),
                   ),
                   Gap(8.h),
+
                   Row(
                     children: [
                       buildTextField(
@@ -106,6 +126,22 @@ class _SignUpViewState extends State<SignUpView> {
                           controller),
                     ],
                   ),
+                  Gap(16.h),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    child: Row(
+                      children: [
+                        AppText(
+                          title: 'Gender',
+                          size: 12.sp,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ],
+                    ),
+                  ),
+                  GenderRadioButtons(
+                    onGenderSelected: controller.handleGenderSelected,
+                  ),
                   Gap(30.h),
                   AppButton(
                     title: 'Sign Up',
@@ -115,51 +151,51 @@ class _SignUpViewState extends State<SignUpView> {
                       controller.registerUser();
                     },
                   ),
-                  Gap(12.h),
-                  const AppText(
-                    title: 'Or',
-                    size: 12,
-                    fontWeight: FontWeight.w400,
-                  ),
-                  Gap(12.h),
-                  PrefixIconButton(
-                    title: 'Sign up with Apple',
-                    height: 50.0.h,
-                    width: 304.0.w,
-                    borderColor: AppColors.black,
-                    color: AppColors.black,
-                    textColors: AppColors.white,
-                    image: ImagesConst.appleIcon,
-                  ),
-                  Gap(12.h),
-                  PrefixIconButton(
-                    title: 'Sign up with Google',
-                    height: 50.0.h,
-                    width: 304.0.w,
-                    borderColor: AppColors.borderGrey,
-                    onTap: () async {
-                      var response = await GoogleSignUpApi().signUpWithGoogle();
-                      GoogleSignIn().disconnect();
-                      if (response[0].isNotEmpty) {
-                        var responce = await controller.loginGoogleUser(
-                            response[0], response[1]);
-                        if (!responce['error']) {
-                          controller.user =
-                              UserModel.fromJson(response['user']);
-                          if (controller.user!.loginType == 'GOOGLE') {
-                            await box.write(
-                                'api_token', response['user']['token']);
-                            UiUtilites.successSnackbar(
-                                'Signin Successfully.', 'Success!');
-                            Get.toNamed(AppRoutes.mainview);
-                          } else {
-                            UiUtilites.errorSnackbar(
-                                'ERROR!', 'Email register for some other user');
-                          }
-                        }
-                      }
-                    },
-                  ),
+                  // Gap(12.h),
+                  // const AppText(
+                  //   title: 'Or',
+                  //   size: 12,
+                  //   fontWeight: FontWeight.w400,
+                  // ),
+                  // Gap(12.h),
+                  // PrefixIconButton(
+                  //   title: 'Sign up with Apple',
+                  //   height: 50.0.h,
+                  //   width: 304.0.w,
+                  //   borderColor: AppColors.black,
+                  //   color: AppColors.black,
+                  //   textColors: AppColors.white,
+                  //   image: ImagesConst.appleIcon,
+                  // ),
+                  // Gap(12.h),
+                  // PrefixIconButton(
+                  //   title: 'Sign up with Google',
+                  //   height: 50.0.h,
+                  //   width: 304.0.w,
+                  //   borderColor: AppColors.borderGrey,
+                  //   onTap: () async {
+                  //     var response = await GoogleSignUpApi().signUpWithGoogle();
+                  //     GoogleSignIn().disconnect();
+                  //     if (response[0].isNotEmpty) {
+                  //       var responce = await controller.loginGoogleUser(
+                  //           response[0], response[1]);
+                  //       if (!responce['error']) {
+                  //         controller.user =
+                  //             UserModel.fromJson(response['user']);
+                  //         if (controller.user!.loginType == 'GOOGLE') {
+                  //           await box.write(
+                  //               'api_token', response['user']['token']);
+                  //           UiUtilites.successSnackbar(
+                  //               'Signin Successfully.', 'Success!');
+                  //           Get.toNamed(AppRoutes.mainview);
+                  //         } else {
+                  //           UiUtilites.errorSnackbar(
+                  //               'ERROR!', 'Email register for some other user');
+                  //         }
+                  //       }
+                  //     }
+                  //   },
+                  // ),
                   Gap(30.h),
                   AuthRichText(
                     title: 'Already have an account ? ',

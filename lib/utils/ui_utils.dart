@@ -25,7 +25,7 @@ class UiUtilites {
       duration: Duration(milliseconds: 2000),
       builder: ((context) {
         return MaterialAnimatedSnackBar(
-          titleText: title,
+          titleText:  title.isNotEmpty ? title : null,
           messageText: message,
           type: AnimatedSnackBarType.error,
         );

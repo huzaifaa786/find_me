@@ -12,9 +12,12 @@ import 'package:uuid/uuid.dart';
 class SignUpController extends GetxController {
   static SignUpController instance = Get.find();
   TextEditingController nameController = TextEditingController();
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   GetStorage box = GetStorage();
   UserModel? user;
+  String gender = "Male";
 
   //! Password And Confirm Password Variable and Functions
   bool obscureTextPassword = true;
@@ -121,6 +124,9 @@ class SignUpController extends GetxController {
         password: passwordController.text,
         email: emailController.text,
         phone: phoneController,
+        firstName: firstNameController.text,
+        lastName: lastNameController.text,
+        gender: gender,
         dob: dob,
         beaconId: beaconId);
     if (response.isNotEmpty) {
@@ -132,5 +138,10 @@ class SignUpController extends GetxController {
   loginGoogleUser(name, email) async {
     var responce = await _authApi.googleLogin(name, email);
     return responce;
+  }
+
+  void handleGenderSelected(String value) {
+    gender = value;
+    update();
   }
 }

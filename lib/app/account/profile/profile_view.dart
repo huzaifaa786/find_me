@@ -126,26 +126,27 @@ class ProfileView extends StatelessWidget {
                                             fontWeight: FontWeight.w500),
                                       ),
                                       GestureDetector(
-                                        onTap: () {
-                                          Get.toNamed(AppRoutes.editurl,
-                                                  arguments:
-                                                      controller.profile)!
-                                              .then((value) {
-                                            controller.getUser();
-                                          });
-                                        },
-                                        child: Row(
-                                          children: [
-                                            AppText(
-                                                title: 'Edit',
-                                                size: 11.sp,
-                                                fontWeight: FontWeight.w500,
-                                                color: AppColors.primary_color),
-                                            SvgPicture.asset(
-                                                "assets/icons/edit.svg"),
-                                          ],
-                                        ),
-                                      ),
+                                          onTap: () {
+                                            Get.toNamed(AppRoutes.editurl,
+                                                    arguments:
+                                                        controller.profile)!
+                                                .then((value) {
+                                              controller.getUser();
+                                            });
+                                          },
+                                          child: Row(
+                                            children: [
+                                              AppText(
+                                                  title: 'Edit',
+                                                  size: 12.sp,
+                                                  fontWeight: FontWeight.w600,
+                                                  color:
+                                                      AppColors.primary_color),
+                                              Gap(5.w),
+                                              SvgPicture.asset(
+                                                  "assets/icons/edit.svg"),
+                                            ],
+                                          )),
                                     ],
                                   ),
                                   Gap(27.h),
@@ -155,27 +156,44 @@ class ProfileView extends StatelessWidget {
                                       SocialMediaIcon(
                                         socialMediaIcon:
                                             "assets/icons/tiktok_black.svg",
+                                        isEmpty: controller
+                                                .profileUrlModel!.tiktok ==
+                                            null,
                                       ),
                                       SocialMediaIcon(
                                         socialMediaIcon:
                                             "assets/icons/xtwitter.svg",
+                                        isEmpty:
+                                            controller.profileUrlModel!.x ==
+                                                null,
                                       ),
                                       SocialMediaIcon(
                                         socialMediaIcon:
                                             "assets/icons/instagram_black.svg",
+                                        isEmpty: controller
+                                                .profileUrlModel!.instagram ==
+                                            null,
                                       ),
                                       SocialMediaIcon(
                                         socialMediaIcon:
                                             "assets/icons/snapchat.svg",
+                                        isEmpty: controller
+                                                .profileUrlModel!.snapchat ==
+                                            null,
                                       ),
                                       SocialMediaIcon(
                                         socialMediaIcon:
                                             "assets/icons/facebook_black.svg",
+                                        isEmpty: controller
+                                                .profileUrlModel!.facebook ==
+                                            null,
                                       ),
                                       SocialMediaIcon(
-                                        socialMediaIcon:
-                                            "assets/icons/youtube.svg",
-                                      ),
+                                          socialMediaIcon:
+                                              "assets/icons/youtube.svg",
+                                          isEmpty: controller
+                                                  .profileUrlModel!.youtube ==
+                                              null),
                                     ],
                                   ),
                                   Gap(15.h),
@@ -185,14 +203,22 @@ class ProfileView extends StatelessWidget {
                                       SocialMediaIcon(
                                         socialMediaIcon:
                                             "assets/icons/whatsapp1.svg",
+                                        isEmpty: controller
+                                                .profileUrlModel!.whatsapp ==
+                                            null,
                                       ),
                                       SocialMediaIcon(
-                                        socialMediaIcon:
-                                            "assets/icons/gmail.svg",
-                                      ),
+                                          socialMediaIcon:
+                                              "assets/icons/gmail.svg",
+                                          isEmpty: controller
+                                                  .profileUrlModel!.email ==
+                                              null),
                                       SocialMediaIcon(
                                         socialMediaIcon:
                                             "assets/icons/telegram-plane.svg",
+                                        isEmpty: controller
+                                                .profileUrlModel!.telegram ==
+                                            null,
                                       ),
                                     ],
                                   ),
@@ -202,29 +228,87 @@ class ProfileView extends StatelessWidget {
                                     color: AppColors.black.withOpacity(0.08),
                                   ),
                                   Gap(20.h),
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      "My business card",
-                                      style: TextStyle(
-                                          fontSize: 14.sp,
-                                          fontWeight: FontWeight.w500),
-                                    ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        "My business card",
+                                        style: TextStyle(
+                                            fontSize: 14.sp,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      controller.businessCardModel != null
+                                          ? GestureDetector(
+                                              onTap: () {
+                                                Get.toNamed(
+                                                        AppRoutes.createcard,
+                                                        arguments: [
+                                                      controller.profile,
+                                                      controller
+                                                          .businessCardModel,
+                                                    ])!
+                                                    .then((value) {
+                                                  controller.getUser();
+                                                });
+                                              },
+                                              child: Row(
+                                                children: [
+                                                  AppText(
+                                                      title: 'Edit',
+                                                      size: 12.sp,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: AppColors
+                                                          .primary_color),
+                                                  Gap(5.w),
+                                                  SvgPicture.asset(
+                                                      "assets/icons/edit.svg"),
+                                                ],
+                                              ),
+                                            )
+                                          : Text(
+                                              "",
+                                            ),
+                                    ],
                                   ),
                                   Gap(22),
-                                  controller.profile!.businessCard != null
+                                  controller.businessCardModel != null
                                       ? BusinessCard(
-                                          name: "",
-                                          email: "",
-                                          jobTitle: "",
-                                          company: "",
-                                          image: "",
-                                          instagram: "",
-                                          x: "",
-                                          tiktok: "",
-                                          facebook: "",
-                                          snapchat: "",
-                                          phone: "")
+                                          name:
+                                              "${controller.businessCardModel!.firstName} ${controller.businessCardModel!.lastName}",
+                                          email: controller
+                                                  .businessCardModel!.email ??
+                                              '',
+                                          jobTitle:
+                                              controller.businessCardModel!.job ??
+                                                  '',
+                                          company: controller
+                                                  .businessCardModel!.company ??
+                                              '',
+                                          image: controller
+                                                  .businessCardModel!.image ??
+                                              '',
+                                          instagram: controller
+                                                  .businessCardModel!
+                                                  .instagram ??
+                                              '',
+                                          x: controller.businessCardModel!.x ??
+                                              '',
+                                          tiktok: controller
+                                                  .businessCardModel!.tiktok ??
+                                              '',
+                                          facebook: controller
+                                                  .businessCardModel!
+                                                  .facebook ??
+                                              '',
+                                          snapchat: controller
+                                                  .businessCardModel!
+                                                  .snapchat ??
+                                              '',
+                                          phone: controller
+                                                  .businessCardModel!.phone ??
+                                              '')
                                       : Container(
                                           height: 192.8.h,
                                           width: 312.w,
@@ -251,8 +335,17 @@ class ProfileView extends StatelessWidget {
                                                     width: 299.8.w,
                                                     child: GestureDetector(
                                                       onTap: () {
-                                                        Get.toNamed(AppRoutes
-                                                            .createcard,arguments:controller.profile);
+                                                        Get.toNamed(
+                                                                AppRoutes
+                                                                    .createcard,
+                                                                arguments: [
+                                                              controller
+                                                                  .profile,
+                                                              null
+                                                            ])!
+                                                            .then((value) {
+                                                          controller.getUser();
+                                                        });
                                                       },
                                                       child: Row(
                                                         mainAxisAlignment:

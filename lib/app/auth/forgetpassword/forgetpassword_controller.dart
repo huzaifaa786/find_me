@@ -13,6 +13,7 @@ class ForgetPasswordController extends GetxController {
   static ForgetPasswordController instance = Get.find();
 
   TextEditingController phonenumberController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   bool isCodeEntered = false;
   String otp = '';
 

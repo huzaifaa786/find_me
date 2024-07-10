@@ -92,52 +92,52 @@ class _SignInViewState extends State<SignInView> {
                       controller.loginUser();
                     },
                   ),
-                  Gap(20.h),
-                  const AppText(
-                    title: 'Or',
-                    size: 12,
-                    fontWeight: FontWeight.w400,
-                  ),
-                  Gap(20.h),
-                  PrefixIconButton(
-                    title: 'Sign In with Apple',
-                    height: 50.0.h,
-                    width: 304.0.w,
-                    borderColor: AppColors.black,
-                    color: AppColors.black,
-                    textColors: AppColors.white,
-                    image: ImagesConst.appleIcon,
-                  ),
-                  Gap(12.h),
-                  PrefixIconButton(
-                    title: 'Sign In with Google',
-                    height: 50.0.h,
-                    width: 304.0.w,
-                    borderColor: AppColors.borderGrey,
-                    onTap: () async {
-                      var response = await GoogleSignUpApi().signUpWithGoogle();
-                      GoogleSignIn().disconnect();
-                      if (response[0].isNotEmpty) {
-                        var responce = await controller.loginGoogleUser(
-                            response[0], response[1]);
-                        if (!responce['error']) {
-                          controller.user =
-                              UserModel.fromJson(responce['user']);
-                          if (controller.user!.loginType == 'GOOGLE') {
+                  // Gap(20.h),
+                  // const AppText(
+                  //   title: 'Or',
+                  //   size: 12,
+                  //   fontWeight: FontWeight.w400,
+                  // ),
+                  // Gap(20.h),
+                  // PrefixIconButton(
+                  //   title: 'Sign In with Apple',
+                  //   height: 50.0.h,
+                  //   width: 304.0.w,
+                  //   borderColor: AppColors.black,
+                  //   color: AppColors.black,
+                  //   textColors: AppColors.white,
+                  //   image: ImagesConst.appleIcon,
+                  // ),
+                  // Gap(12.h),
+                  // PrefixIconButton(
+                  //   title: 'Sign In with Google',
+                  //   height: 50.0.h,
+                  //   width: 304.0.w,
+                  //   borderColor: AppColors.borderGrey,
+                  //   onTap: () async {
+                  //     var response = await GoogleSignUpApi().signUpWithGoogle();
+                  //     GoogleSignIn().disconnect();
+                  //     if (response[0].isNotEmpty) {
+                  //       var responce = await controller.loginGoogleUser(
+                  //           response[0], response[1]);
+                  //       if (!responce['error']) {
+                  //         controller.user =
+                  //             UserModel.fromJson(responce['user']);
+                  //         if (controller.user!.loginType == 'GOOGLE') {
                        
-                            await box.write(
-                                'api_token', responce['user']['token']);
-                            UiUtilites.successSnackbar(
-                                'Signin Successfully.', 'Success!');
-                            Get.toNamed(AppRoutes.mainview);
-                          } else {
-                            UiUtilites.errorSnackbar(
-                                'ERROR!', 'Email register for some other user');
-                          }
-                        }
-                      }
-                    },
-                  ),
+                  //           await box.write(
+                  //               'api_token', responce['user']['token']);
+                  //           UiUtilites.successSnackbar(
+                  //               'Signin Successfully.', 'Success!');
+                  //           Get.toNamed(AppRoutes.mainview);
+                  //         } else {
+                  //           UiUtilites.errorSnackbar(
+                  //               'ERROR!', 'Email register for some other user');
+                  //         }
+                  //       }
+                  //     }
+                  //   },
+                  // ),
                   Gap(30.h),
                   AuthRichText(
                     title: 'Don’t have an account ? ',
