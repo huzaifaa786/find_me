@@ -44,4 +44,18 @@ class OtpApi {
     var response = await DioService.post(url: url, data: data);
     return response;
   }
+
+  static Future<Map<String, dynamic>> verifyPhoneOtp({
+    String? phone,
+    String? otp,
+  }) async {
+    String url = '${baseUrl}/phone/otp/verify';
+
+    //* DATA
+    var data = {'phone': phone, 'otp': otp};
+
+    //! Make the POST request using ApiService
+    var response = await DioService.post(url: url, data: data);
+    return response;
+  }
 }

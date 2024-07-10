@@ -44,7 +44,7 @@ class SettingView extends StatelessWidget {
                         text: 'Account',
                         image: 'assets/icons/user.svg',
                         ontap: () {
-                          Get.toNamed(AppRoutes.change_email);
+                          Get.toNamed(AppRoutes.profile);
                         }),
                     Gap(12.h),
                     CardSetting(
