@@ -45,6 +45,7 @@ class ChangePhoneNumberView extends StatelessWidget {
                 errorText: controller.invalidNumberMessage,
                 onChanged: controller.phoneValidation,
                 controller: controller.pcontroller,
+                initialCode: controller.selectedCountry!.code,
               ),
               Gap(173.h),
               AppButton(
@@ -52,7 +53,7 @@ class ChangePhoneNumberView extends StatelessWidget {
                 height: 50.0.h,
                 width: 304.0.w,
                 onTap: () {
-                  Get.toNamed(AppRoutes.otp);
+                  controller.updatePhone();
                 },
               ),
             ],

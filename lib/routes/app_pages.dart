@@ -10,6 +10,8 @@ import 'package:find_me/app/auth/forgetpassword/forgetpassword_binding.dart';
 import 'package:find_me/app/auth/forgetpassword/forgetpassword_view.dart';
 import 'package:find_me/app/auth/otp/otp_binding.dart';
 import 'package:find_me/app/auth/otp/otp_view.dart';
+import 'package:find_me/app/auth/phone_otp/phone_otp_binding.dart';
+import 'package:find_me/app/auth/phone_otp/phone_otp_view.dart';
 import 'package:find_me/app/auth/signin/signin_binding.dart';
 import 'package:find_me/app/auth/signin/signin_view.dart';
 import 'package:find_me/app/account/profile/profile_binding.dart';
@@ -74,6 +76,13 @@ class AppPages {
       name: AppRoutes.splash,
       page: () => const SplashView(),
       binding: SplashBinding(),
+      transition: Transition.downToUp,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+    GetPage(
+      name: AppRoutes.phoneOtp,
+      page: () => const PhoneOtpView(),
+      binding: PhoneOtpBinding(),
       transition: Transition.downToUp,
       transitionDuration: const Duration(milliseconds: 100),
     ),
