@@ -2,6 +2,7 @@
 
 import 'dart:ui';
 
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:find_me/components/buttons/prefix_icon_button.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
@@ -16,25 +17,37 @@ import 'package:get/get.dart';
 
 class UiUtilites {
   static errorSnackbar(String title, String message) {
-    Get.snackbar(
-      title.tr,
-      message.tr,
-      colorText: AppColors.white,
-      backgroundColor: AppColors.red,
-      duration: const Duration(seconds: 2),
-      snackPosition: SnackPosition.BOTTOM,
-    );
+    AnimatedSnackBar(
+      mobileSnackBarPosition: MobileSnackBarPosition.bottom,
+      mobilePositionSettings: const MobilePositionSettings(
+        bottomOnAppearance: 20,
+      ),
+      duration: Duration(milliseconds: 2000),
+      builder: ((context) {
+        return MaterialAnimatedSnackBar(
+          titleText: title,
+          messageText: message,
+          type: AnimatedSnackBarType.error,
+        );
+      }),
+    ).show(Get.context!);
   }
 
   static successSnackbar(String message, String title) {
-    Get.snackbar(
-      title.tr,
-      message.tr,
-      backgroundColor: AppColors.green,
-      colorText: AppColors.white,
-      duration: const Duration(seconds: 2),
-      snackPosition: SnackPosition.BOTTOM,
-    );
+    AnimatedSnackBar(
+      mobileSnackBarPosition: MobileSnackBarPosition.bottom,
+      mobilePositionSettings: const MobilePositionSettings(
+        bottomOnAppearance: 20,
+      ),
+      duration: Duration(milliseconds: 2000),
+      builder: ((context) {
+        return MaterialAnimatedSnackBar(
+          titleText: title.isNotEmpty ? title : null,
+          messageText: message,
+          type: AnimatedSnackBarType.success,
+        );
+      }),
+    ).show(Get.context!);
   }
 
   static registerSuccessAlert(context, title) {

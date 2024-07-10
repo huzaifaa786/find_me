@@ -1,5 +1,9 @@
+import 'dart:io';
+
+import 'package:find_me/models/user_profile_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl_phone_field/countries.dart';
 import 'package:intl_phone_field/helpers.dart';
 import 'package:intl_phone_field/phone_number.dart';
@@ -23,6 +27,27 @@ class CreateCardController extends GetxController {
       countries.firstWhere((country) => country.fullCountryCode == "971");
   PhoneNumber? checkphoneController;
   String? phoneController;
+  UserProfileModel? profileModel;
+  File? profileImage;
+
+  @override
+  void onInit() {
+    profileModel ??= Get.arguments;
+    super.onInit();
+  }
+
+  pickImageFromGallery() async {
+    final picker = ImagePicker();
+    final pickedImage = await picker.pickImage(source: ImageSource.gallery);
+    if (pickedImage != null) {
+      profileImage = File(pickedImage.path);
+      update();
+    }
+  }
+
+  Future<void> submitBusinessCard() async {
+    
+  }
 
   onCountryChanged(Country value) {
     selectedCountry = value;

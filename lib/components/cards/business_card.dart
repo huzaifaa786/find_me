@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,9 +6,30 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
 class BusinessCard extends StatelessWidget {
-  const BusinessCard({super.key, required this.name, required this.email});
+  const BusinessCard(
+      {super.key,
+      required this.name,
+      required this.email,
+      required this.jobTitle,
+      required this.company,
+      required this.image,
+      required this.instagram,
+      required this.x,
+      required this.tiktok,
+      required this.facebook,
+      required this.snapchat,
+      required this.phone});
   final String name;
   final String email;
+  final String jobTitle;
+  final String company;
+  final String image;
+  final String instagram;
+  final String x;
+  final String tiktok;
+  final String facebook;
+  final String snapchat;
+  final String phone;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -34,7 +56,7 @@ class BusinessCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Wiliam Smith',
+                      name,
                       style: TextStyle(
                           color: AppColors.white,
                           fontSize: 20,
@@ -42,7 +64,7 @@ class BusinessCard extends StatelessWidget {
                     ),
                     Gap(5.h),
                     Text(
-                      'Ui Designer',
+                      jobTitle,
                       style: TextStyle(
                           color: AppColors.white,
                           fontSize: 10,
@@ -55,8 +77,7 @@ class BusinessCard extends StatelessWidget {
                           'assets/icons/home_img.svg',
                         ),
                         Gap(5),
-                        Text(name,
-                            
+                        Text(company,
                             style: TextStyle(
                                 color: AppColors.white,
                                 fontSize: 8,
@@ -71,7 +92,6 @@ class BusinessCard extends StatelessWidget {
                         ),
                         Gap(5),
                         Text(email,
-                          
                             style: TextStyle(
                                 color: AppColors.white,
                                 fontSize: 10,
@@ -90,7 +110,7 @@ class BusinessCard extends StatelessWidget {
                           fontWeight: FontWeight.w600),
                     ),
                     Gap(13.h),
-                    Image.asset('assets/images/person.png'),
+                    CachedNetworkImage(imageUrl: image,height: 150.h,width: 150.w,)
                     //
                   ],
                 )
@@ -116,7 +136,7 @@ class BusinessCard extends StatelessWidget {
                           //color: Colors.black,
                         ),
                         Gap(5.w),
-                        Text('@wiliamX2',
+                        Text(instagram,
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 7,
@@ -132,7 +152,7 @@ class BusinessCard extends StatelessWidget {
                           //color: Colors.black,
                         ),
                         Gap(5.w),
-                        Text('@wiliamX2',
+                        Text(x,
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 7,
@@ -148,7 +168,7 @@ class BusinessCard extends StatelessWidget {
                           // color: Colors.black,
                         ),
                         Gap(5.w),
-                        Text('@wiliamX2',
+                        Text(facebook,
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 7,
@@ -168,7 +188,7 @@ class BusinessCard extends StatelessWidget {
                           color: Colors.black,
                         ),
                         Gap(5.w),
-                        Text('@wiliamX2',
+                        Text(tiktok,
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 7,
@@ -184,7 +204,7 @@ class BusinessCard extends StatelessWidget {
                           //color: Colors.black,
                         ),
                         Gap(5.w),
-                        Text('@wiliamX2',
+                        Text(snapchat,
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 7,
@@ -200,7 +220,7 @@ class BusinessCard extends StatelessWidget {
                           // color: Colors.black,
                         ),
                         Gap(5.w),
-                        Text('@+971 8876 5467',
+                        Text(phone,
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 7,
@@ -215,7 +235,6 @@ class BusinessCard extends StatelessWidget {
           ),
         ],
       ),
-    )
-    );
+    ));
   }
 }

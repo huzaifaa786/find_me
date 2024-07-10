@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'dart:io';
+
 import 'package:find_me/app/create_business_card/create_card_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/buttons/app_button.dart';
@@ -59,14 +61,18 @@ class _CreateCardViewState extends State<CreateCardView> {
                               borderRadius: BorderRadius.circular(11),
                             ),
                             child: GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  controller.pickImageFromGallery();
+                                },
                                 child: Container(
                                   height: 21.h,
                                   width: 27.w,
-                                  child: SvgPicture.asset(
-                                    'assets/icons/image_upload.svg',
-                                    fit: BoxFit.scaleDown,
-                                  ),
+                                  child: controller.profileImage != null
+                                      ? Image.file(controller.profileImage!)
+                                      : SvgPicture.asset(
+                                          'assets/icons/image_upload.svg',
+                                          fit: BoxFit.scaleDown,
+                                        ),
                                 )),
                           ),
                         ],

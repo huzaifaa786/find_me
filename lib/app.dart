@@ -36,7 +36,6 @@ class App extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         builder: EasyLoading.init(),
-        
         title: "FIND ME",
         initialBinding: SplashBinding(),
         home: const SplashView(),
