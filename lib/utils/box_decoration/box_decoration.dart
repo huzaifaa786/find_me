@@ -31,6 +31,10 @@ var inputDecoration = OutlineInputBorder(
   borderRadius: BorderRadius.circular(45.r),
   borderSide: BorderSide(width: 1, color: AppColors.inputBorderColor),
 );
+var bioInputDecoration = OutlineInputBorder(
+  borderRadius: BorderRadius.circular(45.r),
+  borderSide: BorderSide(width: 1, color: AppColors.primary_color),
+);
 
 var inputErrorDecoration = OutlineInputBorder(
   borderRadius: BorderRadius.circular(45.r),

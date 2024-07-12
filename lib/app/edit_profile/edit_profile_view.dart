@@ -58,7 +58,10 @@ class EditProfileView extends StatelessWidget {
                             userModel: userProfile,
                             isSelected:
                                 controller.selectedProfileIndex == index,
-                            isDefault: profile.isDefault,
+                            isDefault:
+                                userProfile?.id == controller.currentProfile?.id
+                                    ? true
+                                    : false,
                             avatarUrl: profile.image,
                             verified: false, // Add logic for verified if needed
                             isEditable: profile.isEditable,
@@ -68,7 +71,6 @@ class EditProfileView extends StatelessWidget {
                             onNameChange: controller.updateProfileName,
                             onToggle: (isDefault) {
                               if (isDefault) {
-                                controller.toggleDefaultProfile(index);
                                 controller.selectProfile(index);
                               }
                             },
