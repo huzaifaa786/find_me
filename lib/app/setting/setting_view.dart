@@ -36,7 +36,9 @@ class SettingView extends StatelessWidget {
                     CardSetting(
                         text: 'Subscriptions',
                         image: 'assets/icons/star.svg',
-                        ontap: () {}),
+                        ontap: () {
+                          Get.toNamed(AppRoutes.subscriptions);
+                        }),
                     Gap(12.h),
                     CardSetting(
                         text: 'Account',
@@ -48,13 +50,15 @@ class SettingView extends StatelessWidget {
                     CardSetting(
                         text: 'Privacy',
                         image: 'assets/icons/lock (1).svg',
-                        ontap: () {}),
+                        ontap: () {
+                          Get.toNamed(AppRoutes.privacy);
+                        }),
                     Gap(12.h),
                     CardSetting(
-                        text: 'Notifications',
+                        text: 'Notifications Permissions',
                         image: 'assets/icons/bell (1).svg',
                         ontap: () {
-                          Get.toNamed(AppRoutes.notifications);
+                          Get.toNamed(AppRoutes.notificationsPermissions);
                         }),
                     Gap(12.h),
                     CardSetting(
@@ -97,13 +101,14 @@ class SettingView extends StatelessWidget {
                         UiUtilites.logoutSuccessAlert(context, () async {
                           GetStorage box = GetStorage();
                           await box.remove('api_token');
-                          Get.offAllNamed(AppRoutes.signup);
+                          await box.remove('beacon_id');
+                          Get.offAllNamed(AppRoutes.intro);
                         }, () {
                           Get.back();
                         });
                       },
                       child: PrefixIconButton(
-                        height: 50.h,
+                        height: 55.h,
                         width: 304.w,
                         title: 'Log out',
                         textColors: Colors.red,

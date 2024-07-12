@@ -1,5 +1,3 @@
-
-
 class AppRoutes {
   static const splash = '/splash';
   static const intro = '/intro';
@@ -9,10 +7,10 @@ class AppRoutes {
   static const profile = '/profile';
   static const notifications = '/notifications';
   static const changephonenumber = '/changephonenumber';
- static const setting = '/setting';
+  static const setting = '/setting';
   static const mainview = '/mainview';
- static const changepassword = '/changepassword';
- static const otp = '/otp';
+  static const changepassword = '/changepassword';
+  static const otp = '/otp';
   static const home = '/home';
   static const report = '/report';
  static const language = '/language';
@@ -30,11 +28,16 @@ class AppRoutes {
  static const purchasecoins = '/purchasecoins';
  static const useraccount = '/useraccount';
  
- 
- 
 
 
-
-
-
+  static const updata_phone_Number = '/UpdataPhoneNumber';
+  static const editurl = '/editurl';
+  static const subscriptions = '/subscriptions';
+  static const privacy = '/privacy';
+  static const notificationsPermissions = '/notificationsPermissions';
+  static const edit_menu = '/edit_menu';
+  static const my_emojis = '/my_emojis';
+  static const gifted_emoji = '/gifted_emoji';
+  static const email_otp = '/email_otp';
+  static const phoneOtp = '/phoneOtp';
 }

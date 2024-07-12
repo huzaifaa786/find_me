@@ -45,18 +45,17 @@ class _LocationViewState extends State<LocationView> {
                       fontWeight: FontWeight.w500,
                     ),
                     Gap(20.w),
-                    SizedBox(
+                    FlutterSwitch(
                       height: 25.h,
                       width: 45.w,
-                      child: FlutterSwitch(
-                        activeColor: AppColors.green,
-                        inactiveColor: Colors.grey,
-                        value: controller.isLocationEnabled,
-                        onToggle: (value) {
-                          controller.toggleLocation(value);
-                        },
-                      ),
+                      activeColor: AppColors.green,
+                      inactiveColor: Colors.grey,
+                      value: controller.isLocationEnabled,
+                      onToggle: (value) {
+                        controller.toggleLocation(value);
+                      },
                     ),
+
                     // Gap(62.w),
                   ],
                 ),

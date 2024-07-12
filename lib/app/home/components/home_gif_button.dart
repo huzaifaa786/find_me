@@ -8,21 +8,11 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-class HomeGif extends StatefulWidget {
-  HomeGif({Key? key}) : super(key: key);
-
-  @override
-  _HomeGifState createState() => _HomeGifState();
-}
-
-class _HomeGifState extends State<HomeGif> {
-  bool isClicked = false;
-
-  void _toggleClicked() {
-    setState(() {
-      isClicked = !isClicked;
-    });
-  }
+class HomeGif extends StatelessWidget {
+  HomeGif({Key? key,this.onTap,this.isSearching = false}) : super(key: key);
+  
+  bool isSearching;
+  final onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +23,7 @@ class _HomeGifState extends State<HomeGif> {
           height: 200,
           width: 200,
           child: ClipRRect(
-            child: isClicked
+            child: isSearching
                 ? Image.asset(
                     ImagesConst.homeGif,
                     height: 200,
@@ -53,10 +43,8 @@ class _HomeGifState extends State<HomeGif> {
                   width: 77,
                   child: GestureDetector(
                     child: GifButton(
-                      onTap: () {
-                        _toggleClicked();
-                      },
-                      showOpacity: isClicked ? true : false,
+                      onTap: onTap,
+                      showOpacity: isSearching ? true : false,
                     ),
                   ),
                 ),
@@ -66,11 +54,11 @@ class _HomeGifState extends State<HomeGif> {
               child: Align(
                 alignment: Alignment.center,
                 child: GestureDetector(
-                  onTap: _toggleClicked,
+                  onTap: onTap,
                   child: SizedBox(
                     height: 77,
                     width: 77,
-                    child: isClicked
+                    child: isSearching
                         ? Container()
                         : SvgPicture.asset(
                             'assets/icons/shadow_darkcircle.svg',
@@ -81,7 +69,7 @@ class _HomeGifState extends State<HomeGif> {
             ),
           ],
         ),
-        isClicked
+        isSearching
             ? Container()
             : Positioned(
                 bottom: 1,

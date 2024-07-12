@@ -19,6 +19,8 @@ class LanguagesView extends StatefulWidget {
 class _LanguagesViewState extends State<LanguagesView> {
   // Initialize the controller
   final LanguagesController controller = Get.put(LanguagesController());
+  final english_value = 0;
+  final arbic_value2 = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -51,13 +53,17 @@ class _LanguagesViewState extends State<LanguagesView> {
                                 title: 'English (United States)',
                                 size: 14,
                                 fontWeight: FontWeight.w400,
-                                color: AppColors.primary_color,
+                                color: english_value == 0
+                                    ? AppColors.primary_color
+                                    : AppColors.black,
                               ),
                               Gap(108.w),
                               Radio(
-                                value: 0,
+                                value: english_value,
                                 groupValue: controller.selectedLanguage,
                                 activeColor: AppColors.primary_color,
+                                fillColor: MaterialStateProperty.all(
+                                    AppColors.primary_color),
                                 onChanged: (value) {
                                   controller.changeLanguage(value as int);
                                 },
@@ -91,15 +97,18 @@ class _LanguagesViewState extends State<LanguagesView> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 AppText(
-                                  title: 'العربية',
-                                  size: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.primary_color,
-                                ),
+                                    title: 'العربية',
+                                    size: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: arbic_value2 == 1
+                                        ? AppColors.primary_color
+                                        : AppColors.black),
                                 Gap(224.w),
                                 Radio(
-                                  value: 1,
+                                  value: arbic_value2,
                                   groupValue: controller.selectedLanguage,
+                                  fillColor: MaterialStateProperty.all(
+                                      AppColors.primary_color),
                                   activeColor: AppColors.primary_color,
                                   onChanged: (value) {
                                     controller.changeLanguage(value as int);

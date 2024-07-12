@@ -1,3 +1,6 @@
+import 'package:find_me/api/auth_api.dart/change_phone_api.dart';
+import 'package:find_me/routes/app_routes.dart';
+import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/countries.dart';
@@ -20,6 +23,18 @@ class ChangePhoneNumberController extends GetxController {
     pcontroller.clear();
     update();
     if (checkphoneController != null) phoneValidation(checkphoneController);
+  }
+
+  void updatePhone() async {
+    if (phoneController != null) {
+      var response = await ChangePhoneApi.changePhone(phoneController!);
+      if (response.isNotEmpty) {
+        UiUtilites.successSnackbar("Otp sent successfully", "");
+        Get.toNamed(AppRoutes.phoneOtp, arguments: phoneController);
+      }
+    } else {
+      UiUtilites.errorSnackbar("", "Phone can't be empty");
+    }
   }
 
   phoneValidation(phone) {

@@ -1,4 +1,6 @@
 import 'package:find_me/app/splash/splash_controller.dart';
+import 'package:find_me/utils/app_text/app_text.dart';
+import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/images/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,10 +20,13 @@ class _SplashViewState extends State<SplashView> {
       autoRemove: false,
       builder: (controller) => Scaffold(
         appBar: AppBar(automaticallyImplyLeading: false),
-        body: SizedBox(
-          height: 844.h,
-          width: 390.w,
-          child: Image.asset(ImagesConst.splashGif),
+        body: Center(
+          child: AppText(
+                title: 'Find Me!',
+                size: 36.sp,
+                fontWeight: FontWeight.w600,
+                color: AppColors.black,
+              ),
         ),
       ),
     );

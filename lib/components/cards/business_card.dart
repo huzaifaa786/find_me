@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,9 +6,30 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
 class BusinessCard extends StatelessWidget {
-  const BusinessCard({super.key, required this.name, required this.email});
+  const BusinessCard(
+      {super.key,
+      required this.name,
+      required this.email,
+      required this.jobTitle,
+      required this.company,
+      required this.image,
+      required this.instagram,
+      required this.x,
+      required this.tiktok,
+      required this.facebook,
+      required this.snapchat,
+      required this.phone});
   final String name;
   final String email;
+  final String jobTitle;
+  final String company;
+  final String image;
+  final String instagram;
+  final String x;
+  final String tiktok;
+  final String facebook;
+  final String snapchat;
+  final String phone;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -20,8 +42,8 @@ class BusinessCard extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.symmetric(horizontal: 30, vertical: 22),
-            width: 312.w,
-            height: 130.h,
+            width: 315.w,
+            height: 140.h,
             decoration: BoxDecoration(
                 color: Colors.black,
                 borderRadius:
@@ -34,19 +56,19 @@ class BusinessCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Wiliam Smith',
+                      name,
                       style: TextStyle(
                           color: AppColors.white,
                           fontSize: 20,
-                          fontWeight: FontWeight.w400),
+                          fontWeight: FontWeight.bold),
                     ),
                     Gap(5.h),
                     Text(
-                      'Ui Designer',
+                      jobTitle,
                       style: TextStyle(
                           color: AppColors.white,
-                          fontSize: 10,
-                          fontWeight: FontWeight.w500),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600),
                     ),
                     Gap(8.h),
                     Row(
@@ -55,8 +77,7 @@ class BusinessCard extends StatelessWidget {
                           'assets/icons/home_img.svg',
                         ),
                         Gap(5),
-                        Text(name,
-                            
+                        Text(company,
                             style: TextStyle(
                                 color: AppColors.white,
                                 fontSize: 8,
@@ -71,11 +92,10 @@ class BusinessCard extends StatelessWidget {
                         ),
                         Gap(5),
                         Text(email,
-                          
                             style: TextStyle(
                                 color: AppColors.white,
                                 fontSize: 10,
-                                fontWeight: FontWeight.w400)),
+                                fontWeight: FontWeight.w600)),
                       ],
                     )
                   ],
@@ -90,7 +110,12 @@ class BusinessCard extends StatelessWidget {
                           fontWeight: FontWeight.w600),
                     ),
                     Gap(13.h),
-                    Image.asset('assets/images/person.png'),
+                    image.isNotEmpty ?
+                    CachedNetworkImage(
+                      imageUrl: image,
+                      height: 60.h,
+                      width: 60.w,
+                    ):Container(decoration: BoxDecoration(border: Border.all(color: AppColors.Icon_grey)), height: 60.h,width: 60.w,)
                     //
                   ],
                 )
@@ -116,11 +141,11 @@ class BusinessCard extends StatelessWidget {
                           //color: Colors.black,
                         ),
                         Gap(5.w),
-                        Text('@wiliamX2',
+                        Text(instagram,
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 7,
-                              fontWeight: FontWeight.w400,
+                              fontWeight: FontWeight.w600,
                             ))
                       ],
                     ),
@@ -132,11 +157,11 @@ class BusinessCard extends StatelessWidget {
                           //color: Colors.black,
                         ),
                         Gap(5.w),
-                        Text('@wiliamX2',
+                        Text(x,
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 7,
-                              fontWeight: FontWeight.w400,
+                              fontWeight: FontWeight.w600,
                             ))
                       ],
                     ),
@@ -148,74 +173,76 @@ class BusinessCard extends StatelessWidget {
                           // color: Colors.black,
                         ),
                         Gap(5.w),
-                        Text('@wiliamX2',
+                        Text(facebook,
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 7,
-                              fontWeight: FontWeight.w400,
+                              fontWeight: FontWeight.w600,
                             ))
                       ],
                     )
                   ],
                 ),
                 Gap(7.h),
-                Row(
-                  children: [
-                    Row(
-                      children: [
-                        SvgPicture.asset(
-                          'assets/icons/tiktok_black.svg',
-                          color: Colors.black,
-                        ),
-                        Gap(5.w),
-                        Text('@wiliamX2',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 7,
-                              fontWeight: FontWeight.w400,
-                            ))
-                      ],
-                    ),
-                    Gap(31.w),
-                    Row(
-                      children: [
-                        SvgPicture.asset(
-                          'assets/icons/notification.svg',
-                          //color: Colors.black,
-                        ),
-                        Gap(5.w),
-                        Text('@wiliamX2',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 7,
-                              fontWeight: FontWeight.w400,
-                            ))
-                      ],
-                    ),
-                    Gap(31.w),
-                    Row(
-                      children: [
-                        SvgPicture.asset(
-                          'assets/icons/smartphone.svg',
-                          // color: Colors.black,
-                        ),
-                        Gap(5.w),
-                        Text('@+971 8876 5467',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 7,
-                              fontWeight: FontWeight.w400,
-                            ))
-                      ],
-                    )
-                  ],
+                Padding(
+                  padding: const EdgeInsets.only(left: 3.0),
+                  child: Row(
+                    children: [
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/tiktok_black.svg',
+                            color: Colors.black,
+                          ),
+                          Gap(5.w),
+                          Text(tiktok,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 7,
+                                fontWeight: FontWeight.w600,
+                              ))
+                        ],
+                      ),
+                      Gap(31.w),
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/notification.svg',
+                            //color: Colors.black,
+                          ),
+                          Gap(5.w),
+                          Text(snapchat,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 7,
+                                fontWeight: FontWeight.w600,
+                              ))
+                        ],
+                      ),
+                      Gap(31.w),
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/smartphone.svg',
+                            // color: Colors.black,
+                          ),
+                          Gap(5.w),
+                          Text(phone,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 7,
+                                fontWeight: FontWeight.w600,
+                              ))
+                        ],
+                      )
+                    ],
+                  ),
                 )
               ],
             ),
           ),
         ],
       ),
-    )
-    );
+    ));
   }
 }

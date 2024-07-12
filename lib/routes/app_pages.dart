@@ -1,11 +1,17 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:find_me/app/account/change_phonenumber/change_phonenumber_binding.dart';
 import 'package:find_me/app/account/change_phonenumber/change_phonenumber_view.dart';
 import 'package:find_me/app/auth/changepassword/changepassword_binding.dart';
 import 'package:find_me/app/auth/changepassword/changepassword_view.dart';
+import 'package:find_me/app/auth/email_otp/email_otp_binding.dart';
+import 'package:find_me/app/auth/email_otp/email_otp_view.dart';
 import 'package:find_me/app/auth/forgetpassword/forgetpassword_binding.dart';
 import 'package:find_me/app/auth/forgetpassword/forgetpassword_view.dart';
 import 'package:find_me/app/auth/otp/otp_binding.dart';
 import 'package:find_me/app/auth/otp/otp_view.dart';
+import 'package:find_me/app/auth/phone_otp/phone_otp_binding.dart';
+import 'package:find_me/app/auth/phone_otp/phone_otp_view.dart';
 import 'package:find_me/app/auth/signin/signin_binding.dart';
 import 'package:find_me/app/auth/signin/signin_view.dart';
 import 'package:find_me/app/account/profile/profile_binding.dart';
@@ -16,16 +22,22 @@ import 'package:find_me/app/beacon/beacon_broadcaster/beacon_broadcaster_binding
 import 'package:find_me/app/beacon/beacon_broadcaster/beacon_broadcaster_view.dart';
 import 'package:find_me/app/beacon/beacon_scanner/beacon_scanner_binding.dart';
 import 'package:find_me/app/beacon/beacon_scanner/beacon_scanner_view.dart';
-import 'package:find_me/app/change_email/change_email_binding.dart';
-import 'package:find_me/app/change_email/change_email_view.dart';
 import 'package:find_me/app/coins/coins_store_binding.dart';
 import 'package:find_me/app/coins/coins_store_view.dart';
 import 'package:find_me/app/coins/purchase_coins/purchase_coins_binding.dart';
 import 'package:find_me/app/coins/purchase_coins/purchase_coins_view.dart';
+import 'package:find_me/app/updata_phone_number%5D/updata_phone_number_binding.dart';
+import 'package:find_me/app/updata_phone_number%5D/updata_phone_number_view.dart';
 import 'package:find_me/app/create_business_card/create_card_binding.dart';
 import 'package:find_me/app/create_business_card/create_card_view.dart';
 import 'package:find_me/app/edit_profile/edit_profile_binding.dart';
 import 'package:find_me/app/edit_profile/edit_profile_view.dart';
+import 'package:find_me/app/edit_url/edit_url_binding.dart';
+import 'package:find_me/app/edit_url/edit_url_view.dart';
+import 'package:find_me/app/emoji_menu/emoji_menu_bindings.dart';
+import 'package:find_me/app/emoji_menu/emoji_menu_view.dart';
+import 'package:find_me/app/gifted_emoji/gifted_emoji_binding.dart';
+import 'package:find_me/app/gifted_emoji/gifted_emoji_view.dart';
 import 'package:find_me/app/home/home_binding.dart';
 import 'package:find_me/app/home/home_view.dart';
 import 'package:find_me/app/intro/intro_binding.dart';
@@ -36,10 +48,16 @@ import 'package:find_me/app/location/location_binding.dart';
 import 'package:find_me/app/location/location_view.dart';
 import 'package:find_me/app/main_view/main_binding.dart';
 import 'package:find_me/app/main_view/main_view.dart';
+import 'package:find_me/app/my_emojis/my_emojis_binding.dart';
+import 'package:find_me/app/my_emojis/my_emojis_view.dart';
 import 'package:find_me/app/notifications/notifications_binding.dart';
 import 'package:find_me/app/notifications/notifications_view.dart';
+import 'package:find_me/app/notifications_permissions/notifications_permissions_binding.dart';
+import 'package:find_me/app/notifications_permissions/notifications_permissions_view.dart';
 import 'package:find_me/app/policies/policies_binding.dart';
 import 'package:find_me/app/policies/policies_view.dart';
+import 'package:find_me/app/privacy/privacy_binding.dart';
+import 'package:find_me/app/privacy/privacy_view.dart';
 import 'package:find_me/app/report/report_binding.dart';
 import 'package:find_me/app/report/report_view.dart';
 import 'package:find_me/app/setting/setting_binding.dart';
@@ -48,6 +66,8 @@ import 'package:find_me/app/social_login/social_login_binding.dart';
 import 'package:find_me/app/social_login/social_login_view.dart';
 import 'package:find_me/app/splash/splash_binding.dart';
 import 'package:find_me/app/splash/splash_view.dart';
+import 'package:find_me/app/subscriptions/subscriptions_binding.dart';
+import 'package:find_me/app/subscriptions/subscriptions_view.dart';
 import 'package:find_me/app/support/support_binding.dart';
 import 'package:find_me/app/support/support_view.dart';
 import 'package:find_me/app/user_account/user_account_binding.dart';
@@ -62,6 +82,13 @@ class AppPages {
       name: AppRoutes.splash,
       page: () => const SplashView(),
       binding: SplashBinding(),
+      transition: Transition.downToUp,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+    GetPage(
+      name: AppRoutes.phoneOtp,
+      page: () => const PhoneOtpView(),
+      binding: PhoneOtpBinding(),
       transition: Transition.downToUp,
       transitionDuration: const Duration(milliseconds: 100),
     ),
@@ -211,9 +238,9 @@ class AppPages {
     ),
     //TODO: [change email Route]
     GetPage(
-      name: AppRoutes.change_email,
-      page: () => const ChangeEmailView(),
-      binding: ChangeEmailBinding(),
+      name: AppRoutes.updata_phone_Number,
+      page: () => const UpdataPhoneNumberView(),
+      binding: UpdataPhoneNumberBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
@@ -284,6 +311,69 @@ class AppPages {
       name: AppRoutes.useraccount,
       page: () => const UserAccountView(),
       binding: UserAccountBinding(),
+       transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),),
+    //TODO: [EditUrlView Route]
+    GetPage(
+      name: AppRoutes.editurl,
+      page: () => const EditUrlView(),
+      binding: EditUrlBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+    //TODO: [Subscriptions Route]
+    GetPage(
+      name: AppRoutes.subscriptions,
+      page: () => const SubscriptionsView(),
+      binding: SubscriptionsBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+    //TODO: [Privacy  Route]
+    GetPage(
+      name: AppRoutes.privacy,
+      page: () => PrivacyView(),
+      binding: PrivacyBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+    //TODO: [NotificationsPermissions  Route]
+    GetPage(
+      name: AppRoutes.notificationsPermissions,
+      page: () => NotificationsPermissionsView(),
+      binding: NotificationsPermissionsBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+    //TODO: [EmojiMenu Route]
+    GetPage(
+      name: AppRoutes.edit_menu,
+      page: () => EmojiMenuView(),
+      binding: EmojiMenuBindings(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+    //TODO: [Gifted_Emoji Route]
+    GetPage(
+      name: AppRoutes.gifted_emoji,
+      page: () => GiftedEmojiView(),
+      binding: GiftedEmojiBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+    //TODO: [My_Emojis Route]
+    GetPage(
+      name: AppRoutes.my_emojis,
+      page: () => MyEmojisView(),
+      binding: MyEmojisBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+    //TODO: [My_Emojis Route]
+    GetPage(
+      name: AppRoutes.email_otp,
+      page: () => EmailOtpView(),
+      binding: EmailOtpBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),

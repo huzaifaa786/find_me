@@ -17,11 +17,12 @@ class SplashController extends GetxController {
       checkFirstSeen();
     });
   }
+
   GetStorage box = GetStorage();
 
   Future checkFirstSeen() async {
     String? apiToken = box.read('api_token');
-
+    print("API:$apiToken");
     if (apiToken != null) {
         Get.offNamed(AppRoutes.mainview);
       } else {

@@ -1,10 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:find_me/app/auth/forgetpassword/forgetpassword_controller.dart';
-import 'package:find_me/app/change_email/change_email_controller.dart';
+import 'package:find_me/app/updata_phone_number%5D/updata_phone_number_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/buttons/app_button.dart';
 import 'package:find_me/components/textfields/app_textfields.dart';
+import 'package:find_me/helpers/validator.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
@@ -15,17 +16,17 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-class ChangeEmailView extends StatelessWidget {
-  const ChangeEmailView({super.key});
+class UpdataPhoneNumberView extends StatelessWidget {
+  const UpdataPhoneNumberView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<ChangeEmailController>(
+    return GetBuilder<UpdataPhoneNumberController>(
         builder: (controller) => Scaffold(
               appBar: AppBar(
                 automaticallyImplyLeading: false,
                 scrolledUnderElevation: 0,
-                title: topBar(name: 'Change email'),
+                title: topBar(name: 'New Password'),
               ),
               body: SafeArea(
                   child: Container(
@@ -38,7 +39,7 @@ class ChangeEmailView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         AppText(
-                          title: 'Enter new email',
+                          title: 'Enter New Phone Number',
                           fontWeight: FontWeight.w500,
                           size: 12.sp,
                           color: AppColors.hintGrey,
@@ -48,8 +49,8 @@ class ChangeEmailView extends StatelessWidget {
                     Gap(10.h),
                     Gap(50.h),
                     AppTextFields(
-                      hintText: 'Email',
-                      controller: controller.emailController,
+                      hintText: 'Phone Number',
+                      controller: controller.phoneNumberController,
                     ),
                     Gap(40.h),
                     AppButton(
@@ -57,7 +58,7 @@ class ChangeEmailView extends StatelessWidget {
                       height: 50.0.h,
                       width: 304.0.w,
                       onTap: () {
-                        Get.toNamed(AppRoutes.otp);
+                        Get.toNamed(AppRoutes.mainview);
                       },
                     ),
                   ],

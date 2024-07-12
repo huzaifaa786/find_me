@@ -1,4 +1,5 @@
 import 'package:find_me/utils/app_text/app_text.dart';
+import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/images/images.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-Widget topBar({String? name, bool showBackIcon = true}) {
+Widget topBar({
+  String? name,
+  bool showBackIcon = true,
+  Color color = AppColors.black,
+  
+}) {
   return Padding(
     padding: EdgeInsets.only(left: 40.w, right: 40.w),
     child: Row(
@@ -22,6 +28,7 @@ Widget topBar({String? name, bool showBackIcon = true}) {
               height: 28.h,
               width: 28.w,
               fit: BoxFit.scaleDown,
+              color: color,
             ),
           ),
         if (showBackIcon) Gap(70.w) else Gap(98.w),
@@ -29,6 +36,7 @@ Widget topBar({String? name, bool showBackIcon = true}) {
           title: name!,
           size: 16.sp,
           fontWeight: FontWeight.w600,
+          color: color,
         ),
       ],
     ),

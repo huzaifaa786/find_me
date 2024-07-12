@@ -23,7 +23,7 @@ class BeaconScannerController extends GetxController {
   @override
   void onInit() {
     // initBeacon();
-    initFlutterBlue();
+    // initFlutterBlue();
     // startScanning();
     super.onInit();
   }
@@ -59,7 +59,8 @@ class BeaconScannerController extends GetxController {
                 update();
 
                 for (var ee in results) {
-                  print("serviceData: ${ee.advertisementData.serviceData.keys.toList()}");
+                  print(
+                      "serviceData: ${ee.advertisementData.serviceData.keys.toList()}");
                   print("*************** DEVICE START ********************");
                   print("Advname: ${ee.advertisementData.advName}");
                   print("appearance: ${ee.advertisementData.appearance}");
@@ -147,5 +148,15 @@ class BeaconScannerController extends GetxController {
       }
     }
     update();
+  }
+
+  static const MethodChannel _channel = MethodChannel('bluetooth_helper');
+  var bluetoothAddress = '';
+  var isLoading = false;
+  var errorMessage = '';
+
+  Future<void> fetchBluetoothAddress() async {
+      final String? address = await _channel.invokeMethod('getBluetoothAddress');
+    print("ADDRESSSSSSSSSSSS: $address");
   }
 }

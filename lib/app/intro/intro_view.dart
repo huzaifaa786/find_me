@@ -30,7 +30,7 @@ class IntroView extends StatelessWidget {
               ),
               Gap(28.h),
               AppText(
-                title: 'easy away to share files !',
+                title: 'Easy way to find me.',
                 size: 16.sp,
                 fontWeight: FontWeight.w500,
                 color: AppColors.black.withOpacity(0.81),

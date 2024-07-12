@@ -3,6 +3,7 @@
 import 'dart:ui';
 
 import 'package:find_me/components/buttons/app_button.dart';
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:find_me/components/buttons/prefix_icon_button.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
@@ -17,25 +18,37 @@ import 'package:get/get.dart';
 
 class UiUtilites {
   static errorSnackbar(String title, String message) {
-    Get.snackbar(
-      title.tr,
-      message.tr,
-      colorText: AppColors.white,
-      backgroundColor: AppColors.red,
-      duration: const Duration(seconds: 2),
-      snackPosition: SnackPosition.BOTTOM,
-    );
+    AnimatedSnackBar(
+      mobileSnackBarPosition: MobileSnackBarPosition.bottom,
+      mobilePositionSettings: const MobilePositionSettings(
+        bottomOnAppearance: 20,
+      ),
+      duration: Duration(milliseconds: 2000),
+      builder: ((context) {
+        return MaterialAnimatedSnackBar(
+          titleText:  title.isNotEmpty ? title : null,
+          messageText: message,
+          type: AnimatedSnackBarType.error,
+        );
+      }),
+    ).show(Get.context!);
   }
 
   static successSnackbar(String message, String title) {
-    Get.snackbar(
-      title.tr,
-      message.tr,
-      backgroundColor: AppColors.green,
-      colorText: AppColors.white,
-      duration: const Duration(seconds: 2),
-      snackPosition: SnackPosition.BOTTOM,
-    );
+    AnimatedSnackBar(
+      mobileSnackBarPosition: MobileSnackBarPosition.bottom,
+      mobilePositionSettings: const MobilePositionSettings(
+        bottomOnAppearance: 20,
+      ),
+      duration: Duration(milliseconds: 2000),
+      builder: ((context) {
+        return MaterialAnimatedSnackBar(
+          titleText: title.isNotEmpty ? title : null,
+          messageText: message,
+          type: AnimatedSnackBarType.success,
+        );
+      }),
+    ).show(Get.context!);
   }
 
   static registerSuccessAlert(context, title) {
@@ -53,44 +66,42 @@ class UiUtilites {
             surfaceTintColor: Colors.white,
             shape: RoundedRectangleBorder(
                 side: BorderSide(
-                  //color: Colors.transparent, style: BorderStyle.solid
-                  color: Colors.red,
-                ),
+                    color: Colors.transparent, style: BorderStyle.solid
+                    // color: AppColors.primary_color,
+                    ),
                 borderRadius: BorderRadius.all(Radius.circular(20))),
             // contentPadding: EdgeInsets.only(top: 10.0),
-            content: Container(
-              padding: EdgeInsets.only(left: 20, right: 20),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.all(Radius.circular(20.0)),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Gap(10.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(ImagesConst.tickicon),
-                      AppText(
-                        title: 'Thank You!',
-                        textAlign: TextAlign.center,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ],
-                  ),
-                  Gap(30),
-                  AppText(
-                    title:
-                        'Your feedback helps make the app\n better for everyone. ',
-                    textAlign: TextAlign.center,
-                    fontWeight: FontWeight.w400,
-                    size: 10.sp,
-                  ),
-                ],
-              ),
+            content: Wrap(
+              children: [
+                Column(
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  // mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    // Gap(10.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        SvgPicture.asset("assets/icons/x-circle.svg"),
+                      ],
+                    ),
+                    Image.asset(
+                      ImagesConst.registreted_successfully_gif,
+                      height: 121,
+                      width: 112,
+                      fit: BoxFit.cover,
+                    ),
+                    // Gap(20),
+
+                    AppText(
+                      title: 'You have registreted \n successfully!',
+                      textAlign: TextAlign.center,
+                      fontWeight: FontWeight.w400,
+                      size: 14.sp,
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         );

@@ -25,9 +25,9 @@ class LoadingHelper {
       ..radius = 10.0
       ..progressColor = Colors.white
       ..backgroundColor = Colors.transparent
-      ..indicatorColor = AppColors.green
-      ..textColor = AppColors.green
-      ..maskColor = AppColors.green.withOpacity(0.5)
+      ..indicatorColor = AppColors.primary_color
+      ..textColor = AppColors.primary_color
+      ..maskColor = AppColors.primary_color.withOpacity(0.5)
       ..userInteractions = false
       ..dismissOnTap = false
       ..boxShadow = <BoxShadow>[];

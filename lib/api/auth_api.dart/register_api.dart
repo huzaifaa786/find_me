@@ -6,10 +6,13 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 class RegisterApi {
   static Future<Map<String, dynamic>> registerUser({
     String? name,
+    String? firstName,
+    String? lastName,
     String? password,
     String? email,
     String? phone,
     String? dob,
+    String? gender,
     String? beaconId, 
   }) async {
     //* URL
@@ -23,6 +26,9 @@ class RegisterApi {
       'password': password,
       'phone':phone,
       'email': email,
+      'first_name': firstName,
+      'last_name': lastName,
+      'gender': gender,
       // 'login_type': 'EMAIL',
       'dob': dob,
       'beacon_id': beaconId,

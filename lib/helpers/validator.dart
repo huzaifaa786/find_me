@@ -1,7 +1,5 @@
-
 class Validators {
-
-static String? emailValidator(String? email) {
+  static String? emailValidator(String? email) {
     print(email);
     final RegExp emailRegExp = RegExp(
       r'^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$',
@@ -13,6 +11,19 @@ static String? emailValidator(String? email) {
       return "Email can't be empty";
     } else if (!emailRegExp.hasMatch(email)) {
       return "Invalid Email Address";
+    } else {
+      return null;
+    }
+  }
+
+  static String? emptyStringValidator(
+    String key,
+    String? value,
+  ) {
+    if (value == null) {
+      return null;
+    } else if (value.isEmpty) {
+      return "$key can't be empty";
     } else {
       return null;
     }

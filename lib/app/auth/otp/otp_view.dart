@@ -7,6 +7,7 @@ import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -22,7 +23,10 @@ class OtpView extends StatelessWidget {
           appBar: AppBar(
             automaticallyImplyLeading: false,
             scrolledUnderElevation: 0,
-            title: topBar(name: ''),
+            title: topBar(
+              name: '',
+              showBackIcon: true,
+            ),
           ),
           body: SafeArea(
             child: Padding(
@@ -72,7 +76,7 @@ class OtpView extends StatelessWidget {
                   child: OtpTextField(
                     borderRadius: BorderRadius.circular(6.0),
                     numberOfFields: 6,
-                    fieldHeight:51.h,
+                    fieldHeight: 51.h,
                     fieldWidth: 45.h,
                     keyboardType: TextInputType.number,
                     focusedBorderColor: AppColors.primary_color,
@@ -84,11 +88,13 @@ class OtpView extends StatelessWidget {
                         fontSize: 15,
                         fontWeight: FontWeight.w600),
                     onCodeChanged: (String code) {
-                      controller.otpCode = code;
+                      controller.setOtpCode(code);
                     },
                     onSubmit: (String verificationCode) {
-                      controller.otpCode = verificationCode;
-                      controller.verifyOtpCode();
+                      controller.setOtpCode(verificationCode);
+                      if (controller.areFieldsFilled) {
+                        controller.verifyOtp();
+                      }
                     },
                   ),
                 ),
@@ -98,7 +104,7 @@ class OtpView extends StatelessWidget {
                     Get.toNamed(AppRoutes.sociallogin);
                   },
                   child: AppText(
-                    title: 'send code'.tr,
+                    title: 'Resend'.tr,
                     size: 14,
                     fontWeight: FontWeight.w600,
                     color: AppColors.primary_color,

@@ -1,53 +1,56 @@
+import 'package:find_me/api/auth_api.dart/user_api.dart';
+import 'package:find_me/models/profile_business_card_model.dart';
+import 'package:find_me/models/profile_url_model.dart';
+import 'package:find_me/models/user_model.dart';
+import 'package:find_me/models/user_profile_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl_phone_field/countries.dart';
-import 'package:intl_phone_field/helpers.dart';
-import 'package:intl_phone_field/phone_number.dart';
 
 class ProfileController extends GetxController {
   static ProfileController instance = Get.find();
-    TextEditingController usernameController = TextEditingController();
-  TextEditingController useremailController = TextEditingController();
+  UserModel? userModel;
+  UserProfileModel? profile;
+  ProfileBusinessCardModel? businessCardModel;
+  ProfileUrlModel? profileUrlModel;
+  late FocusNode focusNode;
 
-  //! Phone Input Field Variable and Validations
-  String invalidNumberMessage = '';
-  TextEditingController phonecontroller = TextEditingController();
-  Country? selectedCountry =
-      countries.firstWhere((country) => country.fullCountryCode == "971");
-  PhoneNumber? checkphoneController;
-  String? phoneController;
+  var i = 0;
 
-  onCountryChanged(Country value) {
-    selectedCountry = value;
-    phonecontroller.clear();
+  fggf() {
+    i = 12;
     update();
-    if (checkphoneController != null) phoneValidation(checkphoneController);
   }
 
-  phoneValidation(phone) {
-    if (!isNumeric(phone.number)) {
-      invalidNumberMessage = 'Use Numeric Variables';
+  bool isEditSelected = false;
+
+  @override
+  void onInit() {
+    profile ??= Get.arguments;
+    focusNode = FocusNode();
+    focusNode.addListener(() {
+      if (!focusNode.hasFocus && isEditSelected) {
+        isEditSelected = false;
+      }
+    });
+
+    getUser();
+    super.onInit();
+  }
+
+  
+
+  getUser() async {
+    var response = await UserApi.getUser();
+    if (response.isNotEmpty) {
+      userModel = UserModel.fromJson(response['user']);
+      businessCardModel = profile!.businessCard;
+      if (profile!.urls != null) {
+        profileUrlModel = profile!.urls;
+      } else {
+        profileUrlModel = ProfileUrlModel(id: 1, userProfileId: profile!.id);
+      }
+
       update();
-      return invalidNumberMessage;
-    } else if (phone.number.length < selectedCountry!.minLength ||
-        phone.number.length > selectedCountry!.maxLength) {
-      invalidNumberMessage = 'Invalid Phone Number';
-      update();
-      return invalidNumberMessage;
-    } else {
-      invalidNumberMessage = '';
     }
-    checkphoneController = phone;
-    update();
-    if (countries
-            .firstWhere((element) => element.code == phone!.countryISOCode)
-            .maxLength ==
-        phone!.number.length) {
-      phoneController = phone.completeNumber;
-      update();
-    } else {
-      phoneController = null;
-    }
-    return invalidNumberMessage;
   }
 }

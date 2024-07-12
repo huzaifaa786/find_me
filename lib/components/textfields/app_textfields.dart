@@ -16,15 +16,21 @@ class AppTextFields extends StatelessWidget {
     this.fieldValidator,
     this.onChanged,
     this.enabled,
+    this.color = AppColors.black,
+    this.height = 20.0,
+    this.width = 20.0,
   }) : super(key: key);
 
   final icon;
+  final width;
+  final height;
   final controller;
   final hintText;
   final type;
   final fieldValidator;
   final ValueChanged<String>? onChanged;
   final bool? enabled;
+  final color;
 
   @override
   Widget build(BuildContext context) {
@@ -41,12 +47,12 @@ class AppTextFields extends StatelessWidget {
       decoration: InputDecoration(
         prefixIcon: icon != null
             ? Padding(
-                padding:  EdgeInsets.only(left: 23.w),
+                padding: EdgeInsets.only(left: 23.w, right: 14),
                 child: SvgPicture.asset(
                   icon!,
-                  fit: BoxFit.scaleDown,
-                  width: 20.w,
-                  height: 20.h,
+                  width: width,
+                  height: height,
+                  color: color,
                 ),
               )
             : null,
