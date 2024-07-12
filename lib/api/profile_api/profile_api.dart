@@ -2,6 +2,64 @@ import 'package:find_me/services/dio_service.dart';
 import 'package:find_me/utils/base_url.dart';
 
 class ProfileApi {
+  static Future<Map<String, dynamic>> updateProfileImage({
+    int? userProfileId,
+    String? image,
+    int? userId,
+  }) async {
+    // URL
+    String url = '$baseUrl/update/profile/image';
+
+    // DATA
+    var data = {
+      'profile_id': userProfileId,
+      'user_id': userId,
+      'image': image,
+    };
+
+    // Make the POST request using DioService
+    var response = await DioService.post(url: url, data: data);
+    return response;
+  }
+
+  static Future<Map<String, dynamic>> updateCurrentProfile({
+    int? userProfileId,
+    int? userId,
+  }) async {
+    // URL
+    String url = '$baseUrl/update/current/profile';
+
+    // DATA
+    var data = {
+      'profile_id': userProfileId,
+      'user_id': userId,
+    };
+
+    // Make the POST request using DioService
+    var response = await DioService.post(url: url, data: data);
+    return response;
+  }
+
+  static Future<Map<String, dynamic>> updateProfileName({
+    int? userProfileId,
+    String? name,
+    int? userId,
+  }) async {
+    // URL
+    String url = '$baseUrl/update/profile/name';
+
+    // DATA
+    var data = {
+      'profile_id': userProfileId,
+      'user_id': userId,
+      'name': name,
+    };
+
+    // Make the POST request using DioService
+    var response = await DioService.post(url: url, data: data);
+    return response;
+  }
+
   static Future<Map<String, dynamic>> updateProfileUrls({
     int? userProfileId,
     String? whatsapp,

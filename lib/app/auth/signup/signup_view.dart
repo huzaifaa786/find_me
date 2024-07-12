@@ -98,6 +98,7 @@ class _SignUpViewState extends State<SignUpView> {
                     errorText: controller.invalidNumberMessage,
                     onChanged: controller.phoneValidation,
                     controller: controller.pcontroller,
+                    initialCode: controller.selectedCountry!.code,
                   ),
                   Gap(14.h),
                   Padding(
@@ -151,51 +152,7 @@ class _SignUpViewState extends State<SignUpView> {
                       controller.registerUser();
                     },
                   ),
-                  // Gap(12.h),
-                  // const AppText(
-                  //   title: 'Or',
-                  //   size: 12,
-                  //   fontWeight: FontWeight.w400,
-                  // ),
-                  // Gap(12.h),
-                  // PrefixIconButton(
-                  //   title: 'Sign up with Apple',
-                  //   height: 50.0.h,
-                  //   width: 304.0.w,
-                  //   borderColor: AppColors.black,
-                  //   color: AppColors.black,
-                  //   textColors: AppColors.white,
-                  //   image: ImagesConst.appleIcon,
-                  // ),
-                  // Gap(12.h),
-                  // PrefixIconButton(
-                  //   title: 'Sign up with Google',
-                  //   height: 50.0.h,
-                  //   width: 304.0.w,
-                  //   borderColor: AppColors.borderGrey,
-                  //   onTap: () async {
-                  //     var response = await GoogleSignUpApi().signUpWithGoogle();
-                  //     GoogleSignIn().disconnect();
-                  //     if (response[0].isNotEmpty) {
-                  //       var responce = await controller.loginGoogleUser(
-                  //           response[0], response[1]);
-                  //       if (!responce['error']) {
-                  //         controller.user =
-                  //             UserModel.fromJson(response['user']);
-                  //         if (controller.user!.loginType == 'GOOGLE') {
-                  //           await box.write(
-                  //               'api_token', response['user']['token']);
-                  //           UiUtilites.successSnackbar(
-                  //               'Signin Successfully.', 'Success!');
-                  //           Get.toNamed(AppRoutes.mainview);
-                  //         } else {
-                  //           UiUtilites.errorSnackbar(
-                  //               'ERROR!', 'Email register for some other user');
-                  //         }
-                  //       }
-                  //     }
-                  //   },
-                  // ),
+                 
                   Gap(30.h),
                   AuthRichText(
                     title: 'Already have an account ? ',

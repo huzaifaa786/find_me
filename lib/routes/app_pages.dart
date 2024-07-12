@@ -28,6 +28,10 @@ import 'package:find_me/app/beacon/beacon_broadcaster/beacon_broadcaster_binding
 import 'package:find_me/app/beacon/beacon_broadcaster/beacon_broadcaster_view.dart';
 import 'package:find_me/app/beacon/beacon_scanner/beacon_scanner_binding.dart';
 import 'package:find_me/app/beacon/beacon_scanner/beacon_scanner_view.dart';
+import 'package:find_me/app/coins/coins_store_binding.dart';
+import 'package:find_me/app/coins/coins_store_view.dart';
+import 'package:find_me/app/coins/purchase_coins/purchase_coins_binding.dart';
+import 'package:find_me/app/coins/purchase_coins/purchase_coins_view.dart';
 import 'package:find_me/app/updata_phone_number%5D/updata_phone_number_binding.dart';
 import 'package:find_me/app/updata_phone_number%5D/updata_phone_number_view.dart';
 import 'package:find_me/app/create_business_card/create_card_binding.dart';
@@ -72,6 +76,8 @@ import 'package:find_me/app/subscriptions/subscriptions_binding.dart';
 import 'package:find_me/app/subscriptions/subscriptions_view.dart';
 import 'package:find_me/app/support/support_binding.dart';
 import 'package:find_me/app/support/support_view.dart';
+import 'package:find_me/app/user_account/user_account_binding.dart';
+import 'package:find_me/app/user_account/user_account_view.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:get/get.dart';
 
@@ -290,6 +296,29 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
+     //TODO: [Coins Store Route]
+    GetPage(
+      name: AppRoutes.coinsstore,
+      page: () => const CoinsStoreView(),
+      binding: CoinsStoreBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+         //TODO: [Purchase Coins  Route]
+    GetPage(
+      name: AppRoutes.purchasecoins,
+      page: () => const PurchaseCoinsView(),
+      binding: PurchaseCoinsBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+             //TODO: [User Account  Route]
+    GetPage(
+      name: AppRoutes.useraccount,
+      page: () => const UserAccountView(),
+      binding: UserAccountBinding(),
+       transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),),
     //TODO: [EditUrlView Route]
     GetPage(
       name: AppRoutes.editurl,

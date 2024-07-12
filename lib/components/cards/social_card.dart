@@ -10,6 +10,7 @@ class SocialCard extends StatelessWidget {
     required this.text,
     required this.image,
     required this.ontap,
+    
   }) : super(key: key);
   final String text;
   final String image;

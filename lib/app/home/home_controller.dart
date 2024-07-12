@@ -60,8 +60,7 @@ class HomeController extends GetxController {
   bool isSearching = false;
   var dropdownItems = <DropdownItem>[];
   DropdownItem selectedItem = DropdownItem(
-    avatarUrl:
-        'https://th.bing.com/th/id/OIP.DmAJheE6apJ9IX7pxIRDjgHaFN?pid=ImgDet&w=474&h=333&rs=1',
+    avatarUrl: null,
     text: 'Almarwan General Trd',
     verified: true,
   );
@@ -89,10 +88,21 @@ class HomeController extends GetxController {
       selectedItem = DropdownItem(
           avatarUrl: userModel!.currentProfile!.imageUrl,
           text: userModel!.currentProfile!.name,
-          verified: true);
+          verified: userModel!.currentProfile!.isVerified);
+      dropdownItems = [];
       for (var element in userModel!.profiles!) {
         dropdownItems.add(DropdownItem(
-            avatarUrl: element.imageUrl, text: element.name, verified: true));
+            avatarUrl: element.imageUrl,
+            text: element.name,
+            verified: element.isVerified));
+      }
+      if (userModel!.profiles!.length < 2) {
+        dropdownItems
+            .add(DropdownItem(avatarUrl: "2", text: "2", verified: false));
+      } else if (userModel!.profiles!.length >= 2 &&
+          userModel!.profiles!.length < 4) {
+        dropdownItems
+            .add(DropdownItem(avatarUrl: "4", text: "2", verified: false));
       }
       update();
     }
@@ -356,7 +366,7 @@ class HomeController extends GetxController {
     if (event.data != null && event.eventName == "my-event") {
       Map<String, dynamic> data = json.decode(event.data!);
       UserModel user = UserModel.fromJson(data['user']);
-      showPopup(data['message'],user);
+      showPopup(data['message'], user);
     }
   }
 
@@ -369,11 +379,12 @@ class HomeController extends GetxController {
     log('Channel Name: $channelName, Socket Id: $socketId, Options: $options');
   }
 
-  void showPopup(String message,UserModel user) {
+  void showPopup(String message, UserModel user) {
     Get.dialog(
       ProfileRequestPopup(
         name: user.currentProfile!.name!,
-        imageUrl: 'https://avatar.iran.liara.run/public/boy?username=${user.currentProfile!.name!}',
+        imageUrl:
+            'https://avatar.iran.liara.run/public/boy?username=${user.currentProfile!.name!}',
         requestMessage: 'Would like to take a look at your "Profile".',
       ),
     );

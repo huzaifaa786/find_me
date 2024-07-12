@@ -8,6 +8,7 @@ class UserProfileModel {
   String? imageUrl;
   String? username;
   ProfileUrlModel? urls;
+  bool isVerified;
   ProfileBusinessCardModel? businessCard;
 
   UserProfileModel({
@@ -18,19 +19,20 @@ class UserProfileModel {
     this.username,
     this.urls,
     this.businessCard,
+    required this.isVerified,
   });
 
   factory UserProfileModel.fromJson(Map<String, dynamic> json) {
     return UserProfileModel(
         id: json['id'],
         name: json['name'] ?? '',
-        imageUrl: json['image'] ??
-            'https://avatar.iran.liara.run/public/boy?username=${json['name']}',
+        imageUrl: json['image'],
         username: json['username'] ?? '',
         bio: json['bio'] ?? '',
         urls: json['urls'] != null
             ? ProfileUrlModel.fromJson(json['urls'])
             : null,
+        isVerified: json['profile_verified'] == 1 ? true : false,
         businessCard: json['business_card'] != null
             ? ProfileBusinessCardModel.fromJson(json['business_card'])
             : null);

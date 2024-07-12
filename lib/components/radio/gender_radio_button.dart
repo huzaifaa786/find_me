@@ -18,85 +18,88 @@ class _GenderRadioButtonsState extends State<GenderRadioButtons> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Radio<String>(
-                  value: 'Male',
-                  groupValue: selectedGender,
-                  onChanged: (value) {
-                    setState(() {
-                      selectedGender = value;
-                    });
-                    widget.onGenderSelected(value!);
-                  },
-                ),
-                AppText(
-                  title: 'Male',
-                  size: 14.sp,
-                  fontWeight: FontWeight.w400,
-                ),
-                Icon(
-                  Icons.male,
-                  color: Colors.blue,
-                  size: 20,
-                ),
-              ],
-            ),
-            SizedBox(width: 20),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Radio<String>(
-                  value: 'Female',
-                  groupValue: selectedGender,
-                  onChanged: (value) {
-                    setState(() {
-                      selectedGender = value;
-                    });
-                    widget.onGenderSelected(value!);
-                  },
-                ),
-                AppText(
-                  title: 'Female',
-                  size: 14.sp,
-                  fontWeight: FontWeight.w400,
-                ),
-                Icon(Icons.female, color: AppColors.pink),
-              ],
-            ),
-          ],
-        ),
-        SizedBox(height: 10),
-        Center(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Radio<String>(
-                value: 'Other',
-                groupValue: selectedGender,
-                onChanged: (value) {
-                  setState(() {
-                    selectedGender = value;
-                  });
-                  widget.onGenderSelected(value!);
-                },
+        Expanded(
+          child: Theme(
+            data: Theme.of(context).copyWith(
+              listTileTheme: const ListTileThemeData(
+                horizontalTitleGap: 2,
               ),
-              AppText(
-                title: 'Prefer not to say',
-                size: 14.sp,
+            ),
+            child: RadioListTile<String>(
+              visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
+              dense: true,
+              contentPadding: EdgeInsets.zero,
+              title: AppText(
+                title: 'Male',
+                size: 12.sp,
                 fontWeight: FontWeight.w400,
               ),
-            ],
+              value: 'Male',
+              groupValue: selectedGender,
+              onChanged: (value) {
+                setState(() {
+                  selectedGender = value;
+                });
+                widget.onGenderSelected(value!);
+              },
+            ),
+          ),
+        ),
+        Expanded(
+          child: Theme(
+            data: Theme.of(context).copyWith(
+              listTileTheme: const ListTileThemeData(
+                horizontalTitleGap: 2,
+              ),
+            ),
+            child: RadioListTile<String>(
+              visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
+              dense: true,
+              contentPadding: EdgeInsets.zero,
+              title: AppText(
+                title: 'Female',
+                size: 12.sp,
+                fontWeight: FontWeight.w400,
+              ),
+              value: 'Female',
+              groupValue: selectedGender,
+              onChanged: (value) {
+                setState(() {
+                  selectedGender = value;
+                });
+                widget.onGenderSelected(value!);
+              },
+            ),
+          ),
+        ),
+        Expanded(
+          child: Theme(
+            data: Theme.of(context).copyWith(
+              listTileTheme: const ListTileThemeData(
+                horizontalTitleGap: 2,
+              ),
+            ),
+            child: RadioListTile<String>(
+              visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
+              dense: true,
+              contentPadding: EdgeInsets.zero,
+              title: AppText(
+                title: 'Prefer not to say',
+                size: 12.sp,
+                fontWeight: FontWeight.w400,
+              ),
+              value: 'Other',
+              groupValue: selectedGender,
+              onChanged: (value) {
+                setState(() {
+                  selectedGender = value;
+                });
+                widget.onGenderSelected(value!);
+              },
+            ),
           ),
         ),
       ],

@@ -17,53 +17,51 @@ class IntroView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<IntroController>(
       builder: (controller) => Scaffold(
-        body: SingleChildScrollView(
-          child: SizedBox(
-            width: 390.w,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Gap(133.h),
-                AppText(
-                  title: 'Find Me!',
-                  fontWeight: FontWeight.w600,
-                  size: 40.sp,
-                ),
-                Gap(28.h),
-                AppText(
-                  title: 'easy away to share files !',
-                  size: 16.sp,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.black.withOpacity(0.81),
-                ),
-                Gap(138.h),
-                GifButton(onTap: () {}, showOpacity: true),
-                Gap(94.h),
-                AppButton(
-                  title: 'Sign Up',
-                  height: 60.0.h,
-                  width: 304.0.w,
-                  color: AppColors.black,
-                  borderColor: AppColors.black,
-                  onTap: () {
-                    Get.toNamed(AppRoutes.signup);
-                  },
-                ),
-                Gap(30.h),
-                AuthRichText(
-                  title: 'Already have an account ? ',
-                  description: 'Sign in',
-                  titlesize: 14.sp,
-                  titlefontweight: FontWeight.w400,
-                  descriptionfontweight: FontWeight.w600,
-                  descriptiosize: 14.sp,
-                  descriptionColor: AppColors.primary_color,
-                  onTap: () {
-                    Get.toNamed(AppRoutes.signin);
-                  },
-                )
-              ],
-            ),
+        body: SizedBox(
+          width: 390.w,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Gap(133.h),
+              AppText(
+                title: 'Find Me!',
+                fontWeight: FontWeight.w600,
+                size: 40.sp,
+              ),
+              Gap(28.h),
+              AppText(
+                title: 'Easy way to find me.',
+                size: 16.sp,
+                fontWeight: FontWeight.w500,
+                color: AppColors.black.withOpacity(0.81),
+              ),
+              Gap(138.h),
+              GifButton(onTap: () {}, showOpacity: true),
+              Gap(94.h),
+              AppButton(
+                title: 'Sign Up',
+                height: 60.0.h,
+                width: 304.0.w,
+                color: AppColors.black,
+                borderColor: AppColors.black,
+                onTap: () {
+                  Get.toNamed(AppRoutes.signup);
+                },
+              ),
+              Gap(30.h),
+               AuthRichText(
+                    title: 'Already have an account ? ',
+                    description: 'Sign in',
+                     titlesize: 14.sp,
+                      titlefontweight: FontWeight.w400,
+                      descriptionfontweight: FontWeight.w600,
+                      descriptiosize: 14.sp,
+                      descriptionColor: AppColors.primary_color,
+                    onTap: () {
+                      Get.toNamed(AppRoutes.signin);
+                    },
+                  )
+            ],
           ),
         ),
       ),
