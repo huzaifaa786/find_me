@@ -22,8 +22,8 @@ import 'package:find_me/app/beacon/beacon_broadcaster/beacon_broadcaster_binding
 import 'package:find_me/app/beacon/beacon_broadcaster/beacon_broadcaster_view.dart';
 import 'package:find_me/app/beacon/beacon_scanner/beacon_scanner_binding.dart';
 import 'package:find_me/app/beacon/beacon_scanner/beacon_scanner_view.dart';
-import 'package:find_me/app/change_email/change_email_binding.dart';
-import 'package:find_me/app/change_email/change_email_view.dart';
+import 'package:find_me/app/updata_phone_number%5D/updata_phone_number_binding.dart';
+import 'package:find_me/app/updata_phone_number%5D/updata_phone_number_view.dart';
 import 'package:find_me/app/create_business_card/create_card_binding.dart';
 import 'package:find_me/app/create_business_card/create_card_view.dart';
 import 'package:find_me/app/edit_profile/edit_profile_binding.dart';
@@ -232,9 +232,9 @@ class AppPages {
     ),
     //TODO: [change email Route]
     GetPage(
-      name: AppRoutes.change_email,
-      page: () => const ChangeEmailView(),
-      binding: ChangeEmailBinding(),
+      name: AppRoutes.updata_phone_Number,
+      page: () => const UpdataPhoneNumberView(),
+      binding: UpdataPhoneNumberBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),

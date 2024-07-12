@@ -101,7 +101,7 @@ class OtpView extends StatelessWidget {
                 Gap(30),
                 GestureDetector(
                   onTap: () {
-                    controller.resendOtp();
+                    Get.toNamed(AppRoutes.sociallogin);
                   },
                   child: AppText(
                     title: 'Resend'.tr,

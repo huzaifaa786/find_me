@@ -90,38 +90,34 @@ class _PrivacyViewState extends State<PrivacyView> {
                         ),
                       ),
                       Gap(27),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            TextSwitchButton(
-                              title: "Grant access",
-                              size: 12.sp,
-                              FontWeight: FontWeight.w400,
-                              value: controller.socialMediagrantAccess,
-                              ontoggle: (value) {
-                                setState(() {
-                                  controller.socialMediagrantAccess = value;
-                                  if (value) {
-                                    controller.socialMediaRequest = false;
-                                  }
-                                });
-                              },
-                            ),
-                            TextSwitchButton(
-                                title: "Receive request",
-                                size: 12.sp,
-                                FontWeight: FontWeight.w400,
-                                value: controller.socialMediaRequest,
-                                ontoggle: (value) {
-                                  setState(() {
-                                    controller.socialMediaRequest = value;
-                                    if (value) {
-                                      controller.socialMediagrantAccess = false;
-                                    }
-                                  });
-                                }),
-                          ]),
+                      TextSwitchButton(
+                        title: "Grant access",
+                        size: 12.sp,
+                        FontWeight: FontWeight.w400,
+                        value: controller.socialMediagrantAccess,
+                        ontoggle: (value) {
+                          setState(() {
+                            controller.socialMediagrantAccess = value;
+                            if (value) {
+                              controller.socialMediaRequest = false;
+                            }
+                          });
+                        },
+                      ),
                       Gap(21),
+                      TextSwitchButton(
+                          title: "Receive request",
+                          size: 12.sp,
+                          FontWeight: FontWeight.w400,
+                          value: controller.socialMediaRequest,
+                          ontoggle: (value) {
+                            setState(() {
+                              controller.socialMediaRequest = value;
+                              if (value) {
+                                controller.socialMediagrantAccess = false;
+                              }
+                            });
+                          }),
                     ],
                   ),
                 ),
