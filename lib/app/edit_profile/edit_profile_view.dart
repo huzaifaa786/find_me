@@ -1,5 +1,6 @@
 import 'package:find_me/app/edit_profile/components/profilecontainer.dart';
 import 'package:find_me/components/appbars/topbar.dart';
+import 'package:find_me/models/user_profile_model.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -40,21 +41,39 @@ class EditProfileView extends StatelessWidget {
                 Gap(10.w),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: controller.profiles.length,
+                    itemCount: 4,
                     itemBuilder: (context, index) {
+                      final profile = controller.profiles[index];
+                      UserProfileModel? userProfile;
+                      if (controller.userProfiles.asMap().containsKey(index)) {
+                        userProfile = controller.userProfiles[index];
+                      }
+                      final textController = TextEditingController(
+                          text: userProfile != null
+                              ? profile.name
+                              : "+ New Profile ${index + 1}");
                       return Padding(
-                        padding: EdgeInsets.symmetric(vertical: 5.w),
-                        child: ProfileContainer(
-                          isSelected: controller.profiles[index].isSelected,
-                          isDefault: controller.profiles[index].isDefault,
-                          avatarUrl: controller.profiles[index].avatarUrl,
-                          verified: true,
-                          onToggle: (value) {
-                            controller.toggleDefault(index);
-                          },
-                          textController: controller.profiles[index].controller,
-                        ),
-                      );
+                          padding: EdgeInsets.symmetric(vertical: 5.w),
+                          child: ProfileContainer(
+                            userModel: userProfile,
+                            isSelected:
+                                controller.selectedProfileIndex == index,
+                            isDefault: profile.isDefault,
+                            avatarUrl: profile.image,
+                            verified: false, // Add logic for verified if needed
+                            isEditable: profile.isEditable,
+                            isLocked: profile.isLocked,
+                            index: index,
+                            onImageChange: controller.updateProfileImage,
+                            onNameChange: controller.updateProfileName,
+                            onToggle: (isDefault) {
+                              if (isDefault) {
+                                controller.toggleDefaultProfile(index);
+                                controller.selectProfile(index);
+                              }
+                            },
+                            textController: textController,
+                          ));
                     },
                   ),
                 ),

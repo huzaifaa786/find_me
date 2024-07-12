@@ -104,7 +104,7 @@ class OtpView extends StatelessWidget {
                     controller.resendOtp();
                   },
                   child: AppText(
-                    title: 'send code'.tr,
+                    title: 'Resend'.tr,
                     size: 14,
                     fontWeight: FontWeight.w600,
                     color: AppColors.primary_color,

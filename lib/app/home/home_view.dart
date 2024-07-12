@@ -5,6 +5,7 @@ import 'package:find_me/app/home/components/swipe.dart';
 import 'package:find_me/app/home/components/home_gif_button.dart';
 import 'package:find_me/app/home/components/home_appbar.dart';
 import 'package:find_me/app/home/components/user_card.dart';
+import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/cupertino.dart';
@@ -41,23 +42,15 @@ class HomeView extends StatelessWidget {
                         Container(
                           height: 77,
                           width: 77,
-                          decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: AppColors.shadow_black.withOpacity(0.25),
-                                spreadRadius: 1,
-                                blurRadius: 10.7,
-                                offset: Offset(0, 0),
-                              ),
-                            ],
-                            borderRadius: BorderRadius.circular(80.r),
-                          ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(80.r),
-                            child: CachedNetworkImage(
-                              imageUrl: controller.selectedItem.avatarUrl ?? '',
-                              fit: BoxFit.cover,
-                            ),
+                            child: controller.selectedItem.avatarUrl != null
+                                ? CachedNetworkImage(
+                                    imageUrl:
+                                        controller.selectedItem.avatarUrl!,
+                                    fit: BoxFit.cover,
+                                  )
+                                : SvgPicture.asset("assets/images/User.svg"),
                           ),
                         ),
                         Gap(11.w),
@@ -69,67 +62,158 @@ class HomeView extends StatelessWidget {
                               constraints: BoxConstraints(minWidth: 120.w),
                               child: SizedBox(
                                 height: 50.h,
-                                child: DropdownButton<DropdownItem>(
-                                  icon: SvgPicture.asset(
-                                    'assets/icons/arrow_down.svg',
-                                    color: Colors.transparent,
-                                  ),
-                                  elevation: 1,
-                                  hint: AppText(
-                                    title:
-                                        "Appears as  ${controller.userModel!.name ?? ''}",
-                                    color: AppColors.primary_color,
-                                    size: 14.sp,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                  borderRadius: BorderRadius.circular(20.r),
-                                  items: controller.dropdownItems.map((item) {
-                                    return DropdownMenuItem<DropdownItem>(
-                                      value: item,
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            children: [
-                                              CircleAvatar(
-                                                radius: 15.r,
-                                                child: ClipOval(
-                                                  child: CachedNetworkImage(
-                                                    imageUrl:
-                                                        item.avatarUrl ?? '',
-                                                    fit: BoxFit.cover,
-                                                    width: 30.r,
-                                                    height: 30.r,
+                                child: ButtonTheme(
+                                  child: DropdownButton<DropdownItem>(
+                                    icon: null,
+                                    iconSize: 0,
+                                    hint: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      mainAxisSize:
+                                          MainAxisSize.min, // Add this
+                                      children: [
+                                        AppText(
+                                          title: "Appears as ",
+                                          color: AppColors.primary_color,
+                                          size: 14.sp,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                        Gap(5.w),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 4.0),
+                                          child: SvgPicture.asset(
+                                            'assets/icons/arrow_down.svg',
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    elevation: 1,
+                                    borderRadius: BorderRadius.circular(20.r),
+                                    items: controller.dropdownItems.map((item) {
+                                      return DropdownMenuItem<DropdownItem>(
+                                        value: item,
+                                        child: item.avatarUrl == "2"
+                                            ? Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  CircleAvatar(
+                                                    backgroundColor:
+                                                        Colors.blue,
+                                                    radius: 12,
+                                                    child: Icon(
+                                                      Icons.add,
+                                                      color: Colors.white,
+                                                      size: 16,
+                                                    ),
                                                   ),
-                                                ),
-                                              ),
-                                              Gap(10.w),
-                                              Text(
-                                                item.text ?? '',
-                                                overflow: TextOverflow.ellipsis,
-                                                textAlign: TextAlign.justify,
-                                              ),
-                                              Gap(5.w),
-                                              if (item.verified)
-                                                SvgPicture.asset(
-                                                    'assets/icons/verified.svg'),
-                                            ],
-                                          ),
-                                          Divider(
-                                            thickness: 0.3,
-                                            color: Color(0x13000000),
-                                            indent: 16.0,
-                                            endIndent: 16.0,
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  }).toList(),
-                                  onChanged: (value) {
-                                    if (value != null) {
-                                      controller.selectItem(value);
-                                    }
-                                  },
-                                  underline: Container(),
+                                                  SizedBox(width: 10.w),
+                                                  AppText(
+                                                    title: 'New profile 2',
+                                                    color:
+                                                        AppColors.primary_color,
+                                                    size: 14.sp,
+                                                    fontWeight: FontWeight.w400,
+                                                  ),
+                                                ],
+                                              )
+                                            : item.avatarUrl == "4"
+                                                ? Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      CircleAvatar(
+                                                        backgroundColor:
+                                                            Colors.blue,
+                                                        radius: 12,
+                                                        child: Icon(
+                                                          Icons.add,
+                                                          color: Colors.white,
+                                                          size: 16,
+                                                        ),
+                                                      ),
+                                                      SizedBox(width: 10.w),
+                                                      AppText(
+                                                        title:
+                                                            'Add new profile',
+                                                        color: AppColors
+                                                            .primary_color,
+                                                        size: 14.sp,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                      ),
+                                                    ],
+                                                  )
+                                                : Column(
+                                                    children: [
+                                                      Row(
+                                                        children: [
+                                                          CircleAvatar(
+                                                            backgroundColor:
+                                                                Colors.white,
+                                                            radius: 15.r,
+                                                            child: ClipOval(
+                                                              child: item.avatarUrl !=
+                                                                      null
+                                                                  ? CachedNetworkImage(
+                                                                      imageUrl:
+                                                                          item.avatarUrl ??
+                                                                              '',
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                      width:
+                                                                          30.r,
+                                                                      height:
+                                                                          30.r,
+                                                                    )
+                                                                  : SvgPicture
+                                                                      .asset(
+                                                                          "assets/images/User.svg"),
+                                                            ),
+                                                          ),
+                                                          Gap(10.w),
+                                                          Text(
+                                                            item.text ?? '',
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            textAlign: TextAlign
+                                                                .justify,
+                                                          ),
+                                                          Gap(5.w),
+                                                          if (item.verified)
+                                                            SvgPicture.asset(
+                                                                'assets/icons/verified.svg'),
+                                                        ],
+                                                      ),
+                                                      Divider(
+                                                        thickness: 0.3,
+                                                        color:
+                                                            Color(0x13000000),
+                                                        indent: 16.0,
+                                                        endIndent: 16.0,
+                                                      ),
+                                                    ],
+                                                  ),
+                                      );
+                                    }).toList(),
+                                    onChanged: (value) {
+                                      if (value != null) {
+                                        if (value.avatarUrl == "2" ||
+                                            value.avatarUrl == "4") {
+                                          Get.toNamed(AppRoutes.editProfile)!
+                                              .then((value) {
+                                            controller.getUser();
+                                          });
+                                        } else {
+                                          controller.selectItem(value);
+                                        }
+                                      }
+                                    },
+                                    underline: Container(),
+                                  ),
                                 ),
                               ),
                             ),

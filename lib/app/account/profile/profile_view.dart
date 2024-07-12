@@ -73,13 +73,15 @@ class ProfileView extends StatelessWidget {
                                         fontWeight: FontWeight.w500,
                                       ),
                                       Gap(15),
-                                      SvgPicture.asset(
-                                          'assets/icons/verified.svg')
+                                      controller.profile!.isVerified
+                                          ? SvgPicture.asset(
+                                              'assets/icons/verified.svg')
+                                          : SizedBox(),
                                     ],
                                   ),
                                   Gap(7.h),
                                   AppText(
-                                      title: '@${controller.profile!.username}',
+                                      title: '@${controller.userModel!.name}',
                                       size: 11.sp,
                                       fontWeight: FontWeight.w500,
                                       color: AppColors.hintGrey),
