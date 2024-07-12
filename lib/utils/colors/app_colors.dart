@@ -21,12 +21,22 @@ class AppColors {
   static const black = Color(0xFF000000);
   static const shadow_black = Color(0x66000000);
   static const white = Color(0xFFFFFFFF);
+   static const cardColors = Color(4294967295);
+  // static const Color primary_color = Color(0xFF6200EA);
+  static const Color borderGreyLight = Color(0xFFBDBDBD);
+  
+  
+
+  
+  
+  
   static const profile_grey = Color(0xFFF5F5F5);
   static const border_grey = Color(0xFFE8E8E8);
   static const green = Color(0xFF00CD2D);
   static const light_grey = Color(0xFFB8B8B8);
   static Color Icon_grey = const Color(0xFF92C8FF).withOpacity(0.29);
   static const transparent = Colors.transparent;
+  
 
   static const red = Color(0xFFFF0000);
   static const pink = Color(0xFFFF21E9);

@@ -1,4 +1,5 @@
 import 'package:find_me/api/auth_api.dart/change_email_api.dart';
+import 'package:find_me/api/auth_api.dart/forgetpassword_api.dart';
 import 'package:find_me/api/auth_api.dart/otp_api.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/ui_utils.dart';
@@ -12,11 +13,15 @@ class EmailOtpController extends GetxController {
   String otpCode = '';
   String verificationId = '';
   String? email;
+  String?  type;
+  String? phone;
   GetStorage box = GetStorage();
   bool areFieldsFilled = false;
 
   @override
   void onInit() {
+    type = Get.parameters['type'];
+    phone = Get.parameters['phone'];
     email ??= Get.arguments;
     super.onInit();
   }
@@ -31,6 +36,8 @@ class EmailOtpController extends GetxController {
     areFieldsFilled = otpCode.length == 6;
     update();
   }
+
+  
 
   void resendOtp() async {
     if (email != null) {

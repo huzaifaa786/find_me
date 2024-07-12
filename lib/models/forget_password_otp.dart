@@ -2,9 +2,10 @@ class VerifyOtpResponse {
 String? otp;
   bool? error;
   String? error_data;
+  String? type;
 
  VerifyOtpResponse({
-     
+     this.type,
     this.otp,
     this.error,
     this.error_data,
@@ -13,18 +14,19 @@ String? otp;
   factory VerifyOtpResponse.fromJson(Map<String, dynamic> json) {
     return VerifyOtpResponse(
      
-      otp: json['OTP sent successfully'],
-      error: json['true']?? false,
+       otp: json['otp'],
+      error: json['error'] ,
       error_data: json['error_data'],
+      type: json['type'],
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      
-      'OTP sent successfully': otp,
+    return {  
+    'otp': otp,
       'true': error,
-      "Account does not exist": error_data,
+      "error_data": error_data,
+      "type":type,
     };
   }
 }

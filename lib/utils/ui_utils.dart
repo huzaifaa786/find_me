@@ -2,6 +2,7 @@
 
 import 'dart:ui';
 
+import 'package:find_me/components/buttons/app_button.dart';
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:find_me/components/buttons/prefix_icon_button.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
@@ -468,6 +469,108 @@ class UiUtilites {
                     ),
                   ),
                 )),
+          ),
+        );
+      },
+    );
+  }
+
+  static coinsAlert(context, title) {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // Future.delayed(Duration(seconds: 2), () {
+        //   Get.back();
+        // });
+
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          child: AlertDialog(
+            backgroundColor: Colors.white,
+            surfaceTintColor: Colors.white,
+            shape: RoundedRectangleBorder(
+                side: BorderSide(
+                  //color: Colors.transparent, style: BorderStyle.solid
+                  color: AppColors.primary_color,
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(20))),
+            // contentPadding: EdgeInsets.only(top: 10.0),
+            content: Container(
+              height: 190,
+              width: 20,
+              padding: EdgeInsets.only(left: 20, right: 20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(20.0)),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Gap(5.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: Image.asset('assets/images/cross.png'),
+
+                        // SvgPicture.asset(
+                        //   'assets/images/cross.svg',
+                        // ),
+                      ),
+                    ],
+                  ),
+                  Gap(10.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      AppText(
+                          title: 'Done!',
+                          textAlign: TextAlign.center,
+                          fontWeight: FontWeight.w500,
+                          size: 14,
+                          color: AppColors.primary_color),
+                    ],
+                  ),
+                  Gap(5),
+                  AppText(
+                    title: 'You have ',
+                    textAlign: TextAlign.center,
+                    fontWeight: FontWeight.w400,
+                    size: 10.sp,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset('assets/images/coin_icon.png'),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        '5000 coins',
+                        style: TextStyle(
+                            fontSize: 13, fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
+                  Gap(10),
+                  AppButton(
+                    height: 50.0.h,
+                    width: 50.0.w,
+                    title: 'Back to home',
+                    onTap: () {
+                      Get.back();
+                    },
+                  )
+                ],
+              ),
+            ),
           ),
         );
       },

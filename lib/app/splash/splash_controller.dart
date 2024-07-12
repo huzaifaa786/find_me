@@ -24,9 +24,9 @@ class SplashController extends GetxController {
     String? apiToken = box.read('api_token');
     print("API:$apiToken");
     if (apiToken != null) {
-      Get.offNamed(AppRoutes.mainview);
-    } else {
-      Get.offNamed(AppRoutes.intro);
-    }
+        Get.offNamed(AppRoutes.mainview);
+      } else {
+        Get.offNamed(AppRoutes.useraccount);
+      }
   }
 }

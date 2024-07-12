@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:find_me/app/auth/forgetpassword/forgetpassword_controller.dart';
-import 'package:find_me/app/auth/forgetpassword/toggle_view/email_view.dart';
-import 'package:find_me/app/auth/forgetpassword/toggle_view/phone_number%20view.dart';
+import 'package:find_me/app/auth/forgetpassword/toggle_screens/email_view.dart';
+import 'package:find_me/app/auth/forgetpassword/toggle_screens/phone_number%20view.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/buttons/app_button.dart';
 import 'package:find_me/components/textfields/app_textfields.dart';
@@ -26,10 +26,10 @@ class ForgetPasswordView extends StatefulWidget {
 }
 
 class _ForgetPasswordViewState extends State<ForgetPasswordView> {
-  int _currentIndex = 0;
+  int currentIndex = 0;
   void onToggle1(int? index) {
     setState(() {
-      _currentIndex = index ?? 0;
+      currentIndex = index ?? 0;
     });
   }
 
@@ -98,16 +98,16 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                         activeFgColor: Colors.white,
                         inactiveBgColor: Colors.white,
                         inactiveFgColor: Colors.black,
-                        initialLabelIndex: _currentIndex,
+                        initialLabelIndex: currentIndex,
                         totalSwitches: 2,
                         labels: ['Email', 'Phone Number'],
                         radiusStyle: true,
                         onToggle: onToggle1,
                       ),
                     ),
-                    Visibility(visible: _currentIndex == 0, child: EmailView()),
+                    Visibility(visible: currentIndex == 0, child: EmailView()),
                     Visibility(
-                        visible: _currentIndex == 1, child: PhoneNumberView()),
+                        visible: currentIndex == 1, child: PhoneNumberView()),
                   ],
                 ),
               )),
