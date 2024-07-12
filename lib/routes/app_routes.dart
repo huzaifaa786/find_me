@@ -26,6 +26,12 @@ class AppRoutes {
  static const sociallogin = '/sociallogin';
  static const beaconScanner = '/beaconScanner';
  static const beaconBroadcaster = '/beaconBroadcaster';
+ static const coinsstore = '/coinsstore';
+ static const purchasecoins = '/purchasecoins';
+ static const useraccount = '/useraccount';
+ 
+ 
+ 
 
 
 

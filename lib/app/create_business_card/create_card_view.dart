@@ -33,7 +33,7 @@ class _CreateCardViewState extends State<CreateCardView> {
         builder: (controller) => Scaffold(
               appBar: AppBar(
                 toolbarHeight: 83.h,
-                title: topBar(name: 'Create business card'),
+                title: topBar(name: 'Coins store'),
                 scrolledUnderElevation: 0,
                 automaticallyImplyLeading: false,
               ),

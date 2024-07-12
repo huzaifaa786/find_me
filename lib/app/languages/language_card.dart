@@ -1,10 +1,8 @@
+import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AppColors {
-  static const Color primary_color = Color(0xFF6200EA);
-  static const Color borderGrey = Color(0xFFBDBDBD);
-}
+
 
 class LanguageOption extends StatelessWidget {
   final String languageName;
@@ -49,7 +47,7 @@ class LanguageOption extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w400,
-                    color: AppColors.borderGrey,
+                    color: AppColors.borderGreyLight,
                   ),
                 ),
               ],
