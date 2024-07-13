@@ -3,30 +3,33 @@ import 'package:find_me/utils/base_url.dart';
 
 class ForgotPasswordApi {
   static Future<Map<String, dynamic>> forgotpassword({
-    required String phone,
+     String? phone,
+    String?  email,
+    String? type,
   }) async {
     String url = '$baseUrl/forgetpassword';
-    var data = {'phone': phone};
+    var data = {'phone': phone,
+                 'email':email,
+                 'type':type,
+    };
     var response = await DioService.post(url: url, data: data);
     return response;
   }
-
-  static Future<Map<String, dynamic>> verifyotp({
-    required String otp,
+    static Future<Map<String, dynamic>> verifyOtp({
+     String? type,
+     String? otp,
+    String? email,
+    String? phone,
   }) async {
-    String url = '$baseUrl/verifyOtp';
-    var data = {'otp': otp};
+    String url = '$baseUrl/verify/forget/Otp';
+    var data = {
+      'type': type,
+      'email': email,
+      'phone': phone,
+      'otp': otp,
+    };
     var response = await DioService.post(url: url, data: data);
     return response;
   }
-
-  static Future<Map<String, dynamic>> updatepassword({
-    required String phone,
-    required String password,
-  }) async {
-    String url = '$baseUrl/forgetUpdatePassword';
-    var data = {'phone': phone, 'password': password};
-    var response = await DioService.post(url: url, data: data);
-    return response;
-  }
+ 
 }

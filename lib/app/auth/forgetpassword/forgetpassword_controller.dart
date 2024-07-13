@@ -1,4 +1,5 @@
 import 'package:find_me/api/auth_api.dart/forgetpassword_api.dart';
+import 'package:find_me/helpers/validator.dart';
 
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/ui_utils.dart';
@@ -7,15 +8,49 @@ import 'package:get/get.dart';
 import 'package:intl_phone_field/countries.dart';
 import 'package:intl_phone_field/helpers.dart';
 import 'package:intl_phone_field/phone_number.dart';
-// Assume this contains Country model and list of countries
 
 class ForgetPasswordController extends GetxController {
   static ForgetPasswordController instance = Get.find();
 
   TextEditingController phonenumberController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  String emailError = '';
   bool isCodeEntered = false;
   String otp = '';
+  String type = 'email';
+  Future<void> forgetPasswordUserEmail() async {
+    if (emailController.text.isEmpty) {
+      UiUtilites.errorSnackbar('Error', 'Email cannot be empty');
+      return;
+    }
+    var response = await ForgotPasswordApi.forgotpassword(
+        type: 'email', email: emailController.text);
+    if (response.isNotEmpty) {
+      isCodeEntered = true;
+      update();
+      Get.toNamed(AppRoutes.forgetpassword_otp,
+           arguments: {
+                'type': type,
+                'email': emailController.text,
+              },);
+    } else {
+      UiUtilites.errorSnackbar('Error', 'Failed to send OTP');
+      update();
+    }
+  }
+
+  // TODO: Email Validation
+  String emailValidation(String i) {
+    final validationError = Validators.emailValidator(i);
+    if (validationError != null) {
+      emailError = validationError.toString();
+      update();
+      return emailError;
+    }
+    emailError = '';
+    update();
+    return emailError;
+  }
 
   // Phone Input Field Variables and Validations
   String? completePhone;
@@ -71,31 +106,25 @@ class ForgetPasswordController extends GetxController {
       UiUtilites.errorSnackbar('Error'.tr, 'Invalid phone number.');
       return;
     }
+    type = 'phone';
+    Map<String, dynamic> response = await ForgotPasswordApi.forgotpassword(
+        type: 'phone', phone: phoneController!);
 
-    Map<String, dynamic> response =
-        await ForgotPasswordApi.forgotpassword(phone: phoneController!);
     if (response.isNotEmpty) {
       isCodeEntered = true;
       update();
-      Get.offAllNamed(AppRoutes.otp, arguments: phoneController);
+      Get.toNamed(
+        AppRoutes.forgetpassword_otp,
+       arguments: {
+                'type': type,
+                'phone': phoneController,
+               
+              },
+        
+      );
     } else {
       UiUtilites.errorSnackbar('Error'.tr, 'Failed to send OTP');
       update();
-    }
-  }
-
-  void verifyOtp() async {
-    if (otp.length < 6) {
-      UiUtilites.errorSnackbar('Error'.tr, 'Fill out complete OTP.'.tr);
-      return;
-    }
-    var response = await ForgotPasswordApi.verifyotp(otp: otp);
-    if (response.isNotEmpty) {
-      Get.toNamed(AppRoutes.changepassword,
-          parameters: {'email': phonenumberController.text});
-      UiUtilites.successSnackbar('Verification successful'.tr, 'Success'.tr);
-    } else {
-      UiUtilites.errorSnackbar('Error'.tr, 'Verification failed');
     }
   }
 }

@@ -8,6 +8,7 @@ import 'package:find_me/components/cards/business_card.dart';
 
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
+import 'package:find_me/utils/box_decoration/box_decoration.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -85,15 +86,53 @@ class ProfileView extends StatelessWidget {
                                       size: 11.sp,
                                       fontWeight: FontWeight.w500,
                                       color: AppColors.hintGrey),
-                                  Gap(17),
-                                  AppText(
-                                      title: controller.profile!.bio!,
-                                      size: 11.sp,
-                                      fontWeight: FontWeight.w500,
-                                      color: AppColors.hintGrey),
+                                  controller.isEditSelected
+                                      ? TextField(
+                                          controller: controller.bioController,
+                                          focusNode: controller.focusNode,
+                                          decoration: InputDecoration(
+                                           
+                                            filled: true,
+                                            hintStyle: TextStyle(
+                                              color: AppColors.hintGrey,
+                                              fontSize: 12.sp,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                            contentPadding:
+                                                EdgeInsets.symmetric(
+                                                    vertical: 16.h,
+                                                    horizontal: 20.w),
+                                            fillColor: AppColors.white,
+                                            border: bioInputDecoration,
+                                            enabledBorder: bioInputDecoration,
+                                            focusedBorder: bioInputDecoration,
+                                            errorBorder: inputErrorDecoration,
+                                            focusedErrorBorder:
+                                                inputErrorDecoration,
+                                          ),
+                                          style: TextStyle(
+                                            fontSize: 10.sp,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                          onEditingComplete: () {
+                                            controller.isEditSelected = false;
+                                            controller.focusNode.unfocus();
+                                            controller.update();
+                                          },
+                                        )
+                                      : AppText(
+                                          title: controller.profile!.bio!,
+                                          size: 11.sp,
+                                          fontWeight: FontWeight.w500,
+                                          color: AppColors.hintGrey),
                                   Gap(25),
                                   GestureDetector(
-                                    onTap: () {},
+                                    onTap: () {
+                                      controller.isEditSelected =
+                                          !controller.isEditSelected;
+                                      controller.focusNode.requestFocus();
+                                      controller.update();
+                                    },
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
@@ -435,196 +474,6 @@ class ProfileView extends StatelessWidget {
                                 ],
                               ),
                               Gap(28.h),
-                              // Divider(
-                              //   thickness: 1,
-                              //   color: AppColors.black.withOpacity(0.08),
-                              //   height: 1,
-                              // ),
-                              // Gap(40.h),
-                              // Align(
-                              //   alignment: Alignment.centerLeft,
-                              //   child: Text(
-                              //     "My Information",
-                              //     style: TextStyle(
-                              //         fontSize: 14.sp, fontWeight: FontWeight.w500),
-                              //   ),
-                              // ),
-                              // Gap(27.h),
-                              // Row(
-                              //   children: [
-                              //     Gap(20.h),
-                              //     AppText(
-                              //       title: 'Username',
-                              //       color: AppColors.hintGrey,
-                              //       size: 10,
-                              //       fontWeight: FontWeight.w400,
-                              //     ),
-                              //   ],
-                              // ),
-                              // Gap(6.h),
-                              // AppTextFields(
-                              //   hintText: 'User name',
-                              //   controller: controller.usernameController,
-                              // ),
-                              // Gap(19.h),
-                              // Row(
-                              //   children: [
-                              //     Gap(20.h),
-                              //     AppText(
-                              //       title: 'Email',
-                              //       color: AppColors.hintGrey,
-                              //       size: 10,
-                              //       fontWeight: FontWeight.w400,
-                              //     ),
-                              //   ],
-                              // ),
-                              // Gap(6.h),
-                              // AppTextFields(
-                              //   hintText: 'Email',
-                              //   controller: controller.useremailController,
-                              // ),
-                              // Gap(20.h),
-                              // Row(
-                              //   children: [
-                              //     Gap(20.h),
-                              //     AppText(
-                              //       title: 'Phone number',
-                              //       color: AppColors.hintGrey,
-                              //       size: 10,
-                              //       fontWeight: FontWeight.w400,
-                              //     ),
-                              //   ],
-                              // ),
-                              // Gap(6.h),
-                              // PhoneInputField(
-                              //   onCountryChanged: controller.onCountryChanged,
-                              //   errorText: controller.invalidNumberMessage,
-                              //   onChanged: controller.phoneValidation,
-                              //   controller: controller.phonecontroller,
-                              // ),
-                              // Gap(77.w),
-                              // AppButton(height: 46.h, width: 280.w, title: "Update"),
-                              // Gap(56.h),
-                              // GestureDetector(
-                              //   onTap: () {
-                              //     Get.toNamed(AppRoutes.change_email);
-                              //   },
-                              //   child: Row(
-                              //     children: [
-                              //       Gap(17.w),
-                              //       SvgPicture.asset('assets/icons/edit-3.svg'),
-                              //       Gap(10.w),
-                              //       AppText(
-                              //         title: 'Change Email',
-                              //         color: AppColors.primary_color,
-                              //         size: 12,
-                              //         fontWeight: FontWeight.w400,
-                              //       )
-                              //     ],
-                              //   ),
-                              // ),
-                              // Gap(22.h),
-                              // GestureDetector(
-                              //   onTap: () {
-                              //     Get.toNamed(AppRoutes.change_phone);
-                              //   },
-                              //   child: Row(
-                              //     children: [
-                              //       Gap(17.w),
-                              //       SvgPicture.asset('assets/icons/edit-3.svg'),
-                              //       Gap(10.w),
-                              //       AppText(
-                              //         title: 'Change Phone number',
-                              //         color: AppColors.primary_color,
-                              //         size: 12,
-                              //         fontWeight: FontWeight.w400,
-                              //       )
-                              //     ],
-                              //   ),
-                              // ),
-                              // Gap(22.h),
-                              // InkWell(
-                              //   onTap: () {
-                              //     Get.toNamed(AppRoutes.changepassword);
-                              //   },
-                              //   child: Row(
-                              //     children: [
-                              //       Gap(17.w),
-                              //       SvgPicture.asset(
-                              //         'assets/icons/lock (1).svg',
-                              //         color: AppColors.primary_color,
-                              //       ),
-                              //       Gap(10.w),
-                              //       AppText(
-                              //         title: 'Change password',
-                              //         color: AppColors.primary_color,
-                              //         size: 12,
-                              //         fontWeight: FontWeight.w400,
-                              //       )
-                              //     ],
-                              //   ),
-                              // ),
-                              // Gap(51.w),
-                              // Row(
-                              //   children: [
-                              //     Gap(17.w),
-                              //     SvgPicture.asset(
-                              //       'assets/icons/log-out.svg',
-                              //       color: AppColors.red,
-                              //     ),
-                              //     Gap(10.w),
-                              //     AppText(
-                              //       title: 'Log out',
-                              //       color: AppColors.red,
-                              //       size: 12,
-                              //       fontWeight: FontWeight.w500,
-                              //     )
-                              //   ],
-                              // ),
-                              // Gap(20.w),
-                              // InkWell(
-                              //   onTap: () {
-                              //     Get.toNamed(AppRoutes.beaconBroadcaster);
-                              //   },
-                              //   child: Row(
-                              //     children: [
-                              //       Gap(17.w),
-                              //       SvgPicture.asset(
-                              //         'assets/icons/lock (1).svg',
-                              //         color: AppColors.primary_color,
-                              //       ),
-                              //       Gap(10.w),
-                              //       AppText(
-                              //         title: 'BroadCast',
-                              //         color: AppColors.primary_color,
-                              //         size: 12,
-                              //         fontWeight: FontWeight.w400,
-                              //       )
-                              //     ],
-                              //   ),
-                              // ),
-                              // Gap(12.w),
-                              // InkWell(
-                              //   onTap: () {
-                              //     Get.toNamed(AppRoutes.beaconScanner);
-                              //   },
-                              //   child: Row(
-                              //     children: [
-                              //       Gap(17.w),
-                              //       SvgPicture.asset(
-                              //         'assets/icons/lock (1).svg',
-                              //         color: AppColors.primary_color,
-                              //       ),
-                              //       Gap(10.w),
-                              //       AppText(
-                              //         title: 'Scanner',
-                              //         color: AppColors.primary_color,
-                              //         size: 12,
-                              //         fontWeight: FontWeight.w400,
-                              //       )
-                              //     ],
-                              //   ),
-                              // ),
                             ],
                           ),
                         ),

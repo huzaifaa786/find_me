@@ -36,7 +36,7 @@ class _PhoneNumberViewState extends State<PhoneNumberView> {
                   onTap: () async {
                     await controller.forgetPasswordUser();
                     if (controller.isCodeEntered) {
-                      Get.toNamed(AppRoutes.otp);
+                      Get.toNamed(AppRoutes.forgetpassword_otp);
                     }
                   },
                 ),

@@ -6,8 +6,14 @@ import 'package:find_me/app/auth/changepassword/changepassword_binding.dart';
 import 'package:find_me/app/auth/changepassword/changepassword_view.dart';
 import 'package:find_me/app/auth/email_otp/email_otp_binding.dart';
 import 'package:find_me/app/auth/email_otp/email_otp_view.dart';
+import 'package:find_me/app/auth/forgetpassword/forget_password_otp/forget_password_otp_binding.dart';
+import 'package:find_me/app/auth/forgetpassword/forget_password_otp/forget_password_otp_view.dart';
 import 'package:find_me/app/auth/forgetpassword/forgetpassword_binding.dart';
 import 'package:find_me/app/auth/forgetpassword/forgetpassword_view.dart';
+
+import 'package:find_me/app/auth/forgetpassword/toggle_screens/email_view.dart';
+import 'package:find_me/app/auth/new_password/new_password_binding.dart';
+import 'package:find_me/app/auth/new_password/new_password_view.dart';
 import 'package:find_me/app/auth/otp/otp_binding.dart';
 import 'package:find_me/app/auth/otp/otp_view.dart';
 import 'package:find_me/app/auth/phone_otp/phone_otp_binding.dart';
@@ -379,13 +385,25 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
-        //TODO: [Edit Account Information Route]
+    //TODO: [My_Emojis Route]
     GetPage(
-      name: AppRoutes.editaccountinformation,
-      page: () => EditAccountInformationView(),
-      binding:EditAccountInformationBinding(),
+      name: AppRoutes.forgetpassword_otp,
+      page: () => ForgetPasswordOtpView(),
+      binding: ForgetPasswordOtpBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
+     GetPage(
+      name: AppRoutes.new_password,
+      page: () => NewPasswordView(),
+      binding: NewPasswordBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+          //TODO: [Edit Account Information Route]
+    GetPage(
+      name: AppRoutes.editaccountinformation,
+      page: () => EditAccountInformationView(),
+      binding:EditAccountInformationBinding(),),
   ];
 }

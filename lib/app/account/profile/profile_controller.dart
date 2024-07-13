@@ -4,10 +4,12 @@ import 'package:find_me/models/profile_url_model.dart';
 import 'package:find_me/models/user_model.dart';
 import 'package:find_me/models/user_profile_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class ProfileController extends GetxController {
   static ProfileController instance = Get.find();
+  TextEditingController bioController = TextEditingController();
   UserModel? userModel;
   UserProfileModel? profile;
   ProfileBusinessCardModel? businessCardModel;
@@ -37,13 +39,12 @@ class ProfileController extends GetxController {
     super.onInit();
   }
 
-  
-
   getUser() async {
     var response = await UserApi.getUser();
     if (response.isNotEmpty) {
       userModel = UserModel.fromJson(response['user']);
       businessCardModel = profile!.businessCard;
+      bioController.text = profile!.bio!;
       if (profile!.urls != null) {
         profileUrlModel = profile!.urls;
       } else {

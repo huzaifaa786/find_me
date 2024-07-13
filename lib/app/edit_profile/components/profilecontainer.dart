@@ -102,7 +102,7 @@ class _ProfileContainerState extends State<ProfileContainer> {
                   color: AppColors.primary_color,
                   width: 0.5,
                 ),
-                value: widget.isDefault,
+                value: widget.isSelected,
                 onChanged: widget.isLocked || widget.userModel == null
                     ? null
                     : (value) {
