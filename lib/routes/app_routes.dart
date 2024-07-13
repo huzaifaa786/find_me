@@ -42,4 +42,5 @@ class AppRoutes {
   static const phoneOtp = '/phoneOtp';
   static const forgetpassword_otp = '/forgetpassword_otp';
   static const new_password = '/new_password';
+  static const editaccountinformation = '/editaccountinformation';
 }

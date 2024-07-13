@@ -60,6 +60,24 @@ class ProfileApi {
     return response;
   }
 
+  static Future<Map<String, dynamic>> updateProfileBio({
+    int? userProfileId,
+    String? bio,
+  }) async {
+    // URL
+    String url = '$baseUrl/update/profile/bio';
+
+    // DATA
+    var data = {
+      'profile_id': userProfileId,
+      'bio': bio,
+    };
+
+    // Make the POST request using DioService
+    var response = await DioService.post(url: url, data: data);
+    return response;
+  }
+
   static Future<Map<String, dynamic>> updateProfileUrls({
     int? userProfileId,
     String? whatsapp,
@@ -71,6 +89,7 @@ class ProfileApi {
     String? facebook,
     String? youtube,
     String? email,
+    String? linkedin,
   }) async {
     // URL
     String url = '$baseUrl/updateurls';
@@ -87,6 +106,7 @@ class ProfileApi {
       'facebook': facebook,
       'youtube': youtube,
       'email': email,
+      'linkedin': linkedin,
     };
 
     // Make the POST request using DioService
@@ -108,6 +128,7 @@ class ProfileApi {
     String? tiktok,
     String? snapchat,
     String? facebook,
+    String? linkedin,
   }) async {
     // URL
     String url = '$baseUrl/businesscard/create';
@@ -127,6 +148,7 @@ class ProfileApi {
       'tiktok': tiktok,
       'snapchat': snapchat,
       'facebook': facebook,
+      'linkedin': linkedin,
     };
 
     // Make the POST request using DioService

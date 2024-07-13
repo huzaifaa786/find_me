@@ -37,6 +37,13 @@ class EditProfileController extends GetxController {
       profileLength = userModel!.profiles!.length;
       userProfiles = userModel!.profiles!;
       currentProfile = userModel!.currentProfile;
+      for (var i = 0; i < 4; i++) {
+        if (userProfiles.asMap().containsKey(i) &&
+            userProfiles[i].id == currentProfile?.id) {
+          selectedProfileIndex = i;
+          update();
+        }
+      }
       update();
       updateProfiles();
     }
@@ -44,6 +51,7 @@ class EditProfileController extends GetxController {
 
   void selectProfile(int index) async {
     selectedProfileIndex = index;
+
     UserProfileModel? userProfile = userProfiles[index];
     var response = await ProfileApi.updateCurrentProfile(
         userProfileId: userProfile.id, userId: userModel!.id);
@@ -54,7 +62,7 @@ class EditProfileController extends GetxController {
       currentProfile = userModel!.currentProfile;
       update();
       updateProfiles();
-      UiUtilites.successSnackbar("Marked as default Successfully", "");
+      UiUtilites.successSnackbar(" Marked as default Successfully", "");
     }
     update();
   }
@@ -64,6 +72,7 @@ class EditProfileController extends GetxController {
       if (userProfiles.asMap().containsKey(i)) {
         profiles[i].image = userProfiles[i].imageUrl;
         profiles[i].name = userProfiles[i].name!;
+
         update();
       }
     }
@@ -122,71 +131,8 @@ class EditProfileController extends GetxController {
     }
     update();
   }
+
 }
-
-// void initializeProfiles() {
-//   profiles.addAll([
-//     ProfileModel(
-//       isSelected: false,
-//       isDefault: false,
-//       controller: TextEditingController(
-//           text: 'Abdulllaaaaaaaaaaaaaahhhhhhhhhhhhhhhhhh'),
-//       avatarUrl:
-//           'https://th.bing.com/th/id/OIP.DmAJheE6apJ9IX7pxIRDjgHaFN?pid=ImgDet&w=474&h=333&rs=1',
-//       text: 'Almarwan General Trd',
-//       verified: true,
-//     ),
-
-//     ProfileModel(
-//       isSelected: false,
-//       isDefault: false,
-//       controller: TextEditingController(text: 'Almarwan General Trd'),
-//       avatarUrl:
-//           'https://th.bing.com/th/id/OIP.DmAJheE6apJ9IX7pxIRDjgHaFN?pid=ImgDet&w=474&h=333&rs=1',
-//       text: 'Almarwan General Trd',
-//       verified: true,
-//     ),
-//     ProfileModel(
-//       isSelected: false,
-//       isDefault: false,
-//       controller: TextEditingController(text: 'Another Profile'),
-//       avatarUrl:
-//           'https://th.bing.com/th/id/OIP.DmAJheE6apJ9IX7pxIRDjgHaFN?pid=ImgDet&w=474&h=333&rs=1',
-//       text: 'Another Profile',
-//       verified: false,
-//     ),
-//     ProfileModel(
-//       isSelected: false,
-//       isDefault: false,
-//       controller: TextEditingController(text: 'Yet Another Profile'),
-//       avatarUrl:
-//           'https://th.bing.com/th/id/OIP.DmAJheE6apJ9IX7pxIRDjgHaFN?pid=ImgDet&w=474&h=333&rs=1',
-//       text: 'Yet Another Profile',
-//       verified: false,
-//     ),
-//     // Add more profiles as needed
-//   ]);
-// }
-
-// void toggleDefault(int index) {
-//   if (profiles[index].isDefault) {
-//     profiles[index].isDefault = false;
-//     profiles[index].isSelected = false;
-//   } else {
-//     for (int i = 0; i < profiles.length; i++) {
-//       profiles[i].isDefault = false;
-//       profiles[i].isSelected = false;
-//     }
-//     profiles[index].isDefault = true;
-//     profiles[index].isSelected = true;
-//   }
-//   update();
-// }
-
-// void toggleSelection(int index) {
-//   profiles[index].isSelected = !profiles[index].isSelected;
-//   update();
-// }
 
 class Profile {
   String name;

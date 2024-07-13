@@ -11,6 +11,7 @@ class ProfileUrlModel {
   String? facebook;
   String? youtube;
   String? email;
+  String? linkedin;
 
   ProfileUrlModel({
     required this.id,
@@ -24,6 +25,7 @@ class ProfileUrlModel {
     this.facebook,
     this.youtube,
     this.email,
+    this.linkedin,
   });
 
   factory ProfileUrlModel.fromJson(Map<String, dynamic> json) {
@@ -39,6 +41,7 @@ class ProfileUrlModel {
       facebook: json['facebook'],
       youtube: json['youtube'],
       email: json['email'],
+      linkedin: json['linkedin'],
     );
   }
 
@@ -55,6 +58,7 @@ class ProfileUrlModel {
       'facebook': facebook,
       'youtube': youtube,
       'email': email,
+      'linkedin': linkedin,
     };
   }
 }

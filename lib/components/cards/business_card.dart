@@ -41,8 +41,8 @@ class BusinessCard extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 22),
-            width: 315.w,
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 22),
+            width: 339.w,
             height: 140.h,
             decoration: BoxDecoration(
                 color: Colors.black,
@@ -123,7 +123,7 @@ class BusinessCard extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 35, vertical: 11),
+            padding: EdgeInsets.symmetric(horizontal: 26, vertical: 11),
             width: 312,
             height: 60,
             decoration: BoxDecoration(

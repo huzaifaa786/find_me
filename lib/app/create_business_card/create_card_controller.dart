@@ -25,6 +25,7 @@ class CreateCardController extends GetxController {
   TextEditingController twitterController = TextEditingController();
   TextEditingController tiktokController = TextEditingController();
   TextEditingController snapchatController = TextEditingController();
+  TextEditingController linkedinController = TextEditingController();
   TextEditingController facebookController = TextEditingController();
 
   //! Phone Input Field Variable and Validations
@@ -60,6 +61,7 @@ class CreateCardController extends GetxController {
     tiktokController.text = profileBusinessCardModel?.tiktok ?? '';
     snapchatController.text = profileBusinessCardModel?.snapchat ?? '';
     facebookController.text = profileBusinessCardModel?.facebook ?? '';
+    linkedinController.text = profileBusinessCardModel?.linkedin ?? '';
 
     if (profileBusinessCardModel?.phone != null) {
       PhoneNumber phoneNumber = PhoneNumber.fromCompleteNumber(
@@ -128,14 +130,15 @@ class CreateCardController extends GetxController {
         tiktok: tiktokController.text,
         snapchat: snapchatController.text,
         facebook: facebookController.text,
+        linkedin: linkedinController.text,
       );
 
       if (response.isNotEmpty) {
         if (profileBusinessCardModel == null) {
           UiUtilites.successSnackbar("Business Card Created successfully", "");
           Get.back();
-        }else{
-           UiUtilites.successSnackbar("Business Card updated successfully", "");
+        } else {
+          UiUtilites.successSnackbar("Business Card updated successfully", "");
         }
       } else {
         UiUtilites.errorSnackbar('Error', 'Failed to update Business Card');

@@ -32,6 +32,8 @@ import 'package:find_me/app/coins/coins_store_binding.dart';
 import 'package:find_me/app/coins/coins_store_view.dart';
 import 'package:find_me/app/coins/purchase_coins/purchase_coins_binding.dart';
 import 'package:find_me/app/coins/purchase_coins/purchase_coins_view.dart';
+import 'package:find_me/app/edit_account/edit_account_information_binding.dart';
+import 'package:find_me/app/edit_account/edit_account_information_view.dart';
 import 'package:find_me/app/updata_phone_number%5D/updata_phone_number_binding.dart';
 import 'package:find_me/app/updata_phone_number%5D/updata_phone_number_view.dart';
 import 'package:find_me/app/create_business_card/create_card_binding.dart';
@@ -398,5 +400,10 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
+          //TODO: [Edit Account Information Route]
+    GetPage(
+      name: AppRoutes.editaccountinformation,
+      page: () => EditAccountInformationView(),
+      binding:EditAccountInformationBinding(),),
   ];
 }
