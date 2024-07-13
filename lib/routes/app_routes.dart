@@ -40,4 +40,6 @@ class AppRoutes {
   static const gifted_emoji = '/gifted_emoji';
   static const email_otp = '/email_otp';
   static const phoneOtp = '/phoneOtp';
+  static const editaccountinformation = '/editaccountinformation';
+  
 }
