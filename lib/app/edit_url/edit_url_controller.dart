@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 class EditUrlController extends GetxController {
   static EditUrlController instance = Get.find();
   TextEditingController whatsappController = TextEditingController();
+  TextEditingController linkedinController = TextEditingController();
   TextEditingController instagramController = TextEditingController();
   TextEditingController tiktokController = TextEditingController();
   TextEditingController xController = TextEditingController();
@@ -36,6 +37,7 @@ class EditUrlController extends GetxController {
       facebookController.text = profileModel!.urls!.facebook ?? '';
       youtubeController.text = profileModel!.urls!.youtube ?? '';
       emailController.text = profileModel!.urls!.email ?? '';
+      linkedinController.text = profileModel!.urls!.linkedin ?? '';
     }
   }
 
@@ -49,6 +51,7 @@ class EditUrlController extends GetxController {
     facebookController.dispose();
     youtubeController.dispose();
     emailController.dispose();
+    linkedinController.dispose();
   }
 
   @override
@@ -70,6 +73,7 @@ class EditUrlController extends GetxController {
         facebook: facebookController.text,
         youtube: youtubeController.text,
         email: emailController.text,
+        linkedin: linkedinController.text,
       );
 
       if (response.isNotEmpty) {

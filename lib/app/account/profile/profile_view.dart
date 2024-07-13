@@ -86,12 +86,12 @@ class ProfileView extends StatelessWidget {
                                       size: 11.sp,
                                       fontWeight: FontWeight.w500,
                                       color: AppColors.hintGrey),
+                                  Gap(15.h),
                                   controller.isEditSelected
                                       ? TextField(
                                           controller: controller.bioController,
                                           focusNode: controller.focusNode,
                                           decoration: InputDecoration(
-                                           
                                             filled: true,
                                             hintStyle: TextStyle(
                                               color: AppColors.hintGrey,
@@ -115,6 +115,7 @@ class ProfileView extends StatelessWidget {
                                             fontWeight: FontWeight.w500,
                                           ),
                                           onEditingComplete: () {
+                                            controller.updateProfileBio();
                                             controller.isEditSelected = false;
                                             controller.focusNode.unfocus();
                                             controller.update();
@@ -125,28 +126,29 @@ class ProfileView extends StatelessWidget {
                                           size: 11.sp,
                                           fontWeight: FontWeight.w500,
                                           color: AppColors.hintGrey),
-                                  Gap(25),
-                                  GestureDetector(
-                                    onTap: () {
-                                      controller.isEditSelected =
-                                          !controller.isEditSelected;
-                                      controller.focusNode.requestFocus();
-                                      controller.update();
-                                    },
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        AppText(
-                                            title: 'Edit bio',
-                                            size: 11.sp,
-                                            fontWeight: FontWeight.w500,
-                                            color: AppColors.primary_color),
-                                        SvgPicture.asset(
-                                            "assets/icons/edit.svg"),
-                                      ],
+                                  Gap(15.h),
+                                  if (!controller.isEditSelected)
+                                    GestureDetector(
+                                      onTap: () {
+                                        controller.isEditSelected =
+                                            !controller.isEditSelected;
+                                        controller.focusNode.requestFocus();
+                                        controller.update();
+                                      },
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          AppText(
+                                              title: 'Edit bio',
+                                              size: 11.sp,
+                                              fontWeight: FontWeight.w500,
+                                              color: AppColors.primary_color),
+                                          SvgPicture.asset(
+                                              "assets/icons/edit.svg"),
+                                        ],
+                                      ),
                                     ),
-                                  ),
                                   Gap(21.h),
                                   Divider(
                                     thickness: 1,
@@ -257,6 +259,13 @@ class ProfileView extends StatelessWidget {
                                             "assets/icons/telegram-plane.svg",
                                         isEmpty: controller
                                                 .profileUrlModel!.telegram ==
+                                            null,
+                                      ),
+                                      SocialMediaIcon(
+                                        socialMediaIcon:
+                                            "assets/icons/linkedin.svg",
+                                        isEmpty: controller
+                                                .profileUrlModel!.linkedin ==
                                             null,
                                       ),
                                     ],

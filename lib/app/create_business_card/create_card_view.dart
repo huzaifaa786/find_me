@@ -279,6 +279,16 @@ class _CreateCardViewState extends State<CreateCardView> {
                               color: AppColors.primary_color,
                             ),
                           ),
+                          Gap(7.h),
+                          SizedBox(
+                            width: 135.w,
+                            child: AppTextFields(
+                              icon: 'assets/icons/linkedin-blue.svg',
+                              hintText: 'Linkedin',
+                              controller: controller.linkedinController,
+                              color: AppColors.primary_color,
+                            ),
+                          ),
                         ],
                       ),
                       Gap(30.h),

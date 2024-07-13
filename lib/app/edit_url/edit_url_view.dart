@@ -43,6 +43,14 @@ class _EditUrlViewState extends State<EditUrlView> {
                         ),
                         Gap(24),
                         AppTextFields(
+                          icon: "assets/icons/linkedin.svg",
+                          hintText: " Linkedin Url",
+                          controller: controller.linkedinController,
+                          width: 30.w,
+                          height: 30.h,
+                        ),
+                        Gap(24),
+                        AppTextFields(
                           icon: "assets/icons/instagram_black.svg",
                           hintText: "Instagram Url",
                           controller: controller.instagramController,

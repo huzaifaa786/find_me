@@ -131,6 +131,7 @@ class EditProfileController extends GetxController {
     }
     update();
   }
+
 }
 
 class Profile {

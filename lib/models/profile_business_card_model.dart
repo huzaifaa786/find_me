@@ -13,6 +13,7 @@ class ProfileBusinessCardModel {
   String? tiktok;
   String? snapchat;
   String? facebook;
+  String? linkedin;
 
   ProfileBusinessCardModel({
     required this.id,
@@ -29,6 +30,7 @@ class ProfileBusinessCardModel {
     this.tiktok,
     this.snapchat,
     this.facebook,
+    this.linkedin,
 
   });
 
@@ -48,6 +50,7 @@ class ProfileBusinessCardModel {
       tiktok: json['tiktok'],
       snapchat: json['snapchat'],
       facebook: json['facebook'],
+      linkedin: json['linkedin'],
 
     );
   }
@@ -68,6 +71,7 @@ class ProfileBusinessCardModel {
       'tiktok': tiktok,
       'snapchat': snapchat,
       'facebook': facebook,
+      'linkedin': linkedin,
     };
   }
 }
