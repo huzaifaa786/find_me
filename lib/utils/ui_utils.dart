@@ -26,7 +26,7 @@ class UiUtilites {
       duration: Duration(milliseconds: 2000),
       builder: ((context) {
         return MaterialAnimatedSnackBar(
-          titleText:  title.isNotEmpty ? title : null,
+          titleText: title.isNotEmpty ? title : null,
           messageText: message,
           type: AnimatedSnackBarType.error,
         );
@@ -51,13 +51,18 @@ class UiUtilites {
     ).show(Get.context!);
   }
 
-  static registerSuccessAlert(context, title) {
+  static registerSuccessAlert(
+    context,
+   
+    message
+  ) {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
-        // Future.delayed(Duration(seconds: 2), () {
-        //   Get.back();
-        // });
+       
+        Future.delayed(Duration(seconds: 2), () {
+          Get.back();
+        });
 
         return BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
@@ -79,11 +84,16 @@ class UiUtilites {
                   // mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     // Gap(10.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        SvgPicture.asset("assets/icons/x-circle.svg"),
-                      ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          SvgPicture.asset("assets/icons/x-circle.svg"),
+                        ],
+                      ),
                     ),
                     Image.asset(
                       ImagesConst.registreted_successfully_gif,
@@ -94,7 +104,7 @@ class UiUtilites {
                     // Gap(20),
 
                     AppText(
-                      title: 'You have registreted \n successfully!',
+                      title: message.toString(),
                       textAlign: TextAlign.center,
                       fontWeight: FontWeight.w400,
                       size: 14.sp,

@@ -2,21 +2,23 @@
 import 'package:find_me/services/dio_service.dart';
 import 'package:find_me/utils/base_url.dart';
 
-class ChangepasswordApi {
-  static Future<Map<String, dynamic>> Changepassword(
+class ReportApi {
+  static Future<Map<String, dynamic>> ReportProblem(
    { 
-     String? password,
-    String?  new_password,
+     String?  image,
+     String? desc,
+    String?  user_id,
    
     }
   ) async {
     //* URL
-    String url = '${baseUrl}/updatePassword';
+    String url = '${baseUrl}/report/problem';
 
     //* DATA
     var data = {
-      'password': password,
-      'new_password':  new_password,
+      'image': image,
+      'desc':  desc,
+      'user_id':  user_id,
     };
 
     //! Make the POST request using ApiService

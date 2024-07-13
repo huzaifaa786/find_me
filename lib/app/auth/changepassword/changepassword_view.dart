@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:find_me/app/auth/changepassword/changepassword_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/buttons/app_button.dart';
@@ -55,22 +57,30 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                       toggle: controller.ctoggle,
                     ),
                     Gap(30.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        AppText(
-                          title: 'Password changed successfully',
-                          color: Colors.green,
-                        ),
-                        Image.asset(ImagesConst.tickicon,color: Colors.green,),
-                      ],
-                    ),
+                    
+                    controller.changePasswordText
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              AppText(
+                                title: 'Password changed successfully',
+                                color: Colors.green,
+                              ),
+                              Image.asset(
+                                ImagesConst.tickicon,
+                                color: Colors.green,
+                              ),
+                            ],
+                          )
+                        : SizedBox.shrink(),
                     Gap(30.h),
                     AppButton(
                       title: 'Submit',
                       height: 50.0.h,
                       width: 304.0.w,
-                      onTap: () {},
+                      onTap: () {
+                        controller.changepassword();
+                      },
                     ),
                   ],
                 ),

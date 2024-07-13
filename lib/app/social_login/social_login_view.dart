@@ -57,7 +57,7 @@ class SocialLoginView extends StatelessWidget {
                         width: 304.0.w,
                         onTap: () {
                           UiUtilites.registerSuccessAlert(
-                              context, 'You have registreted successfully!');
+                              context,'You have registreted successfully!');
                         },
                       ),
                     ],

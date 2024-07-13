@@ -26,7 +26,7 @@ class SplashController extends GetxController {
     if (apiToken != null) {
         Get.offNamed(AppRoutes.mainview);
       } else {
-        Get.offNamed(AppRoutes.useraccount);
+        Get.offNamed(AppRoutes.intro);
       }
   }
 }
