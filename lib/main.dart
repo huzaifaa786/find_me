@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:find_me/app.dart';
 import 'package:find_me/components/helper/loading.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +14,14 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await GetStorage.init();
+  HttpOverrides.global = MyHttpOverrides(); 
   runApp(const App());
 }
-                           
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}

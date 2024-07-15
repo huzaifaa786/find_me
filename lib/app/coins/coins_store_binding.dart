@@ -6,6 +6,6 @@ import 'package:get/get.dart';
 class CoinsStoreBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => PurchaseCoinsController());
+    Get.lazyPut(() => CoinsStoreController());
   }
 }

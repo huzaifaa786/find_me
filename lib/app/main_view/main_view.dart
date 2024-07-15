@@ -2,6 +2,7 @@
 
 import 'package:find_me/app/account/profile/profile_view.dart';
 import 'package:find_me/app/auth/signup/signup_view.dart';
+import 'package:find_me/app/coins/coins_store_view.dart';
 import 'package:find_me/app/edit_profile/edit_profile_view.dart';
 import 'package:find_me/app/emoji_store/emoji_store_view.dart';
 import 'package:find_me/app/home/home_controller.dart';
@@ -29,9 +30,11 @@ class _MainViewState extends State<MainView> with RouteAware {
 
   final List<Widget> _fragments = [
     HomeView(),
+    CoinsStoreView(),
     EmojiStoreView(),
     ProfileView(),
     EditProfileView(),
+    
   ];
 
   Widget _buildNavigationBarItem(
@@ -47,7 +50,7 @@ class _MainViewState extends State<MainView> with RouteAware {
           // border: Border.all(),
           color: AppColors.white,
         ),
-        width: 85.w,
+        width: 70.w,
         child: Center(
           child: InkWell(
             onTap: () {
@@ -135,14 +138,18 @@ class _MainViewState extends State<MainView> with RouteAware {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      _buildNavigationBarItem(
+                       _buildNavigationBarItem(
                           0, 'assets/icons/home.svg', 'Home'.tr, 0),
                       _buildNavigationBarItem(
-                          1, 'assets/icons/cart.svg', 'Emojie Store'.tr, 1),
+                          1, 'assets/icons/coin.svg', 'Coins Store'.tr, 0),
                       _buildNavigationBarItem(
                           2, 'assets/icons/add.svg', 'Add'.tr, 0),
                       _buildNavigationBarItem(
-                          3, 'assets/icons/profile.svg', 'Profile'.tr, 0),
+                          3, 'assets/icons/cart.svg', 'Emoji Store'.tr, 1),
+                      _buildNavigationBarItem(
+                          4, 'assets/icons/profile.svg', 'Profile'.tr, 0),
+
+                      //  coins
                     ],
                   ),
                 ),
