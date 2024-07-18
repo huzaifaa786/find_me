@@ -35,12 +35,12 @@ class _PurchaseCoinsViewState extends State<PurchaseCoinsView> {
                     children: [
                       CardCoins(
                         height: 180.h,
-                        width: 140.w,
-                        bottomText: '20 AED',
-                        img: 'assets/images/coin_icon.png',
-                        text: '1000 coins',
-                        imageHeight: 100.h,
-                        imageWidth: 100.w,
+                        width: 180.w,
+                        bottomText: "${controller.coinPackageModel!.price} AED",
+                        img: 'assets/images/coin_icon_big.png',
+                        text: '${controller.coinPackageModel!.coins} coins',
+                        imageHeight: 120.h,
+                        imageWidth: 120.w,
                         textSize: 16.sp,
                         bottomTextSize: 20.sp,
                       ),
@@ -52,11 +52,8 @@ class _PurchaseCoinsViewState extends State<PurchaseCoinsView> {
                     width: 304.0.w,
                     title: 'Checkout',
                     onTap: () {
-                       
-                      UiUtilites.coinsAlert(
-                          context, 'xxxxxxxxxxxxxxxx');
-
-                         
+                      UiUtilites.coinsAlert(context,
+                          controller.coinPackageModel!.coins.toString());
                     },
                   )
                 ],
