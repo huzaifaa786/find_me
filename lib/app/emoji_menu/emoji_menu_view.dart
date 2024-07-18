@@ -5,6 +5,7 @@ import 'package:find_me/app/emoji_menu/components/custom_scroll_bar.dart';
 import 'package:find_me/app/emoji_menu/emoji_menu_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
+import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -74,10 +75,14 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                                           ),
                                           itemBuilder: (BuildContext context,
                                               int index) {
-                                            return Image.asset(
-                                              controller.Emojis[index],
-                                              // height: 30.h,
-                                              // width: 30.w,
+                                            return GestureDetector(
+                                              onTap: () {
+                                                UiUtilites.emojisappear(
+                                                    context,"assets/images/cold_angry_emoji.png",);
+                                              },
+                                              child: Image.asset(
+                                                controller.Emojis[index],
+                                              ),
                                             );
                                           }),
                                     ),

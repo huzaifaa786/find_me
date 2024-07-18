@@ -53,13 +53,11 @@ class UiUtilites {
 
   static registerSuccessAlert(
     context,
-   
     message,
   ) {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
-       
         Future.delayed(Duration(seconds: 7), () {
           Get.back();
         });
@@ -584,5 +582,67 @@ class UiUtilites {
         );
       },
     );
+  }
+
+  static emojisappear(context,image) {
+    return showDialog(
+        context: context,
+        
+        builder: (BuildContext context) {
+          return BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: AlertDialog(
+              backgroundColor: Colors.white,
+              surfaceTintColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(32.r),
+              ),
+              content: Container(
+                height: 240.h,
+                width: 150.w,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Image.asset(
+                      image,
+                      scale: 0.6,
+                    ),
+                    AppText(
+                      title: "Done!",
+                      fontWeight: FontWeight.w600,
+                      size: 14.sp,
+                    ),
+                    AppText(
+                      title: "The emoji will appear in \n “My emojis”",
+                      maxLines: 2,
+                      textAlign: TextAlign.center,
+                      fontWeight: FontWeight.w400,
+                      size: 12.sp,
+                      color: AppColors.hintGrey,
+                    ),
+                    Gap(10),
+                    Container(
+                      height: 47.h,
+                      width: 170.w,
+                      decoration: BoxDecoration(
+                        color: AppColors.primary_color,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Center(
+                        child: AppText(
+                          title: "Confirm",
+                          textAlign: TextAlign.center,
+                          color: AppColors.white,
+                          fontWeight: FontWeight.w500,
+                          size: 12.sp,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
   }
 }

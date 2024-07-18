@@ -31,8 +31,8 @@ class _MainViewState extends State<MainView> with RouteAware {
   final List<Widget> _fragments = [
     HomeView(),
     CoinsStoreView(),
-    EmojiStoreView(),
     ProfileView(),
+    EmojiStoreView(),  
     EditProfileView(),
     
   ];
