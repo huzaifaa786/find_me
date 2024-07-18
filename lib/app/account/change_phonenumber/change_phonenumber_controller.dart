@@ -29,11 +29,11 @@ class ChangePhoneNumberController extends GetxController {
     if (phoneController != null) {
       var response = await ChangePhoneApi.changePhone(phoneController!);
       if (response.isNotEmpty) {
-        UiUtilites.successSnackbar("Otp sent successfully", "");
+        UiUtilites.successSnackbar("Otp sent successfully", "Success");
         Get.toNamed(AppRoutes.phoneOtp, arguments: phoneController);
       }
     } else {
-      UiUtilites.errorSnackbar("", "Phone can't be empty");
+      UiUtilites.errorSnackbar("error", "Phone can't be empty");
     }
   }
 

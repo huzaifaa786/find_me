@@ -42,7 +42,7 @@ class _EmojiStoreViewState extends State<EmojiStoreView> {
                         EmojiStoreCard(
                           icon: "assets/images/shopping_bags.png",
                           iconGap: 20,
-                          iconHeight: 60.h,
+                          iconHeight: 59.h,
                           iconWidth: 62.w,
                           padding: EdgeInsets.only(top: 18, bottom: 28),
                           title: "Emojis menu ",

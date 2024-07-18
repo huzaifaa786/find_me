@@ -11,7 +11,7 @@ class ChangePaswordController extends GetxController {
   bool obscureTextPassword = true;
   bool obscureTextCPassword = true;
   bool obscureTextOldPassword = true;
-  var changePasswordText = false;
+ 
 
   TextEditingController passwordController = TextEditingController();
   TextEditingController oldpasswordController = TextEditingController();
@@ -40,17 +40,17 @@ class ChangePaswordController extends GetxController {
     );
     update();
     if (response.isNotEmpty) {
-      Timer(Duration(seconds: 5), () {
-        changePasswordText = false;
-      });
-      UiUtilites.successSnackbar('Password change successfully.', 'Success');
+     
+
+      // UiUtilites.successSnackbar('Password change successfully.', 'Success');
+      UiUtilites.registerSuccessAlert(Get.context, "Password Change Successfully");
       oldpasswordController.clear();
       passwordController.clear();
       confirmPasswordController.clear();
       update();
     } else {
-      changePasswordText = false;
-      UiUtilites.errorSnackbar('could not update password'.tr, 'Error!'.tr);
+     
+      UiUtilites.errorSnackbar('Could Not Update Password', 'Error!');
     }
   }
 }

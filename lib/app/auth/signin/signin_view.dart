@@ -47,6 +47,7 @@ class _SignInViewState extends State<SignInView> {
                   AppTextFields(
                     hintText: 'Email',
                     controller: controller.emailController,
+                   
                     fieldValidator: (value) => Validators.emptyStringValidator("This",value),
                   ),
                   Gap(14.h),
