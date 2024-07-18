@@ -13,9 +13,9 @@ class MainBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => HomeController());
+    Get.lazyPut(() => CoinsStoreController());
     Get.lazyPut(() => EmojiStoreController());
     Get.lazyPut(() => ProfileController());
     Get.lazyPut(() => EditProfileController());
-    Get.lazyPut(() => CoinsStoreController());
   }
 }

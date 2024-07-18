@@ -25,7 +25,7 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
         builder: (controller) => Scaffold(
               appBar: AppBar(
                 toolbarHeight: 83.h,
-                title: topBar(name: 'Coins store'),
+                title: topBar(name: 'Coins store', showBackIcon: false),
                 scrolledUnderElevation: 0,
                 automaticallyImplyLeading: false,
               ),
@@ -46,7 +46,7 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
                                   fontSize: 16.sp, fontWeight: FontWeight.w600),
                             ),
                             Image.asset(
-                              'assets/images/coin_icon.png',
+                              'assets/images/coin_icon_big.png',
                               //  coin_icon
                               width: 87.0,
                               height: 72.0,
@@ -97,8 +97,10 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
                             width: 100.w,
                             height: 100.h,
                             bottomText: '${coinPackageModel.price} AED',
-                            img: 'assets/images/coin_icon.png',
+                            img: 'assets/images/coin_icon_big.png',
                             text: '${coinPackageModel.coins} coins',
+                            imageHeight: 60.h,
+                            imageWidth: 60.w,
                             onTap: () {
                               Get.toNamed(AppRoutes.purchasecoins, arguments: [
                                 controller.userModel,
