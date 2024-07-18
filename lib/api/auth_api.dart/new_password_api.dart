@@ -2,22 +2,20 @@ import 'package:find_me/services/dio_service.dart';
 import 'package:find_me/utils/base_url.dart';
 
 class NewPasswordApi {
-  static Future<Map<String, dynamic>> NewPassword(
-   { 
+  static Future<Map<String, dynamic>> NewPassword({
     String? type,
-     String?  email,
+    String? email,
     String? phone,
     String? password,
-    }
-  ) async {
+  }) async {
     //* URL
     String url = '${baseUrl}/forgetUpdatePassword';
 
     //* DATA
     var data = {
-      'type':type,
-     ' email':email,
-     'phone': phone,
+      'type': type,
+      'email': email,
+      'phone': phone,
       'password': password,
     };
 

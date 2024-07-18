@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:find_me/app/languages/language_card.dart';
 import 'package:find_me/app/user_account/user_account_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/cards/user_information_card.dart';
+import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -48,11 +51,14 @@ class _UserAccountViewState extends State<UserAccountView> {
                       ),
                       Gap(18),
                       UserInformationCard(
-                          username: 'Mohammed ahmed',
-                          userid: 'almarwan_4',
-                          userbirthday: '8 march 1997',
-                          usermobilenumber: '0000 0000',
-                          useremialid: 'gost3@gmail.com'),
+                        firstname: controller.firstname,
+                        lastname: controller.lastname,
+                        username: controller.name.toString(),
+                        userid: controller.userName.toString(),
+                        userbirthday: controller.Birthday.toString(),
+                        usermobilenumber: controller.mobileNumber.toString(),
+                        useremialid: controller.email.toString(),
+                      ),
                       Gap(15),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -67,8 +73,8 @@ class _UserAccountViewState extends State<UserAccountView> {
                       Gap(18),
                       Container(
                         margin: EdgeInsets.only(bottom: 15),
-                        height: 350,
-                        width: 290,
+                        height: 340.h,
+                        width: 290.w,
                         decoration: BoxDecoration(
                           color: AppColors.white,
                           borderRadius: BorderRadius.circular(11.0),
@@ -102,31 +108,35 @@ class _UserAccountViewState extends State<UserAccountView> {
                                 color: Colors.grey,
                               ),
                               onTap: () {
-                                setState(() {});
+                                setState(() {
+                                  Get.toNamed(AppRoutes.editaccountinformation)!.then(controller.getUser() as Function(dynamic value) );
+                                });
                               },
                             ),
                             Divider(
                               thickness: 1,
                               color: Colors.grey.withOpacity(0.3),
                             ),
-                            ListTile(
-                              title: Text(
-                                'change date of birth',
-                                style: TextStyle(
-                                    fontSize: 12, fontWeight: FontWeight.w500),
-                              ),
-                              trailing: Icon(
-                                Icons.chevron_right,
-                                color: Colors.grey,
-                              ),
-                              onTap: () {
-                                setState(() {});
-                              },
-                            ),
-                            Divider(
-                              thickness: 1,
-                              color: Colors.grey.withOpacity(0.3),
-                            ),
+                            // ListTile(
+                            //   title: Text(
+                            //     'change date of birth',
+                            //     style: TextStyle(
+                            //         fontSize: 12, fontWeight: FontWeight.w500),
+                            //   ),
+                            //   trailing: Icon(
+                            //     Icons.chevron_right,
+                            //     color: Colors.grey,
+                            //   ),
+                            //   onTap: () {
+                            //     setState(() {
+                            //       Get.toNamed(AppRoutes.change_email);
+                            //     });
+                            //   },
+                            // ),
+                            // Divider(
+                            //   thickness: 1,
+                            //   color: Colors.grey.withOpacity(0.3),
+                            // ),
                             ListTile(
                               title: Text(
                                 'Change mobile number',
@@ -138,7 +148,9 @@ class _UserAccountViewState extends State<UserAccountView> {
                                 color: Colors.grey,
                               ),
                               onTap: () {
-                                setState(() {});
+                                setState(() {
+                                  Get.toNamed(AppRoutes.changephonenumber);
+                                });
                               },
                             ),
                             Divider(
@@ -156,7 +168,9 @@ class _UserAccountViewState extends State<UserAccountView> {
                                 color: Colors.grey,
                               ),
                               onTap: () {
-                                setState(() {});
+                                setState(() {
+                                  Get.toNamed(AppRoutes.change_email);
+                                });
                               },
                             ),
                             Divider(
@@ -174,7 +188,9 @@ class _UserAccountViewState extends State<UserAccountView> {
                                 color: Colors.grey,
                               ),
                               onTap: () {
-                                setState(() {});
+                                setState(() {
+                                  Get.toNamed(AppRoutes.changepassword);
+                                });
                               },
                             ),
                           ],

@@ -22,7 +22,13 @@ class PhoneOtpController extends GetxController {
 
   void verifyOtp() async {
     var response = await OtpApi.verifyPhoneOtp(phone: phone, otp: otpCode);
-    if (response.isNotEmpty) {}
+    if (response.isNotEmpty) {
+      UiUtilites.registerSuccessAlert(Get.context, "Phone Number change successfully");
+      
+    }
+    else {
+      UiUtilites.errorSnackbar("error", "Phone Number  Not Change");
+    }
   }
 
   void setOtpCode(String code) {

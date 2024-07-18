@@ -23,14 +23,14 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
   Widget build(BuildContext context) {
     return GetBuilder<EmojiMenuController>(
         builder: (controller) => Scaffold(
-              backgroundColor: AppColors.black,
               appBar: AppBar(
                 automaticallyImplyLeading: false,
                 forceMaterialTransparency: true,
+                toolbarHeight: 83.h,
                 title: topBar(
-                    name: "Emoji Menu",
-                    showBackIcon: true,
-                    color: AppColors.white),
+                  name: "Emoji Menu",
+                  showBackIcon: true,
+                ),
               ),
               body: SafeArea(
                   child: Padding(
@@ -45,146 +45,45 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                         height: 646.h,
                         width: 164.w,
                         decoration: BoxDecoration(
-                            color: AppColors.light_black,
-                            borderRadius: BorderRadius.circular(9)),
+                            color: AppColors.white,
+                            borderRadius: BorderRadius.circular(9),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: Offset(0, 3),
+                              ),
+                            ]),
                         child: Padding(
                           padding: const EdgeInsets.only(top: 14, left: 12),
                           child: SingleChildScrollView(
-                            physics: PageScrollPhysics(),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
+                              physics: PageScrollPhysics(),
+                              child: SizedBox(
+                                child: Column(
                                   children: [
-                                    Image.asset(
-                                      "assets/images/grinning_face.png",
-                                      height: 54.h,
-                                      width: 54.02.w,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/smiling_face_with_horns.png",
-                                      height: 54.h,
-                                      width: 53.w,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/smiling face with smiling eyes.png",
-                                      height: 54.h,
-                                      width: 53.w,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/traget.png",
-                                      height: 54.h,
-                                      width: 53.w,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/stuck_out_tongue _winking_eye.png",
-                                      height: 54.h,
-                                      width: 53.w,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/loving.png",
-                                      height: 54,
-                                      width: 52,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/Squinting face with tongue.png",
-                                      height: 54.h,
-                                      width: 52.w,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/traget.png",
-                                      height: 54.h,
-                                      width: 52.w,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/stuck_out_tongue _winking_eye.png",
-                                      height: 54.h,
-                                      width: 53.w,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/loving.png",
-                                      height: 54,
-                                      width: 52,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/Squinting face with tongue.png",
-                                      height: 54.h,
-                                      width: 52.w,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/traget.png",
-                                      height: 54.h,
-                                      width: 52.w,
+                                    SizedBox(
+                                      height: Get.height,
+                                      child: GridView.builder(
+                                          itemCount: controller.Emojis.length,
+                                          gridDelegate:
+                                              SliverGridDelegateWithFixedCrossAxisCount(
+                                            crossAxisCount: 2,
+                                            // mainAxisExtent: 0.02,
+                                            // crossAxisSpacing: 0.02,
+                                          ),
+                                          itemBuilder: (BuildContext context,
+                                              int index) {
+                                            return Image.asset(
+                                              controller.Emojis[index],
+                                              // height: 30.h,
+                                              // width: 30.w,
+                                            );
+                                          }),
                                     ),
                                   ],
                                 ),
-                                Column(
-                                  children: [
-                                    Image.asset(
-                                      "assets/images/sunglass.png",
-                                      height: 55.h,
-                                      width: 53.w,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/loving.png",
-                                      height: 54.h,
-                                      width: 53.w,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/Squinting face with tongue.png",
-                                      height: 54.h,
-                                      width: 53.w,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/party.png",
-                                      height: 54.h,
-                                      width: 52.w,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/angry.png",
-                                      height: 54.h,
-                                      width: 52.w,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/stuck_out_tongue _winking_eye.png",
-                                      height: 54.h,
-                                      width: 53.w,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/smiling face with smiling eyes.png",
-                                      height: 54.h,
-                                      width: 53.w,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/party.png",
-                                      height: 54.h,
-                                      width: 53.w,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/stuck_out_tongue _winking_eye.png",
-                                      height: 54.h,
-                                      width: 53.w,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/smiling face with smiling eyes.png",
-                                      height: 54.h,
-                                      width: 53.w,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/party.png",
-                                      height: 54.h,
-                                      width: 53.w,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/smiling face with smiling eyes.png",
-                                      height: 54.h,
-                                      width: 53.w,
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
+                              )),
                         ),
                       ),
                       Container(
@@ -192,223 +91,57 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                         height: 646.h,
                         width: 164.w,
                         decoration: BoxDecoration(
-                            color: AppColors.light_black,
-                            borderRadius: BorderRadius.circular(9)),
+                            color: AppColors.white,
+                            borderRadius: BorderRadius.circular(9),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: Offset(0, 3),
+                              ),
+                            ]),
                         child: SingleChildScrollView(
-                          physics: PageScrollPhysics(),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                children: [
-                                  Image.asset(
-                                    "assets/images/smiling_face_with _halo.png",
-                                    height: 57.h,
-                                    width: 62.w,
+                            physics: PageScrollPhysics(),
+                            child: SizedBox(
+                              height: Get.height,
+                              child: GridView.builder(
+                                  itemCount: controller.emojiWithValue.length,
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
                                   ),
-                                  Gap(2.51.h),
-                                  CoinsValue(
-                                    value: "10",
-                                  ),
-                                  Gap(11.5.h),
-                                  Image.asset(
-                                    "assets/images/smiling_face_with _halo.png",
-                                    height: 57.h,
-                                    width: 62.w,
-                                  ),
-                                  Gap(2.51.h),
-                                  CoinsValue(
-                                    value: "10",
-                                  ),
-                                  Gap(11.5.h),
-                                  Image.asset(
-                                    "assets/images/heart_emoji.png",
-                                    height: 53,
-                                    width: 58,
-                                  ),
-                                  Gap(2.51.h),
-                                  CoinsValue(
-                                    value: "10",
-                                  ),
-                                  Gap(11.5.h),
-                                  Image.asset(
-                                    "assets/images/star_struck.png",
-                                    height: 57.h,
-                                    width: 62.w,
-                                  ),
-                                  Gap(2.51.h),
-                                  CoinsValue(
-                                    value: "10",
-                                  ),
-                                  Gap(11.5.h),
-                                  Image.asset(
-                                    "assets/images/blue_heart.png",
-                                    height: 57.h,
-                                    width: 63.w,
-                                  ),
-                                  Gap(2.51.h),
-                                  CoinsValue(
-                                    value: "10",
-                                  ),
-                                  Gap(11.5),
-                                  Image.asset(
-                                    "assets/images/grinning_face_with_halo.png",
-                                    height: 57.h,
-                                    width: 63.w,
-                                  ),
-                                  Gap(2.51.h),
-                                  CoinsValue(
-                                    value: "10",
-                                  ),
-                                  Gap(11.5.h),
-                                  Image.asset(
-                                    "assets/images/star_struck.png",
-                                    height: 57.h,
-                                    width: 62.w,
-                                  ),
-                                  Gap(2.51.h),
-                                  CoinsValue(
-                                    value: "10",
-                                  ),
-                                  Gap(11.5.h),
-                                  Image.asset(
-                                    "assets/images/star_struck.png",
-                                    height: 57.h,
-                                    width: 62.w,
-                                  ),
-                                  Gap(2.51.h),
-                                  CoinsValue(
-                                    value: "10",
-                                  ),
-                                  Gap(11.5.h),
-                                  Image.asset(
-                                    "assets/images/star_struck.png",
-                                    height: 57.h,
-                                    width: 62.w,
-                                  ),
-                                  Gap(2.51.h),
-                                  CoinsValue(
-                                    value: "10",
-                                  ),
-                                  Gap(11.5.h),
-                                  Image.asset(
-                                    "assets/images/star_struck.png",
-                                    height: 57.h,
-                                    width: 62.w,
-                                  ),
-                                  Gap(2.51.h),
-                                  CoinsValue(
-                                    value: "10",
-                                  ),
-                                  Gap(11.5.h),
-                                ],
-                              ),
-                              Column(
-                                children: [
-                                  Image.asset(
-                                    "assets/images/angry_emoji.png",
-                                    height: 57.h,
-                                    width: 62.w,
-                                  ),
-                                  CoinsValue(
-                                    value: "10",
-                                  ),
-                                  Gap(15.h),
-                                  Image.asset(
-                                    "assets/images/cold_emoji.png",
-                                    height: 61.h,
-                                    width: 63.w,
-                                  ),
-                                  Gap(8.h),
-                                  CoinsValue(
-                                    value: "10",
-                                  ),
-                                  Gap(11.5.h),
-                                  Image.asset(
-                                    "assets/images/emojis_heart.png",
-                                    height: 58.h,
-                                    width: 60.w,
-                                  ),
-                                  Gap(1.9.h),
-                                  CoinsValue(
-                                    value: "10",
-                                  ),
-                                  Gap(11.5.h),
-                                  Image.asset(
-                                    "assets/images/laughing_emojis.png",
-                                    height: 56.h,
-                                    width: 62.w,
-                                  ),
-                                  Gap(2.51.h),
-                                  CoinsValue(
-                                    value: "10",
-                                  ),
-                                  Gap(11.5.h),
-                                  Image.asset(
-                                    "assets/images/cold_angry_emoji.png",
-                                    height: 57.h,
-                                    width: 62.w,
-                                  ),
-                                  Gap(2.51.h),
-                                  CoinsValue(
-                                    value: "10",
-                                  ),
-                                  Gap(11.5.h),
-                                  Image.asset(
-                                    "assets/images/emojis_heart.png",
-                                    height: 56.h,
-                                    width: 62.w,
-                                  ),
-                                  Gap(2.51.h),
-                                  CoinsValue(
-                                    value: "10",
-                                  ),
-                                  Gap(11.5.h),
-                                  Image.asset(
-                                    "assets/images/emojis_heart.png",
-                                    height: 56.h,
-                                    width: 62.w,
-                                  ),
-                                  Gap(2.51.h),
-                                  CoinsValue(
-                                    value: "10",
-                                  ),
-                                  Gap(11.5.h),
-                                  Image.asset(
-                                    "assets/images/emojis_heart.png",
-                                    height: 56.h,
-                                    width: 62.w,
-                                  ),
-                                  Gap(2.51.h),
-                                  CoinsValue(
-                                    value: "10",
-                                  ),
-                                  Gap(11.5.h),
-                                  Image.asset(
-                                    "assets/images/emojis_heart.png",
-                                    height: 56.h,
-                                    width: 62.w,
-                                  ),
-                                  Gap(2.51.h),
-                                  CoinsValue(
-                                    value: "10",
-                                  ),
-                                  Gap(11.5.h),
-                                  Image.asset(
-                                    "assets/images/emojis_heart.png",
-                                    height: 56.h,
-                                    width: 62.w,
-                                  ),
-                                  Gap(2.51.h),
-                                  CoinsValue(
-                                    value: "10",
-                                  ),
-                                  Gap(11.5.h),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return Column(
+                                      children: [
+                                        Image.asset(
+                                          controller.emojiWithValue[index],
+                                          height: 37.h,
+                                          width: 37.w,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            SvgPicture.asset(
+                                              "assets/icons/coins.svg",
+                                              height: 19.23.h,
+                                              width: 20.09.w,
+                                            ),
+                                            Text(
+                                              "10",
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    );
+                                  }),
+                            )),
                       )
                     ],
                   ),

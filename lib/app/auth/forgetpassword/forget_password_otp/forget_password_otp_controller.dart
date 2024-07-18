@@ -33,13 +33,12 @@ class ForgetPasswordOtpController extends GetxController {
     areFieldsFilled = otpCode.length == 6;
     update();
   }
+
   void resendOtpEmail() async {
-    if (email != null) {
-      var response = await ForgotPasswordApi.forgotpassword(
-        type: type, email: email);
-      if (response.isNotEmpty) {
-        UiUtilites.successSnackbar("Otp sent", "Otp Sent Successfully");
-      }
+    var response =
+        await ForgotPasswordApi.forgotpassword(type: type, email: email);
+    if (response.isNotEmpty) {
+      UiUtilites.successSnackbar("Otp sent", "Otp Sent Successfully");
     }
   }
 
@@ -67,8 +66,8 @@ class ForgetPasswordOtpController extends GetxController {
   }
 
   void resendOtpPhone() async {
-    var response = await ForgotPasswordApi.forgotpassword(
-        type: type, phone: phone);
+    var response =
+        await ForgotPasswordApi.forgotpassword(type: type, phone: phone);
     if (response.isNotEmpty) {
       UiUtilites.successSnackbar("Otp sent", "Otp Sent Successfully");
     } else {

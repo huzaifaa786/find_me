@@ -61,16 +61,16 @@ class ReportView extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Gap(10.h),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          AppText(
-                            title: ' Uploaded  successfully!',
-                            color: Colors.green,
-                          ),
-                        ],
-                      ),
+                      // Gap(10.h),
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.center,
+                      //   children: [
+                      //     AppText(
+                      //       title: ' Uploaded  successfully!',
+                      //       color: Colors.green,
+                      //     ),
+                      //   ],
+                      // ),
                       Gap(151.h),
                       AppButton(
                         title: 'Send',
@@ -78,8 +78,6 @@ class ReportView extends StatelessWidget {
                         width: 304.0.w,
                         onTap: () {
                           controller.reportProblem();
-
-                          UiUtilites.registerSuccessAlert(context,"hhh");
                         },
                       ),
                     ],

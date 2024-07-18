@@ -58,21 +58,21 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                     ),
                     Gap(30.h),
                     
-                    controller.changePasswordText
-                        ? Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              AppText(
-                                title: 'Password changed successfully',
-                                color: Colors.green,
-                              ),
-                              Image.asset(
-                                ImagesConst.tickicon,
-                                color: Colors.green,
-                              ),
-                            ],
-                          )
-                        : SizedBox.shrink(),
+                    // controller.changePasswordText
+                    //     ? Row(
+                    //         mainAxisAlignment: MainAxisAlignment.center,
+                    //         children: [
+                    //           AppText(
+                    //             title: 'Password changed successfully',
+                    //             color: Colors.green,
+                    //           ),
+                    //           Image.asset(
+                    //             ImagesConst.tickicon,
+                    //             color: Colors.green,
+                    //           ),
+                    //         ],
+                    //       )
+                    //     : SizedBox.shrink(),
                     Gap(30.h),
                     AppButton(
                       title: 'Submit',

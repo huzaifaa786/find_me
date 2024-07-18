@@ -10,23 +10,30 @@ class CoinsValue extends StatelessWidget {
   const CoinsValue({
     super.key,
     this.value,
+    this.item,
   });
   final value;
+  final item;
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        SvgPicture.asset(
-          "assets/icons/coins.svg",
-          height: 19.23.h,
-          width: 20.09.w,
-        ),
-        Text(
-          value,
-          style: TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w600,
-              color: AppColors.white),
+        SvgPicture.asset(item["emjoi"]),
+        Row(
+          children: [
+            SvgPicture.asset(
+              "assets/icons/coins.svg",
+              height: 19.23.h,
+              width: 20.09.w,
+            ),
+            Text(
+              value,
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
         ),
       ],
     );

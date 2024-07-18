@@ -28,6 +28,8 @@ import 'package:find_me/app/beacon/beacon_broadcaster/beacon_broadcaster_binding
 import 'package:find_me/app/beacon/beacon_broadcaster/beacon_broadcaster_view.dart';
 import 'package:find_me/app/beacon/beacon_scanner/beacon_scanner_binding.dart';
 import 'package:find_me/app/beacon/beacon_scanner/beacon_scanner_view.dart';
+import 'package:find_me/app/change_email/change_email_binding.dart';
+import 'package:find_me/app/change_email/change_email_view.dart';
 import 'package:find_me/app/coins/coins_store_binding.dart';
 import 'package:find_me/app/coins/coins_store_view.dart';
 import 'package:find_me/app/coins/purchase_coins/purchase_coins_binding.dart';
@@ -244,7 +246,15 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),
     ),
-    //TODO: [change email Route]
+    //TODO: [change  email Route]
+    GetPage(
+      name: AppRoutes.change_email,
+      page: () => const ChangeEmailView(),
+      binding: ChangeEmailBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 350),
+    ),
+    //TODO: [change updata_phone_Number Route]
     GetPage(
       name: AppRoutes.updata_phone_Number,
       page: () => const UpdataPhoneNumberView(),
@@ -298,7 +308,7 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
-     //TODO: [Coins Store Route]
+    //TODO: [Coins Store Route]
     GetPage(
       name: AppRoutes.coinsstore,
       page: () => const CoinsStoreView(),
@@ -306,7 +316,7 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
-         //TODO: [Purchase Coins  Route]
+    //TODO: [Purchase Coins  Route]
     GetPage(
       name: AppRoutes.purchasecoins,
       page: () => const PurchaseCoinsView(),
@@ -314,13 +324,14 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
-             //TODO: [User Account  Route]
+    //TODO: [User Account  Route]
     GetPage(
       name: AppRoutes.useraccount,
       page: () => const UserAccountView(),
       binding: UserAccountBinding(),
-       transition: Transition.rightToLeft,
-      transitionDuration: const Duration(milliseconds: 100),),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
     //TODO: [EditUrlView Route]
     GetPage(
       name: AppRoutes.editurl,
@@ -393,17 +404,18 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
-     GetPage(
+    GetPage(
       name: AppRoutes.new_password,
       page: () => NewPasswordView(),
       binding: NewPasswordBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 100),
     ),
-          //TODO: [Edit Account Information Route]
+    //TODO: [Edit Account Information Route]
     GetPage(
       name: AppRoutes.editaccountinformation,
       page: () => EditAccountInformationView(),
-      binding:EditAccountInformationBinding(),),
+      binding: EditAccountInformationBinding(),
+    ),
   ];
 }

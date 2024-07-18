@@ -10,7 +10,6 @@ class NewPasswordController extends GetxController {
   String? phone;
   String? email;
 
-  var newPasswordValue = false;
   bool obscureTextPassword = true;
   bool obscureTextCPassword = true;
   bool obscureTextOldPassword = true;
@@ -37,27 +36,21 @@ class NewPasswordController extends GetxController {
     update();
   }
 
-  updatepassword() async {
-    print(type);
-    print(email);
-    print(phone);
-    print(passwordController);
-    print("usaannnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
-
+ updatepassword() async {
     var response = await NewPasswordApi.NewPassword(
         type: type,
         email: email,
         phone: phone,
         password: passwordController.text);
+    update();
     if (response.isNotEmpty) {
       Get.offAllNamed(
         AppRoutes.signin,
       );
-      newPasswordValue = true;
+
       UiUtilites.successSnackbar(
           'password updated successfully'.tr, 'Success!'.tr);
     } else {
-      newPasswordValue = false;
       UiUtilites.errorSnackbar('could not update password'.tr, 'Error!'.tr);
     }
   }

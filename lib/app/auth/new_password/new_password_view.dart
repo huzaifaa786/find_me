@@ -53,22 +53,20 @@ class _NewPasswordViewState extends State<NewPasswordView> {
                     controller.passwordController.text, value),
               ),
               Gap(30.h),
-              controller.newPasswordValue
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        AppText(
-                          title: 'Password changed successfully',
-                          color: Colors.green,
-                        ),
-                        Image.asset(
-                          ImagesConst.tickicon,
-                          color: Colors.green,
-                        ),
-                      ],
-                    )
-                  : SizedBox.shrink(),
-              Gap(30.h),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     AppText(
+              //       title: 'Password changed successfully',
+              //       color: Colors.green,
+              //     ),
+              //     Image.asset(
+              //       ImagesConst.tickicon,
+              //       color: Colors.green,
+              //     ),
+              //   ],
+              // ),
+              // Gap(30.h),
               AppButton(
                 title: 'Submit',
                 height: 50.0.h,
