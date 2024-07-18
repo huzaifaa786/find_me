@@ -78,7 +78,9 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                                             return GestureDetector(
                                               onTap: () {
                                                 UiUtilites.emojisappear(
-                                                    context,"assets/images/cold_angry_emoji.png",);
+                                                  context,
+                                                  "assets/images/cold_angry_emoji.png",
+                                                );
                                               },
                                               child: Image.asset(
                                                 controller.Emojis[index],
@@ -122,8 +124,8 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                                       children: [
                                         Image.asset(
                                           controller.emojiWithValue[index],
-                                          height: 37.h,
-                                          width: 37.w,
+                                          height: 42.h,
+                                          width: 42.w,
                                         ),
                                         Row(
                                           mainAxisAlignment:
@@ -131,13 +133,13 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                                           children: [
                                             SvgPicture.asset(
                                               "assets/icons/coins.svg",
-                                              height: 19.23.h,
-                                              width: 20.09.w,
+                                              height: 18.23.h,
+                                              width: 19.09.w,
                                             ),
                                             Text(
                                               "10",
                                               style: TextStyle(
-                                                fontSize: 15,
+                                                fontSize: 10.sp,
                                                 fontWeight: FontWeight.w600,
                                               ),
                                             ),
