@@ -29,7 +29,7 @@ class AppColors {
 
   
   
-  
+  static const grey = Color(0xFFF3F3F3);
   static const profile_grey = Color(0xFFF5F5F5);
   static const border_grey = Color(0xFFE8E8E8);
   static const green = Color(0xFF00CD2D);
