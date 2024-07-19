@@ -36,8 +36,7 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
                   // crossAxisAlignment: CrossAxisAlignment.center,
                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    Column(
                       children: [
                         Column(
                           children: [
@@ -114,9 +113,59 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
                     ),
                     Gap(10),
                     //  CardCoins(),
-                  ],
+                //   ],
+                // ),
+                Divider(
+                  thickness: 5,
+                  color: Colors.grey.withOpacity(0.3),
                 ),
-              )),
-            ));
+                Text(
+                  'Purchased coins',
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Gap(10.h),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    physics: AlwaysScrollableScrollPhysics(),
+                    itemCount: controller.coinPackages.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 3.0,
+                      mainAxisSpacing: 14.0,
+                    ),
+                    itemBuilder: (BuildContext context, int index) {
+                      CoinPackageModel coinPackageModel =
+                          controller.coinPackages[index];
+                      return CardCoins(
+                        width: 100.w,
+                        height: 100.h,
+                        bottomText: '${coinPackageModel.price} AED',
+                        img: 'assets/images/coin_icon.png',
+                        text: '${coinPackageModel.coins} coins',
+                        onTap: () {
+                          Get.toNamed(
+                            AppRoutes.purchasecoins,
+                            arguments: [controller.userModel, coinPackageModel],
+                          );
+                        },
+                      );
+                    },
+                  ),
+                ),
+                Gap(10),
+                  
+               ],
+                ),   
+            ),
+            
+          ),
+        ),
+      );
+    
   }
 }

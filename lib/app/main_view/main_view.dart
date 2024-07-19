@@ -148,6 +148,7 @@ class _MainViewState extends State<MainView> with RouteAware {
                           3, 'assets/icons/cart.svg', 'Emoji Store'.tr, 1),
                       _buildNavigationBarItem(
                           4, 'assets/icons/profile.svg', 'Profile'.tr, 0),
+                          
 
                       //  coins
                     ],
