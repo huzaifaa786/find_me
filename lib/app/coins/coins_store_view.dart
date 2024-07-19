@@ -22,6 +22,22 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<CoinsStoreController>(
+<<<<<<< HEAD
+      autoRemove: false,
+      builder: (controller) => Scaffold(
+        appBar: AppBar(
+          toolbarHeight: 83.h,
+          title: topBar(name: 'Coins store'),
+          scrolledUnderElevation: 0,
+          automaticallyImplyLeading: false,
+        ),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+=======
         builder: (controller) => Scaffold(
               appBar: AppBar(
                 toolbarHeight: 83.h,
@@ -34,9 +50,33 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
                 child: Column(
                   // crossAxisAlignment: CrossAxisAlignment.center,
                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+>>>>>>> 9367269ebe4e0404d72107c0c9691646efe3410f
                   children: [
                     Column(
                       children: [
+<<<<<<< HEAD
+                        Text(
+                          'My coins',
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Image.asset(
+                          'assets/images/coin_icon.png',
+                          width: 87.0,
+                          height: 72.0,
+                        ),
+                        Text(
+                          controller.userModel?.wallet?.coins?.toString() ?? "0",
+                          style: TextStyle(
+                            fontSize: 24.sp,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+=======
                         Column(
                           children: [
                             Text(
@@ -112,8 +152,9 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
                     ),
                     Gap(10),
                     //  CardCoins(),
-                //   ],
-                // ),
+>>>>>>> 9367269ebe4e0404d72107c0c9691646efe3410f
+                  ],
+                ),
                 Divider(
                   thickness: 5,
                   color: Colors.grey.withOpacity(0.3),
@@ -157,14 +198,11 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
                   ),
                 ),
                 Gap(10),
-                  
-               ],
-                ),   
+              ],
             ),
-            
           ),
         ),
-      );
-    
+      ),
+    );
   }
 }
