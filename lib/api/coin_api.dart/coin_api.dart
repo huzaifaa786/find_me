@@ -13,4 +13,17 @@ class CoinApi {
     var response = await DioService.get(url: url, data: data);
     return response;
   }
+
+  static Future<Map<String, dynamic>> buyCoinPackages(
+      {required int packageId}) async {
+    // URL
+    String url = '$baseUrl/buy/package';
+
+    // DATA
+    var data = {'package_id': packageId};
+
+    // Make the POST request using DioService
+    var response = await DioService.post(url: url, data: data);
+    return response;
+  }
 }

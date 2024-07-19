@@ -5,6 +5,7 @@ import 'dart:ui';
 import 'package:find_me/components/buttons/app_button.dart';
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:find_me/components/buttons/prefix_icon_button.dart';
+import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/images/images.dart';
@@ -482,9 +483,10 @@ class UiUtilites {
     );
   }
 
-  static coinsAlert(context, title) {
+  static coinsAlert(context, coins) {
     return showDialog(
       context: context,
+      barrierDismissible: false,
       builder: (BuildContext context) {
         // Future.delayed(Duration(seconds: 2), () {
         //   Get.back();
@@ -503,9 +505,7 @@ class UiUtilites {
                 borderRadius: BorderRadius.all(Radius.circular(20))),
             // contentPadding: EdgeInsets.only(top: 10.0),
             content: Container(
-              height: 190,
-              width: 20,
-              padding: EdgeInsets.only(left: 20, right: 20),
+              // padding: EdgeInsets.only(left: 20, right: 20),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(20.0)),
@@ -523,11 +523,11 @@ class UiUtilites {
                         onTap: () {
                           Get.back();
                         },
-                        child: Image.asset('assets/images/cross.png'),
-
-                        // SvgPicture.asset(
-                        //   'assets/images/cross.svg',
-                        // ),
+                        child: SvgPicture.asset(
+                          'assets/icons/cross.svg',
+                          height: 30.h,
+                          width: 30.w,
+                        ),
                       ),
                     ],
                   ),
@@ -539,7 +539,7 @@ class UiUtilites {
                           title: 'Done!',
                           textAlign: TextAlign.center,
                           fontWeight: FontWeight.w500,
-                          size: 14,
+                          size: 18,
                           color: AppColors.primary_color),
                     ],
                   ),
@@ -548,19 +548,23 @@ class UiUtilites {
                     title: 'You have ',
                     textAlign: TextAlign.center,
                     fontWeight: FontWeight.w400,
-                    size: 10.sp,
+                    size: 14.sp,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset('assets/images/coin_icon.png'),
+                      Image.asset(
+                        'assets/images/coin_icon_big.png',
+                        height: 70.h,
+                        width: 70.w,
+                      ),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        '5000 coins',
+                        '${coins} coins',
                         style: TextStyle(
                             fontSize: 13, fontWeight: FontWeight.w500),
                       ),
@@ -572,7 +576,7 @@ class UiUtilites {
                     width: 50.0.w,
                     title: 'Back to home',
                     onTap: () {
-                      Get.back();
+                      Get.offAllNamed(AppRoutes.mainview);
                     },
                   )
                 ],
@@ -584,10 +588,9 @@ class UiUtilites {
     );
   }
 
-  static emojisappear(context,image) {
+  static emojisappear(context, image) {
     return showDialog(
         context: context,
-        
         builder: (BuildContext context) {
           return BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
