@@ -52,8 +52,7 @@ class _PurchaseCoinsViewState extends State<PurchaseCoinsView> {
                     width: 304.0.w,
                     title: 'Checkout',
                     onTap: () {
-                      UiUtilites.coinsAlert(context,
-                          controller.coinPackageModel!.coins.toString());
+                      controller.buyCoins();
                     },
                   )
                 ],
