@@ -22,109 +22,60 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<CoinsStoreController>(
-        autoRemove: false,
-        builder: (controller) => Scaffold(
-              appBar: AppBar(
-                toolbarHeight: 83.h,
-                title: topBar(name: 'Coins store', showBackIcon: false),
-                scrolledUnderElevation: 0,
-                automaticallyImplyLeading: false,
-              ),
-              body: SafeArea(
-                  child: SingleChildScrollView(
-                child: Column(
-                  // crossAxisAlignment: CrossAxisAlignment.center,
-                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      autoRemove: false,
+      builder: (controller) => Scaffold(
+        appBar: AppBar(
+          toolbarHeight: 83.h,
+          title: topBar(name: 'Coins store', showBackIcon: false),
+          scrolledUnderElevation: 0,
+          automaticallyImplyLeading: false,
+        ),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              // crossAxisAlignment: CrossAxisAlignment.center,
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
                   children: [
                     Column(
                       children: [
-                        Column(
-                          children: [
-                            Text(
-                              'My coins',
-                              style: TextStyle(
-                                  fontSize: 16.sp, fontWeight: FontWeight.w600),
-                            ),
-                            Image.asset(
-                              'assets/images/coin_icon_big.png',
-                              //  coin_icon
-                              width: 87.0,
-                              height: 72.0,
-                            ),
-                            controller.userModel != null
-                                ? Text(
-                                    controller.userModel!.wallet!.coins
-                                        .toString(),
-                                    style: TextStyle(
-                                        fontSize: 24.sp,
-                                        fontWeight: FontWeight.w600),
-                                  )
-                                : Text(
-                                    "0",
-                                    style: TextStyle(
-                                        fontSize: 24.sp,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                          ],
-                        )
+                        Text(
+                          'My coins',
+                          style: TextStyle(
+                              fontSize: 16.sp, fontWeight: FontWeight.w600),
+                        ),
+                        Image.asset(
+                          'assets/images/coin_icon_big.png',
+                          //  coin_icon
+                          width: 87.0,
+                          height: 72.0,
+                        ),
+                        controller.userModel != null
+                            ? Text(
+                                controller.userModel!.wallet!.coins.toString(),
+                                style: TextStyle(
+                                    fontSize: 24.sp,
+                                    fontWeight: FontWeight.w600),
+                              )
+                            : Text(
+                                "0",
+                                style: TextStyle(
+                                    fontSize: 24.sp,
+                                    fontWeight: FontWeight.w600),
+                              ),
                       ],
-                    ),
-
-                    Divider(
-                      thickness: 5,
-                      color: Colors.grey.withOpacity(0.3),
-                    ),
-                    Text(
-                      'Purchased coins',
-                      style: TextStyle(
-                          fontSize: 16.sp, fontWeight: FontWeight.w600),
-                    ),
-                    Gap(10.h),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: GridView.builder(
-                        shrinkWrap: true,
-                        physics: AlwaysScrollableScrollPhysics(),
-                        itemCount: controller.coinPackages.length,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                            crossAxisSpacing: 3.0,
-                            mainAxisSpacing: 14.0),
-                        itemBuilder: (BuildContext context, int index) {
-                          CoinPackageModel coinPackageModel =
-                              controller.coinPackages[index];
-                          return CardCoins(
-                            width: 100.w,
-                            height: 100.h,
-                            bottomText: '${coinPackageModel.price} AED',
-                            img: 'assets/images/coin_icon_big.png',
-                            text: '${coinPackageModel.coins} coins',
-                            imageHeight: 60.h,
-                            imageWidth: 60.w,
-                            onTap: () {
-                              Get.toNamed(AppRoutes.purchasecoins, arguments: [
-                                controller.userModel,
-                                coinPackageModel
-                              ]);
-                            },
-                          );
-                        },
-                      ),
-                    ),
-                    Gap(10),
-                    //  CardCoins(),
-                //   ],
-                // ),
+                    )
+                  ],
+                ),
                 Divider(
                   thickness: 5,
                   color: Colors.grey.withOpacity(0.3),
                 ),
                 Text(
                   'Purchased coins',
-                  style: TextStyle(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style:
+                      TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
                 ),
                 Gap(10.h),
                 Padding(
@@ -134,10 +85,9 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
                     physics: AlwaysScrollableScrollPhysics(),
                     itemCount: controller.coinPackages.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 3.0,
-                      mainAxisSpacing: 14.0,
-                    ),
+                        crossAxisCount: 3,
+                        crossAxisSpacing: 3.0,
+                        mainAxisSpacing: 14.0),
                     itemBuilder: (BuildContext context, int index) {
                       CoinPackageModel coinPackageModel =
                           controller.coinPackages[index];
@@ -145,27 +95,26 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
                         width: 100.w,
                         height: 100.h,
                         bottomText: '${coinPackageModel.price} AED',
-                        img: 'assets/images/coin_icon.png',
+                        img: 'assets/images/coin_icon_big.png',
                         text: '${coinPackageModel.coins} coins',
+                        imageHeight: 60.h,
+                        imageWidth: 60.w,
                         onTap: () {
-                          Get.toNamed(
-                            AppRoutes.purchasecoins,
-                            arguments: [controller.userModel, coinPackageModel],
-                          );
+                          Get.toNamed(AppRoutes.purchasecoins, arguments: [
+                            controller.userModel,
+                            coinPackageModel
+                          ]);
                         },
                       );
                     },
                   ),
                 ),
                 Gap(10),
-                  
-               ],
-                ),   
+              ],
             ),
-            
           ),
         ),
-      );
-    
+      ),
+    );
   }
 }
