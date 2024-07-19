@@ -26,40 +26,59 @@ class _LocationViewState extends State<LocationView> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 83.h,
-        title: topBar(name: 'Location'),
+        title: topBar(name: 'Location',showBackIcon: true),
         automaticallyImplyLeading: false,
         scrolledUnderElevation: 0,
       ),
       body: SafeArea(
         child: GetBuilder<LocationController>(
           builder: (controller) {
-            return Column(
-              children: [
-                Gap(63.h),
-                Row(
-                  children: [
-                    Gap(50.w),
-                    AppText(
-                      title: 'Allow the application to access your location',
-                      size: 10,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    Gap(20.w),
-                    FlutterSwitch(
-                      height: 25.h,
-                      width: 45.w,
-                      activeColor: AppColors.green,
-                      inactiveColor: Colors.grey,
-                      value: controller.isLocationEnabled,
-                      onToggle: (value) {
-                        controller.toggleLocation(value);
-                      },
-                    ),
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 34.w),
+              child: Column(
+                children: [
+                  Gap(60.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Gap(50.w),
+                      AppText(
+                        textAlign: TextAlign.left,
+                        title:
+                            'Allow the application to access \n your  location',
+                        size: 13.sp,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      Gap(20.w),
+                      FlutterSwitch(
+                        height: 25.h,
+                        width: 45.w,
+                        activeColor: AppColors.green,
+                        inactiveColor: Colors.grey,
+                        value: controller.isLocationEnabled,
+                        onToggle: (value) {
+                          controller.toggleLocation(value);
+                        },
+                      ),
 
-                    // Gap(62.w),
-                  ],
-                ),
-              ],
+                      // Gap(62.w),
+                    ],
+                  ),
+                  Gap(10.h),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: AppText(
+                      title:
+                          "Note that we wish to have this functionality in ON. ",
+                      size: 10,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.hintGrey,
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
+                ],
+              ),
             );
           },
         ),
