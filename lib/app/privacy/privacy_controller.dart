@@ -22,8 +22,10 @@ class PrivacyController extends GetxController {
     if (response.isNotEmpty) {
       userModel = UserModel.fromJson(response['user']);
       userModel?.profiles?.forEach((profile) {
-        profileGrantAccess[profile.id.toString()] = false;
-        socialGrantAccess[profile.id.toString()] = false;
+        profileGrantAccess[profile.id.toString()] =
+            profile.isProfilePublic ? true : false;
+        socialGrantAccess[profile.id.toString()] =
+            profile.isSocialPublic ? true : false;
       });
     }
     update();

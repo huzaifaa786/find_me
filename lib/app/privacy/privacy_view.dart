@@ -39,16 +39,22 @@ class _PrivacyViewState extends State<PrivacyView> {
                       final profileId =
                           controller.userModel!.profiles![index].id;
                       return PrivacyCard(
-                        publicValue: controller.profileGrantAccess[profileId.toString()] ?? false,
-                    publicOnTab: (value) {
-                      controller.toggleProfileGrantAccess(profileId.toString(), value);
-                      controller.profilePrivacy(profileId.toString());
-                    },
-                    socialValue: controller.socialGrantAccess[profileId.toString()] ?? false,
-                    socialOnTab: (value) {
-                      controller.toggleSocialGrantAccess(profileId.toString(), value);
-                      controller.profilePrivacy(profileId.toString());
-                    },
+                        publicValue: controller
+                                .profileGrantAccess[profileId.toString()] ??
+                            false,
+                        publicOnTab: (value) {
+                          controller.toggleProfileGrantAccess(
+                              profileId.toString(), value);
+                          controller.profilePrivacy(profileId.toString());
+                        },
+                        socialValue: controller
+                                .socialGrantAccess[profileId.toString()] ??
+                            false,
+                        socialOnTab: (value) {
+                          controller.toggleSocialGrantAccess(
+                              profileId.toString(), value);
+                          controller.profilePrivacy(profileId.toString());
+                        },
                         image:
                             controller.userModel!.profiles![index].isVerified ==
                                     true

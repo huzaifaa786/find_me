@@ -9,6 +9,8 @@ class UserProfileModel {
   String? username;
   ProfileUrlModel? urls;
   bool isVerified;
+  bool isProfilePublic;
+  bool isSocialPublic;
   ProfileBusinessCardModel? businessCard;
 
   UserProfileModel({
@@ -20,6 +22,8 @@ class UserProfileModel {
     this.urls,
     this.businessCard,
     required this.isVerified,
+    required this.isProfilePublic,
+    required this.isSocialPublic,
   });
 
   factory UserProfileModel.fromJson(Map<String, dynamic> json) {
@@ -33,6 +37,8 @@ class UserProfileModel {
             ? ProfileUrlModel.fromJson(json['urls'])
             : null,
         isVerified: json['profile_verified'] == 1 ? true : false,
+        isProfilePublic: json['public_profile'] == 1 ? true : false,
+        isSocialPublic: json['public_social'] == 1 ? true : false,
         businessCard: json['business_card'] != null
             ? ProfileBusinessCardModel.fromJson(json['business_card'])
             : null);
