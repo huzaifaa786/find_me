@@ -22,6 +22,7 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<CoinsStoreController>(
+        autoRemove: false,
         builder: (controller) => Scaffold(
               appBar: AppBar(
                 toolbarHeight: 83.h,

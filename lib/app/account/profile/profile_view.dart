@@ -57,7 +57,7 @@ class ProfileView extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(40.r),
                                       image: DecorationImage(
                                           image: CachedNetworkImageProvider(
-                                              controller.profile!.imageUrl ?? ''),
+                                              controller.profile?.imageUrl ?? ''),
                                           fit: BoxFit.cover)),
                                 ),
                               ),
