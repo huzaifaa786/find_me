@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:find_me/app.dart';
 import 'package:find_me/components/helper/loading.dart';
 import 'package:flutter/material.dart';

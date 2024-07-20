@@ -36,6 +36,8 @@ import 'package:find_me/app/coins/purchase_coins/purchase_coins_binding.dart';
 import 'package:find_me/app/coins/purchase_coins/purchase_coins_view.dart';
 import 'package:find_me/app/edit_account/edit_account_information_binding.dart';
 import 'package:find_me/app/edit_account/edit_account_information_view.dart';
+import 'package:find_me/app/public_profile/public_profile_binding.dart';
+import 'package:find_me/app/public_profile/public_profile_view.dart';
 import 'package:find_me/app/updata_phone_number%5D/updata_phone_number_binding.dart';
 import 'package:find_me/app/updata_phone_number%5D/updata_phone_number_view.dart';
 import 'package:find_me/app/create_business_card/create_card_binding.dart';
@@ -99,6 +101,13 @@ class AppPages {
       name: AppRoutes.phoneOtp,
       page: () => const PhoneOtpView(),
       binding: PhoneOtpBinding(),
+      transition: Transition.downToUp,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+    GetPage(
+      name: AppRoutes.publicProfile,
+      page: () => const PublicProfileView(),
+      binding: PublicProfileBinding(),
       transition: Transition.downToUp,
       transitionDuration: const Duration(milliseconds: 100),
     ),
