@@ -3,6 +3,9 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        //  maven {
+        //     url 'https://maven.transistorsoft.com'
+        // }
     }
 
     dependencies {
@@ -14,6 +17,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+      
 }
 }
 rootProject.buildDir = '../build'

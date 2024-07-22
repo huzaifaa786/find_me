@@ -15,13 +15,16 @@ Widget homeAppBar({String? name}) {
     child: Row(
       children: [
         GestureDetector(
-            onTap: () {
-              Get.back();
-            },
-            child: SvgPicture.asset(
-              'assets/icons/find_me.svg',
-              fit: BoxFit.scaleDown,
-            )),
+          onTap: () {
+            Get.back();
+          },
+          child: Image.asset(
+            alignment: Alignment.center,
+            "assets/images/official logo.jpg",
+            fit: BoxFit.scaleDown,
+            scale: 13,
+          ),
+        ),
         Gap(150.w),
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,

@@ -128,7 +128,7 @@ class _EditAccountInformationViewState
                                 style: TextStyle(
                                     fontSize: 12.sp, color: Colors.grey),
                               ),
-                              SizedBox(height: 5.h),
+                              Gap(5.h),
                               SizedBox(
                                 width: 85.w,
                                 child: buildTextFieldEditAccountInformation(
@@ -143,7 +143,7 @@ class _EditAccountInformationViewState
                       ),
                       Gap(50.h),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        padding: EdgeInsets.symmetric(horizontal: 12),
                         child: Row(
                           children: [
                             AppText(
@@ -163,10 +163,9 @@ class _EditAccountInformationViewState
                         height: 60.0.h,
                         width: 304.0.w,
                         onTap: () {
-                          controller.changeInformation(); 
+                          controller.changeInformation();
                         },
                       ),
-                       
                     ],
                   ),
                 ),

@@ -39,7 +39,14 @@ class SupportView extends StatelessWidget {
                         color: AppColors.primary_color,
                         textColors: AppColors.white,
                         image: ImagesConst.mail,
-                        onTap: () {},
+                        onTap: () async {
+                          try {
+                            await controller.sendEmail();
+                          } catch (e) {
+                            // Handle the error
+                            print('Error: $e');
+                          }
+                        },
                       ),
                     ],
                   ),

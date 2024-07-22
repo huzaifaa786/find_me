@@ -20,13 +20,18 @@ class _SplashViewState extends State<SplashView> {
       autoRemove: false,
       builder: (controller) => Scaffold(
         appBar: AppBar(automaticallyImplyLeading: false),
-        body: Center(
-          child: AppText(
-                title: 'Find Me!',
-                size: 36.sp,
-                fontWeight: FontWeight.w600,
-                color: AppColors.black,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Center(
+              child: Image.asset(
+                alignment: Alignment.center,
+                "assets/images/official logo.jpg",
+                scale: 5,
               ),
+            ),
+          ],
         ),
       ),
     );

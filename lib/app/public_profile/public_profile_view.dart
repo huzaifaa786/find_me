@@ -198,6 +198,8 @@ class PublicProfileView extends StatelessWidget {
                             Gap(22),
                             controller.businessCardModel != null
                                 ? BusinessCard(
+                                    blur: 3.0,
+                                    premission: false,
                                     name:
                                         "${controller.businessCardModel!.firstName} ${controller.businessCardModel!.lastName}",
                                     email: controller.businessCardModel!.email ??

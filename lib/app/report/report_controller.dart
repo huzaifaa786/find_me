@@ -16,7 +16,7 @@ class ReportController extends GetxController {
     final ImagePicker picker = ImagePicker();
     final XFile? pickedFile =
         await picker.pickImage(source: ImageSource.gallery);
-         if (pickedFile != null) {
+    if (pickedFile != null) {
       selectedImagePath = pickedFile.path;
       UiUtilites.successSnackbar('Image selected successfully', 'Success');
     } else {
@@ -30,21 +30,25 @@ class ReportController extends GetxController {
   }
 
   Future<void> reportProblem({String? userId}) async {
-     if (descriptionController.text.isEmpty && selectedImagePath.isEmpty) {
-      UiUtilites.errorSnackbar('Please provide a description or select an image', 'Error');
+    if (descriptionController.text.isEmpty && selectedImagePath.isEmpty) {
+      UiUtilites.errorSnackbar(
+          'Please provide a description or select an image', 'Error');
       return;
     }
-     String base64Image = '';
+    String base64Image = '';
     if (selectedImagePath.isNotEmpty) {
       base64Image = await _convertImageToBase64(selectedImagePath);
     }
     var response = await ReportApi.ReportProblem(
       image: base64Image.isNotEmpty ? base64Image : null,
-      desc: descriptionController.text.isNotEmpty ? descriptionController.text : null,
+      desc: descriptionController.text.isNotEmpty
+          ? descriptionController.text
+          : null,
       user_id: userId,
     );
     if (response.isNotEmpty) {
-      UiUtilites.registerSuccessAlert(Get.context,"Report the problem Successfully");
+      UiUtilites.registerSuccessAlert(
+          Get.context, "Report the problem Successfully");
     } else {
       UiUtilites.errorSnackbar('Could not report the problem', 'Error!');
     }
