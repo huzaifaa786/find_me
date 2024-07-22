@@ -27,6 +27,7 @@ class AppRoutes {
   static const coinsstore = '/coinsstore';
   static const purchasecoins = '/purchasecoins';
   static const useraccount = '/useraccount';
+  static const publicProfile = '/publicProfile';
 
 
   static const updata_phone_Number = '/UpdataPhoneNumber';

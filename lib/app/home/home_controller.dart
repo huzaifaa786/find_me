@@ -6,6 +6,7 @@ import 'dart:typed_data';
 
 import 'package:find_me/api/auth_api.dart/user_api.dart';
 import 'package:find_me/api/bluetooth_api/bluetooth_users_api.dart';
+import 'package:find_me/api/profile_api/profile_api.dart';
 import 'package:find_me/components/popups/profile_request_popup.dart';
 import 'package:find_me/models/user_model.dart';
 import 'package:find_me/utils/images/ui_utils/ui_utils.dart';
@@ -60,6 +61,7 @@ class HomeController extends GetxController {
   bool isSearching = false;
   var dropdownItems = <DropdownItem>[];
   DropdownItem selectedItem = DropdownItem(
+    id: 1,
     avatarUrl: null,
     text: 'Almarwan General Trd',
     verified: true,
@@ -86,30 +88,37 @@ class HomeController extends GetxController {
     if (response.isNotEmpty) {
       userModel = UserModel.fromJson(response['user']);
       selectedItem = DropdownItem(
+          id: userModel!.currentProfile!.id,
           avatarUrl: userModel!.currentProfile!.imageUrl,
           text: userModel!.currentProfile!.name,
           verified: userModel!.currentProfile!.isVerified);
       dropdownItems = [];
       for (var element in userModel!.profiles!) {
         dropdownItems.add(DropdownItem(
+            id: element.id,
             avatarUrl: element.imageUrl,
             text: element.name,
             verified: element.isVerified));
       }
       if (userModel!.profiles!.length < 2) {
-        dropdownItems
-            .add(DropdownItem(avatarUrl: "2", text: "2", verified: false));
+        dropdownItems.add(DropdownItem(
+            id: 20444444444444444, avatarUrl: "2", text: "2", verified: false));
       } else if (userModel!.profiles!.length >= 2 &&
           userModel!.profiles!.length < 4) {
-        dropdownItems
-            .add(DropdownItem(avatarUrl: "4", text: "2", verified: false));
+        dropdownItems.add(DropdownItem(
+            id: 30039202929292929, avatarUrl: "4", text: "2", verified: false));
       }
       update();
     }
   }
 
-  void selectItem(DropdownItem item) {
-    selectedItem = item;
+  void selectItem(DropdownItem item) async {
+    selectedItem = item; 
+    var response = await ProfileApi.updateCurrentProfile(
+        userProfileId: item.id, userId: userModel!.id);
+    if (response.isNotEmpty) {
+      
+    }
     update();
   }
 
@@ -395,10 +404,12 @@ class DropdownItem {
   final String? avatarUrl;
   final String? text;
   final bool verified;
+  final int id;
 
   DropdownItem({
     required this.avatarUrl,
     required this.text,
     required this.verified,
+    required this.id,
   });
 }
