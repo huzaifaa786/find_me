@@ -11,7 +11,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class SupportView extends StatelessWidget {
   const SupportView({super.key});
@@ -41,10 +40,12 @@ class SupportView extends StatelessWidget {
                         textColors: AppColors.white,
                         image: ImagesConst.mail,
                         onTap: () async {
-                          String email = controller.emailAddress;
-
-                          String url = 'mailto:$email?subject';
-                          launchUrl(Uri.parse(url));
+                          try {
+                            await controller.sendEmail();
+                          } catch (e) {
+                            // Handle the error
+                            print('Error: $e');
+                          }
                         },
                       ),
                     ],

@@ -6,26 +6,24 @@ import 'package:url_launcher/url_launcher.dart';
 class SupportController extends GetxController {
   static SupportController get instance => Get.find();
   UserModel? userModel;
-  String emailAddress = '';
+  String emailAddress = 'uk359863@gmail.com';
   String subject = 'Hello from my Flutter app!';
   String body = 'This is the body of the email.';
-  @override
-  void onInit() {
-    super.onInit();
-    getUser();
-  }
 
-  Future getUser() async {
-    var response = await UserApi.getUser();
-    if (response.isNotEmpty) {
-      userModel = UserModel.fromJson(response['user']);
-      emailAddress = userModel!.currentProfile!.businessCard!.email!;
+  Future<void> sendEmail() async {
+    if (emailAddress.isNotEmpty) {
+      final Uri url = Uri(
+        scheme: 'mailto',
+        path: emailAddress,
+        query: 'subject=${Uri.encodeComponent(subject)}&body=${Uri.encodeComponent(body)}',
+      );
+      if (await canLaunch(url.toString())) {
+        await launch(url.toString());
+      } else {
+        throw 'Could not launch $url';
+      }
+    } else {
+      throw 'Email address is empty';
     }
-    update();
-  }
-
-  sendEmail() async {
-    String url = 'mailto:$emailAddress?subject=$subject&body=$body';
-    launchUrl(Uri.parse(url));
   }
 }
