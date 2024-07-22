@@ -1,4 +1,4 @@
-import 'package:find_me/api/auth_api.dart/user_api.dart';
+import 'package:find_me/api/auth_api/user_api.dart';
 import 'package:find_me/api/change_information/change_information_api.dart';
 import 'package:find_me/models/user_model.dart';
 import 'package:find_me/utils/ui_utils.dart';

@@ -5,11 +5,15 @@ class ProfileRequestPopup extends StatelessWidget {
   final String name;
   final String imageUrl;
   final String requestMessage;
+  final  onAcceptTap;
+  final  onRejectTap;
 
   ProfileRequestPopup({
     required this.name,
     required this.imageUrl,
     required this.requestMessage,
+    required this.onAcceptTap,
+    required this.onRejectTap,
   });
 
   @override
@@ -64,9 +68,7 @@ class ProfileRequestPopup extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+                    onPressed: onRejectTap,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                       padding: EdgeInsets.symmetric(
@@ -85,9 +87,7 @@ class ProfileRequestPopup extends StatelessWidget {
                   ),
                   SizedBox(width: 10),
                   ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+                    onPressed: onAcceptTap,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.green,
                       padding: EdgeInsets.symmetric(

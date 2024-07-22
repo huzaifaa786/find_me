@@ -1,6 +1,6 @@
-import 'package:find_me/api/auth_api.dart/change_email_api.dart';
-import 'package:find_me/api/auth_api.dart/change_phone_api.dart';
-import 'package:find_me/api/auth_api.dart/otp_api.dart';
+import 'package:find_me/api/auth_api/change_email_api.dart';
+import 'package:find_me/api/auth_api/change_phone_api.dart';
+import 'package:find_me/api/auth_api/otp_api.dart';
 import 'package:find_me/utils/ui_utils.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';

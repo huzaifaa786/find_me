@@ -1,4 +1,4 @@
-import 'package:find_me/api/auth_api.dart/google_signup_api.dart';
+import 'package:find_me/api/auth_api/google_signup_api.dart';
 import 'package:find_me/app/auth/components/auth_appbar.dart';
 import 'package:find_me/app/auth/components/auth_rich_text.dart';
 import 'package:find_me/app/auth/components/dob_textfield.dart';

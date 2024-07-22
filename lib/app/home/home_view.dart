@@ -292,7 +292,10 @@ class HomeView extends StatelessWidget {
                                               arguments: controller
                                                   .scannedUsers[index]
                                                   .currentProfile);
-                                        } else {}
+                                        } else {
+                                          controller.sendRequest(
+                                              controller.scannedUsers[index]);
+                                        }
                                       },
                                     );
                                   },

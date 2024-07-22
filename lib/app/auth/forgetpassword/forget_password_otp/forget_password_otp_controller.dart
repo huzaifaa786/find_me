@@ -1,7 +1,7 @@
-import 'package:find_me/api/auth_api.dart/change_email_api.dart';
-import 'package:find_me/api/auth_api.dart/change_phone_api.dart';
-import 'package:find_me/api/auth_api.dart/forgetpassword_api.dart';
-import 'package:find_me/api/auth_api.dart/otp_api.dart';
+import 'package:find_me/api/auth_api/change_email_api.dart';
+import 'package:find_me/api/auth_api/change_phone_api.dart';
+import 'package:find_me/api/auth_api/forgetpassword_api.dart';
+import 'package:find_me/api/auth_api/otp_api.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/ui_utils.dart';
 import 'package:fluttertoast/fluttertoast.dart';

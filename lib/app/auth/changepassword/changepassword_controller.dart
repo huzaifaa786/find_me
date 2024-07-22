@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:find_me/api/auth_api.dart/changepassword_api.dart';
+import 'package:find_me/api/auth_api/changepassword_api.dart';
 import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

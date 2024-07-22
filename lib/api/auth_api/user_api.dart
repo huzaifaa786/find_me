@@ -14,13 +14,5 @@ class UserApi {
     return response;
   }
 
-  static Future<Map<String, dynamic>> showPopup(String beaconId) async {
-    String url = '${baseUrl}/showpopup';
-    var data = {
-      'beacon_id': beaconId,
-    };
-    //! Make the POST request using ApiService
-    var response = await DioService.post(url: url, data: data);
-    return response;
-  }
+ 
 }

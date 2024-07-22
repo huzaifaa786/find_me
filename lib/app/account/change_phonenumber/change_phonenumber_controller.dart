@@ -1,4 +1,4 @@
-import 'package:find_me/api/auth_api.dart/change_phone_api.dart';
+import 'package:find_me/api/auth_api/change_phone_api.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
