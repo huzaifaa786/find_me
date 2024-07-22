@@ -1,3 +1,4 @@
+import 'package:blur/blur.dart';
 import 'package:find_me/app/edit_profile/components/profilecontainer.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/models/user_profile_model.dart';

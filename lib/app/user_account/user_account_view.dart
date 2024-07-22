@@ -109,7 +109,7 @@ class _UserAccountViewState extends State<UserAccountView> {
                               ),
                               onTap: () {
                                 setState(() {
-                                  Get.toNamed(AppRoutes.editaccountinformation)!.then(controller.getUser() as Function(dynamic value) );
+                                  Get.toNamed(AppRoutes.editaccountinformation);
                                 });
                               },
                             ),

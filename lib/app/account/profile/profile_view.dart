@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sort_child_properties_last
 
+import 'package:blur/blur.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/app/account/components/social_media_icon.dart';
 import 'package:find_me/app/account/profile/profile_controller.dart';
@@ -19,8 +20,15 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 
-class ProfileView extends StatelessWidget {
+class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
+
+  @override
+  State<ProfileView> createState() => _ProfileViewState();
+}
+
+class _ProfileViewState extends State<ProfileView> {
+  bool permission = true;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +65,8 @@ class ProfileView extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(40.r),
                                       image: DecorationImage(
                                           image: CachedNetworkImageProvider(
-                                              controller.profile?.imageUrl ?? ''),
+                                              controller.profile?.imageUrl ??
+                                                  ''),
                                           fit: BoxFit.cover)),
                                 ),
                               ),
@@ -323,6 +332,8 @@ class ProfileView extends StatelessWidget {
                                   Gap(22),
                                   controller.businessCardModel != null
                                       ? BusinessCard(
+                                          blur: 3.0,
+                                          premission: true,
                                           name:
                                               "${controller.businessCardModel!.firstName} ${controller.businessCardModel!.lastName}",
                                           email: controller

@@ -82,11 +82,6 @@ class EditAccountInformationController extends GetxController {
     );
     if (response.isNotEmpty) {
       UiUtilites.registerSuccessAlert(Get.context, "Change  Information Successfully");
-      // userModel = UserModel.fromJson(response['user']);
-      // firstname = userModel!.firstName;
-      // lastname = userModel!.lastName;
-      // Birthday = userModel!.dob;
-      // gender = userModel!.gender.toString();
     } else {
       UiUtilites.errorSnackbar(
           "Change Information Error", "Information is Not Change ");

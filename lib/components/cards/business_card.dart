@@ -1,3 +1,6 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:blur/blur.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +21,8 @@ class BusinessCard extends StatelessWidget {
       required this.tiktok,
       required this.facebook,
       required this.snapchat,
+      required this.blur,
+      this.premission,
       required this.phone});
   final String name;
   final String email;
@@ -30,6 +35,8 @@ class BusinessCard extends StatelessWidget {
   final String facebook;
   final String snapchat;
   final String phone;
+  final premission;
+  final blur;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -55,21 +62,43 @@ class BusinessCard extends StatelessWidget {
                   //mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      name,
-                      style: TextStyle(
-                          color: AppColors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
-                    ),
+                    premission
+                        ? Blur(
+                            blur: blur,
+                            child: Text(
+                              name,
+                              style: TextStyle(
+                                  color: AppColors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          )
+                        : Text(
+                            name,
+                            style: TextStyle(
+                                color: AppColors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
                     Gap(5.h),
-                    Text(
-                      jobTitle,
-                      style: TextStyle(
-                          color: AppColors.white,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600),
-                    ),
+                    premission
+                        ? Blur(
+                            blur: blur,
+                            child: Text(
+                              jobTitle,
+                              style: TextStyle(
+                                  color: AppColors.white,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          )
+                        : Text(
+                            jobTitle,
+                            style: TextStyle(
+                                color: AppColors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600),
+                          ),
                     Gap(8.h),
                     Row(
                       children: [
@@ -77,11 +106,20 @@ class BusinessCard extends StatelessWidget {
                           'assets/icons/home_img.svg',
                         ),
                         Gap(5),
-                        Text(company,
-                            style: TextStyle(
-                                color: AppColors.white,
-                                fontSize: 8,
-                                fontWeight: FontWeight.w500)),
+                        premission
+                            ? Blur(
+                                blur: blur,
+                                child: Text(company,
+                                    style: TextStyle(
+                                        color: AppColors.white,
+                                        fontSize: 8,
+                                        fontWeight: FontWeight.w500)),
+                              )
+                            : Text(company,
+                                style: TextStyle(
+                                    color: AppColors.white,
+                                    fontSize: 8,
+                                    fontWeight: FontWeight.w500)),
                       ],
                     ),
                     Gap(8.h),
@@ -91,31 +129,56 @@ class BusinessCard extends StatelessWidget {
                           'assets/icons/mail.svg',
                         ),
                         Gap(5),
-                        Text(email,
-                            style: TextStyle(
-                                color: AppColors.white,
-                                fontSize: 10,
-                                fontWeight: FontWeight.w600)),
+                        premission
+                            ? Blur(
+                                child: Text(email,
+                                    style: TextStyle(
+                                        color: AppColors.white,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w600)),
+                              )
+                            : Text(email,
+                                style: TextStyle(
+                                    color: AppColors.white,
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w600)),
                       ],
                     )
                   ],
                 ),
                 Column(
                   children: [
-                    Text(
-                      'logo',
-                      style: TextStyle(
-                          color: AppColors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600),
-                    ),
+                    premission
+                        ? Blur(
+                            blur: blur,
+                            child: Text(
+                              'logo',
+                              style: TextStyle(
+                                  color: AppColors.white,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          )
+                        : Text(
+                            'logo',
+                            style: TextStyle(
+                                color: AppColors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600),
+                          ),
                     Gap(13.h),
-                    image.isNotEmpty ?
-                    CachedNetworkImage(
-                      imageUrl: image,
-                      height: 60.h,
-                      width: 60.w,
-                    ):Container(decoration: BoxDecoration(border: Border.all(color: AppColors.Icon_grey)), height: 60.h,width: 60.w,)
+                    image.isNotEmpty
+                        ? CachedNetworkImage(
+                            imageUrl: image,
+                            height: 60.h,
+                            width: 60.w,
+                          )
+                        : Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(color: AppColors.Icon_grey)),
+                            height: 60.h,
+                            width: 60.w,
+                          )
                     //
                   ],
                 )
@@ -141,12 +204,22 @@ class BusinessCard extends StatelessWidget {
                           //color: Colors.black,
                         ),
                         Gap(5.w),
-                        Text(instagram,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 7,
-                              fontWeight: FontWeight.w600,
-                            ))
+                        premission
+                            ? Blur(
+                                blur: blur,
+                                child: Text(instagram,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 7,
+                                      fontWeight: FontWeight.w600,
+                                    )),
+                              )
+                            : Text(instagram,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 7,
+                                  fontWeight: FontWeight.w600,
+                                )),
                       ],
                     ),
                     Gap(31.w),
@@ -157,12 +230,21 @@ class BusinessCard extends StatelessWidget {
                           //color: Colors.black,
                         ),
                         Gap(5.w),
-                        Text(x,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 7,
-                              fontWeight: FontWeight.w600,
-                            ))
+                        premission
+                            ? Blur(
+                                child: Text(x,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 7,
+                                      fontWeight: FontWeight.w600,
+                                    )),
+                              )
+                            : Text(x,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 7,
+                                  fontWeight: FontWeight.w600,
+                                )),
                       ],
                     ),
                     Gap(31.w),
@@ -173,12 +255,22 @@ class BusinessCard extends StatelessWidget {
                           // color: Colors.black,
                         ),
                         Gap(5.w),
-                        Text(facebook,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 7,
-                              fontWeight: FontWeight.w600,
-                            ))
+                        premission
+                            ? Blur(
+                                blur: blur,
+                                child: Text(facebook,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 7,
+                                      fontWeight: FontWeight.w600,
+                                    )),
+                              )
+                            : Text(facebook,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 7,
+                                  fontWeight: FontWeight.w600,
+                                )),
                       ],
                     )
                   ],
@@ -195,12 +287,21 @@ class BusinessCard extends StatelessWidget {
                             color: Colors.black,
                           ),
                           Gap(5.w),
-                          Text(tiktok,
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 7,
-                                fontWeight: FontWeight.w600,
-                              ))
+                          premission
+                              ? Blur(
+                                  blur: blur,
+                                  child: Text(tiktok,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 7,
+                                        fontWeight: FontWeight.w600,
+                                      )))
+                              : Text(tiktok,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 7,
+                                    fontWeight: FontWeight.w600,
+                                  )),
                         ],
                       ),
                       Gap(31.w),
@@ -211,12 +312,21 @@ class BusinessCard extends StatelessWidget {
                             //color: Colors.black,
                           ),
                           Gap(5.w),
-                          Text(snapchat,
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 7,
-                                fontWeight: FontWeight.w600,
-                              ))
+                          premission
+                              ? Blur(
+                                  blur: blur,
+                                  child: Text(snapchat,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 7,
+                                        fontWeight: FontWeight.w600,
+                                      )))
+                              : Text(snapchat,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 7,
+                                    fontWeight: FontWeight.w600,
+                                  ))
                         ],
                       ),
                       Gap(31.w),
@@ -227,12 +337,22 @@ class BusinessCard extends StatelessWidget {
                             // color: Colors.black,
                           ),
                           Gap(5.w),
-                          Text(phone,
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 7,
-                                fontWeight: FontWeight.w600,
-                              ))
+                          premission
+                              ? Blur(
+                                  blur: blur,
+                                  child: Text(phone,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 7,
+                                        fontWeight: FontWeight.w600,
+                                      )),
+                                )
+                              : Text(phone,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 7,
+                                    fontWeight: FontWeight.w600,
+                                  )),
                         ],
                       )
                     ],

@@ -34,101 +34,92 @@ class _LanguagesViewState extends State<LanguagesView> {
       body: SafeArea(
         child: GetBuilder<LanguagesController>(
           builder: (controller) {
-            return Column(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    controller.changeLanguage(0);
-                  },
-                  child: Row(
-                    children: [
-                      Gap(60.w),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              AppText(
-                                title: 'English (United States)',
-                                size: 14,
-                                fontWeight: FontWeight.w400,
-                                color: english_value == 0
-                                    ? AppColors.primary_color
-                                    : AppColors.black,
-                              ),
-                              Gap(108.w),
-                              Radio(
-                                value: english_value,
-                                groupValue: controller.selectedLanguage,
-                                activeColor: AppColors.primary_color,
-                                fillColor: MaterialStateProperty.all(
-                                    AppColors.primary_color),
-                                onChanged: (value) {
-                                  controller.changeLanguage(value as int);
-                                },
-                              ),
-                            ],
-                          ),
-                          AppText(
-                            title: 'Default',
-                            size: 12,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.hintGrey,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Gap(22.h),
-                GestureDetector(
-                  onTap: () {
-                    controller.changeLanguage(1);
-                  },
-                  child: SizedBox(
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 34.w),
+              child: Column(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      controller.changeLanguage(0);
+                    },
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Gap(60.w),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                AppText(
-                                    title: 'العربية',
-                                    size: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: arbic_value2 == 1
-                                        ? AppColors.primary_color
-                                        : AppColors.black),
-                                Gap(224.w),
-                                Radio(
-                                  value: arbic_value2,
-                                  groupValue: controller.selectedLanguage,
-                                  fillColor: MaterialStateProperty.all(
-                                      AppColors.primary_color),
-                                  activeColor: AppColors.primary_color,
-                                  onChanged: (value) {
-                                    controller.changeLanguage(value as int);
-                                  },
-                                ),
-                              ],
+                            AppText(
+                              title: 'English (United States)',
+                              size: 14,
+                              fontWeight: FontWeight.w400,
+                              color: english_value == 0
+                                  ? AppColors.primary_color
+                                  : AppColors.black,
                             ),
                             AppText(
-                              title: 'Arabic',
+                              title: 'Default',
                               size: 12,
                               fontWeight: FontWeight.w400,
                               color: AppColors.hintGrey,
                             ),
                           ],
                         ),
+                        Radio(
+                          value: english_value,
+                          groupValue: controller.selectedLanguage,
+                          activeColor: AppColors.primary_color,
+                          fillColor: MaterialStateProperty.all(
+                              AppColors.primary_color),
+                          onChanged: (value) {
+                            controller.changeLanguage(value as int);
+                          },
+                        ),
                       ],
                     ),
                   ),
-                ),
-              ],
+                  Gap(22.h),
+                  GestureDetector(
+                    onTap: () {
+                      controller.changeLanguage(1);
+                    },
+                    child: SizedBox(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AppText(
+                                  title: 'العربية',
+                                  size: 14,
+                                  fontWeight: FontWeight.w400,
+                                  color: arbic_value2 == 1
+                                      ? AppColors.primary_color
+                                      : AppColors.black),
+                              AppText(
+                                title: 'Arabic',
+                                size: 12,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.hintGrey,
+                              ),
+                            ],
+                          ),
+                          Radio(
+                            value: arbic_value2,
+                            groupValue: controller.selectedLanguage,
+                            fillColor: MaterialStateProperty.all(
+                                AppColors.primary_color),
+                            activeColor: AppColors.primary_color,
+                            onChanged: (value) {
+                              controller.changeLanguage(value as int);
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             );
           },
         ),
