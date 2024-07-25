@@ -60,9 +60,7 @@ class UiUtilites {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
-        Future.delayed(Duration(seconds: 7), () {
-          Get.back();
-        });
+      
         return BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
           child: AlertDialog(

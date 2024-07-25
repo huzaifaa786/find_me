@@ -108,8 +108,9 @@ class _UserAccountViewState extends State<UserAccountView> {
                                 color: Colors.grey,
                               ),
                               onTap: () {
-                                setState(() {
-                                  Get.toNamed(AppRoutes.editaccountinformation);
+                                Get.toNamed(AppRoutes.editaccountinformation)!
+                                    .then((value) {
+                                  controller.getUser();
                                 });
                               },
                             ),
@@ -117,26 +118,6 @@ class _UserAccountViewState extends State<UserAccountView> {
                               thickness: 1,
                               color: Colors.grey.withOpacity(0.3),
                             ),
-                            // ListTile(
-                            //   title: Text(
-                            //     'change date of birth',
-                            //     style: TextStyle(
-                            //         fontSize: 12, fontWeight: FontWeight.w500),
-                            //   ),
-                            //   trailing: Icon(
-                            //     Icons.chevron_right,
-                            //     color: Colors.grey,
-                            //   ),
-                            //   onTap: () {
-                            //     setState(() {
-                            //       Get.toNamed(AppRoutes.change_email);
-                            //     });
-                            //   },
-                            // ),
-                            // Divider(
-                            //   thickness: 1,
-                            //   color: Colors.grey.withOpacity(0.3),
-                            // ),
                             ListTile(
                               title: Text(
                                 'Change mobile number',
@@ -148,8 +129,9 @@ class _UserAccountViewState extends State<UserAccountView> {
                                 color: Colors.grey,
                               ),
                               onTap: () {
-                                setState(() {
-                                  Get.toNamed(AppRoutes.changephonenumber);
+                                Get.toNamed(AppRoutes.changephonenumber)!
+                                    .then((value) {
+                                  controller.getUser();
                                 });
                               },
                             ),
@@ -168,8 +150,9 @@ class _UserAccountViewState extends State<UserAccountView> {
                                 color: Colors.grey,
                               ),
                               onTap: () {
-                                setState(() {
-                                  Get.toNamed(AppRoutes.change_email);
+                                Get.toNamed(AppRoutes.change_email)!
+                                    .then((value) {
+                                  controller.getUser();
                                 });
                               },
                             ),
@@ -188,8 +171,9 @@ class _UserAccountViewState extends State<UserAccountView> {
                                 color: Colors.grey,
                               ),
                               onTap: () {
-                                setState(() {
-                                  Get.toNamed(AppRoutes.changepassword);
+                                Get.toNamed(AppRoutes.changepassword)!
+                                    .then((value) {
+                                  controller.getUser();
                                 });
                               },
                             ),
