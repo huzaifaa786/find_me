@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sort_child_properties_last
 
-import 'package:blur/blur.dart';
+// import 'package:blur/blur.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/app/account/components/social_media_icon.dart';
 import 'package:find_me/app/account/profile/profile_controller.dart';
@@ -333,7 +333,7 @@ class _ProfileViewState extends State<ProfileView> {
                                   controller.businessCardModel != null
                                       ? BusinessCard(
                                           blur: 3.0,
-                                          premission: true,
+                                          premission: false,
                                           name:
                                               "${controller.businessCardModel!.firstName} ${controller.businessCardModel!.lastName}",
                                           email: controller

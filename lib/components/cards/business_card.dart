@@ -23,6 +23,7 @@ class BusinessCard extends StatelessWidget {
       required this.snapchat,
       required this.blur,
       this.premission,
+      this.radius,
       required this.phone});
   final String name;
   final String email;
@@ -37,6 +38,7 @@ class BusinessCard extends StatelessWidget {
   final String phone;
   final premission;
   final blur;
+  final radius;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -65,6 +67,7 @@ class BusinessCard extends StatelessWidget {
                     premission
                         ? Blur(
                             blur: blur,
+                            borderRadius: radius,
                             child: Text(
                               name,
                               style: TextStyle(
@@ -84,6 +87,7 @@ class BusinessCard extends StatelessWidget {
                     premission
                         ? Blur(
                             blur: blur,
+                            borderRadius: radius,
                             child: Text(
                               jobTitle,
                               style: TextStyle(
@@ -109,6 +113,7 @@ class BusinessCard extends StatelessWidget {
                         premission
                             ? Blur(
                                 blur: blur,
+                                borderRadius: radius,
                                 child: Text(company,
                                     style: TextStyle(
                                         color: AppColors.white,
@@ -131,6 +136,8 @@ class BusinessCard extends StatelessWidget {
                         Gap(5),
                         premission
                             ? Blur(
+                                blur: blur,
+                                borderRadius: radius,
                                 child: Text(email,
                                     style: TextStyle(
                                         color: AppColors.white,
@@ -148,31 +155,32 @@ class BusinessCard extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    premission
-                        ? Blur(
-                            blur: blur,
-                            child: Text(
-                              'logo',
-                              style: TextStyle(
-                                  color: AppColors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                          )
-                        : Text(
-                            'logo',
-                            style: TextStyle(
-                                color: AppColors.white,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600),
-                          ),
+                    Text(
+                      'logo',
+                      style: TextStyle(
+                          color: AppColors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600),
+                    ),
                     Gap(13.h),
                     image.isNotEmpty
-                        ? CachedNetworkImage(
-                            imageUrl: image,
-                            height: 60.h,
-                            width: 60.w,
+                        ? premission
+                            ? Blur(
+                            borderRadius: radius,
+                            blur: blur,
+                            child: CachedNetworkImage(
+                              imageUrl: image,
+                              height: 60.h,
+                              width: 60.w,
+                              fit: BoxFit.cover,
+                            ),
                           )
+                        :CachedNetworkImage(
+                          imageUrl: image,
+                          height: 60.h,
+                          width: 60.w,
+                          fit: BoxFit.cover,
+                        )
                         : Container(
                             decoration: BoxDecoration(
                                 border: Border.all(color: AppColors.Icon_grey)),
@@ -207,6 +215,7 @@ class BusinessCard extends StatelessWidget {
                         premission
                             ? Blur(
                                 blur: blur,
+                                borderRadius: radius,
                                 child: Text(instagram,
                                     style: TextStyle(
                                       color: Colors.black,
@@ -232,6 +241,8 @@ class BusinessCard extends StatelessWidget {
                         Gap(5.w),
                         premission
                             ? Blur(
+                                borderRadius: radius,
+                                blur: blur,
                                 child: Text(x,
                                     style: TextStyle(
                                       color: Colors.black,
@@ -257,6 +268,7 @@ class BusinessCard extends StatelessWidget {
                         Gap(5.w),
                         premission
                             ? Blur(
+                                borderRadius: radius,
                                 blur: blur,
                                 child: Text(facebook,
                                     style: TextStyle(
@@ -289,6 +301,7 @@ class BusinessCard extends StatelessWidget {
                           Gap(5.w),
                           premission
                               ? Blur(
+                                  borderRadius: radius,
                                   blur: blur,
                                   child: Text(tiktok,
                                       style: TextStyle(
@@ -314,6 +327,7 @@ class BusinessCard extends StatelessWidget {
                           Gap(5.w),
                           premission
                               ? Blur(
+                                  borderRadius: radius,
                                   blur: blur,
                                   child: Text(snapchat,
                                       style: TextStyle(
@@ -339,6 +353,7 @@ class BusinessCard extends StatelessWidget {
                           Gap(5.w),
                           premission
                               ? Blur(
+                                  borderRadius: radius,
                                   blur: blur,
                                   child: Text(phone,
                                       style: TextStyle(

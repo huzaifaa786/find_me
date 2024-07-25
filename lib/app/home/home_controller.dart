@@ -8,6 +8,7 @@ import 'package:find_me/api/auth_api/user_api.dart';
 import 'package:find_me/api/bluetooth_api/bluetooth_users_api.dart';
 import 'package:find_me/api/profile_api/profile_api.dart';
 import 'package:find_me/api/request_api/request_api.dart';
+import 'package:find_me/app/public_profile/public_profile_controller.dart';
 import 'package:find_me/components/popups/profile_request_popup.dart';
 import 'package:find_me/models/profile_request_model.dart';
 import 'package:find_me/models/user_model.dart';
@@ -368,12 +369,41 @@ class HomeController extends GetxController {
   }
 
   void onEvent(PusherEvent event) {
+    print(event.eventName);
     if (event.data != null && event.eventName == "my-event") {
       Map<String, dynamic> data = json.decode(event.data!);
       UserModel user = UserModel.fromJson(data['user']);
       ProfileRequestModel requestModel =
           ProfileRequestModel.fromJson(data['profileRequest']);
       showPopup(data['message'], user, requestModel);
+    }
+    if (event.data != null && event.eventName == "profile-access") {
+      Map<String, dynamic> data = json.decode(event.data!);
+      ProfileRequestModel profileRequestModel =
+          ProfileRequestModel.fromJson(data['profileRequest']);
+
+      if (profileRequestModel.requestType == "profile") {
+        if (profileRequestModel.status == "accepted") {
+          String name =
+              "${profileRequestModel.receiverProfile!.name} has accepted your request";
+          UiUtilites.successSnackbar(name.toString(), "Profile Request Access");
+        } else {
+          String name =
+              "${profileRequestModel.receiverProfile!.name} has rejected your request";
+          UiUtilites.errorSnackbar("Profile Request Access", name.toString());
+        }
+      } else {
+        if (profileRequestModel.status == "accepted") {
+          String name =
+              "${profileRequestModel.receiverProfile!.name} has accepted your request";
+          UiUtilites.successSnackbar(name.toString(), "Social Request Access");
+          updatePublicProfile();
+        } else {
+          String name =
+              "${profileRequestModel.receiverProfile!.name} has rejected your request";
+          UiUtilites.errorSnackbar("Social Request Access", name.toString());
+        }
+      }
     }
   }
 
@@ -389,6 +419,7 @@ class HomeController extends GetxController {
   void showPopup(
       String message, UserModel user, ProfileRequestModel profileRequestModel) {
     Get.dialog(
+      barrierDismissible: false,
       ProfileRequestPopup(
         name: user.currentProfile!.name!,
         imageUrl: user.currentProfile!.imageUrl ??
@@ -398,9 +429,11 @@ class HomeController extends GetxController {
             : 'Would like to take a look at your “Social media accounts and business card”.',
         onAcceptTap: () {
           respondRequest(profileRequestModel, "accepted");
+          Get.back();
         },
         onRejectTap: () {
           respondRequest(profileRequestModel, "rejected");
+          Get.back();
         },
       ),
     );
@@ -420,6 +453,12 @@ class HomeController extends GetxController {
         Get.toNamed(AppRoutes.publicProfile, arguments: user.currentProfile);
       }
     }
+  }
+
+  void updatePublicProfile() {
+    PublicProfileController publicProfileController =
+        Get.find<PublicProfileController>();
+    publicProfileController.updateData();
   }
 
   respondRequest(ProfileRequestModel requestModel, String status) async {

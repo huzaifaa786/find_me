@@ -30,7 +30,8 @@ environment:
 dependencies:
   animated_snack_bar: ^0.4.0
   badges: ^3.1.2
-  blur: ^4.0.0
+  # blur: ^4.0.0
+  blur: ^3.1.0
   cached_network_image: ^3.3.1
   cupertino_icons: ^1.0.6
   datepicker_dropdown: ^0.1.1+1
@@ -61,7 +62,7 @@ dependencies:
   get: ^4.6.6
   get_storage: ^2.1.1
   google_fonts: ^6.2.1
-  google_maps_flutter: ^2.7.0
+  # google_maps_flutter: ^2.7.0
   google_sign_in: ^6.2.1
   gradient_borders: ^1.0.1
   image_picker: ^1.1.2

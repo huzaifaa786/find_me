@@ -18,15 +18,16 @@ class ProfileRequestModel {
   });
 
   factory ProfileRequestModel.fromJson(Map<String, dynamic> json) {
+
     return ProfileRequestModel(
       id: json['id'],
       requestType: json['request_type'],
       status: json['status'],
-      senderProfile: json['senderProfile'] != null
-          ? UserProfileModel.fromJson(json['senderProfile'])
+      senderProfile: json['sender_profile'] != null
+          ? UserProfileModel.fromJson(json['sender_profile'])
           : null,
-      receiverProfile: json['receiverProfile'] != null
-          ? UserProfileModel.fromJson(json['receiverProfile'])
+      receiverProfile: json['receiver_profile'] != null
+          ? UserProfileModel.fromJson(json['receiver_profile'])
           : null,
     );
   }

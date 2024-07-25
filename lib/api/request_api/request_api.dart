@@ -23,6 +23,24 @@ class RequestApi {
     return response;
   }
 
+  static Future<Map<String, dynamic>> checkRequest({
+    UserModel? user,
+    String? requestType,
+  }) async {
+    //* URL
+    String url = '${baseUrl}/check/request';
+
+    //* DATA
+    var data = {
+      'receiver_profile_id': user!.currentProfile!.id,
+      'request_type': requestType,
+    };
+
+    //! Make the POST request using ApiService
+    var response = await DioService.post(url: url, data: data);
+    return response;
+  }
+
   static Future<Map<String, dynamic>> respondRequest({
     ProfileRequestModel? profileRequestModel,
     String? status,

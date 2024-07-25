@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sort_child_properties_last
 
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/app/account/components/social_media_icon.dart';
 import 'package:find_me/app/account/profile/profile_controller.dart';
@@ -115,11 +117,32 @@ class PublicProfileView extends StatelessWidget {
                                       "assets/icons/tiktok_black.svg",
                                   isEmpty: controller.profileUrlModel!.tiktok ==
                                       null,
+                                  ontap: () {
+                                    if (controller.profileUrlModel!.tiktok !=
+                                            null &&
+                                        controller.hasSocialAccess) {
+                                      controller.launchSocialUrl(
+                                          controller.profileUrlModel!.tiktok!);
+                                    }else if (!controller.hasSocialAccess) {
+                                      controller
+                                          .sendRequest(controller.userModel!);
+                                    }
+                                  },
                                 ),
                                 SocialMediaIcon(
                                   socialMediaIcon: "assets/icons/xtwitter.svg",
                                   isEmpty:
                                       controller.profileUrlModel!.x == null,
+                                  ontap: () {
+                                    if (controller.profileUrlModel!.x != null &&
+                                        controller.hasSocialAccess) {
+                                      controller.launchSocialUrl(
+                                          controller.profileUrlModel!.x!);
+                                    }else if (!controller.hasSocialAccess) {
+                                      controller
+                                          .sendRequest(controller.userModel!);
+                                    }
+                                  },
                                 ),
                                 SocialMediaIcon(
                                   socialMediaIcon:
@@ -127,12 +150,34 @@ class PublicProfileView extends StatelessWidget {
                                   isEmpty:
                                       controller.profileUrlModel!.instagram ==
                                           null,
+                                  ontap: () {
+                                    if (controller.profileUrlModel!.instagram !=
+                                            null &&
+                                        controller.hasSocialAccess) {
+                                      controller.launchSocialUrl(controller
+                                          .profileUrlModel!.instagram!);
+                                    }else if (!controller.hasSocialAccess) {
+                                      controller
+                                          .sendRequest(controller.userModel!);
+                                    }
+                                  },
                                 ),
                                 SocialMediaIcon(
                                   socialMediaIcon: "assets/icons/snapchat.svg",
                                   isEmpty:
                                       controller.profileUrlModel!.snapchat ==
                                           null,
+                                  ontap: () {
+                                    if (controller.profileUrlModel!.snapchat !=
+                                            null &&
+                                        controller.hasSocialAccess) {
+                                      controller.launchSocialUrl(controller
+                                          .profileUrlModel!.snapchat!);
+                                    }else if (!controller.hasSocialAccess) {
+                                      controller
+                                          .sendRequest(controller.userModel!);
+                                    }
+                                  },
                                 ),
                                 SocialMediaIcon(
                                   socialMediaIcon:
@@ -140,12 +185,35 @@ class PublicProfileView extends StatelessWidget {
                                   isEmpty:
                                       controller.profileUrlModel!.facebook ==
                                           null,
+                                  ontap: () {
+                                    if (controller.profileUrlModel!.facebook !=
+                                            null &&
+                                        controller.hasSocialAccess) {
+                                      controller.launchSocialUrl(controller
+                                          .profileUrlModel!.facebook!);
+                                    }else if (!controller.hasSocialAccess) {
+                                      controller
+                                          .sendRequest(controller.userModel!);
+                                    }
+                                  },
                                 ),
                                 SocialMediaIcon(
-                                    socialMediaIcon: "assets/icons/youtube.svg",
-                                    isEmpty:
-                                        controller.profileUrlModel!.youtube ==
-                                            null),
+                                  socialMediaIcon: "assets/icons/youtube.svg",
+                                  isEmpty:
+                                      controller.profileUrlModel!.youtube ==
+                                          null,
+                                  ontap: () {
+                                    if (controller.profileUrlModel!.youtube !=
+                                            null &&
+                                        controller.hasSocialAccess) {
+                                      controller.launchSocialUrl(
+                                          controller.profileUrlModel!.youtube!);
+                                    }else if (!controller.hasSocialAccess) {
+                                      controller
+                                          .sendRequest(controller.userModel!);
+                                    }
+                                  },
+                                ),
                               ],
                             ),
                             Gap(15.h),
@@ -157,24 +225,68 @@ class PublicProfileView extends StatelessWidget {
                                   isEmpty:
                                       controller.profileUrlModel!.whatsapp ==
                                           null,
+                                  ontap: () {
+                                    if (controller.profileUrlModel!.whatsapp !=
+                                            null &&
+                                        controller.hasSocialAccess) {
+                                      controller.launchSocialUrl(controller
+                                          .profileUrlModel!.whatsapp!);
+                                    }else if (!controller.hasSocialAccess) {
+                                      controller
+                                          .sendRequest(controller.userModel!);
+                                    }
+                                  },
                                 ),
                                 SocialMediaIcon(
-                                    socialMediaIcon: "assets/icons/gmail.svg",
-                                    isEmpty:
-                                        controller.profileUrlModel!.email ==
-                                            null),
+                                  socialMediaIcon: "assets/icons/gmail.svg",
+                                  isEmpty:
+                                      controller.profileUrlModel!.email == null,
+                                  ontap: () {
+                                    if (controller.profileUrlModel!.email !=
+                                            null &&
+                                        controller.hasSocialAccess) {
+                                      controller.launchSocialUrl(
+                                          controller.profileUrlModel!.email!);
+                                    }else if (!controller.hasSocialAccess) {
+                                      controller
+                                          .sendRequest(controller.userModel!);
+                                    }
+                                  },
+                                ),
                                 SocialMediaIcon(
                                   socialMediaIcon:
                                       "assets/icons/telegram-plane.svg",
                                   isEmpty:
                                       controller.profileUrlModel!.telegram ==
                                           null,
+                                  ontap: () {
+                                    if (controller.profileUrlModel!.telegram !=
+                                            null &&
+                                        controller.hasSocialAccess) {
+                                      controller.launchSocialUrl(controller
+                                          .profileUrlModel!.telegram!);
+                                    }else if (!controller.hasSocialAccess) {
+                                      controller
+                                          .sendRequest(controller.userModel!);
+                                    }
+                                  },
                                 ),
                                 SocialMediaIcon(
                                   socialMediaIcon: "assets/icons/linkedin.svg",
                                   isEmpty:
                                       controller.profileUrlModel!.linkedin ==
                                           null,
+                                  ontap: () {
+                                    if (controller.profileUrlModel!.linkedin !=
+                                            null &&
+                                        controller.hasSocialAccess) {
+                                      controller.launchSocialUrl(controller
+                                          .profileUrlModel!.linkedin!);
+                                    }else if (!controller.hasSocialAccess) {
+                                      controller
+                                          .sendRequest(controller.userModel!);
+                                    } 
+                                  },
                                 ),
                               ],
                             ),
@@ -197,36 +309,48 @@ class PublicProfileView extends StatelessWidget {
                             ),
                             Gap(22),
                             controller.businessCardModel != null
-                                ? BusinessCard(
-                                    blur: 3.0,
-                                    premission: false,
-                                    name:
-                                        "${controller.businessCardModel!.firstName} ${controller.businessCardModel!.lastName}",
-                                    email: controller.businessCardModel!.email ??
-                                        '',
-                                    jobTitle:
-                                        controller.businessCardModel!.job ?? '',
-                                    company:
-                                        controller.businessCardModel!.company ??
+                                ? GestureDetector(
+                                    onTap: () {
+                                      if (!controller.hasSocialAccess) {
+                                        controller
+                                            .sendRequest(controller.userModel!);
+                                      }
+                                    },
+                                    child: BusinessCard(
+                                        blur: 5.0,
+                                        radius: BorderRadius.circular(5),
+                                        premission:
+                                            controller.profile!.isSocialPublic ||
+                                                    controller.hasSocialAccess
+                                                ? false
+                                                : true,
+                                        name:
+                                            "${controller.businessCardModel!.firstName} ${controller.businessCardModel!.lastName}",
+                                        email: controller
+                                                .businessCardModel!.email ??
                                             '',
-                                    image: controller.businessCardModel!.image ??
-                                        '',
-                                    instagram: controller
-                                            .businessCardModel!.instagram ??
-                                        '',
-                                    x: controller.businessCardModel!.x ?? '',
-                                    tiktok:
-                                        controller.businessCardModel!.tiktok ??
+                                        jobTitle:
+                                            controller.businessCardModel!.job ??
+                                                '',
+                                        company: controller
+                                                .businessCardModel!.company ??
                                             '',
-                                    facebook: controller
-                                            .businessCardModel!.facebook ??
-                                        '',
-                                    snapchat: controller
-                                            .businessCardModel!.snapchat ??
-                                        '',
-                                    phone:
-                                        controller.businessCardModel!.phone ??
-                                            '')
+                                        image:
+                                            controller.businessCardModel!.image ??
+                                                '',
+                                        instagram: controller
+                                                .businessCardModel!.instagram ??
+                                            '',
+                                        x: controller.businessCardModel!.x ??
+                                            '',
+                                        tiktok: controller
+                                                .businessCardModel!.tiktok ??
+                                            '',
+                                        facebook:
+                                            controller.businessCardModel!.facebook ?? '',
+                                        snapchat: controller.businessCardModel!.snapchat ?? '',
+                                        phone: controller.businessCardModel!.phone ?? ''),
+                                  )
                                 : Container(
                                     height: 192.8.h,
                                     width: 312.w,

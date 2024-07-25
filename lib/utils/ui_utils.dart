@@ -18,6 +18,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 class UiUtilites {
+  
   static errorSnackbar(String title, String message) {
     AnimatedSnackBar(
       mobileSnackBarPosition: MobileSnackBarPosition.bottom,

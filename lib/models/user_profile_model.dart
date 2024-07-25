@@ -1,5 +1,6 @@
 import 'package:find_me/models/profile_business_card_model.dart';
 import 'package:find_me/models/profile_url_model.dart';
+import 'package:find_me/models/user_model.dart';
 
 class UserProfileModel {
   int id;
@@ -12,6 +13,7 @@ class UserProfileModel {
   bool isProfilePublic;
   bool isSocialPublic;
   ProfileBusinessCardModel? businessCard;
+  int userId;
 
   UserProfileModel({
     required this.id,
@@ -24,6 +26,7 @@ class UserProfileModel {
     required this.isVerified,
     required this.isProfilePublic,
     required this.isSocialPublic,
+    required this.userId,
   });
 
   factory UserProfileModel.fromJson(Map<String, dynamic> json) {
@@ -41,6 +44,7 @@ class UserProfileModel {
         isSocialPublic: json['public_social'] == 1 ? true : false,
         businessCard: json['business_card'] != null
             ? ProfileBusinessCardModel.fromJson(json['business_card'])
-            : null);
+            : null,
+        userId: json['user_id']);
   }
 }
