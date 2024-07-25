@@ -4,11 +4,14 @@ import 'dart:developer';
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:find_me/api/auth_api.dart/user_api.dart';
+import 'package:find_me/api/auth_api/user_api.dart';
 import 'package:find_me/api/bluetooth_api/bluetooth_users_api.dart';
 import 'package:find_me/api/profile_api/profile_api.dart';
+import 'package:find_me/api/request_api/request_api.dart';
 import 'package:find_me/components/popups/profile_request_popup.dart';
+import 'package:find_me/models/profile_request_model.dart';
 import 'package:find_me/models/user_model.dart';
+import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/images/ui_utils/ui_utils.dart';
 import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
@@ -113,12 +116,10 @@ class HomeController extends GetxController {
   }
 
   void selectItem(DropdownItem item) async {
-    selectedItem = item; 
+    selectedItem = item;
     var response = await ProfileApi.updateCurrentProfile(
         userProfileId: item.id, userId: userModel!.id);
-    if (response.isNotEmpty) {
-      
-    }
+    if (response.isNotEmpty) {}
     update();
   }
 
@@ -317,11 +318,6 @@ class HomeController extends GetxController {
     update();
   }
 
-  showPopUp(String beaconId) async {
-    final response = await UserApi.showPopup(beaconId);
-    if (response.isNotEmpty) {}
-  }
-
   // pusher start
   PusherChannelsFlutter pusher = PusherChannelsFlutter.getInstance();
   initPusher() async {
@@ -375,7 +371,9 @@ class HomeController extends GetxController {
     if (event.data != null && event.eventName == "my-event") {
       Map<String, dynamic> data = json.decode(event.data!);
       UserModel user = UserModel.fromJson(data['user']);
-      showPopup(data['message'], user);
+      ProfileRequestModel requestModel =
+          ProfileRequestModel.fromJson(data['profileRequest']);
+      showPopup(data['message'], user, requestModel);
     }
   }
 
@@ -388,15 +386,47 @@ class HomeController extends GetxController {
     log('Channel Name: $channelName, Socket Id: $socketId, Options: $options');
   }
 
-  void showPopup(String message, UserModel user) {
+  void showPopup(
+      String message, UserModel user, ProfileRequestModel profileRequestModel) {
     Get.dialog(
       ProfileRequestPopup(
         name: user.currentProfile!.name!,
-        imageUrl:
+        imageUrl: user.currentProfile!.imageUrl ??
             'https://avatar.iran.liara.run/public/boy?username=${user.currentProfile!.name!}',
-        requestMessage: 'Would like to take a look at your "Profile".',
+        requestMessage: profileRequestModel.requestType == "profile"
+            ? 'Would like to take a look at your “Profile”.'
+            : 'Would like to take a look at your “Social media accounts and business card”.',
+        onAcceptTap: () {
+          respondRequest(profileRequestModel, "accepted");
+        },
+        onRejectTap: () {
+          respondRequest(profileRequestModel, "rejected");
+        },
       ),
     );
+  }
+
+  // Handle Requests Logic
+
+  sendRequest(UserModel user) async {
+    var response =
+        await RequestApi.sendRequest(user: user, requestType: "profile");
+
+    if (response.isNotEmpty) {
+      if (response['Request'] == "Sent") {
+        UiUtilites.successSnackbar("Request to access profile has been sent",
+            "Access Profile Request");
+      } else if (response['Request'] == "Access") {
+        Get.toNamed(AppRoutes.publicProfile, arguments: user.currentProfile);
+      }
+    }
+  }
+
+  respondRequest(ProfileRequestModel requestModel, String status) async {
+    var response = await RequestApi.respondRequest(
+        profileRequestModel: requestModel, status: status);
+
+    if (response.isNotEmpty) {}
   }
 }
 

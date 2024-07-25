@@ -1,4 +1,4 @@
-import 'package:find_me/api/auth_api.dart/otp_api.dart';
+import 'package:find_me/api/auth_api/otp_api.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/ui_utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';

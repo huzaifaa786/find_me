@@ -1,4 +1,4 @@
-import 'package:find_me/api/auth_api.dart/forgetpassword_api.dart';
+import 'package:find_me/api/auth_api/forgetpassword_api.dart';
 import 'package:find_me/helpers/validator.dart';
 
 import 'package:find_me/routes/app_routes.dart';

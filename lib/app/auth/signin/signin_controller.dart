@@ -1,5 +1,5 @@
-import 'package:find_me/api/auth_api.dart/login_api.dart';
-import 'package:find_me/api/auth_api.dart/register_api.dart';
+import 'package:find_me/api/auth_api/login_api.dart';
+import 'package:find_me/api/auth_api/register_api.dart';
 import 'package:find_me/models/user_model.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';

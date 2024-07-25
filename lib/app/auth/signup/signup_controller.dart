@@ -1,4 +1,4 @@
-import 'package:find_me/api/auth_api.dart/register_api.dart';
+import 'package:find_me/api/auth_api/register_api.dart';
 import 'package:find_me/models/user_model.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:flutter/material.dart';
