@@ -6,37 +6,37 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget buildTextFieldEditAccountInformation(
-    TextEditingController controller,
-    String hint,
-    BuildContext context,
-    EditAccountInformationController editAccountInformController) {
-  return Expanded(
-    child: GestureDetector(
-      onTap: () => editAccountInformController.selectDate(context),
-      child: AbsorbPointer(
-        child: TextFormField(
-          controller: controller,
-          keyboardType: TextInputType.number,
-          textAlign: TextAlign.center,
-          style: TextStyle(
+  TextEditingController controller,
+  String hint,
+  BuildContext context,
+  EditAccountInformationController editAccountInformController,
+) {
+  return GestureDetector(
+    onTap: () => editAccountInformController.selectDate(context),
+    child: AbsorbPointer(
+      child: TextFormField(
+        controller: controller,
+        keyboardType: TextInputType.number,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: 12.sp,
+          fontWeight: FontWeight.w500,
+        ),
+        decoration: InputDecoration(
+          hintText: hint,
+          hintStyle: TextStyle(
+            color: AppColors.hintGrey,
             fontSize: 12.sp,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w400,
           ),
-          decoration: InputDecoration(
-            hintText: hint,
-            hintStyle: TextStyle(
-              color: AppColors.hintGrey,
-              fontSize: 12.sp,
-              fontWeight: FontWeight.w400,
-            ),
-            contentPadding:
-                EdgeInsets.symmetric(vertical: 12.h, horizontal: 20.w),
-            border: inputDecoration,
-            enabledBorder: inputDecoration,
-            focusedBorder: inputDecoration,
-          ),
+          contentPadding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 20.w),
+          border: inputDecoration,
+          enabledBorder: inputDecoration,
+          focusedBorder: inputDecoration,
         ),
       ),
     ),
   );
 }
+
+
