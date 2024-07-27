@@ -12,6 +12,7 @@ import 'package:find_me/app/report/report_view.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:badges/badges.dart' as badges;
@@ -32,9 +33,8 @@ class _MainViewState extends State<MainView> with RouteAware {
     HomeView(),
     CoinsStoreView(),
     ProfileView(),
-    EmojiStoreView(),  
+    EmojiStoreView(),
     EditProfileView(),
-    
   ];
 
   Widget _buildNavigationBarItem(
@@ -113,7 +113,6 @@ class _MainViewState extends State<MainView> with RouteAware {
       ),
     );
   }
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -138,7 +137,7 @@ class _MainViewState extends State<MainView> with RouteAware {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                       _buildNavigationBarItem(
+                      _buildNavigationBarItem(
                           0, 'assets/icons/home.svg', 'Home'.tr, 0),
                       _buildNavigationBarItem(
                           1, 'assets/icons/coin.svg', 'Coins Store'.tr, 0),
@@ -148,7 +147,6 @@ class _MainViewState extends State<MainView> with RouteAware {
                           3, 'assets/icons/cart.svg', 'Emoji Store'.tr, 1),
                       _buildNavigationBarItem(
                           4, 'assets/icons/profile.svg', 'Profile'.tr, 0),
-                          
 
                       //  coins
                     ],
