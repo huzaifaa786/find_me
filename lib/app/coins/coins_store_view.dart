@@ -41,7 +41,7 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
                     Column(
                       children: [
                         Text(
-                          'My coins',
+                          'My coins'.tr,
                           style: TextStyle(
                               fontSize: 16.sp, fontWeight: FontWeight.w600),
                         ),
@@ -73,7 +73,7 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
                   color: Colors.grey.withOpacity(0.3),
                 ),
                 Text(
-                  'Purchased coins',
+                  'Purchased coins'.tr,
                   style:
                       TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
                 ),

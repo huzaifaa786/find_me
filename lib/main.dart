@@ -15,11 +15,11 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await GetStorage.init();
-   Stripe.publishableKey =
+  Stripe.publishableKey =
       "pk_test_51NjyPoKj8kRF1XiuJAv5r6UPr91km5JqWugq5FWvrfUDtOcew75SLLnk09zXOWM3RjmxebIg5vB845xYtUFI16ck00mbTgntzu";
   //Load our .env file that contains  our Stripe Secret key
   await dotenv.load(fileName: "assets/.env");
-  HttpOverrides.global = MyHttpOverrides(); 
+  HttpOverrides.global = MyHttpOverrides();
   runApp(const App());
 }
 
