@@ -33,7 +33,6 @@ class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ProfileController>(
-        autoRemove: false,
         builder: (controller) => Scaffold(
               appBar: AppBar(
                 scrolledUnderElevation: 0,

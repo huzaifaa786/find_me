@@ -25,6 +25,12 @@ class ChangePhoneNumberController extends GetxController {
     if (checkphoneController != null) phoneValidation(checkphoneController);
   }
 
+  @override
+  void onClose() {
+    pcontroller.clear();
+    super.onClose();
+  }
+
   void updatePhone() async {
     if (phoneController != null) {
       var response = await ChangePhoneApi.changePhone(phoneController!);
