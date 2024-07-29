@@ -14,8 +14,8 @@ class EmojisCard extends StatelessWidget {
       children: [
         Image.asset(
           picture,
-          height: 55.h,
-          width: 55.w,
+          height: 46.h,
+          width: 46.w,
         ),
         AppText(
           title: value.toString(),

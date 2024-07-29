@@ -13,7 +13,7 @@ class EmailOtpController extends GetxController {
   String otpCode = '';
   String verificationId = '';
   String? email;
-  String?  type;
+  String? type;
   String? phone;
   GetStorage box = GetStorage();
   bool areFieldsFilled = false;
@@ -28,7 +28,11 @@ class EmailOtpController extends GetxController {
 
   void verifyOtp() async {
     var response = await OtpApi.verifyEmailOtp(email: email, otp: otpCode);
-    if (response.isNotEmpty) {}
+    if (response.isNotEmpty) {
+      Get.offAndToNamed(AppRoutes.useraccount);
+      UiUtilites.registerSuccessAlert(
+          Get.context, "Your email has been changed successfully!");
+    }
   }
 
   void setOtpCode(String code) {
@@ -36,8 +40,6 @@ class EmailOtpController extends GetxController {
     areFieldsFilled = otpCode.length == 6;
     update();
   }
-
-  
 
   void resendOtp() async {
     if (email != null) {

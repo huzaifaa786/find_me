@@ -65,6 +65,7 @@ class EmojiStoreCard extends StatelessWidget {
                     subtitle.toString(),
                     style: TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
                     textAlign: TextAlign.center,
+                    
                   ),
                 // Gap(cardBottomGap),
               ],

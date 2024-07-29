@@ -43,9 +43,7 @@ class SupportView extends StatelessWidget {
                        
                             await controller.sendEmail();
                        
-                          
-                        
-                        },
+                                                  },
                       ),
                     ],
                   ),

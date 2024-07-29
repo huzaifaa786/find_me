@@ -81,7 +81,7 @@ class EditAccountInformationController extends GetxController {
       gender: gender,
     );
     if (response.isNotEmpty) {
-      UiUtilites.registerSuccessAlert(Get.context, "Change  Information Successfully");
+      UiUtilites.registerSuccessAlert(Get.context, "Changes saved successfully");
     } else {
       UiUtilites.errorSnackbar(
           "Change Information Error", "Information is Not Change ");

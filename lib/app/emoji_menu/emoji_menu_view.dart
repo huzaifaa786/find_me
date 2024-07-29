@@ -63,31 +63,30 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                               child: SizedBox(
                                 child: Column(
                                   children: [
-                                    SizedBox(
-                                      height: Get.height,
-                                      child: GridView.builder(
-                                          itemCount: controller.Emojis.length,
-                                          gridDelegate:
-                                              SliverGridDelegateWithFixedCrossAxisCount(
-                                            crossAxisCount: 2,
-                                            // mainAxisExtent: 0.02,
-                                            // crossAxisSpacing: 0.02,
-                                          ),
-                                          itemBuilder: (BuildContext context,
-                                              int index) {
-                                            return GestureDetector(
-                                              onTap: () {
-                                                UiUtilites.emojisappear(
-                                                  context,
-                                                  "assets/images/cold_angry_emoji.png",
-                                                );
-                                              },
-                                              child: Image.asset(
-                                                controller.Emojis[index],
-                                              ),
-                                            );
-                                          }),
-                                    ),
+                                    GridView.builder(
+                                      physics: BouncingScrollPhysics(),
+                                      shrinkWrap: true,
+                                        itemCount: controller.Emojis.length,
+                                        gridDelegate:
+                                            SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 2,
+                                          // mainAxisExtent: 0.02,
+                                          // crossAxisSpacing: 0.02,
+                                        ),
+                                        itemBuilder: (BuildContext context,
+                                            int index) {
+                                          return GestureDetector(
+                                            onTap: () {
+                                              UiUtilites.emojisappear(
+                                                context,
+                                                "assets/images/cold_angry_emoji.png",
+                                              );
+                                            },
+                                            child: Image.asset(
+                                              controller.Emojis[index],
+                                            ),
+                                          );
+                                        }),
                                   ],
                                 ),
                               )),
@@ -108,47 +107,44 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                                 offset: Offset(0, 3),
                               ),
                             ]),
-                        child: SingleChildScrollView(
-                            physics: PageScrollPhysics(),
-                            child: SizedBox(
-                              height: Get.height,
-                              child: GridView.builder(
-                                  itemCount: controller.emojiWithValue.length,
-                                  gridDelegate:
-                                      SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2,
+                        child: GridView.builder(
+                            shrinkWrap: true,
+                                 physics: BouncingScrollPhysics(),
+                            itemCount: controller.emojiWithValue.length,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                            ),
+                            itemBuilder:
+                                (BuildContext context, int index) {
+                              return Column(
+                                children: [
+                                  Image.asset(
+                                    controller.emojiWithValue[index],
+                                    height: 42.h,
+                                    width: 42.w,
                                   ),
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return Column(
-                                      children: [
-                                        Image.asset(
-                                          controller.emojiWithValue[index],
-                                          height: 42.h,
-                                          width: 42.w,
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.center,
+                                    children: [
+                                      SvgPicture.asset(
+                                        "assets/icons/coins.svg",
+                                        height: 18.23.h,
+                                        width: 19.09.w,
+                                      ),
+                                      Text(
+                                        "10",
+                                        style: TextStyle(
+                                          fontSize: 10.sp,
+                                          fontWeight: FontWeight.w600,
                                         ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            SvgPicture.asset(
-                                              "assets/icons/coins.svg",
-                                              height: 18.23.h,
-                                              width: 19.09.w,
-                                            ),
-                                            Text(
-                                              "10",
-                                              style: TextStyle(
-                                                fontSize: 10.sp,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    );
-                                  }),
-                            )),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              );
+                            }),
                       )
                     ],
                   ),
