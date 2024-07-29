@@ -32,9 +32,11 @@ class PublicProfileController extends GetxController {
 
   getUser() async {
     var response = await UserApi.userDetail(profile!.userId);
+    
     if (response.isNotEmpty) {
       userModel = UserModel.fromJson(response['user']);
       businessCardModel = profile!.businessCard;
+    
 
       if (profile!.urls != null) {
         profileUrlModel = profile!.urls;
@@ -90,4 +92,6 @@ class PublicProfileController extends GetxController {
     hasSocialAccess = true;
     update();
   }
+
+  
 }
