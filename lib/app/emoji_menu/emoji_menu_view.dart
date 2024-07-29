@@ -66,18 +66,25 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                                 SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
                             ),
-                            itemBuilder:
-                                (BuildContext context, int index) {
-                              return Column(
-                                children: [
-                                  Flexible(
-                                    child: CachedNetworkImage(
-                                      imageUrl: controller
-                                          .freeEmojis[index].image!,
+                            itemBuilder: (BuildContext context, int index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  UiUtilites.emojisappear(context,
+                                      controller.freeEmojis[index].image, () {
+                                    controller.addEmojis(
+                                        controller.freeEmojis[index].id);
+                                  });
+                                },
+                                child: Column(
+                                  children: [
+                                    Flexible(
+                                      child: CachedNetworkImage(
+                                        imageUrl:
+                                            controller.freeEmojis[index].image!,
+                                      ),
                                     ),
-                                  ),
-                                 
-                                ],
+                                  ],
+                                ),
                               );
                             }),
                       ),
@@ -104,35 +111,44 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                                 SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 1,
                             ),
-                            itemBuilder:
-                                (BuildContext context, int index) {
-                              return Column(
-                                children: [
-                                  Flexible(
-                                    child: CachedNetworkImage(
-                                      imageUrl: controller
-                                          .paidEmojis[index].image!,
+                            itemBuilder: (BuildContext context, int index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  UiUtilites.emojisappear(context,
+                                      controller.paidEmojis[index].image, () {
+                                    controller.addEmojis(
+                                        controller.paidEmojis[index].id);
+                                  });
+                                },
+                                child: Column(
+                                  children: [
+                                    Flexible(
+                                      child: CachedNetworkImage(
+                                        imageUrl:
+                                            controller.paidEmojis[index].image!,
+                                      ),
                                     ),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.center,
-                                    children: [
-                                      SvgPicture.asset(
-                                        "assets/icons/coins.svg",
-                                        height: 18.23.h,
-                                        width: 19.09.w,
-                                      ),
-                                      Text(
-                                        controller.paidEmojis[index].coins.toString(),
-                                        style: TextStyle(
-                                          fontSize: 10.sp,
-                                          fontWeight: FontWeight.w600,
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        SvgPicture.asset(
+                                          "assets/icons/coins.svg",
+                                          height: 18.23.h,
+                                          width: 19.09.w,
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                        Text(
+                                          controller.paidEmojis[index].coins
+                                              .toString(),
+                                          style: TextStyle(
+                                            fontSize: 10.sp,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               );
                             }),
                       )

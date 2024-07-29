@@ -1,12 +1,12 @@
 class EmojiModel {
-  int id;
-  String? image;
+  int? id;
+  String image;
   String? type;
   int? coins;
 
   EmojiModel({
-    required this.id,
-    this.image,
+    this.id,
+    required this.image,
     this.type,
     this.coins,
   });

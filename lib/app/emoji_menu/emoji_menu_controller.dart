@@ -1,143 +1,16 @@
 import 'package:find_me/api/emoji_api/emoji_api.dart';
 import 'package:find_me/models/emoji_model.dart';
+import 'package:find_me/utils/ui_utils.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class EmojiMenuController extends GetxController {
   static EmojiMenuController get instance => Get.find();
-  List<String> emojiWithValue = [
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-     "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-     "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-     "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-     "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-        "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-    "assets/images/smiling_face_with _halo.png",
-
-  ];
-  List<String> Emojis = [
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-    "assets/images/smiling_emoji.png",
-  ];
-
   List<EmojiModel> allEmojis = [];
   List<EmojiModel> paidEmojis = [];
   List<EmojiModel> freeEmojis = [];
+  String? id;
+  String? apitoken;
 
   @override
   void onInit() {
@@ -160,6 +33,19 @@ class EmojiMenuController extends GetxController {
           allEmojis.where((element) => element.type == "free").toList();
       update();
     }
+  }
 
+  addEmojis(id) async {
+    GetStorage box = GetStorage();
+    box.read("api_token");
+
+    var response = await EmojiApi.addEmojis(
+      id: id,
+    );
+    print( box.read("api_token"));
+    if (response.isNotEmpty) {
+      UiUtilites.successSnackbar("Emoji added successfully", "");
+      Get.back();
+    }
   }
 }

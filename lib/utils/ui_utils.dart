@@ -2,6 +2,7 @@
 
 import 'dart:ui';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/components/buttons/app_button.dart';
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:find_me/components/buttons/prefix_icon_button.dart';
@@ -587,7 +588,7 @@ class UiUtilites {
     );
   }
 
-  static emojisappear(context, image) {
+  static emojisappear(context, image,onTap,) {
     return showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -605,9 +606,11 @@ class UiUtilites {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Image.asset(
-                      image,
-                      scale: 0.6,
+                 CachedNetworkImage(
+                      imageUrl: image,
+                      height: 100.h,
+                      width: 100.w,
+
                     ),
                     AppText(
                       title: "Done!",
@@ -623,20 +626,23 @@ class UiUtilites {
                       color: AppColors.hintGrey,
                     ),
                     Gap(10),
-                    Container(
-                      height: 47.h,
-                      width: 170.w,
-                      decoration: BoxDecoration(
-                        color: AppColors.primary_color,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Center(
-                        child: AppText(
-                          title: "Confirm",
-                          textAlign: TextAlign.center,
-                          color: AppColors.white,
-                          fontWeight: FontWeight.w500,
-                          size: 12.sp,
+                    GestureDetector(
+                      onTap: onTap,
+                      child: Container(
+                        height: 60.h,
+                        width: 170.w,
+                        decoration: BoxDecoration(
+                          color: AppColors.primary_color,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Center(
+                          child: AppText(
+                            title: "Confirm",
+                            textAlign: TextAlign.center,
+                            color: AppColors.white,
+                            fontWeight: FontWeight.w500,
+                            size: 12.sp,
+                          ),
                         ),
                       ),
                     ),
