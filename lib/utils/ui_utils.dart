@@ -202,7 +202,6 @@ class UiUtilites {
     String? tiktok,
     String? notification,
     String? smartphoneNumber,
-    
   }) {
     return showDialog(
       context: context!,
@@ -658,22 +657,11 @@ class UiUtilites {
 
   static noCoinsEnoughAlert(
     context,
-    image,
-    
   ) {
     return showDialog(
       context: context,
-      
       barrierDismissible: false,
-      
       builder: (BuildContext context) {
-        // Future.delayed(Duration(seconds: 2), () {
-        //   Get.back();
-        // });
-
-        //return
-        // BackdropFilter(
-        // filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
         return AlertDialog(
           backgroundColor: Colors.white,
           surfaceTintColor: Colors.white,
@@ -715,8 +703,7 @@ class UiUtilites {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      image,
-                      
+                      "assets/images/emojis.png",
                       height: 45.h,
                       width: 45.w,
                       fit: BoxFit.contain,
@@ -750,7 +737,8 @@ class UiUtilites {
                   width: 50.0.w,
                   title: 'Purchase',
                   onTap: () {
-                    Get.offAllNamed(AppRoutes.mainview);
+                    Get.back();
+                    Get.toNamed(AppRoutes.coinsstore);
                   },
                 )
               ],
