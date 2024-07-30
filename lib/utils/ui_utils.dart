@@ -679,20 +679,20 @@ class UiUtilites {
                 //color: Colors.transparent, style: BorderStyle.solid
                 color: AppColors.primary_color,
               ),
-              borderRadius: BorderRadius.all(Radius.circular(20))),
+              borderRadius: BorderRadius.all(Radius.circular(19))),
           // contentPadding: EdgeInsets.only(top: 10.0),
           content: Container(
             // padding: EdgeInsets.only(left: 20, right: 20),
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(20.0)),
+              borderRadius: BorderRadius.all(Radius.circular(19.0)),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Gap(2.h),
+                // Gap(2.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -713,8 +713,10 @@ class UiUtilites {
                   children: [
                     Image.asset(
                       image,
-                      // height: 70.h,
-                      // width: 70.w,
+                      
+                      height: 45.h,
+                      width: 45.w,
+                      fit: BoxFit.contain,
                     ),
                   ],
                 ),
