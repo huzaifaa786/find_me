@@ -155,14 +155,7 @@ class _SignInViewState extends State<SignInView> {
                       Get.toNamed(AppRoutes.signup);
                     },
                   ),
-                  Switch(
-                    
-                      value: isSwitched,
-                      onChanged: (bool value) {
-                        setState(() {
-                          isSwitched = value;
-                        });
-                      })
+                
                 ],
               ),
             ),
