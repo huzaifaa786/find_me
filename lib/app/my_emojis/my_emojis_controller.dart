@@ -7,7 +7,6 @@ class MyEmojisController extends GetxController {
   static MyEmojisController instance = Get.find();
   List<EmojiModel> allEmojis = [];
 
-
   @override
   void onInit() {
     super.onInit();
@@ -21,9 +20,9 @@ class MyEmojisController extends GetxController {
       box.read("api_token");
       print(box.read("api_token"));
       allEmojis = List.from(response['myEmojis'])
-          .map((myEmojis) => EmojiModel.fromJson(myEmojis as Map<String, dynamic>))
+          .map((myEmojis) =>
+              EmojiModel.fromJson(myEmojis as Map<String, dynamic>))
           .toList();
-         
 
       update();
     }
