@@ -441,6 +441,7 @@ class PublicProfileView extends StatelessWidget {
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 4,
+                              
                                 // crossAxisSpacing: 2.0,
                               ),
                               itemBuilder: (BuildContext context, int index) {
@@ -451,8 +452,11 @@ class PublicProfileView extends StatelessWidget {
                                         ? Column(
                                             children: [
                                               CachedNetworkImage(
-                                                  imageUrl: controller.profile!
-                                                      .emojis![index].image),
+                                                imageUrl: controller.profile!
+                                                    .emojis![index].image,
+                                                height: 50.h,
+                                                width: 50.w,
+                                              ),
                                               Text(
                                                 controller.profile!
                                                     .emojis![index].giftCount
@@ -466,26 +470,24 @@ class PublicProfileView extends StatelessWidget {
                                           )
                                         : Row(
                                             children: [
-                                              Container(
-                                                child: Column(
-                                                  children: [
-                                                    SvgPicture.asset(
-                                                      "assets/icons/coins.svg",
-                                                      height: 18.23.h,
-                                                      width: 19.09.w,
+                                              Column(
+                                                children: [
+                                                  SvgPicture.asset(
+                                                    "assets/icons/coins.svg",
+                                                    height: 23.23.h,
+                                                    width: 23.09.w,
+                                                  ),
+                                                  Text(
+                                                    controller.profile!
+                                                        .emojis![index].coins
+                                                        .toString(),
+                                                    style: TextStyle(
+                                                      fontSize: 10.sp,
+                                                      fontWeight:
+                                                          FontWeight.w600,
                                                     ),
-                                                    Text(
-                                                      controller.profile!
-                                                          .emojis![index].coins
-                                                          .toString(),
-                                                      style: TextStyle(
-                                                        fontSize: 10.sp,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
+                                                  ),
+                                                ],
                                               ),
                                               Column(
                                                 children: [
@@ -494,21 +496,31 @@ class PublicProfileView extends StatelessWidget {
                                                         .profile!
                                                         .emojis![index]
                                                         .image,
-                                                    width: 52.w,
-                                                    height: 58.h,
+                                                    width: 50.w,
+                                                    height: 50.h,
                                                   ),
-                                                  Text(
-                                                    controller
-                                                        .profile!
-                                                        .emojis![index]
-                                                        .giftCount
-                                                        .toString(),
-                                                    style: TextStyle(
-                                                      fontSize: 10.sp,
-                                                      fontWeight:
-                                                          FontWeight.w600,
+                                                  if (controller
+                                                              .profile!
+                                                              .emojis![index]
+                                                              .giftCount ==
+                                                          '0' &&
+                                                      controller
+                                                          .profile!
+                                                          .emojis![index]
+                                                          .giftCount!
+                                                          .isEmpty)
+                                                    Text(
+                                                      controller
+                                                          .profile!
+                                                          .emojis![index]
+                                                          .giftCount
+                                                          .toString(),
+                                                      style: TextStyle(
+                                                        fontSize: 10.sp,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
                                                     ),
-                                                  ),
                                                 ],
                                               ),
                                             ],
