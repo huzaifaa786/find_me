@@ -41,10 +41,10 @@ class _EmojiStoreViewState extends State<EmojiStoreView> {
                       children: [
                         EmojiStoreCard(
                           icon: "assets/images/shopping_bags.png",
-                          iconGap: 20,
+                          iconGap: 18,
                           iconHeight: 59.h,
                           iconWidth: 62.w,
-                          padding: EdgeInsets.only(top: 18, bottom: 28),
+                          padding: EdgeInsets.only(top: 18, bottom: 20),
                           title: "Emojis menu ",
                           subtitle: "Free & paid emojis.",
                           show: true,
@@ -61,7 +61,7 @@ class _EmojiStoreViewState extends State<EmojiStoreView> {
                           iconWidth: 93.52.w,
                           title: "My emojis  ",
                           subtitle: "Favorites & purchased.",
-                          show: true,
+                          show: false,
                           onTap: () {
                             Get.toNamed(AppRoutes.my_emojis);
                           },

@@ -21,6 +21,7 @@ void main() async {
   await dotenv.load(fileName: "assets/.env");
   HttpOverrides.global = MyHttpOverrides();
   runApp(const App());
+  
 }
 
 class MyHttpOverrides extends HttpOverrides {
@@ -29,5 +30,6 @@ class MyHttpOverrides extends HttpOverrides {
     return super.createHttpClient(context)
       ..badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
+          
   }
 }

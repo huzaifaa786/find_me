@@ -22,9 +22,9 @@ class _GiftedEmojiViewState extends State<GiftedEmojiView> {
         builder: (controller) => Scaffold(
               appBar: AppBar(
                   automaticallyImplyLeading: false,
-                forceMaterialTransparency: true,
+                  forceMaterialTransparency: true,
                   title: topBar(name: "Gifted Emoji", showBackIcon: true)),
-                  body: SafeArea(
+              body: SafeArea(
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 34.w),

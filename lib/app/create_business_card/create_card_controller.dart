@@ -46,6 +46,7 @@ class CreateCardController extends GetxController {
 
     if (profileBusinessCardModel != null) {
       updateInputs();
+      
     }
     super.onInit();
   }
@@ -114,6 +115,7 @@ class CreateCardController extends GetxController {
     if (profileImage != null) {
       List<int> imageBytes = await profileImage!.readAsBytes();
       base64Image = base64Encode(imageBytes);
+    
     }
     try {
       var response = await ProfileApi.submitBusinessCard(

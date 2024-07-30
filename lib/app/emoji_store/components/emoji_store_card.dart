@@ -37,6 +37,7 @@ class EmojiStoreCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+         
           width: containerWidth,
           height: containerHeight,
           decoration: BoxDecoration(
@@ -59,7 +60,7 @@ class EmojiStoreCard extends StatelessWidget {
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
                   textAlign: TextAlign.center,
                 ),
-                Gap(7),
+                Gap(4.h),
                 if (show == true)
                   Text(
                     subtitle.toString(),
