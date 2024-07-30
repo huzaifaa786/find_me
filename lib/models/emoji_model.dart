@@ -3,12 +3,14 @@ class EmojiModel {
   String image;
   String? type;
   int? coins;
+  int? giftCount;
 
   EmojiModel({
     this.id,
     required this.image,
     this.type,
     this.coins,
+    this.giftCount,
   });
 
   factory EmojiModel.fromJson(Map<String, dynamic> json) {
@@ -17,6 +19,7 @@ class EmojiModel {
       image: json['image'],
       type: json['type'],
       coins: json['coins'],
+      giftCount: json['count'],
     );
   }
 }
