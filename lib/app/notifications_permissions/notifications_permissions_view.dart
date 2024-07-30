@@ -5,6 +5,7 @@ import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/buttons/text_switch_button.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -20,6 +21,8 @@ class NotificationsPermissionsView extends StatefulWidget {
 
 class _NotificationsPermissionsViewState
     extends State<NotificationsPermissionsView> {
+      bool isSwitched = false;
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<NotificationsPermissionsController>(
@@ -112,6 +115,7 @@ class _NotificationsPermissionsViewState
                             textAlign: TextAlign.left,
                           ),
                         ),
+                       
                       ],
                     ),
                   ),

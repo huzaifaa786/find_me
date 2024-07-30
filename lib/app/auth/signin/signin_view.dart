@@ -15,6 +15,7 @@ import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/images/images.dart';
 import 'package:find_me/utils/ui_utils.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -30,6 +31,8 @@ class SignInView extends StatefulWidget {
 }
 
 class _SignInViewState extends State<SignInView> {
+  bool isSwitched = false;
+
   GetStorage box = GetStorage();
   @override
   Widget build(BuildContext context) {
@@ -47,8 +50,8 @@ class _SignInViewState extends State<SignInView> {
                   AppTextFields(
                     hintText: 'Email',
                     controller: controller.emailController,
-                   
-                    fieldValidator: (value) => Validators.emptyStringValidator("This",value),
+                    fieldValidator: (value) =>
+                        Validators.emptyStringValidator("This", value),
                   ),
                   Gap(14.h),
                   PasswordTextFields(
@@ -125,7 +128,7 @@ class _SignInViewState extends State<SignInView> {
                   //         controller.user =
                   //             UserModel.fromJson(responce['user']);
                   //         if (controller.user!.loginType == 'GOOGLE') {
-                       
+
                   //           await box.write(
                   //               'api_token', responce['user']['token']);
                   //           UiUtilites.successSnackbar(
@@ -151,7 +154,15 @@ class _SignInViewState extends State<SignInView> {
                     onTap: () {
                       Get.toNamed(AppRoutes.signup);
                     },
-                  )
+                  ),
+                  Switch(
+                    
+                      value: isSwitched,
+                      onChanged: (bool value) {
+                        setState(() {
+                          isSwitched = value;
+                        });
+                      })
                 ],
               ),
             ),

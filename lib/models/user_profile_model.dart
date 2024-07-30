@@ -52,8 +52,8 @@ class UserProfileModel {
         businessCard: json['business_card'] != null
             ? ProfileBusinessCardModel.fromJson(json['business_card'])
             : null,
-        emojis: json['emojis'] != null
-            ? List.from(json['emojis'])
+        emojis: json['emojis_with_count'] != null
+            ? List.from(json['emojis_with_count'])
                 .map((emoji) =>
                     EmojiModel.fromJson(emoji as Map<String, dynamic>))
                 .toList()

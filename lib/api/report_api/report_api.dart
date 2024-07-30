@@ -6,7 +6,7 @@ class ReportApi {
     String? image,
     String? desc,
     String? user_id,
-    var data,
+    var data, 
   }) async {
     //* URL
     String url = '${baseUrl}/report/problem';
