@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:find_me/components/appbars/topbar.dart';
+import 'package:find_me/components/buttons/app_button.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
+import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,6 +41,18 @@ class PoliciesView extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+          Gap(50),
+          AppButton(
+            title: 'Send',
+            height: 50.0.h,
+            width: 304.0.w,
+            onTap: () {
+              // UiUtilites.emojisappear(context, 'assets/images/emojis.png', () {});
+              UiUtilites.noCoinsEnoughAlert(context, 'assets/images/emojis.png');
+
+              // emojis
+            },
           ),
         ],
       )),
