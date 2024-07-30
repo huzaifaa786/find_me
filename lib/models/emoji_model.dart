@@ -3,7 +3,7 @@ class EmojiModel {
   String image;
   String? type;
   int? coins;
-  int? giftCount;
+  String?  giftCount;
 
   EmojiModel({
     this.id,

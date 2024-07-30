@@ -202,6 +202,7 @@ class UiUtilites {
     String? tiktok,
     String? notification,
     String? smartphoneNumber,
+    
   }) {
     return showDialog(
       context: context!,
@@ -658,9 +659,11 @@ class UiUtilites {
   static noCoinsEnoughAlert(
     context,
     image,
+    
   ) {
     return showDialog(
       context: context,
+      
       barrierDismissible: false,
       
       builder: (BuildContext context) {
