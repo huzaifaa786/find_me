@@ -741,7 +741,7 @@ class UiUtilites {
                   size: 10.sp,
                   color: AppColors.hintGrey,
                 ),
-                Gap(8.h),
+                Gap(10.h),
                 AppButton(
                   height: 50.0.h,
                   width: 50.0.w,

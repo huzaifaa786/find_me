@@ -42,18 +42,16 @@ class PoliciesView extends StatelessWidget {
               ),
             ],
           ),
-          Gap(50),
-          AppButton(
-            title: 'Send',
-            height: 50.0.h,
-            width: 304.0.w,
-            onTap: () {
-              // UiUtilites.emojisappear(context, 'assets/images/emojis.png', () {});
-              UiUtilites.noCoinsEnoughAlert(context, 'assets/images/emojis.png');
-
-              // emojis
-            },
-          ),
+          // Gap(50),
+          // AppButton(
+          //   title: 'Send',
+          //   height: 50.0.h,
+          //   width: 304.0.w,
+          //   onTap: () {
+          //     UiUtilites.noCoinsEnoughAlert(
+          //         context, 'assets/images/emojis.png');
+          //   },
+          // ),
         ],
       )),
     );
