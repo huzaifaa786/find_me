@@ -431,19 +431,26 @@ class PublicProfileView extends StatelessWidget {
                                 fontSize: 14.sp, fontWeight: FontWeight.w500),
                           ),
                         ),
-                        Gap(21), 
-                       if (controller.profile!.emojis != null && controller.profile!.emojis!.isNotEmpty)
-                        GridView.builder(
-                          shrinkWrap: true,
-                          physics: BouncingScrollPhysics(),
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: controller.profile!.emojis!.length),
-                            itemBuilder: (BuildContext context, int index) {
-                              return Column(
-                                children: [CachedNetworkImage(imageUrl: controller.profile!.emojis![index].image)],
-                              );
-                            }),
+                        Gap(21),
+                        if (controller.profile!.emojis != null &&
+                            controller.profile!.emojis!.isNotEmpty)
+                          GridView.builder(
+                              shrinkWrap: true,
+                              physics: BouncingScrollPhysics(),
+                              itemCount:  controller.profile!.emojis!.length,
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount:4,
+                                         ),
+                              itemBuilder: (BuildContext context, int index) {
+                                return Column(
+                                  children: [
+                                    CachedNetworkImage(
+                                        imageUrl: controller
+                                            .profile!.emojis![index].image),
+                                  ],
+                                );
+                              }),
                         Gap(28.h),
                       ],
                     ),
