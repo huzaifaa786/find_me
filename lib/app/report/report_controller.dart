@@ -18,6 +18,7 @@ class ReportController extends GetxController {
         await picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       selectedImagePath = pickedFile.path;
+     
       UiUtilites.successSnackbar('Image selected successfully', 'Success');
     } else {
       UiUtilites.errorSnackbar('No image selected', 'Error');
@@ -52,5 +53,14 @@ class ReportController extends GetxController {
     } else {
       UiUtilites.errorSnackbar('Could not report the problem', 'Error!');
     }
+  }
+  updateimage(){
+     if (selectedImagePath.isNotEmpty)
+        Image.file(
+          File(selectedImagePath),
+          height: 200,
+          width: double.infinity,
+          fit: BoxFit.cover,
+        );
   }
 }

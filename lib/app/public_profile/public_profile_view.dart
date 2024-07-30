@@ -437,17 +437,51 @@ class PublicProfileView extends StatelessWidget {
                           GridView.builder(
                               shrinkWrap: true,
                               physics: BouncingScrollPhysics(),
-                              itemCount:  controller.profile!.emojis!.length,
+                              itemCount: controller.profile!.emojis!.length,
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount:4,
-                                         ),
+                                crossAxisCount: 4,
+                                crossAxisSpacing: 2.0,
+                              ),
                               itemBuilder: (BuildContext context, int index) {
                                 return Column(
                                   children: [
-                                    CachedNetworkImage(
-                                        imageUrl: controller
-                                            .profile!.emojis![index].image),
+                                    controller.profile!.emojis![index].type ==
+                                            "free"
+                                        ? CachedNetworkImage(
+                                            imageUrl: controller
+                                                .profile!.emojis![index].image)
+                                        : Row(
+                                            children: [
+                                              Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  SvgPicture.asset(
+                                                    "assets/icons/coins.svg",
+                                                    height: 18.23.h,
+                                                    width: 19.09.w,
+                                                  ),
+                                                  Text(
+                                                    controller.profile!
+                                                        .emojis![index].coins
+                                                        .toString(),
+                                                    style: TextStyle(
+                                                      fontSize: 10.sp,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              CachedNetworkImage(
+                                                imageUrl: controller.profile!
+                                                    .emojis![index].image,
+                                                width: 52.w,
+                                                height: 58.h,
+                                              ),
+                                            ],
+                                          ),
                                   ],
                                 );
                               }),

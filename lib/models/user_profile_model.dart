@@ -8,6 +8,7 @@ class UserProfileModel {
   String? name;
   String? bio;
   String? imageUrl;
+  String? types;
   String? username;
   ProfileUrlModel? urls;
   bool isVerified;
@@ -24,6 +25,7 @@ class UserProfileModel {
     this.imageUrl,
     this.username,
     this.urls,
+    this.types,
     this.businessCard,
     this.emojis,
     required this.isVerified,
@@ -34,10 +36,12 @@ class UserProfileModel {
 
   factory UserProfileModel.fromJson(Map<String, dynamic> json) {
     return UserProfileModel(
+     
         id: json['id'],
         name: json['name'] ?? '',
         imageUrl: json['image'],
         username: json['username'] ?? '',
+        
         bio: json['bio'] ?? '',
         urls: json['urls'] != null
             ? ProfileUrlModel.fromJson(json['urls'])
@@ -54,6 +58,7 @@ class UserProfileModel {
                     EmojiModel.fromJson(emoji as Map<String, dynamic>))
                 .toList()
             : [],
+
         userId: json['user_id']);
   }
 }

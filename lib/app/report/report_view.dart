@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:find_me/app/report/report_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/buttons/app_button.dart';
@@ -61,6 +63,9 @@ class ReportView extends StatelessWidget {
                           ],
                         ),
                       ),
+                      controller.selectedImagePath.isNotEmpty ?
+                      
+                      
                       // Gap(10.h),
                       // Row(
                       //   mainAxisAlignment: MainAxisAlignment.center,
