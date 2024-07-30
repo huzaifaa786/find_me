@@ -19,6 +19,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_ble_peripheral/flutter_ble_peripheral.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
@@ -31,6 +32,8 @@ import 'package:pusher_channels_flutter/pusher_channels_flutter.dart';
 class HomeController extends GetxController {
   static HomeController instance = Get.find();
   GetStorage box = GetStorage();
+  final GeolocatorPlatform _geolocator = GeolocatorPlatform.instance;
+
   Timer? _advertisingTimer; // Define a Timer variable
 
   AdvertiseData advertiseData = AdvertiseData(
@@ -216,6 +219,9 @@ class HomeController extends GetxController {
         await permission.request();
       }
     }
+    if (!(await _geolocator.isLocationServiceEnabled())) {
+      await _geolocator.openLocationSettings();
+    }
   }
 
   Future<void> hasPermissions() async {
@@ -240,6 +246,9 @@ class HomeController extends GetxController {
     isSearching = true;
     update();
     await Permission.bluetoothScan.request();
+    if (!(await _geolocator.isLocationServiceEnabled())) {
+      await _geolocator.openLocationSettings();
+    }
     // FlutterBluePlus.setLogLevel(LogLevel.verbose, color: true);
     serviceDataKeys = [];
     scannedUsers = [];

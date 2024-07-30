@@ -1,3 +1,4 @@
+import 'package:find_me/models/emoji_model.dart';
 import 'package:find_me/models/profile_business_card_model.dart';
 import 'package:find_me/models/profile_url_model.dart';
 import 'package:find_me/models/user_model.dart';
@@ -13,6 +14,7 @@ class UserProfileModel {
   bool isProfilePublic;
   bool isSocialPublic;
   ProfileBusinessCardModel? businessCard;
+  List<EmojiModel>? emojis;
   int userId;
 
   UserProfileModel({
@@ -23,6 +25,7 @@ class UserProfileModel {
     this.username,
     this.urls,
     this.businessCard,
+    this.emojis,
     required this.isVerified,
     required this.isProfilePublic,
     required this.isSocialPublic,
@@ -45,6 +48,12 @@ class UserProfileModel {
         businessCard: json['business_card'] != null
             ? ProfileBusinessCardModel.fromJson(json['business_card'])
             : null,
+        emojis: json['emojis'] != null
+            ? List.from(json['emojis'])
+                .map((emoji) =>
+                    EmojiModel.fromJson(emoji as Map<String, dynamic>))
+                .toList()
+            : [],
         userId: json['user_id']);
   }
 }

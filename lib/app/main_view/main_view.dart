@@ -32,7 +32,6 @@ class _MainViewState extends State<MainView> with RouteAware {
   final List<Widget> _fragments = [
     HomeView(),
     CoinsStoreView(),
-    ProfileView(),
     EmojiStoreView(),
     EditProfileView(),
   ];
@@ -81,12 +80,13 @@ class _MainViewState extends State<MainView> with RouteAware {
                       )
                     : index == 2
                         ? SvgPicture.asset(
-                            _navigationMenuIndex == index
-                                ? 'assets/icons/addicon.svg'
-                                : iconPath,
+                           iconPath,
                             fit: BoxFit.scaleDown,
                             height: 27.h,
                             width: 27.w,
+                            color: _navigationMenuIndex == index
+                                ? AppColors.primary_color
+                                : AppColors.black,
                           )
                         : SvgPicture.asset(
                             iconPath,
@@ -141,12 +141,12 @@ class _MainViewState extends State<MainView> with RouteAware {
                           0, 'assets/icons/home.svg', 'Home'.tr, 0),
                       _buildNavigationBarItem(
                           1, 'assets/icons/coin.svg', 'Coins Store'.tr, 0),
+                      // _buildNavigationBarItem(
+                      //     2, 'assets/icons/add.svg', 'Add'.tr, 0),
                       _buildNavigationBarItem(
-                          2, 'assets/icons/add.svg', 'Add'.tr, 0),
+                          2, 'assets/icons/cart.svg', 'Emoji Store'.tr, 1),
                       _buildNavigationBarItem(
-                          3, 'assets/icons/cart.svg', 'Emoji Store'.tr, 1),
-                      _buildNavigationBarItem(
-                          4, 'assets/icons/profile.svg', 'Profile'.tr, 0),
+                          3, 'assets/icons/profile.svg', 'Profile'.tr, 0),
 
                       //  coins
                     ],

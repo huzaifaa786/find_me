@@ -42,65 +42,25 @@ class _GiftedEmojiViewState extends State<GiftedEmojiView> {
                             )
                           ],
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            EmojisCard(
-                              picture: "assets/images/grinning_face.png",
-                              value: 10,
+                        GridView.builder(
+                            physics: BouncingScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: controller.Emojis.length,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 5,
+                              crossAxisSpacing: 0.1,
                             ),
-                            EmojisCard(
-                              picture: "assets/images/sunglass.png",
-                              value: 10,
-                            ),
-                            EmojisCard(
-                              picture: "assets/images/pink_flowers.png",
-                              value: 10,
-                            ),
-                            EmojisCard(
-                              picture: "assets/images/yellow_ flowers.png",
-                              value: 10,
-                            ),
-                            EmojisCard(
-                              picture: "assets/images/diamond.png",
-                              value: 10,
-                            ),
-                          ],
-                        ),
-                        Gap(16),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Gap(9.w),
-                            EmojisCard(
-                              picture:
-                                  "assets/images/stuck_out_tongue _winking_eye.png",
-                              value: 10,
-                            ),
-                            EmojisCard(
-                              picture: "assets/images/angry.png",
-                              value: 10,
-                            ),
-                          ],
-                        ),
-                        Gap(14.h),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Gap(9.w),
-                            EmojisCard(
-                              picture: "assets/images/loving.png",
-                              value: 10,
-                            ),
-                            EmojisCard(
-                              picture:
-                                  "assets/images/stuck_out_tongue _winking_eye.png",
-                              value: 10,
-                            ),
-                          ],
-                        ),
+                            itemBuilder: (BuildContext context, int index) {
+                              return Column(
+                                children: [
+                                  EmojisCard(
+                                    picture: controller.Emojis[index],
+                                    value: 10,
+                                  ),
+                                ],
+                              );
+                            }),
                       ],
                     ),
                   ),
