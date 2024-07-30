@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sort_child_properties_last
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sort_child_properties_last, avoid_unnecessary_containers
 
 import 'dart:developer';
 
@@ -441,30 +441,67 @@ class PublicProfileView extends StatelessWidget {
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 4,
-                                crossAxisSpacing: 2.0,
+                                // crossAxisSpacing: 2.0,
                               ),
                               itemBuilder: (BuildContext context, int index) {
                                 return Column(
                                   children: [
                                     controller.profile!.emojis![index].type ==
                                             "free"
-                                        ? CachedNetworkImage(
-                                            imageUrl: controller
-                                                .profile!.emojis![index].image)
+                                        ? Column(
+                                            children: [
+                                              CachedNetworkImage(
+                                                  imageUrl: controller.profile!
+                                                      .emojis![index].image),
+                                              Text(
+                                                controller.profile!
+                                                    .emojis![index].giftCount
+                                                    .toString(),
+                                                style: TextStyle(
+                                                  fontSize: 10.sp,
+                                                  fontWeight: FontWeight.w600,
+                                                ),
+                                              ),
+                                            ],
+                                          )
                                         : Row(
                                             children: [
+                                              Container(
+                                                child: Column(
+                                                  children: [
+                                                    SvgPicture.asset(
+                                                      "assets/icons/coins.svg",
+                                                      height: 18.23.h,
+                                                      width: 19.09.w,
+                                                    ),
+                                                    Text(
+                                                      controller.profile!
+                                                          .emojis![index].coins
+                                                          .toString(),
+                                                      style: TextStyle(
+                                                        fontSize: 10.sp,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
                                               Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
                                                 children: [
-                                                  SvgPicture.asset(
-                                                    "assets/icons/coins.svg",
-                                                    height: 18.23.h,
-                                                    width: 19.09.w,
+                                                  CachedNetworkImage(
+                                                    imageUrl: controller
+                                                        .profile!
+                                                        .emojis![index]
+                                                        .image,
+                                                    width: 52.w,
+                                                    height: 58.h,
                                                   ),
                                                   Text(
-                                                    controller.profile!
-                                                        .emojis![index].coins
+                                                    controller
+                                                        .profile!
+                                                        .emojis![index]
+                                                        .giftCount
                                                         .toString(),
                                                     style: TextStyle(
                                                       fontSize: 10.sp,
@@ -473,12 +510,6 @@ class PublicProfileView extends StatelessWidget {
                                                     ),
                                                   ),
                                                 ],
-                                              ),
-                                              CachedNetworkImage(
-                                                imageUrl: controller.profile!
-                                                    .emojis![index].image,
-                                                width: 52.w,
-                                                height: 58.h,
                                               ),
                                             ],
                                           ),
