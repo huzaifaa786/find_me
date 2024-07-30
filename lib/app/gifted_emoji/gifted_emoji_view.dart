@@ -30,22 +30,10 @@ class _GiftedEmojiViewState extends State<GiftedEmojiView> {
                     padding: EdgeInsets.symmetric(horizontal: 34.w),
                     child: Column(
                       children: [
-                        Gap(21.h),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Image.asset(
-                              "assets/images/calligraphic-design.png",
-                              height: 46.h,
-                              width: 186.w,
-                            )
-                          ],
-                        ),
                         GridView.builder(
                             physics: BouncingScrollPhysics(),
                             shrinkWrap: true,
-                            itemCount: controller.Emojis.length,
+                            itemCount: controller.allEmojis.length,
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 5,
@@ -55,7 +43,7 @@ class _GiftedEmojiViewState extends State<GiftedEmojiView> {
                               return Column(
                                 children: [
                                   EmojisCard(
-                                    picture: controller.Emojis[index],
+                                    picture: controller.allEmojis[index],
                                     value: 10,
                                   ),
                                 ],

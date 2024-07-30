@@ -15,6 +15,19 @@ class EmojiApi {
     return response;
   }
 
+  static Future<Map<String, dynamic>> getGiftedEmojis() async {
+    
+    // URL
+    String url = '$baseUrl/gifted/emojis';
+
+    // DATA
+    var data = null;
+
+    // Make the POST request using DioService
+    var response = await DioService.get(url: url, data: data);
+    return response;
+  }
+
   static Future<Map<String, dynamic>> addEmojis({int? id}) async {
     String url = '$baseUrl/add/my/emoji';
     var data = {'id': id};
