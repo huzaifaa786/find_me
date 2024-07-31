@@ -36,7 +36,7 @@ class _GiftedEmojiViewState extends State<GiftedEmojiView> {
                             itemCount: controller.allEmojis.length,
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 5,
+                              crossAxisCount: 4,
                               crossAxisSpacing: 0.1,
                             ),
                             itemBuilder: (BuildContext context, int index) {
@@ -44,7 +44,8 @@ class _GiftedEmojiViewState extends State<GiftedEmojiView> {
                                 children: [
                                   EmojisCard(
                                     picture: controller.allEmojis[index].image,
-                                    value: controller.allEmojis[index].giftCount,
+                                    value:
+                                        controller.allEmojis[index].giftCount,
                                   ),
                                 ],
                               );

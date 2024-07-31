@@ -43,7 +43,7 @@ class PublicProfileView extends StatelessWidget {
               body: SafeArea(
                 child: SingleChildScrollView(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 44.w),
+                    padding: EdgeInsets.symmetric(horizontal: 34.w),
                     child: Column(
                       children: [
                         Align(
@@ -448,9 +448,9 @@ class PublicProfileView extends StatelessWidget {
                               ),
                               itemBuilder: (BuildContext context, int index) {
                                 return GestureDetector(
-                                  onTap: (){
-                                    controller.giftEmoji(controller
-                                            .profile!.emojis![index].id);
+                                  onTap: () {
+                                    controller.giftEmoji(
+                                        controller.profile!.emojis![index].id);
                                   },
                                   child: Stack(
                                     alignment: Alignment.center,
@@ -479,8 +479,8 @@ class PublicProfileView extends StatelessWidget {
                                                 width: 22.09.w,
                                               ),
                                               Text(
-                                                controller
-                                                    .profile!.emojis![index].coins
+                                                controller.profile!
+                                                    .emojis![index].coins
                                                     .toString(),
                                                 style: TextStyle(
                                                   fontSize: 10,
@@ -492,21 +492,23 @@ class PublicProfileView extends StatelessWidget {
                                           ),
                                         ),
                                       if (controller.profile!.emojis![index]
-                                              .giftCount !=
-                                          "0")
-                                        Positioned(
-                                          bottom: 0,
-                                          child: Text(
-                                            controller.profile!.emojis![index]
-                                                    .giftCount ??
-                                                "",
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w600,
-                                            ),
+                                                  .giftCount !=
+                                              "0" &&
+                                          controller.profile!.emojis![index]
+                                              .giftCount!.isEmpty)
+                                      Positioned(
+                                        bottom: 0,
+                                        child: Text(
+                                          controller.profile!.emojis![index]
+                                                  .giftCount ??
+                                              "",
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w600,
                                           ),
                                         ),
+                                      ),
                                     ],
                                   ),
                                 );
