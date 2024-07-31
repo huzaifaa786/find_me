@@ -40,10 +40,8 @@ class SupportView extends StatelessWidget {
                         textColors: AppColors.white,
                         image: ImagesConst.mail,
                         onTap: () async {
-                       
-                            await controller.sendEmail();
-                       
-                                                  },
+                          await controller.sendEmail();
+                        },
                       ),
                     ],
                   ),
@@ -51,7 +49,11 @@ class SupportView extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SvgPicture.asset('assets/icons/find_me.svg'),
+                      Image.asset(
+                        alignment: Alignment.center,
+                        "assets/images/official logo.jpg",
+                        scale: 8,
+                      ),
                     ],
                   ),
                 ],
