@@ -6,6 +6,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/app/account/components/social_media_icon.dart';
 import 'package:find_me/app/account/profile/profile_controller.dart';
 import 'package:find_me/app/edit_profile/edit_profile_controller.dart';
+import 'package:find_me/app/gifted_emoji/components/emojis_card.dart';
 import 'package:find_me/app/public_profile/public_profile_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/cards/business_card.dart';
@@ -434,100 +435,7 @@ class PublicProfileView extends StatelessWidget {
                         Gap(21),
                         if (controller.profile!.emojis != null &&
                             controller.profile!.emojis!.isNotEmpty)
-                          GridView.builder(
-                              shrinkWrap: true,
-                              physics: BouncingScrollPhysics(),
-                              itemCount: controller.profile!.emojis!.length,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 4,
-                              
-                                // crossAxisSpacing: 2.0,
-                              ),
-                              itemBuilder: (BuildContext context, int index) {
-                                return Column(
-                                  children: [
-                                    controller.profile!.emojis![index].type ==
-                                            "free"
-                                        ? Column(
-                                            children: [
-                                              CachedNetworkImage(
-                                                imageUrl: controller.profile!
-                                                    .emojis![index].image,
-                                                height: 50.h,
-                                                width: 50.w,
-                                              ),
-                                              Text(
-                                                controller.profile!
-                                                    .emojis![index].giftCount
-                                                    .toString(),
-                                                style: TextStyle(
-                                                  fontSize: 10.sp,
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                              ),
-                                            ],
-                                          )
-                                        : Row(
-                                            children: [
-                                              Column(
-                                                children: [
-                                                  SvgPicture.asset(
-                                                    "assets/icons/coins.svg",
-                                                    height: 23.23.h,
-                                                    width: 23.09.w,
-                                                  ),
-                                                  Text(
-                                                    controller.profile!
-                                                        .emojis![index].coins
-                                                        .toString(),
-                                                    style: TextStyle(
-                                                      fontSize: 10.sp,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Column(
-                                                children: [
-                                                  CachedNetworkImage(
-                                                    imageUrl: controller
-                                                        .profile!
-                                                        .emojis![index]
-                                                        .image,
-                                                    width: 50.w,
-                                                    height: 50.h,
-                                                  ),
-                                                  if (controller
-                                                              .profile!
-                                                              .emojis![index]
-                                                              .giftCount ==
-                                                          '0' &&
-                                                      controller
-                                                          .profile!
-                                                          .emojis![index]
-                                                          .giftCount!
-                                                          .isEmpty)
-                                                    Text(
-                                                      controller
-                                                          .profile!
-                                                          .emojis![index]
-                                                          .giftCount
-                                                          .toString(),
-                                                      style: TextStyle(
-                                                        fontSize: 10.sp,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                    ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                  ],
-                                );
-                              }),
+                          EmojisCard(),
                         Gap(28.h),
                       ],
                     ),

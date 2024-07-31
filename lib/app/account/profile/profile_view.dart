@@ -4,6 +4,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/app/account/components/social_media_icon.dart';
 import 'package:find_me/app/account/profile/profile_controller.dart';
+import 'package:find_me/app/gifted_emoji/components/emojis_card.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/cards/business_card.dart';
 
@@ -467,31 +468,7 @@ class _ProfileViewState extends State<ProfileView> {
                                 ),
                               ),
                               Gap(21),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Image.asset(
-                                      "assets/images/smiling_emoji.png"),
-                                  Image.asset("assets/images/angry_emoji.png"),
-                                  Image.asset("assets/images/heart_emoji.png"),
-                                  Image.asset("assets/images/cold_emoji.png"),
-                                  Image.asset("assets/images/happy_emoji.png"),
-                                  Image.asset(
-                                      "assets/images/cold_angry_emoji.png"),
-                                ],
-                              ),
-                              Gap(3),
-                              Row(
-                                children: [
-                                  Gap(12),
-                                  Image.asset("assets/images/coins.png"),
-                                  Text("10"),
-                                  Gap(12),
-                                  Image.asset("assets/images/coins.png"),
-                                  Text("10"),
-                                ],
-                              ),
+                              EmojisCard(),
                               Gap(28.h),
                             ],
                           ),
