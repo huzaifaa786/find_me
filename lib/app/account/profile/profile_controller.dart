@@ -1,9 +1,11 @@
 import 'package:find_me/api/auth_api/user_api.dart';
+import 'package:find_me/api/emoji_api/emoji_api.dart';
 import 'package:find_me/api/profile_api/profile_api.dart';
 import 'package:find_me/models/profile_business_card_model.dart';
 import 'package:find_me/models/profile_url_model.dart';
 import 'package:find_me/models/user_model.dart';
 import 'package:find_me/models/user_profile_model.dart';
+import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -69,6 +71,22 @@ class ProfileController extends GetxController {
       if (response.isNotEmpty) {
         profile = UserProfileModel.fromJson(response['profile']);
         update();
+      }
+    }
+  }
+  
+  giftEmoji(emojiId) async {
+    var response =
+        await EmojiApi.giftEmoji(emojiId: emojiId, receiverId: profile!.id);
+    if (response.isNotEmpty) {
+      print(response);
+      if (response['balance'] == "low") {
+        UiUtilites.noCoinsEnoughAlert(Get.context);
+      } else if (response['profile'] != null) {
+        profile = UserProfileModel.fromJson(response['profile']);
+        update();
+                UiUtilites.successSnackbar("Emoji Gifted Successfully", "");
+
       }
     }
   }

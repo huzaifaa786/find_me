@@ -1,4 +1,5 @@
 import 'package:find_me/api/auth_api/user_api.dart';
+import 'package:find_me/api/emoji_api/emoji_api.dart';
 import 'package:find_me/api/profile_api/profile_api.dart';
 import 'package:find_me/api/request_api/request_api.dart';
 import 'package:find_me/models/profile_business_card_model.dart';
@@ -32,11 +33,10 @@ class PublicProfileController extends GetxController {
 
   getUser() async {
     var response = await UserApi.userDetail(profile!.userId);
-    
+
     if (response.isNotEmpty) {
       userModel = UserModel.fromJson(response['user']);
       businessCardModel = profile!.businessCard;
-    
 
       if (profile!.urls != null) {
         profileUrlModel = profile!.urls;
@@ -93,5 +93,19 @@ class PublicProfileController extends GetxController {
     update();
   }
 
-  
+  giftEmoji(emojiId) async {
+    var response =
+        await EmojiApi.giftEmoji(emojiId: emojiId, receiverId: profile!.id);
+    if (response.isNotEmpty) {
+      print(response);
+      if (response['balance'] == "low") {
+        UiUtilites.noCoinsEnoughAlert(Get.context);
+      } else if (response['profile'] != null) {
+        profile = UserProfileModel.fromJson(response['profile']);
+        update();
+                UiUtilites.successSnackbar("Emoji Gifted Successfully", "");
+
+      }
+    }
+  }
 }
