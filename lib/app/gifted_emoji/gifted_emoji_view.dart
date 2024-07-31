@@ -43,8 +43,8 @@ class _GiftedEmojiViewState extends State<GiftedEmojiView> {
                               return Column(
                                 children: [
                                   EmojisCard(
-                                    picture: controller.allEmojis[index],
-                                    value: 10,
+                                    picture: controller.allEmojis[index].image,
+                                    value: controller.allEmojis[index].giftCount,
                                   ),
                                 ],
                               );

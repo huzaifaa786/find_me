@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class EmojisCard extends StatelessWidget {
   const EmojisCard({super.key, this.picture, this.value});
   final picture;
-  final int? value;
+  final String? value;
   @override
   Widget build(BuildContext context) {
     return Column(
