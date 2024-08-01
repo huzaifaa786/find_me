@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/app/gifted_emoji/gifted_emoji_controller.dart';
 import 'package:find_me/app/gifted_emoji/components/emojis_card.dart';
 import 'package:find_me/components/appbars/topbar.dart';
@@ -40,13 +41,60 @@ class _GiftedEmojiViewState extends State<GiftedEmojiView> {
                               crossAxisSpacing: 0.1,
                             ),
                             itemBuilder: (BuildContext context, int index) {
-                              return Column(
+                              return Stack(
+                                alignment: Alignment.center,
                                 children: [
-                                  EmojisCard(
-                                    picture: controller.allEmojis[index].image,
-                                    value:
-                                        controller.allEmojis[index].giftCount,
+                                  CachedNetworkImage(
+                                    imageUrl: controller
+                                        .allEmojis[index].image,
+                                    placeholder: (context, url) =>
+                                        CircularProgressIndicator(),
+                                    errorWidget: (context, url, error) =>
+                                        Icon(Icons.error),
+                                    width: 55,
+                                    height: 55,
                                   ),
+                                  if (controller.allEmojis[index].type ==
+                                      "paid")
+                                    Positioned(
+                                      top: 19,
+                                      left: -1,
+                                      child: Column(
+                                        children: [
+                                          Image.asset(
+                                            "assets/images/gift_coin.png",
+                                            height: 22.23.h,
+                                            width: 22.09.w,
+                                          ),
+                                          Text(
+                                            controller
+                                                .allEmojis[index].coins
+                                                .toString(),
+                                            style: TextStyle(
+                                              fontSize: 10,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  if (controller
+                                          .allEmojis[index].giftCount !=
+                                      "0")
+                                    Positioned(
+                                      bottom: -3,
+                                      child: Text(
+                                        controller.allEmojis[index]
+                                                .giftCount ??
+                                            "",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
                                 ],
                               );
                             }),

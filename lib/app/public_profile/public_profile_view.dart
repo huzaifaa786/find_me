@@ -493,9 +493,7 @@ class PublicProfileView extends StatelessWidget {
                                         ),
                                       if (controller.profile!.emojis![index]
                                                   .giftCount !=
-                                              "0" &&
-                                          controller.profile!.emojis![index]
-                                              .giftCount!.isEmpty)
+                                              "0" )
                                       Positioned(
                                         bottom: 0,
                                         child: Text(

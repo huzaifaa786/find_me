@@ -49,7 +49,7 @@ class _MyEmojisViewState extends State<MyEmojisView> {
                     physics: BouncingScrollPhysics(),
                     itemCount: controller.allEmojis.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 5, crossAxisSpacing: 3),
+                        crossAxisCount: 5,),
                     itemBuilder: (BuildContext context, int index) {
                       return Column(
                         children: [
