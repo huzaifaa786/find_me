@@ -1,3 +1,7 @@
+import 'dart:async';
+
+import 'package:find_me/api/auth_api/changepassword_api.dart';
+import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,6 +11,7 @@ class ChangePaswordController extends GetxController {
   bool obscureTextPassword = true;
   bool obscureTextCPassword = true;
   bool obscureTextOldPassword = true;
+ 
 
   TextEditingController passwordController = TextEditingController();
   TextEditingController oldpasswordController = TextEditingController();
@@ -26,5 +31,26 @@ class ChangePaswordController extends GetxController {
   oldtoggle() {
     obscureTextOldPassword = !obscureTextOldPassword;
     update();
+  }
+
+  changepassword() async {
+    Map<String, dynamic> response = await ChangepasswordApi.Changepassword(
+      password: oldpasswordController.text,
+      new_password: passwordController.text,
+    );
+    update();
+    if (response.isNotEmpty) {
+     
+
+      // UiUtilites.successSnackbar('Password change successfully.', 'Success');
+      UiUtilites.registerSuccessAlert(Get.context, "Password Change Successfully");
+      oldpasswordController.clear();
+      passwordController.clear();
+      confirmPasswordController.clear();
+      update();
+    } else {
+     
+      UiUtilites.errorSnackbar('Could Not Update Password', 'Error!');
+    }
   }
 }

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'languages_controller.dart';
 
 class LanguagesView extends StatefulWidget {
@@ -16,15 +17,21 @@ class LanguagesView extends StatefulWidget {
   _LanguagesViewState createState() => _LanguagesViewState();
 }
 
+enum translateMethod { English, Arabic }
+
 class _LanguagesViewState extends State<LanguagesView> {
   // Initialize the controller
   final LanguagesController controller = Get.put(LanguagesController());
+  // final english_value = 0;
+  // final arbic_value2 = 1;
+  final isSelected = false;
 
   @override
   Widget build(BuildContext context) {
+    GetStorage box = GetStorage();
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 110.h,
+        toolbarHeight: 83.h,
         title: topBar(name: 'Languages'),
         automaticallyImplyLeading: false,
         scrolledUnderElevation: 0,
@@ -32,95 +39,128 @@ class _LanguagesViewState extends State<LanguagesView> {
       body: SafeArea(
         child: GetBuilder<LanguagesController>(
           builder: (controller) {
-            return Column(
-              children: [
-                Gap(63.h),
-                GestureDetector(
-                  onTap: () {
-                    controller.changeLanguage(0);
-                  },
-                  child: Row(
-                    children: [
-                      Gap(60.w),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+            return Directionality(
+              textDirection: box.read('locale') == 'ar'
+                  ? TextDirection.rtl
+                  : TextDirection.ltr,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 34.w),
+                child: Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () async {
+                        await controller.toggleplan(translateMethod.English);
+                        Get.updateLocale(const Locale('en', 'US'));
+                        GetStorage box = GetStorage();
+                        await box.write('locale', 'en');
+                        setState(() {});
+                        controller.site = translateMethod.English;
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
+                          Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               AppText(
                                 title: 'English (United States)',
                                 size: 14,
                                 fontWeight: FontWeight.w400,
-                                color: AppColors.primary_color,
+                                color:
+                                    controller.site == translateMethod.English
+                                        ? AppColors.primary_color
+                                        : AppColors.black,
                               ),
-                              Gap(108.w),
-                              Radio(
-                                value: 0,
-                                groupValue: controller.selectedLanguage,
-                                activeColor: AppColors.primary_color,
-                                onChanged: (value) {
-                                  controller.changeLanguage(value as int);
-                                },
+                              Gap(5.h),
+                              AppText(
+                                title: 'Default',
+                                size: 12,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.hintGrey,
                               ),
                             ],
                           ),
-                          AppText(
-                            title: 'Default',
-                            size: 12,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.hintGrey,
+                          Radio(
+                            value: translateMethod.English,
+                            groupValue: controller.site,
+                            activeColor: AppColors.primary_color,
+                            fillColor: MaterialStateProperty.all(
+                                AppColors.primary_color),
+                            onChanged: (value) async {
+                              await controller.toggleplan(value!);
+                              Get.updateLocale(const Locale('en', 'US'));
+                              GetStorage box = GetStorage();
+                              await box.write('locale', 'en');
+                              setState(() {});
+                              controller.site = value;
+                            },
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                ),
-                Gap(22.h),
-                GestureDetector(
-                  onTap: () {
-                    controller.changeLanguage(1);
-                  },
-                  child: SizedBox(
-                    child: Row(
-                      children: [
-                        Gap(60.w),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                    ),
+                    Gap(22.h),
+                    GestureDetector(
+                      onTap: () async {
+                        await controller.toggleplan(translateMethod.Arabic);
+                        Get.updateLocale(const Locale('ar', 'AE'));
+                        GetStorage box = GetStorage();
+                        await box.write('locale', 'ar');
+                        print('Language changed to Arabic');
+                        print('Stored locale: ${box.read('locale')}');
+                        print('Current locale: ${Get.locale}');
+                        controller.site = translateMethod.Arabic;
+                        setState(() {});
+                      },
+                      child: SizedBox(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 AppText(
                                   title: 'العربية',
                                   size: 14,
                                   fontWeight: FontWeight.w400,
-                                  color: AppColors.primary_color,
+                                  color:
+                                      controller.site == translateMethod.Arabic
+                                          ? AppColors.primary_color
+                                          : AppColors.black,
                                 ),
-                                Gap(224.w),
-                                Radio(
-                                  value: 1,
-                                  groupValue: controller.selectedLanguage,
-                                  activeColor: AppColors.primary_color,
-                                  onChanged: (value) {
-                                    controller.changeLanguage(value as int);
-                                  },
+                                Gap(5.h),
+                                AppText(
+                                  title: 'Arabic',
+                                  size: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.hintGrey,
                                 ),
                               ],
                             ),
-                            AppText(
-                              title: 'Arabic',
-                              size: 12,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.hintGrey,
+                            Radio(
+                              value: translateMethod.Arabic,
+                              groupValue: controller.site,
+                              fillColor: MaterialStateProperty.all(
+                                  AppColors.primary_color),
+                              activeColor: AppColors.primary_color,
+                              onChanged: (value) async {
+                                await controller.toggleplan(value!);
+                                Get.updateLocale(const Locale('ar', 'AE'));
+                                GetStorage box = GetStorage();
+                                await box.write('locale', 'ar');
+                                print('Stored locale: ${box.read('locale')}');
+                                print('Current locale: ${Get.locale}');
+                                controller.site = value;
+                                setState(() {});
+                              },
                             ),
                           ],
                         ),
-                      ],
-                    ),
-                  ),
+                      ),
+                    )
+                  ],
                 ),
-              ],
+              ),
             );
           },
         ),

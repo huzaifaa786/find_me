@@ -1,53 +1,93 @@
+import 'package:find_me/api/auth_api/user_api.dart';
+import 'package:find_me/api/emoji_api/emoji_api.dart';
+import 'package:find_me/api/profile_api/profile_api.dart';
+import 'package:find_me/models/profile_business_card_model.dart';
+import 'package:find_me/models/profile_url_model.dart';
+import 'package:find_me/models/user_model.dart';
+import 'package:find_me/models/user_profile_model.dart';
+import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:intl_phone_field/countries.dart';
-import 'package:intl_phone_field/helpers.dart';
-import 'package:intl_phone_field/phone_number.dart';
 
 class ProfileController extends GetxController {
   static ProfileController instance = Get.find();
-    TextEditingController usernameController = TextEditingController();
-  TextEditingController useremailController = TextEditingController();
+  TextEditingController bioController = TextEditingController();
+  UserModel? userModel;
+  UserProfileModel? profile;
+  ProfileBusinessCardModel? businessCardModel;
+  ProfileUrlModel? profileUrlModel;
+  late FocusNode focusNode;
 
-  //! Phone Input Field Variable and Validations
-  String invalidNumberMessage = '';
-  TextEditingController phonecontroller = TextEditingController();
-  Country? selectedCountry =
-      countries.firstWhere((country) => country.fullCountryCode == "971");
-  PhoneNumber? checkphoneController;
-  String? phoneController;
+  var i = 0;
 
-  onCountryChanged(Country value) {
-    selectedCountry = value;
-    phonecontroller.clear();
+  fggf() {
+    i = 12;
     update();
-    if (checkphoneController != null) phoneValidation(checkphoneController);
   }
 
-  phoneValidation(phone) {
-    if (!isNumeric(phone.number)) {
-      invalidNumberMessage = 'Use Numeric Variables';
+  bool isEditSelected = false;
+
+  @override
+  void onInit() {
+    profile ??= Get.arguments;
+    focusNode = FocusNode();
+    focusNode.addListener(() {
+      if (!focusNode.hasFocus && isEditSelected) {
+        isEditSelected = false;
+      }
+    });
+
+    getUser();
+    super.onInit();
+  }
+
+  getUser() async {
+    var response = await UserApi.getUser();
+    if (response.isNotEmpty) {
+      userModel = UserModel.fromJson(response['user']);
+      for (var element in userModel!.profiles!) {
+        if (element.id == profile?.id) {
+          profile = element;
+          update();
+        }
+      }
+      businessCardModel = profile!.businessCard;
+      bioController.text = profile!.bio!;
+      if (profile!.urls != null) {
+        profileUrlModel = profile!.urls;
+      } else {
+        profileUrlModel = ProfileUrlModel(id: 1, userProfileId: profile!.id);
+      }
+
       update();
-      return invalidNumberMessage;
-    } else if (phone.number.length < selectedCountry!.minLength ||
-        phone.number.length > selectedCountry!.maxLength) {
-      invalidNumberMessage = 'Invalid Phone Number';
-      update();
-      return invalidNumberMessage;
-    } else {
-      invalidNumberMessage = '';
     }
-    checkphoneController = phone;
-    update();
-    if (countries
-            .firstWhere((element) => element.code == phone!.countryISOCode)
-            .maxLength ==
-        phone!.number.length) {
-      phoneController = phone.completeNumber;
-      update();
-    } else {
-      phoneController = null;
+  }
+
+  void updateProfileBio() async {
+    if (bioController.text.isNotEmpty) {
+      var response = await ProfileApi.updateProfileBio(
+          userProfileId: profile?.id, bio: bioController.text);
+      if (response.isNotEmpty) {
+        profile = UserProfileModel.fromJson(response['profile']);
+        update();
+      }
     }
-    return invalidNumberMessage;
+  }
+  
+  giftEmoji(emojiId) async {
+    var response =
+        await EmojiApi.giftEmoji(emojiId: emojiId, receiverId: profile!.id);
+    if (response.isNotEmpty) {
+      print(response);
+      if (response['balance'] == "low") {
+        UiUtilites.noCoinsEnoughAlert(Get.context);
+      } else if (response['profile'] != null) {
+        profile = UserProfileModel.fromJson(response['profile']);
+        update();
+                UiUtilites.successSnackbar("Emoji Gifted Successfully", "");
+
+      }
+    }
   }
 }

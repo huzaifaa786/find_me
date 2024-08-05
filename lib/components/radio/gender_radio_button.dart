@@ -1,0 +1,109 @@
+import 'package:find_me/utils/app_text/app_text.dart';
+import 'package:find_me/utils/colors/app_colors.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+class GenderRadioButtons extends StatefulWidget {
+  final Function(String) onGenderSelected;
+
+  const GenderRadioButtons({Key? key, required this.onGenderSelected})
+      : super(key: key);
+
+  @override
+  _GenderRadioButtonsState createState() => _GenderRadioButtonsState();
+}
+
+class _GenderRadioButtonsState extends State<GenderRadioButtons> {
+  String? selectedGender = "Male";
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Expanded(
+          
+          child: Theme(
+            data: Theme.of(context).copyWith(
+              listTileTheme: const ListTileThemeData(
+                horizontalTitleGap: 2,
+              ),
+            ),
+            child: RadioListTile<String>(
+              visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
+              dense: true,
+              contentPadding: EdgeInsets.zero,
+              title: AppText(
+                title: 'Male',
+                size: 12.sp,
+                fontWeight: FontWeight.w400,
+              ),
+              value: 'Male',
+              groupValue: selectedGender,
+              onChanged: (value) {
+                setState(() {
+                  selectedGender = value;
+                });
+                widget.onGenderSelected(value!);
+              },
+            ),
+          ),
+        ),
+        Expanded(
+          child: Theme(
+            data: Theme.of(context).copyWith(
+              listTileTheme: const ListTileThemeData(
+                horizontalTitleGap: 2,
+              ),
+            ),
+            child: RadioListTile<String>(
+              visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
+              dense: true,
+              contentPadding: EdgeInsets.zero,
+              title: AppText(
+                title: 'Female',
+                size: 12.sp,
+                fontWeight: FontWeight.w400,
+              ),
+              value: 'Female',
+              groupValue: selectedGender,
+              onChanged: (value) {
+                setState(() {
+                  selectedGender = value;
+                });
+                widget.onGenderSelected(value!);
+              },
+            ),
+          ),
+        ),
+        Expanded(
+          child: Theme(
+            data: Theme.of(context).copyWith(
+              listTileTheme: const ListTileThemeData(
+                horizontalTitleGap: 2,
+              ),
+            ),
+            child: RadioListTile<String>(
+              visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
+              dense: true,
+              contentPadding: EdgeInsets.zero,
+              title: AppText(
+                title: 'Prefer not to say',
+                size: 12.sp,
+                fontWeight: FontWeight.w400,
+              ),
+              value: 'Other',
+              groupValue: selectedGender,
+              onChanged: (value) {
+                setState(() {
+                  selectedGender = value;
+                });
+                widget.onGenderSelected(value!);
+              },
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}

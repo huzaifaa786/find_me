@@ -19,7 +19,7 @@ import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class NotificationsView extends StatelessWidget {
-   NotificationsView({super.key});
+  NotificationsView({super.key});
   @override
   Widget build(BuildContext context) {
     return GetBuilder<NotificationsController>(
@@ -28,6 +28,7 @@ class NotificationsView extends StatelessWidget {
           centerTitle: true,
           automaticallyImplyLeading: false,
           forceMaterialTransparency: true,
+          toolbarHeight: 83.h,
           title: topBar(name: 'Notifications'),
         ),
         body: SafeArea(
@@ -36,7 +37,21 @@ class NotificationsView extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 50.w),
             child: Column(
               children: [
-                Gap(15.h),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    bottom: 15,
+                    top: 30,
+                  ),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Today",
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          fontSize: 14.sp, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ),
                 NotificationPermissionTile(
                   img:
                       'https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
@@ -124,18 +139,51 @@ class NotificationsView extends StatelessWidget {
                   color: AppColors.black.withOpacity(0.08),
                   height: 1,
                 ),
-                Gap(15.h),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    bottom: 18,
+                    top: 21,
+                  ),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Yesterday",
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          fontSize: 14.sp, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ),
+                //
+                // Gap(15.h),
                 NotificationPermissionTile(
                   img:
                       'https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
                   msg: 'Ahmed mohammed wants to send you a file',
                   onAccepttap: () {
                     print('accept');
-                  },  
+                  },
                   onRejecttap: () {
                     print('reject');
                   },
                 ),
+                Gap(15.h),
+                Divider(
+                  thickness: 1,
+                  color: AppColors.black.withOpacity(0.08),
+                  height: 1,
+                ),
+                Gap(24.h),
+                SubscriptionNotificationTile(
+                  daycount: '3',
+                  title: 'Three days left!',
+                  msg:
+                      'There are three days left until your subscription to the weekly package ends',
+                  ontap: () {
+                    print('view sub');
+                  },
+                ),
+                Gap(15.h),
               ],
             ),
           ),

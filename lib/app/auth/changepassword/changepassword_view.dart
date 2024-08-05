@@ -1,7 +1,11 @@
+import 'dart:async';
+
 import 'package:find_me/app/auth/changepassword/changepassword_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/buttons/app_button.dart';
 import 'package:find_me/components/textfields/password_textfield.dart';
+import 'package:find_me/utils/app_text/app_text.dart';
+import 'package:find_me/utils/images/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -52,12 +56,31 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                       controller: controller.confirmPasswordController,
                       toggle: controller.ctoggle,
                     ),
-                    Gap(70.h),
+                    Gap(30.h),
+                    
+                    // controller.changePasswordText
+                    //     ? Row(
+                    //         mainAxisAlignment: MainAxisAlignment.center,
+                    //         children: [
+                    //           AppText(
+                    //             title: 'Password changed successfully',
+                    //             color: Colors.green,
+                    //           ),
+                    //           Image.asset(
+                    //             ImagesConst.tickicon,
+                    //             color: Colors.green,
+                    //           ),
+                    //         ],
+                    //       )
+                    //     : SizedBox.shrink(),
+                    Gap(30.h),
                     AppButton(
                       title: 'Submit',
                       height: 50.0.h,
                       width: 304.0.w,
-                      onTap: () {},
+                      onTap: () {
+                        controller.changepassword();
+                      },
                     ),
                   ],
                 ),

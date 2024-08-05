@@ -18,18 +18,22 @@ BoxDecoration buttonDecoration(Color color, Color borderColor) {
 //! INPUT CONTAINER DECORATION
 var inputContainerDecoration = BoxDecoration(
   border: Border.all(color: AppColors.inputBorderColor),
-  borderRadius: BorderRadius.circular(45.r),
+  borderRadius: BorderRadius.circular(14.r),
 );
 
 var errorInputContainerDecoration = BoxDecoration(
   border: Border.all(color: AppColors.red),
-  borderRadius: BorderRadius.circular(45.r),
+  borderRadius: BorderRadius.circular(14.r),
 );
 
 //! INPUT OUTLINED DEOCRATION
 var inputDecoration = OutlineInputBorder(
-  borderRadius: BorderRadius.circular(45.r),
+  borderRadius: BorderRadius.circular(14.r),
   borderSide: BorderSide(width: 1, color: AppColors.inputBorderColor),
+);
+var bioInputDecoration = OutlineInputBorder(
+  borderRadius: BorderRadius.circular(45.r),
+  borderSide: BorderSide(width: 1, color: AppColors.primary_color),
 );
 
 var inputErrorDecoration = OutlineInputBorder(

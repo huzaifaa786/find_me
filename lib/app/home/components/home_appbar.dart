@@ -15,14 +15,17 @@ Widget homeAppBar({String? name}) {
     child: Row(
       children: [
         GestureDetector(
-            onTap: () {
-              Get.back();
-            },
-            child: SvgPicture.asset(
-              'assets/icons/find_me.svg',
-              fit: BoxFit.scaleDown,
-            )),
-        Gap(153.w),
+          onTap: () {
+            Get.back();
+          },
+          child: Image.asset(
+            alignment: Alignment.center,
+            "assets/images/official logo.jpg",
+            fit: BoxFit.scaleDown,
+            scale: 13,
+          ),
+        ),
+        Gap(150.w),
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -42,11 +45,11 @@ Widget homeAppBar({String? name}) {
                 fit: BoxFit.scaleDown,
               ),
             ),
-            Gap(10),
+            Gap(4),
 
             GestureDetector(
               onTap: () {
-               Get.toNamed(AppRoutes.setting);
+                Get.toNamed(AppRoutes.setting);
               },
               child: SvgPicture.asset(
                 'assets/icons/menu (2).svg',

@@ -5,6 +5,7 @@ import 'package:find_me/app/change_email/change_email_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/buttons/app_button.dart';
 import 'package:find_me/components/textfields/app_textfields.dart';
+import 'package:find_me/helpers/validator.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
@@ -50,6 +51,8 @@ class ChangeEmailView extends StatelessWidget {
                     AppTextFields(
                       hintText: 'Email',
                       controller: controller.emailController,
+                      fieldValidator: (value) =>
+                          Validators.emailValidator(value),
                     ),
                     Gap(40.h),
                     AppButton(
@@ -57,7 +60,7 @@ class ChangeEmailView extends StatelessWidget {
                       height: 50.0.h,
                       width: 304.0.w,
                       onTap: () {
-                        Get.toNamed(AppRoutes.otp);
+                        controller.updateEmail();
                       },
                     ),
                   ],

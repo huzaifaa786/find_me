@@ -1,5 +1,6 @@
 import 'package:find_me/routes/app_routes.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class SplashController extends GetxController {
   static SplashController instance = Get.find();
@@ -17,12 +18,16 @@ class SplashController extends GetxController {
     });
   }
 
-  Future checkFirstSeen() async {
-    String? apiToken = '';
+  GetStorage box = GetStorage();
 
-    if (apiToken != '') {
+  Future checkFirstSeen() async {
+    String? apiToken = box.read('api_token');
+    print("API:$apiToken");
+    
+     if (apiToken != null) {
+      Get.offNamed(AppRoutes.mainview);
     } else {
-      Get.toNamed(AppRoutes.editProfile);
+      Get.offNamed(AppRoutes.intro);
     }
   }
 }

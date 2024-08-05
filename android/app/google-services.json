@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "1049301088125",
+    "project_id": "findme-c29f1",
+    "storage_bucket": "findme-c29f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1049301088125:android:35bcd1d610295577e8fe14",
+        "android_client_info": {
+          "package_name": "com.tritec.find_me"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1049301088125-0g096rnk2barei4jq4cff9r1lh3sqt4u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tritec.find_me",
+            "certificate_hash": "3490111194d59dadd8738cbcfe4a9e21310d0dc3"
+          }
+        },
+        {
+          "client_id": "1049301088125-t80itp1fvio4n8c8g3n476s7rt0htkeg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tritec.find_me",
+            "certificate_hash": "ccaed97fc547ce11da7cb20768ec6c6c03e29600"
+          }
+        },
+        {
+          "client_id": "1049301088125-d2pb5i5hbp33rlb3h3var37brhriblb1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdi2maWKoplrL6A2myF12A7rk1lNi52ek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1049301088125-d2pb5i5hbp33rlb3h3var37brhriblb1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1049301088125-pjr8coiruuhhgkk8eae825juhabeerir.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tritec.findMe"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

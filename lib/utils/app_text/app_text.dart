@@ -43,6 +43,8 @@ class AppText extends StatelessWidget {
         decoration: decoration,
         decorationColor: color,
         letterSpacing: letterSpacing,
+        
+
       )),
       overflow: overFlow,
       textAlign: textAlign,

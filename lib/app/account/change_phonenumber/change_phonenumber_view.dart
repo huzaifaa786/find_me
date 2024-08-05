@@ -20,42 +20,44 @@ class ChangePhoneNumberView extends StatelessWidget {
     return GetBuilder<ChangePhoneNumberController>(
       builder: (controller) => Scaffold(
         appBar: AppBar(
-          centerTitle: true,
           automaticallyImplyLeading: false,
           forceMaterialTransparency: true,
-          title: topBar(name: 'Change phone unmber'),
+          title: Flexible(child: topBar(name: 'Change Phone Number',padding: EdgeInsets.only(left: 20,right: 20))),
         ),
         body: SafeArea(
-            child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 50.w),
-          child: Column(
-            children: [
-              Gap(109.h),
-              Center(
-                  child: Text(
-                'Enter your new phone number',
-                style: TextStyle(
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.hintGrey),
-              )),
-              Gap(35.h),
-              PhoneInputField(
-                onCountryChanged: controller.onCountryChanged,
-                errorText: controller.invalidNumberMessage,
-                onChanged: controller.phoneValidation,
-                controller: controller.pcontroller,
-              ),
-              Gap(173.h),
-              AppButton(
-                title: 'Confirm',
-                height: 50.0.h,
-                width: 304.0.w,
-                onTap: () {
-                  Get.toNamed(AppRoutes.otp);
-                },
-              ),
-            ],
+            child: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 50.w),
+            child: Column(
+              children: [
+                Gap(109.h),
+                Center(
+                    child: Text(
+                  'Enter your new phone number',
+                  style: TextStyle(
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.hintGrey),
+                )),
+                Gap(35.h),
+                PhoneInputField(
+                  onCountryChanged: controller.onCountryChanged,
+                  errorText: controller.invalidNumberMessage,
+                  onChanged: controller.phoneValidation,
+                  controller: controller.pcontroller,
+                  initialCode: controller.selectedCountry!.code,
+                ),
+                Gap(173.h),
+                AppButton(
+                  title: 'Confirm',
+                  height: 50.0.h,
+                  width: 304.0.w,
+                  onTap: () {
+                    controller.updatePhone();
+                  },
+                ),
+              ],
+            ),
           ),
         )),
       ),

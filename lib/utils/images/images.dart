@@ -10,6 +10,7 @@ class ImagesConst {
   static const cartNav = "assets/icons/cart.svg";
   static const cart = "assets/icons/cart_ic.svg";
   static const mail = "assets/icons/contact_mail.svg";
+  static const download = "assets/icons/download-cloud.svg";
   static const creditCard = "assets/icons/credit_card.svg";
   static const edutIc = "assets/icons/edit-3.svg";
   static const eye = 'assets/icons/eye.svg';
@@ -23,4 +24,5 @@ class ImagesConst {
   static const splashGif = "assets/gifs/splash.gif";
   static const introGif = 'assets/gifs/intro.gif';
   static const homeGif = 'assets/gifs/home.gif';
+  static const registreted_successfully_gif = "assets/gifs/Successfully Done.gif";
 }

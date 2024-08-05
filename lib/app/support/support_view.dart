@@ -20,7 +20,7 @@ class SupportView extends StatelessWidget {
     return GetBuilder<SupportController>(
         builder: (controller) => Scaffold(
               appBar: AppBar(
-                toolbarHeight: 110.h,
+                toolbarHeight: 83.h,
                 title: topBar(name: 'Support'),
                 automaticallyImplyLeading: false,
                 scrolledUnderElevation: 0,
@@ -39,7 +39,9 @@ class SupportView extends StatelessWidget {
                         color: AppColors.primary_color,
                         textColors: AppColors.white,
                         image: ImagesConst.mail,
-                        onTap: () {},
+                        onTap: () async {
+                          await controller.sendEmail();
+                        },
                       ),
                     ],
                   ),
@@ -47,7 +49,11 @@ class SupportView extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SvgPicture.asset('assets/icons/find_me.svg'),
+                      Image.asset(
+                        alignment: Alignment.center,
+                        "assets/images/official logo.jpg",
+                        scale: 8,
+                      ),
                     ],
                   ),
                 ],

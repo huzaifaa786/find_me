@@ -1,3 +1,4 @@
+import 'package:find_me/api/auth_api/google_signup_api.dart';
 import 'package:find_me/app/auth/components/auth_appbar.dart';
 import 'package:find_me/app/auth/components/auth_rich_text.dart';
 import 'package:find_me/app/auth/components/dob_textfield.dart';
@@ -7,14 +8,20 @@ import 'package:find_me/components/buttons/prefix_icon_button.dart';
 import 'package:find_me/components/textfields/app_textfields.dart';
 import 'package:find_me/components/textfields/password_textfield.dart';
 import 'package:find_me/components/textfields/phone_inputfield.dart';
+import 'package:find_me/helpers/validator.dart';
+import 'package:find_me/models/user_model.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/images/images.dart';
+import 'package:find_me/utils/ui_utils.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class SignInView extends StatefulWidget {
   const SignInView({super.key});
@@ -24,6 +31,9 @@ class SignInView extends StatefulWidget {
 }
 
 class _SignInViewState extends State<SignInView> {
+  bool isSwitched = false;
+
+  GetStorage box = GetStorage();
   @override
   Widget build(BuildContext context) {
     return GetBuilder<SignInController>(
@@ -40,14 +50,22 @@ class _SignInViewState extends State<SignInView> {
                   AppTextFields(
                     hintText: 'Email',
                     controller: controller.emailController,
+                    fieldValidator: (value) =>
+                        Validators.emptyStringValidator("This", value),
                   ),
                   Gap(14.h),
                   PasswordTextFields(
-                    hintText: 'Password',
-                    obscure: controller.obscureTextPassword,
-                    controller: controller.passwordController,
-                    toggle: controller.toggle,
-                  ),
+                      hintText: 'Password',
+                      obscure: controller.obscureTextPassword,
+                      controller: controller.passwordController,
+                      toggle: controller.toggle,
+                      fieldValidator: (value) {
+                        if (value!.isEmpty) {
+                          return "Password can't be empty";
+                        } else {
+                          return null;
+                        }
+                      }),
                   Gap(16.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -74,42 +92,70 @@ class _SignInViewState extends State<SignInView> {
                     title: 'Sign In',
                     height: 50.0.h,
                     width: 304.0.w,
-                    onTap: () {Get.toNamed(AppRoutes.mainview);},
+                    onTap: () {
+                      controller.loginUser();
+                    },
                   ),
-                  Gap(20.h),
-                  const AppText(
-                    title: 'Or',
-                    size: 12,
-                    fontWeight: FontWeight.w400,
-                  ),
-                  Gap(20.h),
-                  PrefixIconButton(
-                    title: 'Sign In with Apple',
-                    height: 50.0.h,
-                    width: 304.0.w,
-                    borderColor: AppColors.black,
-                    color: AppColors.black,
-                    textColors: AppColors.white,
-                    image: ImagesConst.appleIcon,
-                  ),
-                  Gap(12.h),
-                  PrefixIconButton(
-                    title: 'Sign In with Google',
-                    height: 50.0.h,
-                    width: 304.0.w,
-                    borderColor: AppColors.borderGrey,
-                  ),
+                  // Gap(20.h),
+                  // const AppText(
+                  //   title: 'Or',
+                  //   size: 12,
+                  //   fontWeight: FontWeight.w400,
+                  // ),
+                  // Gap(20.h),
+                  // PrefixIconButton(
+                  //   title: 'Sign In with Apple',
+                  //   height: 50.0.h,
+                  //   width: 304.0.w,
+                  //   borderColor: AppColors.black,
+                  //   color: AppColors.black,
+                  //   textColors: AppColors.white,
+                  //   image: ImagesConst.appleIcon,
+                  // ),
+                  // Gap(12.h),
+                  // PrefixIconButton(
+                  //   title: 'Sign In with Google',
+                  //   height: 50.0.h,
+                  //   width: 304.0.w,
+                  //   borderColor: AppColors.borderGrey,
+                  //   onTap: () async {
+                  //     var response = await GoogleSignUpApi().signUpWithGoogle();
+                  //     GoogleSignIn().disconnect();
+                  //     if (response[0].isNotEmpty) {
+                  //       var responce = await controller.loginGoogleUser(
+                  //           response[0], response[1]);
+                  //       if (!responce['error']) {
+                  //         controller.user =
+                  //             UserModel.fromJson(responce['user']);
+                  //         if (controller.user!.loginType == 'GOOGLE') {
+
+                  //           await box.write(
+                  //               'api_token', responce['user']['token']);
+                  //           UiUtilites.successSnackbar(
+                  //               'Signin Successfully.', 'Success!');
+                  //           Get.toNamed(AppRoutes.mainview);
+                  //         } else {
+                  //           UiUtilites.errorSnackbar(
+                  //               'ERROR!', 'Email register for some other user');
+                  //         }
+                  //       }
+                  //     }
+                  //   },
+                  // ),
                   Gap(30.h),
                   AuthRichText(
                     title: 'Don’t have an account ? ',
                     description: 'Sign Up',
-                     titlesize: 14.sp,
-                      titlefontweight: FontWeight.w400,
-                      descriptionfontweight: FontWeight.w600,
-                      descriptiosize: 14.sp,
-                      descriptionColor: AppColors.primary_color,
-                    onTap: () {Get.toNamed(AppRoutes.signup);},
-                  )
+                    titlesize: 14.sp,
+                    titlefontweight: FontWeight.w400,
+                    descriptionfontweight: FontWeight.w600,
+                    descriptiosize: 14.sp,
+                    descriptionColor: AppColors.primary_color,
+                    onTap: () {
+                      Get.toNamed(AppRoutes.signup);
+                    },
+                  ),
+                
                 ],
               ),
             ),
