@@ -19,8 +19,7 @@ class RegisterApi {
     String url = '${baseUrl}/register';
 
     //* DATA
-    // final token = await FirebaseMessaging.instance.getToken();
-
+    final token = await FirebaseMessaging.instance.getToken();
     var data = {
       'name': name,
       'password': password,
@@ -32,7 +31,7 @@ class RegisterApi {
       // 'login_type': 'EMAIL',
       'dob': dob,
       'beacon_id': beaconId,
-      // 'fcm_token': token,
+      'fcm_token': token,    //! 1233456789 Yeee Remove kr dena just dekhny k liy lagaya k yee code ma ny add kiaaa ha
     };
 
     //! Make the POST request using ApiService
