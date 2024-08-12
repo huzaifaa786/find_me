@@ -19,7 +19,8 @@ class RegisterApi {
     String url = '${baseUrl}/register';
 
     //* DATA
-    final token = await FirebaseMessaging.instance.getToken();
+    // final token = await FirebaseMessaging.instance.getToken();
+    final token = null;
     var data = {
       'name': name,
       'password': password,
