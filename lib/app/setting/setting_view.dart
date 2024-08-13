@@ -25,101 +25,103 @@ class SettingView extends StatelessWidget {
                 scrolledUnderElevation: 0,
               ),
               body: SafeArea(
-                  child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 34.w),
-                child: Column(
-                  children: [
-                    Gap(4.h),
-
-                    //Gap(12.h),
-
-                    CardSetting(
-                        text: 'Subscriptions',
-                        image: 'assets/icons/star.svg',
-                        ontap: () {
-                          Get.toNamed(AppRoutes.subscriptions);
-                        }),
-                    Gap(12.h),
-                    CardSetting(
-                        text: 'Account',
-                        image: 'assets/icons/user.svg',
-                        ontap: () {
-                         Get.toNamed(AppRoutes.useraccount);
-                        
-                        }),
-                    Gap(12.h),
-                    CardSetting(
-                        text: 'Privacy',
-                        image: 'assets/icons/lock (1).svg',
-                        ontap: () {
-                          Get.toNamed(AppRoutes.privacy);
-                        }),
-                    Gap(12.h),
-                    CardSetting(
-                        text: 'Notifications Permissions',
-                        image: 'assets/icons/bell (1).svg',
-                        ontap: () {
-                          Get.toNamed(AppRoutes.notificationsPermissions);
-                        }),
-                    Gap(12.h),
-                    CardSetting(
-                        text: 'Language',
-                        image: 'assets/icons/globe.svg',
-                        ontap: () {
-                          Get.toNamed(AppRoutes.language);
-                        }),
-                    Gap(12.h),
-                    CardSetting(
-                        text: 'Report a problem',
-                        image: 'assets/icons/help-circle.svg',
-                        ontap: () {
-                          Get.toNamed(AppRoutes.report);
-                        }),
-                    Gap(12.h),
-                    CardSetting(
-                        text: 'Location',
-                        image: 'assets/icons/map-pin.svg',
-                        ontap: () {
-                          Get.toNamed(AppRoutes.location);
-                        }),
-                    Gap(12.h),
-                    CardSetting(
-                        text: 'Support',
-                        image: 'assets/icons/headphones.svg',
-                        ontap: () {
-                          Get.toNamed(AppRoutes.support);
-                        }),
-                    Gap(12.h),
-                    CardSetting(
-                        text: 'Terms & Policies',
-                        image: 'assets/icons/shield.svg',
-                        ontap: () {
-                          Get.toNamed(AppRoutes.policies);
-                        }),
-                    Gap(90.h),
-                    GestureDetector(
-                      onTap: () async {
-                        UiUtilites.logoutSuccessAlert(context, () async {
-                          GetStorage box = GetStorage();
-                          await box.remove('api_token');
-                          await box.remove('beacon_id');
-                          Get.offAllNamed(AppRoutes.intro);
-                        }, () {
-                          Get.back();
-                        });
-                      },
-                      child: PrefixIconButton(
-                        height: 55.h,
-                        width: 304.w,
-                        title: 'Log out',
-                        textColors: Colors.red,
-                        borderColor: Colors.red,
-                        image: 'assets/icons/log-out.svg',
-                      ),
-                    )
-                  ],
-                ),
-              )),
+                  child: SingleChildScrollView(
+                    child: Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 34.w),
+                                  child: Column(
+                    children: [
+                      Gap(4.h),
+                    
+                      //Gap(12.h),
+                    
+                      CardSetting(
+                          text: 'Subscriptions',
+                          image: 'assets/icons/star.svg',
+                          ontap: () {
+                            Get.toNamed(AppRoutes.subscriptions);
+                          }),
+                      Gap(12.h),
+                      CardSetting(
+                          text: 'Account',
+                          image: 'assets/icons/user.svg',
+                          ontap: () {
+                           Get.toNamed(AppRoutes.useraccount);
+                          
+                          }),
+                      Gap(12.h),
+                      CardSetting(
+                          text: 'Privacy',
+                          image: 'assets/icons/lock (1).svg',
+                          ontap: () {
+                            Get.toNamed(AppRoutes.privacy);
+                          }),
+                      Gap(12.h),
+                      CardSetting(
+                          text: 'Notifications Permissions',
+                          image: 'assets/icons/bell (1).svg',
+                          ontap: () {
+                            Get.toNamed(AppRoutes.notificationsPermissions);
+                          }),
+                      Gap(12.h),
+                      CardSetting(
+                          text: 'Language',
+                          image: 'assets/icons/globe.svg',
+                          ontap: () {
+                            Get.toNamed(AppRoutes.language);
+                          }),
+                      Gap(12.h),
+                      CardSetting(
+                          text: 'Report a problem',
+                          image: 'assets/icons/help-circle.svg',
+                          ontap: () {
+                            Get.toNamed(AppRoutes.report);
+                          }),
+                      Gap(12.h),
+                      CardSetting(
+                          text: 'Location',
+                          image: 'assets/icons/map-pin.svg',
+                          ontap: () {
+                            Get.toNamed(AppRoutes.location);
+                          }),
+                      Gap(12.h),
+                      CardSetting(
+                          text: 'Support',
+                          image: 'assets/icons/headphones.svg',
+                          ontap: () {
+                            Get.toNamed(AppRoutes.support);
+                          }),
+                      Gap(12.h),
+                      CardSetting(
+                          text: 'Terms & Policies',
+                          image: 'assets/icons/shield.svg',
+                          ontap: () {
+                            Get.toNamed(AppRoutes.policies);
+                          }),
+                      Gap(60.h),
+                      GestureDetector(
+                        onTap: () async {
+                          UiUtilites.logoutSuccessAlert(context, () async {
+                            GetStorage box = GetStorage();
+                            await box.remove('api_token');
+                            await box.remove('beacon_id');
+                            Get.offAllNamed(AppRoutes.intro);
+                          }, () {
+                            Get.back();
+                          });
+                        },
+                        child: PrefixIconButton(
+                          height: 55.h,
+                          width: 304.w,
+                          title: 'Log out',
+                          textColors: Colors.red,
+                          borderColor: Colors.red,
+                          image: 'assets/icons/log-out.svg',
+                        ),
+                      )
+                    ],
+                                    ),
+                                  ),
+                  )),
             ));
   }
 }

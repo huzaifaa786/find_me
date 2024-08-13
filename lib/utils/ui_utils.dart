@@ -247,7 +247,7 @@ class UiUtilites {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Wiliam Smith',
+                                    'Wiliam Smith'.tr,
                                     style: TextStyle(
                                         color: AppColors.white,
                                         fontSize: 20.sp,
@@ -255,7 +255,7 @@ class UiUtilites {
                                   ),
                                   Gap(5.h),
                                   Text(
-                                    'Ui Designer',
+                                    'Ui Designer'.tr,
                                     style: TextStyle(
                                         color: AppColors.white,
                                         fontSize: 10.sp,
@@ -294,7 +294,7 @@ class UiUtilites {
                               Column(
                                 children: [
                                   Text(
-                                    'logo',
+                                    'logo'.tr,
                                     style: TextStyle(
                                         color: AppColors.white,
                                         fontSize: 14.sp,
@@ -460,7 +460,7 @@ class UiUtilites {
                         Padding(
                           padding: EdgeInsets.symmetric(vertical: 50.0),
                           child: PrefixIconButton(
-                            title: 'Download',
+                            title: 'Download'.tr,
                             height: 53.0.h,
                             width: 320.0.w,
                             color: AppColors.primary_color,
@@ -534,7 +534,7 @@ class UiUtilites {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       AppText(
-                          title: 'Done!',
+                          title: 'Done!'.tr,
                           textAlign: TextAlign.center,
                           fontWeight: FontWeight.w500,
                           size: 18,
@@ -543,7 +543,7 @@ class UiUtilites {
                   ),
                   Gap(5),
                   AppText(
-                    title: 'You have ',
+                    title: 'You have'.tr,
                     textAlign: TextAlign.center,
                     fontWeight: FontWeight.w400,
                     size: 14.sp,
@@ -562,7 +562,7 @@ class UiUtilites {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        '${coins} coins',
+                        '${coins} coins'.tr,
                         style: TextStyle(
                             fontSize: 13, fontWeight: FontWeight.w500),
                       ),
@@ -572,7 +572,7 @@ class UiUtilites {
                   AppButton(
                     height: 50.0.h,
                     width: 50.0.w,
-                    title: 'Back to home',
+                    title: 'Back to home'.tr,
                     onTap: () {
                       Get.offAllNamed(AppRoutes.mainview);
                     },
@@ -614,7 +614,7 @@ class UiUtilites {
                       width: 100.w,
                     ),
                     AppText(
-                      title: "Done!",
+                      title: "Done!".tr,
                       fontWeight: FontWeight.w600,
                       size: 14.sp,
                     ),
@@ -638,7 +638,7 @@ class UiUtilites {
                         ),
                         child: Center(
                           child: AppText(
-                            title: "Confirm",
+                            title: "Confirm".tr,
                             textAlign: TextAlign.center,
                             color: AppColors.white,
                             fontWeight: FontWeight.w500,
@@ -715,7 +715,7 @@ class UiUtilites {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     AppText(
-                      title: 'No coins enough!',
+                      title: 'No coins enough!'.tr,
                       textAlign: TextAlign.center,
                       fontWeight: FontWeight.w500,
                       size: 12,
@@ -725,7 +725,7 @@ class UiUtilites {
                 ),
                 Gap(10),
                 AppText(
-                  title: 'purchase some coins to get \nmore emojis.',
+                  title: 'purchase some coins to get \n more emojis'.tr,
                   textAlign: TextAlign.center,
                   fontWeight: FontWeight.w400,
                   size: 10.sp,
@@ -735,7 +735,7 @@ class UiUtilites {
                 AppButton(
                   height: 50.0.h,
                   width: 50.0.w,
-                  title: 'Purchase',
+                  title: 'Purchase'.tr,
                   onTap: () {
                     Get.back();
                     Get.toNamed(AppRoutes.coinsstore);
