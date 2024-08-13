@@ -8,6 +8,7 @@ import 'package:find_me/app/notifications/components/notification_tile.dart';
 import 'package:find_me/app/notifications/components/subscription_notification.dart';
 import 'package:find_me/app/notifications/notifications_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
+import 'package:find_me/models/notification_model.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,6 +18,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
+
+NotificationModel? notifications;
 
 class NotificationsView extends StatelessWidget {
   NotificationsView({super.key});
@@ -52,138 +55,151 @@ class NotificationsView extends StatelessWidget {
                     ),
                   ),
                 ),
-                NotificationPermissionTile(
-                  img:
-                      'https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
-                  msg: 'Ahmed mohammed wants to send you a file',
-                  onAccepttap: () {
-                    print('accept');
-                  },
-                  onRejecttap: () {
-                    print('reject');
-                  },
-                ),
-                Gap(11.h),
-                Divider(
-                  thickness: 1,
-                  color: AppColors.black.withOpacity(0.08),
-                  height: 1,
-                ),
-                Gap(6.h),
-                NotificationTile(
-                  isrejected: true,
-                  buttonclr: true,
-                  status: 1,
-                  img:
-                      'https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
-                  msg: 'Khaledx4  sent you a file',
-                  ontap: () {
-                    print('view file');
+
+                ListView.builder(
+                  itemCount: controller.notificationss.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      onTap: () async {},
+                      title: Text(controller.notificationss[index].title!),
+                      subtitle: Text(
+                        controller.notificationss[index].body.toString(),
+                      ),
+                    );
                   },
                 ),
-                Gap(15.h),
-                Divider(
-                  thickness: 1,
-                  color: AppColors.black.withOpacity(0.08),
-                  height: 1,
-                ),
-                Gap(6.h),
-                NotificationTile(
-                  isrejected: true,
-                  buttonclr: true,
-                  status: 2,
-                  img:
-                      'https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
-                  msg: 'Khaledx4  sent you a emoji',
-                  ontap: () {
-                    print('view file');
-                  },
-                ),
-                Gap(15.h),
-                Divider(
-                  thickness: 1,
-                  color: AppColors.black.withOpacity(0.08),
-                  height: 1,
-                ),
-                Gap(25.h),
-                SubscriptionNotificationTile(
-                  daycount: '3',
-                  title: 'Three days left!',
-                  msg:
-                      'There are three days left until your subscription to the weekly package ends',
-                  ontap: () {
-                    print('view sub');
-                  },
-                ),
-                Gap(15.h),
-                Divider(
-                  thickness: 1,
-                  color: AppColors.black.withOpacity(0.08),
-                  height: 1,
-                ),
-                Gap(6.h),
-                NotificationTile(
-                  isrejected: false,
-                  buttonclr: false,
-                  status: 3,
-                  img:
-                      'https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
-                  msg: 'Khaledx4  sent you a emoji',
-                  ontap: () {
-                    print('view file');
-                  },
-                ),
-                Gap(15.h),
-                Divider(
-                  thickness: 1,
-                  color: AppColors.black.withOpacity(0.08),
-                  height: 1,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    bottom: 18,
-                    top: 21,
-                  ),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Yesterday",
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                          fontSize: 14.sp, fontWeight: FontWeight.w600),
-                    ),
-                  ),
-                ),
-                //
+                // NotificationPermissionTile(
+                //   img:
+                //       'https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
+                //   msg: 'Ahmed mohammed wants to send you a file',
+                //   onAccepttap: () {
+                //     print('accept');
+                //   },
+                //   onRejecttap: () {
+                //     print('reject');
+                //   },
+                // ),
+                // Gap(11.h),
+                // Divider(
+                //   thickness: 1,
+                //   color: AppColors.black.withOpacity(0.08),
+                //   height: 1,
+                // ),
+                // Gap(6.h),
+                // NotificationTile(
+                //   isrejected: true,
+                //   buttonclr: true,
+                //   status: 1,
+                //   img:
+                //       'https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
+                //   msg: 'Khaledx4  sent you a file',
+                //   ontap: () {
+                //     print('view file');
+                //   },
+                // ),
                 // Gap(15.h),
-                NotificationPermissionTile(
-                  img:
-                      'https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
-                  msg: 'Ahmed mohammed wants to send you a file',
-                  onAccepttap: () {
-                    print('accept');
-                  },
-                  onRejecttap: () {
-                    print('reject');
-                  },
-                ),
-                Gap(15.h),
-                Divider(
-                  thickness: 1,
-                  color: AppColors.black.withOpacity(0.08),
-                  height: 1,
-                ),
-                Gap(24.h),
-                SubscriptionNotificationTile(
-                  daycount: '3',
-                  title: 'Three days left!',
-                  msg:
-                      'There are three days left until your subscription to the weekly package ends',
-                  ontap: () {
-                    print('view sub');
-                  },
-                ),
-                Gap(15.h),
+                // Divider(
+                //   thickness: 1,
+                //   color: AppColors.black.withOpacity(0.08),
+                //   height: 1,
+                // ),
+                // Gap(6.h),
+                // NotificationTile(
+                //   isrejected: true,
+                //   buttonclr: true,
+                //   status: 2,
+                //   img:
+                //       'https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
+                //   msg: 'Khaledx4  sent you a emoji',
+                //   ontap: () {
+                //     print('view file');
+                //   },
+                // ),
+                // Gap(15.h),
+                // Divider(
+                //   thickness: 1,
+                //   color: AppColors.black.withOpacity(0.08),
+                //   height: 1,
+                // ),
+                // Gap(25.h),
+                // SubscriptionNotificationTile(
+                //   daycount: '3',
+                //   title: 'Three days left!',
+                //   msg:
+                //       'There are three days left until your subscription to the weekly package ends',
+                //   ontap: () {
+                //     print('view sub');
+                //   },
+                // ),
+                // Gap(15.h),
+                // Divider(
+                //   thickness: 1,
+                //   color: AppColors.black.withOpacity(0.08),
+                //   height: 1,
+                // ),
+                // Gap(6.h),
+                // NotificationTile(
+                //   isrejected: false,
+                //   buttonclr: false,
+                //   status: 3,
+                //   img:
+                //       'https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
+                //   msg: 'Khaledx4  sent you a emoji',
+                //   ontap: () {
+                //     print('view file');
+                //   },
+                // ),
+                // Gap(15.h),
+                // Divider(
+                //   thickness: 1,
+                //   color: AppColors.black.withOpacity(0.08),
+                //   height: 1,
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(
+                //     bottom: 18,
+                //     top: 21,
+                //   ),
+                //   child: Align(
+                //     alignment: Alignment.centerLeft,
+                //     child: Text(
+                //       "Yesterday",
+                //       textAlign: TextAlign.start,
+                //       style: TextStyle(
+                //           fontSize: 14.sp, fontWeight: FontWeight.w600),
+                //     ),
+                //   ),
+                // ),
+                // //
+                // // Gap(15.h),
+                // NotificationPermissionTile(
+                //   img:
+                //       'https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
+                //   msg: 'Ahmed mohammed wants to send you a file',
+                //   onAccepttap: () {
+                //     print('accept');
+                //   },
+                //   onRejecttap: () {
+                //     print('reject');
+                //   },
+                // ),
+                // Gap(15.h),
+                // Divider(
+                //   thickness: 1,
+                //   color: AppColors.black.withOpacity(0.08),
+                //   height: 1,
+                // ),
+                // Gap(24.h),
+                // SubscriptionNotificationTile(
+                //   daycount: '3',
+                //   title: 'Three days left!',
+                //   msg:
+                //       'There are three days left until your subscription to the weekly package ends',
+                //   ontap: () {
+                //     print('view sub');
+                //   },
+                // ),
+                // Gap(15.h),
               ],
             ),
           ),

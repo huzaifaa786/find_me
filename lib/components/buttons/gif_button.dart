@@ -1,7 +1,7 @@
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/images/images.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class GifButton extends StatelessWidget {
   final VoidCallback onTap;

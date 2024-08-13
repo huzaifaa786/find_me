@@ -1,6 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AlertCard extends StatelessWidget {
   @override
@@ -32,7 +33,7 @@ class AlertCard extends StatelessWidget {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    'Ramei66',
+                    'Ramei66'.tr,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -52,7 +53,7 @@ class AlertCard extends StatelessWidget {
                       ),
                       SizedBox(width: 5),
                       Text(
-                        'Online',
+                        'Online'.tr,
                         style: TextStyle(
                           fontSize: 14,
                         ),
@@ -80,7 +81,7 @@ class AlertCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Swipe to send',
+                        'Swipe to send'.tr,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,

@@ -3,21 +3,23 @@ import 'package:find_me/utils/base_url.dart';
 
 class ForgotPasswordApi {
   static Future<Map<String, dynamic>> forgotpassword({
-     String? phone,
-    String?  email,
+    String? phone,
+    String? email,
     String? type,
   }) async {
     String url = '$baseUrl/forgetpassword';
-    var data = {'phone': phone,
-                 'email':email,
-                 'type':type,
+    var data = {
+      'phone': phone,
+      'email': email,
+      'type': type,
     };
     var response = await DioService.post(url: url, data: data);
     return response;
   }
-    static Future<Map<String, dynamic>> verifyOtp({
-     String? type,
-     String? otp,
+
+  static Future<Map<String, dynamic>> verifyOtp({
+    String? type,
+    String? otp,
     String? email,
     String? phone,
   }) async {
@@ -31,5 +33,4 @@ class ForgotPasswordApi {
     var response = await DioService.post(url: url, data: data);
     return response;
   }
- 
 }

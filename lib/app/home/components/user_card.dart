@@ -36,7 +36,7 @@ class UserCard extends StatelessWidget {
                 border: Border.all(color: Colors.grey, width: 0.1),
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(38.5.h), // Half of the height and width
+                borderRadius: BorderRadius.circular(38.5.h), 
                 child: !isBlur
                     ? user.currentProfile!.imageUrl != null
                         ? CachedNetworkImage(
