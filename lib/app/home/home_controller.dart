@@ -24,6 +24,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:location/location.dart';
 import 'package:permission_handler/permission_handler.dart';
 // ignore: implementation_imports
 import 'package:flutter_ble_peripheral/src/models/periodic_advertise_settings.dart';
@@ -36,13 +37,7 @@ class HomeController extends GetxController {
 
   Timer? _advertisingTimer; // Define a Timer variable
 
-  AdvertiseData advertiseData = AdvertiseData(
-    serviceUuid: 'bf27730d-860a-4e09-889c-2d8b6a9e0fe7',
-    manufacturerId: 1234,
-    localName: "MEEEEEEEEEEEEEEEEEEEEEEE",
-    includePowerLevel: true,
-    manufacturerData: Uint8List.fromList([1, 2, 3]),
-  );
+  AdvertiseData? advertiseData;
 
   final PeriodicAdvertiseSettings periodicAdvertiseSettings =
       PeriodicAdvertiseSettings(interval: 10);
@@ -140,7 +135,7 @@ class HomeController extends GetxController {
     isSupported = await FlutterBlePeripheral().isSupported;
     await requestPermissions();
 
-    if (!await FlutterBluePlus.isOn) {
+    if (Platform.isAndroid) {
       await FlutterBluePlus.turnOn();
     }
 
@@ -149,35 +144,32 @@ class HomeController extends GetxController {
     }
 
     String id = box.read('beacon_id');
+
+    print('advertise honay lga haaaaa');
+    print(id);
     advertiseData = AdvertiseData(
       serviceUuid: id,
-      manufacturerId: 1234,
-      localName: "MEEEEEEEEEEEEEEEEEEEEEEE",
+      localName: "tritec kodes here",
       includePowerLevel: true,
-      manufacturerData: Uint8List.fromList([1, 2, 3]),
     );
     update();
     startPeriodicAdvertising(); // Start the periodic advertising
   }
 
   Future<void> startPeriodicAdvertising() async {
-    if (!await FlutterBluePlus.isOn) {
-      Get.snackbar("Bluetooth", "Please turn on Bluetooth to start advertising",
-          snackPosition: SnackPosition.BOTTOM);
-      return;
+    if(Platform.isAndroid){
+          if (!await FlutterBluePlus.isOn) {
+        Get.snackbar(
+            "Bluetooth", "Please turn on Bluetooth to start advertising",
+            snackPosition: SnackPosition.BOTTOM);
+        return;
+      }
     }
-
-    if (!await Permission.locationWhenInUse.isGranted) {
-      Get.snackbar(
-          "Location", "Please turn on location services to start advertising",
-          snackPosition: SnackPosition.BOTTOM);
-      return;
-    }
-
     _advertisingTimer?.cancel(); // Cancel any existing timer
-    _advertisingTimer = Timer.periodic(Duration(seconds: 5), (timer) async {
+    print('cgii chapak dum dum');
+    _advertisingTimer = Timer.periodic(Duration(seconds: 10), (timer) async {
       await FlutterBlePeripheral().start(
-        advertiseData: advertiseData,
+        advertiseData: advertiseData!,
         advertiseSetParameters: advertiseSetParameters,
         advertisePeriodicData: advertiseData,
         periodicAdvertiseSettings: periodicAdvertiseSettings,
@@ -196,7 +188,7 @@ class HomeController extends GetxController {
     } else {
       try {
         await FlutterBlePeripheral().start(
-          advertiseData: advertiseData,
+          advertiseData: advertiseData!,
           advertiseSetParameters: advertiseSetParameters,
           advertisePeriodicData: advertiseData,
           periodicAdvertiseSettings: periodicAdvertiseSettings,
@@ -208,6 +200,20 @@ class HomeController extends GetxController {
   }
 
   Future<void> requestPermissions() async {
+
+    Location location = new Location();
+
+    bool _serviceEnabled;
+
+    _serviceEnabled = await location.serviceEnabled();
+    
+    if (!_serviceEnabled) {
+      _serviceEnabled = await location.requestService();
+      if (!_serviceEnabled) {
+        return;
+      }
+    }
+    await location.requestPermission();
     final permissions = [
       Permission.bluetoothAdvertise,
       Permission.bluetoothConnect,
