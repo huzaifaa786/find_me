@@ -28,14 +28,14 @@
 	<true/>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>Find Me needs access to your location access to find nearby users</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Find Me needs access to your location access to find nearby users</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Find Me needs access to your location access to find nearby users</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Find Me needs access to your location access to find nearby users</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Find Me needs access to your location access to find nearby users</string>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-    <string>Find Me needs access to your location access to find nearby users</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UIBackgroundModes</key>
