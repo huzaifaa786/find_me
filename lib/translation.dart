@@ -8,7 +8,7 @@ class LocaleString extends Translations {
           "My coins": "My coins",
           "Purchased coins": "Purchased coins",
           "Are You Sure, you want to logout!":
-              "Are You Sure, you want to logout!",
+          "Are You Sure, you want to logout!",
           "Yes": "Yes",
           "No": "No",
           "Wiliam Smith": "Wiliam Smith",
@@ -33,14 +33,20 @@ class LocaleString extends Translations {
           "Password can't be empty": "Password can't be empty",
           "Password must be 6 characters long":
               "Password must be 6 characters long",
-              "First name can't be empty": "First name can't be empty",
+          "First name can't be empty": "First name can't be empty",
           "Last name can't be empty": "Last name can't be empty",
           "User name can't be empty": "User name can't be empty",
           "Email can't be empty": "Email can't be empty",
           "Invalid Email Address": "Invalid Email Address",
-          "Ramei66":"Ramei66",
-          "Online":"Online",
-          "Swipe to send":"Swipe to send",
+          "Ramei66": "Ramei66",
+          "Online": "Online",
+          "Swipe to send": "Swipe to send",
+          ' First Name':' First Name',
+          ' Last Name' :' Last Name' ,
+          "Email":"Email",
+          "Mobile Number":"Mobile Number",
+          "Birthday":"Birthday",
+          "Username":"Username",
         },
         'ar_AE': {
           "Promo code not found": "لم يتم العثور على الرمز الترويجي",
@@ -74,9 +80,17 @@ class LocaleString extends Translations {
           "User name can't be empty": "",
           "Email can't be empty": "",
           "Invalid Email Address": "",
-          "Ramei66":"",
-          "Online":"",
-          "Swipe to send":"",
+          "Ramei66": "",
+          "Online": "",
+          "Swipe to send": "",
+          ' First Name':"",
+          ' Last Name':"",
+           "Email":"",
+          "Mobile Number":"",
+          "Birthday":"",
+          "Username":"",
+
+          
         }
       };
 }

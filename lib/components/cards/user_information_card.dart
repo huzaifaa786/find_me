@@ -4,6 +4,7 @@ import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class UserInformationCard extends StatelessWidget {
   const UserInformationCard({
@@ -57,11 +58,11 @@ class UserInformationCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  ' First Name',
+                  ' First Name'.tr,
                   style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
                 ),
                 Text(
-                  ' Last Name',
+                  ' Last Name'.tr,
                   style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
                 ),
               ],
@@ -111,7 +112,7 @@ class UserInformationCard extends StatelessWidget {
           ),
           ListTile(
             title: Text(
-              'Username',
+              'Username'.tr,
               style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
             ),
             subtitle: Text(
@@ -130,7 +131,7 @@ class UserInformationCard extends StatelessWidget {
           ),
           ListTile(
             title: Text(
-              'Birthday',
+              'Birthday'.tr,
               style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
             ),
             subtitle: Text(
@@ -149,7 +150,7 @@ class UserInformationCard extends StatelessWidget {
           ),
           ListTile(
             title: Text(
-              'Mobile Number',
+              'Mobile Number'.tr,
               style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
             ),
             subtitle: Text(
@@ -168,7 +169,7 @@ class UserInformationCard extends StatelessWidget {
           ),
           ListTile(
             title: Text(
-              'Email',
+              'Email'.tr,
               style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
             ),
             subtitle: Text(
