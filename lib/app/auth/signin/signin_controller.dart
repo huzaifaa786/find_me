@@ -31,8 +31,7 @@ class SignInController extends GetxController {
   }
 
   loginUser() async {
-    // final token = await FirebaseMessaging.instance.getToken();
-    final token = null;
+    final token = await FirebaseMessaging.instance.getToken();
 
     Map<String, dynamic> response = await LoginApi.loginUser(
         password: passwordController.text,
