@@ -3,6 +3,8 @@ import 'package:find_me/models/user_model.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+
 import 'package:get_storage/get_storage.dart';
 import 'package:intl_phone_field/countries.dart';
 import 'package:intl_phone_field/helpers.dart';
@@ -51,7 +53,6 @@ class SignUpController extends GetxController {
     pcontroller.clear();
     update();
     if (checkphoneController != null) phoneValidation(checkphoneController);
-    
   }
 
   phoneValidation(phone) {
@@ -114,6 +115,8 @@ class SignUpController extends GetxController {
   }
 
   registerUser() async {
+    final token = await FirebaseMessaging.instance.getToken();
+
     String dob =
         '${yearController.text}-${monthController.text}-${dayController.text}';
     // Generate a UUID for the device's beacon ID
@@ -128,6 +131,7 @@ class SignUpController extends GetxController {
         lastName: lastNameController.text,
         gender: gender,
         dob: dob,
+        token: token,
         beaconId: beaconId);
     if (response.isNotEmpty) {
       Get.offAllNamed(AppRoutes.otp, arguments: phoneController);

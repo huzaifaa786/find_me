@@ -2,7 +2,6 @@ import 'package:find_me/services/dio_service.dart';
 import 'package:find_me/utils/base_url.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
-
 class RegisterApi {
   static Future<Map<String, dynamic>> registerUser({
     String? name,
@@ -12,8 +11,9 @@ class RegisterApi {
     String? email,
     String? phone,
     String? dob,
+    String? token,
     String? gender,
-    String? beaconId, 
+    String? beaconId,
   }) async {
     //* URL
     String url = '${baseUrl}/register';
@@ -23,7 +23,7 @@ class RegisterApi {
     var data = {
       'name': name,
       'password': password,
-      'phone':phone,
+      'phone': phone,
       'email': email,
       'first_name': firstName,
       'last_name': lastName,
@@ -31,7 +31,7 @@ class RegisterApi {
       // 'login_type': 'EMAIL',
       'dob': dob,
       'beacon_id': beaconId,
-      'fcm_token': token,    //! 1233456789 Yeee Remove kr dena just dekhny k liy lagaya k yee code ma ny add kiaaa ha
+      'fcm_token': token,
     };
 
     //! Make the POST request using ApiService
@@ -53,6 +53,4 @@ class RegisterApi {
     var response = await DioService.post(url: url, data: data);
     return response;
   }
-
-
 }
