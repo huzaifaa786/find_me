@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+
 class Validators {
   static String? emailValidator(String? email) {
     print(email);
@@ -8,9 +10,9 @@ class Validators {
     if (email == null) {
       return null;
     } else if (email.isEmpty) {
-      return "Email can't be empty";
+      return "Email can't be empty".tr;
     } else if (!emailRegExp.hasMatch(email)) {
-      return "Invalid Email Address";
+      return "Invalid Email Address".tr;
     } else {
       return null;
     }
@@ -23,7 +25,7 @@ class Validators {
     if (value == null) {
       return null;
     } else if (value.isEmpty) {
-      return "$key can't be empty";
+      return "$key can't be empty".tr;
     } else {
       return null;
     }
@@ -37,9 +39,9 @@ class Validators {
     if (password == null) {
       return null;
     } else if (password.isEmpty) {
-      return "Password can't be empty";
+      return "Password can't be empty".tr;
     } else if (password.length < 6) {
-      return "Password must be 6 characters long";
+      return "Password must be 6 characters long".tr;
     } else {
       return null;
     }
@@ -49,11 +51,11 @@ class Validators {
   static String? confrimPasswordValidator(
       String? newpassword, String? confirmPassword) {
     if (confirmPassword!.isEmpty) {
-      return "Password can't be empty";
+      return "Password can't be empty".tr;
     } else if (newpassword == confirmPassword) {
       return null;
     } else {
-      return "Password and confirm password are not same!";
+      return "Password and confirm password are not same!".tr;
     }
   }
 }

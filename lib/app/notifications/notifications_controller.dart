@@ -8,7 +8,7 @@ import 'dart:developer';
 class NotificationsController extends GetxController {
   static NotificationsController instanse = Get.find();
   final bool status = false;
-  NotificationModel? notification;
+  // NotificationModel? notification;
 
   @override
   void onInit() {
@@ -16,14 +16,17 @@ class NotificationsController extends GetxController {
     super.onInit();
     notifications();
   }
-  List<NotificationModel> notificationss = [];
 
+  List<NotificationModel> notificationss = [];
 
   notifications() async {
     var response = await GetNotificationsApi.getNotifications();
     log('$response');
     if (response.isNotEmpty) {
-      notification = NotificationModel.fromjson(response['notifications']);
+      notificationss = (response['notifications'] as List<dynamic>)
+          .map((notifications) => NotificationModel.fromjson(notifications))
+          .toList();
+
       GetStorage box = GetStorage();
       update();
       box.read("api_token");

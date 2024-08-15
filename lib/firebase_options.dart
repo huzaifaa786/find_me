@@ -41,49 +41,49 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAjDPFuatKOtGrz0ClLoMVWrSpBwmPrqyI',
-    appId: '1:951030714207:web:285205224aed2efa32f0ea',
-    messagingSenderId: '951030714207',
-    projectId: 'findme-82dd5',
-    authDomain: 'findme-82dd5.firebaseapp.com',
-    storageBucket: 'findme-82dd5.appspot.com',
-    measurementId: 'G-YDLWBFGBEW',
+    apiKey: 'AIzaSyDbAGcrvEvN8g9WklpHmXJrfN3Qn7AXwIk',
+    appId: '1:279723335521:web:96b6ae87fe78cff716af20',
+    messagingSenderId: '279723335521',
+    projectId: 'findme-69e77',
+    authDomain: 'findme-69e77.firebaseapp.com',
+    storageBucket: 'findme-69e77.appspot.com',
+    measurementId: 'G-4K8DSH10G7',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAM8C31Q--h0sFyU8OCAlqxDbvv3EJsg1s',
-    appId: '1:951030714207:android:117214afb26132c232f0ea',
-    messagingSenderId: '951030714207',
-    projectId: 'findme-82dd5',
-    storageBucket: 'findme-82dd5.appspot.com',
+    apiKey: 'AIzaSyDl7wgXKbymjz-aW7kM5y3cnmmvPa5cLK0',
+    appId: '1:279723335521:android:f8ae6a5fe75c826816af20',
+    messagingSenderId: '279723335521',
+    projectId: 'findme-69e77',
+    storageBucket: 'findme-69e77.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBKgaJMyvw_fuYqqkKMQtvqQ7bxbWXh73k',
-    appId: '1:951030714207:ios:554a20d8b577702d32f0ea',
-    messagingSenderId: '951030714207',
-    projectId: 'findme-82dd5',
-    storageBucket: 'findme-82dd5.appspot.com',
-    iosBundleId: 'com.tritec.findMe',
+    apiKey: 'AIzaSyC9vsV9WL-ekSKmCGC6bFB-QyZKHe8cbCg',
+    appId: '1:279723335521:ios:e5480cf0661d2e8b16af20',
+    messagingSenderId: '279723335521',
+    projectId: 'findme-69e77',
+    storageBucket: 'findme-69e77.appspot.com',
+    iosBundleId: 'com.tritec.findMee',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBKgaJMyvw_fuYqqkKMQtvqQ7bxbWXh73k',
-    appId: '1:951030714207:ios:554a20d8b577702d32f0ea',
-    messagingSenderId: '951030714207',
-    projectId: 'findme-82dd5',
-    storageBucket: 'findme-82dd5.appspot.com',
+    apiKey: 'AIzaSyC9vsV9WL-ekSKmCGC6bFB-QyZKHe8cbCg',
+    appId: '1:279723335521:ios:6bc31aee059257d816af20',
+    messagingSenderId: '279723335521',
+    projectId: 'findme-69e77',
+    storageBucket: 'findme-69e77.appspot.com',
     iosBundleId: 'com.tritec.findMe',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyAjDPFuatKOtGrz0ClLoMVWrSpBwmPrqyI',
-    appId: '1:951030714207:web:2d8aa7d00b90a33432f0ea',
-    messagingSenderId: '951030714207',
-    projectId: 'findme-82dd5',
-    authDomain: 'findme-82dd5.firebaseapp.com',
-    storageBucket: 'findme-82dd5.appspot.com',
-    measurementId: 'G-FPG11ZCVQB',
+    apiKey: 'AIzaSyDbAGcrvEvN8g9WklpHmXJrfN3Qn7AXwIk',
+    appId: '1:279723335521:web:4f25eb4c3d56d8a316af20',
+    messagingSenderId: '279723335521',
+    projectId: 'findme-69e77',
+    authDomain: 'findme-69e77.firebaseapp.com',
+    storageBucket: 'findme-69e77.appspot.com',
+    measurementId: 'G-TCSR26K4BC',
   );
 
 }

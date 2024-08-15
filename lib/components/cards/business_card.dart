@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 
 class BusinessCard extends StatelessWidget {
   const BusinessCard(
@@ -177,7 +178,7 @@ class BusinessCard extends StatelessWidget {
                   Column(
                     children: [
                       Text(
-                        'logo',
+                        'logo'.tr,
                         style: TextStyle(
                           color: AppColors.white,
                           fontSize: 14,

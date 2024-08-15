@@ -1,8 +1,9 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/app/auth/components/auth_appbar.dart';
 import 'package:find_me/app/auth/components/auth_rich_text.dart';
+import 'package:find_me/app/notifications/components/notification_card.dart';
 import 'package:find_me/app/notifications/components/notification_permission.dart';
 import 'package:find_me/app/notifications/components/notification_tile.dart';
 import 'package:find_me/app/notifications/components/subscription_notification.dart';
@@ -58,16 +59,23 @@ class NotificationsView extends StatelessWidget {
 
                 ListView.builder(
                   itemCount: controller.notificationss.length,
+                  shrinkWrap: true,
+                  physics: AlwaysScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
-                    return ListTile(
-                      onTap: () async {},
-                      title: Text(controller.notificationss[index].title!),
-                      subtitle: Text(
-                        controller.notificationss[index].body.toString(),
-                      ),
+                    final item = controller.notificationss[index];
+                    return Notificationscard(
+                      item: item,
                     );
+                    // ListTile(
+                    //   onTap: () async {},
+                    //   title: Text(controller.notificationss[index].title!),
+                    //   subtitle: Text(
+                    //     controller.notificationss[index].body.toString(),
+                    //   ),
+                    // );
                   },
                 ),
+                
                 // NotificationPermissionTile(
                 //   img:
                 //       'https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',

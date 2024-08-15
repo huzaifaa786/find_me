@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:find_me/components/helper/loading.dart';
 import 'package:find_me/utils/ui_utils.dart';
+import 'package:get/get.dart';
 
 
 import 'package:get_storage/get_storage.dart';
@@ -20,7 +21,7 @@ class DioService {
       log(url.toString());
       log(data.toString());
       log(_dio.options.headers.toString());
-      Response response = await _dio.post(
+      var response = await _dio.post(
         url!,
         data: data,
         options: Options(
@@ -40,7 +41,7 @@ class DioService {
       LoadingHelper.show();
       _setHeaders();
       log(url!);
-      Response response = await _dio.get(url,
+      var response = await _dio.get(url,
           queryParameters: data,
           options: Options(
             validateStatus: (status) => [200, 422].contains(status),
@@ -71,22 +72,22 @@ class DioService {
   }
 
   //* HANDLE RESPONSE HERE
-  static Map<String, dynamic> _handleResponse(Response response) {
+  static Future<Map<String, dynamic>> _handleResponse(var response) async {
     if (response.statusCode == 200) {
       var res = jsonDecode(response.toString());
       if (!res['error']) {
         LoadingHelper.dismiss();
         return jsonDecode(response.toString());
       } else {
-        _handleError(res['error_data']);
+        _handleError(res['error_data'.tr]);
         return {};
       }
     } else if (response.statusCode == 422) {
       var showError = jsonDecode(response.toString());
-      _handleError(showError['message']);
+      _handleError(showError['message'.tr]);
       return {};
     } else {
-      _handleError('Failed to load data');
+      _handleError('Failed to load data'.tr);
       return {};
     }
   }
@@ -94,6 +95,6 @@ class DioService {
   //* HANDLE ERROR MESSAGE HERE
   static void _handleError(dynamic e) {
     LoadingHelper.dismiss();
-    UiUtilites.errorSnackbar('Error!', e.toString());
+    UiUtilites.errorSnackbar('Error!'.tr, e.toString());
   }
 }
