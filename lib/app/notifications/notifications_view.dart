@@ -11,13 +11,11 @@ import 'package:find_me/app/notifications/notifications_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/models/notification_model.dart';
 
-
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
-
 
 NotificationModel? notifications;
 
@@ -56,28 +54,25 @@ class NotificationsView extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(
-                height: Get.height,
-                  child: ListView.builder(
-                    itemCount: controller.notificationss.length,
-                    shrinkWrap: true,
-                    physics: AlwaysScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      final item = controller.notificationss[index];
-                      return Notificationscard(
-                        item: item,
-                      );
-                      // ListTile(
-                      //   onTap: () async {},
-                      //   title: Text(controller.notificationss[index].title!),
-                      //   subtitle: Text(
-                      //     controller.notificationss[index].body.toString(),
-                      //   ),
-                      // );
-                    },
-                  ),
+                ListView.builder(
+                  itemCount: controller.notificationss.length,
+                  shrinkWrap: true,
+                  physics: AlwaysScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    final item = controller.notificationss[index];
+                    return Notificationscard(
+                      item: item,
+                    );
+                    // ListTile(
+                    //   onTap: () async {},
+                    //   title: Text(controller.notificationss[index].title!),
+                    //   subtitle: Text(
+                    //     controller.notificationss[index].body.toString(),
+                    //   ),
+                    // );
+                  },
                 ),
-                
+
                 // NotificationPermissionTile(
                 //   img:
                 //       'https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
