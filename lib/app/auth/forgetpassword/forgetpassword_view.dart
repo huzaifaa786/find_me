@@ -4,16 +4,11 @@ import 'package:find_me/app/auth/forgetpassword/forgetpassword_controller.dart';
 import 'package:find_me/app/auth/forgetpassword/toggle_screens/email_view.dart';
 import 'package:find_me/app/auth/forgetpassword/toggle_screens/phone_number%20view.dart';
 import 'package:find_me/components/appbars/topbar.dart';
-import 'package:find_me/components/buttons/app_button.dart';
-import 'package:find_me/components/textfields/app_textfields.dart';
-import 'package:find_me/components/textfields/phone_inputfield.dart';
-import 'package:find_me/routes/app_routes.dart';
+
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
-import 'package:find_me/utils/images/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:toggle_switch/toggle_switch.dart';
@@ -53,7 +48,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         AppText(
-                          title: 'Forgot password!',
+                          title: 'Forgot password!'.tr,
                           fontWeight: FontWeight.w500,
                           size: 20.sp,
                         )
@@ -64,7 +59,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         AppText(
-                          title: 'Choose email or phone number to continue!',
+                          title: 'Choose email or phone number to continue!'.tr,
                           fontWeight: FontWeight.w400,
                           size: 10.sp,
                           color: AppColors.borderGrey,
@@ -100,7 +95,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                         inactiveFgColor: Colors.black,
                         initialLabelIndex: currentIndex,
                         totalSwitches: 2,
-                        labels: ['Email', 'Phone Number'],
+                        labels: ['Email'.tr, 'Phone Number'.tr],
                         radiusStyle: true,
                         onToggle: onToggle1,
                       ),

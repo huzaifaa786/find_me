@@ -22,7 +22,7 @@ class ChangePhoneNumberView extends StatelessWidget {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           forceMaterialTransparency: true,
-          title: Flexible(child: topBar(name: 'Change Phone Number',padding: EdgeInsets.only(left: 20,right: 20))),
+          title: Flexible(child: topBar(name: 'Change Phone Number'.tr,padding: EdgeInsets.only(left: 20,right: 20))),
         ),
         body: SafeArea(
             child: SingleChildScrollView(
@@ -33,7 +33,7 @@ class ChangePhoneNumberView extends StatelessWidget {
                 Gap(109.h),
                 Center(
                     child: Text(
-                  'Enter your new phone number',
+                  'Enter your new phone number'.tr,
                   style: TextStyle(
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w500,
@@ -49,7 +49,7 @@ class ChangePhoneNumberView extends StatelessWidget {
                 ),
                 Gap(173.h),
                 AppButton(
-                  title: 'Confirm',
+                  title: 'Confirm'.tr,
                   height: 50.0.h,
                   width: 304.0.w,
                   onTap: () {

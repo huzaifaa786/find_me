@@ -32,7 +32,7 @@ class _LanguagesViewState extends State<LanguagesView> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 83.h,
-        title: topBar(name: 'Languages'),
+        title: topBar(name: 'Languages'.tr),
         automaticallyImplyLeading: false,
         scrolledUnderElevation: 0,
       ),
@@ -64,7 +64,7 @@ class _LanguagesViewState extends State<LanguagesView> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               AppText(
-                                title: 'English (United States)',
+                                title: 'English (United States)'.tr,
                                 size: 14,
                                 fontWeight: FontWeight.w400,
                                 color:
@@ -74,7 +74,7 @@ class _LanguagesViewState extends State<LanguagesView> {
                               ),
                               Gap(5.h),
                               AppText(
-                                title: 'Default',
+                                title: 'Default'.tr,
                                 size: 12,
                                 fontWeight: FontWeight.w400,
                                 color: AppColors.hintGrey,

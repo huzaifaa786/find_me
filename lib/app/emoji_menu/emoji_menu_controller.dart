@@ -44,7 +44,7 @@ class EmojiMenuController extends GetxController {
     );
     print( box.read("api_token"));
     if (response.isNotEmpty) {
-      UiUtilites.successSnackbar("Emoji added successfully", "");
+      UiUtilites.successSnackbar("Emoji added successfully".tr, "");
       Get.back();
     }
   }

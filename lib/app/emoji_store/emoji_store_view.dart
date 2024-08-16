@@ -25,7 +25,7 @@ class _EmojiStoreViewState extends State<EmojiStoreView> {
                 automaticallyImplyLeading: false,
                 forceMaterialTransparency: true,
                 title: topBar(
-                  name: "Emoji store",
+                  name: "Emoji store".tr,
                   showBackIcon: false,
                 ),
               ),
@@ -45,8 +45,8 @@ class _EmojiStoreViewState extends State<EmojiStoreView> {
                           iconHeight: 59.h,
                           iconWidth: 62.w,
                           padding: EdgeInsets.only(top: 18, bottom: 20),
-                          title: "Emojis menu ",
-                          subtitle: "Free & paid emojis.",
+                          title: "Emojis menu".tr,
+                          subtitle: "Free & paid emojis.".tr,
                           show: true,
                           onTap: () {
                             Get.toNamed(AppRoutes.edit_menu);
@@ -59,8 +59,8 @@ class _EmojiStoreViewState extends State<EmojiStoreView> {
                           padding: EdgeInsets.only(top: 8, bottom: 28),
                           iconHeight: 74.49.h,
                           iconWidth: 93.52.w,
-                          title: "My emojis  ",
-                          subtitle: "Favorites & purchased.",
+                          title: "My Emojis".tr,
+                          subtitle: "Favorites & purchased.".tr,
                           show: false,
                           onTap: () {
                             Get.toNamed(AppRoutes.my_emojis);
@@ -78,7 +78,7 @@ class _EmojiStoreViewState extends State<EmojiStoreView> {
                           padding: EdgeInsets.only(top: 29, bottom: 44),
                           icon: "assets/images/gift_box.png",
                           iconGap: 16,
-                          title: "Gifted emojis ",
+                          title: "Gifted emojis".tr,
                           iconHeight: 64.0.h,
                           iconWidth: 64.0.w,
                           show: false,

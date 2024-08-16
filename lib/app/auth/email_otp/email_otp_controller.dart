@@ -31,7 +31,7 @@ class EmailOtpController extends GetxController {
     if (response.isNotEmpty) {
       Get.offAndToNamed(AppRoutes.useraccount);
       UiUtilites.registerSuccessAlert(
-          Get.context, "Your email has been changed successfully!");
+          Get.context, "Your email has been changed successfully!".tr);
     }
   }
 
@@ -45,7 +45,7 @@ class EmailOtpController extends GetxController {
     if (email != null) {
       var response = await ChangeEmailApi.changeEmail(email!);
       if (response.isNotEmpty) {
-        UiUtilites.successSnackbar("Otp sent", "Otp Sent Successfully");
+        UiUtilites.successSnackbar("Otp sent".tr, "Otp Sent Successfully".tr);
       }
     }
   }

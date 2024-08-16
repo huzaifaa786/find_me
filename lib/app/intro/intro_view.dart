@@ -24,13 +24,13 @@ class IntroView extends StatelessWidget {
             children: [
               Gap(133.h),
               AppText(
-                title: 'Find Me!',
+                title: 'Find Me!'.tr,
                 fontWeight: FontWeight.w600,
                 size: 40.sp,
               ),
               Gap(28.h),
               AppText(
-                title: 'Easy way to find me.',
+                title: 'Easy way to find me.'.tr,
                 size: 16.sp,
                 fontWeight: FontWeight.w500,
                 color: AppColors.black.withOpacity(0.81),
@@ -39,7 +39,7 @@ class IntroView extends StatelessWidget {
               GifButton(onTap: () {}, showOpacity: true),
               Gap(94.h),
               AppButton(
-                title: 'Sign Up',
+                title: 'Sign Up'.tr,
                 height: 60.0.h,
                 width: 304.0.w,
                 color: AppColors.black,
@@ -50,8 +50,8 @@ class IntroView extends StatelessWidget {
               ),
               Gap(30.h),
                AuthRichText(
-                    title: 'Already have an account ? ',
-                    description: 'Sign in',
+                    title: 'Already have an account ?'.tr,
+                    description: 'Sign in'.tr,
                      titlesize: 14.sp,
                       titlefontweight: FontWeight.w400,
                       descriptionfontweight: FontWeight.w600,

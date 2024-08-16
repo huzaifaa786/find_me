@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 
 class PoliciesView extends StatelessWidget {
   const PoliciesView({super.key});
@@ -19,7 +20,7 @@ class PoliciesView extends StatelessWidget {
         toolbarHeight: 83.h,
         automaticallyImplyLeading: false,
         scrolledUnderElevation: 0,
-        title: topBar(name: 'Terms & Policies'),
+        title: topBar(name: 'Terms & Policies'.tr),
       ),
       body: SafeArea(
           child: Column(

@@ -4,22 +4,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/app/account/components/social_media_icon.dart';
 import 'package:find_me/app/account/profile/profile_controller.dart';
-import 'package:find_me/app/gifted_emoji/components/emojis_card.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/cards/business_card.dart';
-
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/box_decoration/box_decoration.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
+
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
@@ -38,7 +34,7 @@ class _ProfileViewState extends State<ProfileView> {
               appBar: AppBar(
                 scrolledUnderElevation: 0,
                 automaticallyImplyLeading: false,
-                title: topBar(name: 'Account', showBackIcon: true),
+                title: topBar(name: 'Account'.tr, showBackIcon: true),
               ),
               body: controller.userModel != null
                   ? SafeArea(
@@ -149,7 +145,7 @@ class _ProfileViewState extends State<ProfileView> {
                                             MainAxisAlignment.center,
                                         children: [
                                           AppText(
-                                              title: 'Edit bio',
+                                              title: 'Edit bio'.tr,
                                               size: 11.sp,
                                               fontWeight: FontWeight.w500,
                                               color: AppColors.primary_color),
@@ -170,7 +166,7 @@ class _ProfileViewState extends State<ProfileView> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        "Find me on:",
+                                        "Find me on:".tr,
                                         style: TextStyle(
                                             fontSize: 14.sp,
                                             fontWeight: FontWeight.w500),
@@ -187,7 +183,7 @@ class _ProfileViewState extends State<ProfileView> {
                                           child: Row(
                                             children: [
                                               AppText(
-                                                  title: 'Edit',
+                                                  title: 'Edit'.tr,
                                                   size: 12.sp,
                                                   fontWeight: FontWeight.w600,
                                                   color:
@@ -290,7 +286,7 @@ class _ProfileViewState extends State<ProfileView> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        "My business card",
+                                        "My business card".tr,
                                         style: TextStyle(
                                             fontSize: 14.sp,
                                             fontWeight: FontWeight.w500),
@@ -312,7 +308,7 @@ class _ProfileViewState extends State<ProfileView> {
                                               child: Row(
                                                 children: [
                                                   AppText(
-                                                      title: 'Edit',
+                                                      title: 'Edit'.tr,
                                                       size: 12.sp,
                                                       fontWeight:
                                                           FontWeight.w600,
@@ -414,7 +410,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                           SvgPicture.asset(
                                                               "assets/icons/business_card.svg"),
                                                           Text(
-                                                            "Create business card",
+                                                            "Create business card".tr,
                                                             style: TextStyle(
                                                                 color: AppColors
                                                                     .primary_color,
@@ -461,7 +457,7 @@ class _ProfileViewState extends State<ProfileView> {
                               Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  "Favorites ",
+                                  "Favorites ".tr,
                                   style: TextStyle(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.w500),

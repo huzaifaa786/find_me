@@ -26,7 +26,7 @@ class _LocationViewState extends State<LocationView> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 83.h,
-        title: topBar(name: 'Location', showBackIcon: true),
+        title: topBar(name: 'Location'.tr, showBackIcon: true),
         automaticallyImplyLeading: false,
         scrolledUnderElevation: 0,
       ),
@@ -46,7 +46,7 @@ class _LocationViewState extends State<LocationView> {
                         child: AppText(
                           textAlign: TextAlign.left,
                           title:
-                              'Allow the application to access \n your location',
+                              'Allow the application to access \n your location'.tr,
                           size: 13.sp,
                           fontWeight: FontWeight.w500,
                         ),
@@ -69,8 +69,8 @@ class _LocationViewState extends State<LocationView> {
 
                             Get.snackbar(
                               duration: 5.seconds,
-                              'Permission Denied',
-                              'Location permission is required to enable this feature.',
+                              'Permission Denied'.tr,
+                              'Location permission is required to enable this feature.'.tr,
                               snackPosition: SnackPosition.BOTTOM,
                             );
                           }
@@ -83,7 +83,7 @@ class _LocationViewState extends State<LocationView> {
                     alignment: Alignment.centerLeft,
                     child: AppText(
                       title:
-                          "Note that we wish to have this functionality in ON.",
+                          "Note that we wish to have this functionality in ON.".tr,
                       size: 10,
                       fontWeight: FontWeight.w400,
                       color: AppColors.hintGrey,

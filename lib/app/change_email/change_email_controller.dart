@@ -12,11 +12,11 @@ class ChangeEmailController extends GetxController {
     if (emailController.text.isNotEmpty) {
       var response = await ChangeEmailApi.changeEmail(emailController.text);
       if (response.isNotEmpty) {
-        UiUtilites.successSnackbar("Otp sent successfully", "");
+        UiUtilites.successSnackbar("Otp sent successfully".tr, "");
         Get.toNamed(AppRoutes.email_otp, arguments: emailController.text);
       }
     } else {
-      UiUtilites.errorSnackbar("", "Email can't be empty");
+      UiUtilites.errorSnackbar("", "Email can't be empty".tr);
     }
   }
 }

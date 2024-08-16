@@ -26,7 +26,7 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
       builder: (controller) => Scaffold(
         appBar: AppBar(
           toolbarHeight: 83.h,
-          title: topBar(name: 'Coins store', showBackIcon: false),
+          title: topBar(name: 'Coins store'.tr, showBackIcon: false),
           scrolledUnderElevation: 0,
           automaticallyImplyLeading: false,
         ),
@@ -41,7 +41,7 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
                     Column(
                       children: [
                         Text(
-                          'My coins'.tr,
+                          'My Coins'.tr,
                           style: TextStyle(
                               fontSize: 16.sp, fontWeight: FontWeight.w600),
                         ),
@@ -73,7 +73,7 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
                   color: Colors.grey.withOpacity(0.3),
                 ),
                 Text(
-                  'Purchased coins'.tr,
+                  'Purchased Coins'.tr,
                   style:
                       TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
                 ),
@@ -94,9 +94,9 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
                       return CardCoins(
                         width: 100.w,
                         height: 100.h,
-                        bottomText: '${coinPackageModel.price} AED',
+                        bottomText: '${coinPackageModel.price} AED'.tr,
                         img: 'assets/images/coin_icon_big.png',
-                        text: '${coinPackageModel.coins} coins',
+                        text: '${coinPackageModel.coins} Coins'.tr,
                         imageHeight: 60.h,
                         imageWidth: 60.w,
                         onTap: () {

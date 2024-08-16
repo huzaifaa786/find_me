@@ -17,13 +17,13 @@ class BeaconBroadcasterView extends StatelessWidget {
               appBar: AppBar(
                 automaticallyImplyLeading: false,
                 scrolledUnderElevation: 0,
-                title: topBar(name: 'Beacon BroadCaster'),
+                title: topBar(name: 'Beacon BroadCaster'.tr),
               ),
               body: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text('Is supported: ${controller.isSupported}'),
+                    Text('Is supported: ${controller.isSupported}'.tr),
                     StreamBuilder(
                       stream: FlutterBlePeripheral().onPeripheralStateChanged,
                       initialData: PeripheralState.unknown,
@@ -42,12 +42,12 @@ class BeaconBroadcasterView extends StatelessWidget {
                     //       return Text('Data received: ${snapshot.data}');
                     //     },),
                     Text(
-                        'Current UUID: ${controller.advertiseData.serviceUuid}'),
+                        'Current UUID: ${controller.advertiseData.serviceUuid}'.tr),
                     // Text('Current UUID: ${advertiseData.serviceUuids ?? advertiseData.serviceUuid}'),
                     MaterialButton(
                       onPressed: controller.toggleAdvertise,
                       child: Text(
-                        'Toggle advertising',
+                        'Toggle advertising'.tr,
                         style: Theme.of(context)
                             .primaryTextTheme
                             .labelLarge!
@@ -65,7 +65,7 @@ class BeaconBroadcasterView extends StatelessWidget {
                         );
                       },
                       child: Text(
-                        'Start advertising',
+                        'Start advertising'.tr,
                         style: Theme.of(context)
                             .primaryTextTheme
                             .labelLarge!
@@ -77,7 +77,7 @@ class BeaconBroadcasterView extends StatelessWidget {
                         await FlutterBlePeripheral().stop();
                       },
                       child: Text(
-                        'Stop advertising',
+                        'Stop advertising'.tr,
                         style: Theme.of(context)
                             .primaryTextTheme
                             .labelLarge!
@@ -98,14 +98,14 @@ class BeaconBroadcasterView extends StatelessWidget {
                                 .enableBluetooth(askUser: false);
                             if (enabled) {
                               UiUtilites.successSnackbar(
-                                  "Bluetooth!", "Bluetooth enabled!");
+                                  "Bluetooth!".tr, "Bluetooth enabled!".tr);
                             } else {
                               UiUtilites.errorSnackbar(
-                                  "Bluetooth!", "Bluetooth not enabled!");
+                                  "Bluetooth!".tr, "Bluetooth not enabled!".tr);
                             }
                           },
                           child: Text(
-                            'Enable Bluetooth (ANDROID)',
+                            'Enable Bluetooth (ANDROID)'.tr,
                             style: Theme.of(context)
                                 .primaryTextTheme
                                 .labelLarge!
@@ -120,14 +120,14 @@ class BeaconBroadcasterView extends StatelessWidget {
                             await FlutterBlePeripheral().enableBluetooth();
                         if (enabled) {
                           UiUtilites.successSnackbar(
-                              "Bluetooth!", "Bluetooth enabled!");
+                              "Bluetooth!".tr, "Bluetooth enabled!".tr);
                         } else {
                           UiUtilites.errorSnackbar(
-                              "Bluetooth!", "Bluetooth not enabled!");
+                              "Bluetooth!".tr, "Bluetooth not enabled!".tr);
                         }
                       },
                       child: Text(
-                        'Ask if enable Bluetooth (ANDROID)',
+                        'Ask if enable Bluetooth (ANDROID)'.tr,
                         style: Theme.of(context)
                             .primaryTextTheme
                             .labelLarge!
@@ -137,7 +137,7 @@ class BeaconBroadcasterView extends StatelessWidget {
                     MaterialButton(
                       onPressed: controller.requestPermissions,
                       child: Text(
-                        'Request Permissions',
+                        'Request Permissions'.tr,
                         style: Theme.of(context)
                             .primaryTextTheme
                             .labelLarge!
@@ -147,7 +147,7 @@ class BeaconBroadcasterView extends StatelessWidget {
                     MaterialButton(
                       onPressed: controller.hasPermissions,
                       child: Text(
-                        'Has permissions',
+                        'Has permissions'.tr,
                         style: Theme.of(context)
                             .primaryTextTheme
                             .labelLarge!
@@ -158,7 +158,7 @@ class BeaconBroadcasterView extends StatelessWidget {
                       onPressed: () =>
                           FlutterBlePeripheral().openBluetoothSettings(),
                       child: Text(
-                        'Open bluetooth settings',
+                        'Open bluetooth settings'.tr,
                         style: Theme.of(context)
                             .primaryTextTheme
                             .labelLarge!

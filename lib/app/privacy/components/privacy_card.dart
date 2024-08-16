@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 
 class PrivacyCard extends StatefulWidget {
   PrivacyCard(
@@ -61,14 +62,14 @@ class _PrivacyCardState extends State<PrivacyCard> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: AppText(
-                  title: "Profile",
+                  title: "Profile".tr,
                   size: 14.sp,
                   fontWeight: FontWeight.w500,
                 ),
               ),
               Gap(27),
               TextSwitchButton(
-                title: "Grant access",
+                title: "Grant access".tr,
                 value: widget.publicValue,
                 size: 12.sp,
                 FontWeight: FontWeight.w400,
@@ -79,7 +80,7 @@ class _PrivacyCardState extends State<PrivacyCard> {
                 alignment: Alignment.centerLeft,
                 child: AppText(
                   title:
-                      "When your account is public , your profile can be \n  viewed by anyone on find me .",
+                      "When your account is public , your profile can be \n  viewed by anyone on find me .".tr,
                   size: 10,
                   fontWeight: FontWeight.w400,
                   color: AppColors.hintGrey,
@@ -95,14 +96,14 @@ class _PrivacyCardState extends State<PrivacyCard> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: AppText(
-                  title: "Social media & Business card",
+                  title: "Social media & Business card".tr,
                   size: 14.sp,
                   fontWeight: FontWeight.w500,
                 ),
               ),
               Gap(27),
               TextSwitchButton(
-                title: "Grant access",
+                title: "Grant access".tr,
                 size: 12.sp,
                 FontWeight: FontWeight.w400,
                 value: widget.socialValue,
@@ -113,7 +114,7 @@ class _PrivacyCardState extends State<PrivacyCard> {
                 alignment: Alignment.centerLeft,
                 child: AppText(
                   title:
-                      "When your profile is private , only people you grant \n  access after receiving a request will be able to look \n  into your profile .",
+                      "When your profile is private , only people you grant \n  access after receiving a request will be able to look \n  into your profile .".tr,
                   size: 10,
                   fontWeight: FontWeight.w400,
                   color: AppColors.hintGrey,

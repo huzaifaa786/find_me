@@ -25,7 +25,7 @@ class _EditUrlViewState extends State<EditUrlView> {
               appBar: AppBar(
                 scrolledUnderElevation: 0,
                 automaticallyImplyLeading: false,
-                title: topBar(showBackIcon: true, name: "Edit URL’s"),
+                title: topBar(showBackIcon: true, name: "Edit URL’s".tr),
               ),
               body: SafeArea(
                 child: SingleChildScrollView(
@@ -36,7 +36,7 @@ class _EditUrlViewState extends State<EditUrlView> {
                         Gap(71),
                         AppTextFields(
                           icon: "assets/icons/whatsapp1.svg",
-                          hintText: "Whatsapp Url",
+                          hintText: "Whatsapp Url".tr,
                           controller: controller.whatsappController,
                           width: 40.w,
                           height: 40.h,
@@ -44,7 +44,7 @@ class _EditUrlViewState extends State<EditUrlView> {
                         Gap(24),
                         AppTextFields(
                           icon: "assets/icons/linkedin.svg",
-                          hintText: " Linkedin Url",
+                          hintText: "Linkedin Url".tr,
                           controller: controller.linkedinController,
                           width: 30.w,
                           height: 30.h,
@@ -52,7 +52,7 @@ class _EditUrlViewState extends State<EditUrlView> {
                         Gap(24),
                         AppTextFields(
                           icon: "assets/icons/instagram_black.svg",
-                          hintText: "Instagram Url",
+                          hintText: "Instagram Url".tr,
                           controller: controller.instagramController,
                           width: 30.w,
                           height: 30.h,
@@ -60,7 +60,7 @@ class _EditUrlViewState extends State<EditUrlView> {
                         Gap(24),
                         AppTextFields(
                           icon: "assets/icons/tiktok_black.svg",
-                          hintText: "TikTok Url",
+                          hintText: "TikTok Url".tr,
                           controller: controller.tiktokController,
                           width: 30.w,
                           height: 30.h,
@@ -68,7 +68,7 @@ class _EditUrlViewState extends State<EditUrlView> {
                         Gap(24),
                         AppTextFields(
                           icon: "assets/icons/twitter-x 1.svg",
-                          hintText: "X Url",
+                          hintText: "X Url".tr,
                           controller: controller.xController,
                           width: 30.w,
                           height: 30.h,
@@ -76,7 +76,7 @@ class _EditUrlViewState extends State<EditUrlView> {
                         Gap(24),
                         AppTextFields(
                           icon: "assets/icons/telegram-plane.svg",
-                          hintText: "Telegram Url",
+                          hintText: "Telegram Url".tr,
                           controller: controller.telegramController,
                           width: 30.w,
                           height: 30.h,
@@ -84,7 +84,7 @@ class _EditUrlViewState extends State<EditUrlView> {
                         Gap(24),
                         AppTextFields(
                           icon: "assets/icons/snapchat.svg",
-                          hintText: "SnapChat Url",
+                          hintText: "SnapChat Url".tr,
                           controller: controller.snapchatController,
                           width: 30.w,
                           height: 30.h,
@@ -92,7 +92,7 @@ class _EditUrlViewState extends State<EditUrlView> {
                         Gap(24),
                         AppTextFields(
                           icon: "assets/icons/facebook_black.svg",
-                          hintText: "facebook Url",
+                          hintText: "facebook Url".tr,
                           controller: controller.facebookController,
                           width: 25.w,
                           height: 25.h,
@@ -100,7 +100,7 @@ class _EditUrlViewState extends State<EditUrlView> {
                         Gap(24),
                         AppTextFields(
                           icon: "assets/icons/youtube.svg",
-                          hintText: "YouTube Url",
+                          hintText: "YouTube Url".tr,
                           controller: controller.youtubeController,
                           width: 35.w,
                           height: 35.h,
@@ -108,7 +108,7 @@ class _EditUrlViewState extends State<EditUrlView> {
                         Gap(24),
                         AppTextFields(
                           icon: "assets/icons/gmail.svg",
-                          hintText: "Email Url",
+                          hintText: "Email Url".tr,
                           controller: controller.emailController,
                           width: 30.w,
                           height: 30.h,
@@ -120,7 +120,7 @@ class _EditUrlViewState extends State<EditUrlView> {
                             },
                             height: 46.h,
                             width: 280.w,
-                            title: "Update"),
+                            title: "Update".tr),
                         Gap(104),
                       ],
                     ),

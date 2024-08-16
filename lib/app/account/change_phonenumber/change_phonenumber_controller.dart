@@ -35,26 +35,26 @@ class ChangePhoneNumberController extends GetxController {
     if (phoneController != null) {
       var response = await ChangePhoneApi.changePhone(phoneController!);
       if (response.isNotEmpty) {
-        UiUtilites.successSnackbar("Otp sent successfully", "Success");
+        UiUtilites.successSnackbar("Otp sent successfully".tr, "Success".tr);
         Get.toNamed(AppRoutes.phoneOtp, arguments: phoneController);
       }
     } else {
-      UiUtilites.errorSnackbar("error", "Phone can't be empty");
+      UiUtilites.errorSnackbar("error".tr, "Phone can't be empty".tr);
     }
   }
 
   phoneValidation(phone) {
     if (!isNumeric(phone.number)) {
-      invalidNumberMessage = 'Use Numeric Variables';
+      invalidNumberMessage = 'Use Numeric Variables'.tr;
       update();
       return invalidNumberMessage;
     } else if (phone.number.length < selectedCountry!.minLength ||
         phone.number.length > selectedCountry!.maxLength) {
-      invalidNumberMessage = 'Invalid Phone Number';
+      invalidNumberMessage = 'Invalid Phone Number'.tr;
       update();
       return invalidNumberMessage;
     } else {
-      invalidNumberMessage = '';
+      invalidNumberMessage = 'Invalid Phone Number'.tr;
     }
     checkphoneController = phone;
     update();

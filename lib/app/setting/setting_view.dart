@@ -20,7 +20,7 @@ class SettingView extends StatelessWidget {
         builder: (controller) => Scaffold(
               appBar: AppBar(
                 toolbarHeight: 83.h,
-                title: topBar(name: 'Settings'),
+                title: topBar(name: 'Settings'.tr),
                 automaticallyImplyLeading: false,
                 scrolledUnderElevation: 0,
               ),
@@ -57,42 +57,42 @@ class SettingView extends StatelessWidget {
                           }),
                       Gap(12.h),
                       CardSetting(
-                          text: 'Notifications Permissions',
+                          text: 'Notifications Permissions'.tr,
                           image: 'assets/icons/bell (1).svg',
                           ontap: () {
                             Get.toNamed(AppRoutes.notificationsPermissions);
                           }),
                       Gap(12.h),
                       CardSetting(
-                          text: 'Language',
+                          text: 'Language'.tr,
                           image: 'assets/icons/globe.svg',
                           ontap: () {
                             Get.toNamed(AppRoutes.language);
                           }),
                       Gap(12.h),
                       CardSetting(
-                          text: 'Report a problem',
+                          text: 'Report a problem'.tr,
                           image: 'assets/icons/help-circle.svg',
                           ontap: () {
                             Get.toNamed(AppRoutes.report);
                           }),
                       Gap(12.h),
                       CardSetting(
-                          text: 'Location',
+                          text: 'Location'.tr,
                           image: 'assets/icons/map-pin.svg',
                           ontap: () {
                             Get.toNamed(AppRoutes.location);
                           }),
                       Gap(12.h),
                       CardSetting(
-                          text: 'Support',
+                          text: 'Support'.tr,
                           image: 'assets/icons/headphones.svg',
                           ontap: () {
                             Get.toNamed(AppRoutes.support);
                           }),
                       Gap(12.h),
                       CardSetting(
-                          text: 'Terms & Policies',
+                          text: 'Terms & Policies'.tr,
                           image: 'assets/icons/shield.svg',
                           ontap: () {
                             Get.toNamed(AppRoutes.policies);

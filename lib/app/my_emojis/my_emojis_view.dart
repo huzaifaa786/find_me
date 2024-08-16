@@ -24,7 +24,7 @@ class _MyEmojisViewState extends State<MyEmojisView> {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: topBar(
-            name: "My Emojis",
+            name: "My Emojis".tr,
             showBackIcon: true,
           ),
         ),

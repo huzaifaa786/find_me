@@ -1,4 +1,4 @@
-import 'package:animated_snack_bar/animated_snack_bar.dart';
+
 import 'package:find_me/api/profile_api/profile_api.dart';
 import 'package:find_me/models/user_profile_model.dart';
 import 'package:find_me/utils/ui_utils.dart';
@@ -77,12 +77,12 @@ class EditUrlController extends GetxController {
       );
 
       if (response.isNotEmpty) {
-        UiUtilites.successSnackbar("Updated successfully", "");
+        UiUtilites.successSnackbar("Updated successfully".tr, "");
       } else {
-      UiUtilites.errorSnackbar('Error', 'Failed to update URLs');
+      UiUtilites.errorSnackbar('Error'.tr, 'Failed to update URLs'.tr);
       }
     } catch (e) {
-      UiUtilites.errorSnackbar('Error', 'Failed to update URLs: $e');
+      UiUtilites.errorSnackbar('Error'.tr, 'Failed to update URLs: $e'.tr);
     }
   }
 }

@@ -1,4 +1,4 @@
-import 'package:find_me/api/auth_api/change_email_api.dart';
+
 import 'package:find_me/api/auth_api/change_phone_api.dart';
 import 'package:find_me/api/auth_api/otp_api.dart';
 import 'package:find_me/routes/app_routes.dart';
@@ -26,9 +26,9 @@ class PhoneOtpController extends GetxController {
     if (response.isNotEmpty) {
       Get.offAndToNamed(AppRoutes.useraccount);
       UiUtilites.registerSuccessAlert(
-          Get.context, "Phone Number has been changed successfully");
+          Get.context, "Phone Number has been changed successfully".tr);
     } else {
-      UiUtilites.errorSnackbar("error", "Phone Number  Not Change");
+      UiUtilites.errorSnackbar("error".tr, "Phone Number  Not Change".tr);
     }
   }
 
@@ -42,7 +42,7 @@ class PhoneOtpController extends GetxController {
     if (phone != null) {
       var response = await ChangePhoneApi.changePhone(phone!);
       if (response.isNotEmpty) {
-        UiUtilites.successSnackbar("Otp sent", "Otp Sent Successfully");
+        UiUtilites.successSnackbar("Otp sent".tr, "Otp Sent Successfully".tr);
       }
     }
   }

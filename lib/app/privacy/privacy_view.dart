@@ -25,7 +25,7 @@ class _PrivacyViewState extends State<PrivacyView> {
               automaticallyImplyLeading: false,
               scrolledUnderElevation: 0,
               title: topBar(
-                name: "Privacy",
+                name: "Privacy".tr,
                 showBackIcon: true,
               ),
             ),

@@ -1,9 +1,9 @@
-import 'dart:convert';
+
 import 'dart:io';
 
 import 'package:find_me/api/bluetooth_api/bluetooth_users_api.dart';
 import 'package:find_me/models/user_model.dart';
-import 'package:find_me/utils/ui_utils.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';

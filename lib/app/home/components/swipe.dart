@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 
 class SwipeToSendButton extends StatefulWidget {
   final VoidCallback onSend;
@@ -87,7 +88,7 @@ class _SwipeToSendButtonState extends State<SwipeToSendButton> {
                 opacity: _dragPosition > 0 && !_isSent ? 0.0 : 1.0,
                 duration: Duration(milliseconds: 300),
                 child: Text(
-                  _isSent ? 'Sent' : 'Swipe to send',
+                  _isSent ? 'Sent'.tr : 'Swipe to send'.tr,
                   style: TextStyle(
                     color: AppColors.white,
                     fontSize: 12.sp,

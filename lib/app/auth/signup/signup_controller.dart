@@ -57,12 +57,12 @@ class SignUpController extends GetxController {
 
   phoneValidation(phone) {
     if (!isNumeric(phone.number)) {
-      invalidNumberMessage = 'Use Numeric Variables';
+      invalidNumberMessage = 'Use Numeric Variables'.tr;
       update();
       return invalidNumberMessage;
     } else if (phone.number.length < selectedCountry!.minLength ||
         phone.number.length > selectedCountry!.maxLength) {
-      invalidNumberMessage = 'Invalid Phone Number';
+      invalidNumberMessage = 'Invalid Phone Number'.tr;
       update();
       return invalidNumberMessage;
     } else {

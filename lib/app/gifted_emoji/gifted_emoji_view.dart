@@ -6,7 +6,7 @@ import 'package:find_me/app/gifted_emoji/components/emojis_card.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
+
 import 'package:get/get.dart';
 
 class GiftedEmojiView extends StatefulWidget {
@@ -24,7 +24,7 @@ class _GiftedEmojiViewState extends State<GiftedEmojiView> {
               appBar: AppBar(
                   automaticallyImplyLeading: false,
                   forceMaterialTransparency: true,
-                  title: topBar(name: "Gifted Emoji", showBackIcon: true)),
+                  title: topBar(name: "Gifted Emoji".tr, showBackIcon: true)),
               body: SafeArea(
                 child: SingleChildScrollView(
                   child: Padding(

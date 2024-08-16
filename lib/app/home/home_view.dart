@@ -1,17 +1,16 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_interpolation_to_compose_strings, deprecated_member_use, avoid_unnecessary_containers, sized_box_for_whitespace
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:find_me/app/home/components/swipe.dart';
+
 import 'package:find_me/app/home/components/home_gif_button.dart';
 import 'package:find_me/app/home/components/home_appbar.dart';
 import 'package:find_me/app/home/components/user_card.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
@@ -73,7 +72,7 @@ class HomeView extends StatelessWidget {
                                           MainAxisSize.min, // Add this
                                       children: [
                                         AppText(
-                                          title: "Appears as ",
+                                          title: "Appears as".tr,
                                           color: AppColors.primary_color,
                                           size: 14.sp,
                                           fontWeight: FontWeight.w500,
@@ -110,7 +109,7 @@ class HomeView extends StatelessWidget {
                                                   ),
                                                   SizedBox(width: 10.w),
                                                   AppText(
-                                                    title: 'New profile 2',
+                                                    title: 'New Profile 2'.tr,
                                                     color:
                                                         AppColors.primary_color,
                                                     size: 14.sp,
@@ -137,7 +136,7 @@ class HomeView extends StatelessWidget {
                                                       SizedBox(width: 10.w),
                                                       AppText(
                                                         title:
-                                                            'Add new profile',
+                                                            'Add new profile'.tr,
                                                         color: AppColors
                                                             .primary_color,
                                                         size: 14.sp,
@@ -263,7 +262,7 @@ class HomeView extends StatelessWidget {
                               ? Center(
                                   heightFactor: 10.h,
                                   child: AppText(
-                                    title: 'Keep searching..',
+                                    title: 'Keep searching..'.tr,
                                     color: AppColors.black,
                                     textAlign: TextAlign.center,
                                     size: 14.sp,

@@ -31,7 +31,7 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                 forceMaterialTransparency: true,
                 toolbarHeight: 83.h,
                 title: topBar(
-                  name: "Emoji Menu",
+                  name: "Emoji Menu".tr,
                   showBackIcon: true,
                 ),
               ),

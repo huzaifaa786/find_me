@@ -2,6 +2,7 @@ import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class GenderRadioButtons extends StatefulWidget {
   final Function(String) onGenderSelected;
@@ -34,7 +35,7 @@ class _GenderRadioButtonsState extends State<GenderRadioButtons> {
               dense: true,
               contentPadding: EdgeInsets.zero,
               title: AppText(
-                title: 'Male',
+                title: 'Male'.tr,
                 size: 12.sp,
                 fontWeight: FontWeight.w400,
               ),
@@ -61,7 +62,7 @@ class _GenderRadioButtonsState extends State<GenderRadioButtons> {
               dense: true,
               contentPadding: EdgeInsets.zero,
               title: AppText(
-                title: 'Female',
+                title: 'Female'.tr,
                 size: 12.sp,
                 fontWeight: FontWeight.w400,
               ),
@@ -88,7 +89,7 @@ class _GenderRadioButtonsState extends State<GenderRadioButtons> {
               dense: true,
               contentPadding: EdgeInsets.zero,
               title: AppText(
-                title: 'Prefer not to say',
+                title: 'Prefer not to say'.tr,
                 size: 12.sp,
                 fontWeight: FontWeight.w400,
               ),

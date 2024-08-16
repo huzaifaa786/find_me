@@ -51,7 +51,7 @@ class PrivacyController extends GetxController {
     if (response.isNotEmpty) {
       print("Profile ID: $profileId updated");
     } else {
-      UiUtilites.errorSnackbar("Privacy Error", "error");
+      UiUtilites.errorSnackbar("Privacy Error".tr, "error".tr);
     }
 
     update();

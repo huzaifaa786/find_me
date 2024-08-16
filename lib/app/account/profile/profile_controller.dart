@@ -85,7 +85,7 @@ class ProfileController extends GetxController {
       } else if (response['profile'] != null) {
         profile = UserProfileModel.fromJson(response['profile']);
         update();
-                UiUtilites.successSnackbar("Emoji Gifted Successfully", "");
+                UiUtilites.successSnackbar("Emoji Gifted Successfully".tr, "");
 
       }
     }
