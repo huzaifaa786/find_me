@@ -24,7 +24,7 @@ class SocialLoginView extends StatelessWidget {
                 scrolledUnderElevation: 0,
                 toolbarHeight: 142.h,
                 title: topBarWithIcon(
-                    name: 'continue with',
+                    name: 'continue with'.tr,
                     name2: 'apple',
                     image: 'assets/icons/applelogo copy.svg'),
               ),
@@ -41,7 +41,7 @@ class SocialLoginView extends StatelessWidget {
                           ontap: () {}),
                       Gap(47.h),
                       AppTextFields(
-                        hintText: 'User name',
+                        hintText: 'User name'.tr,
                       ),
                       Gap(25),
                       PhoneInputField(
@@ -52,12 +52,12 @@ class SocialLoginView extends StatelessWidget {
                       ),
                       Gap(54),
                       AppButton(
-                        title: 'Submit',
+                        title: 'Submit'.tr,
                         height: 50.0.h,
                         width: 304.0.w,
                         onTap: () {
                           UiUtilites.registerSuccessAlert(
-                              context,'You have registreted successfully!');
+                              context,'You have registreted successfully!'.tr);
                         },
                       ),
                     ],

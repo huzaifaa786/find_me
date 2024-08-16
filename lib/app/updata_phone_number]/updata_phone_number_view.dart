@@ -26,7 +26,7 @@ class UpdataPhoneNumberView extends StatelessWidget {
               appBar: AppBar(
                 automaticallyImplyLeading: false,
                 scrolledUnderElevation: 0,
-                title: topBar(name: 'New Password'),
+                title: topBar(name: 'New Password'.tr),
               ),
               body: SafeArea(
                   child: Container(
@@ -39,7 +39,7 @@ class UpdataPhoneNumberView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         AppText(
-                          title: 'Enter New Phone Number',
+                          title: 'Enter New Phone Number'.tr,
                           fontWeight: FontWeight.w500,
                           size: 12.sp,
                           color: AppColors.hintGrey,
