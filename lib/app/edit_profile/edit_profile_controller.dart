@@ -13,10 +13,14 @@ import 'package:image_picker/image_picker.dart';
 class EditProfileController extends GetxController {
   static EditProfileController get instance => Get.find();
   List<Profile> profiles = [
-    Profile(name: 'Profile 1'.tr, image: null, isEditable: false, isLocked: false),
-    Profile(name: 'Profile 2'.tr, image: null, isEditable: true, isLocked: false),
-    Profile(name: 'Profile 3'.tr, image: null, isEditable: false, isLocked: true),
-    Profile(name: 'Profile 4'.tr, image: null, isEditable: false, isLocked: true),
+    Profile(
+        name: 'Profile 1'.tr, image: null, isEditable: false, isLocked: false),
+    Profile(
+        name: 'Profile 2'.tr, image: null, isEditable: true, isLocked: false),
+    Profile(
+        name: 'Profile 3'.tr, image: null, isEditable: false, isLocked: true),
+    Profile(
+        name: 'Profile 4'.tr, image: null, isEditable: false, isLocked: true),
   ];
 
   int selectedProfileIndex = 0;
@@ -131,7 +135,6 @@ class EditProfileController extends GetxController {
     }
     update();
   }
-
 }
 
 class Profile {

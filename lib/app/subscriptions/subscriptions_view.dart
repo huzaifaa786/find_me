@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, deprecated_member_use
 
 import 'package:find_me/app/home/components/home_gif_button.dart';
 import 'package:find_me/app/subscriptions/components/subscription_features.dart';
@@ -7,6 +7,7 @@ import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/buttons/app_button.dart';
 import 'package:find_me/components/buttons/gif_button.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
+import 'package:find_me/utils/images/images.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,7 +49,22 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Gap(30.h),
+                  Gap(28.h),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: SvgPicture.asset(
+                        ImagesConst.backIcon,
+                        height: 28.h,
+                        width: 28.w,
+                        fit: BoxFit.scaleDown,
+                      ),
+                    ),
+                  ),
+                  Gap(20.h),
                   SizedBox(
                       height: 110.h,
                       width: 110.w,
@@ -66,7 +82,8 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                   Gap(6),
                   Center(
                       child: Text(
-                    "1-month free trial \n then AED 4.99/month .cancle any time".tr,
+                    "1-month free trial \n then AED 4.99/month .cancle any time"
+                        .tr,
                     style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
                     textAlign: TextAlign.center,
                   )),
@@ -120,7 +137,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                                 color: AppColors.white,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 12.sp),
-                            children:  <TextSpan>[
+                            children: <TextSpan>[
                               TextSpan(
                                 text: 'AED 14.99 /mo'.tr,
                                 style: TextStyle(
@@ -132,7 +149,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                                     decorationThickness: 4),
                               ),
                               TextSpan(
-                                text: ' AED 5.99 /mo',
+                                text: 'AED 5.99 /mo'.tr,
                                 style: TextStyle(
                                   color: AppColors.white,
                                   fontSize: 12,
@@ -152,7 +169,8 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                       textAlign: TextAlign.center,
                       text: TextSpan(
                         text:
-                            "Recurring billing .By continuing , you verify that you are at least \n".tr,
+                            "Recurring billing .By continuing , you verify that you are at least \n"
+                                .tr,
                         style: TextStyle(
                           color: AppColors.hintGrey,
                           fontSize: 10,
@@ -184,7 +202,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                             ),
                           ),
                           TextSpan(
-                            text: ' Privacy \n'.tr,
+                            text: 'Privacy \n'.tr,
                             style: TextStyle(
                               color: AppColors.primary_color,
                               fontSize: 10,
@@ -193,7 +211,8 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                           ),
                           TextSpan(
                             text:
-                                'statment and retriction .no refunds for partial biling periods.\n'.tr,
+                                'statment and retriction .no refunds for partial biling periods.\n'
+                                    .tr,
                             style: TextStyle(
                               color: AppColors.hintGrey,
                               fontSize: 10,

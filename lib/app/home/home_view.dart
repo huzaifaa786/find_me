@@ -24,6 +24,11 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
       autoRemove: false,
+      initState: (state) {
+        Future.delayed(Duration(milliseconds: 100), () {
+          state.controller!.getUser();
+        });
+      },
       builder: (controller) => Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -135,8 +140,8 @@ class HomeView extends StatelessWidget {
                                                       ),
                                                       SizedBox(width: 10.w),
                                                       AppText(
-                                                        title:
-                                                            'Add new profile'.tr,
+                                                        title: 'Add new profile'
+                                                            .tr,
                                                         color: AppColors
                                                             .primary_color,
                                                         size: 14.sp,

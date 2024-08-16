@@ -45,7 +45,7 @@ class _EmojiStoreViewState extends State<EmojiStoreView> {
                           iconHeight: 59.h,
                           iconWidth: 62.w,
                           padding: EdgeInsets.only(top: 18, bottom: 20),
-                          title: "Emojis menu".tr,
+                          title: "Emojis Menu".tr,
                           subtitle: "Free & paid emojis.".tr,
                           show: true,
                           onTap: () {

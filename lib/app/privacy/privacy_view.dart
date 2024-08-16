@@ -19,52 +19,77 @@ class _PrivacyViewState extends State<PrivacyView> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<PrivacyController>(
-        builder: (controller) => Scaffold(
-            backgroundColor: AppColors.grey,
-            appBar: AppBar(
-              automaticallyImplyLeading: false,
-              scrolledUnderElevation: 0,
-              title: topBar(
-                name: "Privacy".tr,
-                showBackIcon: true,
-              ),
+      builder: (controller) {
+        // Determine the total number of profiles to display
+        final int totalProfiles = 4;
+
+        return Scaffold(
+          backgroundColor: AppColors.grey,
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            scrolledUnderElevation: 0,
+            title: topBar(
+              name: "Privacy".tr,
+              showBackIcon: true,
             ),
-            body: SafeArea(
-              child: SingleChildScrollView(
-                  child: SizedBox(
+          ),
+          body: SafeArea(
+            child: SingleChildScrollView(
+              child: SizedBox(
                 height: Get.height,
                 child: ListView.builder(
-                    itemCount: controller.userModel?.profiles?.length ?? 0,
-                    itemBuilder: (BuildContext context, int index) {
-                      final profileId =
-                          controller.userModel!.profiles![index].id;
-                      return PrivacyCard(
-                        publicValue: controller
-                                .profileGrantAccess[profileId.toString()] ??
-                            false,
-                        publicOnTab: (value) {
-                          controller.toggleProfileGrantAccess(
-                              profileId.toString(), value);
-                          controller.profilePrivacy(profileId.toString());
-                        },
-                        socialValue: controller
-                                .socialGrantAccess[profileId.toString()] ??
-                            false,
-                        socialOnTab: (value) {
-                          controller.toggleSocialGrantAccess(
-                              profileId.toString(), value);
-                          controller.profilePrivacy(profileId.toString());
-                        },
-                        image:
-                            controller.userModel!.profiles![index].isVerified ==
-                                    true
-                                ? "assets/icons/verified.svg"
-                                : "",
-                        userProfile:
-                            controller.userModel!.profiles![index].name,
-                      );
-                    }),
-              )),
-            )));
+                  shrinkWrap: true,
+                  physics: BouncingScrollPhysics(),
+                  itemCount: totalProfiles, // Always display 4 items
+                  itemBuilder: (BuildContext context, int index) {
+                    // Check if the profile exists
+                    bool profileExists =
+                        index < (controller.userModel?.profiles?.length ?? 0);
+
+                    final profile = profileExists
+                        ? controller.userModel!.profiles![index]
+                        : null;
+
+                    return PrivacyCard(
+                      // Show settings only if the profile exists
+                      publicValue: profileExists
+                          ? (controller
+                                  .profileGrantAccess[profile!.id.toString()] ??
+                              false)
+                          : false,
+                      publicOnTab: profileExists
+                          ? (value) {
+                              controller.toggleProfileGrantAccess(
+                                  profile!.id.toString(), value);
+                              controller.profilePrivacy(profile.id.toString());
+                            }
+                          : null,
+                      socialValue: profileExists
+                          ? (controller
+                                  .socialGrantAccess[profile!.id.toString()] ??
+                              false)
+                          : false,
+                      socialOnTab: profileExists
+                          ? (value) {
+                              controller.toggleSocialGrantAccess(
+                                  profile!.id.toString(), value);
+                              controller.profilePrivacy(profile.id.toString());
+                            }
+                          : null,
+                      image: profileExists && profile!.isVerified
+                          ? "assets/icons/verified.svg"
+                          : "",
+                      userProfile: profileExists
+                          ? profile!.name
+                          : "Profile ${index + 1} (Not created)",
+                    );
+                  },
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
   }
 }
