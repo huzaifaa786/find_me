@@ -56,23 +56,26 @@ class NotificationsView extends StatelessWidget {
                   ),
                 ),
 
-                ListView.builder(
-                  itemCount: controller.notificationss.length,
-                  shrinkWrap: true,
-                  physics: AlwaysScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    final item = controller.notificationss[index];
-                    return Notificationscard(
-                      item: item,
-                    );
-                    // ListTile(
-                    //   onTap: () async {},
-                    //   title: Text(controller.notificationss[index].title!),
-                    //   subtitle: Text(
-                    //     controller.notificationss[index].body.toString(),
-                    //   ),
-                    // );
-                  },
+                SizedBox(
+                height: Get.height,
+                  child: ListView.builder(
+                    itemCount: controller.notificationss.length,
+                    shrinkWrap: true,
+                    physics: AlwaysScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      final item = controller.notificationss[index];
+                      return Notificationscard(
+                        item: item,
+                      );
+                      // ListTile(
+                      //   onTap: () async {},
+                      //   title: Text(controller.notificationss[index].title!),
+                      //   subtitle: Text(
+                      //     controller.notificationss[index].body.toString(),
+                      //   ),
+                      // );
+                    },
+                  ),
                 ),
                 
                 // NotificationPermissionTile(
