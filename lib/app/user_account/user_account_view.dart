@@ -26,7 +26,7 @@ class _UserAccountViewState extends State<UserAccountView> {
         builder: (controller) => Scaffold(
               appBar: AppBar(
                 toolbarHeight: 83.h,
-                title: topBar(name: 'Account'),
+                title: topBar(name: 'Account'.tr),
                 scrolledUnderElevation: 0,
                 automaticallyImplyLeading: false,
               ),
@@ -43,7 +43,7 @@ class _UserAccountViewState extends State<UserAccountView> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            'My information',
+                            'My information'.tr,
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w500),
                           ),
@@ -64,7 +64,7 @@ class _UserAccountViewState extends State<UserAccountView> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            'Settings',
+                            'Settings'.tr,
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w500),
                           ),
@@ -99,7 +99,7 @@ class _UserAccountViewState extends State<UserAccountView> {
                           children: <Widget>[
                             ListTile(
                               title: Text(
-                                'Change my information',
+                                'Change my information'.tr,
                                 style: TextStyle(
                                     fontSize: 12, fontWeight: FontWeight.w500),
                               ),
@@ -120,7 +120,7 @@ class _UserAccountViewState extends State<UserAccountView> {
                             ),
                             ListTile(
                               title: Text(
-                                'Change mobile number',
+                                'Change mobile number'.tr,
                                 style: TextStyle(
                                     fontSize: 12, fontWeight: FontWeight.w500),
                               ),
@@ -141,7 +141,7 @@ class _UserAccountViewState extends State<UserAccountView> {
                             ),
                             ListTile(
                               title: Text(
-                                'Change email',
+                                'Change email'.tr,
                                 style: TextStyle(
                                     fontSize: 12, fontWeight: FontWeight.w500),
                               ),
@@ -162,7 +162,7 @@ class _UserAccountViewState extends State<UserAccountView> {
                             ),
                             ListTile(
                               title: Text(
-                                'Change password',
+                                'Change password'.tr,
                                 style: TextStyle(
                                     fontSize: 12, fontWeight: FontWeight.w500),
                               ),

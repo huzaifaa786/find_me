@@ -55,18 +55,18 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                       child: GifButton(onTap: () {}, showOpacity: true)),
                   Gap(24),
                   Text(
-                    "Find Me Premium",
+                    "Find Me Premium".tr,
                     style: TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
                   ),
                   Gap(20),
                   Text(
-                    "Try Find Me+ for 5.99 AED/ mo!",
+                    "Try Find Me+ for 5.99 AED/ mo!".tr,
                     style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
                   ),
                   Gap(6),
                   Center(
                       child: Text(
-                    "1-month free trial \n then AED 4.99/month .cancle any time",
+                    "1-month free trial \n then AED 4.99/month .cancle any time".tr,
                     style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
                     textAlign: TextAlign.center,
                   )),
@@ -74,30 +74,30 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                   Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "Subscription Features:",
+                        "Subscription Features:".tr,
                         style: TextStyle(
                             fontWeight: FontWeight.w700, fontSize: 16.sp),
                       )),
                   Gap(30),
                   SubscriptionFeatures(
-                    title: "Unlock User Frequency:",
-                    subtitle: "View more than 8 users.",
+                    title: "Unlock User Frequency:".tr,
+                    subtitle: "View more than 8 users.".tr,
                     value: 1,
                     groupValue: controller.selectedOption,
                     onChanged: (value) => controller.selectOption(value!),
                   ),
                   Gap(27),
                   SubscriptionFeatures(
-                    title: "Additional Profiles:",
-                    subtitle: "Create 2 additional profiles.",
+                    title: "Additional Profiles:".tr,
+                    subtitle: "Create 2 additional profiles.".tr,
                     value: 2,
                     groupValue: controller.selectedOption,
                     onChanged: (value) => controller.selectOption(value!),
                   ),
                   Gap(32),
                   SubscriptionFeatures(
-                    title: "Unlimited name changes:",
-                    subtitle: "Get unlimited name changes for your account.",
+                    title: "Unlimited name changes:".tr,
+                    subtitle: "Get unlimited name changes for your account.".tr,
                     value: 3,
                     groupValue: controller.selectedOption,
                     onChanged: (value) => controller.selectOption(value!),
@@ -115,14 +115,14 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                       child: Center(
                         child: RichText(
                           text: TextSpan(
-                            text: "Try for  ",
+                            text: "Try for".tr,
                             style: TextStyle(
                                 color: AppColors.white,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 12.sp),
-                            children: const <TextSpan>[
+                            children:  <TextSpan>[
                               TextSpan(
-                                text: 'AED 14.99 /mo',
+                                text: 'AED 14.99 /mo'.tr,
                                 style: TextStyle(
                                     color: AppColors.white,
                                     fontSize: 12,
@@ -152,15 +152,15 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                       textAlign: TextAlign.center,
                       text: TextSpan(
                         text:
-                            "Recurring billing .By continuing , you verify that you are at least \n",
+                            "Recurring billing .By continuing , you verify that you are at least \n".tr,
                         style: TextStyle(
                           color: AppColors.hintGrey,
                           fontSize: 10,
                           fontWeight: FontWeight.w400,
                         ),
-                        children: const <TextSpan>[
+                        children: <TextSpan>[
                           TextSpan(
-                            text: '18 years old and agree to these',
+                            text: '18 years old and agree to these'.tr,
                             style: TextStyle(
                               color: AppColors.hintGrey,
                               fontSize: 10,
@@ -168,7 +168,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                             ),
                           ),
                           TextSpan(
-                            text: ' terms.',
+                            text: ' terms.'.tr,
                             style: TextStyle(
                               color: AppColors.primary_color,
                               fontSize: 10,
@@ -176,7 +176,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                             ),
                           ),
                           TextSpan(
-                            text: 'See the',
+                            text: 'See the'.tr,
                             style: TextStyle(
                               color: AppColors.hintGrey,
                               fontSize: 10,
@@ -184,7 +184,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                             ),
                           ),
                           TextSpan(
-                            text: ' Privacy \n',
+                            text: ' Privacy \n'.tr,
                             style: TextStyle(
                               color: AppColors.primary_color,
                               fontSize: 10,
@@ -193,7 +193,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                           ),
                           TextSpan(
                             text:
-                                'statment and retriction .no refunds for partial biling periods.\n',
+                                'statment and retriction .no refunds for partial biling periods.\n'.tr,
                             style: TextStyle(
                               color: AppColors.hintGrey,
                               fontSize: 10,
@@ -201,7 +201,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                             ),
                           ),
                           TextSpan(
-                            text: 'Restrictions apply.',
+                            text: 'Restrictions apply.'.tr,
                             style: TextStyle(
                               color: AppColors.dark_blue,
                               fontSize: 10,
