@@ -23,13 +23,12 @@ class _UserAccountViewState extends State<UserAccountView> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<UserAccountController>(
-       initState: (state) {
-        Future.delayed(Duration(milliseconds: 100), () {
-          state.controller!.getUser();
-        });
-      },
+        initState: (state) {
+          Future.delayed(Duration(milliseconds: 100), () {
+            state.controller!.getUser();
+          });
+        },
         builder: (controller) => Scaffold(
-          
               appBar: AppBar(
                 toolbarHeight: 83.h,
                 title: topBar(name: 'Account'.tr),
@@ -57,13 +56,13 @@ class _UserAccountViewState extends State<UserAccountView> {
                       ),
                       Gap(18),
                       UserInformationCard(
-                        firstname: controller.firstname,
-                        lastname: controller.lastname,
-                        username: controller.name.toString(),
-                        userid: controller.userName.toString(),
-                        userbirthday: controller.Birthday.toString(),
-                        usermobilenumber: controller.mobileNumber.toString(),
-                        useremialid: controller.email.toString(),
+                        firstname: controller.firstname ?? "",
+                        lastname: controller.lastname ?? "",
+                        username: controller.name ?? "",
+                        userid: controller.userName ?? "",
+                        userbirthday: controller.Birthday ?? "",
+                        usermobilenumber: controller.mobileNumber ?? "",
+                        useremialid: controller.email ?? "",
                       ),
                       Gap(15),
                       Row(
