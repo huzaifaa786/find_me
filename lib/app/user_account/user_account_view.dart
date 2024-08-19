@@ -23,7 +23,13 @@ class _UserAccountViewState extends State<UserAccountView> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<UserAccountController>(
+       initState: (state) {
+        Future.delayed(Duration(milliseconds: 100), () {
+          state.controller!.getUser();
+        });
+      },
         builder: (controller) => Scaffold(
+          
               appBar: AppBar(
                 toolbarHeight: 83.h,
                 title: topBar(name: 'Account'.tr),

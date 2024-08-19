@@ -4,9 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
-Widget topBarWithIcon({String? name,String? name2,String? image}) {
-  
+GetStorage? box = GetStorage();
+
+Widget topBarWithIcon({String? name, String? name2, String? image}) {
   return Padding(
       padding: EdgeInsets.only(left: 25.w),
       child: Column(
@@ -17,17 +19,29 @@ Widget topBarWithIcon({String? name,String? name2,String? image}) {
                 onTap: () {
                   Get.back();
                 },
-                child: SvgPicture.asset(
-                  ImagesConst.backIcon,
-                  height: 28.h,
-                  width: 28.w,
-                  fit: BoxFit.scaleDown,
-                ),
+                child: box!.read('locale') != 'ar'
+                  ? SvgPicture.asset(
+                      ImagesConst.backIcon,
+                      height: 28.h,
+                      width: 28.w,
+                      fit: BoxFit.scaleDown,
+                   
+                    )
+                  : SvgPicture.asset(
+                      "assets/icons/back right.svg",
+                      height: 28.h,
+                      width: 28.w,
+                      fit: BoxFit.scaleDown,
+                     
+                    )
               ),
               Gap(68.w),
               Row(
                 children: [
-                  Text(name!,style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600),),
+                  Text(
+                    name!,
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                  ),
                   // 'continue with'
                 ],
               )
@@ -36,12 +50,15 @@ Widget topBarWithIcon({String? name,String? name2,String? image}) {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(name2!,style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600),),
-            //  'apple'
-             Gap(3.w),
-              SvgPicture.asset(image!
-                ,
-              //  'assets/icons/apple.svg'
+              Text(
+                name2!,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+              ),
+              //  'apple'
+              Gap(3.w),
+              SvgPicture.asset(
+                image!,
+                //  'assets/icons/apple.svg'
               ),
             ],
           )
