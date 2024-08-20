@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:find_me/models/sender_profile_model.dart';
 import 'package:intl/intl.dart';
 import 'package:find_me/models/user_model.dart';
 
@@ -13,23 +14,22 @@ class NotificationModel {
   String? body;
   String? arbody;
   // int? seen;
-  String? created_at;
-  String? updated_at;
   UserModel? user;
+  SenderProfileModel? senderProfile;
 
-  NotificationModel(
-      {this.id,
-      this.arbody,
-      this.body,
-      this.orderid,
-      this.title,
-      // this.seen,
-      this.receiver_profile_id,
-      this.sender_profile_id,
-      this.profile_request_id,
-      this.created_at,
-      this.updated_at,
-      this.user});
+  NotificationModel({
+    this.id,
+    this.arbody,
+    this.body,
+    this.orderid,
+    this.title,
+    // this.seen,
+    this.receiver_profile_id,
+    this.sender_profile_id,
+    this.profile_request_id,
+    this.user,
+    this.senderProfile,
+  });
 
   factory NotificationModel.fromjson(Map<String, dynamic> json) {
     //* Converting DateTime object to the desired date format
@@ -57,9 +57,8 @@ class NotificationModel {
       receiver_profile_id: json['partner_id'],
       // seen: json['seen'],
       title: json['title'],
-      created_at: formattedDate,
-      updated_at: formattedDate,
       user: user,
+      senderProfile: SenderProfileModel.fromjson(json['sender_profile']),
     );
   }
 }

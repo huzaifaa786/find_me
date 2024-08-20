@@ -23,22 +23,11 @@ class Notificationscard extends StatelessWidget {
       children: [
         Gap(3),
         Container(
-          height: Get.height * 0.08,
+          height: Get.height * 0.1,
           // width: Get.width,
           decoration: BoxDecoration(color: AppColors.white),
           child: Column(
             children: [
-              // Gap(3.w),
-              // Expanded(
-              //   child: Row(
-              //     children: [
-              //       Text(
-              //         item!.title.toString(),
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              // // Gap(5.w),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -51,14 +40,24 @@ class Notificationscard extends StatelessWidget {
                     ),
                   ),
                   Gap(8),
-                  CircleAvatar(
-                    backgroundColor: AppColors.white,
-                    child: SvgPicture.asset(
-                      "assets/icons/card_profile_picture.svg",
-                      width: 50,
-                      height: 50,
-                    ),
-                    // radius: 30,
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(80.r),
+                    child: item!.senderProfile!.image != null
+                        ? CachedNetworkImage(
+                            height: 50,
+                            width: 50,
+                            imageUrl: item!.senderProfile!.image.toString(),
+                            fit: BoxFit.cover,
+                            // placeholder: (context, url) =>
+                            //     CircularProgressIndicator(),
+                            // errorWidget: (context, url, error) =>
+                            //     Icon(Icons.error),
+                          )
+                        : SvgPicture.asset(
+                            "assets/icons/card_profile_picture.svg",
+                            width: 50,
+                            height: 50,
+                          ),
                   ),
                   Gap(10.w),
                   Expanded(

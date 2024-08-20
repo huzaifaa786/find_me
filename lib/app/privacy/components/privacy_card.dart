@@ -32,8 +32,6 @@ class PrivacyCard extends StatefulWidget {
 }
 
 class _PrivacyCardState extends State<PrivacyCard> {
- 
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -69,18 +67,18 @@ class _PrivacyCardState extends State<PrivacyCard> {
               ),
               Gap(27),
               TextSwitchButton(
-                title: "Grant access".tr,
-                value: widget.publicValue,
-                size: 12.sp,
-                FontWeight: FontWeight.w400,
-                ontoggle:widget.publicOnTab
-              ),
+                  title: "Grant access".tr,
+                  value: widget.publicValue,
+                  size: 12.sp,
+                  FontWeight: FontWeight.w400,
+                  ontoggle: widget.publicOnTab),
               Gap(15.h),
               Align(
                 alignment: Alignment.centerLeft,
                 child: AppText(
                   title:
-                      "When your account is public , your profile can be \n  viewed by anyone on find me .".tr,
+                      "When your account is public , your profile can be \n  viewed by anyone on find me ."
+                          .tr,
                   size: 10,
                   fontWeight: FontWeight.w400,
                   color: AppColors.hintGrey,
@@ -107,21 +105,22 @@ class _PrivacyCardState extends State<PrivacyCard> {
                 size: 12.sp,
                 FontWeight: FontWeight.w400,
                 value: widget.socialValue,
-                ontoggle:widget.socialOnTab,
+                ontoggle: widget.socialOnTab,
               ),
               Gap(15.h),
               Align(
                 alignment: Alignment.centerLeft,
                 child: AppText(
                   title:
-                      "When your profile is private , only people you grant \n  access after receiving a request will be able to look \n  into your profile .".tr,
+                      "When your profile is private , only people you grant \n  access after receiving a request will be able to look \n  into your profile ."
+                          .tr,
                   size: 10,
                   fontWeight: FontWeight.w400,
                   color: AppColors.hintGrey,
                   textAlign: TextAlign.left,
                 ),
               ),
-              Gap(54.h),
+              Gap(200.h),
             ],
           ),
         ),
