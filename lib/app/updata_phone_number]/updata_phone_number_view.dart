@@ -49,12 +49,12 @@ class UpdataPhoneNumberView extends StatelessWidget {
                     Gap(10.h),
                     Gap(50.h),
                     AppTextFields(
-                      hintText: 'Phone Number',
+                      hintText: 'Phone Number'.tr,
                       controller: controller.phoneNumberController,
                     ),
                     Gap(40.h),
                     AppButton(
-                      title: 'Confirm',
+                      title: 'Confirm'.tr,
                       height: 50.0.h,
                       width: 304.0.w,
                       onTap: () {

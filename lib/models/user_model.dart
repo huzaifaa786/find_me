@@ -39,9 +39,9 @@ class UserModel {
         .toList();
     return UserModel(
         id: json['id'],
-        name: json['name'] ?? '',
-        firstName: json['first_name'],
-        lastName: json['last_name'],
+        name: json['name'] ,
+        firstName: json['first_name'] ,
+        lastName: json['last_name'] ,
         gender: json['gender'],
         email: json['email'],
         phone: json['phone'],

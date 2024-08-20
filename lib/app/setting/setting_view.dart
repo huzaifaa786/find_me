@@ -26,31 +26,30 @@ class SettingView extends StatelessWidget {
               ),
               body: SafeArea(
                   child: SingleChildScrollView(
-                    child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 34.w),
-                                  child: Column(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 34.w),
+                  child: Column(
                     children: [
                       Gap(4.h),
-                    
+
                       //Gap(12.h),
-                    
+
                       CardSetting(
-                          text: 'Subscriptions',
+                          text: 'Subscriptions'.tr,
                           image: 'assets/icons/star.svg',
                           ontap: () {
                             Get.toNamed(AppRoutes.subscriptions);
                           }),
                       Gap(12.h),
                       CardSetting(
-                          text: 'Account',
+                          text: 'Account'.tr,
                           image: 'assets/icons/user.svg',
                           ontap: () {
-                           Get.toNamed(AppRoutes.useraccount);
-                          
+                            Get.toNamed(AppRoutes.useraccount);
                           }),
                       Gap(12.h),
                       CardSetting(
-                          text: 'Privacy',
+                          text: 'Privacy'.tr,
                           image: 'assets/icons/lock (1).svg',
                           ontap: () {
                             Get.toNamed(AppRoutes.privacy);
@@ -112,16 +111,16 @@ class SettingView extends StatelessWidget {
                         child: PrefixIconButton(
                           height: 55.h,
                           width: 304.w,
-                          title: 'Log out',
+                          title: 'Log out'.tr,
                           textColors: Colors.red,
                           borderColor: Colors.red,
                           image: 'assets/icons/log-out.svg',
                         ),
                       )
                     ],
-                                    ),
-                                  ),
-                  )),
+                  ),
+                ),
+              )),
             ));
   }
 }

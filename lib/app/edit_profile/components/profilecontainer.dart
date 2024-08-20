@@ -279,7 +279,7 @@ class _ProfileContainerState extends State<ProfileContainer> {
               Get.toNamed(AppRoutes.profile, arguments: widget.userModel);
             },
             child: AppText(
-              title: 'Edit',
+              title: 'Edit'.tr,
               size: 11,
               color: AppColors.primary_color,
               fontWeight: FontWeight.w500,

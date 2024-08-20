@@ -198,7 +198,7 @@ class AppPages {
     //TODO: [home Route]
     GetPage(
       name: AppRoutes.home,
-      page: () => const HomeView(),
+      page: () =>HomeView(),
       binding: HomeBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),

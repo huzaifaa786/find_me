@@ -58,11 +58,11 @@ class UserInformationCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  ' First Name'.tr,
+                  'First Name'.tr,
                   style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
                 ),
                 Text(
-                  ' Last Name'.tr,
+                  'Last Name'.tr,
                   style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
                 ),
               ],
