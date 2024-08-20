@@ -19,7 +19,7 @@ class EditProfileView extends StatelessWidget {
         automaticallyImplyLeading: false,
         scrolledUnderElevation: 0,
         toolbarHeight: 83.h,
-        title: topBar(name: 'My profiles', showBackIcon: false),
+        title: topBar(name: 'My profiles'.tr, showBackIcon: false),
       ),
       body: SafeArea(
         child: GetBuilder<EditProfileController>(
@@ -32,7 +32,7 @@ class EditProfileView extends StatelessWidget {
                   children: [
                     Gap(49.h),
                     AppText(
-                      title: 'Mark as default',
+                      title: 'Mark as default'.tr,
                       size: 10,
                       fontWeight: FontWeight.w500,
                     ),
@@ -51,7 +51,7 @@ class EditProfileView extends StatelessWidget {
                       final textController = TextEditingController(
                           text: userProfile != null
                               ? profile.name
-                              : "+ New Profile ${index + 1}");
+                              : "+ New Profile ${index + 1}".tr);
                       return Padding(
                           padding: EdgeInsets.symmetric(vertical: 5.w),
                           child: ProfileContainer(

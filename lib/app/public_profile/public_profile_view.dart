@@ -104,7 +104,7 @@ class PublicProfileView extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "Find me on:",
+                                  "Find me on:".tr,
                                   style: TextStyle(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.w500),
@@ -303,7 +303,7 @@ class PublicProfileView extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text(
-                                  "My business card",
+                                  "My business card".tr,
                                   style: TextStyle(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.w500),
@@ -428,7 +428,7 @@ class PublicProfileView extends StatelessWidget {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            "Favorites ",
+                            "Favorites".tr,
                             style: TextStyle(
                                 fontSize: 14.sp, fontWeight: FontWeight.w500),
                           ),

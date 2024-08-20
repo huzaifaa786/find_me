@@ -23,10 +23,15 @@ class _UserAccountViewState extends State<UserAccountView> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<UserAccountController>(
+        initState: (state) {
+          Future.delayed(Duration(milliseconds: 100), () {
+            state.controller!.getUser();
+          });
+        },
         builder: (controller) => Scaffold(
               appBar: AppBar(
                 toolbarHeight: 83.h,
-                title: topBar(name: 'Account'),
+                title: topBar(name: 'Account'.tr),
                 scrolledUnderElevation: 0,
                 automaticallyImplyLeading: false,
               ),
@@ -45,7 +50,7 @@ class _UserAccountViewState extends State<UserAccountView> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            'My information',
+                            'My information'.tr,
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w500),
                           ),
@@ -53,20 +58,20 @@ class _UserAccountViewState extends State<UserAccountView> {
                       ),
                       Gap(18),
                       UserInformationCard(
-                        firstname: controller.firstname,
-                        lastname: controller.lastname,
-                        username: controller.name.toString(),
-                        userid: controller.userName.toString(),
-                        userbirthday: controller.Birthday.toString(),
-                        usermobilenumber: controller.mobileNumber.toString(),
-                        useremialid: controller.email.toString(),
+                        firstname: controller.firstname ?? "",
+                        lastname: controller.lastname ?? "",
+                        username: controller.name ?? "",
+                        userid: controller.userName ?? "",
+                        userbirthday: controller.Birthday ?? "",
+                        usermobilenumber: controller.mobileNumber ?? "",
+                        useremialid: controller.email ?? "",
                       ),
                       Gap(15),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            'Settings',
+                            'Settings'.tr,
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w500),
                           ),
@@ -75,7 +80,6 @@ class _UserAccountViewState extends State<UserAccountView> {
                       Gap(18),
                       Container(
                         margin: EdgeInsets.only(bottom: 15),
-                        height: 340.h,
                         width: 290.w,
                         decoration: BoxDecoration(
                           color: AppColors.white,
@@ -101,7 +105,7 @@ class _UserAccountViewState extends State<UserAccountView> {
                           children: <Widget>[
                             ListTile(
                               title: Text(
-                                'Change my information',
+                                'Change my information'.tr,
                                 style: TextStyle(
                                     fontSize: 12, fontWeight: FontWeight.w500),
                               ),
@@ -122,7 +126,7 @@ class _UserAccountViewState extends State<UserAccountView> {
                             ),
                             ListTile(
                               title: Text(
-                                'Change mobile number',
+                                'Change mobile number'.tr,
                                 style: TextStyle(
                                     fontSize: 12, fontWeight: FontWeight.w500),
                               ),
@@ -143,7 +147,7 @@ class _UserAccountViewState extends State<UserAccountView> {
                             ),
                             ListTile(
                               title: Text(
-                                'Change email',
+                                'Change email'.tr,
                                 style: TextStyle(
                                     fontSize: 12, fontWeight: FontWeight.w500),
                               ),
@@ -164,7 +168,7 @@ class _UserAccountViewState extends State<UserAccountView> {
                             ),
                             ListTile(
                               title: Text(
-                                'Change password',
+                                'Change password'.tr,
                                 style: TextStyle(
                                     fontSize: 12, fontWeight: FontWeight.w500),
                               ),

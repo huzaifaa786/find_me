@@ -7,7 +7,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
+GetStorage? box = GetStorage();
 Widget topBar({
   String? name,
   bool showBackIcon = true,
@@ -20,17 +22,24 @@ Widget topBar({
       children: [
         if (showBackIcon)
           GestureDetector(
-            onTap: () {
-              Get.back();
-            },
-            child: SvgPicture.asset(
-              ImagesConst.backIcon,
-              height: 28.h,
-              width: 28.w,
-              fit: BoxFit.scaleDown,
-              color: color,
-            ),
-          ),
+              onTap: () {
+                Get.back();
+              },
+              child: box!.read('locale') != 'ar'
+                  ? SvgPicture.asset(
+                      ImagesConst.backIcon,
+                      height: 28.h,
+                      width: 28.w,
+                      fit: BoxFit.scaleDown,
+                      color: color,
+                    )
+                  : SvgPicture.asset(
+                      "assets/icons/back right.svg",
+                      height: 28.h,
+                      width: 28.w,
+                      fit: BoxFit.scaleDown,
+                      color: color,
+                    )),
         if (showBackIcon) Gap(70.w) else Gap(98.w),
         AppText(
           title: name!,

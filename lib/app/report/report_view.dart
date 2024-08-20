@@ -25,7 +25,7 @@ class ReportView extends StatelessWidget {
           toolbarHeight: 83.h,
           automaticallyImplyLeading: false,
           forceMaterialTransparency: true,
-          title: topBar(name: 'Report a problem'),
+          title: topBar(name: 'Report a problem'.tr),
         ),
         body: SafeArea(
           child: SingleChildScrollView(
@@ -38,13 +38,13 @@ class ReportView extends StatelessWidget {
                   Gap(40.h),
                   AppText(
                     title:
-                        'Briefly explain what happened\n or what’s not working .',
+                        'Briefly explain what happened\n or what’s not working .'.tr,
                     fontWeight: FontWeight.w500,
                     size: 14.sp,
                   ),
                   Gap(30.h),
                   ReportTextFields(
-                    hintText: 'Type here',
+                    hintText: 'Type here'.tr,
                     controller: controller.descriptionController,
                   ),
                   Gap(27.h),
@@ -57,7 +57,7 @@ class ReportView extends StatelessWidget {
                       children: [
                         Image.asset(ImagesConst.imageicon),
                         AppText(
-                          title: ' Upload photo',
+                          title: 'Upload photo'.tr,
                           color: Colors.blue,
                         ),
                       ],
@@ -79,7 +79,7 @@ class ReportView extends StatelessWidget {
                     ),
                   Gap(30.h),
                   AppButton(
-                    title: 'Send',
+                    title: 'Send'.tr,
                     height: 50.0.h,
                     width: 304.0.w,
                     onTap: () {

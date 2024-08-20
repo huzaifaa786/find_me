@@ -1,27 +1,23 @@
-import 'package:find_me/api/auth_api/google_signup_api.dart';
+
 import 'package:find_me/app/auth/components/auth_appbar.dart';
 import 'package:find_me/app/auth/components/auth_rich_text.dart';
 import 'package:find_me/app/auth/components/dob_textfield.dart';
 import 'package:find_me/app/auth/signup/signup_controller.dart';
 import 'package:find_me/components/buttons/app_button.dart';
-import 'package:find_me/components/buttons/prefix_icon_button.dart';
 import 'package:find_me/components/radio/gender_radio_button.dart';
 import 'package:find_me/components/textfields/app_textfields.dart';
 import 'package:find_me/components/textfields/password_textfield.dart';
 import 'package:find_me/components/textfields/phone_inputfield.dart';
 import 'package:find_me/helpers/validator.dart';
-import 'package:find_me/models/user_model.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
-import 'package:find_me/utils/images/images.dart';
-import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+
 
 class SignUpView extends StatefulWidget {
   const SignUpView({super.key});
@@ -36,7 +32,7 @@ class _SignUpViewState extends State<SignUpView> {
   Widget build(BuildContext context) {
     return GetBuilder<SignUpController>(
       builder: (controller) => Scaffold(
-        appBar: authAppBar(name: 'Sign Up'),
+        appBar: authAppBar(name: 'Sign Up'.tr),
         body: SingleChildScrollView(
           child: SafeArea(
             child: Container(
@@ -46,34 +42,34 @@ class _SignUpViewState extends State<SignUpView> {
                 children: [
                   Gap(40.h),
                   AppTextFields(
-                    hintText: 'First name',
+                    hintText: 'First name'.tr,
                     controller: controller.firstNameController,
                     fieldValidator: (value) =>
                         Validators.alphabeticValidator("First name", value),
                   ),
                   Gap(16.h),
                   AppTextFields(
-                    hintText: 'Last name',
+                    hintText: 'Last name'.tr,
                     controller: controller.lastNameController,
                     fieldValidator: (value) =>
                         Validators.alphabeticValidator("Last name", value),
                   ),
                   Gap(16.h),
                   AppTextFields(
-                    hintText: 'User name',
+                    hintText: 'User name'.tr,
                     controller: controller.nameController,
                     fieldValidator: (value) =>
                         Validators.usernameValidator("User name", value),
                   ),
                   Gap(16.h),
                   AppTextFields(
-                    hintText: 'Email',
+                    hintText: 'Email'.tr,
                     controller: controller.emailController,
                     fieldValidator: (value) => Validators.emailValidator(value),
                   ),
                   Gap(16.h),
                   PasswordTextFields(
-                    hintText: 'Password',
+                    hintText: 'Password'.tr,
                     obscure: controller.obscureTextPassword,
                     controller: controller.passwordController,
                     toggle: controller.toggle,
@@ -82,7 +78,7 @@ class _SignUpViewState extends State<SignUpView> {
                   ),
                   Gap(16.h),
                   PasswordTextFields(
-                    hintText: 'Confirm Password',
+                    hintText: 'Confirm Password'.tr,
                     obscure: controller.obscureTextCPassword,
                     controller: controller.confirmPasswordController,
                     toggle: controller.ctoggle,
@@ -104,7 +100,7 @@ class _SignUpViewState extends State<SignUpView> {
                     child: Row(
                       children: [
                         AppText(
-                          title: 'Date of birth',
+                          title: 'Date of birth'.tr,
                           size: 12.sp,
                           fontWeight: FontWeight.w400,
                         ),
@@ -126,7 +122,7 @@ class _SignUpViewState extends State<SignUpView> {
                     child: Row(
                       children: [
                         AppText(
-                          title: 'Gender',
+                          title: 'Gender'.tr,
                           size: 12.sp,
                           fontWeight: FontWeight.w400,
                         ),
@@ -138,7 +134,7 @@ class _SignUpViewState extends State<SignUpView> {
                   ),
                   Gap(30.h),
                   AppButton(
-                    title: 'Sign Up',
+                    title: 'Sign Up'.tr,
                     height: 50.0.h,
                     width: 304.0.w,
                     onTap: () {
@@ -147,8 +143,8 @@ class _SignUpViewState extends State<SignUpView> {
                   ),
                   Gap(30.h),
                   AuthRichText(
-                    title: 'Already have an account ? ',
-                    description: 'Sign in',
+                    title: 'Already have an account?'.tr,
+                    description: 'Sign in'.tr,
                     titlesize: 14.sp,
                     titlefontweight: FontWeight.w400,
                     descriptionfontweight: FontWeight.w600,

@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProfileRequestPopup extends StatelessWidget {
   final String name;
@@ -81,7 +82,7 @@ class ProfileRequestPopup extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      'Reject',
+                      'Reject'.tr,
                       style: TextStyle(color: Colors.red),
                     ),
                   ),
@@ -100,7 +101,7 @@ class ProfileRequestPopup extends StatelessWidget {
                       ),
                     ),
                     child:
-                        Text('Accept', style: TextStyle(color: Colors.white)),
+                        Text('Accept'.tr, style: TextStyle(color: Colors.white)),
                   ),
                 ],
               ),

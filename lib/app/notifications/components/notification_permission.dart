@@ -1,11 +1,14 @@
+// ignore_for_file: prefer_typing_uninitialized_variables, prefer_const_constructors
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 
 class NotificationPermissionTile extends StatelessWidget {
   const NotificationPermissionTile({
@@ -70,7 +73,7 @@ class NotificationPermissionTile extends StatelessWidget {
                           borderRadius: BorderRadius.circular(66.r)),
                       child: Center(
                         child: AppText(
-                          title: 'Reject',
+                          title: 'Reject'.tr,
                           size: 8.sp,
                           fontWeight: FontWeight.w400,
                           color: AppColors.red,
@@ -89,7 +92,7 @@ class NotificationPermissionTile extends StatelessWidget {
                           borderRadius: BorderRadius.circular(66.r)),
                       child: Center(
                         child: AppText(
-                          title: 'Accept',
+                          title: 'Accept'.tr,
                           size: 8.sp,
                           fontWeight: FontWeight.w500,
                           color: AppColors.white,

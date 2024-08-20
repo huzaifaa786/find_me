@@ -1,7 +1,5 @@
-import 'package:find_me/api/auth_api/change_email_api.dart';
-import 'package:find_me/api/auth_api/change_phone_api.dart';
+
 import 'package:find_me/api/auth_api/forgetpassword_api.dart';
-import 'package:find_me/api/auth_api/otp_api.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/ui_utils.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -38,7 +36,7 @@ class ForgetPasswordOtpController extends GetxController {
     var response =
         await ForgotPasswordApi.forgotpassword(type: type, email: email);
     if (response.isNotEmpty) {
-      UiUtilites.successSnackbar("Otp sent", "Otp Sent Successfully");
+      UiUtilites.successSnackbar("Otp sent".tr, "Otp Sent Successfully".tr);
     }
   }
 
@@ -61,7 +59,7 @@ class ForgetPasswordOtpController extends GetxController {
 
       UiUtilites.successSnackbar('verification successfully'.tr, 'Success'.tr);
     } else {
-      UiUtilites.errorSnackbar('Error'.tr, response['error_data'.tr]);
+      UiUtilites.errorSnackbar('Error'.tr, response['error_data'].tr);
     }
   }
 
@@ -69,10 +67,10 @@ class ForgetPasswordOtpController extends GetxController {
     var response =
         await ForgotPasswordApi.forgotpassword(type: type, phone: phone);
     if (response.isNotEmpty) {
-      UiUtilites.successSnackbar("Otp sent", "Otp Sent Successfully");
+      UiUtilites.successSnackbar("Otp sent".tr, "Otp Sent Successfully".tr);
     } else {
       UiUtilites.successSnackbar(
-          "Otp sent fail ", "Otp Sent  not Successfully");
+          "Otp sent fail".tr, "Otp Sent  not Successfully".tr);
     }
   }
 }

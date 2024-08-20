@@ -22,7 +22,7 @@ class _PurchaseCoinsViewState extends State<PurchaseCoinsView> {
         builder: (controller) => Scaffold(
               appBar: AppBar(
                 toolbarHeight: 83.h,
-                title: topBar(name: 'Purchase Coins'),
+                title: topBar(name: 'Purchase Coins'.tr),
                 scrolledUnderElevation: 0,
                 automaticallyImplyLeading: false,
               ),
@@ -36,9 +36,9 @@ class _PurchaseCoinsViewState extends State<PurchaseCoinsView> {
                       CardCoins(
                         height: 180.h,
                         width: 180.w,
-                        bottomText: "${controller.coinPackageModel!.price} AED",
+                        bottomText: "${controller.coinPackageModel!.price} AED".tr,
                         img: 'assets/images/coin_icon_big.png',
-                        text: '${controller.coinPackageModel!.coins} coins',
+                        text: '${controller.coinPackageModel!.coins} Coins'.tr,
                         imageHeight: 120.h,
                         imageWidth: 120.w,
                         textSize: 16.sp,
@@ -50,7 +50,7 @@ class _PurchaseCoinsViewState extends State<PurchaseCoinsView> {
                   AppButton(
                     height: 60.0.h,
                     width: 304.0.w,
-                    title: 'Checkout',
+                    title: 'Checkout'.tr,
                     onTap: () {
                       controller.buyCoins();
                     },

@@ -18,7 +18,7 @@ class BeaconScannerView extends StatelessWidget {
               appBar: AppBar(
                 automaticallyImplyLeading: false,
                 scrolledUnderElevation: 0,
-                title: topBar(name: 'Beacon Scanner'),
+                title: topBar(name: 'Beacon Scanner'.tr),
               ),
               body: Container(
                 height: Get.height,
@@ -48,7 +48,7 @@ class BeaconScannerView extends StatelessWidget {
                               padding: EdgeInsets.all(8),
                               child: Row(
                                 children: [
-                                  Text("Scaning"),
+                                  Text("Scaning".tr),
                                   Gap(10),
                                   CircularProgressIndicator(
                                     strokeWidth: 1,
@@ -56,7 +56,7 @@ class BeaconScannerView extends StatelessWidget {
                                 ],
                               ),
                             )
-                          : Text("Scan Now"),
+                          : Text("Scan Now".tr),
                     )
                   ],
                 ),

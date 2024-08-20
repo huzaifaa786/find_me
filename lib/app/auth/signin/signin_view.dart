@@ -1,27 +1,25 @@
-import 'package:find_me/api/auth_api/google_signup_api.dart';
+
 import 'package:find_me/app/auth/components/auth_appbar.dart';
 import 'package:find_me/app/auth/components/auth_rich_text.dart';
-import 'package:find_me/app/auth/components/dob_textfield.dart';
+
 import 'package:find_me/app/auth/signin/signin_controller.dart';
 import 'package:find_me/components/buttons/app_button.dart';
-import 'package:find_me/components/buttons/prefix_icon_button.dart';
+
 import 'package:find_me/components/textfields/app_textfields.dart';
 import 'package:find_me/components/textfields/password_textfield.dart';
-import 'package:find_me/components/textfields/phone_inputfield.dart';
+
 import 'package:find_me/helpers/validator.dart';
-import 'package:find_me/models/user_model.dart';
+
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
-import 'package:find_me/utils/images/images.dart';
-import 'package:find_me/utils/ui_utils.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+
 
 class SignInView extends StatefulWidget {
   const SignInView({super.key});
@@ -38,7 +36,7 @@ class _SignInViewState extends State<SignInView> {
   Widget build(BuildContext context) {
     return GetBuilder<SignInController>(
       builder: (controller) => Scaffold(
-        appBar: authAppBar(name: 'Sign In'),
+        appBar: authAppBar(name: 'Sign In'.tr),
         body: SingleChildScrollView(
           child: SafeArea(
             child: Container(
@@ -48,20 +46,20 @@ class _SignInViewState extends State<SignInView> {
                 children: [
                   Gap(40.h),
                   AppTextFields(
-                    hintText: 'Email',
+                    hintText: 'Email'.tr,
                     controller: controller.emailController,
                     fieldValidator: (value) =>
-                        Validators.emptyStringValidator("This", value),
+                        Validators.emptyStringValidator("This".tr, value),
                   ),
                   Gap(14.h),
                   PasswordTextFields(
-                      hintText: 'Password',
+                      hintText: 'Password'.tr,
                       obscure: controller.obscureTextPassword,
                       controller: controller.passwordController,
                       toggle: controller.toggle,
                       fieldValidator: (value) {
                         if (value!.isEmpty) {
-                          return "Password can't be empty";
+                          return "Password can't be empty".tr;
                         } else {
                           return null;
                         }
@@ -79,7 +77,7 @@ class _SignInViewState extends State<SignInView> {
                             Get.toNamed(AppRoutes.forgetpassword);
                           },
                           child: AppText(
-                            title: 'Forget password ?',
+                            title: 'Forget password ?'.tr,
                             color: Colors.blue,
                             fontWeight: FontWeight.w500,
                           ),
@@ -89,7 +87,7 @@ class _SignInViewState extends State<SignInView> {
                   ),
                   Gap(35.h),
                   AppButton(
-                    title: 'Sign In',
+                    title: 'Sign In'.tr,
                     height: 50.0.h,
                     width: 304.0.w,
                     onTap: () {
@@ -144,8 +142,8 @@ class _SignInViewState extends State<SignInView> {
                   // ),
                   Gap(30.h),
                   AuthRichText(
-                    title: 'Don’t have an account ? ',
-                    description: 'Sign Up',
+                    title: 'Don’t have an account ?'.tr,
+                    description: 'Sign Up'.tr,
                     titlesize: 14.sp,
                     titlefontweight: FontWeight.w400,
                     descriptionfontweight: FontWeight.w600,

@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 class SupportView extends StatelessWidget {
@@ -21,7 +22,7 @@ class SupportView extends StatelessWidget {
         builder: (controller) => Scaffold(
               appBar: AppBar(
                 toolbarHeight: 83.h,
-                title: topBar(name: 'Support'),
+                title: topBar(name: 'Support'.tr),
                 automaticallyImplyLeading: false,
                 scrolledUnderElevation: 0,
               ),
@@ -33,7 +34,7 @@ class SupportView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       PrefixIconButton(
-                        title: 'Contact via email',
+                        title: 'Contact via email'.tr,
                         height: 53.0.h,
                         width: 268.0.w,
                         color: AppColors.primary_color,

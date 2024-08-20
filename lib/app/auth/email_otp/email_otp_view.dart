@@ -1,14 +1,13 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:find_me/app/auth/email_otp/email_otp_controller.dart';
-import 'package:find_me/app/auth/otp/otp_controller.dart';
+
 import 'package:find_me/components/appbars/topbar.dart';
-import 'package:find_me/routes/app_routes.dart';
+
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';

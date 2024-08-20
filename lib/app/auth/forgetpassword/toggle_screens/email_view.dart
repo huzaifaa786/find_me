@@ -23,14 +23,14 @@ class _EmailViewState extends State<EmailView> {
               children: [
                 Gap(50.h),
                 AppTextFields(
-                  hintText: "Enter The Email",
+                  hintText: "Enter The Email".tr,
                   controller: controller.emailController,
                   fieldValidator: (value) => Validators.emailValidator(value),
                 ),
                 Gap(40.h),
 
                 AppButton(
-                  title: 'Confirm',
+                  title: 'Confirm'.tr,
                   height: 50.0.h,
                   width: 304.0.w,
                   onTap: () async {

@@ -28,7 +28,6 @@ class UserInformationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 490.h,
       width: 290.w,
       decoration: BoxDecoration(
         color: AppColors.white,
@@ -58,11 +57,11 @@ class UserInformationCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  ' First Name'.tr,
+                  'First Name'.tr,
                   style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
                 ),
                 Text(
-                  ' Last Name'.tr,
+                  'Last Name'.tr,
                   style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
                 ),
               ],

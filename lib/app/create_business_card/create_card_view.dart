@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'dart:io';
+
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/app/create_business_card/create_card_controller.dart';
@@ -39,8 +39,8 @@ class _CreateCardViewState extends State<CreateCardView> {
                 toolbarHeight: 83.h,
                 title: topBar(
                     name: controller.profileBusinessCardModel != null
-                        ? 'Edit business card'
-                        : 'Create business card'),
+                        ? 'Edit business card'.tr
+                        : 'Create Business Card'.tr),
                 scrolledUnderElevation: 0,
                 automaticallyImplyLeading: false,
               ),
@@ -104,7 +104,7 @@ class _CreateCardViewState extends State<CreateCardView> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 AppText(
-                                  title: 'Add photo',
+                                  title: 'Add photo'.tr,
                                   color: AppColors.primary_color,
                                   size: 12,
                                   fontWeight: FontWeight.w500,
@@ -119,7 +119,7 @@ class _CreateCardViewState extends State<CreateCardView> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           AppText(
-                            title: '*Optional',
+                            title: 'Optional'.tr,
                             color: AppColors.light_grey,
                             size: 10,
                             fontWeight: FontWeight.w400,
@@ -139,22 +139,22 @@ class _CreateCardViewState extends State<CreateCardView> {
                           SizedBox(
                             width: 135.w,
                             child: AppTextFields(
-                              hintText: 'First name',
+                              hintText: 'First name'.tr,
                               controller: controller.firstnameController,
                               fieldValidator: (value) =>
                                   Validators.emptyStringValidator(
-                                      "First name", value),
+                                      "First name".tr, value),
                             ),
                           ),
                           Gap(7.h),
                           SizedBox(
                             width: 135.w,
                             child: AppTextFields(
-                              hintText: 'Last name',
+                              hintText: 'Last name'.tr,
                               controller: controller.lastnameController,
                               fieldValidator: (value) =>
                                   Validators.emptyStringValidator(
-                                      "Last name", value),
+                                      "Last name".tr, value),
                             ),
                           ),
                         ],
@@ -165,7 +165,7 @@ class _CreateCardViewState extends State<CreateCardView> {
                         children: [
                           Gap(25.h),
                           AppText(
-                            title: '*Optional',
+                            title: 'Optional'.tr,
                             color: AppColors.light_grey,
                             size: 10,
                             fontWeight: FontWeight.w400,
@@ -174,15 +174,15 @@ class _CreateCardViewState extends State<CreateCardView> {
                       ),
                       Gap(10.h),
                       AppTextFields(
-                        hintText: 'Company name',
+                        hintText: 'Company name'.tr,
                         controller: controller.companyNameController,
                       ),
                       Gap(19.h),
                       AppTextFields(
-                        hintText: 'Job title',
+                        hintText: 'Job title'.tr,
                         controller: controller.jobTitleController,
                         fieldValidator: (value) =>
-                            Validators.emptyStringValidator("Job title", value),
+                            Validators.emptyStringValidator("Job title".tr, value),
                       ),
                       Gap(19.h),
                       PhoneInputField(
@@ -194,7 +194,7 @@ class _CreateCardViewState extends State<CreateCardView> {
                       ),
                       Gap(19.h),
                       AppTextFields(
-                        hintText: 'Email',
+                        hintText: 'Email'.tr,
                         controller: controller.emailController,
                         fieldValidator: (value) =>
                             Validators.emailValidator(value),
@@ -205,13 +205,13 @@ class _CreateCardViewState extends State<CreateCardView> {
                         children: [
                           Gap(25.h),
                           AppText(
-                            title: 'Social media accounts',
+                            title: 'Social media accounts'.tr,
                             size: 12,
                             fontWeight: FontWeight.w500,
                           ),
                           Gap(8.w),
                           AppText(
-                            title: '*Optional',
+                            title: 'Optional'.tr,
                             color: AppColors.light_grey,
                             size: 10,
                             fontWeight: FontWeight.w400,
@@ -225,7 +225,7 @@ class _CreateCardViewState extends State<CreateCardView> {
                             width: 135.w,
                             child: AppTextFields(
                               icon: 'assets/icons/Instagram.svg',
-                              hintText: ' Instagram',
+                              hintText: 'Instagram'.tr,
                               controller: controller.instagramController,
                               color: AppColors.primary_color,
                             ),
@@ -235,7 +235,7 @@ class _CreateCardViewState extends State<CreateCardView> {
                             width: 135.w,
                             child: AppTextFields(
                               icon: 'assets/icons/twitter-x 1.svg',
-                              hintText: 'Twitter',
+                              hintText: 'Twitter'.tr,
                               controller: controller.twitterController,
                               color: AppColors.primary_color,
                             ),
@@ -249,7 +249,7 @@ class _CreateCardViewState extends State<CreateCardView> {
                             width: 135.w,
                             child: AppTextFields(
                               icon: 'assets/icons/tiktok.svg',
-                              hintText: 'Tiktok',
+                              hintText: 'Tiktok'.tr,
                               controller: controller.tiktokController,
                               color: AppColors.primary_color,
                             ),
@@ -259,7 +259,7 @@ class _CreateCardViewState extends State<CreateCardView> {
                             width: 135.w,
                             child: AppTextFields(
                               icon: 'assets/icons/snapchat.svg',
-                              hintText: 'Snapchat',
+                              hintText: 'Snapchat'.tr,
                               controller: controller.snapchatController,
                               color: AppColors.primary_color,
                             ),
@@ -274,7 +274,7 @@ class _CreateCardViewState extends State<CreateCardView> {
                             width: 135.w,
                             child: AppTextFields(
                               icon: 'assets/icons/facebook.svg',
-                              hintText: 'Facebook',
+                              hintText: 'Facebook'.tr,
                               controller: controller.facebookController,
                               color: AppColors.primary_color,
                             ),
@@ -284,7 +284,7 @@ class _CreateCardViewState extends State<CreateCardView> {
                             width: 135.w,
                             child: AppTextFields(
                               icon: 'assets/icons/linkedin-blue.svg',
-                              hintText: 'Linkedin',
+                              hintText: 'Linkedin'.tr,
                               controller: controller.linkedinController,
                               color: AppColors.primary_color,
                             ),
@@ -293,7 +293,7 @@ class _CreateCardViewState extends State<CreateCardView> {
                       ),
                       Gap(30.h),
                       AppButton(
-                        title: 'Submit',
+                        title: 'Submit'.tr,
                         height: 50.0.h,
                         width: 304.0.w,
                         onTap: () {

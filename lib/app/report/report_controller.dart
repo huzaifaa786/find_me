@@ -19,9 +19,9 @@ class ReportController extends GetxController {
     if (pickedFile != null) {
       selectedImagePath = pickedFile.path;
       update();
-      UiUtilites.successSnackbar('Image selected successfully', 'Success');
+      UiUtilites.successSnackbar('Image selected successfully'.tr, 'Success'.tr);
     } else {
-      UiUtilites.errorSnackbar('No image selected', 'Error');
+      UiUtilites.errorSnackbar('No image selected'.tr, 'Error'.tr);
     }
   }
 
@@ -33,7 +33,7 @@ class ReportController extends GetxController {
   Future<void> reportProblem({String? userId}) async {
     if (descriptionController.text.isEmpty && selectedImagePath.isEmpty) {
       UiUtilites.errorSnackbar(
-          'Please provide a description or select an image', 'Error');
+          'Please provide a description or select an image'.tr, 'Error'.tr);
       return;
     }
     String base64Image = '';
@@ -52,7 +52,7 @@ class ReportController extends GetxController {
           "Thank you for your feedback.your\n report has been submitted");
      clearFields();
     } else {
-      UiUtilites.errorSnackbar('Could not report the problem', 'Error!');
+      UiUtilites.errorSnackbar('Could not report the problem'.tr, 'Error!'.tr);
     }
   }
 

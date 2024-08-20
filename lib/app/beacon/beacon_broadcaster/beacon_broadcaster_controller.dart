@@ -119,11 +119,11 @@ class BeaconBroadcasterController extends GetxController with WidgetsBindingObse
     switch (hasPermission) {
       case BluetoothPeripheralState.denied:
         UiUtilites.errorSnackbar(
-            "Permissions!", "We don't have permissions, requesting now!");
+            "Permissions!".tr, "We don't have permissions, requesting now!".tr);
         await requestPermissions();
         break;
       default:
-        UiUtilites.successSnackbar("Permissions!", 'State: $hasPermission!');
+        UiUtilites.successSnackbar("Permissions!".tr, 'State: $hasPermission!'.tr);
         break;
     }
   }
@@ -132,7 +132,7 @@ class BeaconBroadcasterController extends GetxController with WidgetsBindingObse
     final hasPermissions = await FlutterBlePeripheral().hasPermission();
     Get.showSnackbar(
       GetSnackBar(
-        message: 'Has permission: $hasPermissions',
+        message: 'Has permission: $hasPermissions'.tr,
         backgroundColor: hasPermissions == BluetoothPeripheralState.granted
             ? Colors.green
             : Colors.red,

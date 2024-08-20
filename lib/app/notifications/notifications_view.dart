@@ -10,15 +10,12 @@ import 'package:find_me/app/notifications/components/subscription_notification.d
 import 'package:find_me/app/notifications/notifications_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/models/notification_model.dart';
-import 'package:find_me/utils/app_text/app_text.dart';
-import 'package:find_me/utils/colors/app_colors.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
+
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
 NotificationModel? notifications;
 
@@ -33,7 +30,7 @@ class NotificationsView extends StatelessWidget {
           automaticallyImplyLeading: false,
           forceMaterialTransparency: true,
           toolbarHeight: 83.h,
-          title: topBar(name: 'Notifications'),
+          title: topBar(name: 'Notifications'.tr),
         ),
         body: SafeArea(
             child: SingleChildScrollView(
@@ -49,7 +46,7 @@ class NotificationsView extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "Today",
+                      "Today".tr,
                       textAlign: TextAlign.start,
                       style: TextStyle(
                           fontSize: 14.sp, fontWeight: FontWeight.w600),
@@ -75,7 +72,7 @@ class NotificationsView extends StatelessWidget {
                     // );
                   },
                 ),
-                
+
                 // NotificationPermissionTile(
                 //   img:
                 //       'https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class HomeGif extends StatelessWidget {
   HomeGif({Key? key,this.onTap,this.isSearching = false}) : super(key: key);
@@ -74,7 +75,7 @@ class HomeGif extends StatelessWidget {
             : Positioned(
                 bottom: 1,
                 child: AppText(
-                  title: 'Click the bubble to activate',
+                  title: 'Click the bubble to activate'.tr,
                   color: AppColors.primary_color,
                   textAlign: TextAlign.center,
                   size: 12.sp,

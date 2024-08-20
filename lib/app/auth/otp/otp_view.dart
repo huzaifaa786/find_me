@@ -6,8 +6,6 @@ import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -40,7 +38,7 @@ class OtpView extends StatelessWidget {
                       height: 48.h,
                       width: 230.w,
                       child: AppText(
-                        title: 'Verify your phone number'.tr,
+                        title: 'Verify your Phone number'.tr,
                         color: AppColors.black,
                         fontWeight: FontWeight.w600,
                         size: 20,
@@ -59,7 +57,7 @@ class OtpView extends StatelessWidget {
                         width: 270.w,
                         child: AppText(
                           title:
-                              'We have sent you an OTP code to your phone number, please enter it to continue'
+                              'We have sent you an OTP code to your phone number, please enter it to continue'.tr
                                   .tr,
                           color: AppColors.hintGrey,
                           fontWeight: FontWeight.w600,

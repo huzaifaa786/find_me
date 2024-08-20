@@ -1,11 +1,10 @@
-import 'dart:async';
+
 
 import 'package:find_me/app/auth/changepassword/changepassword_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/buttons/app_button.dart';
 import 'package:find_me/components/textfields/password_textfield.dart';
-import 'package:find_me/utils/app_text/app_text.dart';
-import 'package:find_me/utils/images/images.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -27,7 +26,7 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                 centerTitle: true,
                 automaticallyImplyLeading: false,
                 forceMaterialTransparency: true,
-                title: topBar(name: 'Change password'),
+                title: topBar(name: 'Change password'.tr),
               ),
               body: SafeArea(
                   child: Container(
@@ -37,7 +36,7 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                   children: [
                     Gap(70.h),
                     PasswordTextFields(
-                      hintText: 'Old Password',
+                      hintText: 'Old Password'.tr,
                       obscure: controller.obscureTextOldPassword,
                       controller: controller.oldpasswordController,
                       toggle: controller.oldtoggle,
@@ -51,7 +50,7 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                     ),
                     Gap(16.h),
                     PasswordTextFields(
-                      hintText: 'Confirm Password',
+                      hintText: 'Confirm Password'.tr,
                       obscure: controller.obscureTextCPassword,
                       controller: controller.confirmPasswordController,
                       toggle: controller.ctoggle,

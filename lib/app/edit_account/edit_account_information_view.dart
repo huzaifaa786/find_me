@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:find_me/app/auth/components/dob_textfield.dart';
+
 import 'package:find_me/app/auth/components/dob_textfield_editaccountinformation.dart';
 import 'package:find_me/app/edit_account/edit_account_information_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
@@ -9,9 +9,6 @@ import 'package:find_me/components/radio/gender_radio_button.dart';
 import 'package:find_me/components/textfields/app_textfields.dart';
 import 'package:find_me/helpers/validator.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
-import 'package:find_me/utils/colors/app_colors.dart';
-import 'package:find_me/utils/ui_utils.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -33,7 +30,7 @@ class _EditAccountInformationViewState
         builder: (controller) => Scaffold(
               appBar: AppBar(
                 toolbarHeight: 83.h,
-                title: topBar(name: 'Change Information'),
+                title: topBar(name: 'Change Information'.tr),
                 scrolledUnderElevation: 0,
                 automaticallyImplyLeading: false,
               ),
@@ -47,7 +44,7 @@ class _EditAccountInformationViewState
                         children: [
                           Gap(10),
                           AppText(
-                            title: 'Your name',
+                            title: 'Your name'.tr,
                             size: 14.sp,
                             fontWeight: FontWeight.w500,
                           ),
@@ -57,7 +54,7 @@ class _EditAccountInformationViewState
                             controller: controller.firstNameController,
                             fieldValidator: (value) =>
                                 Validators.emptyStringValidator(
-                                    "First name", value),
+                                    "First name".tr, value),
                           ),
                           Gap(16.h),
                           AppTextFields(
@@ -65,11 +62,11 @@ class _EditAccountInformationViewState
                             controller: controller.lastNameController,
                             fieldValidator: (value) =>
                                 Validators.emptyStringValidator(
-                                    "Last name", value),
+                                    "Last name".tr, value),
                           ),
                           Gap(25.h),
                           AppText(
-                            title: 'Your Date of Birth',
+                            title: 'Your Date of Birth'.tr,
                             size: 14.sp,
                             fontWeight: FontWeight.w500,
                           ),
@@ -80,7 +77,7 @@ class _EditAccountInformationViewState
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   AppText(
-                                    title: 'DD',
+                                    title: 'DD'.tr,
                                     color: Colors.grey,
                                     size: 12.sp,
                                   ),
@@ -89,7 +86,7 @@ class _EditAccountInformationViewState
                                     width: 85.w,
                                     child: buildTextFieldEditAccountInformation(
                                         controller.dayController,
-                                        'dd',
+                                        'dd'.tr,
                                         context,
                                         controller),
                                   ),
@@ -100,7 +97,7 @@ class _EditAccountInformationViewState
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   AppText(
-                                    title: 'MM',
+                                    title: 'MM'.tr,
                                     color: Colors.grey,
                                     size: 12.sp,
                                   ),
@@ -109,7 +106,7 @@ class _EditAccountInformationViewState
                                     width: 85.w,
                                     child: buildTextFieldEditAccountInformation(
                                         controller.monthController,
-                                        'mm',
+                                        'mm'.tr,
                                         context,
                                         controller),
                                   ),
@@ -120,7 +117,7 @@ class _EditAccountInformationViewState
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   AppText(
-                                    title: 'YYYY',
+                                    title: 'YYYY'.tr,
                                     color: Colors.grey,
                                     size: 12.sp,
                                   ),
@@ -129,7 +126,7 @@ class _EditAccountInformationViewState
                                     width: 85.w,
                                     child: buildTextFieldEditAccountInformation(
                                         controller.yearController,
-                                        'yyyy',
+                                        'yyyy'.tr,
                                         context,
                                         controller),
                                   ),
@@ -143,7 +140,7 @@ class _EditAccountInformationViewState
                             child: Row(
                               children: [
                                 AppText(
-                                  title: 'Gender',
+                                  title: 'Gender'.tr,
                                   size: 14.sp,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -155,7 +152,7 @@ class _EditAccountInformationViewState
                           ),
                           Gap(40.h),
                           AppButton(
-                            title: 'Save',
+                            title: 'Save'.tr,
                             height: 60.0.h,
                             width: 304.0.w,
                             onTap: () {

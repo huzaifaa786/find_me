@@ -31,7 +31,6 @@ class UserAccountController extends GetxController {
     var response = await UserApi.getUser();
     if (response.isNotEmpty) {
       userModel = UserModel.fromJson(response['user']);
-
       firstname = userModel!.firstName;
       lastname = userModel!.lastName;
       name = userModel!.currentProfile!.name;

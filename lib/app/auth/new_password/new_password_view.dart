@@ -5,8 +5,6 @@ import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/buttons/app_button.dart';
 import 'package:find_me/components/textfields/password_textfield.dart';
 import 'package:find_me/helpers/validator.dart';
-import 'package:find_me/utils/app_text/app_text.dart';
-import 'package:find_me/utils/images/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -27,7 +25,7 @@ class _NewPasswordViewState extends State<NewPasswordView> {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           scrolledUnderElevation: 0,
-          title: topBar(showBackIcon: true, name: "New Password"),
+          title: topBar(showBackIcon: true, name: "New Password".tr),
         ),
         body: SafeArea(
             child: Container(
@@ -37,7 +35,7 @@ class _NewPasswordViewState extends State<NewPasswordView> {
             children: [
               Gap(70.h),
               PasswordTextFields(
-                hintText: ' New Password',
+                hintText: 'New Password'.tr,
                 obscure: controller.obscureTextPassword,
                 controller: controller.passwordController,
                 toggle: controller.newtoggle,
@@ -45,7 +43,7 @@ class _NewPasswordViewState extends State<NewPasswordView> {
               ),
               Gap(16.h),
               PasswordTextFields(
-                hintText: 'Confirm Password',
+                hintText: 'Confirm Password'.tr,
                 obscure: controller.obscureTextCPassword,
                 controller: controller.confirmPasswordController,
                 toggle: controller.confirmtoggle,
@@ -68,7 +66,7 @@ class _NewPasswordViewState extends State<NewPasswordView> {
               // ),
               // Gap(30.h),
               AppButton(
-                title: 'Submit',
+                title: 'Submit'.tr,
                 height: 50.0.h,
                 width: 304.0.w,
                 onTap: () {

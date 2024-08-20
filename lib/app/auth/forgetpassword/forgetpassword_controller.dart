@@ -20,7 +20,7 @@ class ForgetPasswordController extends GetxController {
   String type = 'email';
   Future<void> forgetPasswordUserEmail() async {
     if (emailController.text.isEmpty) {
-      UiUtilites.errorSnackbar('Error', 'Email cannot be empty');
+      UiUtilites.errorSnackbar('Error'.tr, 'Email cannot be empty'.tr);
       return;
     }
     var response = await ForgotPasswordApi.forgotpassword(
@@ -34,7 +34,7 @@ class ForgetPasswordController extends GetxController {
                 'email': emailController.text,
               },);
     } else {
-      UiUtilites.errorSnackbar('Error', 'Failed to send OTP');
+      UiUtilites.errorSnackbar('Error'.tr, 'Failed to send OTP'.tr);
       update();
     }
   }
@@ -75,12 +75,12 @@ class ForgetPasswordController extends GetxController {
 
   String phoneValidation(phone) {
     if (!isNumeric(phone.number)) {
-      invalidNumberMessage = 'Use Numeric Variables';
+      invalidNumberMessage = 'Use Numeric Variables'.tr;
       update();
       return invalidNumberMessage;
     } else if (phone.number.length < selectedCountry!.minLength ||
         phone.number.length > selectedCountry!.maxLength) {
-      invalidNumberMessage = 'Invalid Phone Number';
+      invalidNumberMessage = 'Invalid Phone Number'.tr;
       update();
       return invalidNumberMessage;
     } else {
@@ -103,7 +103,7 @@ class ForgetPasswordController extends GetxController {
 
   Future<void> forgetPasswordUser() async {
     if (phoneController == null) {
-      UiUtilites.errorSnackbar('Error'.tr, 'Invalid phone number.');
+      UiUtilites.errorSnackbar('Error'.tr, 'Invalid phone number.'.tr);
       return;
     }
     type = 'phone';
@@ -123,7 +123,7 @@ class ForgetPasswordController extends GetxController {
         
       );
     } else {
-      UiUtilites.errorSnackbar('Error'.tr, 'Failed to send OTP');
+      UiUtilites.errorSnackbar('Error'.tr, 'Failed to send OTP'.tr);
       update();
     }
   }

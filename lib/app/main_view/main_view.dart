@@ -18,6 +18,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -67,7 +68,10 @@ class _MainViewState extends State<MainView> with RouteAware {
                         showBadge: cartLength > 0,
                         position: badges.BadgePosition.topStart(top: -10.h),
                         badgeContent: AppText(
-                            title: '$cartLength', color: AppColors.white),
+                          title: '$cartLength',
+                          color: AppColors.white,
+                          overFlow: TextOverflow.ellipsis,
+                        ),
                         child: SvgPicture.asset(
                           iconPath,
                           fit: BoxFit.scaleDown,
@@ -80,7 +84,7 @@ class _MainViewState extends State<MainView> with RouteAware {
                       )
                     : index == 2
                         ? SvgPicture.asset(
-                           iconPath,
+                            iconPath,
                             fit: BoxFit.scaleDown,
                             height: 27.h,
                             width: 27.w,
@@ -98,13 +102,17 @@ class _MainViewState extends State<MainView> with RouteAware {
                                 : AppColors.black,
                           ),
                 Gap(4.h),
-                AppText(
-                  title: label,
-                  color: _navigationMenuIndex == index
-                      ? AppColors.primary_color
-                      : AppColors.black,
-                  size: 10.sp,
-                  fontWeight: FontWeight.w500,
+                ConstrainedBox(
+                  constraints: BoxConstraints(maxWidth: Get.width),
+                  child: AppText(
+                    title: label,
+                    overFlow: TextOverflow.ellipsis,
+                    color: _navigationMenuIndex == index
+                        ? AppColors.primary_color
+                        : AppColors.black,
+                    size: 10.sp,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ],
             ),
@@ -113,15 +121,19 @@ class _MainViewState extends State<MainView> with RouteAware {
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
+    GetStorage box = GetStorage();
     return WillPopScope(
       onWillPop: () => Future.value(false),
       child: GetBuilder<HomeController>(
         autoRemove: false,
         builder: (controller) {
           return Directionality(
-            textDirection: TextDirection.ltr,
+            textDirection: box.read('locale') != 'ar'
+                ? TextDirection.ltr
+                : TextDirection.rtl,
             child: Scaffold(
               body: SafeArea(
                 child: _fragments[_navigationMenuIndex],

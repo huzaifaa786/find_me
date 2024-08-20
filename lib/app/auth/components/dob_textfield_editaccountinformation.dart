@@ -1,4 +1,4 @@
-import 'package:find_me/app/auth/signup/signup_controller.dart';
+
 import 'package:find_me/app/edit_account/edit_account_information_controller.dart';
 import 'package:find_me/utils/box_decoration/box_decoration.dart';
 import 'package:find_me/utils/colors/app_colors.dart';

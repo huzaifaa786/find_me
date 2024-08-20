@@ -30,7 +30,7 @@ class _PhoneNumberViewState extends State<PhoneNumberView> {
                 ),
                 Gap(40.h),
                 AppButton(
-                  title: 'Confirm',
+                  title: 'Confirm'.tr,
                   height: 50.0.h,
                   width: 304.0.w,
                   onTap: () async {

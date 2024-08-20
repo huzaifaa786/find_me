@@ -613,11 +613,12 @@ class UiUtilites {
                       height: 100.h,
                       width: 100.w,
                     ),
-                    AppText(
-                      title: "Done!".tr,
-                      fontWeight: FontWeight.w600,
-                      size: 14.sp,
-                    ),
+                    // AppText(
+                    //   title: "Done!".tr,
+                    //   fontWeight: FontWeight.w600,
+                    //   size: 14.sp,
+                    // ),
+                    Gap(10),
                     AppText(
                       title: "The emoji will appear in \n “My emojis”",
                       maxLines: 2,

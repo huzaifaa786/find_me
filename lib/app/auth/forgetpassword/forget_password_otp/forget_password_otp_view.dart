@@ -44,8 +44,8 @@ class _ForgetPasswordOtpViewState extends State<ForgetPasswordOtpView> {
                       width: 230.w,
                       child: AppText(
                         title: type == 'email'
-                            ? "Verify your Email"
-                            : " Verify your Phone Number",
+                            ? "Verify your Email".tr
+                            : "Verify your Phone Number".tr,
                         color: AppColors.black,
                         fontWeight: FontWeight.w600,
                         size: 20,
@@ -64,8 +64,8 @@ class _ForgetPasswordOtpViewState extends State<ForgetPasswordOtpView> {
                         width: 270.w,
                         child: AppText(
                           title: type == "email"
-                              ? 'We have sent you an OTP code to your new Email, please enter it to continue'
-                              : 'We have sent you an OTP code to your new phone number, please enter it to continue',
+                              ? 'We have sent you an OTP code to your new Email, please enter it to continue'.tr
+                              : 'We have sent you an OTP code to your new phone number, please enter it to continue'.tr,
                           color: AppColors.hintGrey,
                           fontWeight: FontWeight.w500,
                           size: 12,
