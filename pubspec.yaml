@@ -81,6 +81,7 @@ dependencies:
   url_launcher: ^6.3.0
   uuid: ^4.4.0
   workmanager: ^0.5.2
+  sms_autofill: ^2.4.0
 dev_dependencies:
   flutter_lints: ^3.0.0
   flutter_test:

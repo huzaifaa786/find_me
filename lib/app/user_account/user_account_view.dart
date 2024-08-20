@@ -31,7 +31,9 @@ class _UserAccountViewState extends State<UserAccountView> {
                 automaticallyImplyLeading: false,
               ),
               body: SafeArea(
-                  child: Container(
+                  child:
+                  controller.userModel!= null
+                   ?Container(
                 padding: EdgeInsets.only(
                   left: 33,
                   right: 32,
@@ -179,11 +181,11 @@ class _UserAccountViewState extends State<UserAccountView> {
                             ),
                           ],
                         ),
-                      ),
+                      )
                     ],
                   ),
                 ),
-              )),
+              ):SizedBox()),
             ));
   }
 }

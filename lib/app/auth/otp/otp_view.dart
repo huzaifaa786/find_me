@@ -25,7 +25,7 @@ class OtpView extends StatelessWidget {
             scrolledUnderElevation: 0,
             title: topBar(
               name: '',
-              showBackIcon: true,
+              showBackIcon: false,
             ),
           ),
           body: SafeArea(
@@ -55,22 +55,22 @@ class OtpView extends StatelessWidget {
                   children: [
                     Flexible(
                       child: SizedBox(
-                        height: 30.h,
+                        height: 35.h,
                         width: 270.w,
                         child: AppText(
                           title:
                               'We have sent you an OTP code to your phone number, please enter it to continue'
                                   .tr,
                           color: AppColors.hintGrey,
-                          fontWeight: FontWeight.w500,
-                          size: 12,
+                          fontWeight: FontWeight.w600,
+                          size: 13,
                           textAlign: TextAlign.center,
                         ),
                       ),
                     ),
                   ],
                 ),
-                Gap(40),
+                Gap(50),
                 Directionality(
                   textDirection: TextDirection.ltr,
                   child: OtpTextField(
@@ -101,7 +101,7 @@ class OtpView extends StatelessWidget {
                 Gap(30),
                 GestureDetector(
                   onTap: () {
-                    Get.toNamed(AppRoutes.sociallogin);
+                    controller.resendOtp();
                   },
                   child: AppText(
                     title: 'Resend'.tr,

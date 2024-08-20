@@ -88,7 +88,7 @@ class _GenderRadioButtonsState extends State<GenderRadioButtons> {
               dense: true,
               contentPadding: EdgeInsets.zero,
               title: AppText(
-                title: 'Prefer not to say',
+                title: 'Rather not say',
                 size: 12.sp,
                 fontWeight: FontWeight.w400,
               ),
