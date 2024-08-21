@@ -96,7 +96,7 @@ class CreateCardController extends GetxController {
           'Validation Error'.tr, 'Last name is required'.tr);
       return false;
     }
-    if (phoneController!.isEmpty) {
+    if (phoneController == null) {
       UiUtilites.errorSnackbar(
           'Validation Error'.tr, 'Phone number is required'.tr);
       return false;

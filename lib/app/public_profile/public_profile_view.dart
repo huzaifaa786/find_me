@@ -396,15 +396,14 @@ class PublicProfileView extends StatelessWidget {
                                                 ],
                                               ),
                                               decoration: BoxDecoration(
-                                                  color: AppColors.light_white,
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                          bottomLeft:
-                                                              Radius.circular(
-                                                                  18),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  16))),
+                                                color: AppColors.light_white,
+                                                borderRadius: BorderRadius.only(
+                                                  bottomLeft:
+                                                      Radius.circular(18),
+                                                  bottomRight:
+                                                      Radius.circular(16),
+                                                ),
+                                              ),
                                             )
                                           ],
                                         ),
@@ -492,21 +491,21 @@ class PublicProfileView extends StatelessWidget {
                                           ),
                                         ),
                                       if (controller.profile!.emojis![index]
-                                                  .giftCount !=
-                                              "0" )
-                                      Positioned(
-                                        bottom: 0,
-                                        child: Text(
-                                          controller.profile!.emojis![index]
-                                                  .giftCount ??
-                                              "",
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.w600,
+                                              .giftCount !=
+                                          "0")
+                                        Positioned(
+                                          bottom: 0,
+                                          child: Text(
+                                            controller.profile!.emojis![index]
+                                                    .giftCount ??
+                                                "",
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w600,
+                                            ),
                                           ),
                                         ),
-                                      ),
                                     ],
                                   ),
                                 );

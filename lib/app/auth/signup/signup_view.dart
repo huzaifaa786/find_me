@@ -1,4 +1,3 @@
-
 import 'package:find_me/app/auth/components/auth_appbar.dart';
 import 'package:find_me/app/auth/components/auth_rich_text.dart';
 import 'package:find_me/app/auth/components/dob_textfield.dart';
@@ -17,7 +16,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
 
 class SignUpView extends StatefulWidget {
   const SignUpView({super.key});
@@ -153,7 +151,8 @@ class _SignUpViewState extends State<SignUpView> {
                     onTap: () {
                       Get.toNamed(AppRoutes.signin);
                     },
-                  )
+                  ),
+                  Gap(30.h),
                 ],
               ),
             ),

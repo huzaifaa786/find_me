@@ -8,6 +8,7 @@ import 'package:find_me/api/bluetooth_api/bluetooth_users_api.dart';
 import 'package:find_me/api/profile_api/profile_api.dart';
 import 'package:find_me/api/request_api/request_api.dart';
 import 'package:find_me/app/public_profile/public_profile_controller.dart';
+import 'package:find_me/components/helper/loading.dart';
 import 'package:find_me/components/popups/profile_request_popup.dart';
 import 'package:find_me/models/profile_request_model.dart';
 import 'package:find_me/models/user_model.dart';
@@ -246,13 +247,14 @@ class HomeController extends GetxController {
   List<UserModel> scannedUsers = [];
 
   checkData() async {
+    LoadingHelper.show();
     final connectionChecker = InternetConnectionChecker();
     InternetConnectionStatus internetConnectionStatus =
         await connectionChecker.connectionStatus;
 
-
     if (internetConnectionStatus == InternetConnectionStatus.connected) {
       print('Connected to the internet');
+
       initFlutterBlue();
     } else {
       Get.snackbar(
@@ -263,8 +265,9 @@ class HomeController extends GetxController {
         colorText: AppColors.white,
         duration: Duration(seconds: 5),
       );
+      LoadingHelper.dismiss();
     }
-        connectionChecker.onStatusChange.listen(
+    connectionChecker.onStatusChange.listen(
       (InternetConnectionStatus status) {
         internetConnectionStatus = status;
         update();

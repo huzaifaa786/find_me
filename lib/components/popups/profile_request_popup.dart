@@ -76,16 +76,11 @@ class ProfileRequestPopup extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    requestMessage,
-                    style: TextStyle(
-                      fontSize: 12,
-                    ),
-                  ),
-                ],
+              Text(
+                requestMessage,
+                style: TextStyle(
+                  fontSize: 12,
+                ),
               ),
               SizedBox(height: 10),
               Row(

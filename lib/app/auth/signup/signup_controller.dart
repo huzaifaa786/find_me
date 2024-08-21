@@ -84,7 +84,7 @@ class SignUpController extends GetxController {
   }
 
   //! Date of Birth Selection
-    final dateController = TextEditingController();
+  final dateController = TextEditingController();
 
   final dayController = TextEditingController();
   final monthController = TextEditingController();
@@ -109,32 +109,30 @@ class SignUpController extends GetxController {
   //   }
   // }
 
-
   Future<void> selectDatee(BuildContext context) async {
-  final DateTime now = DateTime.now();
-  final DateTime firstDate = DateTime(now.year - 100, now.month, now.day);
-  final DateTime lastDate = DateTime(now.year - 10, now.month, now.day);
-  final DateTime initialDate = lastDate;
+    final DateTime now = DateTime.now();
+    final DateTime firstDate = DateTime(now.year - 100, now.month, now.day);
+    final DateTime lastDate = DateTime(now.year - 10, now.month, now.day);
+    final DateTime initialDate = lastDate;
 
-  final DateTime? picked = await showDatePicker(
-    context: context,
-    initialDate: initialDate,
-    firstDate: firstDate,
-    lastDate: lastDate,
-  );
-  if (picked != null) {
-    // Format the date as 'dd/MM/yyyy'
-    String formattedDate = DateFormat('dd/MM/yyyy').format(picked);
-    dateController.text = formattedDate; // Update the dateController
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: initialDate,
+      firstDate: firstDate,
+      lastDate: lastDate,
+    );
+    if (picked != null) {
+      // Format the date as 'dd/MM/yyyy'
+      String formattedDate = DateFormat('dd/MM/yyyy').format(picked);
+      dateController.text = formattedDate; // Update the dateController
+    }
   }
-}
 
   @override
   void dispose() {
     dateController.dispose();
     super.dispose();
   }
-
 
   // @override
   // void dispose() {
@@ -147,8 +145,7 @@ class SignUpController extends GetxController {
   registerUser() async {
     final token = await FirebaseMessaging.instance.getToken();
 
-    String dob =
-        '${yearController.text}-${monthController.text}-${dayController.text}';
+    String dob = '${dateController}';
     // Generate a UUID for the device's beacon ID
     var uuid = const Uuid();
     String beaconId = uuid.v4();
