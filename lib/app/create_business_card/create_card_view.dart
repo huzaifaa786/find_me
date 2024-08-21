@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/app/create_business_card/create_card_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
@@ -182,7 +180,8 @@ class _CreateCardViewState extends State<CreateCardView> {
                         hintText: 'Job title'.tr,
                         controller: controller.jobTitleController,
                         fieldValidator: (value) =>
-                            Validators.emptyStringValidator("Job title".tr, value),
+                            Validators.emptyStringValidator(
+                                "Job title".tr, value),
                       ),
                       Gap(19.h),
                       PhoneInputField(

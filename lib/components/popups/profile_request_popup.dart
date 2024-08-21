@@ -1,13 +1,16 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class ProfileRequestPopup extends StatelessWidget {
   final String name;
   final String imageUrl;
   final String requestMessage;
-  final  onAcceptTap;
-  final  onRejectTap;
+  final onAcceptTap;
+  final onRejectTap;
 
   ProfileRequestPopup({
     required this.name,
@@ -27,7 +30,7 @@ class ProfileRequestPopup extends StatelessWidget {
       backgroundColor: Colors.transparent,
       child: Container(
         width: 300,
-        height: 300,
+        height: 320,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
@@ -45,6 +48,21 @@ class ProfileRequestPopup extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              GestureDetector(
+                onTap: () {
+                  Get.back();
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    SvgPicture.asset(
+                      'assets/icons/cancel.svg',
+                      height: 20,
+                      width: 20,
+                    ),
+                  ],
+                ),
+              ),
               CircleAvatar(
                 radius: 50,
                 backgroundImage: CachedNetworkImageProvider(imageUrl),
@@ -58,11 +76,16 @@ class ProfileRequestPopup extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10),
-              Text(
-                requestMessage,
-                style: TextStyle(
-                  fontSize: 12,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    requestMessage,
+                    style: TextStyle(
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: 10),
               Row(
@@ -100,8 +123,8 @@ class ProfileRequestPopup extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    child:
-                        Text('Accept'.tr, style: TextStyle(color: Colors.white)),
+                    child: Text('Accept'.tr,
+                        style: TextStyle(color: Colors.white)),
                   ),
                 ],
               ),

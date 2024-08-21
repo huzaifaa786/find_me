@@ -27,6 +27,7 @@ Widget homeAppBar({String? name}) {
         ),
         Gap(150.w),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // notification.isNotEmpty?
@@ -45,8 +46,7 @@ Widget homeAppBar({String? name}) {
                 fit: BoxFit.scaleDown,
               ),
             ),
-            Gap(4),
-
+            Gap(20),
             GestureDetector(
               onTap: () {
                 Get.toNamed(AppRoutes.setting);

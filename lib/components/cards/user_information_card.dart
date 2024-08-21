@@ -28,7 +28,6 @@ class UserInformationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 490.h,
       width: 290.w,
       decoration: BoxDecoration(
         color: AppColors.white,

@@ -10,6 +10,7 @@ class SocialLoginController extends GetxController {
    //! Phone Input Field Variable and Validations
   String invalidNumberMessage = '';
   TextEditingController pcontroller = TextEditingController();
+  
   Country? selectedCountry =
       countries.firstWhere((country) => country.fullCountryCode == "971");
   PhoneNumber? checkphoneController;

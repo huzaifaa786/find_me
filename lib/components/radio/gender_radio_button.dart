@@ -1,5 +1,4 @@
 import 'package:find_me/utils/app_text/app_text.dart';
-import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -89,7 +88,7 @@ class _GenderRadioButtonsState extends State<GenderRadioButtons> {
               dense: true,
               contentPadding: EdgeInsets.zero,
               title: AppText(
-                title: 'Prefer not to say'.tr,
+                title: 'Rather not say',
                 size: 12.sp,
                 fontWeight: FontWeight.w400,
               ),

@@ -1,7 +1,7 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:find_me/models/user_model.dart';
 import 'package:find_me/models/user_profile_model.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
@@ -11,6 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfileContainer extends StatefulWidget {
@@ -22,9 +23,9 @@ class ProfileContainer extends StatefulWidget {
   final bool isLocked;
   final UserProfileModel? userModel;
   final Function(bool) onToggle;
-  final onNameChange;
-  final onImageChange;
-  final index;
+  final Function(int, String) onNameChange;
+  final Function(int, XFile) onImageChange;
+  final int index;
   final TextEditingController textController;
 
   const ProfileContainer({
@@ -73,6 +74,24 @@ class _ProfileContainerState extends State<ProfileContainer> {
     super.dispose();
   }
 
+  // Method for cropping the image file passed through a parameter.
+  Future<File?> _cropImage({required File imageFile}) async {
+    try {
+      final CroppedFile? croppedImg = await ImageCropper().cropImage(
+        sourcePath: imageFile.path,
+        compressQuality: 100,
+      );
+      if (croppedImg == null) {
+        return null;
+      } else {
+        return File(croppedImg.path);
+      }
+    } catch (e) {
+      print("Error cropping image: $e");
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -119,7 +138,10 @@ class _ProfileContainerState extends State<ProfileContainer> {
                             final pickedFile = await _picker.pickImage(
                                 source: ImageSource.gallery);
                             if (pickedFile != null) {
-                              widget.onImageChange(widget.index, pickedFile);
+                              final croppedImage = await _cropImage(imageFile: File(pickedFile.path));
+                              if (croppedImage != null) {
+                                widget.onImageChange(widget.index, XFile(croppedImage.path));
+                              }
                             }
                           },
                     child: Container(
@@ -201,6 +223,7 @@ class _ProfileContainerState extends State<ProfileContainer> {
                       ? TextField(
                           controller: widget.textController,
                           focusNode: _focusNode,
+                          maxLength: 10,
                           decoration: InputDecoration(
                             border: UnderlineInputBorder(
                                 borderSide:
@@ -245,7 +268,7 @@ class _ProfileContainerState extends State<ProfileContainer> {
               Gap(10.h),
               if (widget.verified)
                 SvgPicture.asset('assets/icons/verified.svg'),
-              Gap(40.h)
+              Gap(40.h),
             ],
           ),
         ),

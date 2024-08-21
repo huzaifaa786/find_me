@@ -16,7 +16,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
 
@@ -96,6 +95,7 @@ class _ProfileViewState extends State<ProfileView> {
                                       ? TextField(
                                           controller: controller.bioController,
                                           focusNode: controller.focusNode,
+                                          maxLength: 100,
                                           decoration: InputDecoration(
                                             filled: true,
                                             hintStyle: TextStyle(
@@ -149,6 +149,7 @@ class _ProfileViewState extends State<ProfileView> {
                                               size: 11.sp,
                                               fontWeight: FontWeight.w500,
                                               color: AppColors.primary_color),
+                                          Gap(2),
                                           SvgPicture.asset(
                                               "assets/icons/edit.svg"),
                                         ],
@@ -410,7 +411,8 @@ class _ProfileViewState extends State<ProfileView> {
                                                           SvgPicture.asset(
                                                               "assets/icons/business_card.svg"),
                                                           Text(
-                                                            "Create business card".tr,
+                                                            "Create business card"
+                                                                .tr,
                                                             style: TextStyle(
                                                                 color: AppColors
                                                                     .primary_color,
@@ -467,7 +469,7 @@ class _ProfileViewState extends State<ProfileView> {
                               GridView.builder(
                                   shrinkWrap: true,
                                   physics: BouncingScrollPhysics(),
-                                  itemCount: controller.profile!.emojis!.length,
+                                  itemCount: 6,
                                   gridDelegate:
                                       SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 3,
@@ -477,10 +479,10 @@ class _ProfileViewState extends State<ProfileView> {
                                   itemBuilder:
                                       (BuildContext context, int index) {
                                     return GestureDetector(
-                                      onTap: () {
-                                        controller.giftEmoji(controller
-                                            .profile!.emojis![index].id);
-                                      },
+                                      // onTap: () {
+                                      //   controller.giftEmoji(controller
+                                      //       .profile!.emojis![index].id);
+                                      // },
                                       child: Stack(
                                         alignment: Alignment.center,
                                         children: [

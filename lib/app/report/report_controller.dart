@@ -48,10 +48,16 @@ class ReportController extends GetxController {
       user_id: userId,
     );
     if (response.isNotEmpty) {
-      UiUtilites.registerSuccessAlert(
-          Get.context, "Report the problem Successfully".tr);
+      UiUtilites.registerSuccessAlert(Get.context,
+          "Thank you for your feedback.your\n report has been submitted");
+     clearFields();
     } else {
       UiUtilites.errorSnackbar('Could not report the problem'.tr, 'Error!'.tr);
     }
   }
-}
+
+  void clearFields() {
+    selectedImagePath = '';
+    descriptionController.clear();
+    update();
+  }}

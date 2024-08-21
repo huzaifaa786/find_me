@@ -36,7 +36,9 @@ class _UserAccountViewState extends State<UserAccountView> {
                 automaticallyImplyLeading: false,
               ),
               body: SafeArea(
-                  child: Container(
+                  child:
+                  controller.userModel!= null
+                   ?Container(
                 padding: EdgeInsets.only(
                   left: 33,
                   right: 32,
@@ -78,7 +80,6 @@ class _UserAccountViewState extends State<UserAccountView> {
                       Gap(18),
                       Container(
                         margin: EdgeInsets.only(bottom: 15),
-                        height: 340.h,
                         width: 290.w,
                         decoration: BoxDecoration(
                           color: AppColors.white,
@@ -184,11 +185,11 @@ class _UserAccountViewState extends State<UserAccountView> {
                             ),
                           ],
                         ),
-                      ),
+                      )
                     ],
                   ),
                 ),
-              )),
+              ):SizedBox()),
             ));
   }
 }

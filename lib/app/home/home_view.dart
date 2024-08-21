@@ -255,7 +255,7 @@ class HomeView extends StatelessWidget {
                         child: HomeGif(
                           onTap: () {
                             if (!controller.isSearching) {
-                              controller.initFlutterBlue();
+                              controller.checkData();
                             }
                           },
                           isSearching: controller.isSearching,

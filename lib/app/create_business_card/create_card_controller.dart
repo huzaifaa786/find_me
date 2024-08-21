@@ -46,7 +46,6 @@ class CreateCardController extends GetxController {
 
     if (profileBusinessCardModel != null) {
       updateInputs();
-      
     }
     super.onInit();
   }
@@ -88,15 +87,18 @@ class CreateCardController extends GetxController {
 
   bool _validateFields() {
     if (firstnameController.text.isEmpty) {
-      UiUtilites.errorSnackbar('Validation Error'.tr, 'First name is required'.tr);
+      UiUtilites.errorSnackbar(
+          'Validation Error'.tr, 'First name is required'.tr);
       return false;
     }
     if (lastnameController.text.isEmpty) {
-      UiUtilites.errorSnackbar('Validation Error'.tr, 'Last name is required'.tr);
+      UiUtilites.errorSnackbar(
+          'Validation Error'.tr, 'Last name is required'.tr);
       return false;
     }
     if (phoneController!.isEmpty) {
-      UiUtilites.errorSnackbar('Validation Error'.tr, 'Phone number is required'.tr);
+      UiUtilites.errorSnackbar(
+          'Validation Error'.tr, 'Phone number is required'.tr);
       return false;
     }
     if (emailController.text.isEmpty) {
@@ -115,7 +117,6 @@ class CreateCardController extends GetxController {
     if (profileImage != null) {
       List<int> imageBytes = await profileImage!.readAsBytes();
       base64Image = base64Encode(imageBytes);
-    
     }
     try {
       var response = await ProfileApi.submitBusinessCard(
@@ -137,16 +138,20 @@ class CreateCardController extends GetxController {
 
       if (response.isNotEmpty) {
         if (profileBusinessCardModel == null) {
-          UiUtilites.successSnackbar("Business Card Created successfully".tr, "");
+          UiUtilites.successSnackbar(
+              "Business Card Created successfully".tr, "");
           Get.back();
         } else {
-          UiUtilites.successSnackbar("Business Card updated successfully".tr, "");
+          UiUtilites.successSnackbar(
+              "Business Card updated successfully".tr, "");
         }
       } else {
-        UiUtilites.errorSnackbar('Error'.tr, 'Failed to update Business Card'.tr);
+        UiUtilites.errorSnackbar(
+            'Error'.tr, 'Failed to update Business Card'.tr);
       }
     } catch (e) {
-      UiUtilites.errorSnackbar('Error'.tr, 'Failed to update Business Card: $e'.tr);
+      UiUtilites.errorSnackbar(
+          'Error'.tr, 'Failed to update Business Card: $e'.tr);
     }
   }
 
