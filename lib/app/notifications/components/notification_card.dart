@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, must_be_immutable
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/models/notification_model.dart';
@@ -9,13 +9,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class Notificationscard extends StatelessWidget {
-  const Notificationscard({
+  Notificationscard({
     super.key,
     this.item,
   });
   final NotificationModel? item;
+  GetStorage box = GetStorage();
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +64,9 @@ class Notificationscard extends StatelessWidget {
                   Gap(10.w),
                   Expanded(
                     child: AppText(
-                      title: item!.body.toString(),
+                      title: box.read('locale') != 'ar'
+                          ? item!.body.toString()
+                          : item!.arbody.toString(),
                       maxLines: 2,
                       overFlow: TextOverflow.ellipsis,
                     ),

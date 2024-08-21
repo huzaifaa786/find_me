@@ -149,6 +149,7 @@ class _ProfileViewState extends State<ProfileView> {
                                               size: 11.sp,
                                               fontWeight: FontWeight.w500,
                                               color: AppColors.primary_color),
+                                          Gap(2),
                                           SvgPicture.asset(
                                               "assets/icons/edit.svg"),
                                         ],

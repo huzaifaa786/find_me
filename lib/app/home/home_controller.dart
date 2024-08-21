@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
-
 import 'package:find_me/api/auth_api/user_api.dart';
 import 'package:find_me/api/bluetooth_api/bluetooth_users_api.dart';
 import 'package:find_me/api/profile_api/profile_api.dart';
@@ -157,8 +156,8 @@ class HomeController extends GetxController {
   }
 
   Future<void> startPeriodicAdvertising() async {
-    if(Platform.isAndroid){
-          if (!await FlutterBluePlus.isOn) {
+    if (Platform.isAndroid) {
+      if (!await FlutterBluePlus.isOn) {
         Get.snackbar(
             "Bluetooth".tr, "Please turn on Bluetooth to start advertising".tr,
             snackPosition: SnackPosition.BOTTOM);
@@ -200,13 +199,12 @@ class HomeController extends GetxController {
   }
 
   Future<void> requestPermissions() async {
-
     Location location = new Location();
 
     bool _serviceEnabled;
 
     _serviceEnabled = await location.serviceEnabled();
-    
+
     if (!_serviceEnabled) {
       _serviceEnabled = await location.requestService();
       if (!_serviceEnabled) {
@@ -400,22 +398,29 @@ class HomeController extends GetxController {
       if (profileRequestModel.requestType == "profile") {
         if (profileRequestModel.status == "accepted") {
           String name =
-              "${profileRequestModel.receiverProfile!.name} has accepted your request".tr;
-          UiUtilites.successSnackbar(name.toString(), "Profile Request Access".tr);
+              "${profileRequestModel.receiverProfile!.name} has accepted your request"
+                  .tr;
+          UiUtilites.successSnackbar(
+              name.toString(), "Profile Request Access".tr);
         } else {
           String name =
-              "${profileRequestModel.receiverProfile!.name} has rejected your request".tr;
-          UiUtilites.errorSnackbar("Profile Request Access".tr, name.toString());
+              "${profileRequestModel.receiverProfile!.name} has rejected your request"
+                  .tr;
+          UiUtilites.errorSnackbar(
+              "Profile Request Access".tr, name.toString());
         }
       } else {
         if (profileRequestModel.status == "accepted") {
           String name =
-              "${profileRequestModel.receiverProfile!.name} has accepted your request".tr;
-          UiUtilites.successSnackbar(name.toString(), "Social Request Access".tr);
+              "${profileRequestModel.receiverProfile!.name} has accepted your request"
+                  .tr;
+          UiUtilites.successSnackbar(
+              name.toString(), "Social Request Access".tr);
           updatePublicProfile();
         } else {
           String name =
-              "${profileRequestModel.receiverProfile!.name} has rejected your request".tr;
+              "${profileRequestModel.receiverProfile!.name} has rejected your request"
+                  .tr;
           UiUtilites.errorSnackbar("Social Request Access".tr, name.toString());
         }
       }
@@ -441,7 +446,8 @@ class HomeController extends GetxController {
             'https://avatar.iran.liara.run/public/boy?username=${user.currentProfile!.name!}',
         requestMessage: profileRequestModel.requestType == "profile"
             ? 'Would like to take a look at your “Profile”.'.tr
-            : 'Would like to take a look at your “Social media accounts and business card”.'.tr,
+            : 'Would like to take a look at your “Social media accounts and business card”.'
+                .tr,
         onAcceptTap: () {
           respondRequest(profileRequestModel, "accepted".tr);
           Get.back();
