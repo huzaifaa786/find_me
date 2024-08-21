@@ -5,6 +5,7 @@ import 'package:find_me/app/privacy/privacy_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import 'package:get/get.dart';
 
