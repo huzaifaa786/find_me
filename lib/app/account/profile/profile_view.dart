@@ -478,10 +478,10 @@ class _ProfileViewState extends State<ProfileView> {
                                   itemBuilder:
                                       (BuildContext context, int index) {
                                     return GestureDetector(
-                                      onTap: () {
-                                        controller.giftEmoji(controller
-                                            .profile!.emojis![index].id);
-                                      },
+                                      // onTap: () {
+                                      //   controller.giftEmoji(controller
+                                      //       .profile!.emojis![index].id);
+                                      // },
                                       child: Stack(
                                         alignment: Alignment.center,
                                         children: [
