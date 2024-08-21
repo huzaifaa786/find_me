@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
-
 import 'package:find_me/api/auth_api/user_api.dart';
 import 'package:find_me/api/bluetooth_api/bluetooth_users_api.dart';
 import 'package:find_me/api/profile_api/profile_api.dart';
@@ -13,17 +12,16 @@ import 'package:find_me/components/popups/profile_request_popup.dart';
 import 'package:find_me/models/profile_request_model.dart';
 import 'package:find_me/models/user_model.dart';
 import 'package:find_me/routes/app_routes.dart';
-import 'package:find_me/utils/images/ui_utils/ui_utils.dart';
+import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_ble_peripheral/flutter_ble_peripheral.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:file_picker/file_picker.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+
 import 'package:location/location.dart';
 import 'package:permission_handler/permission_handler.dart';
 // ignore: implementation_imports
@@ -157,8 +155,8 @@ class HomeController extends GetxController {
   }
 
   Future<void> startPeriodicAdvertising() async {
-    if(Platform.isAndroid){
-          if (!await FlutterBluePlus.isOn) {
+    if (Platform.isAndroid) {
+      if (!await FlutterBluePlus.isOn) {
         Get.snackbar(
             "Bluetooth".tr, "Please turn on Bluetooth to start advertising".tr,
             snackPosition: SnackPosition.BOTTOM);
@@ -200,13 +198,12 @@ class HomeController extends GetxController {
   }
 
   Future<void> requestPermissions() async {
-
     Location location = new Location();
 
     bool _serviceEnabled;
 
     _serviceEnabled = await location.serviceEnabled();
-    
+
     if (!_serviceEnabled) {
       _serviceEnabled = await location.requestService();
       if (!_serviceEnabled) {
@@ -247,6 +244,33 @@ class HomeController extends GetxController {
   List<String> serviceDataKeys = [];
   List<ScanResult> scanResult = [];
   List<UserModel> scannedUsers = [];
+
+  checkData() async {
+    final connectionChecker = InternetConnectionChecker();
+    InternetConnectionStatus internetConnectionStatus =
+        await connectionChecker.connectionStatus;
+
+
+    if (internetConnectionStatus == InternetConnectionStatus.connected) {
+      print('Connected to the internet');
+      initFlutterBlue();
+    } else {
+      Get.snackbar(
+        'No Internet Connection',
+        'You are not connected to the internet. Please check your connection.',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: AppColors.white,
+        duration: Duration(seconds: 5),
+      );
+    }
+        connectionChecker.onStatusChange.listen(
+      (InternetConnectionStatus status) {
+        internetConnectionStatus = status;
+        update();
+      },
+    );
+  }
 
   void initFlutterBlue() async {
     isSearching = true;
@@ -400,22 +424,29 @@ class HomeController extends GetxController {
       if (profileRequestModel.requestType == "profile") {
         if (profileRequestModel.status == "accepted") {
           String name =
-              "${profileRequestModel.receiverProfile!.name} has accepted your request".tr;
-          UiUtilites.successSnackbar(name.toString(), "Profile Request Access".tr);
+              "${profileRequestModel.receiverProfile!.name} has accepted your request"
+                  .tr;
+          UiUtilites.successSnackbar(
+              name.toString(), "Profile Request Access".tr);
         } else {
           String name =
-              "${profileRequestModel.receiverProfile!.name} has rejected your request".tr;
-          UiUtilites.errorSnackbar("Profile Request Access".tr, name.toString());
+              "${profileRequestModel.receiverProfile!.name} has rejected your request"
+                  .tr;
+          UiUtilites.errorSnackbar(
+              "Profile Request Access".tr, name.toString());
         }
       } else {
         if (profileRequestModel.status == "accepted") {
           String name =
-              "${profileRequestModel.receiverProfile!.name} has accepted your request".tr;
-          UiUtilites.successSnackbar(name.toString(), "Social Request Access".tr);
+              "${profileRequestModel.receiverProfile!.name} has accepted your request"
+                  .tr;
+          UiUtilites.successSnackbar(
+              name.toString(), "Social Request Access".tr);
           updatePublicProfile();
         } else {
           String name =
-              "${profileRequestModel.receiverProfile!.name} has rejected your request".tr;
+              "${profileRequestModel.receiverProfile!.name} has rejected your request"
+                  .tr;
           UiUtilites.errorSnackbar("Social Request Access".tr, name.toString());
         }
       }
@@ -441,7 +472,8 @@ class HomeController extends GetxController {
             'https://avatar.iran.liara.run/public/boy?username=${user.currentProfile!.name!}',
         requestMessage: profileRequestModel.requestType == "profile"
             ? 'Would like to take a look at your “Profile”.'.tr
-            : 'Would like to take a look at your “Social media accounts and business card”.'.tr,
+            : 'Would like to take a look at your “Social media accounts and business card”.'
+                .tr,
         onAcceptTap: () {
           respondRequest(profileRequestModel, "accepted".tr);
           Get.back();

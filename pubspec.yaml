@@ -82,6 +82,7 @@ dependencies:
   uuid: ^4.4.0
   workmanager: ^0.5.2
   sms_autofill: ^2.4.0
+  internet_connection_checker: ^2.0.0
 dev_dependencies:
   flutter_lints: ^3.0.0
   flutter_test:

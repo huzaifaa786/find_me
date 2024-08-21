@@ -467,7 +467,7 @@ class _ProfileViewState extends State<ProfileView> {
                               GridView.builder(
                                   shrinkWrap: true,
                                   physics: BouncingScrollPhysics(),
-                                  itemCount: controller.profile!.emojis!.length,
+                                  itemCount: 6,
                                   gridDelegate:
                                       SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 3,
