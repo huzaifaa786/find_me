@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 import 'package:get_storage/get_storage.dart';
+import 'package:intl/intl.dart';
 import 'package:intl_phone_field/countries.dart';
 import 'package:intl_phone_field/helpers.dart';
 import 'package:intl_phone_field/phone_number.dart';
@@ -83,36 +84,65 @@ class SignUpController extends GetxController {
   }
 
   //! Date of Birth Selection
+    final dateController = TextEditingController();
+
   final dayController = TextEditingController();
   final monthController = TextEditingController();
   final yearController = TextEditingController();
 
-  Future<void> selectDate(BuildContext context) async {
-    final DateTime now = DateTime.now();
-    final DateTime firstDate = DateTime(now.year - 100, now.month, now.day);
-    final DateTime lastDate = DateTime(now.year - 10, now.month, now.day);
-    final DateTime initialDate = lastDate;
+  // Future<void> selectDate(BuildContext context) async {
+  //   final DateTime now = DateTime.now();
+  //   final DateTime firstDate = DateTime(now.year - 100, now.month, now.day);
+  //   final DateTime lastDate = DateTime(now.year - 10, now.month, now.day);
+  //   final DateTime initialDate = lastDate;
 
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: initialDate,
-      firstDate: firstDate,
-      lastDate: lastDate,
-    );
-    if (picked != null) {
-      dayController.text = picked.day.toString().padLeft(2, '0');
-      monthController.text = picked.month.toString().padLeft(2, '0');
-      yearController.text = picked.year.toString();
-    }
+  //   final DateTime? picked = await showDatePicker(
+  //     context: context,
+  //     initialDate: initialDate,
+  //     firstDate: firstDate,
+  //     lastDate: lastDate,
+  //   );
+  //   if (picked != null) {
+  //     dayController.text = picked.day.toString().padLeft(2, '0');
+  //     monthController.text = picked.month.toString().padLeft(2, '0');
+  //     yearController.text = picked.year.toString();
+  //   }
+  // }
+
+
+  Future<void> selectDatee(BuildContext context) async {
+  final DateTime now = DateTime.now();
+  final DateTime firstDate = DateTime(now.year - 100, now.month, now.day);
+  final DateTime lastDate = DateTime(now.year - 10, now.month, now.day);
+  final DateTime initialDate = lastDate;
+
+  final DateTime? picked = await showDatePicker(
+    context: context,
+    initialDate: initialDate,
+    firstDate: firstDate,
+    lastDate: lastDate,
+  );
+  if (picked != null) {
+    // Format the date as 'dd/MM/yyyy'
+    String formattedDate = DateFormat('dd/MM/yyyy').format(picked);
+    dateController.text = formattedDate; // Update the dateController
   }
+}
 
   @override
   void dispose() {
-    dayController.dispose();
-    monthController.dispose();
-    yearController.dispose();
+    dateController.dispose();
     super.dispose();
   }
+
+
+  // @override
+  // void dispose() {
+  //   dayController.dispose();
+  //   monthController.dispose();
+  //   yearController.dispose();
+  //   super.dispose();
+  // }
 
   registerUser() async {
     final token = await FirebaseMessaging.instance.getToken();

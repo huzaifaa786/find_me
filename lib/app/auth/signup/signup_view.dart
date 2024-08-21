@@ -41,28 +41,26 @@ class _SignUpViewState extends State<SignUpView> {
               child: Column(
                 children: [
                   Gap(40.h),
-
                   AppTextFields(
                     hintText: 'First name'.tr,
                     controller: controller.firstNameController,
                     fieldValidator: (value) =>
-                        Validators.emptyStringValidator("First name".tr, value),
+                        Validators.alphabeticValidator("First name", value),
                   ),
                   Gap(16.h),
                   AppTextFields(
                     hintText: 'Last name'.tr,
                     controller: controller.lastNameController,
                     fieldValidator: (value) =>
-                        Validators.emptyStringValidator("Last name".tr, value),
+                        Validators.alphabeticValidator("Last name", value),
                   ),
                   Gap(16.h),
                   AppTextFields(
                     hintText: 'User name'.tr,
                     controller: controller.nameController,
                     fieldValidator: (value) =>
-                        Validators.emptyStringValidator("User name".tr, value),
+                        Validators.usernameValidator("User name", value),
                   ),
-
                   Gap(16.h),
                   AppTextFields(
                     hintText: 'Email'.tr,
@@ -110,17 +108,12 @@ class _SignUpViewState extends State<SignUpView> {
                     ),
                   ),
                   Gap(8.h),
-
                   Row(
                     children: [
-                      buildTextField(
-                          controller.dayController, 'dd'.tr, context, controller),
-                      Gap(10.w),
-                      buildTextField(controller.monthController, 'mm'.tr, context,
-                          controller),
-                      Gap(10.w),
-                      buildTextField(controller.yearController, 'yyyy'.tr, context,
-                          controller),
+                      Expanded(
+                        child: buildDateInputField(
+                            controller.dateController, context, controller),
+                      ),
                     ],
                   ),
                   Gap(16.h),
@@ -148,7 +141,6 @@ class _SignUpViewState extends State<SignUpView> {
                       controller.registerUser();
                     },
                   ),
-                 
                   Gap(30.h),
                   AuthRichText(
                     title: 'Already have an account?'.tr,

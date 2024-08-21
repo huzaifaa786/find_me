@@ -12,17 +12,16 @@ import 'package:find_me/components/popups/profile_request_popup.dart';
 import 'package:find_me/models/profile_request_model.dart';
 import 'package:find_me/models/user_model.dart';
 import 'package:find_me/routes/app_routes.dart';
-import 'package:find_me/utils/images/ui_utils/ui_utils.dart';
+import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_ble_peripheral/flutter_ble_peripheral.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:file_picker/file_picker.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+
 import 'package:location/location.dart';
 import 'package:permission_handler/permission_handler.dart';
 // ignore: implementation_imports
@@ -245,6 +244,33 @@ class HomeController extends GetxController {
   List<String> serviceDataKeys = [];
   List<ScanResult> scanResult = [];
   List<UserModel> scannedUsers = [];
+
+  checkData() async {
+    final connectionChecker = InternetConnectionChecker();
+    InternetConnectionStatus internetConnectionStatus =
+        await connectionChecker.connectionStatus;
+
+
+    if (internetConnectionStatus == InternetConnectionStatus.connected) {
+      print('Connected to the internet');
+      initFlutterBlue();
+    } else {
+      Get.snackbar(
+        'No Internet Connection',
+        'You are not connected to the internet. Please check your connection.',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: AppColors.white,
+        duration: Duration(seconds: 5),
+      );
+    }
+        connectionChecker.onStatusChange.listen(
+      (InternetConnectionStatus status) {
+        internetConnectionStatus = status;
+        update();
+      },
+    );
+  }
 
   void initFlutterBlue() async {
     isSearching = true;

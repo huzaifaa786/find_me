@@ -50,7 +50,7 @@ class PhoneInputField extends StatelessWidget {
             ),
             dropdownIconPosition: IconPosition.trailing,
             flagsButtonMargin: EdgeInsets.only(
-                left: 10.w, right: 10.w, top: 16.h, bottom: 8.h),
+                left: 10.w, right: 10.w, top: 10.h, bottom: 8.h),
             dropdownDecoration: BoxDecoration(
               border: Border(
                 right: BorderSide(
