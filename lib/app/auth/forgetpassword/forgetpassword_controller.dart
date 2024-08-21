@@ -103,7 +103,7 @@ class ForgetPasswordController extends GetxController {
 
   Future<void> forgetPasswordUser() async {
     if (phoneController == null) {
-      UiUtilites.errorSnackbar('Error'.tr, 'Invalid phone number.'.tr);
+      UiUtilites.errorSnackbar('Error'.tr, 'Invalid phone number'.tr);
       return;
     }
     type = 'phone';

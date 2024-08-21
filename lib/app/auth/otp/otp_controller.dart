@@ -42,8 +42,8 @@ class OtpController extends GetxController {
     if (phone != null) {
       var response = await OtpApi.sendOtp(phone: phone);
       if (response.isNotEmpty) {
-        UiUtilites.successSnackbar("Otp sent", response['message']);
-        print("Otp sent successfully");
+        UiUtilites.successSnackbar("Otp sent".tr, response['message']);
+        print("Otp sent successfully".tr);
       }
     }
   }

@@ -25,7 +25,7 @@ class Validators {
     if (value == null) {
       return null;
     } else if (value.isEmpty) {
-      return "$key can't be empty".tr;
+      return "$key" + "can't be empty".tr;
     } else {
       return null;
     }

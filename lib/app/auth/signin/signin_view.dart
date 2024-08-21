@@ -1,4 +1,3 @@
-
 import 'package:find_me/app/auth/components/auth_appbar.dart';
 import 'package:find_me/app/auth/components/auth_rich_text.dart';
 
@@ -19,7 +18,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
 
 class SignInView extends StatefulWidget {
   const SignInView({super.key});
@@ -77,7 +75,7 @@ class _SignInViewState extends State<SignInView> {
                             Get.toNamed(AppRoutes.forgetpassword);
                           },
                           child: AppText(
-                            title: 'Forget password ?'.tr,
+                            title: 'Forget password?'.tr,
                             color: Colors.blue,
                             fontWeight: FontWeight.w500,
                           ),
@@ -142,7 +140,7 @@ class _SignInViewState extends State<SignInView> {
                   // ),
                   Gap(30.h),
                   AuthRichText(
-                    title: 'Don’t have an account ?'.tr,
+                    title: 'Don’t have an account?'.tr,
                     description: 'Sign Up'.tr,
                     titlesize: 14.sp,
                     titlefontweight: FontWeight.w400,
@@ -153,7 +151,6 @@ class _SignInViewState extends State<SignInView> {
                       Get.toNamed(AppRoutes.signup);
                     },
                   ),
-                
                 ],
               ),
             ),

@@ -37,6 +37,7 @@ class LocaleString extends Translations {
           "Last name can't be empty": "Last name can't be empty",
           "User name can't be empty": "User name can't be empty",
           "Email can't be empty": "Email can't be empty",
+          "can't be empty": "can't be empty",
           "Invalid Email Address": "Invalid Email Address",
           "Ramei66": "Ramei66",
           "Online": "Online",
@@ -338,9 +339,10 @@ class LocaleString extends Translations {
           "AED 14.99 /mo": "AED 14.99 /mo",
           "AED 5.99 /mo": "AED 5.99 /mo",
           "Subscriptions": "Subscriptions",
-          "When your account is public, your profile can be viewed by anyone on find me.":"When your account is public, your profile can be viewed by anyone on find me.",
-
- "When your profile is private, only people you grant access after receiving a request will be able to look into your profile.":"When your profile is private, only people you grant access after receiving a request will be able to look into your profile.",
+          "When your account is public, your profile can be viewed by anyone on find me.":
+              "When your account is public, your profile can be viewed by anyone on find me.",
+          "When your profile is private, only people you grant access after receiving a request will be able to look into your profile.":
+              "When your profile is private, only people you grant access after receiving a request will be able to look into your profile.",
         },
         'ar_AE': {
           "When requests for social media and business cards \n  are off you won’t be notified if someone is trying \n  to access your profile.":
@@ -387,6 +389,7 @@ class LocaleString extends Translations {
           "Password and confirm password are not same!":
               "كلمة المرور وتأكيد كلمة المرور غير متطابقين",
           "Password can't be empty": "كلمة المرور لا يمكن أن تكون فارغة",
+          "can't be empty": "لا يمكن أن يكون فارغًا",
           "Password must be 6 characters long":
               "يجب أن تتكون كلمة المرور على الأقل على 6 أحرف",
           "First name can't be empty": "الاسم الأول لا يمكن أن يكون فارغًا",
