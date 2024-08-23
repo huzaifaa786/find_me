@@ -6,6 +6,7 @@ import 'package:find_me/app/subscriptions/subscriptions_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/buttons/app_button.dart';
 import 'package:find_me/components/buttons/gif_button.dart';
+import 'package:find_me/services/revenue_cat_service.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/images/images.dart';
 import 'package:flutter/cupertino.dart';
@@ -121,7 +122,12 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                   ),
                   Gap(44),
                   InkWell(
-                    onTap: () {},
+                    onTap: () async {
+                      if (controller.package != null) {
+                        await purchaseSubscription(
+                            context, controller.package!);
+                      }
+                    },
                     child: Container(
                       height: 60.12.h,
                       width: 285.w,
