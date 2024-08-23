@@ -9,7 +9,6 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'firebase_options.dart';
 
 void main() async {

@@ -13,6 +13,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 
 class EmojiMenuView extends StatefulWidget {
   const EmojiMenuView({super.key});
@@ -80,7 +81,7 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                                     Flexible(
                                       child: CachedNetworkImage(
                                         imageUrl:
-                                            controller.freeEmojis[index].image!,
+                                            controller.freeEmojis[index].image,
                                       ),
                                     ),
                                   ],
@@ -125,7 +126,23 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                                     Flexible(
                                       child: CachedNetworkImage(
                                         imageUrl:
-                                            controller.paidEmojis[index].image!,
+                                            controller.paidEmojis[index].image,
+                                        placeholder: (context, url) =>
+                                            Shimmer.fromColors(
+                                          baseColor: Colors.grey[300]!,
+                                          highlightColor: Colors.grey[100]!,
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(100)),
+                                            width: 120,
+                                            height: 120,
+                                          ),
+                                        ),
+                                        // CircularProgressIndicator(strokeWidth: 1.5,),
+                                        errorWidget: (context, url, error) =>
+                                            Icon(Icons.error),
                                       ),
                                     ),
                                     Row(

@@ -119,6 +119,14 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                     groupValue: controller.selectedOption,
                     onChanged: (value) => controller.selectOption(value!),
                   ),
+                   Gap(32),
+                  SubscriptionFeatures(
+                    title: "Find out who tried to access your profile:".tr,
+                    subtitle: "Photo and user name will appear on the notification section".tr,
+                    value: 4,
+                    groupValue: controller.selectedOption,
+                    onChanged: (value) => controller.selectOption(value!),
+                  ),
                   Gap(44),
                   InkWell(
                     onTap: () {},

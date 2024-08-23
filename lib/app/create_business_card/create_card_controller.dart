@@ -96,15 +96,15 @@ class CreateCardController extends GetxController {
           'Validation Error'.tr, 'Last name is required'.tr);
       return false;
     }
-    if (phoneController == null) {
-      UiUtilites.errorSnackbar(
-          'Validation Error'.tr, 'Phone number is required'.tr);
-      return false;
-    }
-    if (emailController.text.isEmpty) {
-      UiUtilites.errorSnackbar('Validation Error'.tr, 'Email is required'.tr);
-      return false;
-    }
+    // if (phoneController == null) {
+    //   UiUtilites.errorSnackbar(
+    //       'Validation Error'.tr, 'Phone number is required'.tr);
+    //   return false;
+    // }
+    // if (emailController.text.isEmpty) {
+    //   UiUtilites.errorSnackbar('Validation Error'.tr, 'Email is required'.tr);
+    //   return false;
+    // }
     return true;
   }
 
