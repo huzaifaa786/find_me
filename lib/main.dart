@@ -25,7 +25,7 @@ void main() async {
 
   await GetStorage.init();
   Stripe.publishableKey =
-      "pk_test_51NjyPoKj8kRF1XiuJAv5r6UPr91km5JqWugq5FWvrfUDtOcew75SLLnk09zXOWM3RjmxebIg5vB845xYtUFI16ck00mbTgntzu";
+      "pk_test_51PqWumELPBv6icsjGiifpakgvyikustWRGQZo2CreTgWTApPULXrKnbmYHb01N8LlVCc98SMP0p0LRx17uI0gvnS00oD6kvMpJ";
   await dotenv.load(fileName: "assets/.env");
   HttpOverrides.global = MyHttpOverrides();
 

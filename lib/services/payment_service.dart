@@ -13,6 +13,7 @@ class PaymentService extends GetxController {
 
 //* Call this function to stripe payment method
   makePayment(double amount) async {
+  print(Stripe.merchantIdentifier);
     try {
       paymentIntent = null;
       //Step 1: Generate Payment Intent
@@ -22,6 +23,7 @@ class PaymentService extends GetxController {
       await Stripe.instance
           .initPaymentSheet(
             paymentSheetParameters: SetupPaymentSheetParameters(
+                customFlow: false,
                 paymentIntentClientSecret: paymentIntent!['client_secret'],
                 style: ThemeMode.light,
                 // applePay: const PaymentSheetApplePay(merchantCountryCode: 'AE'),
@@ -29,7 +31,7 @@ class PaymentService extends GetxController {
                   merchantCountryCode: 'AE',
                   testEnv: true,
                 ),
-                merchantDisplayName: 'Ikay'),
+                merchantDisplayName: 'findme.lv'),
           )
           .then((value) {});
       //Step 3: Display Payment Sheet
