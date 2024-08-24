@@ -1,3 +1,5 @@
+import 'package:find_me/api/subscription_api/subscription_api.dart';
+
 class SubscriptionManager {
   static final SubscriptionManager _instance = SubscriptionManager._internal();
 
@@ -16,8 +18,7 @@ class SubscriptionManager {
   }
 
   Future<void> updateBackendStatus() async {
-    // Replace with your API call to update the user status in the backend
-    // Example:
-    // await http.post('your-backend-api-url', body: {'isProUser': _isProUser});
+    var response = await SubscriptionApi.updateStatus(status: isProUser);
+    if (response.isNotEmpty) {}
   }
 }

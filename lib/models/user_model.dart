@@ -12,6 +12,7 @@ class UserModel {
   String? dob;
   String? beaconId;
   String? loginType;
+  bool isPro;
 
   UserProfileModel? currentProfile;
   List<UserProfileModel>? profiles;
@@ -31,6 +32,7 @@ class UserModel {
     this.currentProfile,
     this.profiles,
     this.wallet,
+    required this.isPro,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -39,9 +41,9 @@ class UserModel {
         .toList();
     return UserModel(
         id: json['id'],
-        name: json['name'] ,
-        firstName: json['first_name'] ,
-        lastName: json['last_name'] ,
+        name: json['name'],
+        firstName: json['first_name'],
+        lastName: json['last_name'],
         gender: json['gender'],
         email: json['email'],
         phone: json['phone'],
@@ -52,6 +54,7 @@ class UserModel {
             ? UserProfileModel.fromJson(json['current_profile'])
             : null,
         profiles: profileList,
+        isPro: json['is_pro'] == 1 ? true : false,
         wallet: json['wallet'] != null
             ? UserWalletModel.fromJson(json['wallet'])
             : null);

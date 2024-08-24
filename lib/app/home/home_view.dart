@@ -5,12 +5,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/app/home/components/home_gif_button.dart';
 import 'package:find_me/app/home/components/home_appbar.dart';
 import 'package:find_me/app/home/components/user_card.dart';
+import 'package:find_me/helpers/subscription_manager.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
-
 import 'package:flutter/material.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
@@ -68,6 +67,7 @@ class HomeView extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
+                             
                               ConstrainedBox(
                                 constraints: BoxConstraints(minWidth: 120.w),
                                 child: SizedBox(

@@ -32,6 +32,10 @@ void main() async {
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   if (Platform.isIOS) {
+    StoreHelper(
+      store: Store.appStore,
+      apiKey: "",
+    );
   } else if (Platform.isAndroid) {
     StoreHelper(
       store: Store.playStore,
