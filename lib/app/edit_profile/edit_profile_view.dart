@@ -2,7 +2,6 @@ import 'package:find_me/app/edit_profile/components/profilecontainer.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/models/user_profile_model.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
-import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';

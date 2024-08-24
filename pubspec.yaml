@@ -85,6 +85,7 @@ dependencies:
   internet_connection_checker: ^2.0.0
   image_cropper: ^8.0.2
   shared_preferences: ^2.3.2
+  shimmer: ^3.0.0
   purchases_flutter: ^8.1.0
 dev_dependencies:
   flutter_lints: ^3.0.0

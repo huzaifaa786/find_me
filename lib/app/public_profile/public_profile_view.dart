@@ -38,7 +38,10 @@ class PublicProfileView extends StatelessWidget {
                 scrolledUnderElevation: 0,
                 automaticallyImplyLeading: false,
                 title: topBar(
-                    name: "@${controller.userModel!.name}", showBackIcon: true),
+                    name: "",
+
+                    //  "@${controller.userModel!.name}",
+                    showBackIcon: true),
               ),
               body: SafeArea(
                 child: SingleChildScrollView(

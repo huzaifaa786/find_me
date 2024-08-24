@@ -278,11 +278,14 @@ class _ProfileContainerState extends State<ProfileContainer> {
             onTap: () {
               Get.toNamed(AppRoutes.profile, arguments: widget.userModel);
             },
-            child: AppText(
-              title: 'Edit'.tr,
-              size: 11,
-              color: AppColors.primary_color,
-              fontWeight: FontWeight.w500,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 8,bottom: 8,right: 8),
+              child: AppText(
+                title: 'Edit'.tr,
+                size: 12,
+                color: AppColors.primary_color,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
       ],
