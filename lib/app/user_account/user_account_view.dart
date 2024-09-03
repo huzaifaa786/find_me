@@ -36,160 +36,174 @@ class _UserAccountViewState extends State<UserAccountView> {
                 automaticallyImplyLeading: false,
               ),
               body: SafeArea(
-                  child:
-                  controller.userModel!= null
-                   ?Container(
-                padding: EdgeInsets.only(
-                  left: 33,
-                  right: 32,
-                ),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            'My information'.tr,
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.w500),
+                  child: controller.userModel != null
+                      ? Container(
+                          padding: EdgeInsets.only(
+                            left: 33,
+                            right: 32,
                           ),
-                        ],
-                      ),
-                      Gap(18),
-                      UserInformationCard(
-                        firstname: controller.firstname ?? "",
-                        lastname: controller.lastname ?? "",
-                        username: controller.name ?? "",
-                        userid: controller.userName ?? "",
-                        userbirthday: controller.Birthday ?? "",
-                        usermobilenumber: controller.mobileNumber ?? "",
-                        useremialid: controller.email ?? "",
-                      ),
-                      Gap(15),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Settings'.tr,
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.w500),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'My information'.tr,
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
+                                Gap(18),
+                                UserInformationCard(
+                                  firstname:
+                                      controller.userModel!.firstName ?? "",
+                                  lastname:
+                                      controller.userModel!.lastName ?? "",
+                                  username: controller.userModel!.name ?? "",
+                                  userid: controller.userModel!.id.toString(),
+                                  userbirthday: controller.userModel!.dob ?? "",
+                                  usermobilenumber:
+                                      controller.userModel!.phone ?? "",
+                                  useremialid:
+                                      controller.userModel!.email ?? "",
+                                ),
+                                Gap(15),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Settings'.tr,
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
+                                Gap(18),
+                                Container(
+                                  margin: EdgeInsets.only(bottom: 15),
+                                  width: 290.w,
+                                  decoration: BoxDecoration(
+                                    color: AppColors.white,
+                                    borderRadius: BorderRadius.circular(11.0),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.2),
+                                        spreadRadius: 1,
+                                        blurRadius: 1,
+                                        offset: Offset(2, 2),
+                                      ),
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.2),
+                                        spreadRadius: 1,
+                                        blurRadius: 1,
+                                        offset: Offset(
+                                            -2, -2), // Shadow for top and left
+                                      ),
+                                    ],
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      ListTile(
+                                        title: Text(
+                                          'Change my information'.tr,
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        trailing: Icon(
+                                          Icons.chevron_right,
+                                          color: Colors.grey,
+                                        ),
+                                        onTap: () {
+                                          Get.toNamed(AppRoutes
+                                                  .editaccountinformation)!
+                                              .then((value) {
+                                            controller.getUser();
+                                          });
+                                        },
+                                      ),
+                                      Divider(
+                                        thickness: 1,
+                                        color: Colors.grey.withOpacity(0.3),
+                                      ),
+                                      ListTile(
+                                        title: Text(
+                                          'Change mobile number'.tr,
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        trailing: Icon(
+                                          Icons.chevron_right,
+                                          color: Colors.grey,
+                                        ),
+                                        onTap: () {
+                                          Get.toNamed(
+                                                  AppRoutes.changephonenumber)!
+                                              .then((value) {
+                                            controller.getUser();
+                                          });
+                                        },
+                                      ),
+                                      Divider(
+                                        thickness: 1,
+                                        color: Colors.grey.withOpacity(0.3),
+                                      ),
+                                      ListTile(
+                                        title: Text(
+                                          'Change email'.tr,
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        trailing: Icon(
+                                          Icons.chevron_right,
+                                          color: Colors.grey,
+                                        ),
+                                        onTap: () {
+                                          Get.toNamed(AppRoutes.change_email)!
+                                              .then((value) {
+                                            controller.getUser();
+                                          });
+                                        },
+                                      ),
+                                      Divider(
+                                        thickness: 1,
+                                        color: Colors.grey.withOpacity(0.3),
+                                      ),
+                                      ListTile(
+                                        title: Text(
+                                          'Change password'.tr,
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        trailing: Icon(
+                                          Icons.chevron_right,
+                                          color: Colors.grey,
+                                        ),
+                                        onTap: () {
+                                          Get.toNamed(AppRoutes.changepassword)!
+                                              .then((value) {
+                                            controller.getUser();
+                                          });
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
-                        ],
-                      ),
-                      Gap(18),
-                      Container(
-                        margin: EdgeInsets.only(bottom: 15),
-                        width: 290.w,
-                        decoration: BoxDecoration(
-                          color: AppColors.white,
-                          borderRadius: BorderRadius.circular(11.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
-                              spreadRadius: 1,
-                              blurRadius: 1,
-                              offset: Offset(2, 2),
-                            ),
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
-                              spreadRadius: 1,
-                              blurRadius: 1,
-                              offset: Offset(-2, -2), // Shadow for top and left
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            ListTile(
-                              title: Text(
-                                'Change my information'.tr,
-                                style: TextStyle(
-                                    fontSize: 12, fontWeight: FontWeight.w500),
-                              ),
-                              trailing: Icon(
-                                Icons.chevron_right,
-                                color: Colors.grey,
-                              ),
-                              onTap: () {
-                                Get.toNamed(AppRoutes.editaccountinformation)!
-                                    .then((value) {
-                                  controller.getUser();
-                                });
-                              },
-                            ),
-                            Divider(
-                              thickness: 1,
-                              color: Colors.grey.withOpacity(0.3),
-                            ),
-                            ListTile(
-                              title: Text(
-                                'Change mobile number'.tr,
-                                style: TextStyle(
-                                    fontSize: 12, fontWeight: FontWeight.w500),
-                              ),
-                              trailing: Icon(
-                                Icons.chevron_right,
-                                color: Colors.grey,
-                              ),
-                              onTap: () {
-                                Get.toNamed(AppRoutes.changephonenumber)!
-                                    .then((value) {
-                                  controller.getUser();
-                                });
-                              },
-                            ),
-                            Divider(
-                              thickness: 1,
-                              color: Colors.grey.withOpacity(0.3),
-                            ),
-                            ListTile(
-                              title: Text(
-                                'Change email'.tr,
-                                style: TextStyle(
-                                    fontSize: 12, fontWeight: FontWeight.w500),
-                              ),
-                              trailing: Icon(
-                                Icons.chevron_right,
-                                color: Colors.grey,
-                              ),
-                              onTap: () {
-                                Get.toNamed(AppRoutes.change_email)!
-                                    .then((value) {
-                                  controller.getUser();
-                                });
-                              },
-                            ),
-                            Divider(
-                              thickness: 1,
-                              color: Colors.grey.withOpacity(0.3),
-                            ),
-                            ListTile(
-                              title: Text(
-                                'Change password'.tr,
-                                style: TextStyle(
-                                    fontSize: 12, fontWeight: FontWeight.w500),
-                              ),
-                              trailing: Icon(
-                                Icons.chevron_right,
-                                color: Colors.grey,
-                              ),
-                              onTap: () {
-                                Get.toNamed(AppRoutes.changepassword)!
-                                    .then((value) {
-                                  controller.getUser();
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ):SizedBox()),
+                        )
+                      : SizedBox()),
             ));
   }
 }

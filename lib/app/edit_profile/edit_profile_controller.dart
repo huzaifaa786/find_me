@@ -50,6 +50,7 @@ class EditProfileController extends GetxController {
     if (response.isNotEmpty) {
       userModel = UserModel.fromJson(response['user']);
       profileLength = userModel!.profiles!.length;
+
       userProfiles = userModel!.profiles!;
       currentProfile = userModel!.currentProfile;
       for (var i = 0; i < 4; i++) {

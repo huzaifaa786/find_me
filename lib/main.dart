@@ -28,8 +28,7 @@ void main() async {
   await dotenv.load(fileName: "assets/.env");
   HttpOverrides.global = MyHttpOverrides();
 
-  SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   if (Platform.isIOS) {
     StoreHelper(
       store: Store.appStore,

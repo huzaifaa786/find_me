@@ -67,7 +67,7 @@ class EditProfileView extends StatelessWidget {
                                     ? true
                                     : false,
                             avatarUrl: profile.image,
-                            verified: false, // Add logic for verified if needed
+                            verified: false,
                             isEditable: profile.isEditable,
                             isLocked: profile.isLocked,
                             index: index,

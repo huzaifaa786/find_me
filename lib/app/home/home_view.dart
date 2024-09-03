@@ -44,7 +44,7 @@ class HomeView extends StatelessWidget {
             child: controller.userModel != null
                 ? Column(
                     children: [
-                      Gap(35.h),
+                      // Gap(35.h),
                       Row(
                         children: [
                           Gap(34.w),
@@ -70,7 +70,7 @@ class HomeView extends StatelessWidget {
                               ConstrainedBox(
                                 constraints: BoxConstraints(minWidth: 120.w),
                                 child: SizedBox(
-                                  height: 50.h,
+                                  // height: 50.h,
                                   child: ButtonTheme(
                                     child: DropdownButton<DropdownItem>(
                                       icon: null,
@@ -250,8 +250,8 @@ class HomeView extends StatelessWidget {
                         ],
                       ),
                       SizedBox(
-                        height: 200,
-                        width: 200,
+                        height: 170,
+                        width: 250,
                         child: HomeGif(
                           onTap: () {
                             if (!controller.isSearching) {
@@ -261,7 +261,7 @@ class HomeView extends StatelessWidget {
                           isSearching: controller.isSearching,
                         ),
                       ),
-                      Gap(25.h),
+                      // Gap(25.h),
                       Divider(
                         color: AppColors.border_grey,
                         endIndent: 16.w,
@@ -274,11 +274,11 @@ class HomeView extends StatelessWidget {
                         child: SingleChildScrollView(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 48),
-                            child: controller.isSearching
+                            child: controller.isSearching || controller.isInternetChecking
                                 ? Center(
                                     heightFactor: 10.h,
                                     child: AppText(
-                                      title: 'Keep searching..'.tr,
+                                      title:controller.isInternetChecking ? 'Checking Connections..'.tr: 'Keep searching..'.tr,
                                       color: AppColors.black,
                                       textAlign: TextAlign.center,
                                       size: 14.sp,

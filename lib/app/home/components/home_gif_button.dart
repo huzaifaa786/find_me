@@ -34,54 +34,36 @@ class HomeGif extends StatelessWidget {
           ),
         ),
         Stack(
-          alignment: Alignment.center,
+          alignment: Alignment.topCenter,
           children: [
+          
             Positioned(
               child: Align(
-                alignment: Alignment.center,
-                child: SizedBox(
-                  height: 77,
-                  width: 77,
-                  child: GestureDetector(
-                    child: GifButton(
-                      onTap: onTap,
-                      showOpacity: isSearching ? true : false,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              child: Align(
-                alignment: Alignment.center,
-                child: GestureDetector(
+                alignment: Alignment.topCenter,
+                child: GestureDetector( 
                   onTap: onTap,
-                  child: SizedBox(
-                    height: 77,
-                    width: 77,
-                    child: isSearching
-                        ? Container()
-                        : SvgPicture.asset(
-                            'assets/icons/shadow_darkcircle.svg',
-                          ),
-                  ),
+                  child: isSearching
+                      ? Container()
+                      : Image.asset(
+                          'assets/images/searching.png',
+                        ),
                 ),
               ),
             ),
           ],
         ),
-        isSearching
-            ? Container()
-            : Positioned(
-                bottom: 1,
-                child: AppText(
-                  title: 'Click the bubble to activate'.tr,
-                  color: AppColors.primary_color,
-                  textAlign: TextAlign.center,
-                  size: 12.sp,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
+        // isSearching
+        //     ? Container()
+        //     : Positioned(
+        //         bottom: 1,
+        //         child: AppText(
+        //           title: 'Click the bubble to activate'.tr,
+        //           color: AppColors.primary_color,
+        //           textAlign: TextAlign.center,
+        //           size: 12.sp,
+        //           fontWeight: FontWeight.w400,
+        //         ),
+        //       ),
       ],
     );
   }

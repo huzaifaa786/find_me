@@ -16,6 +16,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:flutter/gestures.dart';
 
 class SignUpView extends StatefulWidget {
   const SignUpView({super.key});
@@ -131,6 +132,51 @@ class _SignUpViewState extends State<SignUpView> {
                     onGenderSelected: controller.handleGenderSelected,
                   ),
                   Gap(30.h),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      padding: EdgeInsets.only(left: 8,right: 8),
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text:
+                                  'By tapping Sign up, you acknowledge that you have read the '
+                                      .tr,
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.hintGrey),
+                            ),
+                            TextSpan(
+                              text: 'Privacy Policy'.tr,
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.primary_color),
+                              recognizer: TapGestureRecognizer()..onTap = () {},
+                            ),
+                            TextSpan(
+                              text: ' and agree to the '.tr,
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.hintGrey),
+                            ),
+                            TextSpan(
+                              text: 'Term of Service.'.tr,
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.primary_color),
+                              recognizer: TapGestureRecognizer()..onTap = () {},
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Gap(10.h),
                   AppButton(
                     title: 'Sign Up'.tr,
                     height: 50.0.h,

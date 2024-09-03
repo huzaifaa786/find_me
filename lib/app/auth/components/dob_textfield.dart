@@ -17,7 +17,7 @@ Widget buildDateInputField(TextEditingController controller, BuildContext contex
           fontWeight: FontWeight.w500,
         ),
         decoration: InputDecoration(
-          hintText: 'dd/MM/yyyy',
+          hintText: 'DD/MM/YYYY',
           hintStyle: TextStyle(
             color: AppColors.hintGrey,
             fontSize: 12.sp,

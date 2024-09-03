@@ -5,13 +5,7 @@ import 'package:get/get.dart';
 
 class UserAccountController extends GetxController {
   static UserAccountController instance = Get.find();
-  String? firstname;
-  String? lastname;
-  String? name;
-  String? userName;
-  String? Birthday;
-  String? mobileNumber;
-  String? email;
+
   UserModel? userModel;
   @override
   void onInit() {
@@ -23,13 +17,6 @@ class UserAccountController extends GetxController {
     var response = await UserApi.getUser();
     if (response.isNotEmpty) {
       userModel = UserModel.fromJson(response['user']);
-      firstname = userModel!.firstName;
-      lastname = userModel!.lastName;
-      name = userModel!.name;
-      userName = userModel!.name;
-      Birthday = userModel!.dob;
-      mobileNumber = userModel!.phone;
-      email = userModel!.email;
     }
 
     update();

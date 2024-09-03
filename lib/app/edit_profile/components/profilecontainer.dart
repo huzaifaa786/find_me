@@ -3,10 +3,12 @@ import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/app/edit_profile/edit_profile_controller.dart';
+import 'package:find_me/helpers/subscription_manager.dart';
 import 'package:find_me/models/user_profile_model.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
+import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -216,10 +218,37 @@ class _ProfileContainerState extends State<ProfileContainer> {
                 child: GestureDetector(
                   onTap: () {
                     if (!widget.isLocked && widget.isEditable) {
-                      setState(() {
-                        isEditSelected = true;
-                        _focusNode.requestFocus();
-                      });
+                      if (!SubscriptionManager().isProUser) {
+                        if (widget.userModel != null &&
+                            widget.userModel!.nameChangedDays != null &&
+                            widget.userModel!.nameChangedDays! < 30) {
+                          int remainingDays =
+                              30 - widget.userModel!.nameChangedDays!;
+                          UiUtilites.warningAlert(context,
+                              text:
+                                  "You can change your name in ${remainingDays.toString()} days.");
+                        } else {
+                          if (widget.index == 1 && widget.userModel == null) {
+                            UiUtilites.warningAlert(context,
+                                showRemeber: true,
+                                text:
+                                    "Your profile name can only be changed once every 30 days.");
+                            setState(() {
+                              isEditSelected = true;
+                            });
+                          } else {
+                            setState(() {
+                              isEditSelected = true;
+                              _focusNode.requestFocus();
+                            });
+                          }
+                        }
+                      } else {
+                        setState(() {
+                          isEditSelected = true;
+                          _focusNode.requestFocus();
+                        });
+                      }
                     }
                   },
                   child: isEditSelected && widget.isEditable

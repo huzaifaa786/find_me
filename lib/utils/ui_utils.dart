@@ -751,9 +751,7 @@ class UiUtilites {
     );
   }
 
-  static warningAlert(
-    context,
-  ) {
+  static warningAlert(context, {showRemeber = false, required String text}) {
     return showDialog(
       context: context,
       barrierDismissible: false,
@@ -799,44 +797,43 @@ class UiUtilites {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      "assets/images/emojis.png",
+                      'assets/images/warning.png',
                       height: 45.h,
                       width: 45.w,
                       fit: BoxFit.contain,
                     ),
                   ],
                 ),
-                Gap(10.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AppText(
-                      title: 'No coins enough!'.tr,
-                      textAlign: TextAlign.center,
-                      fontWeight: FontWeight.w500,
-                      size: 12,
-                      // color: AppColors.primary_color
-                    ),
-                  ],
-                ),
+
+                showRemeber
+                    ? Column(
+                        children: [
+                          Gap(10.h),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              AppText(
+                                title: 'Remember!'.tr,
+                                textAlign: TextAlign.center,
+                                fontWeight: FontWeight.w600,
+                                size: 12,
+                                // color: AppColors.primary_color
+                              ),
+                            ],
+                          ),
+                        ],
+                      )
+                    : SizedBox(),
                 Gap(10),
-                AppText(
-                  title: 'purchase some coins to get \n more emojis'.tr,
-                  textAlign: TextAlign.center,
-                  fontWeight: FontWeight.w400,
-                  size: 10.sp,
-                  color: AppColors.hintGrey,
+                Center(
+                  child: AppText(
+                    title: text.tr,
+                    textAlign: TextAlign.center,
+                    fontWeight: FontWeight.w400,
+                    size: 12.sp,
+                    color: AppColors.black,
+                  ),
                 ),
-                Gap(10.h),
-                AppButton(
-                  height: 50.0.h,
-                  width: 50.0.w,
-                  title: 'Purchase'.tr,
-                  onTap: () {
-                    Get.back();
-                    Get.toNamed(AppRoutes.coinsstore);
-                  },
-                )
               ],
             ),
           ),

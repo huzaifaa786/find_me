@@ -100,9 +100,8 @@ class HomeController extends GetxController {
       List<UserProfileModel> limitedProfiles =
           userModel!.profiles!.take(profileLimit).toList();
       // Check if the current profile is outside the allowed range
-      if (
-          !limitedProfiles
-              .any((profile) => profile.id == userModel!.currentProfile!.id)) {
+      if (!limitedProfiles
+          .any((profile) => profile.id == userModel!.currentProfile!.id)) {
         // If the current profile is not in the allowed profiles, shift to the first allowed profile
         userModel!.currentProfile = limitedProfiles.first;
         // Call selectItem to update the current profile on the server and UI
@@ -276,18 +275,23 @@ class HomeController extends GetxController {
   List<String> serviceDataKeys = [];
   List<ScanResult> scanResult = [];
   List<UserModel> scannedUsers = [];
+  bool isInternetChecking = false;
 
   checkData() async {
-    LoadingHelper.show();
+    isInternetChecking = true;
+    update();
     final connectionChecker = InternetConnectionChecker();
     InternetConnectionStatus internetConnectionStatus =
         await connectionChecker.connectionStatus;
 
     if (internetConnectionStatus == InternetConnectionStatus.connected) {
       print('Connected to the internet');
+      isInternetChecking = false;
 
       initFlutterBlue();
     } else {
+      isInternetChecking = false;
+
       Get.snackbar(
         'No Internet Connection',
         'You are not connected to the internet. Please check your connection.',
@@ -296,7 +300,6 @@ class HomeController extends GetxController {
         colorText: AppColors.white,
         duration: Duration(seconds: 5),
       );
-      LoadingHelper.dismiss();
     }
     connectionChecker.onStatusChange.listen(
       (InternetConnectionStatus status) {

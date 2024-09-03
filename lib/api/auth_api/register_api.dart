@@ -14,6 +14,8 @@ class RegisterApi {
     String? token,
     String? gender,
     String? beaconId,
+    double? lat,
+    double? lng,
   }) async {
     //* URL
     String url = '${baseUrl}/register';
@@ -32,6 +34,8 @@ class RegisterApi {
       'dob': dob,
       'beacon_id': beaconId,
       'fcm_token': token,
+      'lat': lat,
+      'lng': lng,
     };
 
     //! Make the POST request using ApiService

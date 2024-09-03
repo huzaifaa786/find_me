@@ -1,7 +1,9 @@
 import 'package:find_me/api/auth_api/register_api.dart';
 import 'package:find_me/models/user_model.dart';
 import 'package:find_me/routes/app_routes.dart';
+import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
@@ -10,6 +12,8 @@ import 'package:intl/intl.dart';
 import 'package:intl_phone_field/countries.dart';
 import 'package:intl_phone_field/helpers.dart';
 import 'package:intl_phone_field/phone_number.dart';
+import 'package:location/location.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:uuid/uuid.dart';
 
 class SignUpController extends GetxController {
@@ -129,6 +133,42 @@ class SignUpController extends GetxController {
   }
 
   @override
+  void onInit() {
+    requestPermissions();
+    super.onInit();
+  }
+
+  final GeolocatorPlatform _geolocator = GeolocatorPlatform.instance;
+
+  Future<void> requestPermissions() async {
+    Location location = new Location();
+
+    bool _serviceEnabled;
+
+    _serviceEnabled = await location.serviceEnabled();
+
+    if (!_serviceEnabled) {
+      _serviceEnabled = await location.requestService();
+      if (!_serviceEnabled) {
+        return;
+      }
+    }
+    await location.requestPermission();
+    final permissions = [
+      Permission.locationWhenInUse,
+    ];
+
+    for (var permission in permissions) {
+      if (!await permission.isGranted) {
+        await permission.request();
+      }
+    }
+    if (!(await _geolocator.isLocationServiceEnabled())) {
+      await _geolocator.openLocationSettings();
+    }
+  }
+
+  @override
   void dispose() {
     dateController.dispose();
     super.dispose();
@@ -149,19 +189,28 @@ class SignUpController extends GetxController {
     // Generate a UUID for the device's beacon ID
     var uuid = const Uuid();
     String beaconId = uuid.v4();
-    Map<String, dynamic> response = await RegisterApi.registerUser(
-        name: nameController.text,
-        password: passwordController.text,
-        email: emailController.text,
-        phone: phoneController,
-        firstName: firstNameController.text,
-        lastName: lastNameController.text,
-        gender: gender,
-        dob: dob,
-        token: token,
-        beaconId: beaconId);
-    if (response.isNotEmpty) {
-      Get.offAllNamed(AppRoutes.otp, arguments: phoneController);
+    if ((await _geolocator.isLocationServiceEnabled())) {
+      Position position = await Geolocator.getCurrentPosition(
+          forceAndroidLocationManager: true);
+      Map<String, dynamic> response = await RegisterApi.registerUser(
+          name: nameController.text,
+          password: passwordController.text,
+          email: emailController.text,
+          phone: phoneController,
+          firstName: firstNameController.text,
+          lastName: lastNameController.text,
+          gender: gender,
+          dob: dob,
+          lat: position.latitude,
+          lng: position.longitude,
+          token: token,
+          beaconId: beaconId);
+      if (response.isNotEmpty) {
+        Get.offAllNamed(AppRoutes.otp, arguments: phoneController);
+      }
+    } else {
+      UiUtilites.errorSnackbar(
+          "Location Permission Not Allowed", "Please Turn on Location!");
     }
   }
 

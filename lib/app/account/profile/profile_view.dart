@@ -500,14 +500,14 @@ class _ProfileViewState extends State<ProfileView> {
 
                                   return GestureDetector(
                                     onTap: () {
-                                      controller.profile!.emojis![index]
-                                                  .giftCount ==
-                                              "0"
-                                          ? controller.giftEmoji(
-                                              controller
-                                                  .profile!.emojis![index].id!,
-                                            )
-                                          : Gap(1);
+                                      // controller.profile!.emojis![index]
+                                      //             .giftCount ==
+                                      //         "0"
+                                      //     ? controller.giftEmoji(
+                                      //         controller
+                                      //             .profile!.emojis![index].id!,
+                                      //       )
+                                      //     : Gap(1);
                                     },
                                     child: Stack(
                                       alignment: Alignment.center,

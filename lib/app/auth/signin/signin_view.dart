@@ -44,7 +44,7 @@ class _SignInViewState extends State<SignInView> {
                 children: [
                   Gap(40.h),
                   AppTextFields(
-                    hintText: 'Email'.tr,
+                    hintText: 'USER NAME , EMAIL , OR PHONE NUMBER'.tr,
                     controller: controller.emailController,
                     fieldValidator: (value) =>
                         Validators.emptyStringValidator("This".tr, value),
