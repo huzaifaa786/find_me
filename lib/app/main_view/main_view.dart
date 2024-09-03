@@ -29,6 +29,17 @@ class MainView extends StatefulWidget {
 
 class _MainViewState extends State<MainView> with RouteAware {
   int _navigationMenuIndex = 0;
+  @override
+  void initState() {
+    print("AAAAAAAAAAAAAAAAAAAAAA");
+    // Retrieve index from Get arguments and update _selectedIndex
+    final args =
+        Get.arguments as Map<String, dynamic>?; // Retrieve arguments as Map
+    if (args != null && args.containsKey('index')) {
+      _navigationMenuIndex = args['index']; // Set the index
+    }
+    super.initState();
+  }
 
   final List<Widget> _fragments = [
     HomeView(),

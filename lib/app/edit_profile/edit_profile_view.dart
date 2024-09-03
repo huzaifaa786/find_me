@@ -23,6 +23,11 @@ class EditProfileView extends StatelessWidget {
       body: SafeArea(
         child: GetBuilder<EditProfileController>(
           autoRemove: false,
+          initState: (state) {
+            Future.delayed(Duration(milliseconds: 100), () {
+              state.controller!.getUser();
+            });
+          },
           builder: (controller) {
             return Column(
               children: [

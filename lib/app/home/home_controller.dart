@@ -10,9 +10,12 @@ import 'package:find_me/api/request_api/request_api.dart';
 import 'package:find_me/app/public_profile/public_profile_controller.dart';
 import 'package:find_me/components/helper/loading.dart';
 import 'package:find_me/components/popups/profile_request_popup.dart';
+import 'package:find_me/helpers/subscription_manager.dart';
 import 'package:find_me/models/profile_request_model.dart';
 import 'package:find_me/models/user_model.dart';
+import 'package:find_me/models/user_profile_model.dart';
 import 'package:find_me/routes/app_routes.dart';
+import 'package:find_me/services/revenue_cat_service.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
@@ -71,6 +74,7 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     // WidgetsBinding.instance.addObserver(this);
+
     initPlatformState();
     getUser();
     initPusher();
@@ -85,32 +89,59 @@ class HomeController extends GetxController {
   }
 
   getUser() async {
+    configureSDK();
     var response = await UserApi.getUser();
     if (response.isNotEmpty) {
       userModel = UserModel.fromJson(response['user']);
-      selectedItem = DropdownItem(
-          id: userModel!.currentProfile!.id,
-          avatarUrl: userModel!.currentProfile!.imageUrl,
-          text: userModel!.currentProfile!.name,
-          verified: userModel!.currentProfile!.isVerified);
       dropdownItems = [];
-      for (var element in userModel!.profiles!) {
+      // Determine the profile limit based on whether the user is Pro or Free
+      int profileLimit = SubscriptionManager().isProUser ? 4 : 2;
+      // Handle case where user has more profiles than allowed after unsubscribing
+      List<UserProfileModel> limitedProfiles =
+          userModel!.profiles!.take(profileLimit).toList();
+      // Check if the current profile is outside the allowed range
+      if (
+          !limitedProfiles
+              .any((profile) => profile.id == userModel!.currentProfile!.id)) {
+        // If the current profile is not in the allowed profiles, shift to the first allowed profile
+        userModel!.currentProfile = limitedProfiles.first;
+        // Call selectItem to update the current profile on the server and UI
+        selectItem(DropdownItem(
+            id: userModel!.currentProfile!.id,
+            avatarUrl: userModel!.currentProfile!.imageUrl,
+            text: userModel!.currentProfile!.name,
+            verified: userModel!.currentProfile!.isVerified));
+      } else {
+        selectedItem = DropdownItem(
+            id: userModel!.currentProfile!.id,
+            avatarUrl: userModel!.currentProfile!.imageUrl,
+            text: userModel!.currentProfile!.name,
+            verified: userModel!.currentProfile!.isVerified);
+      }
+
+      // Add the limited profiles to dropdownItems
+      for (var element in limitedProfiles) {
         dropdownItems.add(DropdownItem(
             id: element.id,
             avatarUrl: element.imageUrl,
             text: element.name,
             verified: element.isVerified));
       }
-      if (userModel!.profiles!.length < 2) {
+      if (limitedProfiles.length < profileLimit) {
         dropdownItems.add(DropdownItem(
-            id: 20444444444444444, avatarUrl: "2", text: "2", verified: false));
-      } else if (userModel!.profiles!.length >= 2 &&
-          userModel!.profiles!.length < 4) {
+            id: 20444444444444444,
+            avatarUrl: "2",
+            text: "add",
+            verified: false));
+      } else {
         dropdownItems.add(DropdownItem(
-            id: 30039202929292929, avatarUrl: "4", text: "2", verified: false));
+            id: 30039202929292929,
+            avatarUrl: "4",
+            text: "edit",
+            verified: false));
       }
-      update();
     }
+    update();
   }
 
   void selectItem(DropdownItem item) async {

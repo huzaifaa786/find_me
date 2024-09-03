@@ -750,4 +750,99 @@ class UiUtilites {
       },
     );
   }
+
+  static warningAlert(
+    context,
+  ) {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.white,
+          surfaceTintColor: Colors.white,
+          shape: RoundedRectangleBorder(
+              side: BorderSide(
+                //color: Colors.transparent, style: BorderStyle.solid
+                color: AppColors.primary_color,
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(19))),
+          // contentPadding: EdgeInsets.only(top: 10.0),
+          content: Container(
+            // padding: EdgeInsets.only(left: 20, right: 20),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(19.0)),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                // Gap(2.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: SvgPicture.asset(
+                        'assets/icons/cross.svg',
+                        height: 30.h,
+                        width: 30.w,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      "assets/images/emojis.png",
+                      height: 45.h,
+                      width: 45.w,
+                      fit: BoxFit.contain,
+                    ),
+                  ],
+                ),
+                Gap(10.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    AppText(
+                      title: 'No coins enough!'.tr,
+                      textAlign: TextAlign.center,
+                      fontWeight: FontWeight.w500,
+                      size: 12,
+                      // color: AppColors.primary_color
+                    ),
+                  ],
+                ),
+                Gap(10),
+                AppText(
+                  title: 'purchase some coins to get \n more emojis'.tr,
+                  textAlign: TextAlign.center,
+                  fontWeight: FontWeight.w400,
+                  size: 10.sp,
+                  color: AppColors.hintGrey,
+                ),
+                Gap(10.h),
+                AppButton(
+                  height: 50.0.h,
+                  width: 50.0.w,
+                  title: 'Purchase'.tr,
+                  onTap: () {
+                    Get.back();
+                    Get.toNamed(AppRoutes.coinsstore);
+                  },
+                )
+              ],
+            ),
+          ),
+        );
+        //  );
+      },
+    );
+  }
 }

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:find_me/app/edit_profile/edit_profile_controller.dart';
 import 'package:find_me/models/user_profile_model.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
@@ -138,9 +139,11 @@ class _ProfileContainerState extends State<ProfileContainer> {
                             final pickedFile = await _picker.pickImage(
                                 source: ImageSource.gallery);
                             if (pickedFile != null) {
-                              final croppedImage = await _cropImage(imageFile: File(pickedFile.path));
+                              final croppedImage = await _cropImage(
+                                  imageFile: File(pickedFile.path));
                               if (croppedImage != null) {
-                                widget.onImageChange(widget.index, XFile(croppedImage.path));
+                                widget.onImageChange(
+                                    widget.index, XFile(croppedImage.path));
                               }
                             }
                           },
@@ -273,13 +276,13 @@ class _ProfileContainerState extends State<ProfileContainer> {
           ),
         ),
         Gap(8.w),
-        if (widget.userModel != null)
+        if (widget.userModel != null && !widget.isLocked)
           GestureDetector(
             onTap: () {
               Get.toNamed(AppRoutes.profile, arguments: widget.userModel);
             },
             child: Padding(
-              padding: const EdgeInsets.only(top: 8,bottom: 8,right: 8),
+              padding: const EdgeInsets.only(top: 8, bottom: 8, right: 8),
               child: AppText(
                 title: 'Edit'.tr,
                 size: 12,

@@ -67,7 +67,6 @@ class HomeView extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                             
                               ConstrainedBox(
                                 constraints: BoxConstraints(minWidth: 120.w),
                                 child: SizedBox(
@@ -104,7 +103,7 @@ class HomeView extends StatelessWidget {
                                           controller.dropdownItems.map((item) {
                                         return DropdownMenuItem<DropdownItem>(
                                           value: item,
-                                          child: item.avatarUrl == "2"
+                                          child: item.text == "edit"
                                               ? Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
@@ -114,14 +113,14 @@ class HomeView extends StatelessWidget {
                                                           Colors.blue,
                                                       radius: 12,
                                                       child: Icon(
-                                                        Icons.add,
+                                                        Icons.edit,
                                                         color: Colors.white,
                                                         size: 16,
                                                       ),
                                                     ),
                                                     SizedBox(width: 10.w),
                                                     AppText(
-                                                      title: 'New Profile 2'.tr,
+                                                      title: 'Edit Profile'.tr,
                                                       color: AppColors
                                                           .primary_color,
                                                       size: 14.sp,
@@ -130,7 +129,7 @@ class HomeView extends StatelessWidget {
                                                     ),
                                                   ],
                                                 )
-                                              : item.avatarUrl == "4"
+                                              : item.text == "add"
                                                   ? Row(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
@@ -215,9 +214,10 @@ class HomeView extends StatelessWidget {
                                       }).toList(),
                                       onChanged: (value) {
                                         if (value != null) {
-                                          if (value.avatarUrl == "2" ||
-                                              value.avatarUrl == "4") {
-                                            Get.toNamed(AppRoutes.editProfile)!
+                                          if (value.text == "add" ||
+                                              value.text == "edit") {
+                                            Get.toNamed(AppRoutes.editProfile,
+                                                   )!
                                                 .then((value) {
                                               controller.getUser();
                                             });
@@ -296,7 +296,11 @@ class HomeView extends StatelessWidget {
                                       crossAxisSpacing: 36.0,
                                       mainAxisExtent: 100.h,
                                     ),
-                                    itemCount: controller.scannedUsers.length,
+                                    itemCount: SubscriptionManager().isProUser
+                                        ? controller.scannedUsers.length
+                                        : controller.scannedUsers.length > 8
+                                            ? 8
+                                            : controller.scannedUsers.length,
                                     itemBuilder: (context, index) {
                                       return UserCard(
                                         user: controller.scannedUsers[index],

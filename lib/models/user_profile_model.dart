@@ -17,6 +17,7 @@ class UserProfileModel {
   ProfileBusinessCardModel? businessCard;
   List<EmojiModel>? emojis;
   int userId;
+  int? nameChangedDays;
 
   UserProfileModel({
     required this.id,
@@ -28,6 +29,7 @@ class UserProfileModel {
     this.types,
     this.businessCard,
     this.emojis,
+    this.nameChangedDays,
     required this.isVerified,
     required this.isProfilePublic,
     required this.isSocialPublic,
@@ -36,12 +38,11 @@ class UserProfileModel {
 
   factory UserProfileModel.fromJson(Map<String, dynamic> json) {
     return UserProfileModel(
-     
         id: json['id'],
         name: json['name'] ?? '',
         imageUrl: json['image'],
         username: json['username'] ?? '',
-        
+        nameChangedDays: json['days_since_name_change'],
         bio: json['bio'] ?? '',
         urls: json['urls'] != null
             ? ProfileUrlModel.fromJson(json['urls'])
@@ -58,7 +59,6 @@ class UserProfileModel {
                     EmojiModel.fromJson(emoji as Map<String, dynamic>))
                 .toList()
             : [],
-
         userId: json['user_id']);
   }
 }

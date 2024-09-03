@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:find_me/api/auth_api/user_api.dart';
 import 'package:find_me/api/profile_api/profile_api.dart';
+import 'package:find_me/helpers/subscription_manager.dart';
 import 'package:find_me/models/user_model.dart';
 import 'package:find_me/models/user_profile_model.dart';
 import 'package:find_me/utils/ui_utils.dart';
@@ -12,16 +13,7 @@ import 'package:image_picker/image_picker.dart';
 
 class EditProfileController extends GetxController {
   static EditProfileController get instance => Get.find();
-  List<Profile> profiles = [
-    Profile(
-        name: 'Profile 1'.tr, image: null, isEditable: false, isLocked: false),
-    Profile(
-        name: 'Profile 2'.tr, image: null, isEditable: true, isLocked: false),
-    Profile(
-        name: 'Profile 3'.tr, image: null, isEditable: false, isLocked: true),
-    Profile(
-        name: 'Profile 4'.tr, image: null, isEditable: false, isLocked: true),
-  ];
+  List<Profile> profiles = [];
 
   int selectedProfileIndex = 0;
   UserModel? userModel;
@@ -35,6 +27,25 @@ class EditProfileController extends GetxController {
   }
 
   getUser() async {
+    profiles = [
+      Profile(
+          name: 'Profile 1'.tr,
+          image: null,
+          isEditable: false,
+          isLocked: false),
+      Profile(
+          name: 'Profile 2'.tr, image: null, isEditable: true, isLocked: false),
+      Profile(
+          name: 'Profile 3'.tr,
+          image: null,
+          isEditable: true,
+          isLocked: SubscriptionManager().isProUser ? false : true),
+      Profile(
+          name: 'Profile 4'.tr,
+          image: null,
+          isEditable: true,
+          isLocked: SubscriptionManager().isProUser ? false : true),
+    ];
     var response = await UserApi.getUser();
     if (response.isNotEmpty) {
       userModel = UserModel.fromJson(response['user']);

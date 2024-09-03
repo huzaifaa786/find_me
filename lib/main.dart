@@ -3,7 +3,6 @@ import 'package:find_me/app.dart';
 import 'package:find_me/components/helper/loading.dart';
 import 'package:find_me/helpers/store_helper.dart';
 import 'package:find_me/services/notification_service.dart';
-import 'package:find_me/services/revenue_cat_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -42,8 +41,6 @@ void main() async {
       apiKey: "goog_bYFHCOyjSHobDnWGmtsqZPUGASI",
     );
   }
-  configureSDK();
-
   runApp(const App());
 }
 
