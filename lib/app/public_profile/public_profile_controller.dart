@@ -98,13 +98,16 @@ class PublicProfileController extends GetxController {
         await EmojiApi.giftEmoji(emojiId: emojiId, receiverId: profile!.id);
     if (response.isNotEmpty) {
       print(response);
-      if (response['balance'] == "low") {
-        UiUtilites.noCoinsEnoughAlert(Get.context);
-      } else if (response['profile'] != null) {
-        profile = UserProfileModel.fromJson(response['profile']);
-        update();
-                UiUtilites.successSnackbar("Emoji Gifted Successfully", "");
-
+      if (response['error'] == true) {
+        UiUtilites.errorSnackbar("Emoji Error", response['error_data']);
+      } else {
+        if (response['balance'] == "low") {
+          UiUtilites.noCoinsEnoughAlert(Get.context);
+        } else if (response['profile'] != null) {
+          profile = UserProfileModel.fromJson(response['profile']);
+          update();
+          UiUtilites.successSnackbar("Emoji Gifted Successfully", "");
+        }
       }
     }
   }

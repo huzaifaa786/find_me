@@ -196,7 +196,7 @@ class HomeController extends GetxController {
     }
     _advertisingTimer?.cancel(); // Cancel any existing timer
     print('cgii chapak dum dum');
-    _advertisingTimer = Timer.periodic(Duration(seconds: 10), (timer) async {
+    _advertisingTimer = Timer.periodic(Duration(seconds: 6), (timer) async {
       await FlutterBlePeripheral().start(
         advertiseData: advertiseData!,
         advertiseSetParameters: advertiseSetParameters,
