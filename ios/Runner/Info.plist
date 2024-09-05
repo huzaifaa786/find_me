@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Find Me</string>
+	<string>Find_Me</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -27,15 +27,23 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>Find Me needs access to your location access to find nearby users</string>
+	<string>Find_Me needs access to your location access to find nearby users</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>Find Me needs access to your location access to find nearby users</string>
+	<string>Find_Me needs access to your location access to find nearby users</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Find Me needs access to your location access to find nearby users</string>
+	<string>Find_Me needs access to your location access to find nearby users</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Find Me needs access to your location access to find nearby users</string>
+	<string>Find_Me needs access to your location access to find nearby users</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Find Me needs access to your location access to find nearby users</string>
+	<string>Find_Me needs access to your location access to find nearby users</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Find_Me needs photo library access for uploading selected images</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Find_Me Dofaate requires microphone access</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Find_Me needs photo library access for uploading selected images</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Find_Me needs photo library access for uploading selected images</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UIBackgroundModes</key>
