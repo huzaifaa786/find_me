@@ -454,8 +454,7 @@ class HomeController extends GetxController {
     }
     if (event.data != null && event.eventName == "profile-access") {
       Map<String, dynamic> data = json.decode(event.data!);
-      ProfileRequestModel profileRequestModel =
-          ProfileRequestModel.fromJson(data['profileRequest']);
+
         String status = data['status'];
         String userName = data['name'];
       if (data['requestType'] == "profile") {
