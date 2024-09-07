@@ -184,14 +184,14 @@ class SignUpController extends GetxController {
 
   registerUser() async {
     final token = await FirebaseMessaging.instance.getToken();
-
     String dob = '${dateController}';
     // Generate a UUID for the device's beacon ID
     var uuid = const Uuid();
     String beaconId = uuid.v4();
     if ((await _geolocator.isLocationServiceEnabled())) {
       Position position = await Geolocator.getCurrentPosition(
-          forceAndroidLocationManager: true);
+         );
+
       Map<String, dynamic> response = await RegisterApi.registerUser(
           name: nameController.text,
           password: passwordController.text,
