@@ -32,7 +32,7 @@ void main() async {
   if (Platform.isIOS) {
     StoreHelper(
       store: Store.appStore,
-      apiKey: "appl_blfIYFsPAolBTxPvmYCLDrbQKjl",
+      apiKey: "appl_fCRKvdvpltjXbBLAFXDNqEoKmhI",
     );
   } else if (Platform.isAndroid) {
     StoreHelper(
