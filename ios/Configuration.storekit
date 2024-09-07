@@ -1,0 +1,108 @@
+{
+  "identifier" : "6D544026",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6633443343",
+    "_developerTeamID" : "JCQS89P6G7",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 747306925.428689,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21532836",
+      "localizations" : [
+
+      ],
+      "name" : "Find Me Premium",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "0.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6670432577",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Find me app",
+              "displayName" : "Find_Me",
+              "locale" : "en_GB"
+            }
+          ],
+          "productID" : "find_mee",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Find_Me Premium",
+          "subscriptionGroupID" : "21532836",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "subscriptionOffersKeyPair" : {
+    "id" : "2A47AD4E",
+    "privateKey" : "MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgjcfNeDdIVBzXSAoTOVKuPRCws7lc1IX12vBLywARwyCgCgYIKoZIzj0DAQehRANCAAReoCjbfyw/DwAHQZOGAvPSEsMfTvbZzJd6jeD+a3NoRlo5J6i65n0KC1HgXeM+OAnyr+eB91EKXO5j9qvOOiJ2"
+  },
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}
