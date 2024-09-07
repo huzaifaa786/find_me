@@ -505,7 +505,7 @@ class HomeController extends GetxController {
       ProfileRequestPopup(
         name: userName ?? "",
         imageUrl: userImage ??
-            'https://avatar.iran.liara.run/public/boy?username=${profileRequestModel.senderProfile!.name ?? ""}',
+            'https://avatar.iran.liara.run/public/boy?username=${userName ?? ""}',
         requestMessage: profileRequestModel.requestType == "profile"
             ? 'Would like to take a look at your “Profile”.'.tr
             : 'Would like to take a look at your “Social media accounts and business card”.'
