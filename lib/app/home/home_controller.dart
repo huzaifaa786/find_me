@@ -445,44 +445,44 @@ class HomeController extends GetxController {
   }
 
   void onEvent(PusherEvent event) {
-    print(event.eventName);
     if (event.data != null && event.eventName == "my-event") {
       Map<String, dynamic> data = json.decode(event.data!);
-      UserModel user = UserModel.fromJson(data['user']);
+      // UserModel user = UserModel.fromJson(data['user']);
       ProfileRequestModel requestModel =
           ProfileRequestModel.fromJson(data['profileRequest']);
-      showPopup(data['message'], user, requestModel);
+      showPopup(data['message'],data['userName'],data['userImage'], requestModel);
     }
     if (event.data != null && event.eventName == "profile-access") {
       Map<String, dynamic> data = json.decode(event.data!);
       ProfileRequestModel profileRequestModel =
           ProfileRequestModel.fromJson(data['profileRequest']);
-
-      if (profileRequestModel.requestType == "profile") {
-        if (profileRequestModel.status == "accepted") {
+        String status = data['status'];
+        String userName = data['name'];
+      if (data['requestType'] == "profile") {
+        if (status == "accepted") {
           String name =
-              "${profileRequestModel.receiverProfile!.name} has accepted your request"
+              "$userName has accepted your request"
                   .tr;
           UiUtilites.successSnackbar(
               name.toString(), "Profile Request Access".tr);
         } else {
           String name =
-              "${profileRequestModel.receiverProfile!.name} has rejected your request"
+              "$userName has rejected your request"
                   .tr;
           UiUtilites.errorSnackbar(
               "Profile Request Access".tr, name.toString());
         }
       } else {
-        if (profileRequestModel.status == "accepted") {
+        if (status == "accepted") {
           String name =
-              "${profileRequestModel.receiverProfile!.name} has accepted your request"
+              "$userName has accepted your request"
                   .tr;
           UiUtilites.successSnackbar(
               name.toString(), "Social Request Access".tr);
           updatePublicProfile();
         } else {
           String name =
-              "${profileRequestModel.receiverProfile!.name} has rejected your request"
+              "$userName has rejected your request"
                   .tr;
           UiUtilites.errorSnackbar("Social Request Access".tr, name.toString());
         }
@@ -499,14 +499,13 @@ class HomeController extends GetxController {
     log('Channel Name: $channelName, Socket Id: $socketId, Options: $options');
   }
 
-  void showPopup(
-      String message, UserModel user, ProfileRequestModel profileRequestModel) {
+  void showPopup(String message,String? userName,String? userImage, ProfileRequestModel profileRequestModel) {
     Get.dialog(
       barrierDismissible: false,
       ProfileRequestPopup(
-        name: user.currentProfile!.name!,
-        imageUrl: user.currentProfile!.imageUrl ??
-            'https://avatar.iran.liara.run/public/boy?username=${user.currentProfile!.name!}',
+        name: userName ?? "",
+        imageUrl: userImage ??
+            'https://avatar.iran.liara.run/public/boy?username=${profileRequestModel.senderProfile!.name ?? ""}',
         requestMessage: profileRequestModel.requestType == "profile"
             ? 'Would like to take a look at your “Profile”.'.tr
             : 'Would like to take a look at your “Social media accounts and business card”.'

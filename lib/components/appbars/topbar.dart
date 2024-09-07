@@ -14,7 +14,7 @@ Widget topBar({
   String? name,
   bool showBackIcon = true,
   Color color = AppColors.black,
-  padding = const EdgeInsets.only(left: 40, right: 40),
+  padding = const EdgeInsets.only(left: 20, right: 20),
 }) {
   return Padding(
     padding: padding,

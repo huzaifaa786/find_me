@@ -5,7 +5,6 @@ import 'package:find_me/components/helper/loading.dart';
 import 'package:find_me/utils/ui_utils.dart';
 import 'package:get/get.dart';
 
-
 import 'package:get_storage/get_storage.dart';
 
 class DioService {
@@ -31,7 +30,9 @@ class DioService {
       log(response.toString());
       return _handleResponse(response);
     } catch (e) {
-      _handleError(e);
+      LoadingHelper.dismiss();
+
+      // _handleError(e);
     }
   }
 
@@ -49,7 +50,9 @@ class DioService {
       log(response.toString());
       return _handleResponse(response);
     } catch (e) {
-      _handleError(e);
+      LoadingHelper.dismiss();
+
+      // _handleError(e);
       return {};
     }
   }
