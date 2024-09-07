@@ -25,7 +25,7 @@ class UiUtilites {
       mobilePositionSettings: const MobilePositionSettings(
         bottomOnAppearance: 20,
       ),
-      duration: Duration(milliseconds: 2000),
+      duration: Duration(milliseconds: 5000),
       builder: ((context) {
         return MaterialAnimatedSnackBar(
           titleText: title.isNotEmpty ? title : null,
@@ -42,7 +42,7 @@ class UiUtilites {
       mobilePositionSettings: const MobilePositionSettings(
         bottomOnAppearance: 20,
       ),
-      duration: Duration(milliseconds: 2000),
+      duration: Duration(milliseconds: 5000),
       builder: ((context) {
         return MaterialAnimatedSnackBar(
           titleText: title.isNotEmpty ? title : null,
