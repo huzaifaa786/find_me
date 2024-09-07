@@ -45,11 +45,14 @@ class ProfileController extends GetxController {
   getUser() async {
     var response = await UserApi.getUser();
     if (response.isNotEmpty) {
+      
       userModel = UserModel.fromJson(response['user']);
+
       for (var element in userModel!.profiles!) {
+
         if (element.id == profile?.id) {
+          // print("AAAAAAAAAAaEEEE${element.emojis?.length}");
           profile = element;
-          update();
         }
       }
       businessCardModel = profile!.businessCard;
@@ -74,7 +77,7 @@ class ProfileController extends GetxController {
       }
     }
   }
-  
+
   giftEmoji(emojiId) async {
     var response =
         await EmojiApi.giftEmoji(emojiId: emojiId, receiverId: profile!.id);
@@ -85,8 +88,7 @@ class ProfileController extends GetxController {
       } else if (response['profile'] != null) {
         profile = UserProfileModel.fromJson(response['profile']);
         update();
-                UiUtilites.successSnackbar("Emoji Gifted Successfully".tr, "");
-
+        UiUtilites.successSnackbar("Emoji Gifted Successfully".tr, "");
       }
     }
   }

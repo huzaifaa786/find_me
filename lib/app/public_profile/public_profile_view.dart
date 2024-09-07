@@ -449,6 +449,11 @@ class PublicProfileView extends StatelessWidget {
                                 crossAxisSpacing: 2.0,
                               ),
                               itemBuilder: (BuildContext context, int index) {
+                                double emojiSize =
+                                    controller.profile!.emojis![index].type ==
+                                            "paid"
+                                        ? 70
+                                        : 50;
                                 return GestureDetector(
                                   onTap: () {
                                     controller.giftEmoji(
@@ -464,8 +469,8 @@ class PublicProfileView extends StatelessWidget {
                                             CircularProgressIndicator(),
                                         errorWidget: (context, url, error) =>
                                             Icon(Icons.error),
-                                        width: 55,
-                                        height: 55,
+                                        width: emojiSize,
+                                        height: emojiSize,
                                       ),
                                       if (controller
                                               .profile!.emojis![index].type ==

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:find_me/api/auth_api/user_api.dart';
 import 'package:find_me/models/user_model.dart';
+import 'package:find_me/routes/app_routes.dart';
 import 'package:get/get.dart';
 
 class UserAccountController extends GetxController {
@@ -20,5 +21,12 @@ class UserAccountController extends GetxController {
     }
 
     update();
+  }
+
+  void deleteAccount() async {
+    var response = await UserApi.accountDelete();
+    if (response.isNotEmpty) {
+      Get.offAllNamed(AppRoutes.intro);
+    }
   }
 }

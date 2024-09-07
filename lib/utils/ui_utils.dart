@@ -842,4 +842,136 @@ class UiUtilites {
       },
     );
   }
+  static accountAlert(context, {showRemeber = false, required String text,required onTapYes,required onTapNo}) {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.white,
+          surfaceTintColor: Colors.white,
+          shape: RoundedRectangleBorder(
+              side: BorderSide(
+                //color: Colors.transparent, style: BorderStyle.solid
+                color: AppColors.primary_color,
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(19))),
+          // contentPadding: EdgeInsets.only(top: 10.0),
+          content: Container(
+            // padding: EdgeInsets.only(left: 20, right: 20),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(19.0)),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                // Gap(2.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: SvgPicture.asset(
+                        'assets/icons/cross.svg',
+                        height: 30.h,
+                        width: 30.w,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/warning.png',
+                      height: 45.h,
+                      width: 45.w,
+                      fit: BoxFit.contain,
+                    ),
+                  ],
+                ),
+
+                showRemeber
+                    ? Column(
+                        children: [
+                          Gap(10.h),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              AppText(
+                                title: 'Remember!'.tr,
+                                textAlign: TextAlign.center,
+                                fontWeight: FontWeight.w600,
+                                size: 12,
+                                // color: AppColors.primary_color
+                              ),
+                            ],
+                          ),
+                        ],
+                      )
+                    : SizedBox(),
+                Gap(10),
+                Center(
+                  child: AppText(
+                    title: text.tr,
+                    textAlign: TextAlign.center,
+                    fontWeight: FontWeight.w400,
+                    size: 12.sp,
+                    color: AppColors.black,
+                  ),
+                ),
+                 Gap(30),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    GestureDetector(
+                      onTap: onTapYes,
+                      child: Container(
+                        height: 35,
+                        width: 55,
+                        decoration: BoxDecoration(
+                            color: AppColors.light_blue,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Center(
+                          child: Text(
+                            'Yes'.tr,
+                            style: TextStyle(fontSize: 20.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: onTapNo,
+                      child: Container(
+                        height: 35,
+                        width: 50,
+                        decoration: BoxDecoration(
+                            color: AppColors.light_blue,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Center(
+                          child: Text(
+                            'No'.tr,
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              // color: AppColors.black,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        );
+        //  );
+      },
+    );
+  }
 }

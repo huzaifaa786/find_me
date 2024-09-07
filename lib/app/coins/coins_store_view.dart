@@ -10,6 +10,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
 
 class CoinsStoreView extends StatefulWidget {
   const CoinsStoreView({super.key});
@@ -22,6 +23,12 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<CoinsStoreController>(
+      initState: (state) {
+        Future.delayed(Duration(milliseconds: 100), () {
+          state.controller!.getUser();
+          state.controller!.getCoinPackages();
+        });
+      },
       autoRemove: false,
       builder: (controller) => Scaffold(
         appBar: AppBar(
@@ -83,27 +90,30 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
                   child: GridView.builder(
                     shrinkWrap: true,
                     physics: AlwaysScrollableScrollPhysics(),
-                    itemCount: controller.coinPackages.length,
+                    itemCount: controller.packages!.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
                         crossAxisSpacing: 3.0,
                         mainAxisSpacing: 14.0),
                     itemBuilder: (BuildContext context, int index) {
-                      CoinPackageModel coinPackageModel =
-                          controller.coinPackages[index];
+                      Package package = controller.packages![index];
+                      StoreProduct coinPackageModel = package.storeProduct;
+
                       return CardCoins(
                         width: 100.w,
                         height: 100.h,
-                        bottomText: '${coinPackageModel.price} AED'.tr,
+                        bottomText: coinPackageModel.priceString,
                         img: 'assets/images/coin_icon_big.png',
-                        text: '${coinPackageModel.coins} Coins'.tr,
+                        text: package.storeProduct.description,
                         imageHeight: 60.h,
                         imageWidth: 60.w,
-                        onTap: () {
-                          Get.toNamed(AppRoutes.purchasecoins, arguments: [
-                            controller.userModel,
-                            coinPackageModel
-                          ]);
+                        onTap: () async {
+                          Get.toNamed(AppRoutes.purchasecoins,
+                                  arguments: [controller.userModel, package])!
+                              .then((value) {
+                            controller.getUser();
+                            controller.getCoinPackages();
+                          });
                         },
                       );
                     },

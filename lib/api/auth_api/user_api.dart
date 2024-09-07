@@ -21,4 +21,14 @@ class UserApi {
     );
     return response;
   }
+
+  static Future<Map<String, dynamic>> accountDelete() async {
+    String url = '$baseUrl/account/delete';
+
+    //! Make the POST request using ApiService
+    var response = await DioService.get(
+      url: url,
+    );
+    return response;
+  }
 }

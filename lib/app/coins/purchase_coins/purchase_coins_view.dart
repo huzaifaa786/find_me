@@ -36,9 +36,13 @@ class _PurchaseCoinsViewState extends State<PurchaseCoinsView> {
                       CardCoins(
                         height: 180.h,
                         width: 180.w,
-                        bottomText: "${controller.coinPackageModel!.price} AED".tr,
+                        bottomText: controller
+                                .coinPackageModel?.storeProduct.priceString ??
+                            "",
                         img: 'assets/images/coin_icon_big.png',
-                        text: '${controller.coinPackageModel!.coins} Coins'.tr,
+                        text: controller
+                                .coinPackageModel?.storeProduct.description ??
+                            "",
                         imageHeight: 120.h,
                         imageWidth: 120.w,
                         textSize: 16.sp,
@@ -52,7 +56,8 @@ class _PurchaseCoinsViewState extends State<PurchaseCoinsView> {
                     width: 304.0.w,
                     title: 'Checkout'.tr,
                     onTap: () {
-                      controller.buyCoins();
+                      controller.buyCoins(
+                          context, controller.coinPackageModel!);
                     },
                   )
                 ],

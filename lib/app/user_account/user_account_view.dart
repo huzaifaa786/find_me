@@ -6,6 +6,7 @@ import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/cards/user_information_card.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
+import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -193,6 +194,32 @@ class _UserAccountViewState extends State<UserAccountView> {
                                           Get.toNamed(AppRoutes.changepassword)!
                                               .then((value) {
                                             controller.getUser();
+                                          });
+                                        },
+                                      ),
+                                      Divider(
+                                        thickness: 1,
+                                        color: Colors.grey.withOpacity(0.3),
+                                      ),
+                                      ListTile(
+                                        title: Text(
+                                          'Delete Account'.tr,
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        trailing: Icon(
+                                          Icons.chevron_right,
+                                          color: Colors.grey,
+                                        ),
+                                        onTap: () {
+                                          UiUtilites.accountAlert(context,
+                                              text:
+                                                  "Are you sure you want to delete your account?",
+                                              onTapYes: () {
+                                            controller.deleteAccount();
+                                          }, onTapNo: () {
+                                            Get.back();
                                           });
                                         },
                                       ),

@@ -484,7 +484,13 @@ class _ProfileViewState extends State<ProfileView> {
                               GridView.builder(
                                 shrinkWrap: true,
                                 physics: BouncingScrollPhysics(),
-                                itemCount: 6,
+                                itemCount: (controller.profile?.emojis !=
+                                            null &&
+                                        (controller.profile?.emojis?.length ??
+                                                0) >
+                                            6)
+                                    ? 6
+                                    : controller.profile?.emojis?.length ?? 0,
                                 gridDelegate:
                                     SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 3,
@@ -492,11 +498,17 @@ class _ProfileViewState extends State<ProfileView> {
                                   crossAxisSpacing: 2.0,
                                 ),
                                 itemBuilder: (BuildContext context, int index) {
-                                  if (index >=
-                                      (controller.profile?.emojis?.length ??
-                                          0)) {
-                                    return SizedBox.shrink();
-                                  }
+                                  print(controller.profile?.emojis?.length);
+                                  // if (index >=
+                                  //     (controller.profile?.emojis?.length ??
+                                  //         0)) {
+                                  //   return SizedBox.shrink();
+                                  // }
+                                  double emojiSize =
+                                      controller.profile!.emojis![index].type ==
+                                              "paid"
+                                          ? 75
+                                          : 40;
 
                                   return GestureDetector(
                                     onTap: () {
@@ -519,15 +531,15 @@ class _ProfileViewState extends State<ProfileView> {
                                               CircularProgressIndicator(),
                                           errorWidget: (context, url, error) =>
                                               Icon(Icons.error),
-                                          width: 55,
-                                          height: 55,
+                                          width: emojiSize,
+                                          height: emojiSize,
                                         ),
                                         if (controller
                                                 .profile!.emojis![index].type ==
                                             "paid")
                                           Positioned(
                                             top: 19,
-                                            left: -1,
+                                            left: -1.7,
                                             child: Column(
                                               children: [
                                                 Image.asset(

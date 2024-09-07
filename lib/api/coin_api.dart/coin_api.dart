@@ -15,12 +15,12 @@ class CoinApi {
   }
 
   static Future<Map<String, dynamic>> buyCoinPackages(
-      {required int packageId}) async {
+      {required int coins}) async {
     // URL
     String url = '$baseUrl/buy/package';
 
     // DATA
-    var data = {'package_id': packageId};
+    var data = {'coins': coins};
 
     // Make the POST request using DioService
     var response = await DioService.post(url: url, data: data);

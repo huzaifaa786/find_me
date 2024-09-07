@@ -18,8 +18,8 @@ class SubscriptionsController extends GetxController {
   void getProduct() async {
     try {
       Offerings offerings = await Purchases.getOfferings();
-      if (offerings.current != null) {
-        package = offerings.current?.availablePackages.first;
+      if (offerings.getOffering("premium") != null) {
+        package = offerings.getOffering("premium")?.availablePackages.first;
         // debugPrint(monthly?.description);
         // debugPrint(monthly?.priceString);
         // debugPrint(offerings.current?.availablePackages[0].toString());
