@@ -129,6 +129,9 @@ class SignUpController extends GetxController {
       // Format the date as 'dd/MM/yyyy'
       String formattedDate = DateFormat('dd/MM/yyyy').format(picked);
       dateController.text = formattedDate; // Update the dateController
+      dayController.text = picked.day.toString().padLeft(2, '0');
+      monthController.text = picked.month.toString().padLeft(2, '0');
+      yearController.text = picked.year.toString();
     }
   }
 
@@ -184,13 +187,14 @@ class SignUpController extends GetxController {
 
   registerUser() async {
     final token = await FirebaseMessaging.instance.getToken();
-    String dob = '${dateController}';
+    String dob =
+        '${yearController.text}-${monthController.text}-${dayController.text}';
+    print(dob);
     // Generate a UUID for the device's beacon ID
     var uuid = const Uuid();
     String beaconId = uuid.v4();
     if ((await _geolocator.isLocationServiceEnabled())) {
-      Position position = await Geolocator.getCurrentPosition(
-         );
+      Position position = await Geolocator.getCurrentPosition();
 
       Map<String, dynamic> response = await RegisterApi.registerUser(
           name: nameController.text,

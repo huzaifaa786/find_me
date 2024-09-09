@@ -38,21 +38,7 @@ class NotificationsView extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 50.w),
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                    bottom: 15,
-                    top: 30,
-                  ),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Today".tr,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                          fontSize: 14.sp, fontWeight: FontWeight.w600),
-                    ),
-                  ),
-                ),
+                
 
                 ListView.builder(
                   itemCount: controller.notificationss.length,
@@ -63,13 +49,7 @@ class NotificationsView extends StatelessWidget {
                     return Notificationscard(
                       item: item,
                     );
-                    // ListTile(
-                    //   onTap: () async {},
-                    //   title: Text(controller.notificationss[index].title!),
-                    //   subtitle: Text(
-                    //     controller.notificationss[index].body.toString(),
-                    //   ),
-                    // );
+                 
                   },
                 ),
 

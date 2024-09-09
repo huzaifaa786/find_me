@@ -450,42 +450,36 @@ class HomeController extends GetxController {
       // UserModel user = UserModel.fromJson(data['user']);
       ProfileRequestModel requestModel =
           ProfileRequestModel.fromJson(data['profileRequest']);
-      showPopup(data['message'],data['userName'],data['userImage'], requestModel);
+      showPopup(
+          data['message'], data['userName'], data['userImage'], requestModel);
     }
     if (event.data != null && event.eventName == "profile-access") {
       Map<String, dynamic> data = json.decode(event.data!);
 
-        String status = data['status'];
-        String userName = data['name'];
+      String status = data['status'];
+      String userName = data['name'];
       if (data['requestType'] == "profile") {
         if (status == "accepted") {
-          String name =
-              "$userName has accepted your request"
-                  .tr;
+          String name = "$userName has accepted your request".tr;
           UiUtilites.successSnackbar(
               name.toString(), "Profile Request Access".tr);
         } else {
-          String name =
-              "$userName has rejected your request"
-                  .tr;
+          String name = "$userName has rejected your request".tr;
           UiUtilites.errorSnackbar(
               "Profile Request Access".tr, name.toString());
         }
       } else {
         if (status == "accepted") {
-          String name =
-              "$userName has accepted your request"
-                  .tr;
+          String name = "$userName has accepted your request".tr;
           UiUtilites.successSnackbar(
               name.toString(), "Social Request Access".tr);
           updatePublicProfile();
         } else {
-          String name =
-              "$userName has rejected your request"
-                  .tr;
+          String name = "$userName has rejected your request".tr;
           UiUtilites.errorSnackbar("Social Request Access".tr, name.toString());
         }
       }
+      update();
     }
   }
 
@@ -498,7 +492,8 @@ class HomeController extends GetxController {
     log('Channel Name: $channelName, Socket Id: $socketId, Options: $options');
   }
 
-  void showPopup(String message,String? userName,String? userImage, ProfileRequestModel profileRequestModel) {
+  void showPopup(String message, String? userName, String? userImage,
+      ProfileRequestModel profileRequestModel) {
     Get.dialog(
       barrierDismissible: false,
       ProfileRequestPopup(

@@ -43,7 +43,7 @@ class SignInController extends GetxController {
         box.write('beacon_id', response['user']['beacon_id']);
         Get.offAllNamed(AppRoutes.mainview);
       } else {
-        Get.offAllNamed(AppRoutes.mainview,
+        Get.offAllNamed(AppRoutes.otp,
             arguments: response['user']['phone']);
       }
     }

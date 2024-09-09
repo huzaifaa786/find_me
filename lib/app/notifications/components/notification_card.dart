@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, must_be_immutable
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:find_me/helpers/subscription_manager.dart';
 import 'package:find_me/models/notification_model.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
@@ -44,16 +45,13 @@ class Notificationscard extends StatelessWidget {
                   Gap(8),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(80.r),
-                    child: item!.senderProfile!.image != null
+                    child: item!.senderProfile!.image != null &&
+                            SubscriptionManager().isProUser
                         ? CachedNetworkImage(
                             height: 50,
                             width: 50,
                             imageUrl: item!.senderProfile!.image.toString(),
                             fit: BoxFit.cover,
-                            // placeholder: (context, url) =>
-                            //     CircularProgressIndicator(),
-                            // errorWidget: (context, url, error) =>
-                            //     Icon(Icons.error),
                           )
                         : SvgPicture.asset(
                             "assets/icons/card_profile_picture.svg",

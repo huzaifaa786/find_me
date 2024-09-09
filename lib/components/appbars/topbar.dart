@@ -26,20 +26,26 @@ Widget topBar({
                 Get.back();
               },
               child: box!.read('locale') != 'ar'
-                  ? SvgPicture.asset(
-                      ImagesConst.backIcon,
-                      height: 28.h,
-                      width: 28.w,
-                      fit: BoxFit.scaleDown,
-                      color: color,
-                    )
-                  : SvgPicture.asset(
-                      "assets/icons/back right.svg",
-                      height: 28.h,
-                      width: 28.w,
-                      fit: BoxFit.scaleDown,
-                      color: color,
-                    )),
+                  ? Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SvgPicture.asset(
+                        ImagesConst.backIcon,
+                        height: 28.h,
+                        width: 28.w,
+                        fit: BoxFit.scaleDown,
+                        color: color,
+                      ),
+                  )
+                  : Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SvgPicture.asset(
+                        "assets/icons/back right.svg",
+                        height: 28.h,
+                        width: 28.w,
+                        fit: BoxFit.scaleDown,
+                        color: color,
+                      ),
+                  )),
         if (showBackIcon) Gap(70.w) else Gap(98.w),
         AppText(
           title: name!,

@@ -36,6 +36,11 @@ class PublicProfileController extends GetxController {
 
     if (response.isNotEmpty) {
       userModel = UserModel.fromJson(response['user']);
+      for (var currentprofile in userModel!.profiles!) {
+        if (profile?.id == currentprofile.id) {
+          profile = currentprofile;
+        }
+      }
       businessCardModel = profile!.businessCard;
 
       if (profile!.urls != null) {

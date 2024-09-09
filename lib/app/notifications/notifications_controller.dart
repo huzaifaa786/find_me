@@ -24,8 +24,8 @@ class NotificationsController extends GetxController {
     if (response.isNotEmpty) {
       notificationss = (response['notifications'] as List<dynamic>)
           .map((notifications) => NotificationModel.fromjson(notifications))
-          .toList();
-
+          .toList().reversed.toList();
+      
       GetStorage box = GetStorage();
       update();
       box.read("api_token");

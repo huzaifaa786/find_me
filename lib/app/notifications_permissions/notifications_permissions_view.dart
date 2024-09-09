@@ -70,9 +70,9 @@ class _NotificationsPermissionsViewState
                           title: "Requests for profile".tr,
                           size: 13.sp,
                           FontWeight: FontWeight.w500,
-                          value: controller.photosNotifications,
+                          value: controller.profileNotifications,
                           ontoggle: (value) {
-                            controller.togglePhotosNotifications(value);
+                            controller.toggleProfileNotifications(value);
                           },
                         ),
                         Gap(9.h),
@@ -98,9 +98,9 @@ class _NotificationsPermissionsViewState
                               "Requests for social media and  \n business cards".tr,
                           size: 13.sp,
                           FontWeight: FontWeight.w500,
-                          value: controller.fileNotifications,
+                          value: controller.socialNotifications,
                           ontoggle: (value) {
-                            controller.toggleFileNotifications(value);
+                            controller.toggleSocialNotifications(value);
                           },
                         ),
                         Gap(15.h),

@@ -465,8 +465,7 @@ class PublicProfileView extends StatelessWidget {
                                       CachedNetworkImage(
                                         imageUrl: controller
                                             .profile!.emojis![index].image,
-                                        placeholder: (context, url) =>
-                                            CircularProgressIndicator(),
+                                       
                                         errorWidget: (context, url, error) =>
                                             Icon(Icons.error),
                                         width: emojiSize,

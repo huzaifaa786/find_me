@@ -11,8 +11,9 @@ import 'package:get/get.dart';
 
 Widget homeAppBar({String? name}) {
   return Padding(
-    padding: EdgeInsets.only(left: 45.w),
+    padding: EdgeInsets.only(left: 20.w),
     child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         GestureDetector(
           onTap: () {
@@ -25,35 +26,33 @@ Widget homeAppBar({String? name}) {
             scale: 13,
           ),
         ),
-        Gap(150.w),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // notification.isNotEmpty?
-            // SvgPicture.asset(
-            //   'assets/icons/bell_alert.svg',
-            //   fit: BoxFit.scaleDown,
-            //   height: 32.h,
-            // )
-            //  :
             GestureDetector(
               onTap: () {
                 Get.toNamed(AppRoutes.notifications);
               },
-              child: SvgPicture.asset(
-                'assets/icons/bell.svg',
-                fit: BoxFit.scaleDown,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SvgPicture.asset(
+                  'assets/icons/bell.svg',
+                  fit: BoxFit.scaleDown,
+                ),
               ),
             ),
-            Gap(20),
+            
             GestureDetector(
               onTap: () {
                 Get.toNamed(AppRoutes.setting);
               },
-              child: SvgPicture.asset(
-                'assets/icons/menu (2).svg',
-                fit: BoxFit.scaleDown,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SvgPicture.asset(
+                  'assets/icons/menu (2).svg',
+                  fit: BoxFit.scaleDown,
+                ),
               ),
             ),
           ],
