@@ -9,13 +9,16 @@ import 'package:find_me/app/account/profile/profile_controller.dart';
 import 'package:find_me/app/edit_profile/edit_profile_controller.dart';
 import 'package:find_me/app/gifted_emoji/components/emojis_card.dart';
 import 'package:find_me/app/public_profile/public_profile_controller.dart';
+import 'package:find_me/components/appbars/profile_topbar.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/cards/business_card.dart';
+import 'package:find_me/components/popups/report_profile_dialog.dart';
 
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/box_decoration/box_decoration.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
+import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -24,6 +27,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:shimmer/shimmer.dart';
 
 class PublicProfileView extends StatelessWidget {
   const PublicProfileView({super.key});
@@ -37,9 +41,22 @@ class PublicProfileView extends StatelessWidget {
               appBar: AppBar(
                 scrolledUnderElevation: 0,
                 automaticallyImplyLeading: false,
-                title: topBar(
+                title: profileTopBar(
+                    blockAction: () {
+                      UiUtilites.accountAlert(context,
+                          text: "Are you sure you want to block this profile?",
+                          onTapYes: () {
+                        Get.back();
+                        controller.blockProfile();
+                      }, onTapNo: () {
+                        Get.back();
+                      });
+                    },
+                    reportAction: () {
+                      Get.toNamed(AppRoutes.reportProfile,
+                          arguments: controller.profile);
+                    },
                     name: "",
-
                     //  "@${controller.userModel!.name}",
                     showBackIcon: true),
               ),
@@ -441,7 +458,9 @@ class PublicProfileView extends StatelessWidget {
                           GridView.builder(
                               shrinkWrap: true,
                               physics: BouncingScrollPhysics(),
-                              itemCount: controller.profile!.emojis!.length,
+                              itemCount: controller.profile!.emojis!.length > 6
+                                  ? 6
+                                  : controller.profile!.emojis!.length,
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 3,
@@ -465,9 +484,20 @@ class PublicProfileView extends StatelessWidget {
                                       CachedNetworkImage(
                                         imageUrl: controller
                                             .profile!.emojis![index].image,
-                                       
                                         errorWidget: (context, url, error) =>
                                             Icon(Icons.error),
+                                        placeholder: (context, url) =>
+                                            Shimmer.fromColors(
+                                          baseColor: Colors.grey[300]!,
+                                          highlightColor: Colors.grey[100]!,
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                            ),
+                                            width: 50,
+                                            height: 50,
+                                          ),
+                                        ),
                                         width: emojiSize,
                                         height: emojiSize,
                                       ),
@@ -476,7 +506,7 @@ class PublicProfileView extends StatelessWidget {
                                           "paid")
                                         Positioned(
                                           top: 19,
-                                          left: -1,
+                                          left: -1.2,
                                           child: Column(
                                             children: [
                                               Image.asset(

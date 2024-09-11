@@ -38,6 +38,8 @@ import 'package:find_me/app/edit_account/edit_account_information_binding.dart';
 import 'package:find_me/app/edit_account/edit_account_information_view.dart';
 import 'package:find_me/app/public_profile/public_profile_binding.dart';
 import 'package:find_me/app/public_profile/public_profile_view.dart';
+import 'package:find_me/app/report_profile/report_profile_binding.dart';
+import 'package:find_me/app/report_profile/report_profile_view.dart';
 import 'package:find_me/app/updata_phone_number%5D/updata_phone_number_binding.dart';
 import 'package:find_me/app/updata_phone_number%5D/updata_phone_number_view.dart';
 import 'package:find_me/app/create_business_card/create_card_binding.dart';
@@ -108,6 +110,13 @@ class AppPages {
       name: AppRoutes.publicProfile,
       page: () => const PublicProfileView(),
       binding: PublicProfileBinding(),
+      transition: Transition.downToUp,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+    GetPage(
+      name: AppRoutes.reportProfile,
+      page: () => const ReportProfileView(),
+      binding: ReportProfileBinding(),
       transition: Transition.downToUp,
       transitionDuration: const Duration(milliseconds: 100),
     ),
@@ -198,7 +207,7 @@ class AppPages {
     //TODO: [home Route]
     GetPage(
       name: AppRoutes.home,
-      page: () =>HomeView(),
+      page: () => HomeView(),
       binding: HomeBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 350),

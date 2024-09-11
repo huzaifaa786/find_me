@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 
 class GiftedEmojiView extends StatefulWidget {
   const GiftedEmojiView({super.key});
@@ -45,10 +46,20 @@ class _GiftedEmojiViewState extends State<GiftedEmojiView> {
                                 alignment: Alignment.center,
                                 children: [
                                   CachedNetworkImage(
-                                    imageUrl: controller
-                                        .allEmojis[index].image,
+                                    imageUrl: controller.allEmojis[index].image,
                                     placeholder: (context, url) =>
-                                        CircularProgressIndicator(),
+                                        Shimmer.fromColors(
+                                      baseColor: Colors.grey[300]!,
+                                      highlightColor: Colors.grey[100]!,
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        width: 100,
+                                        height: 100,
+                                      ),
+                                    ), // 
                                     errorWidget: (context, url, error) =>
                                         Icon(Icons.error),
                                     width: 55,
@@ -58,7 +69,7 @@ class _GiftedEmojiViewState extends State<GiftedEmojiView> {
                                       "paid")
                                     Positioned(
                                       top: 19,
-                                      left: -1,
+                                      left: -1.5,
                                       child: Column(
                                         children: [
                                           Image.asset(
@@ -67,8 +78,7 @@ class _GiftedEmojiViewState extends State<GiftedEmojiView> {
                                             width: 22.09.w,
                                           ),
                                           Text(
-                                            controller
-                                                .allEmojis[index].coins
+                                            controller.allEmojis[index].coins
                                                 .toString(),
                                             style: TextStyle(
                                               fontSize: 10,
@@ -79,14 +89,12 @@ class _GiftedEmojiViewState extends State<GiftedEmojiView> {
                                         ],
                                       ),
                                     ),
-                                  if (controller
-                                          .allEmojis[index].giftCount !=
+                                  if (controller.allEmojis[index].giftCount !=
                                       "0")
                                     Positioned(
                                       bottom: -3,
                                       child: Text(
-                                        controller.allEmojis[index]
-                                                .giftCount ??
+                                        controller.allEmojis[index].giftCount ??
                                             "",
                                         style: TextStyle(
                                           fontSize: 12,

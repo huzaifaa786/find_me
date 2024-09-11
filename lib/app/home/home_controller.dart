@@ -139,6 +139,7 @@ class HomeController extends GetxController {
             text: "edit",
             verified: false));
       }
+      scannedUsers = [];
     }
     update();
   }
@@ -388,6 +389,7 @@ class HomeController extends GetxController {
     final response =
         await BluethoohUsersApi.getUsersList(keys: serviceDataKeys);
     if (response.isNotEmpty) {
+      scannedUsers = [];
       for (var element in response['users']) {
         scannedUsers.add(UserModel.fromJson(element));
       }
@@ -527,7 +529,10 @@ class HomeController extends GetxController {
         UiUtilites.successSnackbar("Request to access profile has been sent".tr,
             "Access Profile Request".tr);
       } else if (response['Request'] == "Access") {
-        Get.toNamed(AppRoutes.publicProfile, arguments: user.currentProfile);
+        Get.toNamed(AppRoutes.publicProfile, arguments: user.currentProfile)!
+            .then((value) {
+          getUser();
+        });
       }
     }
   }

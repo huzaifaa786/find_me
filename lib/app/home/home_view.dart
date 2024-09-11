@@ -216,8 +216,9 @@ class HomeView extends StatelessWidget {
                                         if (value != null) {
                                           if (value.text == "add" ||
                                               value.text == "edit") {
-                                            Get.toNamed(AppRoutes.editProfile,
-                                                   )!
+                                            Get.toNamed(
+                                              AppRoutes.editProfile,
+                                            )!
                                                 .then((value) {
                                               controller.getUser();
                                             });
@@ -274,11 +275,14 @@ class HomeView extends StatelessWidget {
                         child: SingleChildScrollView(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 48),
-                            child: controller.isSearching || controller.isInternetChecking
+                            child: controller.isSearching ||
+                                    controller.isInternetChecking
                                 ? Center(
                                     heightFactor: 10.h,
                                     child: AppText(
-                                      title:controller.isInternetChecking ? 'Checking Connections..'.tr: 'Keep searching..'.tr,
+                                      title: controller.isInternetChecking
+                                          ? 'Checking Connections..'.tr
+                                          : 'Keep searching..'.tr,
                                       color: AppColors.black,
                                       textAlign: TextAlign.center,
                                       size: 14.sp,
@@ -310,9 +314,12 @@ class HomeView extends StatelessWidget {
                                               .currentProfile!
                                               .isProfilePublic) {
                                             Get.toNamed(AppRoutes.publicProfile,
-                                                arguments: controller
-                                                    .scannedUsers[index]
-                                                    .currentProfile);
+                                                    arguments: controller
+                                                        .scannedUsers[index]
+                                                        .currentProfile)!
+                                                .then((value) {
+                                              controller.getUser();
+                                            });
                                           } else {
                                             controller.sendRequest(
                                                 controller.scannedUsers[index]);

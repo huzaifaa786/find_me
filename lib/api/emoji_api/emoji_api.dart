@@ -43,10 +43,25 @@ class EmojiApi {
     return response;
   }
 
+  static Future<Map<String, dynamic>> updateEmojiOrder(
+      List<int?> emojiOrder) async {
+    String url = '$baseUrl/update/emoji/order';
+    var data = {'emojiOrder': emojiOrder};
+    var response = await DioService.post(url: url, data: data);
+    return response;
+  }
+
   static Future<Map<String, dynamic>> myEmojis() async {
     String url = '$baseUrl/myemoji/all';
     var data = null;
     var response = await DioService.get(url: url, data: data);
+    return response;
+  }
+
+  static Future<Map<String, dynamic>> deleteEmoji(int emojiId) async {
+    String url = '$baseUrl/remove/emoji';
+    var data = {'emoji_id': emojiId};
+    var response = await DioService.post(url: url, data: data);
     return response;
   }
 }

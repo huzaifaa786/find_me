@@ -28,6 +28,7 @@ class AppRoutes {
   static const purchasecoins = '/purchasecoins';
   static const useraccount = '/useraccount';
   static const publicProfile = '/publicProfile';
+  static const reportProfile = '/reportProfile';
 
 
   static const updata_phone_Number = '/UpdataPhoneNumber';
