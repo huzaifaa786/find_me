@@ -36,7 +36,7 @@ class UserCard extends StatelessWidget {
                 border: Border.all(color: Colors.grey, width: 0.1),
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(38.5.h), 
+                borderRadius: BorderRadius.circular(38.5.h),
                 child: !isBlur
                     ? user.currentProfile!.imageUrl != null
                         ? CachedNetworkImage(
@@ -85,12 +85,19 @@ class UserCard extends StatelessWidget {
                   Gap(4.w),
                   Expanded(
                     flex: 2,
-                    child: AppText(
-                      title: user.currentProfile!.name ?? '',
-                      overFlow: TextOverflow.visible,
-                      textAlign: TextAlign.justify,
-                      size: 10,
-                      fontWeight: FontWeight.w500,
+                    child: Row(
+                      children: [
+                        AppText(
+                          title: user.currentProfile!.name ?? '',
+                          overFlow: TextOverflow.visible,
+                          textAlign: TextAlign.justify,
+                          size: 10,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        Gap(2),
+                        if(user.currentProfile!.isVerified)
+                        SvgPicture.asset('assets/icons/verified.svg'),
+                      ],
                     ),
                   ),
                 ],

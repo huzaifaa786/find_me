@@ -294,13 +294,13 @@ class HomeView extends StatelessWidget {
                                         SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 3,
                                       mainAxisSpacing: 15.h,
-                                      crossAxisSpacing: 36.0,
+                                      crossAxisSpacing: 15.0,
                                       mainAxisExtent: 100.h,
                                     ),
                                     itemCount: SubscriptionManager().isProUser
                                         ? controller.scannedUsers.length
-                                        : controller.scannedUsers.length > 8
-                                            ? 8
+                                        : controller.scannedUsers.length > 6
+                                            ? 6
                                             : controller.scannedUsers.length,
                                     itemBuilder: (context, index) {
                                       return UserCard(

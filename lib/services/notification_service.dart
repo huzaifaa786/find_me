@@ -11,9 +11,10 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 // import 'package:http/http.dart' as http;
 
-class NotificationService extends GetxController {   
+class NotificationService extends GetxController {
   late final FirebaseMessaging _messaging;
-  static const String _firebaseMessagingScope = 'https://www.googleapis.com/auth/firebase.messaging';
+  static const String _firebaseMessagingScope =
+      'https://www.googleapis.com/auth/firebase.messaging';
   static NotificationService instance = Get.find();
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
@@ -70,9 +71,8 @@ class NotificationService extends GetxController {
         AndroidNotificationDetails('your channel id', 'your channel name',
             importance: Importance.max,
             priority: Priority.high,
-            styleInformation: BigTextStyleInformation(''),
+            ticker: 'ticker',
             fullScreenIntent: true,
-            
             showWhen: false);
     const DarwinNotificationDetails iOSPlatformChannelSpecifics =
         DarwinNotificationDetails();
@@ -143,7 +143,6 @@ class NotificationService extends GetxController {
   //   await credentials.;
   //   return credentials.accessToken.token;
   // }
-
 
   // static Future<void> sendNotification({
   //   required String token,
