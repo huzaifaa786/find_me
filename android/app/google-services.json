@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "279723335521",
-    "project_id": "findme-69e77",
-    "storage_bucket": "findme-69e77.appspot.com"
+    "project_number": "948556923053",
+    "project_id": "find-me-fa715",
+    "storage_bucket": "find-me-fa715.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:279723335521:android:f8ae6a5fe75c826816af20",
+        "mobilesdk_app_id": "1:948556923053:android:5161bd9b3809914c024624",
         "android_client_info": {
           "package_name": "com.tritec.find_me"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDl7wgXKbymjz-aW7kM5y3cnmmvPa5cLK0"
+          "current_key": "AIzaSyB6f-y_pdGtGKl8l4Lk9IfHoV9tRFd5Puo"
         }
       ],
       "services": {
