@@ -27,23 +27,23 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>Find_Me needs access to your location access to find nearby users</string>
+	<string>Find Me needs access to Bluetooth to find and connect with nearby users based on their device proximity.</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>Find_Me needs access to your location access to find nearby users</string>
+	<string>Find Me uses Bluetooth to detect and connect with nearby users by identifying their devices.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Find_Me needs access to your location access to find nearby users</string>
+	<string>Find Me requires your location to find nearby users and allow them to interact with your profile, even when the app is running in the background.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Find_Me needs access to your location access to find nearby users</string>
+	<string>Find Me needs your location access at all times to enable continuous nearby user discovery and interactions, even when the app is not in use.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Find_Me needs access to your location access to find nearby users</string>
+	<string>Find Me uses your location while the app is open to discover and connect with nearby users.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Find_Me needs photo library access for uploading selected images</string>
+	<string>Find Me needs access to your camera for capturing and uploading images to update your profile pictures or add photos to your business card.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Find_Me Dofaate requires microphone access</string>
+	<string>Find Me requires microphone access for recording voice messages and other audio content to share with users.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Find_Me needs photo library access for uploading selected images</string>
+	<string>Find Me needs access to your photo library for uploading images to update profile pictures for different profiles or to add a photo to your business card.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Find_Me needs photo library access for uploading selected images</string>
+	<string>Find Me needs access to your photo library to upload images for updating your profile pictures or adding photos to your business card.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UIBackgroundModes</key>
