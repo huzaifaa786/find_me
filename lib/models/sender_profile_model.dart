@@ -9,8 +9,8 @@ class SenderProfileModel {
   String? username;
   String? bio;
   String? image;
-  String? urls;
-  String? business_card;
+  // String? urls;
+  // String? business_card;
   // List<String>? emojisWithCount;
   // Bool? profile_verified;
   // Bool? public_profile;
@@ -23,8 +23,8 @@ class SenderProfileModel {
     this.username,
     this.bio,
     required this.image,
-    this.urls,
-    this.business_card,
+    // this.urls,
+    // this.business_card,
     // required this.emojisWithCount,
     // required this.profile_verified,
     // required this.public_profile,
@@ -39,8 +39,8 @@ class SenderProfileModel {
       username: json['username'],
       bio: json['bio'],
       image: json['image'],
-      urls: json['urls'],
-      business_card: json['business_card'],
+      // urls: json['urls'],
+      // business_card: json['business_card'],
       // emojisWithCount: List<String>.from(json['emojis_with_count'] ?? []),
       // profile_verified: json['profile_verified']?? '',
       // public_profile: json['public_profile'],

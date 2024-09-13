@@ -58,7 +58,9 @@ class NotificationModel {
       // seen: json['seen'],
       title: json['title'],
       user: user,
-      senderProfile: SenderProfileModel.fromjson(json['sender_profile']),
+      senderProfile: json['sender_profile'] != null
+          ? SenderProfileModel.fromjson(json['sender_profile'])
+          : null,
     );
   }
 }

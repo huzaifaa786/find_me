@@ -70,6 +70,9 @@ class NotificationService extends GetxController {
         AndroidNotificationDetails('your channel id', 'your channel name',
             importance: Importance.max,
             priority: Priority.high,
+            styleInformation: BigTextStyleInformation(''),
+            fullScreenIntent: true,
+            
             showWhen: false);
     const DarwinNotificationDetails iOSPlatformChannelSpecifics =
         DarwinNotificationDetails();

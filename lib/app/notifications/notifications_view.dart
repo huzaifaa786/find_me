@@ -43,7 +43,7 @@ class NotificationsView extends StatelessWidget {
                 ListView.builder(
                   itemCount: controller.notificationss.length,
                   shrinkWrap: true,
-                  physics: AlwaysScrollableScrollPhysics(),
+                  physics: BouncingScrollPhysics(),
                   itemBuilder: (context, index) {
                     final item = controller.notificationss[index];
                     return Notificationscard(
