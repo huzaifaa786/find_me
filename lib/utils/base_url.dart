@@ -1,1 +1,1 @@
-const baseUrl = 'https://findme.nubesproperty.com/api';
+const baseUrl = 'https://admin.findme-app.net/api';
