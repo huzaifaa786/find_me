@@ -7,6 +7,7 @@ import 'package:find_me/app/edit_profile/edit_profile_view.dart';
 import 'package:find_me/app/emoji_store/emoji_store_view.dart';
 import 'package:find_me/app/home/home_controller.dart';
 import 'package:find_me/app/home/home_view.dart';
+import 'package:find_me/app/main_view/main_controller.dart';
 import 'package:find_me/app/notifications/notifications_view.dart';
 import 'package:find_me/app/report/report_view.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
@@ -27,20 +28,7 @@ class MainView extends StatefulWidget {
   State<MainView> createState() => _MainViewState();
 }
 
-class _MainViewState extends State<MainView> with RouteAware {
-  int _navigationMenuIndex = 0;
-  @override
-  void initState() {
-    print("AAAAAAAAAAAAAAAAAAAAAA");
-    // Retrieve index from Get arguments and update _selectedIndex
-    final args =
-        Get.arguments as Map<String, dynamic>?; // Retrieve arguments as Map
-    if (args != null && args.containsKey('index')) {
-      _navigationMenuIndex = args['index']; // Set the index
-    }
-    super.initState();
-  }
-
+class _MainViewState extends State<MainView> {
   final List<Widget> _fragments = [
     HomeView(),
     CoinsStoreView(),
@@ -48,12 +36,12 @@ class _MainViewState extends State<MainView> with RouteAware {
     EditProfileView(),
   ];
 
-  Widget _buildNavigationBarItem(
-      int index, String iconPath, String label, int cartLength) {
+  Widget _buildNavigationBarItem(MainController controller, int index,
+      String iconPath, String label, int cartLength) {
     return InkWell(
       onTap: () {
         setState(() {
-          _navigationMenuIndex = index;
+          controller.navigationMenuIndex = index;
         });
       },
       child: Container(
@@ -63,70 +51,63 @@ class _MainViewState extends State<MainView> with RouteAware {
         ),
         width: 70.w,
         child: Center(
-          child: InkWell(
-            onTap: () {
-              setState(() {
-                _navigationMenuIndex = index;
-              });
-            },
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                index == 1
-                    ? badges.Badge(
-                        badgeStyle: const badges.BadgeStyle(
-                            badgeColor: AppColors.primary_color),
-                        showBadge: cartLength > 0,
-                        position: badges.BadgePosition.topStart(top: -10.h),
-                        badgeContent: AppText(
-                          title: '$cartLength',
-                          color: AppColors.white,
-                          overFlow: TextOverflow.ellipsis,
-                        ),
-                        child: SvgPicture.asset(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              index == 1
+                  ? badges.Badge(
+                      badgeStyle: const badges.BadgeStyle(
+                          badgeColor: AppColors.primary_color),
+                      showBadge: cartLength > 0,
+                      position: badges.BadgePosition.topStart(top: -10.h),
+                      badgeContent: AppText(
+                        title: '$cartLength',
+                        color: AppColors.white,
+                        overFlow: TextOverflow.ellipsis,
+                      ),
+                      child: SvgPicture.asset(
+                        iconPath,
+                        fit: BoxFit.scaleDown,
+                        height: 27.h,
+                        width: 27.w,
+                        color: controller.navigationMenuIndex == index
+                            ? AppColors.primary_color
+                            : AppColors.black,
+                      ),
+                    )
+                  : index == 2
+                      ? SvgPicture.asset(
                           iconPath,
                           fit: BoxFit.scaleDown,
                           height: 27.h,
                           width: 27.w,
-                          color: _navigationMenuIndex == index
+                          color: controller.navigationMenuIndex == index
+                              ? AppColors.primary_color
+                              : AppColors.black,
+                        )
+                      : SvgPicture.asset(
+                          iconPath,
+                          fit: BoxFit.scaleDown,
+                          height: 27.h,
+                          width: 27.w,
+                          color: controller.navigationMenuIndex == index
                               ? AppColors.primary_color
                               : AppColors.black,
                         ),
-                      )
-                    : index == 2
-                        ? SvgPicture.asset(
-                            iconPath,
-                            fit: BoxFit.scaleDown,
-                            height: 27.h,
-                            width: 27.w,
-                            color: _navigationMenuIndex == index
-                                ? AppColors.primary_color
-                                : AppColors.black,
-                          )
-                        : SvgPicture.asset(
-                            iconPath,
-                            fit: BoxFit.scaleDown,
-                            height: 27.h,
-                            width: 27.w,
-                            color: _navigationMenuIndex == index
-                                ? AppColors.primary_color
-                                : AppColors.black,
-                          ),
-                Gap(4.h),
-                ConstrainedBox(
-                  constraints: BoxConstraints(maxWidth: Get.width),
-                  child: AppText(
-                    title: label,
-                    overFlow: TextOverflow.ellipsis,
-                    color: _navigationMenuIndex == index
-                        ? AppColors.primary_color
-                        : AppColors.black,
-                    size: 10.sp,
-                    fontWeight: FontWeight.w400,
-                  ),
+              Gap(4.h),
+              ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: Get.width),
+                child: AppText(
+                  title: label,
+                  overFlow: TextOverflow.ellipsis,
+                  color: controller.navigationMenuIndex == index
+                      ? AppColors.primary_color
+                      : AppColors.black,
+                  size: 10.sp,
+                  fontWeight: FontWeight.w400,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
@@ -138,7 +119,7 @@ class _MainViewState extends State<MainView> with RouteAware {
     GetStorage box = GetStorage();
     return WillPopScope(
       onWillPop: () => Future.value(false),
-      child: GetBuilder<HomeController>(
+      child: GetBuilder<MainController>(
         autoRemove: false,
         builder: (controller) {
           return Directionality(
@@ -147,7 +128,7 @@ class _MainViewState extends State<MainView> with RouteAware {
                 : TextDirection.rtl,
             child: Scaffold(
               body: SafeArea(
-                child: _fragments[_navigationMenuIndex],
+                child: _fragments[controller.navigationMenuIndex],
               ),
               bottomNavigationBar: BottomAppBar(
                 elevation: 30.0,
@@ -161,15 +142,15 @@ class _MainViewState extends State<MainView> with RouteAware {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       _buildNavigationBarItem(
-                          0, 'assets/icons/home.svg', 'Home'.tr, 0),
-                      _buildNavigationBarItem(
-                          1, 'assets/icons/coin.svg', 'Coins Store'.tr, 0),
+                          controller, 0, 'assets/icons/home.svg', 'Home'.tr, 0),
+                      _buildNavigationBarItem(controller, 1,
+                          'assets/icons/coin.svg', 'Coins Store'.tr, 0),
                       // _buildNavigationBarItem(
                       //     2, 'assets/icons/add.svg', 'Add'.tr, 0),
-                      _buildNavigationBarItem(
-                          2, 'assets/icons/cart.svg', 'Emoji Store'.tr, 1),
-                      _buildNavigationBarItem(
-                          3, 'assets/icons/profile.svg', 'Profile'.tr, 0),
+                      _buildNavigationBarItem(controller, 2,
+                          'assets/icons/cart.svg', 'Emoji Store'.tr, 1),
+                      _buildNavigationBarItem(controller, 3,
+                          'assets/icons/profile.svg', 'Profile'.tr, 0),
 
                       //  coins
                     ],

@@ -5,6 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/app/home/components/home_gif_button.dart';
 import 'package:find_me/app/home/components/home_appbar.dart';
 import 'package:find_me/app/home/components/user_card.dart';
+import 'package:find_me/app/main_view/main_controller.dart';
 import 'package:find_me/helpers/subscription_manager.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
@@ -216,12 +217,8 @@ class HomeView extends StatelessWidget {
                                         if (value != null) {
                                           if (value.text == "add" ||
                                               value.text == "edit") {
-                                            Get.toNamed(
-                                              AppRoutes.editProfile,
-                                            )!
-                                                .then((value) {
-                                              controller.getUser();
-                                            });
+                                            Get.find<MainController>()
+                                                .onChange(3);
                                           } else {
                                             controller.selectItem(value);
                                           }
