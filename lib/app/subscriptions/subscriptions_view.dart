@@ -31,8 +31,6 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
           body: SafeArea(
               child: SingleChildScrollView(
         child: Container(
-            height: Get.height,
-            width: Get.width,
             padding: EdgeInsets.symmetric(horizontal: 43.w),
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -67,8 +65,8 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                   ),
                   Gap(20.h),
                   SizedBox(
-                      height: 110.h,
-                      width: 110.w,
+                      height: 85.h,
+                      width: 85.w,
                       child: GifButton(onTap: () {}, showOpacity: true)),
                   Gap(24),
                   Text(
@@ -77,18 +75,18 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                   ),
                   Gap(20),
                   Text(
-                    "Try Find Me+ for 5.99 AED/ mo!".tr,
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+                    "Try Find Me+ for 4.99 AED/ month".tr,
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
                   ),
                   Gap(6),
                   Center(
                       child: Text(
-                    "1-month free trial \n then AED 4.99/month .cancle any time"
+                    "1-month free trial, cancel any time"
                         .tr,
-                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
                     textAlign: TextAlign.center,
                   )),
-                  Gap(42),
+                  Gap(20),
                   Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -123,7 +121,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                    Gap(32),
                   SubscriptionFeatures(
                     title: "Find out who tried to access your profile:".tr,
-                    subtitle: "Photo and user name will appear on the notification section".tr,
+                    subtitle: "Get notified with the photo and username of those who try to access your profile. ".tr,
                     value: 4,
                     groupValue: controller.selectedOption,
                     onChanged: (value) => controller.selectOption(value!),
@@ -153,7 +151,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                                 fontSize: 12.sp),
                             children: <TextSpan>[
                               TextSpan(
-                                text: 'AED 14.99 /mo'.tr,
+                                text: 'AED 14.99'.tr,
                                 style: TextStyle(
                                     color: AppColors.white,
                                     fontSize: 12,
@@ -163,7 +161,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                                     decorationThickness: 4),
                               ),
                               TextSpan(
-                                text: 'AED 5.99 /mo'.tr,
+                                text: ' AED 4.99 /month'.tr,
                                 style: TextStyle(
                                   color: AppColors.white,
                                   fontSize: 12,
