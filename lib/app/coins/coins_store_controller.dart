@@ -6,6 +6,7 @@ import 'package:find_me/api/coin_api.dart/coin_api.dart';
 import 'package:find_me/helpers/subscription_manager.dart';
 import 'package:find_me/models/coin_package_model.dart';
 import 'package:find_me/models/user_model.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -35,6 +36,9 @@ class CoinsStoreController extends GetxController {
 
   getCoinPackages() async {
     try {
+      FirebaseAnalytics.instance.logEvent(
+          name: 'view_coins_page',
+        );
       Offerings offerings = await Purchases.getOfferings();
       if (offerings.getOffering("coins") != null) {
         packages = offerings.getOffering("coins")?.availablePackages;

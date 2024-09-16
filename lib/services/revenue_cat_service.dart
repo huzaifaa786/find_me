@@ -1,5 +1,6 @@
 import 'package:find_me/helpers/store_helper.dart';
 import 'package:find_me/helpers/subscription_manager.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
@@ -40,6 +41,9 @@ Future<void> purchaseSubscription(BuildContext context, Package package) async {
     CustomerInfo customerInfo = await Purchases.purchasePackage(package);
     var isPro = customerInfo.entitlements.all["Premium Access"]?.isActive;
     if (isPro != null && isPro) {
+        FirebaseAnalytics.instance.logEvent(
+          name: 'purchase_subscription',
+        );
       SubscriptionManager().setProUserStatus(true);
       await SubscriptionManager().updateBackendStatus();
     }

@@ -8,6 +8,7 @@ import 'package:find_me/models/profile_url_model.dart';
 import 'package:find_me/models/user_model.dart';
 import 'package:find_me/models/user_profile_model.dart';
 import 'package:find_me/utils/ui_utils.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -33,6 +34,9 @@ class PublicProfileController extends GetxController {
   }
 
   getUser() async {
+    FirebaseAnalytics.instance.logEvent(
+      name: 'visit_user_profile',
+    );
     var response = await UserApi.userDetail(profile!.userId);
 
     if (response.isNotEmpty) {
@@ -121,6 +125,9 @@ class PublicProfileController extends GetxController {
         } else if (response['profile'] != null) {
           profile = UserProfileModel.fromJson(response['profile']);
           update();
+          FirebaseAnalytics.instance.logEvent(
+            name: 'gifted_emoji',
+          );
           UiUtilites.successSnackbar("Emoji Gifted Successfully", "");
         }
       }

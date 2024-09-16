@@ -5,6 +5,7 @@ import 'package:find_me/models/coin_package_model.dart';
 import 'package:find_me/models/user_model.dart';
 import 'package:find_me/services/payment_service.dart';
 import 'package:find_me/utils/ui_utils.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -42,6 +43,12 @@ class PurchaseCoinsController extends GetxController {
         int coinsToAdd = coinPackages[product.identifier]!;
         var response = await CoinApi.buyCoinPackages(coins: coinsToAdd);
         if (response.isNotEmpty) {
+          FirebaseAnalytics.instance.logEvent(
+            name: 'purchased_coins',
+            parameters: <String, Object>{
+              'coins': coinsToAdd,
+            },
+          );
           UiUtilites.coinsAlert(Get.context, coinsToAdd.toString());
         }
       }

@@ -18,6 +18,7 @@ import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/services/revenue_cat_service.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/ui_utils.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ble_peripheral/flutter_ble_peripheral.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
@@ -390,9 +391,16 @@ class HomeController extends GetxController {
         await BluethoohUsersApi.getUsersList(keys: serviceDataKeys);
     if (response.isNotEmpty) {
       scannedUsers = [];
+
       for (var element in response['users']) {
         scannedUsers.add(UserModel.fromJson(element));
       }
+      FirebaseAnalytics.instance.logEvent(
+        name: 'scan_users',
+        parameters: <String, Object>{
+          'found': scannedUsers.length,
+        },
+      );
     }
     update();
   }
@@ -526,6 +534,9 @@ class HomeController extends GetxController {
 
     if (response.isNotEmpty) {
       if (response['Request'] == "Sent") {
+        FirebaseAnalytics.instance.logEvent(
+          name: 'send_profile_request',
+        );
         UiUtilites.successSnackbar("Request to access profile has been sent".tr,
             "Access Profile Request".tr);
       } else if (response['Request'] == "Access") {
@@ -547,7 +558,17 @@ class HomeController extends GetxController {
     var response = await RequestApi.respondRequest(
         profileRequestModel: requestModel, status: status);
 
-    if (response.isNotEmpty) {}
+    if (response.isNotEmpty) {
+      if (status == "accepted") {
+        FirebaseAnalytics.instance.logEvent(
+          name: 'accepted_profile_request',
+        );
+      }else{
+        FirebaseAnalytics.instance.logEvent(
+          name: 'rejected_profile_request',
+        );
+      }
+    }
   }
 }
 
