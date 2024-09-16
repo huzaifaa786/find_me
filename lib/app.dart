@@ -3,6 +3,7 @@ import 'package:find_me/app/splash/splash_view.dart';
 import 'package:find_me/routes/app_pages.dart';
 import 'package:find_me/translation.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,6 +19,9 @@ class App extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(390, 844),
       builder: (_, child) => GetMaterialApp(
+        navigatorObservers: [
+          FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance)
+        ],
         translations: LocaleString(),
         locale: box.read('locale') != 'ar'
             ? Locale('en', 'US')
@@ -48,4 +52,3 @@ class App extends StatelessWidget {
     );
   }
 }
-
