@@ -7,6 +7,7 @@ import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
@@ -23,16 +24,17 @@ class IntroView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Gap(133.h),
-              AppText(
-                title: 'Find Me!'.tr,
-                fontWeight: FontWeight.w600,
-                size: 40.sp,
+              SvgPicture.asset(
+                height: 36.h,
+                width: 216.w,
+                alignment: Alignment.center,
+                "assets/icons/Logo.svg",
               ),
-              Gap(28.h),
+              Gap(18.h),
               AppText(
-                title: 'Easy way to find me.'.tr,
+                title: 'Seize the moment'.tr,
                 size: 16.sp,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w600,
                 color: AppColors.black.withOpacity(0.81),
               ),
               Gap(138.h),
@@ -49,18 +51,18 @@ class IntroView extends StatelessWidget {
                 },
               ),
               Gap(30.h),
-               AuthRichText(
-                    title: 'Already have an account ?'.tr,
-                    description: 'Sign in'.tr,
-                     titlesize: 14.sp,
-                      titlefontweight: FontWeight.w400,
-                      descriptionfontweight: FontWeight.w600,
-                      descriptiosize: 14.sp,
-                      descriptionColor: AppColors.primary_color,
-                    onTap: () {
-                      Get.toNamed(AppRoutes.signin);
-                    },
-                  )
+              AuthRichText(
+                title: 'Already have an account ?'.tr,
+                description: 'Sign in'.tr,
+                titlesize: 14.sp,
+                titlefontweight: FontWeight.w500,
+                descriptionfontweight: FontWeight.w600,
+                descriptiosize: 14.sp,
+                descriptionColor: AppColors.primary_color,
+                onTap: () {
+                  Get.toNamed(AppRoutes.signin);
+                },
+              )
             ],
           ),
         ),

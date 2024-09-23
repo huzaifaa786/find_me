@@ -4,6 +4,7 @@ import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/images/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
 class SplashView extends StatefulWidget {
@@ -25,10 +26,11 @@ class _SplashViewState extends State<SplashView> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Center(
-              child: Image.asset(
+              child:  SvgPicture.asset(
+                height: 36.h,
+                width: 216.w,
                 alignment: Alignment.center,
-                "assets/images/official logo.jpg",
-                scale: 5,
+                "assets/icons/Logo.svg",
               ),
             ),
           ],

@@ -111,7 +111,7 @@ class HomeView extends StatelessWidget {
                                                   children: [
                                                     CircleAvatar(
                                                       backgroundColor:
-                                                          Colors.blue,
+                                                          AppColors.primary_color,
                                                       radius: 12,
                                                       child: Icon(
                                                         Icons.edit,
@@ -138,7 +138,7 @@ class HomeView extends StatelessWidget {
                                                       children: [
                                                         CircleAvatar(
                                                           backgroundColor:
-                                                              Colors.blue,
+                                                              AppColors.primary_color,
                                                           radius: 12,
                                                           child: Icon(
                                                             Icons.add,
@@ -247,18 +247,19 @@ class HomeView extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(
-                        height: 170,
-                        width: 250,
-                        child: HomeGif(
-                          onTap: () {
-                            if (!controller.isSearching) {
-                              controller.checkData();
-                            }
-                          },
-                          isSearching: controller.isSearching,
-                        ),
-                      ),
+                      Gap( 20,),
+                      // SizedBox(
+                      //   height: 170,
+                      //   width: 250,
+                      //   child: HomeGif(
+                      //     onTap: () {
+                      //       if (!controller.isSearching) {
+                      //         controller.checkData();
+                      //       }
+                      //     },
+                      //     isSearching: controller.isSearching,
+                      //   ),
+                      // ),
                       // Gap(25.h),
                       Divider(
                         color: AppColors.border_grey,

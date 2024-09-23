@@ -7,6 +7,7 @@ import 'package:find_me/api/auth_api/user_api.dart';
 import 'package:find_me/api/bluetooth_api/bluetooth_users_api.dart';
 import 'package:find_me/api/profile_api/profile_api.dart';
 import 'package:find_me/api/request_api/request_api.dart';
+import 'package:find_me/app/main_view/main_controller.dart';
 import 'package:find_me/app/public_profile/public_profile_controller.dart';
 import 'package:find_me/components/helper/loading.dart';
 import 'package:find_me/components/popups/profile_request_popup.dart';
@@ -35,6 +36,7 @@ import 'package:pusher_channels_flutter/pusher_channels_flutter.dart';
 
 class HomeController extends GetxController {
   static HomeController instance = Get.find();
+  static MainController mainController = Get.find();
   GetStorage box = GetStorage();
   final GeolocatorPlatform _geolocator = GeolocatorPlatform.instance;
 
@@ -279,7 +281,7 @@ class HomeController extends GetxController {
   List<UserModel> scannedUsers = [];
   bool isInternetChecking = false;
 
-  checkData() async {
+  Future<void> checkData() async {
     isInternetChecking = true;
     update();
     final connectionChecker = InternetConnectionChecker();
@@ -323,7 +325,10 @@ class HomeController extends GetxController {
     scannedUsers = [];
     update();
     if (await FlutterBluePlus.isSupported == false) {
+      isSearching = false;
+      update();
       print("Bluetooth not supported by this device");
+
       return;
     }
 
@@ -402,6 +407,8 @@ class HomeController extends GetxController {
         },
       );
     }
+    isSearching = false;
+    mainController.update();
     update();
   }
 
@@ -563,7 +570,7 @@ class HomeController extends GetxController {
         FirebaseAnalytics.instance.logEvent(
           name: 'accepted_profile_request',
         );
-      }else{
+      } else {
         FirebaseAnalytics.instance.logEvent(
           name: 'rejected_profile_request',
         );

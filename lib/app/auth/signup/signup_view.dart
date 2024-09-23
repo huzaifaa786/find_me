@@ -10,6 +10,7 @@ import 'package:find_me/components/textfields/phone_inputfield.dart';
 import 'package:find_me/helpers/validator.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
+import 'package:find_me/utils/base_url.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -135,7 +136,7 @@ class _SignUpViewState extends State<SignUpView> {
                   Align(
                     alignment: Alignment.center,
                     child: Container(
-                      padding: EdgeInsets.only(left: 8,right: 8),
+                      padding: EdgeInsets.only(left: 8, right: 8),
                       child: RichText(
                         text: TextSpan(
                           children: [
@@ -154,7 +155,10 @@ class _SignUpViewState extends State<SignUpView> {
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.primary_color),
-                              recognizer: TapGestureRecognizer()..onTap = () {},
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  controller.launchWebUrl(privacyUrl);
+                                },
                             ),
                             TextSpan(
                               text: ' and agree to the '.tr,
@@ -169,7 +173,10 @@ class _SignUpViewState extends State<SignUpView> {
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.primary_color),
-                              recognizer: TapGestureRecognizer()..onTap = () {},
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  controller.launchWebUrl(termsUrl);
+                                },
                             ),
                           ],
                         ),

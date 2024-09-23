@@ -88,6 +88,9 @@ class PublicProfileController extends GetxController {
 
     if (response.isNotEmpty) {
       if (response['Request'] == "Sent") {
+           FirebaseAnalytics.instance.logEvent(
+          name: 'send_social_request',
+        );
         UiUtilites.successSnackbar(
             "Request to access Social media accounts and business card has been sent",
             "Access Social Request");

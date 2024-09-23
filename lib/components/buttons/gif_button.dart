@@ -2,12 +2,16 @@ import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/images/images.dart';
 import 'package:flutter/material.dart';
 
-
 class GifButton extends StatelessWidget {
   final VoidCallback onTap;
   final bool showOpacity;
+  final bool isActive;
 
-  const GifButton({super.key, required this.onTap, required this.showOpacity});
+  const GifButton(
+      {super.key,
+      required this.onTap,
+      required this.showOpacity,
+      this.isActive = true});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +32,7 @@ class GifButton extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(65),
               child: Image.asset(
-                ImagesConst.introGif,
+               isActive ? ImagesConst.introGif : ImagesConst.navImage,
                 height: 120,
                 width: 120,
                 fit: BoxFit.cover,

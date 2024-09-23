@@ -15,6 +15,7 @@ import 'package:intl_phone_field/phone_number.dart';
 import 'package:location/location.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:uuid/uuid.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SignUpController extends GetxController {
   static SignUpController instance = Get.find();
@@ -227,5 +228,11 @@ class SignUpController extends GetxController {
   void handleGenderSelected(String value) {
     gender = value;
     update();
+  }
+
+  launchWebUrl(String url) async {
+    if (!await launchUrl(Uri.parse(url))) {
+      UiUtilites.errorSnackbar("", "Invalid Url");
+    }
   }
 }

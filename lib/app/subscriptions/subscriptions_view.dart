@@ -7,9 +7,11 @@ import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/buttons/app_button.dart';
 import 'package:find_me/components/buttons/gif_button.dart';
 import 'package:find_me/services/revenue_cat_service.dart';
+import 'package:find_me/utils/base_url.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/images/images.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -35,7 +37,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
+                end: Alignment.center,
                 colors: [
                   AppColors.shadepurple,
                   AppColors.shadeblue,
@@ -49,62 +51,68 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
               child: Column(
                 children: [
                   Gap(28.h),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: GestureDetector(
-                      onTap: () {
-                        Get.back();
-                      },
-                      child: SvgPicture.asset(
-                        ImagesConst.backIcon,
-                        height: 28.h,
-                        width: 28.w,
-                        fit: BoxFit.scaleDown,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: SvgPicture.asset(
+                          ImagesConst.backIcon,
+                          height: 28.h,
+                          width: 28.w,
+                          fit: BoxFit.scaleDown,
+                        ),
                       ),
-                    ),
+                      SizedBox(
+                          height: 95.h,
+                          width: 95.w,
+                          child: GifButton(onTap: () {}, showOpacity: true)),
+                      Text(""),
+                    ],
                   ),
                   Gap(20.h),
-                  SizedBox(
-                      height: 85.h,
-                      width: 85.w,
-                      child: GifButton(onTap: () {}, showOpacity: true)),
+
                   Gap(24),
-                  Text(
-                    "Find Me Premium".tr,
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
-                  ),
-                  Gap(20),
-                  Text(
-                    "Try Find Me+ for 4.99 AED/ month".tr,
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
-                  ),
-                  Gap(6),
                   Center(
-                      child: Text(
-                    "1-month free trial, cancel any time"
-                        .tr,
-                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
-                    textAlign: TextAlign.center,
-                  )),
-                  Gap(20),
+                    child: Text(
+                      "Try Find Me Premium for".tr,
+                      style:
+                          TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      "${controller.package?.storeProduct.priceString} / month"
+                          .tr,
+                      style:
+                          TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
+                    ),
+                  ),
+
+                  Gap(30),
                   Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "Subscription Features:".tr,
+                        "Features:".tr,
                         style: TextStyle(
                             fontWeight: FontWeight.w700, fontSize: 16.sp),
                       )),
-                  Gap(30),
+                  Gap(10),
                   SubscriptionFeatures(
-                    title: "Unlock User Frequency:".tr,
-                    subtitle: "View more than 8 users.".tr,
+                    title: "Expanded User View".tr,
+                    subtitle:
+                        "Upgrade to view more than 6 users in your proximity."
+                            .tr,
                     value: 1,
                     groupValue: controller.selectedOption,
                     onChanged: (value) => controller.selectOption(value!),
                   ),
                   Gap(27),
                   SubscriptionFeatures(
-                    title: "Additional Profiles:".tr,
+                    title: "Unlock User Profile 3 and Profile 4".tr,
                     subtitle: "Create 2 additional profiles.".tr,
                     value: 2,
                     groupValue: controller.selectedOption,
@@ -112,21 +120,40 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                   ),
                   Gap(32),
                   SubscriptionFeatures(
-                    title: "Unlimited name changes:".tr,
-                    subtitle: "Get unlimited name changes for your account.".tr,
+                    title: "Unlimited name changes".tr,
+                    subtitle:
+                        "Change the name of profile 2, 3 and 4 at any time.".tr,
                     value: 3,
                     groupValue: controller.selectedOption,
                     onChanged: (value) => controller.selectOption(value!),
                   ),
-                   Gap(32),
+                  Gap(32),
                   SubscriptionFeatures(
-                    title: "Find out who tried to access your profile:".tr,
-                    subtitle: "Get notified with the photo and username of those who try to access your profile. ".tr,
+                    title: "Find Out Who Sent Request".tr,
+                    subtitle:
+                        "Receive notifications with the username and profile image of users who request to view your profile, social media accounts, or digital business card."
+                            .tr,
                     value: 4,
                     groupValue: controller.selectedOption,
                     onChanged: (value) => controller.selectOption(value!),
                   ),
-                  Gap(44),
+                  Gap(24),
+                  Center(
+                    child: Text(
+                      "1 month free trial. Then monthly plan for".tr,
+                      style:
+                          TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      "${controller.package?.storeProduct.priceString} .Cancel anytime."
+                          .tr,
+                      style:
+                          TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
+                    ),
+                  ),
+                  Gap(24),
                   InkWell(
                     onTap: () async {
                       if (controller.package != null) {
@@ -144,29 +171,21 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                       child: Center(
                         child: RichText(
                           text: TextSpan(
-                            text: "Try for".tr,
+                            text: "Try 1 month for ".tr,
                             style: TextStyle(
                                 color: AppColors.white,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 12.sp),
+                                fontWeight: FontWeight.w500,
+                                fontSize: 14.sp),
                             children: <TextSpan>[
                               TextSpan(
-                                text: 'AED 14.99'.tr,
+                                text:
+                                    '${controller.package?.storeProduct.currencyCode} 0'
+                                        .tr,
                                 style: TextStyle(
                                     color: AppColors.white,
                                     fontSize: 12,
                                     fontWeight: FontWeight.w600,
-                                    decoration: TextDecoration.lineThrough,
-                                    decorationColor: AppColors.dark_blue,
                                     decorationThickness: 4),
-                              ),
-                              TextSpan(
-                                text: ' AED 4.99 /month'.tr,
-                                style: TextStyle(
-                                  color: AppColors.white,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600,
-                                ),
                               ),
                             ],
                           ),
@@ -178,10 +197,10 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                   Gap(24),
                   Center(
                     child: RichText(
-                      textAlign: TextAlign.center,
+                      textAlign: TextAlign.start,
                       text: TextSpan(
                         text:
-                            "Recurring billing .By continuing , you verify that you are at least \n"
+                            "Recurring Billing: By proceeding, you confirm that you are at "
                                 .tr,
                         style: TextStyle(
                           color: AppColors.hintGrey,
@@ -190,7 +209,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                         ),
                         children: <TextSpan>[
                           TextSpan(
-                            text: '18 years old and agree to these'.tr,
+                            text: 'least 17 years old and agree to the '.tr,
                             style: TextStyle(
                               color: AppColors.hintGrey,
                               fontSize: 10,
@@ -198,15 +217,19 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                             ),
                           ),
                           TextSpan(
-                            text: ' terms.'.tr,
+                            text: ' terms. '.tr,
                             style: TextStyle(
                               color: AppColors.primary_color,
                               fontSize: 10,
                               fontWeight: FontWeight.w400,
                             ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                controller.launchWebUrl(termsUrl);
+                              },
                           ),
                           TextSpan(
-                            text: 'See the'.tr,
+                            text: 'Please review the '.tr,
                             style: TextStyle(
                               color: AppColors.hintGrey,
                               fontSize: 10,
@@ -214,16 +237,30 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                             ),
                           ),
                           TextSpan(
-                            text: 'Privacy \n'.tr,
+                            text: 'Privacy Policy '.tr,
                             style: TextStyle(
                               color: AppColors.primary_color,
+                              fontSize: 10,
+                              fontWeight: FontWeight.w400,
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                controller.launchWebUrl(privacyUrl);
+                              },
+                          ),
+                          TextSpan(
+                            text:
+                                'and applicable restrictions. Note that refunds\n'
+                                    .tr,
+                            style: TextStyle(
+                              color: AppColors.hintGrey,
                               fontSize: 10,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
                           TextSpan(
                             text:
-                                'statment and retriction .no refunds for partial biling periods.\n'
+                                'are not available for partial billing periods.'
                                     .tr,
                             style: TextStyle(
                               color: AppColors.hintGrey,
@@ -234,10 +271,14 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                           TextSpan(
                             text: 'Restrictions apply.'.tr,
                             style: TextStyle(
-                              color: AppColors.dark_blue,
+                              color: AppColors.primary_color,
                               fontSize: 10,
                               fontWeight: FontWeight.w400,
                             ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                controller.launchWebUrl(restrictionUrl);
+                              },
                           ),
                         ],
                       ),

@@ -19,11 +19,11 @@ Widget homeAppBar({String? name}) {
           onTap: () {
             Get.back();
           },
-          child: Image.asset(
+          child: SvgPicture.asset(
             alignment: Alignment.center,
-            "assets/images/official logo.jpg",
-            fit: BoxFit.scaleDown,
-            scale: 13,
+            "assets/icons/LogoHome.svg",
+            height: 21.h,
+            width: 150.w,
           ),
         ),
         Row(
@@ -42,7 +42,6 @@ Widget homeAppBar({String? name}) {
                 ),
               ),
             ),
-            
             GestureDetector(
               onTap: () {
                 Get.toNamed(AppRoutes.setting);

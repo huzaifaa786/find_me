@@ -12,7 +12,7 @@ class AppColors {
   static const light_white = Color(0xFFF6F9FF);
   static const light_black = Color(0xFF3B3C15);
   static const dark_blue = Color(0xFF1270C7);
-  static const primary_color = Color(0xFF148EFF);
+  static const primary_color = Color(0xFF0A6DFE);
   static const light_blue = Color(0xFFB8D9FE);
   static const lightly_blue = Color(0xFFA6D2FF);
   static const lightSkyBlue = Color(0xFF92C8FF);

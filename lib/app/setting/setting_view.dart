@@ -3,6 +3,7 @@ import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/buttons/prefix_icon_button.dart';
 import 'package:find_me/components/cards/settings_card.dart';
 import 'package:find_me/routes/app_routes.dart';
+import 'package:find_me/utils/base_url.dart';
 import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -91,10 +92,17 @@ class SettingView extends StatelessWidget {
                           }),
                       Gap(12.h),
                       CardSetting(
-                          text: 'Terms & Policies'.tr,
+                          text: 'Privacy Policy'.tr,
                           image: 'assets/icons/shield.svg',
                           ontap: () {
-                            Get.toNamed(AppRoutes.policies);
+                            controller.launchWebUrl(privacyUrl);
+                          }),
+                      Gap(12.h),
+                      CardSetting(
+                          text: 'Terms and Conditions'.tr,
+                          image: 'assets/icons/shield.svg',
+                          ontap: () {
+                            controller.launchWebUrl(termsUrl);
                           }),
                       Gap(60.h),
                       GestureDetector(

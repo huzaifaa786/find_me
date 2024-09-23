@@ -34,14 +34,14 @@ class SubscriptionFeatures extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                 ),
                 Gap(6),
                 Text(
                   subtitle,
                   style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w300,
                       color: AppColors.black),
                 ),
               ],

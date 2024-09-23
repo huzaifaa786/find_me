@@ -12,6 +12,7 @@ AppBar authAppBar({String? name, color}) {
   return AppBar(
     automaticallyImplyLeading: false,
     forceMaterialTransparency: true,
+    centerTitle: true,
     leading: GestureDetector(
       onTap: () {
         Get.back();
@@ -19,6 +20,7 @@ AppBar authAppBar({String? name, color}) {
       child: Padding(
           padding: box!.read('locale') != 'ar'
               ? EdgeInsets.only(
+                  
                   left: 30.w,
                 )
               : EdgeInsets.only(
@@ -40,10 +42,13 @@ AppBar authAppBar({String? name, color}) {
                   color: color,
                 )),
     ),
-    title: AppText(
-      title: name ?? '',
-      size: 24.sp,
-      fontWeight: FontWeight.w600,
+    title: Padding(
+      padding: const EdgeInsets.only(bottom: 7),
+      child: AppText(
+        title: name ?? '',
+        size: 24.sp,
+        fontWeight: FontWeight.w500,
+      ),
     ),
     titleSpacing: 15,
   );

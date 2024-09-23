@@ -402,8 +402,7 @@ class PublicProfileView extends StatelessWidget {
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
                                                 children: [
-                                                  // SvgPicture.asset(
-                                                  //     "assets/icons/business_card.svg"),
+                                                
                                                   Text(
                                                     "No business card exist",
                                                     style: TextStyle(
@@ -546,72 +545,7 @@ class PublicProfileView extends StatelessWidget {
                                     ],
                                   ),
                                 );
-                                // return controller
-                                //             .profile!.emojis![index].type ==
-                                //         "free"
-                                //     ? Column(
-                                //         children: [
-                                //           CachedNetworkImage(
-                                //             imageUrl: controller
-                                //                 .profile!.emojis![index].image,
-                                //             height: 50.h,
-                                //             width: 50.w,
-                                //           ),
-                                //           if (controller.profile!.emojis![index]
-                                //                   .giftCount !=
-                                //               '0')
-                                //             Text(
-                                //               controller.profile!.emojis![index]
-                                //                   .giftCount
-                                //                   .toString(),
-                                //               style: TextStyle(
-                                //                 fontSize: 10.sp,
-                                //                 fontWeight: FontWeight.w600,
-                                //               ),
-                                //             ),
-                                //         ],
-                                //       )
-                                //     : Row(
-                                //         children: [
-                                //           Column(
-                                //             children: [
-                                //               SvgPicture.asset(
-                                //                 "assets/icons/coins.svg",
-                                //                 height: 23.23.h,
-                                //                 width: 23.09.w,
-                                //               ),
-                                //               Text(
-                                //                 controller.profile!
-                                //                     .emojis![index].coins
-                                //                     .toString(),
-                                //                 style: TextStyle(
-                                //                   fontSize: 10.sp,
-                                //                   fontWeight: FontWeight.w600,
-                                //                 ),
-                                //               ),
-                                //             ],
-                                //           ),
-                                //           Column(
-                                //             children: [
-                                //               CachedNetworkImage(
-                                //                 imageUrl: controller.profile!
-                                //                     .emojis![index].image,
-                                //                 width: 50.w,
-                                //                 height: 50.h,
-                                //               ),
-                                //               Text(
-                                //                 controller.profile!
-                                //                     .emojis![index].giftCount
-                                //                     .toString(),
-                                //                 style: TextStyle(
-                                //                   fontSize: 10.sp,
-                                //                   fontWeight: FontWeight.w600,
-                                //                 ),
-                                //               ),
-                                //             ],
-                                //           ),
-                                //         ],
-                                //       );
+                            
                               }),
                         Gap(28.h),
                       ],

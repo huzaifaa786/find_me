@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
@@ -61,21 +60,7 @@ class _LocationViewState extends State<LocationView> {
                         value: controller.isLocationEnabled,
                         onToggle: (value) {
                           controller.toggleisLocationEnabled(value);
-                          log(value.toString());
-
-                          if (value == true) {
-                            Geolocator.openLocationSettings();
-                          } else {
-                            Geolocator.openLocationSettings();
-
-                            Get.snackbar(
-                              duration: 5.seconds,
-                              'Permission Denied'.tr,
-                              'Location permission is required to enable this feature.'
-                                  .tr,
-                              snackPosition: SnackPosition.BOTTOM,
-                            );
-                          }
+                          
                         },
                       ),
                     ],

@@ -6,7 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 class SupportController extends GetxController {
   static SupportController get instance => Get.find();
   UserModel? userModel;
-  String emailAddress = 'support@findme.com';
+  String emailAddress = 'contact@findme-app.net';
   String subject = '';
   String body = '';
 
