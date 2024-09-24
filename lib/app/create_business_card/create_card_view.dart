@@ -292,26 +292,36 @@ class _CreateCardViewState extends State<CreateCardView> {
                       ),
                       Gap(30.h),
                       AppButton(
-                        title: 'Submit'.tr,
+                        title: controller.profileBusinessCardModel != null
+                            ? 'Update'.tr
+                            : 'Submit'.tr,
                         height: 50.0.h,
                         width: 304.0.w,
                         onTap: () {
                           controller.submitBusinessCard();
-                          // UiUtilites.showBusinessCardDialog(
-                          //     context, 'aaaaaahwt', 'email@yagoooooo','');
-                          // UiUtilites.showBusinessCardDialog(
-                          //     context: context,
-                          //     name: 'usama',
-                          //     email: 'ali@gmail.com',
-                          //     image: 'assets/images/person.png',
-                          //     instagram: '@wiliamX2',
-                          //     twitter: '@wiliamX2',
-                          //     facebook: '@wiliamX2',
-                          //     tiktok: '@wiliamX2',
-                          //     notification: '@wiliamX2',
-                          //     smartphoneNumber: '@+971 8876 5467');
                         },
                       ),
+                      Gap(20.h),
+                      if (controller.profileBusinessCardModel != null)
+                        AppButton(
+                          title: 'Delete Business Card'.tr,
+                          color: AppColors.white,
+                          textColors: AppColors.red,
+                          borderColor: AppColors.red,
+                          height: 50.0.h,
+                          width: 304.0.w,
+                          onTap: () {
+                            UiUtilites.accountAlert(context,
+                                text:
+                                    "Are you sure you want to Delete Business Card",
+                                onTapNo: () {
+                              Get.back();
+                            }, onTapYes: () {
+                              controller.deleteBusinessCard(
+                                  controller.profileBusinessCardModel?.id);
+                            });
+                          },
+                        ),
                       Gap(30.h),
                     ],
                   ),

@@ -189,24 +189,36 @@ class HomeController extends GetxController {
     startPeriodicAdvertising(); // Start the periodic advertising
   }
 
+  void listenToBluetoothServiceStatus() {
+    FlutterBluePlus.adapterState.listen((status) {
+      if (status == BluetoothAdapterState.on) {
+        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        // startPeriodicAdvertising();
+      }
+      update();
+    });
+  }
+
   Future<void> startPeriodicAdvertising() async {
     if (Platform.isAndroid) {
-      if (!await FlutterBluePlus.isOn) {
-        Get.snackbar(
-            "Bluetooth".tr, "Please turn on Bluetooth to start advertising".tr,
-            snackPosition: SnackPosition.BOTTOM);
+      if (FlutterBluePlus.adapterStateNow == BluetoothAdapterState.off) {
+        await FlutterBlePeripheral().stop();
+
         return;
       }
     }
     _advertisingTimer?.cancel(); // Cancel any existing timer
-    print('cgii chapak dum dum');
     _advertisingTimer = Timer.periodic(Duration(seconds: 6), (timer) async {
-      await FlutterBlePeripheral().start(
-        advertiseData: advertiseData!,
-        advertiseSetParameters: advertiseSetParameters,
-        advertisePeriodicData: advertiseData,
-        periodicAdvertiseSettings: periodicAdvertiseSettings,
-      );
+      if (await Geolocator.isLocationServiceEnabled()) {
+        await FlutterBlePeripheral().start(
+          advertiseData: advertiseData!,
+          advertiseSetParameters: advertiseSetParameters,
+          advertisePeriodicData: advertiseData,
+          periodicAdvertiseSettings: periodicAdvertiseSettings,
+        );
+      } else {
+        await FlutterBlePeripheral().stop();
+      }
     });
   }
 
@@ -314,12 +326,21 @@ class HomeController extends GetxController {
   }
 
   void initFlutterBlue() async {
+    await Permission.bluetoothScan.request();
+    // Check if location services are enabled
+    if (!(await _geolocator.isLocationServiceEnabled())) {
+      await _geolocator.openLocationSettings(); // Ask user to enable location
+      // Re-check after user interaction
+      if (!(await _geolocator.isLocationServiceEnabled())) {
+        isSearching = false;
+        update();
+        print(
+            "Location services are disabled. Bluetooth scanning can't proceed.");
+        return;
+      }
+    }
     isSearching = true;
     update();
-    await Permission.bluetoothScan.request();
-    if (!(await _geolocator.isLocationServiceEnabled())) {
-      await _geolocator.openLocationSettings();
-    }
     // FlutterBluePlus.setLogLevel(LogLevel.verbose, color: true);
     serviceDataKeys = [];
     scannedUsers = [];
@@ -381,7 +402,6 @@ class HomeController extends GetxController {
       await FlutterBluePlus.turnOn();
     }
     await FlutterBluePlus.startScan(
-        // *or* any of the specified names
         timeout: Duration(seconds: 5));
     await FlutterBluePlus.isScanning.where((val) => val == false).first;
 

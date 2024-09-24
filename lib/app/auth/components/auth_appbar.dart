@@ -13,6 +13,7 @@ AppBar authAppBar({String? name, color}) {
     automaticallyImplyLeading: false,
     forceMaterialTransparency: true,
     centerTitle: true,
+    leadingWidth: 90,
     leading: GestureDetector(
       onTap: () {
         Get.back();
@@ -20,12 +21,18 @@ AppBar authAppBar({String? name, color}) {
       child: Padding(
           padding: box!.read('locale') != 'ar'
               ? EdgeInsets.only(
-                  
                   left: 30.w,
                 )
               : EdgeInsets.only(
                   right: 30.w,
                 ),
+          // padding: box!.read('locale') != 'ar'
+          //     ? EdgeInsets.only(
+          //         left: 30.w,
+          //       )
+          //     : EdgeInsets.only(
+          //         right: 30.w,
+          //       ),
           child: box!.read('locale') != 'ar'
               ? SvgPicture.asset(
                   ImagesConst.backIcon,
@@ -43,13 +50,12 @@ AppBar authAppBar({String? name, color}) {
                 )),
     ),
     title: Padding(
-      padding: const EdgeInsets.only(bottom: 7),
+      padding: const EdgeInsets.only(bottom: 9),
       child: AppText(
         title: name ?? '',
         size: 24.sp,
         fontWeight: FontWeight.w500,
       ),
     ),
-    titleSpacing: 15,
   );
 }

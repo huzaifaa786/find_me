@@ -1,12 +1,13 @@
 import 'package:find_me/api/auth_api/register_api.dart';
 import 'package:find_me/models/user_model.dart';
 import 'package:find_me/routes/app_routes.dart';
+import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-
+import 'package:bottom_picker/bottom_picker.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 import 'package:intl_phone_field/countries.dart';
@@ -16,6 +17,8 @@ import 'package:location/location.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:uuid/uuid.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:bottom_picker/resources/arrays.dart';
+import 'package:flutter/cupertino.dart';
 
 class SignUpController extends GetxController {
   static SignUpController instance = Get.find();
@@ -25,7 +28,7 @@ class SignUpController extends GetxController {
   TextEditingController emailController = TextEditingController();
   GetStorage box = GetStorage();
   UserModel? user;
-  String gender = "Male";
+  String gender = "";
 
   //! Password And Confirm Password Variable and Functions
   bool obscureTextPassword = true;
@@ -50,7 +53,7 @@ class SignUpController extends GetxController {
   String invalidNumberMessage = '';
   TextEditingController pcontroller = TextEditingController();
   Country? selectedCountry =
-      countries.firstWhere((country) => country.fullCountryCode == "971");
+      countries.firstWhere((country) => country.code == "US");
   PhoneNumber? checkphoneController;
   String? phoneController;
 
@@ -136,6 +139,48 @@ class SignUpController extends GetxController {
     }
   }
 
+  void openDatePicker(BuildContext context) {
+    final DateTime now = DateTime.now();
+    final DateTime maxDate = DateTime(now.year, now.month, now.day);
+    final DateTime minDate = DateTime(now.year - 100, now.month, now.day);
+    final DateTime initialDate = DateTime(now.year - 18, now.month, now.day);
+    BottomPicker.date(
+      pickerTitle: Text(
+        'Set your Birthday',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 15,
+          color: AppColors.primary_color,
+        ),
+      ),
+      titlePadding: EdgeInsets.only(bottom: 10),
+      dateOrder: DatePickerDateOrder.dmy,
+      initialDateTime: initialDate,
+      maxDateTime: maxDate,
+      minDateTime: minDate,
+      pickerTextStyle: TextStyle(
+        color: AppColors.primary_color,
+        fontWeight: FontWeight.bold,
+        fontSize: 12,
+      ),
+      onChange: (picked) {
+        String formattedDate = DateFormat('dd MMMM yyyy').format(picked);
+        dateController.text = formattedDate; // Update the dateController
+        dayController.text = picked.day.toString().padLeft(2, '0');
+        monthController.text = picked.month.toString().padLeft(2, '0');
+        yearController.text = picked.year.toString();
+      },
+      onSubmit: (picked) {
+        String formattedDate = DateFormat('dd MMMM yyyy').format(picked);
+        dateController.text = formattedDate; // Update the dateController
+        dayController.text = picked.day.toString().padLeft(2, '0');
+        monthController.text = picked.month.toString().padLeft(2, '0');
+        yearController.text = picked.year.toString();
+      },
+      bottomPickerTheme: BottomPickerTheme.blue,
+    ).show(context);
+  }
+
   @override
   void onInit() {
     requestPermissions();
@@ -211,7 +256,7 @@ class SignUpController extends GetxController {
           token: token,
           beaconId: beaconId);
       if (response.isNotEmpty) {
-        Get.offAllNamed(AppRoutes.otp, arguments: phoneController);
+        Get.offNamed(AppRoutes.otp, arguments: phoneController);
       }
     } else {
       UiUtilites.errorSnackbar(

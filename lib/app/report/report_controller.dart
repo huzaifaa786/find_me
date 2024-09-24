@@ -10,6 +10,23 @@ import 'package:image_picker/image_picker.dart';
 class ReportController extends GetxController {
   static ReportController instanse = Get.find();
   TextEditingController descriptionController = TextEditingController();
+  final List<String> reportOptions = [
+    'I think my account was compromised',
+    'I can\'t access my account',
+    'I want to report an account or \n content',
+    'I lost my account',
+    'I found a bug',
+    'I need help with a feature',
+    'I want to report intellectual property \n infringement',
+    'I have a privacy or European Digital \n Services Act related question',
+    'I want to deactivate or delete my \n account',
+  ];
+  String? selectedOption;
+  @override
+  void onInit() {
+    selectedOption = reportOptions.first;
+    super.onInit();
+  }
 
   var selectedImagePath = '';
   Future<void> pickImage() async {
@@ -19,7 +36,8 @@ class ReportController extends GetxController {
     if (pickedFile != null) {
       selectedImagePath = pickedFile.path;
       update();
-      UiUtilites.successSnackbar('Image selected successfully'.tr, 'Success'.tr);
+      UiUtilites.successSnackbar(
+          'Image selected successfully'.tr, 'Success'.tr);
     } else {
       UiUtilites.errorSnackbar('No image selected'.tr, 'Error'.tr);
     }
@@ -41,6 +59,7 @@ class ReportController extends GetxController {
       base64Image = await _convertImageToBase64(selectedImagePath);
     }
     var response = await ReportApi.ReportProblem(
+      type: selectedOption,
       image: base64Image.isNotEmpty ? base64Image : null,
       desc: descriptionController.text.isNotEmpty
           ? descriptionController.text
@@ -50,7 +69,7 @@ class ReportController extends GetxController {
     if (response.isNotEmpty) {
       UiUtilites.registerSuccessAlert(Get.context,
           "Thank you for your feedback.your\n report has been submitted");
-     clearFields();
+      clearFields();
     } else {
       UiUtilites.errorSnackbar('Could not report the problem'.tr, 'Error!'.tr);
     }
@@ -58,6 +77,8 @@ class ReportController extends GetxController {
 
   void clearFields() {
     selectedImagePath = '';
+    selectedOption = reportOptions.first;
     descriptionController.clear();
     update();
-  }}
+  }
+}

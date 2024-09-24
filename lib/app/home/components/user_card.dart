@@ -94,7 +94,6 @@ class UserCard extends StatelessWidget {
                           size: 10,
                           fontWeight: FontWeight.w500,
                         ),
-                        Gap(2),
                         if(user.currentProfile!.isVerified)
                         SvgPicture.asset('assets/icons/verified.svg'),
                       ],

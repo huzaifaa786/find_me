@@ -14,7 +14,26 @@ class ProfileApi {
     var data = {
       'profile_id': userProfileId,
       'user_id': userId,
-      'image': image,
+      'image':image,
+
+    };
+
+    // Make the POST request using DioService
+    var response = await DioService.post(url: url, data: data);
+    return response;
+  }
+
+  static Future<Map<String, dynamic>> deleteProfileImage({
+    int? userProfileId,
+    int? userId,
+  }) async {
+    // URL
+    String url = '$baseUrl/delete/profile/image';
+
+    // DATA
+    var data = { 
+      'profile_id': userProfileId, 
+      'user_id': userId,
     };
 
     // Make the POST request using DioService
@@ -153,6 +172,23 @@ class ProfileApi {
 
     // Make the POST request using DioService
     var response = await DioService.post(url: url, data: data);
+    return response;
+  }
+
+  static Future<Map<String, dynamic>> deleteBusinessCard({
+    int? id,
+  }) async {
+    // URL
+    String url = '$baseUrl/businesscard/delete/$id';
+
+    // DATA
+    var data = null;
+
+    // Make the POST request using DioService
+    var response = await DioService.get(
+      url: url,
+      data: data,
+    );
     return response;
   }
 }

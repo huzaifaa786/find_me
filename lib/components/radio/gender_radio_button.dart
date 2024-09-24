@@ -14,7 +14,7 @@ class GenderRadioButtons extends StatefulWidget {
 }
 
 class _GenderRadioButtonsState extends State<GenderRadioButtons> {
-  String? selectedGender = "Male";
+  String? selectedGender = "";
 
   @override
   Widget build(BuildContext context) {
@@ -88,9 +88,10 @@ class _GenderRadioButtonsState extends State<GenderRadioButtons> {
               dense: true,
               contentPadding: EdgeInsets.zero,
               title: AppText(
-                title: 'Other',
+                title: 'Prefer not to say',
                 size: 12.sp,
                 fontWeight: FontWeight.w400,
+                
               ),
               value: 'Other',
               groupValue: selectedGender,

@@ -38,8 +38,7 @@ class NotificationsView extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 50.w),
             child: Column(
               children: [
-                
-
+            
                 ListView.builder(
                   itemCount: controller.notificationss.length,
                   shrinkWrap: true,

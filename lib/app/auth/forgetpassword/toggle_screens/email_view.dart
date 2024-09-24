@@ -30,7 +30,7 @@ class _EmailViewState extends State<EmailView> {
                 Gap(40.h),
 
                 AppButton(
-                  title: 'Confirm'.tr,
+                  title: 'Send'.tr,
                   height: 50.0.h,
                   width: 304.0.w,
                   onTap: () async {

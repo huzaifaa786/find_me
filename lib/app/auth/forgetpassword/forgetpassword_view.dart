@@ -35,31 +35,21 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
               appBar: AppBar(
                 automaticallyImplyLeading: false,
                 scrolledUnderElevation: 0,
-                title: topBar(name: ''),
+                title: topBar(name: 'Forgot password'),
               ),
               body: SafeArea(
-                  child: Container(
-                width: 390.w,
+                  child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 50.w),
                 child: Column(
                   children: [
-                    Gap(3.h),
+                    Gap(30.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         AppText(
-                          title: 'Forgot password!'.tr,
-                          fontWeight: FontWeight.w500,
-                          size: 20.sp,
-                        )
-                      ],
-                    ),
-                    Gap(10.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        AppText(
-                          title: 'Choose email or phone number to continue!'.tr,
+                          title:
+                              'Please choose how you want to reset your password'
+                                  .tr,
                           fontWeight: FontWeight.w400,
                           size: 10.sp,
                           color: AppColors.borderGrey,

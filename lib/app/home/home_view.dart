@@ -196,7 +196,7 @@ class HomeView extends StatelessWidget {
                                                                   TextAlign
                                                                       .justify,
                                                             ),
-                                                            Gap(5.w),
+                                                            Gap(3.w),
                                                             if (item.verified)
                                                               SvgPicture.asset(
                                                                   'assets/icons/verified.svg'),

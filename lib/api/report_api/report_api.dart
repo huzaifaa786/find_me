@@ -5,8 +5,9 @@ class ReportApi {
   static Future<Map<String, dynamic>> ReportProblem({
     String? image,
     String? desc,
+    String? type,
     String? user_id,
-    var data, 
+    var data,
   }) async {
     //* URL
     String url = '${baseUrl}/report/problem';
@@ -16,12 +17,14 @@ class ReportApi {
         // 'image': image ,
         'desc': desc,
         'user_id': user_id,
+        'problem_type':type,
       };
     else
       data = {
         'image': image,
         'desc': desc ?? null,
         'user_id': user_id,
+        'problem_type':type,
       };
 
     //! Make the POST request using ApiService

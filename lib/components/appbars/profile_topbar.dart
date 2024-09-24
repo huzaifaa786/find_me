@@ -59,7 +59,14 @@ Widget profileTopBar({
               ),
           ],
         ),
-
+        Padding(
+          padding: const EdgeInsets.only(bottom: 10.0),
+          child: AppText(
+            title: name!,
+            size: 20,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
         // Three-dotted menu
         PopupMenuButton<int>(
           icon: Icon(Icons.more_vert, color: color, size: 28.w),

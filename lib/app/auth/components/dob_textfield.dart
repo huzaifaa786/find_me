@@ -6,18 +6,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget buildDateInputField(TextEditingController controller, BuildContext context, SignUpController signUpController) {
   return GestureDetector(
-    onTap: () => signUpController.selectDatee(context),
+    onTap: () => signUpController.openDatePicker(context),
     child: AbsorbPointer(
       child: TextFormField(
         controller: controller,
         keyboardType: TextInputType.datetime,
-        textAlign: TextAlign.center,
+        textAlign: TextAlign.start,
         style: TextStyle(
           fontSize: 12.sp,
           fontWeight: FontWeight.w500,
         ),
         decoration: InputDecoration(
-          hintText: 'DD/MM/YYYY',
+          hintText: '1 January 2001',
           hintStyle: TextStyle(
             color: AppColors.hintGrey,
             fontSize: 12.sp,

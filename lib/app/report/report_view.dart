@@ -39,9 +39,33 @@ class ReportView extends StatelessWidget {
                   Gap(40.h),
                   AppText(
                     title:
-                        'Briefly explain what happened\n or what’s not working .'.tr,
+                        'Briefly explain what happened\n or what’s not working.'
+                            .tr,
                     fontWeight: FontWeight.w500,
                     size: 14.sp,
+                  ),
+                  Gap(30.h),
+                  // Dropdown to select report option
+                  Container(
+                    decoration: BoxDecoration(border: Border.all(color: AppColors.borderGrey),borderRadius: BorderRadius.circular(13.r)),
+                    padding: EdgeInsets.all(3),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        isExpanded: true,
+                        value: controller.selectedOption,
+                        hint: AppText(title: controller.selectedOption ?? "",),
+                        items: controller.reportOptions.map((String option) {
+                          return DropdownMenuItem<String>(
+                            value: option,
+                            child: AppText(title: option,size: 14,),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          controller.selectedOption = newValue!;
+                          controller.update();
+                        },
+                      ),
+                    ),
                   ),
                   Gap(30.h),
                   ReportTextFields(
@@ -87,7 +111,6 @@ class ReportView extends StatelessWidget {
                       controller.reportProblem();
                     },
                   ),
-                  
                 ],
               ),
             ),

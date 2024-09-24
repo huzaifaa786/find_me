@@ -155,6 +155,19 @@ class CreateCardController extends GetxController {
     }
   }
 
+  Future<void> deleteBusinessCard(int? id) async {
+    try {
+      var response = await ProfileApi.deleteBusinessCard(id: id);
+      if (response.isNotEmpty) {
+        Get.back();
+        Get.back();
+        UiUtilites.successSnackbar("Delete Business Card Successfully", "");
+      }
+    } catch (e) {
+      UiUtilites.errorSnackbar('Error'.tr, 'Failed to update Business Card: $e'.tr);
+    }
+  }
+
   onCountryChanged(Country value) {
     selectedCountry = value;
     pcontroller.clear();

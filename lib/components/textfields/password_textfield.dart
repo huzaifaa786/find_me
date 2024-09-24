@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_typing_uninitialized_variables, deprecated_member_use
-
 import 'package:find_me/utils/box_decoration/box_decoration.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/images/images.dart';
@@ -8,17 +6,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class PasswordTextFields extends StatelessWidget {
-  const PasswordTextFields(
-      {super.key,
-      this.controller,
-      this.hintText,
-      this.obscure,
-      this.toggle,
-      this.fieldValidator,
-      this.type,
-      this.readOnly,
-      this.autovalidateMode});
+class PasswordTextFields extends StatefulWidget {
+  const PasswordTextFields({
+    Key? key,
+    this.controller,
+    this.hintText,
+    this.obscure,
+    this.toggle,
+    this.fieldValidator,
+    this.type,
+    this.readOnly,
+    this.autovalidateMode,
+  }) : super(key: key);
 
   final controller;
   final hintText;
@@ -30,14 +29,48 @@ class PasswordTextFields extends StatelessWidget {
   final FormFieldValidator<String>? fieldValidator;
 
   @override
+  _PasswordTextFieldsState createState() => _PasswordTextFieldsState();
+}
+
+class _PasswordTextFieldsState extends State<PasswordTextFields> {
+  late FocusNode _focusNode;
+  String? _currentHintText;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode = FocusNode();
+    _currentHintText = widget.hintText;
+
+    // Listen to focus changes to update the hint text.
+    _focusNode.addListener(() {
+      setState(() {
+        if (_focusNode.hasFocus) {
+          _currentHintText = ''; // Clear hint when focused.
+        } else {
+          _currentHintText = widget.hintText; // Restore hint when unfocused.
+        }
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return TextFormField(
-      obscureText: obscure,
-      controller: controller,
-      keyboardType: type,
-      validator: fieldValidator,
-      autovalidateMode: autovalidateMode ??
-          (fieldValidator == true.obs
+      cursorColor: AppColors.primary_color,
+      obscureText: widget.obscure,
+      controller: widget.controller,
+      focusNode: _focusNode, // Add the focus node
+      keyboardType: widget.type,
+      validator: widget.fieldValidator,
+      autovalidateMode: widget.autovalidateMode ??
+          (widget.fieldValidator == true.obs
               ? AutovalidateMode.always
               : AutovalidateMode.onUserInteraction),
       style: TextStyle(
@@ -46,7 +79,7 @@ class PasswordTextFields extends StatelessWidget {
       ),
       decoration: InputDecoration(
         filled: true,
-        hintText: hintText,
+        hintText: _currentHintText, // Use the dynamic hint text
         hintStyle: TextStyle(
           color: AppColors.hintGrey,
           fontSize: 12.sp,
@@ -56,14 +89,14 @@ class PasswordTextFields extends StatelessWidget {
         fillColor: AppColors.white,
         border: inputDecoration,
         enabledBorder: inputDecoration,
-        focusedBorder: inputDecoration,
+        focusedBorder: focusedInputDecoration,
         errorBorder: inputErrorDecoration,
         focusedErrorBorder: inputErrorDecoration,
         suffixIcon: GestureDetector(
           onTap: () {
-            toggle();
+            widget.toggle();
           },
-          child: obscure
+          child: widget.obscure
               ? SvgPicture.asset(
                   ImagesConst.eyeOff,
                   height: 24,

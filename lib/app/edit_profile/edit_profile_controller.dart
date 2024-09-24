@@ -141,6 +141,25 @@ class EditProfileController extends GetxController {
     update();
   }
 
+  void deleteProfileImage(int index) async {
+    UserProfileModel? userProfile;
+    if (userProfiles.asMap().containsKey(index)) {
+      userProfile = userProfiles[index];
+    }
+    var response = await ProfileApi.deleteProfileImage(
+        userProfileId: userProfile?.id, userId: userModel!.id);
+    if (response.isNotEmpty) {
+      userModel = UserModel.fromJson(response['user']);
+      profileLength = userModel!.profiles!.length;
+      userProfiles = userModel!.profiles!;
+      profiles[index].image = userProfiles[index].imageUrl;
+      currentProfile = userModel!.currentProfile;
+      update();
+      updateProfiles();
+    }
+    update();
+  }
+
   void toggleDefaultProfile(int index) {
     for (int i = 0; i < profiles.length; i++) {
       profiles[i].isDefault = i == index;

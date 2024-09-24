@@ -14,7 +14,7 @@ import 'package:purchases_flutter/purchases_flutter.dart';
 import 'firebase_options.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
-void main() async {
+ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await LoadingHelper.init();
   await Firebase.initializeApp(
@@ -28,8 +28,7 @@ void main() async {
   Stripe.publishableKey = "pk_test_51PqWumELPBv6icsjGiifpakgvyikustWRGQZo2CreTgWTApPULXrKnbmYHb01N8LlVCc98SMP0p0LRx17uI0gvnS00oD6kvMpJ";
   await dotenv.load(fileName: "assets/.env");
   HttpOverrides.global = MyHttpOverrides();
-  SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   if (Platform.isIOS) {
     StoreHelper(
       store: Store.appStore,

@@ -44,14 +44,14 @@ class _SignInViewState extends State<SignInView> {
                 children: [
                   Gap(100.h),
                   AppTextFields(
-                    hintText: 'USER NAME , EMAIL , OR PHONE NUMBER'.tr,
+                    hintText: 'User name, Email or Phone number'.tr,
                     controller: controller.emailController,
                     fieldValidator: (value) =>
                         Validators.emptyStringValidator("This".tr, value),
                   ),
                   Gap(14.h),
                   PasswordTextFields(
-                      hintText: 'PASSWORD'.tr,
+                      hintText: 'Password'.tr,
                       obscure: controller.obscureTextPassword,
                       controller: controller.passwordController,
                       toggle: controller.toggle,

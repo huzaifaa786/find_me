@@ -47,11 +47,14 @@ Widget topBar({
                       ),
                   )),
         if (showBackIcon) Gap(70.w) else Gap(98.w),
-        AppText(
-          title: name!,
-          size: 16.sp,
-          fontWeight: FontWeight.w600,
-          color: color,
+        Padding(
+          padding: const EdgeInsets.only(bottom: 8.0),
+          child: AppText(
+            title: name!,
+            size: 20.sp,
+            fontWeight: FontWeight.w500,
+            color: color,
+          ),
         ),
       ],
     ),

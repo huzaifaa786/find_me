@@ -73,6 +73,7 @@ class EditProfileView extends StatelessWidget {
                             index: index,
                             onImageChange: controller.updateProfileImage,
                             onNameChange: controller.updateProfileName,
+                            onDeleteChange: controller.deleteProfileImage,
                             onToggle: (isDefault) {
                               if (isDefault) {
                                 controller.selectProfile(index);

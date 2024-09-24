@@ -27,6 +27,7 @@ class ProfileContainer extends StatefulWidget {
   final UserProfileModel? userModel;
   final Function(bool) onToggle;
   final Function(int, String) onNameChange;
+  final Function(int) onDeleteChange;
   final Function(int, XFile) onImageChange;
   final int index;
   final TextEditingController textController;
@@ -42,6 +43,7 @@ class ProfileContainer extends StatefulWidget {
     required this.onToggle,
     required this.textController,
     required this.onNameChange,
+    required this.onDeleteChange,
     required this.onImageChange,
     required this.index,
     required this.userModel,
@@ -77,6 +79,51 @@ class _ProfileContainerState extends State<ProfileContainer> {
     super.dispose();
   }
 
+  void showImageOptions() {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return SafeArea(
+          child: Wrap(
+            children: [
+              ListTile(
+                leading: Icon(Icons.photo_library),
+                title: Text('Pick Image'.tr),
+                onTap: () async {
+                  Navigator.of(context).pop(); // Close the bottom sheet
+                  final pickedFile = await _picker.pickImage(
+                    source: ImageSource.gallery,
+                  );
+                  if (pickedFile != null) {
+                    final croppedImage = await _cropImage(
+                      imageFile: File(pickedFile.path),
+                    );
+                    if (croppedImage != null) {
+                      print("sssssssssssssssssss");
+                      widget.onImageChange(
+                        widget.index,
+                        XFile(croppedImage.path),
+                      );
+                    }
+                  }
+                },
+              ),
+              if (widget.avatarUrl != null)
+                ListTile(
+                  leading: Icon(Icons.delete),
+                  title: Text('Remove Image'.tr),
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    widget.onDeleteChange(widget.index);
+                  },
+                ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   // Method for cropping the image file passed through a parameter.
   Future<File?> _cropImage({required File imageFile}) async {
     try {
@@ -84,9 +131,11 @@ class _ProfileContainerState extends State<ProfileContainer> {
         sourcePath: imageFile.path,
         compressQuality: 100,
       );
+
       if (croppedImg == null) {
         return null;
       } else {
+        print("sssssAAAAAAAAAAA");
         return File(croppedImg.path);
       }
     } catch (e) {
@@ -135,20 +184,7 @@ class _ProfileContainerState extends State<ProfileContainer> {
                 alignment: Alignment.center,
                 children: [
                   GestureDetector(
-                    onTap: widget.isLocked
-                        ? null
-                        : () async {
-                            final pickedFile = await _picker.pickImage(
-                                source: ImageSource.gallery);
-                            if (pickedFile != null) {
-                              final croppedImage = await _cropImage(
-                                  imageFile: File(pickedFile.path));
-                              if (croppedImage != null) {
-                                widget.onImageChange(
-                                    widget.index, XFile(croppedImage.path));
-                              }
-                            }
-                          },
+                    onTap: widget.isLocked ? null : showImageOptions,
                     child: Container(
                       height: 50,
                       width: 50,

@@ -23,7 +23,7 @@ class OtpView extends StatelessWidget {
             scrolledUnderElevation: 0,
             title: topBar(
               name: '',
-              showBackIcon: false,
+              showBackIcon: true,
             ),
           ),
           body: SafeArea(
@@ -31,21 +31,12 @@ class OtpView extends StatelessWidget {
               padding: const EdgeInsets.only(left: 30.0, right: 30.0),
               child: Column(children: [
                 Gap(30),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: 48.h,
-                      width: 230.w,
-                      child: AppText(
-                        title: 'Verify your Phone number'.tr,
-                        color: AppColors.black,
-                        fontWeight: FontWeight.w600,
-                        size: 20,
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ],
+                AppText(
+                  title: 'Confirm Your Number'.tr,
+                  color: AppColors.black,
+                  fontWeight: FontWeight.w600,
+                  size: 20,
+                  textAlign: TextAlign.center,
                 ),
                 Gap(20),
                 Row(
@@ -57,11 +48,12 @@ class OtpView extends StatelessWidget {
                         width: 270.w,
                         child: AppText(
                           title:
-                              'We have sent you an OTP code to your phone number, please enter it to continue'.tr
+                              'We have sent you an OTP code to your phone number, please enter it to continue'
+                                  .tr
                                   .tr,
                           color: AppColors.hintGrey,
-                          fontWeight: FontWeight.w600,
-                          size: 13,
+                          fontWeight: FontWeight.w400,
+                          size: 12,
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -78,11 +70,11 @@ class OtpView extends StatelessWidget {
                     fieldWidth: 45.h,
                     keyboardType: TextInputType.number,
                     focusedBorderColor: AppColors.primary_color,
-                    fillColor: AppColors.primary_color,
                     showFieldAsBox: true,
+                    cursorColor: AppColors.primary_color,
                     borderWidth: 2.0,
                     textStyle: TextStyle(
-                        color: AppColors.primary_color,
+                        color: AppColors.black,
                         fontSize: 15,
                         fontWeight: FontWeight.w600),
                     onCodeChanged: (String code) {
@@ -102,7 +94,7 @@ class OtpView extends StatelessWidget {
                     controller.resendOtp();
                   },
                   child: AppText(
-                    title: 'Resend'.tr,
+                    title: 'Re-send code'.tr,
                     size: 14,
                     fontWeight: FontWeight.w600,
                     color: AppColors.primary_color,

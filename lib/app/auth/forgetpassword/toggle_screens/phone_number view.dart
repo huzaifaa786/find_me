@@ -28,9 +28,9 @@ class _PhoneNumberViewState extends State<PhoneNumberView> {
                   onChanged: controller.phoneValidation,
                   controller: controller.pcontroller,
                 ),
-                Gap(40.h),
+                Gap(50.h),
                 AppButton(
-                  title: 'Confirm'.tr,
+                  title: 'Send'.tr,
                   height: 50.0.h,
                   width: 304.0.w,
                   onTap: () async {

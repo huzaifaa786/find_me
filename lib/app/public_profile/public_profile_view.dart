@@ -56,7 +56,7 @@ class PublicProfileView extends StatelessWidget {
                       Get.toNamed(AppRoutes.reportProfile,
                           arguments: controller.profile);
                     },
-                    name: "",
+                    name: controller.profile?.name ?? "",
                     //  "@${controller.userModel!.name}",
                     showBackIcon: true),
               ),
@@ -66,27 +66,25 @@ class PublicProfileView extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 34.w),
                     child: Column(
                       children: [
-                        Align(
-                          alignment: Alignment.center,
-                          child: Container(
-                            height: 77,
-                            width: 77,
-                            decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Color(
-                                        0x66000000), // #00000040 with 40 being the alpha value in hexadecimal
-                                    blurRadius: 1.2,
-                                    spreadRadius: 0,
-                                    offset: Offset(0, 0),
-                                  ),
-                                ],
-                                borderRadius: BorderRadius.circular(40.r),
-                                image: DecorationImage(
-                                    image: CachedNetworkImageProvider(
-                                        controller.profile?.imageUrl ?? ''),
-                                    fit: BoxFit.cover)),
-                          ),
+                        Gap(8),
+                        Container(
+                          height: 77,
+                          width: 77,
+                          decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(
+                                      0x66000000), // #00000040 with 40 being the alpha value in hexadecimal
+                                  blurRadius: 1.2,
+                                  spreadRadius: 0,
+                                  offset: Offset(0, 0),
+                                ),
+                              ],
+                              borderRadius: BorderRadius.circular(40.r),
+                              image: DecorationImage(
+                                  image: CachedNetworkImageProvider(
+                                      controller.profile?.imageUrl ?? ''),
+                                  fit: BoxFit.cover)),
                         ),
                         Gap(8),
                         Column(
@@ -100,14 +98,20 @@ class PublicProfileView extends StatelessWidget {
                                   size: 14.sp,
                                   fontWeight: FontWeight.w500,
                                 ),
-                                Gap(15),
+                                Gap(5),
                                 controller.profile!.isVerified
                                     ? SvgPicture.asset(
                                         'assets/icons/verified.svg')
                                     : SizedBox(),
                               ],
                             ),
-                            Gap(15.h),
+                            Center(
+                              child: AppText(
+                                  title:"@${controller.userModel?.name ?? ""}",
+                                  size: 12.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.inputBorderColor),
+                            ),
                             AppText(
                                 title: controller.profile!.bio!,
                                 size: 11.sp,
@@ -402,7 +406,6 @@ class PublicProfileView extends StatelessWidget {
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
                                                 children: [
-                                                
                                                   Text(
                                                     "No business card exist",
                                                     style: TextStyle(
@@ -545,7 +548,6 @@ class PublicProfileView extends StatelessWidget {
                                     ],
                                   ),
                                 );
-                            
                               }),
                         Gap(28.h),
                       ],
