@@ -269,7 +269,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                             ),
                           ),
                           TextSpan(
-                            text: 'Restrictions apply.'.tr,
+                            text: 'End User License Agreement.'.tr,
                             style: TextStyle(
                               color: AppColors.primary_color,
                               fontSize: 10,
