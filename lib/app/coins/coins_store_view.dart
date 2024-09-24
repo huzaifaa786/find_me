@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:find_me/app/coins/coins_store_controller.dart';
 import 'package:find_me/app/languages/language_card.dart';
 import 'package:find_me/components/appbars/topbar.dart';
@@ -98,13 +100,13 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
                     itemBuilder: (BuildContext context, int index) {
                       Package package = controller.packages![index];
                       StoreProduct coinPackageModel = package.storeProduct;
-
+                      print(package.storeProduct);
                       return CardCoins(
                         width: 100.w,
                         height: 100.h,
                         bottomText: coinPackageModel.priceString,
                         img: 'assets/images/coin_icon_big.png',
-                        text: package.storeProduct.description,
+                        text: Platform.isIOS ? package.storeProduct.title :  package.storeProduct.description,
                         imageHeight: 60.h,
                         imageWidth: 60.w,
                         onTap: () async {

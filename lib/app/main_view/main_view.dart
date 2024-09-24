@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, unused_field, unused_element, deprecated_member_use, prefer_const_constructors
 
+import 'dart:io';
+
 import 'package:find_me/app/account/profile/profile_view.dart';
 import 'package:find_me/app/auth/signup/signup_view.dart';
 import 'package:find_me/app/coins/coins_store_view.dart';
@@ -135,7 +137,7 @@ class _MainViewState extends State<MainView> {
                 size: Size(120, 150),
                 painter: RPSCustomPainter(),
                 child: Container(
-                  padding: EdgeInsets.only(left: 20, right: 20),
+                  padding: EdgeInsets.only(left: 20, right: 20, bottom: Platform.isIOS ? 7 : 0),
                   height: 134.h,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
