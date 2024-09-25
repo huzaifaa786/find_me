@@ -77,7 +77,6 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     // WidgetsBinding.instance.addObserver(this);
-
     initPlatformState();
     getUser();
     initPusher();
@@ -383,6 +382,9 @@ class HomeController extends GetxController {
                     serviceDataKeys.add(
                         ee.advertisementData.serviceUuids.first.toString());
                   }
+                  if (ee.advertisementData.advName != '') {
+                    serviceDataKeys.add(ee.advertisementData.advName);
+                  }
                   update();
                 }
               }
@@ -401,8 +403,7 @@ class HomeController extends GetxController {
     if (Platform.isAndroid) {
       await FlutterBluePlus.turnOn();
     }
-    await FlutterBluePlus.startScan(
-        timeout: Duration(seconds: 5));
+    await FlutterBluePlus.startScan(timeout: Duration(seconds: 5));
     await FlutterBluePlus.isScanning.where((val) => val == false).first;
 
     serviceDataKeys = serviceDataKeys.toSet().toList();

@@ -25,6 +25,29 @@ class SettingView extends StatelessWidget {
                 automaticallyImplyLeading: false,
                 scrolledUnderElevation: 0,
               ),
+              bottomNavigationBar: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 44.0,vertical: 10),
+                child: GestureDetector(
+                  onTap: () async {
+                    UiUtilites.logoutSuccessAlert(context, () async {
+                      GetStorage box = GetStorage();
+                      await box.remove('api_token');
+                      await box.remove('beacon_id');
+                      Get.offAllNamed(AppRoutes.intro);
+                    }, () {
+                      Get.back();
+                    });
+                  },
+                  child: PrefixIconButton(
+                    height: 55.h,
+                    width: 304.w,
+                    title: 'Log out'.tr,
+                    textColors: Colors.red,
+                    borderColor: Colors.red,
+                    image: 'assets/icons/log-out.svg',
+                  ),
+                ),
+              ),
               body: SafeArea(
                   child: SingleChildScrollView(
                 child: Padding(
@@ -50,14 +73,14 @@ class SettingView extends StatelessWidget {
                           }),
                       Gap(12.h),
                       CardSetting(
-                          text: 'Privacy'.tr,
+                          text: 'Profile Privacy'.tr,
                           image: 'assets/icons/lock (1).svg',
                           ontap: () {
                             Get.toNamed(AppRoutes.privacy);
                           }),
                       Gap(12.h),
                       CardSetting(
-                          text: 'Notifications Permissions'.tr,
+                          text: 'Notifications'.tr,
                           image: 'assets/icons/bell (1).svg',
                           ontap: () {
                             Get.toNamed(AppRoutes.notificationsPermissions);
@@ -92,39 +115,19 @@ class SettingView extends StatelessWidget {
                           }),
                       Gap(12.h),
                       CardSetting(
-                          text: 'Privacy Policy'.tr,
-                          image: 'assets/icons/shield.svg',
+                          text: 'Privacy'.tr,
+                          image: 'assets/icons/lock (1).svg',
                           ontap: () {
                             controller.launchWebUrl(privacyUrl);
                           }),
                       Gap(12.h),
                       CardSetting(
-                          text: 'Terms and Conditions'.tr,
+                          text: 'Terms & Policies'.tr,
                           image: 'assets/icons/shield.svg',
                           ontap: () {
                             controller.launchWebUrl(termsUrl);
                           }),
                       Gap(60.h),
-                      GestureDetector(
-                        onTap: () async {
-                          UiUtilites.logoutSuccessAlert(context, () async {
-                            GetStorage box = GetStorage();
-                            await box.remove('api_token');
-                            await box.remove('beacon_id');
-                            Get.offAllNamed(AppRoutes.intro);
-                          }, () {
-                            Get.back();
-                          });
-                        },
-                        child: PrefixIconButton(
-                          height: 55.h,
-                          width: 304.w,
-                          title: 'Log out'.tr,
-                          textColors: Colors.red,
-                          borderColor: Colors.red,
-                          image: 'assets/icons/log-out.svg',
-                        ),
-                      )
                     ],
                   ),
                 ),

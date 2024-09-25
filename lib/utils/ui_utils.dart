@@ -667,10 +667,7 @@ class UiUtilites {
           backgroundColor: Colors.white,
           surfaceTintColor: Colors.white,
           shape: RoundedRectangleBorder(
-              side: BorderSide(
-                //color: Colors.transparent, style: BorderStyle.solid
-                color: AppColors.primary_color,
-              ),
+            
               borderRadius: BorderRadius.all(Radius.circular(19))),
           // contentPadding: EdgeInsets.only(top: 10.0),
           content: Container(
@@ -694,8 +691,8 @@ class UiUtilites {
                       },
                       child: SvgPicture.asset(
                         'assets/icons/cross.svg',
-                        height: 30.h,
-                        width: 30.w,
+                        height: 20.h,
+                        width: 20.w,
                       ),
                     ),
                   ],
@@ -703,36 +700,36 @@ class UiUtilites {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      "assets/images/emojis.png",
-                      height: 45.h,
-                      width: 45.w,
+                    SvgPicture.asset(
+                      "assets/icons/smiles.svg",
+                      height: 50.h,
+                      width: 50.w,
                       fit: BoxFit.contain,
                     ),
                   ],
                 ),
-                Gap(10.h),
+                Gap(20.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     AppText(
-                      title: 'No coins enough!'.tr,
+                      title: 'Not enough coins.'.tr,
                       textAlign: TextAlign.center,
                       fontWeight: FontWeight.w500,
-                      size: 12,
+                      size: 13,
                       // color: AppColors.primary_color
                     ),
                   ],
                 ),
                 Gap(10),
                 AppText(
-                  title: 'purchase some coins to get \n more emojis'.tr,
+                  title: 'purchase more to gift.'.tr,
                   textAlign: TextAlign.center,
                   fontWeight: FontWeight.w400,
-                  size: 10.sp,
+                  size: 11.sp,
                   color: AppColors.hintGrey,
                 ),
-                Gap(10.h),
+                Gap(20.h),
                 AppButton(
                   height: 50.0.h,
                   width: 50.0.w,
@@ -842,7 +839,12 @@ class UiUtilites {
       },
     );
   }
-  static accountAlert(context, {showRemeber = false, required String text,required onTapYes,required onTapNo}) {
+
+  static accountAlert(context,
+      {showRemeber = false,
+      required String text,
+      required onTapYes,
+      required onTapNo}) {
     return showDialog(
       context: context,
       barrierDismissible: false,
@@ -925,7 +927,7 @@ class UiUtilites {
                     color: AppColors.black,
                   ),
                 ),
-                 Gap(30),
+                Gap(30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [

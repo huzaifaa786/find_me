@@ -101,70 +101,62 @@ class PublicProfileView extends StatelessWidget {
                                 Gap(5),
                                 controller.profile!.isVerified
                                     ? SvgPicture.asset(
-                                        'assets/icons/verified.svg')
+                                        'assets/icons/verified.svg',
+                                        height: 19,
+                                        width: 19,
+                                      )
                                     : SizedBox(),
                               ],
                             ),
-                            Center(
+                            Gap(6),
+                            Padding(
+                              padding: EdgeInsets.only(right: 15),
                               child: AppText(
-                                  title:"@${controller.userModel?.name ?? ""}",
+                                  title: "@${controller.userModel?.name ?? ""}",
                                   size: 12.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.inputBorderColor),
+                                  textAlign: TextAlign.center,
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.borderGrey),
                             ),
-                            AppText(
-                                title: controller.profile!.bio!,
-                                size: 11.sp,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.hintGrey),
-                            Gap(21.h),
-                            Divider(
-                              thickness: 1,
-                              color: AppColors.black.withOpacity(0.08),
-                              height: 1,
-                            ),
-                            Gap(21.h),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Find me on:".tr,
-                                  style: TextStyle(
-                                      fontSize: 14.sp,
-                                      fontWeight: FontWeight.w500),
+                            Gap(6),
+                            SizedBox(
+                              width: Get.width * 0.6,
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: AppText(
+                                  title: controller.profile!.bio!,
+                                  size: 12.sp,
+                                  fontWeight: FontWeight.w500,
                                 ),
-                              ],
+                              ),
                             ),
-                            Gap(27.h),
+                            Gap(31.h),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: AppText(
+                                  title: "Find Me on".tr,
+                                  size: 15.sp,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Divider(
+                              thickness: 1.5,
+                              color: AppColors.black.withOpacity(0.09),
+                            ),
+                            Gap(21.h),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 SocialMediaIcon(
-                                  socialMediaIcon:
-                                      "assets/icons/tiktok_black.svg",
-                                  isEmpty: controller.profileUrlModel!.tiktok ==
-                                      null,
+                                  socialMediaIcon: "assets/icons/snapchat.svg",
+                                  isEmpty:
+                                      controller.profileUrlModel!.snapchat ==
+                                          null,
                                   ontap: () {
-                                    if (controller.profileUrlModel!.tiktok !=
+                                    if (controller.profileUrlModel!.snapchat !=
                                             null &&
                                         controller.hasSocialAccess) {
-                                      controller.launchSocialUrl(
-                                          controller.profileUrlModel!.tiktok!);
-                                    } else if (!controller.hasSocialAccess) {
-                                      controller
-                                          .sendRequest(controller.userModel!);
-                                    }
-                                  },
-                                ),
-                                SocialMediaIcon(
-                                  socialMediaIcon: "assets/icons/xtwitter.svg",
-                                  isEmpty:
-                                      controller.profileUrlModel!.x == null,
-                                  ontap: () {
-                                    if (controller.profileUrlModel!.x != null &&
-                                        controller.hasSocialAccess) {
-                                      controller.launchSocialUrl(
-                                          controller.profileUrlModel!.x!);
+                                      controller.launchSocialUrl(controller
+                                          .profileUrlModel!.snapchat!);
                                     } else if (!controller.hasSocialAccess) {
                                       controller
                                           .sendRequest(controller.userModel!);
@@ -190,90 +182,14 @@ class PublicProfileView extends StatelessWidget {
                                   },
                                 ),
                                 SocialMediaIcon(
-                                  socialMediaIcon: "assets/icons/snapchat.svg",
+                                  socialMediaIcon: "assets/icons/xtwitter.svg",
                                   isEmpty:
-                                      controller.profileUrlModel!.snapchat ==
-                                          null,
+                                      controller.profileUrlModel!.x == null,
                                   ontap: () {
-                                    if (controller.profileUrlModel!.snapchat !=
-                                            null &&
-                                        controller.hasSocialAccess) {
-                                      controller.launchSocialUrl(controller
-                                          .profileUrlModel!.snapchat!);
-                                    } else if (!controller.hasSocialAccess) {
-                                      controller
-                                          .sendRequest(controller.userModel!);
-                                    }
-                                  },
-                                ),
-                                SocialMediaIcon(
-                                  socialMediaIcon:
-                                      "assets/icons/facebook_black.svg",
-                                  isEmpty:
-                                      controller.profileUrlModel!.facebook ==
-                                          null,
-                                  ontap: () {
-                                    if (controller.profileUrlModel!.facebook !=
-                                            null &&
-                                        controller.hasSocialAccess) {
-                                      controller.launchSocialUrl(controller
-                                          .profileUrlModel!.facebook!);
-                                    } else if (!controller.hasSocialAccess) {
-                                      controller
-                                          .sendRequest(controller.userModel!);
-                                    }
-                                  },
-                                ),
-                                SocialMediaIcon(
-                                  socialMediaIcon: "assets/icons/youtube.svg",
-                                  isEmpty:
-                                      controller.profileUrlModel!.youtube ==
-                                          null,
-                                  ontap: () {
-                                    if (controller.profileUrlModel!.youtube !=
-                                            null &&
+                                    if (controller.profileUrlModel!.x != null &&
                                         controller.hasSocialAccess) {
                                       controller.launchSocialUrl(
-                                          controller.profileUrlModel!.youtube!);
-                                    } else if (!controller.hasSocialAccess) {
-                                      controller
-                                          .sendRequest(controller.userModel!);
-                                    }
-                                  },
-                                ),
-                              ],
-                            ),
-                            Gap(15.h),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SocialMediaIcon(
-                                  socialMediaIcon: "assets/icons/whatsapp1.svg",
-                                  isEmpty:
-                                      controller.profileUrlModel!.whatsapp ==
-                                          null,
-                                  ontap: () {
-                                    if (controller.profileUrlModel!.whatsapp !=
-                                            null &&
-                                        controller.hasSocialAccess) {
-                                      controller.launchSocialUrl(controller
-                                          .profileUrlModel!.whatsapp!);
-                                    } else if (!controller.hasSocialAccess) {
-                                      controller
-                                          .sendRequest(controller.userModel!);
-                                    }
-                                  },
-                                ),
-                                SocialMediaIcon(
-                                  socialMediaIcon: "assets/icons/gmail.svg",
-                                  isEmpty:
-                                      controller.profileUrlModel!.email == null,
-                                  ontap: () {
-                                    if (controller.profileUrlModel!.email !=
-                                            null &&
-                                        controller.hasSocialAccess) {
-                                      controller.launchSocialUrl(
-                                          controller.profileUrlModel!.email!);
+                                          controller.profileUrlModel!.x!);
                                     } else if (!controller.hasSocialAccess) {
                                       controller
                                           .sendRequest(controller.userModel!);
@@ -299,6 +215,46 @@ class PublicProfileView extends StatelessWidget {
                                   },
                                 ),
                                 SocialMediaIcon(
+                                  socialMediaIcon: "assets/icons/whatsapp1.svg",
+                                  isEmpty:
+                                      controller.profileUrlModel!.whatsapp ==
+                                          null,
+                                  ontap: () {
+                                    if (controller.profileUrlModel!.whatsapp !=
+                                            null &&
+                                        controller.hasSocialAccess) {
+                                      controller.launchSocialUrl(controller
+                                          .profileUrlModel!.whatsapp!);
+                                    } else if (!controller.hasSocialAccess) {
+                                      controller
+                                          .sendRequest(controller.userModel!);
+                                    }
+                                  },
+                                ),
+                                SocialMediaIcon(
+                                  socialMediaIcon:
+                                      "assets/icons/tiktok_black.svg",
+                                  isEmpty: controller.profileUrlModel!.tiktok ==
+                                      null,
+                                  ontap: () {
+                                    if (controller.profileUrlModel!.tiktok !=
+                                            null &&
+                                        controller.hasSocialAccess) {
+                                      controller.launchSocialUrl(
+                                          controller.profileUrlModel!.tiktok!);
+                                    } else if (!controller.hasSocialAccess) {
+                                      controller
+                                          .sendRequest(controller.userModel!);
+                                    }
+                                  },
+                                ),
+                              ],
+                            ),
+                            Gap(15.h),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SocialMediaIcon(
                                   socialMediaIcon: "assets/icons/linkedin.svg",
                                   isEmpty:
                                       controller.profileUrlModel!.linkedin ==
@@ -315,24 +271,86 @@ class PublicProfileView extends StatelessWidget {
                                     }
                                   },
                                 ),
-                              ],
-                            ),
-                            Gap(20.h),
-                            Divider(
-                              thickness: 1,
-                              color: AppColors.black.withOpacity(0.08),
-                            ),
-                            Gap(20.h),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "My business card".tr,
-                                  style: TextStyle(
-                                      fontSize: 14.sp,
-                                      fontWeight: FontWeight.w500),
+                                SocialMediaIcon(
+                                  socialMediaIcon: "assets/icons/gmail.svg",
+                                  isEmpty:
+                                      controller.profileUrlModel!.email == null,
+                                  ontap: () {
+                                    if (controller.profileUrlModel!.email !=
+                                            null &&
+                                        controller.hasSocialAccess) {
+                                      controller.launchSocialUrl(
+                                          controller.profileUrlModel!.email!);
+                                    } else if (!controller.hasSocialAccess) {
+                                      controller
+                                          .sendRequest(controller.userModel!);
+                                    }
+                                  },
+                                ),
+                                SocialMediaIcon(
+                                  socialMediaIcon: "assets/icons/website.svg",
+                                  isEmpty:
+                                      controller.profileUrlModel!.email == null,
+                                  ontap: () {
+                                    if (controller.profileUrlModel!.email !=
+                                            null &&
+                                        controller.hasSocialAccess) {
+                                      controller.launchSocialUrl(
+                                          controller.profileUrlModel!.email!);
+                                    } else if (!controller.hasSocialAccess) {
+                                      controller
+                                          .sendRequest(controller.userModel!);
+                                    }
+                                  },
+                                ),
+                                SocialMediaIcon(
+                                  socialMediaIcon: "assets/icons/youtube.svg",
+                                  isEmpty:
+                                      controller.profileUrlModel!.youtube ==
+                                          null,
+                                  ontap: () {
+                                    if (controller.profileUrlModel!.youtube !=
+                                            null &&
+                                        controller.hasSocialAccess) {
+                                      controller.launchSocialUrl(
+                                          controller.profileUrlModel!.youtube!);
+                                    } else if (!controller.hasSocialAccess) {
+                                      controller
+                                          .sendRequest(controller.userModel!);
+                                    }
+                                  },
+                                ),
+                                SocialMediaIcon(
+                                  socialMediaIcon:
+                                      "assets/icons/facebook_black.svg",
+                                  isEmpty:
+                                      controller.profileUrlModel!.facebook ==
+                                          null,
+                                  ontap: () {
+                                    if (controller.profileUrlModel!.facebook !=
+                                            null &&
+                                        controller.hasSocialAccess) {
+                                      controller.launchSocialUrl(controller
+                                          .profileUrlModel!.facebook!);
+                                    } else if (!controller.hasSocialAccess) {
+                                      controller
+                                          .sendRequest(controller.userModel!);
+                                    }
+                                  },
                                 ),
                               ],
+                            ),
+                            Gap(31.h),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: AppText(
+                                  title: "My Digital Business Card".tr,
+                                  size: 15.sp,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Divider(
+                              thickness: 1.5,
+                              color: AppColors.black.withOpacity(0.09),
                             ),
                             Gap(22),
                             controller.businessCardModel != null
@@ -439,20 +457,25 @@ class PublicProfileView extends StatelessWidget {
                                   ),
                           ],
                         ),
-                        Gap(32.h),
-                        Divider(
-                          thickness: 1,
-                          color: AppColors.black.withOpacity(0.08),
-                          height: 1,
-                        ),
-                        Gap(27.h),
+                        Gap(31.h),
                         Align(
                           alignment: Alignment.centerLeft,
-                          child: Text(
-                            "Favorites".tr,
-                            style: TextStyle(
-                                fontSize: 14.sp, fontWeight: FontWeight.w500),
-                          ),
+                          child: AppText(
+                              title: "My Favorites".tr,
+                              size: 15.sp,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        Divider(
+                          thickness: 1.5,
+                          color: AppColors.black.withOpacity(0.09),
+                        ),
+                         Align(
+                          alignment: Alignment.centerLeft,
+                          child: AppText(
+                              title: "Tap an icon to send a gift!".tr,
+                              size: 11.sp,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.black.withOpacity(0.41),),
                         ),
                         Gap(21),
                         if (controller.profile!.emojis != null &&

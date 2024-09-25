@@ -36,7 +36,7 @@ class CardSetting extends StatelessWidget {
                 Text(
                   text,
                   style:
-                      TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400),
+                      TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500),
                 ),
               ],
             ),

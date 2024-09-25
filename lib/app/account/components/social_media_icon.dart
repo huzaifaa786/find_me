@@ -14,23 +14,24 @@ class SocialMediaIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: ontap,
-      child: Container(
-        height: 45.h,
-        width: 45.w,
-        margin: EdgeInsets.only(right: 5),
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: isEmpty ? AppColors.Icon_grey : AppColors.lightSkyBlue,
-        ),
-        child: Center(
-          child: SvgPicture.asset(
-            socialMediaIcon,
-            height: 22.h,
-            width: 22.h,
-            color:
-                isEmpty ? AppColors.black.withOpacity(0.30) : AppColors.black,
+    return Flexible(
+      child: GestureDetector(
+        onTap: ontap,
+        child: Container(
+          height: 50.h,
+          width: 50.w,
+          margin: EdgeInsets.only(right: 5),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: isEmpty ? AppColors.lightSkyBlue.withOpacity(0.4) : AppColors.lightSkyBlue,
+          ),
+          child: Center(
+            child: SvgPicture.asset(
+              socialMediaIcon,
+             
+              color:
+                  isEmpty ? AppColors.black.withOpacity(0.4) : AppColors.black,
+            ),
           ),
         ),
       ),

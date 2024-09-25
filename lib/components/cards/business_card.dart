@@ -41,187 +41,190 @@ class BusinessCard extends StatelessWidget {
   final blur;
   final radius;
   @override
-   Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Center(
-      child: Card(
-        color: AppColors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(19.0),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min, 
-          children: [
-           
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 22),
-              width: 339.w,
-              constraints: BoxConstraints(
-                minHeight: 140.h,
-              ),
-              decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(19.0)),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        premission == true
-                            ? Blur(
-                                blur: blur!,
-                                borderRadius: radius,
-                                child: Text(
-                                  name,
-                                  style: TextStyle(
-                                    color: AppColors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              )
-                            : Text(
-                                name,
-                                style: TextStyle(
-                                  color: AppColors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                        Gap(5.h),
-                        premission == true
-                            ? Blur(
-                                blur: blur!,
-                                borderRadius: radius,
-                                child: Text(
-                                  jobTitle,
-                                  style: TextStyle(
-                                    color: AppColors.white,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              )
-                            : Text(
-                                jobTitle,
-                                style: TextStyle(
-                                  color: AppColors.white,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                        Gap(8.h),
-                        Row(
-                          children: [
-                            SvgPicture.asset(
-                              'assets/icons/home_img.svg',
-                            ),
-                            Gap(5),
-                            premission == true
-                                ? Blur(
-                                    blur: blur!,
-                                    borderRadius: radius,
-                                    child: Text(
-                                      company,
-                                      style: TextStyle(
-                                        color: AppColors.white,
-                                        fontSize: 8,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  )
-                                : Text(
-                                    company,
+        child: Card(
+      color: AppColors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(19.0),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 22),
+            width: 339.w,
+            constraints: BoxConstraints(
+              minHeight: 140.h,
+            ),
+            decoration: BoxDecoration(
+              color: Colors.black,
+              borderRadius: BorderRadius.vertical(top: Radius.circular(19.0)),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          premission == true
+                              ? Blur(
+                                  blur: blur!,
+                                  borderRadius: radius,
+                                  child: Text(
+                                    name,
                                     style: TextStyle(
                                       color: AppColors.white,
-                                      fontSize: 8,
+                                      fontSize: 22,
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
-                          ],
-                        ),
-                        Gap(8.h),
-                        Row(
-                          children: [
-                            SvgPicture.asset(
-                              'assets/icons/mail.svg',
+                                )
+                              : Text(
+                                  name,
+                                  style: TextStyle(
+                                    color: AppColors.white,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                        ],
+                      ),
+                      Gap(5.h),
+                      premission == true
+                          ? Blur(
+                              blur: blur!,
+                              borderRadius: radius,
+                              child: Text(
+                                jobTitle,
+                                style: TextStyle(
+                                  color: AppColors.white,
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            )
+                          : Text(
+                              jobTitle,
+                              style: TextStyle(
+                                color: AppColors.white,
+                                fontSize: 11,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
-                            Gap(5),
-                            premission == true
-                                ? Blur(
-                                    blur: blur!,
-                                    borderRadius: radius,
-                                    child: Text(
-                                      email,
-                                      style: TextStyle(
-                                        color: AppColors.white,
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w600,
-                                      ),
+                      Gap(8.h),
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/home_img.svg',
+                            height: 11.h,
+                            width: 11.w,
+                          ),
+                          Gap(5),
+                          premission == true
+                              ? Blur(
+                                  blur: blur!,
+                                  borderRadius: radius,
+                                  child: Text(
+                                    company,
+                                    style: TextStyle(
+                                      color: AppColors.white,
+                                      fontSize: 9,
+                                      fontWeight: FontWeight.w500,
                                     ),
-                                  )
-                                : Text(
+                                  ),
+                                )
+                              : Text(
+                                  company,
+                                  style: TextStyle(
+                                    color: AppColors.white,
+                                    fontSize: 9,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                        ],
+                      ),
+                      Gap(8.h),
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/mail.svg',
+                            height: 11.h,
+                            width: 11.w,
+                          ),
+                          Gap(5),
+                          premission == true
+                              ? Blur(
+                                  blur: blur!,
+                                  borderRadius: radius,
+                                  child: Text(
                                     email,
                                     style: TextStyle(
                                       color: AppColors.white,
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w600,
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w400,
                                     ),
                                   ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        'logo'.tr,
-                        style: TextStyle(
-                          color: AppColors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      Gap(13.h),
-                      image.isNotEmpty
-                          ? premission == true
-                              ? Blur(
-                                  borderRadius: radius,
-                                  blur: blur!,
-                                  child: CachedNetworkImage(
-                                    imageUrl: image,
-                                    height: 60.h,
-                                    width: 60.w,
-                                    fit: BoxFit.cover,
+                                )
+                              : Text(
+                                  email,
+                                  style: TextStyle(
+                                    color: AppColors.white,
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w400,
                                   ),
-                                )
-                              : CachedNetworkImage(
-                                  imageUrl: image,
-                                  height: 60.h,
-                                  width: 60.w,
-                                  fit: BoxFit.cover,
-                                )
-                          : Container(
-                              decoration: BoxDecoration(
-                                border:
-                                    Border.all(color: AppColors.Icon_grey),
-                              ),
-                              height: 60.h,
-                              width: 60.w,
-                            ),
-                      
+                                ),
+                        ],
+                      ),
                     ],
-                  )
-                ],
-              ),
+                  ),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    SvgPicture.asset(
+                      'assets/icons/LogoHome.svg',
+                      height: 15,
+                      width: 68,
+                    ),
+                    Gap(8),
+                    image.isNotEmpty
+                        ? premission == true
+                            ? Blur(
+                                borderRadius: radius,
+                                blur: blur!,
+                                child: CachedNetworkImage(
+                                  imageUrl: image,
+                                  height: 50.h,
+                                  width: 50.w,
+                                  fit: BoxFit.cover,
+                                ),
+                              )
+                            : CachedNetworkImage(
+                                imageUrl: image,
+                                height: 50.h,
+                                width: 50.w,
+                                fit: BoxFit.cover,
+                              )
+                        : Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(color: AppColors.Icon_grey),
+                            ),
+                            height: 50.h,
+                            width: 50.w,
+                          ),
+                  ],
+                )
+              ],
             ),
+          ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 26, vertical: 11),
-            width: 312,
-            height: 60,
             decoration: BoxDecoration(
                 color: AppColors.white,
                 borderRadius:
@@ -237,6 +240,8 @@ class BusinessCard extends StatelessWidget {
                         children: [
                           SvgPicture.asset(
                             'assets/icons/instagram_black.svg',
+                            height: 12,
+                            width: 12,
                             //color: Colors.black,
                           ),
                           Gap(5.w),
@@ -247,26 +252,28 @@ class BusinessCard extends StatelessWidget {
                                   child: Text(instagram,
                                       style: TextStyle(
                                         color: Colors.black,
-                                        fontSize: 7,
+                                        fontSize: 9,
                                         fontWeight: FontWeight.w600,
                                       )),
                                 )
                               : Text(instagram,
                                   style: TextStyle(
                                     color: Colors.black,
-                                    fontSize: 7,
+                                    fontSize: 9,
                                     fontWeight: FontWeight.w600,
                                   )),
                         ],
                       ),
                     ),
-                   /// Gap(31.w),
+
+                    /// Gap(31.w),
                     Flexible(
                       child: Row(
                         children: [
                           SvgPicture.asset(
-                            'assets/icons/twitter_black.svg',
-                            //color: Colors.black,
+                            'assets/icons/xtwitter.svg',
+                            height: 12,
+                            width: 12,
                           ),
                           Gap(5.w),
                           premission
@@ -276,25 +283,28 @@ class BusinessCard extends StatelessWidget {
                                   child: Text(x,
                                       style: TextStyle(
                                         color: Colors.black,
-                                        fontSize: 7,
+                                        fontSize: 9,
                                         fontWeight: FontWeight.w600,
                                       )),
                                 )
                               : Text(x,
                                   style: TextStyle(
                                     color: Colors.black,
-                                    fontSize: 7,
+                                    fontSize: 9,
                                     fontWeight: FontWeight.w600,
                                   )),
                         ],
                       ),
                     ),
-                 ///   Gap(31.w),
+
+                    ///   Gap(31.w),
                     Flexible(
                       child: Row(
                         children: [
                           SvgPicture.asset(
-                            'assets/icons/facebook_black.svg',
+                            'assets/icons/website.svg',
+                            height: 12,
+                            width: 12,
                             // color: Colors.black,
                           ),
                           Gap(5.w),
@@ -305,14 +315,14 @@ class BusinessCard extends StatelessWidget {
                                   child: Text(facebook,
                                       style: TextStyle(
                                         color: Colors.black,
-                                        fontSize: 7,
+                                        fontSize: 9,
                                         fontWeight: FontWeight.w600,
                                       )),
                                 )
                               : Text(facebook,
                                   style: TextStyle(
                                     color: Colors.black,
-                                    fontSize: 7,
+                                    fontSize: 9,
                                     fontWeight: FontWeight.w600,
                                   )),
                         ],
@@ -320,7 +330,7 @@ class BusinessCard extends StatelessWidget {
                     )
                   ],
                 ),
-                Gap(7.h),
+                Gap(9.h),
                 Padding(
                   padding: const EdgeInsets.only(left: 3.0),
                   child: Row(
@@ -330,7 +340,9 @@ class BusinessCard extends StatelessWidget {
                         child: Row(
                           children: [
                             SvgPicture.asset(
-                              'assets/icons/tiktok_black.svg',
+                              'assets/icons/linkedin.svg',
+                              height: 12,
+                              width: 12,
                               color: Colors.black,
                             ),
                             Gap(5.w),
@@ -341,24 +353,27 @@ class BusinessCard extends StatelessWidget {
                                     child: Text(tiktok,
                                         style: TextStyle(
                                           color: Colors.black,
-                                          fontSize: 7,
+                                          fontSize: 9,
                                           fontWeight: FontWeight.w600,
                                         )))
                                 : Text(tiktok,
                                     style: TextStyle(
                                       color: Colors.black,
-                                      fontSize: 7,
+                                      fontSize: 9,
                                       fontWeight: FontWeight.w600,
                                     )),
                           ],
                         ),
                       ),
-                   ///   Gap(31.w),
+
+                      ///   Gap(31.w),
                       Flexible(
                         child: Row(
                           children: [
                             SvgPicture.asset(
-                              'assets/icons/notification.svg',
+                              'assets/icons/facebook_black.svg',
+                              height: 12,
+                              width: 12,
                               //color: Colors.black,
                             ),
                             Gap(5.w),
@@ -369,24 +384,27 @@ class BusinessCard extends StatelessWidget {
                                     child: Text(snapchat,
                                         style: TextStyle(
                                           color: Colors.black,
-                                          fontSize: 7,
+                                          fontSize: 9,
                                           fontWeight: FontWeight.w600,
                                         )))
                                 : Text(snapchat,
                                     style: TextStyle(
                                       color: Colors.black,
-                                      fontSize: 7,
+                                      fontSize: 9,
                                       fontWeight: FontWeight.w600,
                                     ))
                           ],
                         ),
                       ),
-                    ///  Gap(31.w),
+
+                      ///  Gap(31.w),
                       Flexible(
                         child: Row(
                           children: [
                             SvgPicture.asset(
                               'assets/icons/smartphone.svg',
+                              height: 12,
+                              width: 12,
                               // color: Colors.black,
                             ),
                             Gap(5.w),
@@ -397,14 +415,14 @@ class BusinessCard extends StatelessWidget {
                                     child: Text(phone,
                                         style: TextStyle(
                                           color: Colors.black,
-                                          fontSize: 7,
+                                          fontSize: 9,
                                           fontWeight: FontWeight.w600,
                                         )),
                                   )
                                 : Text(phone,
                                     style: TextStyle(
                                       color: Colors.black,
-                                      fontSize: 7,
+                                      fontSize: 9,
                                       fontWeight: FontWeight.w600,
                                     )),
                           ],

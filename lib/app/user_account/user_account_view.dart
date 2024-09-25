@@ -40,8 +40,8 @@ class _UserAccountViewState extends State<UserAccountView> {
                   child: controller.userModel != null
                       ? Container(
                           padding: EdgeInsets.only(
-                            left: 33,
-                            right: 32,
+                            left: 35,
+                            right: 35,
                           ),
                           child: SingleChildScrollView(
                             child: Column(

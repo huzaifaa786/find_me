@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class UserInformationCard extends StatelessWidget {
   const UserInformationCard({
@@ -28,22 +30,35 @@ class UserInformationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 290.w,
+      margin: EdgeInsets.all(4),
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(11.0),
+        border: Border.all(color: AppColors.black.withOpacity(0.05)),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            spreadRadius: 1,
+            color: AppColors.black.withOpacity(0.02),
+            spreadRadius: 0.1,
             blurRadius: 1,
-            offset: Offset(2, 2),
+            offset: Offset(-3, -3), // top-left
           ),
           BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            spreadRadius: 1,
+            color: AppColors.black.withOpacity(0.02),
+            spreadRadius: 0.1,
             blurRadius: 1,
-            offset: Offset(-2, -2),
+            offset: Offset(3, -3), // top-right
+          ),
+          BoxShadow(
+            color: AppColors.black.withOpacity(0.02),
+            spreadRadius: 0.1,
+            blurRadius: 1,
+            offset: Offset(-3, 3), // bottom-left
+          ),
+          BoxShadow(
+            color: AppColors.black.withOpacity(0.02),
+            spreadRadius: 0.1,
+            blurRadius: 1,
+            offset: Offset(3, 3), // bottom-right
           ),
         ],
       ),
@@ -52,57 +67,20 @@ class UserInformationCard extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           ListTile(
-            title: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'First Name'.tr,
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-                ),
-                Text(
-                  'Last Name'.tr,
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-                ),
-              ],
+            dense: true,
+            minTileHeight: 64.0,
+            title: AppText(
+              title: 'Name'.tr,
+              size: 13,
+              fontWeight: FontWeight.w500,
             ),
             subtitle: Padding(
-              padding: const EdgeInsets.only(left: 2),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                    width: 66.w,
-                    child: Text(
-                      firstname.toString()
-                      // 'Mohammed ahmed'
-                      ,
-                      overflow: TextOverflow.visible,
-                      maxLines: 3,
-                      // textAlign: TextAlign.justify,
-                      style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.black.withOpacity(0.6)),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 66.w,
-                    child: Text(
-                        lastname.toString()
-                        // 'Mohammed ahmed'
-                        ,
-                        overflow: TextOverflow.visible,
-                        maxLines: 3,
-                        textAlign: TextAlign.justify,
-                        style: TextStyle(
-                            fontSize: 10,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.black.withOpacity(0.6))),
-                  ),
-                ],
-              ),
+              padding: const EdgeInsets.only(left: 2, top: 15),
+              child: AppText(
+                  title: '$firstname $lastname',
+                  size: 10,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.black.withOpacity(0.65)),
             ),
           ),
           Divider(
@@ -110,18 +88,20 @@ class UserInformationCard extends StatelessWidget {
             color: Colors.grey.withOpacity(0.3),
           ),
           ListTile(
-            title: Text(
-              'Username'.tr,
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+            dense: true,
+            minTileHeight: 64.0,
+            title: AppText(
+              title: 'Username'.tr,
+              size: 13,
+              fontWeight: FontWeight.w500,
             ),
-            subtitle: Text(
-              username
-              //'almarwan_4'
-              ,
-              style: TextStyle(
-                  fontSize: 10,
+            subtitle: Padding(
+              padding: const EdgeInsets.only(left: 2, top: 15),
+              child: AppText(
+                  title: username,
+                  size: 10,
                   fontWeight: FontWeight.w500,
-                  color: AppColors.black.withOpacity(0.6)),
+                  color: AppColors.black.withOpacity(0.65)),
             ),
           ),
           Divider(
@@ -129,18 +109,21 @@ class UserInformationCard extends StatelessWidget {
             color: Colors.grey.withOpacity(0.3),
           ),
           ListTile(
-            title: Text(
-              'Birthday'.tr,
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+            dense: true,
+            minTileHeight: 64.0,
+            title: AppText(
+              title: 'Birthday'.tr,
+              size: 13,
+              fontWeight: FontWeight.w500,
             ),
-            subtitle: Text(
-              userbirthday
-              //'8 march 1997'
-              ,
-              style: TextStyle(
-                  fontSize: 10,
+            subtitle: Padding(
+              padding: const EdgeInsets.only(left: 2, top: 15),
+              child: AppText(
+                  title: DateFormat('dd MMMM yyyy')
+                      .format(DateTime.parse(userbirthday)),
+                  size: 10,
                   fontWeight: FontWeight.w500,
-                  color: AppColors.black.withOpacity(0.6)),
+                  color: AppColors.black.withOpacity(0.65)),
             ),
           ),
           Divider(
@@ -148,18 +131,20 @@ class UserInformationCard extends StatelessWidget {
             color: Colors.grey.withOpacity(0.3),
           ),
           ListTile(
-            title: Text(
-              'Mobile Number'.tr,
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+            dense: true,
+            minTileHeight: 64.0,
+            title: AppText(
+              title: 'Mobile Number'.tr,
+              size: 13,
+              fontWeight: FontWeight.w500,
             ),
-            subtitle: Text(
-              usermobilenumber
-              // '0000 0000'
-              ,
-              style: TextStyle(
-                  fontSize: 10,
+            subtitle: Padding(
+              padding: const EdgeInsets.only(left: 2, top: 15),
+              child: AppText(
+                  title: usermobilenumber,
+                  size: 10,
                   fontWeight: FontWeight.w500,
-                  color: AppColors.black.withOpacity(0.6)),
+                  color: AppColors.black.withOpacity(0.65)),
             ),
           ),
           Divider(
@@ -167,16 +152,20 @@ class UserInformationCard extends StatelessWidget {
             color: Colors.grey.withOpacity(0.3),
           ),
           ListTile(
-            title: Text(
-              'Email'.tr,
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+            dense: true,
+            minTileHeight: 64.0,
+            title: AppText(
+              title: 'Email'.tr,
+              size: 13,
+              fontWeight: FontWeight.w500,
             ),
-            subtitle: Text(
-              useremialid,
-              style: TextStyle(
-                  fontSize: 10,
+            subtitle: Padding(
+              padding: const EdgeInsets.only(left: 2, top: 15),
+              child: AppText(
+                  title: useremialid,
+                  size: 10,
                   fontWeight: FontWeight.w500,
-                  color: AppColors.black.withOpacity(0.6)),
+                  color: AppColors.black.withOpacity(0.65)),
             ),
           ),
         ],
