@@ -195,95 +195,137 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                   ),
                   //
                   Gap(24),
-                  Center(
-                    child: RichText(
-                      textAlign: TextAlign.start,
-                      text: TextSpan(
-                        text:
-                            "Recurring Billing: By proceeding, you confirm that you are at "
-                                .tr,
-                        style: TextStyle(
-                          color: AppColors.hintGrey,
-                          fontSize: 10,
-                          fontWeight: FontWeight.w400,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          controller.launchWebUrl(privacyUrl);
+                        },
+                        child: Text(
+                          'Privacy Policy',
+                          style: TextStyle(
+                            color: AppColors.primary_color,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: 'least 17 years old and agree to the '.tr,
-                            style: TextStyle(
-                              color: AppColors.hintGrey,
-                              fontSize: 10,
-                              fontWeight: FontWeight.w400,
-                            ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          controller.launchWebUrl(termsUrl);
+                        },
+                        child: Text(
+                          'Terms & Conditions',
+                          style: TextStyle(
+                            color: AppColors.primary_color,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
                           ),
-                          TextSpan(
-                            text: ' terms. '.tr,
-                            style: TextStyle(
-                              color: AppColors.primary_color,
-                              fontSize: 10,
-                              fontWeight: FontWeight.w400,
-                            ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                controller.launchWebUrl(termsUrl);
-                              },
-                          ),
-                          TextSpan(
-                            text: 'Please review the '.tr,
-                            style: TextStyle(
-                              color: AppColors.hintGrey,
-                              fontSize: 10,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          TextSpan(
-                            text: 'Privacy Policy '.tr,
-                            style: TextStyle(
-                              color: AppColors.primary_color,
-                              fontSize: 10,
-                              fontWeight: FontWeight.w400,
-                            ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                controller.launchWebUrl(privacyUrl);
-                              },
-                          ),
-                          TextSpan(
-                            text:
-                                'and applicable restrictions. Note that refunds\n'
-                                    .tr,
-                            style: TextStyle(
-                              color: AppColors.hintGrey,
-                              fontSize: 10,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          TextSpan(
-                            text:
-                                'are not available for partial billing periods.'
-                                    .tr,
-                            style: TextStyle(
-                              color: AppColors.hintGrey,
-                              fontSize: 10,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          TextSpan(
-                            text: 'End User License Agreement.'.tr,
-                            style: TextStyle(
-                              color: AppColors.primary_color,
-                              fontSize: 10,
-                              fontWeight: FontWeight.w400,
-                            ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                controller.launchWebUrl(restrictionUrl);
-                              },
-                          ),
-                        ],
+                        ),
+                      )
+                    ],
+                  ),
+                  Gap(15),
+                  Center(
+                    child: Text(
+                      'Payment will be charged to iTunes Account at confirmation of purchase. Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Account will be charged for renewal within 24-hours prior to the end of the current period. You can manage or turn off auto-renew in your Account settings at any time after purchase No cancellation of the current subscription is allowed during the active period.',
+                      style: TextStyle(
+                        color: AppColors.hintGrey,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
+                  // Center(
+                  //   child: RichText(
+                  //     textAlign: TextAlign.start,
+                  //     text: TextSpan(
+                  //       text:
+                  //           "Recurring Billing: By proceeding, you confirm that you are at "
+                  //               .tr,
+                  //       style: TextStyle(
+                  //         color: AppColors.hintGrey,
+                  //         fontSize: 10,
+                  //         fontWeight: FontWeight.w400,
+                  //       ),
+                  //       children: <TextSpan>[
+                  //         TextSpan(
+                  //           text: 'least 17 years old and agree to the '.tr,
+                  //           style: TextStyle(
+                  //             color: AppColors.hintGrey,
+                  //             fontSize: 10,
+                  //             fontWeight: FontWeight.w400,
+                  //           ),
+                  //         ),
+                  //         TextSpan(
+                  //           text: ' terms. '.tr,
+                  //           style: TextStyle(
+                  //             color: AppColors.primary_color,
+                  //             fontSize: 10,
+                  //             fontWeight: FontWeight.w400,
+                  //           ),
+                  //           recognizer: TapGestureRecognizer()
+                  //             ..onTap = () {
+                  //               controller.launchWebUrl(termsUrl);
+                  //             },
+                  //         ),
+                  //         TextSpan(
+                  //           text: 'Please review the '.tr,
+                  //           style: TextStyle(
+                  //             color: AppColors.hintGrey,
+                  //             fontSize: 10,
+                  //             fontWeight: FontWeight.w400,
+                  //           ),
+                  //         ),
+                  //         TextSpan(
+                  //           text: 'Privacy Policy '.tr,
+                  //           style: TextStyle(
+                  //             color: AppColors.primary_color,
+                  //             fontSize: 10,
+                  //             fontWeight: FontWeight.w400,
+                  //           ),
+                  //           recognizer: TapGestureRecognizer()
+                  //             ..onTap = () {
+                  //               controller.launchWebUrl(privacyUrl);
+                  //             },
+                  //         ),
+                  //         TextSpan(
+                  //           text:
+                  //               'and applicable restrictions. Note that refunds\n'
+                  //                   .tr,
+                  //           style: TextStyle(
+                  //             color: AppColors.hintGrey,
+                  //             fontSize: 10,
+                  //             fontWeight: FontWeight.w400,
+                  //           ),
+                  //         ),
+                  //         TextSpan(
+                  //           text:
+                  //               'are not available for partial billing periods.'
+                  //                   .tr,
+                  //           style: TextStyle(
+                  //             color: AppColors.hintGrey,
+                  //             fontSize: 10,
+                  //             fontWeight: FontWeight.w400,
+                  //           ),
+                  //         ),
+                  //         TextSpan(
+                  //           text: 'End User License Agreement.'.tr,
+                  //           style: TextStyle(
+                  //             color: AppColors.primary_color,
+                  //             fontSize: 10,
+                  //             fontWeight: FontWeight.w400,
+                  //           ),
+                  //           recognizer: TapGestureRecognizer()
+                  //             ..onTap = () {
+                  //               controller.launchWebUrl(restrictionUrl);
+                  //             },
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
                   Gap(30),
                 ],
               ),
