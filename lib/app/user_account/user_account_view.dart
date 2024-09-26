@@ -5,6 +5,7 @@ import 'package:find_me/app/user_account/user_account_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/cards/user_information_card.dart';
 import 'package:find_me/routes/app_routes.dart';
+import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/cupertino.dart';
@@ -45,17 +46,14 @@ class _UserAccountViewState extends State<UserAccountView> {
                           ),
                           child: SingleChildScrollView(
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'My information'.tr,
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  ],
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 20.0),
+                                  child: AppText(
+                                      title: 'My information'.tr,
+                                      size: 14,
+                                      fontWeight: FontWeight.w600),
                                 ),
                                 Gap(18),
                                 UserInformationCard(
@@ -72,37 +70,50 @@ class _UserAccountViewState extends State<UserAccountView> {
                                       controller.userModel!.email ?? "",
                                 ),
                                 Gap(15),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Settings'.tr,
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  ],
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 20.0),
+                                  child: AppText(
+                                      title: 'Settings'.tr,
+                                      size: 14,
+                                      fontWeight: FontWeight.w600),
                                 ),
                                 Gap(18),
                                 Container(
-                                  margin: EdgeInsets.only(bottom: 15),
-                                  width: 290.w,
+                                  margin: EdgeInsets.all(4),
                                   decoration: BoxDecoration(
                                     color: AppColors.white,
                                     borderRadius: BorderRadius.circular(11.0),
+                                    border: Border.all(
+                                        color:
+                                            AppColors.black.withOpacity(0.05)),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey.withOpacity(0.2),
-                                        spreadRadius: 1,
+                                        color:
+                                            AppColors.black.withOpacity(0.02),
+                                        spreadRadius: 0.1,
                                         blurRadius: 1,
-                                        offset: Offset(2, 2),
+                                        offset: Offset(-3, -3), // top-left
                                       ),
                                       BoxShadow(
-                                        color: Colors.grey.withOpacity(0.2),
-                                        spreadRadius: 1,
+                                        color:
+                                            AppColors.black.withOpacity(0.02),
+                                        spreadRadius: 0.1,
                                         blurRadius: 1,
-                                        offset: Offset(
-                                            -2, -2), // Shadow for top and left
+                                        offset: Offset(3, -3), // top-right
+                                      ),
+                                      BoxShadow(
+                                        color:
+                                            AppColors.black.withOpacity(0.02),
+                                        spreadRadius: 0.1,
+                                        blurRadius: 1,
+                                        offset: Offset(-3, 3), // bottom-left
+                                      ),
+                                      BoxShadow(
+                                        color:
+                                            AppColors.black.withOpacity(0.02),
+                                        spreadRadius: 0.1,
+                                        blurRadius: 1,
+                                        offset: Offset(3, 3), // bottom-right
                                       ),
                                     ],
                                   ),
@@ -112,11 +123,13 @@ class _UserAccountViewState extends State<UserAccountView> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
                                       ListTile(
+                                        dense: true,
+                                        minTileHeight: 48.0,
                                         title: Text(
                                           'Change my information'.tr,
                                           style: TextStyle(
                                               fontSize: 12,
-                                              fontWeight: FontWeight.w500),
+                                              fontWeight: FontWeight.w600),
                                         ),
                                         trailing: Icon(
                                           Icons.chevron_right,
@@ -135,11 +148,37 @@ class _UserAccountViewState extends State<UserAccountView> {
                                         color: Colors.grey.withOpacity(0.3),
                                       ),
                                       ListTile(
+                                        dense: true,
+                                        minTileHeight: 48.0,
+                                        title: Text(
+                                          'Change password'.tr,
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                        trailing: Icon(
+                                          Icons.chevron_right,
+                                          color: Colors.grey,
+                                        ),
+                                        onTap: () {
+                                          Get.toNamed(AppRoutes.changepassword)!
+                                              .then((value) {
+                                            controller.getUser();
+                                          });
+                                        },
+                                      ),
+                                      Divider(
+                                        thickness: 1,
+                                        color: Colors.grey.withOpacity(0.3),
+                                      ),
+                                      ListTile(
+                                        dense: true,
+                                        minTileHeight: 48.0,
                                         title: Text(
                                           'Change mobile number'.tr,
                                           style: TextStyle(
                                               fontSize: 12,
-                                              fontWeight: FontWeight.w500),
+                                              fontWeight: FontWeight.w600),
                                         ),
                                         trailing: Icon(
                                           Icons.chevron_right,
@@ -158,11 +197,13 @@ class _UserAccountViewState extends State<UserAccountView> {
                                         color: Colors.grey.withOpacity(0.3),
                                       ),
                                       ListTile(
+                                        dense: true,
+                                        minTileHeight: 48.0,
                                         title: Text(
                                           'Change email'.tr,
                                           style: TextStyle(
                                               fontSize: 12,
-                                              fontWeight: FontWeight.w500),
+                                              fontWeight: FontWeight.w600),
                                         ),
                                         trailing: Icon(
                                           Icons.chevron_right,
@@ -180,37 +221,13 @@ class _UserAccountViewState extends State<UserAccountView> {
                                         color: Colors.grey.withOpacity(0.3),
                                       ),
                                       ListTile(
-                                        title: Text(
-                                          'Change password'.tr,
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500),
-                                        ),
-                                        trailing: Icon(
-                                          Icons.chevron_right,
-                                          color: Colors.grey,
-                                        ),
-                                        onTap: () {
-                                          Get.toNamed(AppRoutes.changepassword)!
-                                              .then((value) {
-                                            controller.getUser();
-                                          });
-                                        },
-                                      ),
-                                      Divider(
-                                        thickness: 1,
-                                        color: Colors.grey.withOpacity(0.3),
-                                      ),
-                                      ListTile(
+                                        dense: true,
+                                        minTileHeight: 48.0,
                                         title: Text(
                                           'Delete Account'.tr,
                                           style: TextStyle(
                                               fontSize: 12,
-                                              fontWeight: FontWeight.w500),
-                                        ),
-                                        trailing: Icon(
-                                          Icons.chevron_right,
-                                          color: Colors.grey,
+                                              fontWeight: FontWeight.w600),
                                         ),
                                         onTap: () {
                                           UiUtilites.accountAlert(context,
@@ -223,9 +240,11 @@ class _UserAccountViewState extends State<UserAccountView> {
                                           });
                                         },
                                       ),
+                                      
                                     ],
                                   ),
-                                )
+                                ),
+                                Gap(20),
                               ],
                             ),
                           ),

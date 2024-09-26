@@ -32,40 +32,23 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                 forceMaterialTransparency: true,
                 toolbarHeight: 83.h,
                 title: topBar(
-                  name: "Emoji Menu".tr,
+                  name:controller.emojiType == "free" ? "Emojis For All".tr :"FindMe Picks".tr,
                   showBackIcon: true,
                 ),
               ),
               body: SafeArea(
-                  child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child: SingleChildScrollView(
-                  physics: BouncingScrollPhysics(),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.only(top: 14, left: 16, right: 10),
-                        height: 646.h,
-                        width: 164.w,
-                        decoration: BoxDecoration(
-                            color: AppColors.white,
-                            borderRadius: BorderRadius.circular(9),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 2,
-                                blurRadius: 5,
-                                offset: Offset(0, 3),
-                              ),
-                            ]),
-                        child: GridView.builder(
+                  child: SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
+                child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.w),
+                    child: controller.emojiType == "free"
+                        ? GridView.builder(
                             itemCount: controller.freeEmojis.length,
                             shrinkWrap: true,
                             physics: BouncingScrollPhysics(),
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
+                              crossAxisCount: 4,
                             ),
                             itemBuilder: (BuildContext context, int index) {
                               return GestureDetector(
@@ -80,6 +63,8 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                                   children: [
                                     Flexible(
                                       child: CachedNetworkImage(
+                                        height: 58.h,
+                                        width: 58.w,
                                         imageUrl:
                                             controller.freeEmojis[index].image,
                                       ),
@@ -87,30 +72,14 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                                   ],
                                 ),
                               );
-                            }),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(top: 14, left: 16, right: 10),
-                        height: 646.h,
-                        width: 164.w,
-                        decoration: BoxDecoration(
-                            color: AppColors.white,
-                            borderRadius: BorderRadius.circular(9),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 2,
-                                blurRadius: 5,
-                                offset: Offset(0, 3),
-                              ),
-                            ]),
-                        child: GridView.builder(
+                            })
+                        : GridView.builder(
                             itemCount: controller.paidEmojis.length,
                             shrinkWrap: true,
                             physics: BouncingScrollPhysics(),
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 1,
+                              crossAxisCount: 3,
                             ),
                             itemBuilder: (BuildContext context, int index) {
                               return GestureDetector(
@@ -136,8 +105,8 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                                                 color: Colors.white,
                                                 borderRadius:
                                                     BorderRadius.circular(100)),
-                                            width: 120,
-                                            height: 120,
+                                           height: 58.h,
+                                        width: 58.w,
                                           ),
                                         ),
                                         // CircularProgressIndicator(strokeWidth: 1.5,),
@@ -167,11 +136,7 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                                   ],
                                 ),
                               );
-                            }),
-                      )
-                    ],
-                  ),
-                ),
+                            })),
               )),
             ));
   }

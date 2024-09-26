@@ -6,6 +6,7 @@ import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/buttons/app_button.dart';
 import 'package:find_me/components/textfields/phone_inputfield.dart';
 import 'package:find_me/routes/app_routes.dart';
+import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,30 +23,34 @@ class ChangePhoneNumberView extends StatelessWidget {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           forceMaterialTransparency: true,
-          title: Flexible(child: topBar(name: 'Change Phone Number'.tr,padding: EdgeInsets.only(left: 20,right: 20))),
+          title: Flexible(
+              child: topBar(name: 'Change Phone Number'.tr, fontSize: 16)),
         ),
         body: SafeArea(
             child: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 50.w),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Gap(109.h),
-                Center(
-                    child: Text(
-                  'Enter your new phone number'.tr,
-                  style: TextStyle(
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.hintGrey),
-                )),
-                Gap(35.h),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: AppText(
+                    title: 'Enter your new phone number'.tr,
+                    size: 12.sp,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.black.withOpacity(0.43),
+                  ),
+                ),
+                Gap(15),
                 PhoneInputField(
                   onCountryChanged: controller.onCountryChanged,
                   errorText: controller.invalidNumberMessage,
                   onChanged: controller.phoneValidation,
                   controller: controller.pcontroller,
                   initialCode: controller.selectedCountry!.code,
+                  
                 ),
                 Gap(173.h),
                 AppButton(

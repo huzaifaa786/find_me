@@ -21,7 +21,7 @@ class NotificationsPermissionsView extends StatefulWidget {
 
 class _NotificationsPermissionsViewState
     extends State<NotificationsPermissionsView> {
-      bool isSwitched = false;
+  bool isSwitched = false;
 
   @override
   Widget build(BuildContext context) {
@@ -35,69 +35,41 @@ class _NotificationsPermissionsViewState
               body: SafeArea(
                 child: SingleChildScrollView(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 34.w),
+                    padding: EdgeInsets.symmetric(horizontal: 48.w),
                     child: Column(
                       children: [
                         Gap(35),
                         TextSwitchButton(
-                          title: "Emoji notifications".tr,
-                          size: 13.sp,
-                          FontWeight: FontWeight.w500,
-                          value: controller.emojiNotifications,
-                          ontoggle: (value) {
-                            controller.toggleEmojiNotifications(value);
-                          },
-                        ),
-                        Gap(9.h),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: AppText(
-                            title:
-                                "When emoji notifications are off then you won’t be \n  notified if you have received an emoji.".tr,
-                            size: 10,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.hintGrey,
-                            textAlign: TextAlign.left,
-                          ),
-                        ),
-                        Gap(29),
-                        Divider(
-                          thickness: 1,
-                          color: AppColors.black.withOpacity(0.08),
-                        ),
-                        Gap(24),
-                        TextSwitchButton(
                           title: "Requests for profile".tr,
-                          size: 13.sp,
-                          FontWeight: FontWeight.w500,
+                          size: 14.sp,
+                          FontWeight: FontWeight.w600,
                           value: controller.profileNotifications,
                           ontoggle: (value) {
                             controller.toggleProfileNotifications(value);
                           },
                         ),
-                        Gap(9.h),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: AppText(
-                            title:
-                                "When requests for profiles are off you won’t receive  \n requests when someone wants to view your profile.".tr,
-                            size: 10,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.hintGrey,
-                            textAlign: TextAlign.left,
-                          ),
+                        Gap(13.h),
+                        AppText(
+                          title:
+                              "If profile request notifications are disabled, you won’t be notified when someone requests to view your profile."
+                                  .tr,
+                          size: 10,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.hintGrey,
+                          textAlign: TextAlign.left,
                         ),
-                        Gap(25),
+                        Gap(10),
                         Divider(
                           thickness: 1,
                           color: AppColors.black.withOpacity(0.08),
                         ),
-                        Gap(23),
+                        Gap(12),
                         TextSwitchButton(
                           title:
-                              "Requests for social media and  \n business cards".tr,
-                          size: 13.sp,
-                          FontWeight: FontWeight.w500,
+                              "Requests for social media and \nbusiness cards"
+                                  .tr,
+                          size: 14.sp,
+                          FontWeight: FontWeight.w600,
                           value: controller.socialNotifications,
                           ontoggle: (value) {
                             controller.toggleSocialNotifications(value);
@@ -108,14 +80,43 @@ class _NotificationsPermissionsViewState
                           alignment: Alignment.centerLeft,
                           child: AppText(
                             title:
-                                "When requests for social media and business cards \n  are off you won’t be notified if someone is trying \n  to access your profile.".tr,
+                                "If social media and business cards request notifications are disabled, you won’t be notified when someone requests to view your profile."
+                                    .tr,
                             size: 10,
                             fontWeight: FontWeight.w400,
                             color: AppColors.hintGrey,
                             textAlign: TextAlign.left,
                           ),
                         ),
-                       
+                        Gap(10),
+                        Divider(
+                          thickness: 1,
+                          color: AppColors.black.withOpacity(0.08),
+                        ),
+                        Gap(15.h),
+                        TextSwitchButton(
+                          title: "Emoji notifications".tr,
+                          size: 14.sp,
+                          FontWeight: FontWeight.w600,
+                          value: controller.emojiNotifications,
+                          ontoggle: (value) {
+                            controller.toggleEmojiNotifications(value);
+                          },
+                        ),
+                        Gap(13.h),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: AppText(
+                            title:
+                                "If emoji request notifications are disabled, you won’t be notified when someone requests to view your profile."
+                                    .tr,
+                            size: 10,
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.hintGrey,
+                            textAlign: TextAlign.left,
+                          ),
+                        ),
+                        Gap(29),
                       ],
                     ),
                   ),

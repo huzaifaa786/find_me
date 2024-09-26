@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-
+import 'package:find_me/app/auth/components/dob_textfield.dart';
 import 'package:find_me/app/auth/components/dob_textfield_editaccountinformation.dart';
 import 'package:find_me/app/edit_account/edit_account_information_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
@@ -30,7 +30,7 @@ class _EditAccountInformationViewState
         builder: (controller) => Scaffold(
               appBar: AppBar(
                 toolbarHeight: 83.h,
-                title: topBar(name: 'Change Information'.tr),
+                title: topBar(name: 'Change My Information'.tr, fontSize: 16),
                 scrolledUnderElevation: 0,
                 automaticallyImplyLeading: false,
               ),
@@ -42,13 +42,16 @@ class _EditAccountInformationViewState
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Gap(10),
-                          AppText(
-                            title: 'Your name'.tr,
-                            size: 14.sp,
-                            fontWeight: FontWeight.w500,
+                          Gap(30),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: AppText(
+                              title: 'Your name'.tr,
+                              size: 14.sp,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
-                          Gap(10.h),
+                          Gap(20.h),
                           AppTextFields(
                             hintText: controller.firstname,
                             controller: controller.firstNameController,
@@ -64,95 +67,42 @@ class _EditAccountInformationViewState
                                 Validators.emptyStringValidator(
                                     "Last name".tr, value),
                           ),
-                          Gap(25.h),
-                          AppText(
-                            title: 'Your Date of Birth'.tr,
-                            size: 14.sp,
-                            fontWeight: FontWeight.w500,
+                          Gap(35.h),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: AppText(
+                              title: 'Birthday'.tr,
+                              size: 14.sp,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
-                          Gap(25),
+                          Gap(20.h),
                           Row(
                             children: [
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  AppText(
-                                    title: 'DD'.tr,
-                                    color: Colors.grey,
-                                    size: 12.sp,
-                                  ),
-                                  Gap(5.h),
-                                  SizedBox(
-                                    width: 85.w,
-                                    child: buildTextFieldEditAccountInformation(
-                                        controller.dayController,
-                                        'dd'.tr,
-                                        context,
-                                        controller),
-                                  ),
-                                ],
-                              ),
-                              Gap(10.w),
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  AppText(
-                                    title: 'MM'.tr,
-                                    color: Colors.grey,
-                                    size: 12.sp,
-                                  ),
-                                  Gap(5.h),
-                                  SizedBox(
-                                    width: 85.w,
-                                    child: buildTextFieldEditAccountInformation(
-                                        controller.monthController,
-                                        'mm'.tr,
-                                        context,
-                                        controller),
-                                  ),
-                                ],
-                              ),
-                              Gap(10.w),
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  AppText(
-                                    title: 'YYYY'.tr,
-                                    color: Colors.grey,
-                                    size: 12.sp,
-                                  ),
-                                  Gap(5.h),
-                                  SizedBox(
-                                    width: 85.w,
-                                    child: buildTextFieldEditAccountInformation(
-                                        controller.yearController,
-                                        'yyyy'.tr,
-                                        context,
-                                        controller),
-                                  ),
-                                ],
+                              Expanded(
+                                child: buildDateInputField(
+                                    controller.dateController,
+                                    context,
+                                    controller),
                               ),
                             ],
                           ),
-                          Gap(50.h),
+                          Gap(35.h),
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 12),
-                            child: Row(
-                              children: [
-                                AppText(
-                                  title: 'Gender'.tr,
-                                  size: 14.sp,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ],
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: AppText(
+                              title: 'Gender'.tr,
+                              size: 14.sp,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
+                          Gap(15),
                           GenderRadioButtons(
                             onGenderSelected: controller.handleGenderSelected,
                           ),
-                          Gap(40.h),
+                          Gap(80.h),
                           AppButton(
-                            title: 'Save'.tr,
+                            title: 'Save changes'.tr,
                             height: 60.0.h,
                             width: 304.0.w,
                             onTap: () {

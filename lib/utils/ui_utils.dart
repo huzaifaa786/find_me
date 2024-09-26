@@ -620,19 +620,19 @@ class UiUtilites {
                     // ),
                     Gap(10),
                     AppText(
-                      title: "The emoji will appear in \n “My emojis”",
+                      title: "The emoji will appear in\n “My Emojis & Picks”",
                       maxLines: 2,
                       textAlign: TextAlign.center,
                       fontWeight: FontWeight.w400,
                       size: 12.sp,
-                      color: AppColors.hintGrey,
+                      color: AppColors.black.withOpacity(0.69),
                     ),
                     Gap(10),
                     GestureDetector(
                       onTap: onTap,
                       child: Container(
-                        height: 60.h,
-                        width: 170.w,
+                        height: 50.h,
+                        width: 200.w,
                         decoration: BoxDecoration(
                           color: AppColors.primary_color,
                           borderRadius: BorderRadius.circular(20),

@@ -45,10 +45,10 @@ class _LocationViewState extends State<LocationView> {
                         child: AppText(
                           textAlign: TextAlign.left,
                           title:
-                              'Allow the application to access \n your location'
+                              'Allow the application to access \nyour location'
                                   .tr,
                           size: 13.sp,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                       Gap(34.w),
@@ -70,9 +70,9 @@ class _LocationViewState extends State<LocationView> {
                     alignment: Alignment.centerLeft,
                     child: AppText(
                       title:
-                          "Note that we wish to have this functionality in ON."
+                          "Keeping your location turned on will allow the app to provide the best experience, such as real-time connections, which work better when your location is available."
                               .tr,
-                      size: 10,
+                      size: 11,
                       fontWeight: FontWeight.w400,
                       color: AppColors.hintGrey,
                       textAlign: TextAlign.left,

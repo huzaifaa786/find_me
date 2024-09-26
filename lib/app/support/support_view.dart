@@ -34,7 +34,7 @@ class SupportView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       PrefixIconButton(
-                        title: 'Contact via email'.tr,
+                        title: 'Contact Us'.tr,
                         height: 53.0.h,
                         width: 268.0.w,
                         color: AppColors.primary_color,
@@ -47,15 +47,13 @@ class SupportView extends StatelessWidget {
                     ],
                   ),
                   Gap(202.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        alignment: Alignment.center,
-                        "assets/images/official logo.jpg",
-                        scale: 8,
-                      ),
-                    ],
+                  Center(
+                    child: SvgPicture.asset(
+                      height: 36.h,
+                      width: 216.w,
+                      alignment: Alignment.center,
+                      "assets/icons/Logo.svg",
+                    ),
                   ),
                 ],
               )),

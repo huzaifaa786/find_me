@@ -11,9 +11,11 @@ class EmojiMenuController extends GetxController {
   List<EmojiModel> freeEmojis = [];
   String? id;
   String? apitoken;
+  String emojiType = "free";
 
   @override
   void onInit() {
+    emojiType = Get.arguments;
     getEmojis();
     super.onInit();
   }
@@ -42,7 +44,7 @@ class EmojiMenuController extends GetxController {
     var response = await EmojiApi.addEmojis(
       id: id,
     );
-    print( box.read("api_token"));
+    print(box.read("api_token"));
     if (response.isNotEmpty) {
       UiUtilites.successSnackbar("Emoji added successfully".tr, "");
       Get.back();

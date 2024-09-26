@@ -1,10 +1,14 @@
+import 'package:bottom_picker/bottom_picker.dart';
+import 'package:bottom_picker/resources/arrays.dart';
 import 'package:find_me/api/auth_api/user_api.dart';
 import 'package:find_me/api/change_information/change_information_api.dart';
 import 'package:find_me/models/user_model.dart';
+import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/ui_utils.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:intl/intl.dart';
 
 class EditAccountInformationController extends GetxController {
   static EditAccountInformationController instance = Get.find();
@@ -17,6 +21,7 @@ class EditAccountInformationController extends GetxController {
   String? Birthday;
 
   //! Date of Birth Selection
+  final dateController = TextEditingController();
   final dayController = TextEditingController();
   final monthController = TextEditingController();
   final yearController = TextEditingController();
@@ -34,10 +39,54 @@ class EditAccountInformationController extends GetxController {
       lastDate: lastDate,
     );
     if (picked != null) {
+      String formattedDate = DateFormat('dd MMMM yyyy').format(picked);
+      dateController.text = formattedDate;
       dayController.text = picked.day.toString().padLeft(2, '0');
       monthController.text = picked.month.toString().padLeft(2, '0');
       yearController.text = picked.year.toString();
     }
+  }
+
+  void openDatePicker(BuildContext context) {
+    final DateTime now = DateTime.now();
+    final DateTime maxDate = DateTime(now.year, now.month, now.day);
+    final DateTime minDate = DateTime(now.year - 100, now.month, now.day);
+    final DateTime initialDate = DateTime(now.year - 18, now.month, now.day);
+    BottomPicker.date(
+      pickerTitle: Text(
+        'Set your Birthday',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 15,
+          color: AppColors.primary_color,
+        ),
+      ),
+      titlePadding: EdgeInsets.only(bottom: 10),
+      dateOrder: DatePickerDateOrder.dmy,
+      initialDateTime: initialDate,
+      maxDateTime: maxDate,
+      minDateTime: minDate,
+      pickerTextStyle: TextStyle(
+        color: AppColors.primary_color,
+        fontWeight: FontWeight.bold,
+        fontSize: 12,
+      ),
+      onChange: (picked) {
+        String formattedDate = DateFormat('dd MMMM yyyy').format(picked);
+        dateController.text = formattedDate; // Update the dateController
+        dayController.text = picked.day.toString().padLeft(2, '0');
+        monthController.text = picked.month.toString().padLeft(2, '0');
+        yearController.text = picked.year.toString();
+      },
+      onSubmit: (picked) {
+        String formattedDate = DateFormat('dd MMMM yyyy').format(picked);
+        dateController.text = formattedDate; // Update the dateController
+        dayController.text = picked.day.toString().padLeft(2, '0');
+        monthController.text = picked.month.toString().padLeft(2, '0');
+        yearController.text = picked.year.toString();
+      },
+      bottomPickerTheme: BottomPickerTheme.blue,
+    ).show(context);
   }
 
   @override
@@ -61,6 +110,8 @@ class EditAccountInformationController extends GetxController {
 
       if (userModel?.dob != null) {
         DateTime dob = DateTime.parse(userModel!.dob!);
+        String formattedDate = DateFormat('dd MMMM yyyy').format(dob);
+        dateController.text = formattedDate;
         dayController.text = dob.day.toString().padLeft(2, '0');
         monthController.text = dob.month.toString().padLeft(2, '0');
         yearController.text = dob.year.toString();
@@ -79,7 +130,8 @@ class EditAccountInformationController extends GetxController {
       gender: gender,
     );
     if (response.isNotEmpty) {
-      UiUtilites.registerSuccessAlert(Get.context, "Changes saved successfully".tr);
+      UiUtilites.registerSuccessAlert(
+          Get.context, "Changes saved successfully".tr);
     } else {
       UiUtilites.errorSnackbar(
           "Change Information Error".tr, "Information is Not Change".tr);

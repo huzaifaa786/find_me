@@ -32,7 +32,7 @@ class _LanguagesViewState extends State<LanguagesView> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 83.h,
-        title: topBar(name: 'Languages'.tr),
+        title: topBar(name: 'Language'.tr),
         automaticallyImplyLeading: false,
         scrolledUnderElevation: 0,
       ),
@@ -66,7 +66,7 @@ class _LanguagesViewState extends State<LanguagesView> {
                               AppText(
                                 title: 'English (United States)'.tr,
                                 size: 14,
-                                fontWeight: FontWeight.w400,
+                                fontWeight: FontWeight.w500,
                                 color:
                                     controller.site == translateMethod.English
                                         ? AppColors.primary_color
@@ -122,19 +122,19 @@ class _LanguagesViewState extends State<LanguagesView> {
                                 AppText(
                                   title: 'العربية',
                                   size: 14,
-                                  fontWeight: FontWeight.w400,
+                                  fontWeight: FontWeight.w500,
                                   color:
                                       controller.site == translateMethod.Arabic
                                           ? AppColors.primary_color
                                           : AppColors.black,
                                 ),
-                                Gap(5.h),
-                                AppText(
-                                  title: 'Arabic',
-                                  size: 12,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.hintGrey,
-                                ),
+                                // Gap(5.h),
+                                // AppText(
+                                //   title: 'Arabic',
+                                //   size: 12,
+                                //   fontWeight: FontWeight.w400,
+                                //   color: AppColors.hintGrey,
+                                // ),
                               ],
                             ),
                             Radio(

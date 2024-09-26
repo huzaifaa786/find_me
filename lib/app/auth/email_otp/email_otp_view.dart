@@ -33,42 +33,25 @@ class EmailOtpView extends StatelessWidget {
               padding: const EdgeInsets.only(left: 30.0, right: 30.0),
               child: Column(children: [
                 Gap(30),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: 48.h,
-                      width: 230.w,
-                      child: AppText(
-                        title: 'Verify your email'.tr,
-                        color: AppColors.black,
-                        fontWeight: FontWeight.w600,
-                        size: 20,
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ],
+                AppText(
+                  title: 'Confirm your email'.tr,
+                  color: AppColors.black,
+                  fontWeight: FontWeight.w600,
+                  size: 20,
+                  textAlign: TextAlign.center,
                 ),
-                Gap(20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Flexible(
-                      child: SizedBox(
-                        height: 30.h,
-                        width: 270.w,
-                        child: AppText(
-                          title:
-                              'We have sent you an OTP code to your new email , please enter it to continue'
-                                  .tr,
-                          color: AppColors.hintGrey,
-                          fontWeight: FontWeight.w500,
-                          size: 12,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                  ],
+                Gap(10),
+                Padding(
+                  padding: const EdgeInsets.only(left: 18.0,right: 18),
+                  child: AppText(
+                    title:
+                        'We have sent you an OTP code to your new email , please enter it to continue'
+                            .tr,
+                    color: AppColors.hintGrey,
+                    fontWeight: FontWeight.w400,
+                    size: 14,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 Gap(40),
                 Directionality(

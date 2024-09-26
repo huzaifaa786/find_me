@@ -39,10 +39,11 @@ class ReportView extends StatelessWidget {
                   Gap(40.h),
                   AppText(
                     title:
-                        'Briefly explain what happened\n or what’s not working.'
+                        'Please provide a brief description of the issue or what isn’t working properly.'
                             .tr,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w400,
                     size: 14.sp,
+                    color: AppColors.black.withOpacity(0.8),
                   ),
                   Gap(30.h),
                   // Dropdown to select report option

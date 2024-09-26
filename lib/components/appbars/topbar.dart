@@ -14,48 +14,52 @@ Widget topBar({
   String? name,
   bool showBackIcon = true,
   Color color = AppColors.black,
+  double fontSize = 20,
+  double gapIcon = 70,
+  double gap = 20,
   padding = const EdgeInsets.only(left: 20, right: 20),
 }) {
   return Padding(
     padding: padding,
     child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        if (showBackIcon)
+        showBackIcon?
           GestureDetector(
               onTap: () {
                 Get.back();
               },
               child: box!.read('locale') != 'ar'
                   ? Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SvgPicture.asset(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SvgPicture.asset(
                         ImagesConst.backIcon,
                         height: 28.h,
                         width: 28.w,
                         fit: BoxFit.scaleDown,
                         color: color,
                       ),
-                  )
+                    )
                   : Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SvgPicture.asset(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SvgPicture.asset(
                         "assets/icons/back right.svg",
                         height: 28.h,
                         width: 28.w,
                         fit: BoxFit.scaleDown,
                         color: color,
                       ),
-                  )),
-        if (showBackIcon) Gap(70.w) else Gap(98.w),
+                    )):Text(""),
         Padding(
-          padding: const EdgeInsets.only(bottom: 8.0),
+          padding: const EdgeInsets.only(bottom: 10.0, right: 20),
           child: AppText(
             title: name!,
-            size: 20.sp,
-            fontWeight: FontWeight.w500,
+            size: fontSize.sp,
+            fontWeight: FontWeight.w600,
             color: color,
           ),
         ),
+        Text("")
       ],
     ),
   );

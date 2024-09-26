@@ -14,7 +14,7 @@ class EmojiStoreCard extends StatelessWidget {
       this.subtitle,
       this.title,
       this.show,
-      this.containerHeight = 162,
+      this.containerHeight = 142,
       this.containerWidth = 142,
       this.iconHeight,
       required this.iconGap,
@@ -37,7 +37,6 @@ class EmojiStoreCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-         
           width: containerWidth,
           height: containerHeight,
           decoration: BoxDecoration(
@@ -66,7 +65,6 @@ class EmojiStoreCard extends StatelessWidget {
                     subtitle.toString(),
                     style: TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
                     textAlign: TextAlign.center,
-                    
                   ),
                 // Gap(cardBottomGap),
               ],

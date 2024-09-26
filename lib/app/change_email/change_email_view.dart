@@ -26,34 +26,33 @@ class ChangeEmailView extends StatelessWidget {
               appBar: AppBar(
                 automaticallyImplyLeading: false,
                 scrolledUnderElevation: 0,
-                title: topBar(name: 'Change Email'.tr),
+                title: topBar(name: 'Change Email'.tr,fontSize: 16),
               ),
               body: SafeArea(
                   child: Container(
                 width: 390.w,
                 padding: EdgeInsets.symmetric(horizontal: 50.w),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Gap(60.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        AppText(
-                          title: 'Enter New Email'.tr,
-                          fontWeight: FontWeight.w500,
-                          size: 12.sp,
-                          color: AppColors.hintGrey,
-                        )
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: AppText(
+                        title: 'Enter your new email address'.tr,
+                        size: 12.sp,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.black.withOpacity(0.43),
+                      ),
                     ),
-                    Gap(60.h),
+                    Gap(15),
                     AppTextFields(
                       hintText: 'Email'.tr,
                       controller: controller.emailController,
                       fieldValidator: (value) =>
                           Validators.emailValidator(value),
                     ),
-                    Gap(40.h),
+                    Gap(100.h),
                     AppButton(
                       title: 'Confirm'.tr,
                       height: 50.0.h,

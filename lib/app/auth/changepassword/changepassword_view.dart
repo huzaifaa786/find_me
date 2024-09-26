@@ -26,7 +26,7 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                 centerTitle: true,
                 automaticallyImplyLeading: false,
                 forceMaterialTransparency: true,
-                title: topBar(name: 'Change password'.tr),
+                title: topBar(name: 'Change password'.tr,fontSize: 16),
               ),
               body: SafeArea(
                   child: Container(
@@ -36,45 +36,31 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                   children: [
                     Gap(70.h),
                     PasswordTextFields(
-                      hintText: 'Old Password'.tr,
+                      hintText: 'Current password'.tr,
                       obscure: controller.obscureTextOldPassword,
                       controller: controller.oldpasswordController,
                       toggle: controller.oldtoggle,
                     ),
                     Gap(16.h),
                     PasswordTextFields(
-                      hintText: 'Add new password',
+                      hintText: 'New password',
                       obscure: controller.obscureTextPassword,
                       controller: controller.passwordController,
                       toggle: controller.toggle,
                     ),
                     Gap(16.h),
                     PasswordTextFields(
-                      hintText: 'Confirm Password'.tr,
+                      hintText: 'Confirm new password'.tr,
                       obscure: controller.obscureTextCPassword,
                       controller: controller.confirmPasswordController,
                       toggle: controller.ctoggle,
                     ),
                     Gap(30.h),
                     
-                    // controller.changePasswordText
-                    //     ? Row(
-                    //         mainAxisAlignment: MainAxisAlignment.center,
-                    //         children: [
-                    //           AppText(
-                    //             title: 'Password changed successfully',
-                    //             color: Colors.green,
-                    //           ),
-                    //           Image.asset(
-                    //             ImagesConst.tickicon,
-                    //             color: Colors.green,
-                    //           ),
-                    //         ],
-                    //       )
-                    //     : SizedBox.shrink(),
-                    Gap(30.h),
+                    
+                    Gap(80.h),
                     AppButton(
-                      title: 'Submit',
+                      title: 'Confirm'.tr,
                       height: 50.0.h,
                       width: 304.0.w,
                       onTap: () {

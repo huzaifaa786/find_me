@@ -50,12 +50,15 @@ class _PrivacyCardState extends State<PrivacyCard> {
                   size: 14.sp,
                 ),
                 if (widget.image != null && widget.image!.isNotEmpty)
-                  SvgPicture.asset(widget.image!),
+                  Padding(
+                    padding: const EdgeInsets.only(left:2.0),
+                    child: SvgPicture.asset(widget.image!,height: 17,width: 17,),
+                  ),
               ],
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 34.w),
+            padding: EdgeInsets.symmetric(horizontal: 25.w),
             decoration: BoxDecoration(
               color: AppColors.white,
             ),
@@ -67,7 +70,7 @@ class _PrivacyCardState extends State<PrivacyCard> {
                   child: AppText(
                     title: "Profile".tr,
                     size: 14.sp,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
                 Gap(27),
@@ -75,20 +78,17 @@ class _PrivacyCardState extends State<PrivacyCard> {
                   title: "Grant access".tr,
                   value: widget.publicValue ?? false,
                   size: 12.sp,
-                  FontWeight: FontWeight.w400,
+                  FontWeight: FontWeight.w600,
                   ontoggle: widget.publicOnTab ?? (value) {},
                 ),
                 Gap(15.h),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: AppText(
-                    title:
-                        "When your account is public, your profile can be viewed by anyone on find me.".tr,
-                    size: 10,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.hintGrey,
-                    textAlign: TextAlign.left,
-                  ),
+                AppText(
+                  title:
+                      "When turned on, others can view your profile without needing to send a request.".tr,
+                  size: 10,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.hintGrey,
+                  textAlign: TextAlign.left,
                 ),
                 Gap(37.5),
                 Divider(
@@ -99,30 +99,27 @@ class _PrivacyCardState extends State<PrivacyCard> {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: AppText(
-                    title: "Social media & Business card".tr,
+                    title: "Social Media Accounts & Digital Business card".tr,
                     size: 14.sp,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
                 Gap(27),
                 TextSwitchButton(
                   title: "Grant access".tr,
                   size: 12.sp,
-                  FontWeight: FontWeight.w400,
+                  FontWeight: FontWeight.w600,
                   value: widget.socialValue ?? false,
                   ontoggle: widget.socialOnTab ?? (value) {},
                 ),
                 Gap(15.h),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: AppText(
-                    title:
-                        "When your profile is private, only people you grant access after receiving a request will be able to look into your profile.".tr,
-                    size: 10,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.hintGrey,
-                    textAlign: TextAlign.left,
-                  ),
+                AppText(
+                  title:
+                      "When turned on, others can view your social media accounts and the digital business card without needing to send a request.".tr,
+                  size: 10,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.hintGrey,
+                  textAlign: TextAlign.left,
                 ),
                 Gap(54.h),
               ],
