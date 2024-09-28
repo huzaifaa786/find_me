@@ -40,31 +40,35 @@ class _EmojiStoreViewState extends State<EmojiStoreView> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        EmojiStoreCard(
-                          icon: "assets/images/allemojis.png",
-                          iconGap: 8.h,
-                          iconHeight: 48.h,
-                          iconWidth: 96.w,
-                          padding: EdgeInsets.only(top: 18, bottom: 10),
-                          title: "Emojis for All".tr,
-                          subtitle: "".tr,
-                          show: true,
-                          onTap: () {
-                            Get.toNamed(AppRoutes.edit_menu,arguments: "free");
-                          },
+                        Flexible(
+                          child: EmojiStoreCard(
+                            icon: "assets/images/allemojis.png",
+                            iconGap: 8.h,
+                            iconHeight: 48.h,
+                            iconWidth: 96.w,
+                            padding: EdgeInsets.only(top: 18, bottom: 10),
+                            title: "Emojis for All".tr,
+                            subtitle: "".tr,
+                            show: true,
+                            onTap: () {
+                              Get.toNamed(AppRoutes.edit_menu,arguments: "free");
+                            },
+                          ),
                         ),
-                        EmojiStoreCard(
-                          icon:"assets/images/picks.png",
-                          iconGap: 3,
-                          padding: EdgeInsets.only(top: 8, bottom: 28),
-                          iconHeight: 68.h,
-                          iconWidth: 68.w,
-                          title: "FindMe Picks".tr,
-                          subtitle: "Favorites & purchased.".tr,
-                          show: false,
-                          onTap: () {
-                            Get.toNamed(AppRoutes.edit_menu,arguments: "paid");
-                          },
+                        Flexible(
+                          child: EmojiStoreCard( 
+                            icon:"assets/images/picks.png",
+                            iconGap: 3,
+                            padding: EdgeInsets.only(top: 8, bottom: 28),
+                            iconHeight: 68.h,
+                            iconWidth: 68.w,
+                            title: "FindMe Picks".tr,
+                            subtitle: "Favorites & purchased.".tr,
+                            show: false,
+                            onTap: () {
+                              Get.toNamed(AppRoutes.edit_menu,arguments: "paid");
+                            },
+                          ),
                         ),
                       ],
                     ),
@@ -72,31 +76,35 @@ class _EmojiStoreViewState extends State<EmojiStoreView> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        EmojiStoreCard(
-                          icon:"assets/images/Emoji.png",
-                          iconGap: 10,
-                          padding: EdgeInsets.only(top: 8, bottom: 28),
-                          iconHeight: 68.h,
-                          iconWidth: 68.w,
-                          title: "Gifts".tr,
-                          subtitle: "Favorites & purchased.".tr,
-                          show: false,
-                          onTap: () {
-                            Get.toNamed(AppRoutes.gifted_emoji);
-                          },
+                        Flexible(
+                          child: EmojiStoreCard(
+                            icon:"assets/images/Emoji.png",
+                            iconGap: 10,
+                            padding: EdgeInsets.only(top: 8, bottom: 28),
+                            iconHeight: 68.h,
+                            iconWidth: 68.w,
+                            title: "Gifts".tr,
+                            subtitle: "Favorites & purchased.".tr,
+                            show: false,
+                            onTap: () {
+                              Get.toNamed(AppRoutes.gifted_emoji);
+                            },
+                          ),
                         ),
-                        EmojiStoreCard(
-                          icon:"assets/images/myemojis.png",
-                          iconGap: 0,
-                          padding: EdgeInsets.only(),
-                          iconHeight: 80.h,
-                          iconWidth: 80.w,
-                          title: "My emojis \n& Picks".tr,
-                          subtitle: "Favorites & purchased.".tr,
-                          show: false,
-                          onTap: () {
-                            Get.toNamed(AppRoutes.my_emojis);
-                          },
+                        Flexible(
+                          child: EmojiStoreCard(
+                            icon:"assets/images/myemojis.png",
+                            iconGap: 0,
+                            padding: EdgeInsets.only(),
+                            iconHeight: 80.h,
+                            iconWidth: 80.w,
+                            title: "My emojis \n& Picks".tr,
+                            subtitle: "Favorites & purchased.".tr,
+                            show: false,
+                            onTap: () {
+                              Get.toNamed(AppRoutes.my_emojis);
+                            },
+                          ),
                         ),
                       ],
                     ),

@@ -16,6 +16,7 @@ class EditUrlController extends GetxController {
   TextEditingController facebookController = TextEditingController();
   TextEditingController youtubeController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  TextEditingController websiteController = TextEditingController();
   UserProfileModel? profileModel;
 
   @override
@@ -37,6 +38,7 @@ class EditUrlController extends GetxController {
       youtubeController.text = profileModel!.urls!.youtube ?? '';
       emailController.text = profileModel!.urls!.email ?? '';
       linkedinController.text = profileModel!.urls!.linkedin ?? '';
+      websiteController.text = profileModel!.urls!.website ?? '';
     }
   }
 
@@ -51,6 +53,7 @@ class EditUrlController extends GetxController {
     youtubeController.dispose();
     emailController.dispose();
     linkedinController.dispose();
+    websiteController.dispose();
   }
 
   @override
@@ -73,6 +76,7 @@ class EditUrlController extends GetxController {
         youtube: youtubeController.text,
         email: emailController.text,
         linkedin: linkedinController.text,
+        website: websiteController.text,
       );
 
       if (response.isNotEmpty) {

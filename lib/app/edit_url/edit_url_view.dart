@@ -33,23 +33,14 @@ class _EditUrlViewState extends State<EditUrlView> {
               child: Column(
                 children: [
                   Gap(41),
-                  buildStackedUrlField(controller, "assets/icons/whatsapp1.svg",
-                      "Whatsapp URL", controller.whatsappController),
-                  Gap(24),
-                  buildStackedUrlField(controller, "assets/icons/linkedin.svg",
-                      "Linkedin URL", controller.linkedinController),
+                  buildStackedUrlField(controller, "assets/icons/snapchat.svg",
+                      "Snapchat URL", controller.snapchatController),
                   Gap(24),
                   buildStackedUrlField(
                       controller,
                       "assets/icons/instagram_black.svg",
                       "Instagram URL",
                       controller.instagramController),
-                  Gap(24),
-                  buildStackedUrlField(
-                      controller,
-                      "assets/icons/tiktok_black.svg",
-                      "TikTok URL",
-                      controller.tiktokController),
                   Gap(24),
                   buildStackedUrlField(
                       controller,
@@ -63,20 +54,32 @@ class _EditUrlViewState extends State<EditUrlView> {
                       "Telegram URL",
                       controller.telegramController),
                   Gap(24),
-                  buildStackedUrlField(controller, "assets/icons/snapchat.svg",
-                      "Snapchat URL", controller.snapchatController),
+                  buildStackedUrlField(controller, "assets/icons/whatsapp1.svg",
+                      "Whatsapp URL", controller.whatsappController),
+                  Gap(24),
+                  buildStackedUrlField(
+                      controller,
+                      "assets/icons/tiktok_black.svg",
+                      "TikTok URL",
+                      controller.tiktokController),
+                  Gap(24),
+                  buildStackedUrlField(controller, "assets/icons/linkedin.svg",
+                      "Linkedin URL", controller.linkedinController),
+                  Gap(24),
+                  buildStackedUrlField(controller, "assets/icons/gmail.svg",
+                      "Email URL", controller.emailController),
+                  Gap(24),
+                  buildStackedUrlField(controller, "assets/icons/web.svg",
+                      "Website url", controller.websiteController),
+                  Gap(24),
+                  buildStackedUrlField(controller, "assets/icons/youtube.svg",
+                      "YouTube URL", controller.youtubeController),
                   Gap(24),
                   buildStackedUrlField(
                       controller,
                       "assets/icons/facebook_black.svg",
                       "Facebook URL",
                       controller.facebookController),
-                  Gap(24),
-                  buildStackedUrlField(controller, "assets/icons/youtube.svg",
-                      "YouTube URL", controller.youtubeController),
-                  Gap(24),
-                  buildStackedUrlField(controller, "assets/icons/gmail.svg",
-                      "Email URL", controller.emailController),
                   Gap(47),
                   AppButton(
                     onTap: () {
@@ -122,7 +125,6 @@ class _EditUrlViewState extends State<EditUrlView> {
                   controller.updateUrls(isRemove: true);
                   controller.update();
                 });
-                
               },
             ),
           ),

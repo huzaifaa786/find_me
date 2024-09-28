@@ -43,7 +43,6 @@ class _MainViewState extends State<MainView> {
 
   Widget _buildNavigationBarItem(MainController controller, int index,
       String iconPath, String label, int cartLength) {
-        
     return InkWell(
       onTap: () {
         setState(() {
@@ -51,26 +50,44 @@ class _MainViewState extends State<MainView> {
         });
       },
       // child: Icon(Icons.abc, color: Colors.white,),
-      child: Expanded(
-        // width: 50,
-        child: Padding(
-         padding: EdgeInsets.only(bottom: 13),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              index == 1
-                  ? badges.Badge(
-                      badgeStyle: const badges.BadgeStyle(
-                          badgeColor: AppColors.primary_color),
-                      showBadge: cartLength > 0,
-                      position: badges.BadgePosition.topStart(top: -10.h),
-                      badgeContent: AppText(
-                        title: '$cartLength',
-                        color: AppColors.white,
-                        overFlow: TextOverflow.ellipsis,
-                      ),
-                      child: SvgPicture.asset(
+      child: Padding(
+        padding: EdgeInsets.only(bottom: 13),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            index == 1
+                ? badges.Badge(
+                    badgeStyle: const badges.BadgeStyle(
+                        badgeColor: AppColors.primary_color),
+                    showBadge: cartLength > 0,
+                    position: badges.BadgePosition.topStart(top: -10.h),
+                    badgeContent: AppText(
+                      title: '$cartLength',
+                      color: AppColors.white,
+                      overFlow: TextOverflow.visible,
+                    ),
+                    child: SvgPicture.asset(
+                      iconPath,
+                      fit: BoxFit.scaleDown,
+                      height: 27.h,
+                      width: 27.w,
+                      color: controller.navigationMenuIndex == index
+                          ? AppColors.primary_color
+                          : AppColors.black,
+                    ),
+                  )
+                : index == 2
+                    ? SvgPicture.asset(
+                        iconPath,
+                        fit: BoxFit.scaleDown,
+                        height: 27.h,
+                        width: 27.w,
+                        color: controller.navigationMenuIndex == index
+                            ? AppColors.primary_color
+                            : AppColors.black,
+                      )
+                    : SvgPicture.asset(
                         iconPath,
                         fit: BoxFit.scaleDown,
                         height: 27.h,
@@ -79,41 +96,20 @@ class _MainViewState extends State<MainView> {
                             ? AppColors.primary_color
                             : AppColors.black,
                       ),
-                    )
-                  : index == 2
-                      ? SvgPicture.asset(
-                          iconPath,
-                          fit: BoxFit.scaleDown,
-                          height: 27.h,
-                          width: 27.w,
-                          color: controller.navigationMenuIndex == index
-                              ? AppColors.primary_color
-                              : AppColors.black,
-                        )
-                      : SvgPicture.asset(
-                          iconPath,
-                          fit: BoxFit.scaleDown,
-                          height: 27.h,
-                          width: 27.w,
-                          color: controller.navigationMenuIndex == index
-                              ? AppColors.primary_color
-                              : AppColors.black,
-                        ),
-              Gap(4.h),
-              ConstrainedBox(
-                constraints: BoxConstraints(maxWidth: Get.width),
-                child: AppText(
-                  title: label,
-                  overFlow: TextOverflow.visible,
-                  color: controller.navigationMenuIndex == index
-                      ? AppColors.primary_color
-                      : AppColors.black,
-                  size: 10.sp,
-                  fontWeight: FontWeight.w600,
-                ),
+            Gap(4.h),
+            ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: Get.width),
+              child: AppText(
+                title: label,
+                overFlow: TextOverflow.visible,
+                color: controller.navigationMenuIndex == index
+                    ? AppColors.primary_color
+                    : AppColors.black,
+                size: 10.sp,
+                fontWeight: FontWeight.w600,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -139,7 +135,8 @@ class _MainViewState extends State<MainView> {
                 size: Size(120, 150),
                 painter: RPSCustomPainter(),
                 child: Container(
-                  padding: EdgeInsets.only(left: 20, right: 20, bottom: Platform.isIOS ? 7 : 0),
+                  padding: EdgeInsets.only(
+                      left: 20, right: 20, bottom: Platform.isIOS ? 7 : 0),
                   height: 134.h,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.end,

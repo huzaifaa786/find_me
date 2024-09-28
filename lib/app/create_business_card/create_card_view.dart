@@ -36,6 +36,7 @@ class _CreateCardViewState extends State<CreateCardView> {
               appBar: AppBar(
                 toolbarHeight: 83.h,
                 title: topBar(
+                    fontSize: 16,
                     name: controller.profileBusinessCardModel != null
                         ? 'Edit business card'.tr
                         : 'Create Business Card'.tr),
@@ -43,300 +44,241 @@ class _CreateCardViewState extends State<CreateCardView> {
                 automaticallyImplyLeading: false,
               ),
               body: SafeArea(
-                  child: Padding(
-                padding: EdgeInsets.only(left: 56.w, right: 56.w),
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Gap(23),
-                      GestureDetector(
-                        onTap: () {
-                          controller.pickImageFromGallery();
-                        },
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  height: 72.h,
-                                  width: 79.w,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      width: 1,
-                                      color: AppColors.primary_color,
-                                    ),
-                                    borderRadius: BorderRadius.circular(11),
+                  child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Gap(23),
+                    GestureDetector(
+                      onTap: () {
+                        controller.pickImageFromGallery();
+                      },
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                height: 72.h,
+                                width: 79.w,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    width: 1,
+                                    color: AppColors.primary_color,
                                   ),
-                                  child: Container(
-                                    height: 21.h,
-                                    width: 27.w,
-                                    child: controller.profileImage != null
-                                        ? Image.file(
-                                            controller.profileImage!,
-                                            fit: BoxFit.scaleDown,
-                                          )
-                                        : controller.profileBusinessCardModel !=
-                                                    null &&
-                                                controller
-                                                        .profileBusinessCardModel!
-                                                        .image !=
-                                                    null
-                                            ? CachedNetworkImage(
-                                                imageUrl: controller
-                                                    .profileBusinessCardModel!
-                                                    .image!,
-                                                fit: BoxFit.scaleDown,
-                                              )
-                                            : SvgPicture.asset(
-                                                'assets/icons/image_upload.svg',
-                                                fit: BoxFit.scaleDown,
-                                              ),
-                                  ),
+                                  borderRadius: BorderRadius.circular(11),
                                 ),
-                              ],
-                            ),
-                            Gap(16.h),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                AppText(
-                                  title: 'Add photo'.tr,
-                                  color: AppColors.primary_color,
-                                  size: 12,
-                                  fontWeight: FontWeight.w500,
-                                )
-                              ],
-                            ),
-                            Gap(7.h),
-                          ],
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          AppText(
-                            title: 'Optional'.tr,
-                            color: AppColors.light_grey,
-                            size: 10,
-                            fontWeight: FontWeight.w400,
-                          )
-                        ],
-                      ),
-                      Gap(24.h),
-                      Divider(
-                        color: AppColors.border_grey,
-                        height: 1.h,
-                        indent: 10.w,
-                        endIndent: 10.w,
-                      ),
-                      Gap(20.h),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 135.w,
-                            child: AppTextFields(
-                              hintText: 'First name'.tr,
-                              controller: controller.firstnameController,
-                              fieldValidator: (value) =>
-                                  Validators.emptyStringValidator(
-                                      "First name".tr, value),
-                            ),
+                                child: Container(
+                                  height: 21.h,
+                                  width: 27.w,
+                                  child: controller.profileImage != null
+                                      ? Image.file(
+                                          controller.profileImage!,
+                                          fit: BoxFit.scaleDown,
+                                        )
+                                      : controller.profileBusinessCardModel !=
+                                                  null &&
+                                              controller
+                                                      .profileBusinessCardModel!
+                                                      .image !=
+                                                  null
+                                          ? CachedNetworkImage(
+                                              imageUrl: controller
+                                                  .profileBusinessCardModel!
+                                                  .image!,
+                                              fit: BoxFit.scaleDown,
+                                            )
+                                          : SvgPicture.asset(
+                                              'assets/icons/image_upload.svg',
+                                              fit: BoxFit.scaleDown,
+                                            ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Gap(16.h),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              AppText(
+                                title: 'Add photo'.tr,
+                                color: AppColors.primary_color,
+                                size: 12,
+                                fontWeight: FontWeight.w500,
+                              )
+                            ],
                           ),
                           Gap(7.h),
-                          SizedBox(
-                            width: 135.w,
-                            child: AppTextFields(
-                              hintText: 'Last name'.tr,
-                              controller: controller.lastnameController,
-                              fieldValidator: (value) =>
-                                  Validators.emptyStringValidator(
-                                      "Last name".tr, value),
-                            ),
-                          ),
                         ],
                       ),
-                      Gap(20.h),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                    ),
+                    Gap(14.h),
+                    Divider(
+                      color: AppColors.black.withOpacity(0.11),
+                      thickness: 8.0,
+                    ),
+                    Gap(20.h),
+                    Padding(
+                      padding: EdgeInsets.only(left: 56.w, right: 56.w),
+                      child: Column(
                         children: [
+                          AppTextFields(
+                            hintText: 'First name'.tr,
+                            controller: controller.firstnameController,
+                            fieldValidator: (value) =>
+                                Validators.emptyStringValidator(
+                                    "First name".tr, value),
+                          ),
+                          Gap(19.h),
+                          AppTextFields(
+                            hintText: 'Last name'.tr,
+                            controller: controller.lastnameController,
+                            fieldValidator: (value) =>
+                                Validators.emptyStringValidator(
+                                    "Last name".tr, value),
+                          ),
+                          Gap(19.h),
+                          AppTextFields(
+                            hintText: 'Company name'.tr,
+                            controller: controller.companyNameController,
+                          ),
+                          Gap(19.h),
+                          AppTextFields(
+                            hintText: 'Job title'.tr,
+                            controller: controller.jobTitleController,
+                            fieldValidator: (value) =>
+                                Validators.emptyStringValidator(
+                                    "Job title".tr, value),
+                          ),
+                          Gap(19.h),
+                          PhoneInputField(
+                            onCountryChanged: controller.onCountryChanged,
+                            errorText: controller.invalidNumberMessage,
+                            onChanged: controller.phoneValidation,
+                            controller: controller.pcontroller,
+                            initialCode: controller.selectedCountry!.code,
+                          ),
+                          Gap(19.h),
+                          AppTextFields(
+                            hintText: 'Email'.tr,
+                            controller: controller.emailController,
+                            fieldValidator: (value) =>
+                                Validators.emailValidator(value),
+                          ),
                           Gap(25.h),
-                          AppText(
-                            title: 'Optional'.tr,
-                            color: AppColors.light_grey,
-                            size: 10,
-                            fontWeight: FontWeight.w400,
-                          )
-                        ],
-                      ),
-                      Gap(10.h),
-                      AppTextFields(
-                        hintText: 'Company name'.tr,
-                        controller: controller.companyNameController,
-                      ),
-                      Gap(19.h),
-                      AppTextFields(
-                        hintText: 'Job title'.tr,
-                        controller: controller.jobTitleController,
-                        fieldValidator: (value) =>
-                            Validators.emptyStringValidator(
-                                "Job title".tr, value),
-                      ),
-                      Gap(19.h),
-                      PhoneInputField(
-                        onCountryChanged: controller.onCountryChanged,
-                        errorText: controller.invalidNumberMessage,
-                        onChanged: controller.phoneValidation,
-                        controller: controller.pcontroller,
-                        initialCode: controller.selectedCountry!.code,
-                      ),
-                      Gap(19.h),
-                      AppTextFields(
-                        hintText: 'Email'.tr,
-                        controller: controller.emailController,
-                        fieldValidator: (value) =>
-                            Validators.emailValidator(value),
-                      ),
-                      Gap(19.h),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: AppText(
+                              title: 'Social Media Accounts'.tr,
+                              size: 12,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          Gap(20.h),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 135.w,
+                                child: AppTextFields(
+                                  icon: 'assets/icons/instagram.svg',
+                                  
+                                  hintText: 'Username'.tr,
+                                  controller: controller.instagramController,
+                                  color: AppColors.black,
+                                ),
+                              ),
+                              Gap(7.h),
+                              SizedBox(
+                                width: 135.w,
+                                child: AppTextFields(
+                                  icon: 'assets/icons/twitter-x 1.svg',
+                                  hintText: 'Username'.tr,
+                                  controller: controller.twitterController,
+                                  color: AppColors.black,
+                                ),
+                              ),
+                            ],
+                          ),
                           Gap(25.h),
-                          AppText(
-                            title: 'Social media accounts'.tr,
-                            size: 12,
-                            fontWeight: FontWeight.w500,
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 135.w,
+                                child: AppTextFields(
+                                  icon: 'assets/icons/web.svg',
+                                  hintText: 'Username'.tr,
+                                  controller: controller.tiktokController,
+                                  color: AppColors.black,
+                                ),
+                              ),
+                              Gap(7.h),
+                              SizedBox(
+                                width: 135.w,
+                                child: AppTextFields(
+                                  icon: 'assets/icons/linkedin.svg',
+                                  hintText: 'Username'.tr,
+                                  controller: controller.linkedinController,
+                                  color: AppColors.black,
+                                ),
+                              ),
+                            ],
                           ),
-                          Gap(8.w),
-                          AppText(
-                            title: 'Optional'.tr,
-                            color: AppColors.light_grey,
-                            size: 10,
-                            fontWeight: FontWeight.w400,
-                          )
+                          Gap(25.h),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: 135.w,
+                                child: AppTextFields(
+                                  icon: 'assets/icons/facebook.svg',
+                                  hintText: 'Username'.tr,
+                                  controller: controller.facebookController,
+                                  color: AppColors.black,
+                                ),
+                              ),
+                             
+                            ],
+                          ),
+                          Gap(40.h),
+                          AppButton(
+                            title: controller.profileBusinessCardModel != null
+                                ? 'Update'.tr
+                                : 'Create'.tr,
+                            height: 50.0.h,
+                            width: 304.0.w,
+                            onTap: () {
+                              controller.submitBusinessCard();
+                            },
+                          ),
+                          Gap(20.h),
+                          if (controller.profileBusinessCardModel != null)
+                            AppButton(
+                              title: 'Delete Business Card'.tr,
+                              color: AppColors.white,
+                              textColors: AppColors.red,
+                              borderColor: AppColors.red,
+                              height: 50.0.h,
+                              width: 304.0.w,
+                              onTap: () {
+                                UiUtilites.accountAlert(context,
+                                    text:
+                                        "Are you sure you want to Delete Business Card",
+                                    onTapNo: () {
+                                  Get.back();
+                                }, onTapYes: () {
+                                  controller.deleteBusinessCard(
+                                      controller.profileBusinessCardModel?.id);
+                                });
+                              },
+                            ),
+                          Gap(30.h),
                         ],
                       ),
-                      Gap(20.h),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 135.w,
-                            child: AppTextFields(
-                              icon: 'assets/icons/Instagram.svg',
-                              hintText: 'Instagram'.tr,
-                              controller: controller.instagramController,
-                              color: AppColors.primary_color,
-                            ),
-                          ),
-                          Gap(7.h),
-                          SizedBox(
-                            width: 135.w,
-                            child: AppTextFields(
-                              icon: 'assets/icons/twitter-x 1.svg',
-                              hintText: 'Twitter'.tr,
-                              controller: controller.twitterController,
-                              color: AppColors.primary_color,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Gap(25.h),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 135.w,
-                            child: AppTextFields(
-                              icon: 'assets/icons/tiktok.svg',
-                              hintText: 'Tiktok'.tr,
-                              controller: controller.tiktokController,
-                              color: AppColors.primary_color,
-                            ),
-                          ),
-                          Gap(7.h),
-                          SizedBox(
-                            width: 135.w,
-                            child: AppTextFields(
-                              icon: 'assets/icons/snapchat.svg',
-                              hintText: 'Snapchat'.tr,
-                              controller: controller.snapchatController,
-                              color: AppColors.primary_color,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Gap(25.h),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            width: 135.w,
-                            child: AppTextFields(
-                              icon: 'assets/icons/facebook.svg',
-                              hintText: 'Facebook'.tr,
-                              controller: controller.facebookController,
-                              color: AppColors.primary_color,
-                            ),
-                          ),
-                          Gap(7.h),
-                          SizedBox(
-                            width: 135.w,
-                            child: AppTextFields(
-                              icon: 'assets/icons/linkedin-blue.svg',
-                              hintText: 'Linkedin'.tr,
-                              controller: controller.linkedinController,
-                              color: AppColors.primary_color,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Gap(30.h),
-                      AppButton(
-                        title: controller.profileBusinessCardModel != null
-                            ? 'Update'.tr
-                            : 'Submit'.tr,
-                        height: 50.0.h,
-                        width: 304.0.w,
-                        onTap: () {
-                          controller.submitBusinessCard();
-                        },
-                      ),
-                      Gap(20.h),
-                      if (controller.profileBusinessCardModel != null)
-                        AppButton(
-                          title: 'Delete Business Card'.tr,
-                          color: AppColors.white,
-                          textColors: AppColors.red,
-                          borderColor: AppColors.red,
-                          height: 50.0.h,
-                          width: 304.0.w,
-                          onTap: () {
-                            UiUtilites.accountAlert(context,
-                                text:
-                                    "Are you sure you want to Delete Business Card",
-                                onTapNo: () {
-                              Get.back();
-                            }, onTapYes: () {
-                              controller.deleteBusinessCard(
-                                  controller.profileBusinessCardModel?.id);
-                            });
-                          },
-                        ),
-                      Gap(30.h),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               )),
             ));
   }
 }
 
-  // PrefixIconButton(
-  //                           title: 'Download',
-  //                           height: 53.0.h,
-  //                           width: 268.0.w,
-  //                           color: AppColors.primary_color,
-  //                           textColors: AppColors.white,
-  //                           image: ImagesConst.mail,
-  //                           onTap: () {},
-  //                         );

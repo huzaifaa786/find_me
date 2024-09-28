@@ -32,7 +32,7 @@ class CreateCardController extends GetxController {
   String invalidNumberMessage = '';
   TextEditingController pcontroller = TextEditingController();
   Country? selectedCountry =
-      countries.firstWhere((country) => country.fullCountryCode == "92");
+      countries.firstWhere((country) => country.code == "US");
   PhoneNumber? checkphoneController;
   String? phoneController;
   UserProfileModel? profileModel;

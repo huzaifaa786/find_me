@@ -5,6 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/app/account/components/social_media_icon.dart';
 import 'package:find_me/app/account/profile/profile_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
+import 'package:find_me/components/buttons/edit_button.dart';
 import 'package:find_me/components/cards/business_card.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
@@ -33,7 +34,7 @@ class _ProfileViewState extends State<ProfileView> {
               appBar: AppBar(
                 scrolledUnderElevation: 0,
                 automaticallyImplyLeading: false,
-                title: topBar(name: 'Account'.tr, showBackIcon: true),
+                title: topBar(name: ''.tr, showBackIcon: true),
               ),
               body: controller.userModel != null
                   ? SafeArea(
@@ -92,7 +93,7 @@ class _ProfileViewState extends State<ProfileView> {
                                         size: 14.sp,
                                         fontWeight: FontWeight.w500,
                                       ),
-                                      Gap(15),
+                                      Gap(5),
                                       controller.profile!.isVerified
                                           ? SvgPicture.asset(
                                               'assets/icons/verified.svg')
@@ -148,68 +149,49 @@ class _ProfileViewState extends State<ProfileView> {
                                           color: AppColors.hintGrey),
                                   Gap(15.h),
                                   if (!controller.isEditSelected)
-                                    GestureDetector(
+                                    EditButton(
+                                      title: "Edit Bio",
+                                      height: 28,
+                                      width: 90,
                                       onTap: () {
                                         controller.isEditSelected =
                                             !controller.isEditSelected;
                                         controller.focusNode.requestFocus();
                                         controller.update();
                                       },
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          AppText(
-                                              title: 'Edit bio'.tr,
-                                              size: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: AppColors.primary_color),
-                                          Gap(2),
-                                          SvgPicture.asset(
-                                              "assets/icons/edit.svg"),
-                                        ],
-                                      ),
                                     ),
-                                  Gap(21.h),
-                                  Divider(
-                                    thickness: 1,
-                                    color: AppColors.black.withOpacity(0.08),
-                                    height: 1,
-                                  ),
                                   Gap(21.h),
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text(
-                                        "Find me on:".tr,
-                                        style: TextStyle(
-                                            fontSize: 14.sp,
-                                            fontWeight: FontWeight.w500),
+                                      AppText(
+                                          title: "Find Me on".tr,
+                                          size: 15.sp,
+                                          fontWeight: FontWeight.w500),
+                                      EditButton(
+                                        title: "Edit",
+                                        height: 25,
+                                        padding: const EdgeInsets.only(
+                                            top: 4,
+                                            bottom: 4,
+                                            left: 7,
+                                            right: 7),
+                                        width: 60,
+                                        onTap: () {
+                                          Get.toNamed(AppRoutes.editurl,
+                                                  arguments:
+                                                      controller.profile)!
+                                              .then((value) {
+                                            controller.getUser();
+                                          });
+                                        },
                                       ),
-                                      GestureDetector(
-                                          onTap: () {
-                                            Get.toNamed(AppRoutes.editurl,
-                                                    arguments:
-                                                        controller.profile)!
-                                                .then((value) {
-                                              controller.getUser();
-                                            });
-                                          },
-                                          child: Row(
-                                            children: [
-                                              AppText(
-                                                  title: 'Edit'.tr,
-                                                  size: 12.sp,
-                                                  fontWeight: FontWeight.w600,
-                                                  color:
-                                                      AppColors.primary_color),
-                                              Gap(5.w),
-                                              SvgPicture.asset(
-                                                  "assets/icons/edit.svg"),
-                                            ],
-                                          )),
                                     ],
+                                  ),
+                                  Divider(
+                                    thickness: 1.5,
+                                    color: AppColors.black.withOpacity(0.09),
                                   ),
                                   Gap(27.h),
                                   Row(
@@ -292,23 +274,28 @@ class _ProfileViewState extends State<ProfileView> {
                                     ],
                                   ),
                                   Gap(20.h),
-                                  Divider(
-                                    thickness: 1,
-                                    color: AppColors.black.withOpacity(0.08),
-                                  ),
-                                  Gap(20.h),
+                                  
+                           
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        "My business card".tr,
+                                        "My Digital Business Card".tr,
                                         style: TextStyle(
                                             fontSize: 14.sp,
                                             fontWeight: FontWeight.w500),
                                       ),
                                       controller.businessCardModel != null
-                                          ? GestureDetector(
+                                          ? EditButton(
+                                              title: "Edit",
+                                              height: 25,
+                                              padding: const EdgeInsets.only(
+                                                  top: 4,
+                                                  bottom: 4,
+                                                  left: 7,
+                                                  right: 7),
+                                              width: 60,
                                               onTap: () {
                                                 Get.toNamed(
                                                         AppRoutes.createcard,
@@ -321,25 +308,15 @@ class _ProfileViewState extends State<ProfileView> {
                                                   controller.getUser();
                                                 });
                                               },
-                                              child: Row(
-                                                children: [
-                                                  AppText(
-                                                      title: 'Edit'.tr,
-                                                      size: 12.sp,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      color: AppColors
-                                                          .primary_color),
-                                                  Gap(5.w),
-                                                  SvgPicture.asset(
-                                                      "assets/icons/edit.svg"),
-                                                ],
-                                              ),
                                             )
                                           : Text(
                                               "",
                                             ),
                                     ],
+                                  ),
+                                  Divider(
+                                    thickness: 1.5,
+                                    color: AppColors.black.withOpacity(0.09),
                                   ),
                                   Gap(22),
                                   controller.businessCardModel != null
@@ -465,21 +442,20 @@ class _ProfileViewState extends State<ProfileView> {
                                 ],
                               ),
                               Gap(32.h),
-                              Divider(
-                                thickness: 1,
-                                color: AppColors.black.withOpacity(0.08),
-                                height: 1,
-                              ),
-                              Gap(27.h),
+                             
                               Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  "Favorites ".tr,
+                                  "My Favorites".tr,
                                   style: TextStyle(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.w500),
                                 ),
                               ),
+                               Divider(
+                                    thickness: 1.5,
+                                    color: AppColors.black.withOpacity(0.09),
+                                  ),
                               Gap(21),
                               GridView.builder(
                                 shrinkWrap: true,

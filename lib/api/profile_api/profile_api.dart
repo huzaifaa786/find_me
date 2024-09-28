@@ -109,6 +109,7 @@ class ProfileApi {
     String? youtube,
     String? email,
     String? linkedin,
+    String? website,
   }) async {
     // URL
     String url = '$baseUrl/updateurls';

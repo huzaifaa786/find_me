@@ -6,6 +6,7 @@ import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/buttons/app_button.dart';
 import 'package:find_me/components/textfields/report_textfield.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
+import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/images/images.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -44,26 +45,48 @@ class ReportProfileView extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  SizedBox(
-                    height: Get.height * 0.4,
-                    width: Get.width * 0.9,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      physics: BouncingScrollPhysics(),
-                      itemCount: controller.reportOptions.length,
-                      itemBuilder: (context, index) {
-                        return RadioListTile<String>(
-                          title: Text(controller.reportOptions[index]),
-                          value: controller.reportOptions[index],
-                          groupValue: controller.selectedOption,
-                          onChanged: (String? value) {
-                            controller.selectedOption = value;
-                            controller.update();
-                          },
-                        );
-                      },
+                    Container(
+                    decoration: BoxDecoration(border: Border.all(color: AppColors.borderGrey),borderRadius: BorderRadius.circular(13.r)),
+                    padding: EdgeInsets.all(3),
+                    margin: EdgeInsets.all(20),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        isExpanded: true, 
+                        value: controller.selectedOption,
+                        hint: AppText(title: controller.selectedOption ?? "",),
+                        items: controller.reportOptions.map((String option) {
+                          return DropdownMenuItem<String>(
+                            value: option,
+                            child: AppText(title: option,size: 14,),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          controller.selectedOption = newValue!;
+                          controller.update();
+                        },
+                      ),
                     ),
                   ),
+                  // SizedBox(
+                  //   height: Get.height * 0.4,
+                  //   width: Get.width * 0.9,
+                  //   child: ListView.builder(
+                  //     shrinkWrap: true,
+                  //     physics: BouncingScrollPhysics(),
+                  //     itemCount: controller.reportOptions.length,
+                  //     itemBuilder: (context, index) {
+                  //       return RadioListTile<String>(
+                  //         title: Text(controller.reportOptions[index]),
+                  //         value: controller.reportOptions[index],
+                  //         groupValue: controller.selectedOption,
+                  //         onChanged: (String? value) {
+                  //           controller.selectedOption = value;
+                  //           controller.update();
+                  //         },
+                  //       );
+                  //     },
+                  //   ),
+                  // ),
                   const SizedBox(height: 20),
                   Center(
                     child: AppButton(
