@@ -103,7 +103,7 @@ class _MainViewState extends State<MainView> {
               constraints: BoxConstraints(maxWidth: Get.width),
               child: AppText(
                 title: label,
-                overFlow: TextOverflow.ellipsis,
+                overFlow: TextOverflow.visible,
                 color: controller.navigationMenuIndex == index
                     ? AppColors.primary_color
                     : AppColors.black,

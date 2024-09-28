@@ -325,7 +325,9 @@ class _ProfileContainerState extends State<ProfileContainer> {
                         )
                       : AppText(
                           title: widget.textController.text,
-                          color: AppColors.primary_color,
+                          color: widget.userModel != null
+                              ? AppColors.black
+                              : AppColors.primary_color,
                           overFlow: TextOverflow.ellipsis,
                           textAlign: TextAlign.justify,
                           size: 10,
@@ -346,8 +348,12 @@ class _ProfileContainerState extends State<ProfileContainer> {
             onTap: () {
               Get.toNamed(AppRoutes.profile, arguments: widget.userModel);
             },
-            child: Padding(
-              padding: const EdgeInsets.only(top: 8, bottom: 8, right: 8),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: AppColors.buttonGrey,
+                  borderRadius: BorderRadius.circular(5)),
+              padding:
+                  const EdgeInsets.only(top: 5, bottom: 5, right: 7, left: 7),
               child: AppText(
                 title: 'Edit'.tr,
                 size: 12,

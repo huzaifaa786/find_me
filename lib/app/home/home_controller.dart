@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:find_me/api/auth_api/user_api.dart';
+import 'package:find_me/api/block_report_api/block_report_api.dart';
 import 'package:find_me/api/bluetooth_api/bluetooth_users_api.dart';
 import 'package:find_me/api/profile_api/profile_api.dart';
 import 'package:find_me/api/request_api/request_api.dart';
@@ -596,6 +597,17 @@ class HomeController extends GetxController {
           name: 'rejected_profile_request',
         );
       }
+    }
+  }
+
+  // Block and report
+
+  blockProfile(UserModel user) async {
+    var response = await BlockReportApi.blockProfile(user.currentProfile?.id);
+    if (response.isNotEmpty) {
+      scannedUsers.remove(user);
+      update();
+      UiUtilites.successSnackbar(response['message'], "");
     }
   }
 }

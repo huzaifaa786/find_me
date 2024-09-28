@@ -13,8 +13,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'firebase_options.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
-
- void main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await LoadingHelper.init();
   await Firebase.initializeApp(

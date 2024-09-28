@@ -10,6 +10,7 @@ import 'package:find_me/helpers/subscription_manager.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
+import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -110,8 +111,8 @@ class HomeView extends StatelessWidget {
                                                       MainAxisAlignment.center,
                                                   children: [
                                                     CircleAvatar(
-                                                      backgroundColor:
-                                                          AppColors.primary_color,
+                                                      backgroundColor: AppColors
+                                                          .primary_color,
                                                       radius: 12,
                                                       child: Icon(
                                                         Icons.edit,
@@ -138,7 +139,8 @@ class HomeView extends StatelessWidget {
                                                       children: [
                                                         CircleAvatar(
                                                           backgroundColor:
-                                                              AppColors.primary_color,
+                                                              AppColors
+                                                                  .primary_color,
                                                           radius: 12,
                                                           child: Icon(
                                                             Icons.add,
@@ -247,7 +249,9 @@ class HomeView extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Gap( 20,),
+                      Gap(
+                        20,
+                      ),
                       // SizedBox(
                       //   height: 170,
                       //   width: 250,
@@ -307,21 +311,131 @@ class HomeView extends StatelessWidget {
                                       return UserCard(
                                         user: controller.scannedUsers[index],
                                         onTap: () {
-                                          if (controller
-                                              .scannedUsers[index]
-                                              .currentProfile!
-                                              .isProfilePublic) {
-                                            Get.toNamed(AppRoutes.publicProfile,
-                                                    arguments: controller
-                                                        .scannedUsers[index]
-                                                        .currentProfile)!
-                                                .then((value) {
-                                              controller.getUser();
-                                            });
-                                          } else {
-                                            controller.sendRequest(
-                                                controller.scannedUsers[index]);
-                                          }
+                                          showModalBottomSheet(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return Container(
+                                                height: 250,
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    ListTile(
+                                                      dense: true,
+                                                      minTileHeight: 48.0,
+                                                      leading: Icon(
+                                                          Icons.visibility),
+                                                      title:AppText(
+                                                        size: 14,
+                                                        title: 'View Profile'.tr,
+                                                      ),
+                                                      onTap: () {
+                                                        Navigator.pop(context);
+                                                        if (controller
+                                                            .scannedUsers[index]
+                                                            .currentProfile!
+                                                            .isProfilePublic) {
+                                                          Get.toNamed(
+                                                                  AppRoutes
+                                                                      .publicProfile,
+                                                                  arguments: controller
+                                                                      .scannedUsers[
+                                                                          index]
+                                                                      .currentProfile)!
+                                                              .then((value) {
+                                                            controller
+                                                                .getUser();
+                                                          });
+                                                        } else {
+                                                          controller.sendRequest(
+                                                              controller
+                                                                      .scannedUsers[
+                                                                  index]);
+                                                        }
+                                                      },
+                                                    ),
+                                                    Divider(
+                                                      thickness: 1,
+                                                      color: AppColors.black
+                                                          .withOpacity(0.08),
+                                                    ),
+                                                    ListTile(
+                                                      dense: true,
+                                                      minTileHeight: 48.0,
+                                                      leading:
+                                                          Icon(Icons.block),
+                                                      title: AppText(
+                                                        size: 14,
+                                                        title: 'Block'.tr,
+                                                      ),
+                                                      onTap: () {
+                                                        Navigator.pop(context);
+                                                        UiUtilites.accountAlert(
+                                                            context,
+                                                            text:
+                                                                "Are you sure you want to block this profile?",
+                                                            onTapYes: () {
+                                                          Get.back();
+                                                          controller.blockProfile(
+                                                              controller
+                                                                      .scannedUsers[
+                                                                  index]);
+                                                        }, onTapNo: () {
+                                                          Get.back();
+                                                        });
+                                                      },
+                                                    ),
+                                                    Divider(
+                                                      thickness: 1,
+                                                      color: AppColors.black
+                                                          .withOpacity(0.08),
+                                                    ),
+                                                    ListTile(
+                                                      dense: true,
+                                                      minTileHeight: 48.0,
+                                                      leading:
+                                                          Icon(Icons.report),
+                                                      title: AppText(
+                                                        size: 14,
+                                                        title: 'Report'.tr,
+                                                      ),
+                                                      onTap: () {
+                                                        Navigator.pop(context);
+                                                        Get.toNamed(
+                                                            AppRoutes
+                                                                .reportProfile,
+                                                            arguments: controller
+                                                                .scannedUsers[
+                                                                    index]
+                                                                .currentProfile);
+                                                      },
+                                                    ),
+                                                    Divider(
+                                                      thickness: 1,
+                                                      color: AppColors.black
+                                                          .withOpacity(0.08),
+                                                    ),
+                                                    ListTile(
+                                                      dense: true,
+                                                      minTileHeight: 48.0,
+                                                      leading: Icon(
+                                                        Icons.cancel,
+                                                        color: AppColors.red,
+                                                      ),
+                                                      title: AppText(
+                                                        size: 14,
+                                                        title: 'Cancel'.tr,
+                                                        color: AppColors.red,
+                                                      ),
+                                                      onTap: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          );
                                         },
                                       );
                                     },

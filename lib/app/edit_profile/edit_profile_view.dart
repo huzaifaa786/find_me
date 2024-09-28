@@ -55,7 +55,7 @@ class EditProfileView extends StatelessWidget {
                       final textController = TextEditingController(
                           text: userProfile != null
                               ? profile.name
-                              : "Profile ${index + 1}".tr);
+                              : "+ New Profile ${index + 1}".tr);
                       return Padding(
                           padding: EdgeInsets.symmetric(vertical: 5.w),
                           child: ProfileContainer(
@@ -67,7 +67,7 @@ class EditProfileView extends StatelessWidget {
                                     ? true
                                     : false,
                             avatarUrl: profile.image,
-                            verified: false,
+                            verified: userProfile != null ? userProfile.isVerified:false,
                             isEditable: profile.isEditable,
                             isLocked: profile.isLocked,
                             index: index,
