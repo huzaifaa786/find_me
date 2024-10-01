@@ -182,7 +182,7 @@ class HomeController extends GetxController {
     print(id);
     advertiseData = AdvertiseData(
       serviceUuid: id,
-      localName: "tritec kodes here",
+      localName: id,
       includePowerLevel: true,
     );
     update();
