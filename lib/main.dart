@@ -38,7 +38,12 @@ void main() async {
       apiKey: "goog_bYFHCOyjSHobDnWGmtsqZPUGASI",
     );
   }
-  runApp(const App());
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]).then((_) {
+    runApp(const App());
+  });
 }
 
 class MyHttpOverrides extends HttpOverrides {
