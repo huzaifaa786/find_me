@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:find_me/components/buttons/app_button.dart';
+import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -47,6 +49,7 @@ class ProfileRequestPopup extends StatelessWidget {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               GestureDetector(
                 onTap: () {
@@ -68,11 +71,13 @@ class ProfileRequestPopup extends StatelessWidget {
                 backgroundImage: CachedNetworkImageProvider(imageUrl),
               ),
               SizedBox(height: 20),
-              Text(
-                name,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+              Center(
+                child: Text(
+                  name,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
               SizedBox(height: 10),
@@ -82,44 +87,28 @@ class ProfileRequestPopup extends StatelessWidget {
                   fontSize: 12,
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 18),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton(
-                    onPressed: onRejectTap,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 30,
-                        vertical: 15,
-                      ),
-                      textStyle: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    child: Text(
-                      'Reject'.tr,
-                      style: TextStyle(color: Colors.red),
-                    ),
+                  AppButton(
+                    height: 48,
+                    width: 104,
+                    title: "Reject".tr,
+                    textColors: AppColors.red,
+                    borderColor: AppColors.red,
+                    color: AppColors.white,
+                    onTap: onRejectTap,
                   ),
-                  SizedBox(width: 10),
-                  ElevatedButton(
-                    onPressed: onAcceptTap,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 30,
-                        vertical: 15,
-                      ),
-                      textStyle: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    child: Text('Accept'.tr,
-                        style: TextStyle(color: Colors.white)),
+                  SizedBox(width: 20),
+                  AppButton(
+                    height: 48,
+                    width: 104,
+                    title: "Accept".tr,
+                    textColors: AppColors.white,
+                    borderColor: AppColors.green,
+                    color: AppColors.green,
+                    onTap: onAcceptTap,
                   ),
                 ],
               ),

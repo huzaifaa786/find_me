@@ -207,7 +207,7 @@ class _CreateCardViewState extends State<CreateCardView> {
                                 child: AppTextFields(
                                   icon: 'assets/icons/web.svg',
                                   hintText: 'Username'.tr,
-                                  controller: controller.tiktokController,
+                                  controller: controller.websiteController,
                                   color: AppColors.black,
                                 ),
                               ),

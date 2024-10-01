@@ -23,7 +23,7 @@ class CreateCardController extends GetxController {
   TextEditingController titleController = TextEditingController();
   TextEditingController instagramController = TextEditingController();
   TextEditingController twitterController = TextEditingController();
-  TextEditingController tiktokController = TextEditingController();
+  TextEditingController websiteController = TextEditingController();
   TextEditingController snapchatController = TextEditingController();
   TextEditingController linkedinController = TextEditingController();
   TextEditingController facebookController = TextEditingController();
@@ -58,8 +58,7 @@ class CreateCardController extends GetxController {
     emailController.text = profileBusinessCardModel?.email ?? '';
     instagramController.text = profileBusinessCardModel?.instagram ?? '';
     twitterController.text = profileBusinessCardModel?.x ?? '';
-    tiktokController.text = profileBusinessCardModel?.tiktok ?? '';
-    snapchatController.text = profileBusinessCardModel?.snapchat ?? '';
+    websiteController.text = profileBusinessCardModel?.website ?? '';
     facebookController.text = profileBusinessCardModel?.facebook ?? '';
     linkedinController.text = profileBusinessCardModel?.linkedin ?? '';
 
@@ -130,17 +129,26 @@ class CreateCardController extends GetxController {
         email: emailController.text,
         instagram: instagramController.text,
         x: twitterController.text,
-        tiktok: tiktokController.text,
-        snapchat: snapchatController.text,
+        website: websiteController.text,
         facebook: facebookController.text,
         linkedin: linkedinController.text,
       );
 
       if (response.isNotEmpty) {
         if (profileBusinessCardModel == null) {
-          UiUtilites.successSnackbar(
-              "Business Card Created successfully".tr, "");
-          Get.back();
+          UiUtilites.businessCarddialog(
+            image: response['businessCard']['image'],
+            name: firstnameController.text + lastnameController.text,
+            company: companyNameController.text,
+            jobTitle: jobTitleController.text,
+            phone: phoneController,
+            email: emailController.text,
+            instagram: instagramController.text,
+            x: twitterController.text,
+            website: websiteController.text,
+            facebook: facebookController.text,
+            linkedin: linkedinController.text,
+          );
         } else {
           UiUtilites.successSnackbar(
               "Business Card updated successfully".tr, "");
@@ -164,7 +172,8 @@ class CreateCardController extends GetxController {
         UiUtilites.successSnackbar("Delete Business Card Successfully", "");
       }
     } catch (e) {
-      UiUtilites.errorSnackbar('Error'.tr, 'Failed to update Business Card: $e'.tr);
+      UiUtilites.errorSnackbar(
+          'Error'.tr, 'Failed to update Business Card: $e'.tr);
     }
   }
 

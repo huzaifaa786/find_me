@@ -11,6 +11,7 @@ import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/box_decoration/box_decoration.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
+import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -107,46 +108,11 @@ class _ProfileViewState extends State<ProfileView> {
                                       fontWeight: FontWeight.w500,
                                       color: AppColors.hintGrey),
                                   Gap(15.h),
-                                  controller.isEditSelected
-                                      ? TextField(
-                                          controller: controller.bioController,
-                                          focusNode: controller.focusNode,
-                                          maxLength: 100,
-                                          decoration: InputDecoration(
-                                            filled: true,
-                                            hintStyle: TextStyle(
-                                              color: AppColors.hintGrey,
-                                              fontSize: 12.sp,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                            contentPadding:
-                                                EdgeInsets.symmetric(
-                                                    vertical: 16.h,
-                                                    horizontal: 20.w),
-                                            fillColor: AppColors.white,
-                                            border: bioInputDecoration,
-                                            enabledBorder: bioInputDecoration,
-                                            focusedBorder: bioInputDecoration,
-                                            errorBorder: inputErrorDecoration,
-                                            focusedErrorBorder:
-                                                inputErrorDecoration,
-                                          ),
-                                          style: TextStyle(
-                                            fontSize: 10.sp,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                          onEditingComplete: () {
-                                            controller.updateProfileBio();
-                                            controller.isEditSelected = false;
-                                            controller.focusNode.unfocus();
-                                            controller.update();
-                                          },
-                                        )
-                                      : AppText(
-                                          title: controller.profile!.bio!,
-                                          size: 11.sp,
-                                          fontWeight: FontWeight.w500,
-                                          color: AppColors.hintGrey),
+                                  AppText(
+                                      title: controller.profile!.bio!,
+                                      size: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColors.hintGrey),
                                   Gap(15.h),
                                   if (!controller.isEditSelected)
                                     EditButton(
@@ -154,10 +120,27 @@ class _ProfileViewState extends State<ProfileView> {
                                       height: 28,
                                       width: 90,
                                       onTap: () {
-                                        controller.isEditSelected =
-                                            !controller.isEditSelected;
-                                        controller.focusNode.requestFocus();
-                                        controller.update();
+                                        showDialog(
+                                            context: context,
+                                            builder: (context) {
+                                              return Dialog(
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            19.0),
+                                                  ),
+                                                  elevation: 0.0,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  child: UiUtilites.biodialog(
+                                                      onTap: () {
+                                                        Get.back();
+                                                        controller
+                                                            .updateProfileBio();
+                                                      },
+                                                      controller: controller
+                                                          .bioController));
+                                            });
                                       },
                                     ),
                                   Gap(21.h),
@@ -199,9 +182,16 @@ class _ProfileViewState extends State<ProfileView> {
                                     children: [
                                       SocialMediaIcon(
                                         socialMediaIcon:
-                                            "assets/icons/tiktok_black.svg",
+                                            "assets/icons/snapchat.svg",
                                         isEmpty: controller
-                                                .profileUrlModel!.tiktok ==
+                                                .profileUrlModel!.snapchat ==
+                                            null,
+                                      ),
+                                      SocialMediaIcon(
+                                        socialMediaIcon:
+                                            "assets/icons/instagram_black.svg",
+                                        isEmpty: controller
+                                                .profileUrlModel!.instagram ==
                                             null,
                                       ),
                                       SocialMediaIcon(
@@ -213,37 +203,11 @@ class _ProfileViewState extends State<ProfileView> {
                                       ),
                                       SocialMediaIcon(
                                         socialMediaIcon:
-                                            "assets/icons/instagram_black.svg",
+                                            "assets/icons/telegram-plane.svg",
                                         isEmpty: controller
-                                                .profileUrlModel!.instagram ==
+                                                .profileUrlModel!.telegram ==
                                             null,
                                       ),
-                                      SocialMediaIcon(
-                                        socialMediaIcon:
-                                            "assets/icons/snapchat.svg",
-                                        isEmpty: controller
-                                                .profileUrlModel!.snapchat ==
-                                            null,
-                                      ),
-                                      SocialMediaIcon(
-                                        socialMediaIcon:
-                                            "assets/icons/facebook_black.svg",
-                                        isEmpty: controller
-                                                .profileUrlModel!.facebook ==
-                                            null,
-                                      ),
-                                      SocialMediaIcon(
-                                          socialMediaIcon:
-                                              "assets/icons/youtube.svg",
-                                          isEmpty: controller
-                                                  .profileUrlModel!.youtube ==
-                                              null),
-                                    ],
-                                  ),
-                                  Gap(15.h),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
                                       SocialMediaIcon(
                                         socialMediaIcon:
                                             "assets/icons/whatsapp1.svg",
@@ -252,18 +216,18 @@ class _ProfileViewState extends State<ProfileView> {
                                             null,
                                       ),
                                       SocialMediaIcon(
-                                          socialMediaIcon:
-                                              "assets/icons/gmail.svg",
-                                          isEmpty: controller
-                                                  .profileUrlModel!.email ==
-                                              null),
-                                      SocialMediaIcon(
                                         socialMediaIcon:
-                                            "assets/icons/telegram-plane.svg",
+                                            "assets/icons/tiktok_black.svg",
                                         isEmpty: controller
-                                                .profileUrlModel!.telegram ==
+                                                .profileUrlModel!.tiktok ==
                                             null,
                                       ),
+                                    ],
+                                  ),
+                                  Gap(15.h),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
                                       SocialMediaIcon(
                                         socialMediaIcon:
                                             "assets/icons/linkedin.svg",
@@ -271,11 +235,36 @@ class _ProfileViewState extends State<ProfileView> {
                                                 .profileUrlModel!.linkedin ==
                                             null,
                                       ),
+                                      SocialMediaIcon(
+                                          socialMediaIcon:
+                                              "assets/icons/gmail.svg",
+                                          isEmpty: controller
+                                                  .profileUrlModel!.email ==
+                                              null),
+                                              SocialMediaIcon(
+                                        socialMediaIcon:
+                                            "assets/icons/website.svg",
+                                        isEmpty: controller
+                                                .profileUrlModel!.website ==
+                                            null,
+                                      ),
+                                      SocialMediaIcon(
+                                          socialMediaIcon:
+                                              "assets/icons/youtube.svg",
+                                          isEmpty: controller
+                                                  .profileUrlModel!.youtube ==
+                                              null),
+                                      
+                                      SocialMediaIcon(
+                                        socialMediaIcon:
+                                            "assets/icons/facebook_black.svg",
+                                        isEmpty: controller
+                                                .profileUrlModel!.facebook ==
+                                            null,
+                                      ),
                                     ],
                                   ),
                                   Gap(20.h),
-                                  
-                           
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -343,16 +332,16 @@ class _ProfileViewState extends State<ProfileView> {
                                               '',
                                           x: controller.businessCardModel!.x ??
                                               '',
-                                          tiktok: controller
-                                                  .businessCardModel!.tiktok ??
+                                          website: controller
+                                                  .businessCardModel!.website ??
                                               '',
                                           facebook: controller
                                                   .businessCardModel!
                                                   .facebook ??
                                               '',
-                                          snapchat: controller
+                                          linkedin: controller
                                                   .businessCardModel!
-                                                  .snapchat ??
+                                                  .linkedin ??
                                               '',
                                           phone: controller
                                                   .businessCardModel!.phone ??
@@ -442,7 +431,6 @@ class _ProfileViewState extends State<ProfileView> {
                                 ],
                               ),
                               Gap(32.h),
-                             
                               Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
@@ -452,10 +440,10 @@ class _ProfileViewState extends State<ProfileView> {
                                       fontWeight: FontWeight.w500),
                                 ),
                               ),
-                               Divider(
-                                    thickness: 1.5,
-                                    color: AppColors.black.withOpacity(0.09),
-                                  ),
+                              Divider(
+                                thickness: 1.5,
+                                color: AppColors.black.withOpacity(0.09),
+                              ),
                               Gap(21),
                               GridView.builder(
                                 shrinkWrap: true,

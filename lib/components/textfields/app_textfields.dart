@@ -13,6 +13,7 @@ class AppTextFields extends StatefulWidget {
     this.type,
     this.fieldValidator,
     this.onChanged,
+    this.onEditingComplete,
     this.enabled,
     this.color = AppColors.black,
     this.height = 20.0,
@@ -27,6 +28,7 @@ class AppTextFields extends StatefulWidget {
   final type;
   final fieldValidator;
   final ValueChanged<String>? onChanged;
+  final Function()? onEditingComplete;
   final bool? enabled;
   final color;
 
@@ -106,6 +108,7 @@ class _AppTextFieldsState extends State<AppTextFields> {
       enabled: widget.enabled,
       validator: widget.fieldValidator,
       onChanged: widget.onChanged,
+      onEditingComplete: widget.onEditingComplete,
     );
   }
 }

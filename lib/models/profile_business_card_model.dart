@@ -10,10 +10,10 @@ class ProfileBusinessCardModel {
   String? email;
   String? instagram;
   String? x;
-  String? tiktok;
-  String? snapchat;
-  String? facebook;
+  String? website;
   String? linkedin;
+  String? facebook;
+  
 
   ProfileBusinessCardModel({
     required this.id,
@@ -27,8 +27,7 @@ class ProfileBusinessCardModel {
     this.email,
     this.instagram,
     this.x,
-    this.tiktok,
-    this.snapchat,
+    this.website,
     this.facebook,
     this.linkedin,
 
@@ -47,8 +46,7 @@ class ProfileBusinessCardModel {
       email: json['email'],
       instagram: json['instagram'],
       x: json['x'],
-      tiktok: json['tiktok'],
-      snapchat: json['snapchat'],
+      website: json['website'],
       facebook: json['facebook'],
       linkedin: json['linkedin'],
 
@@ -68,8 +66,7 @@ class ProfileBusinessCardModel {
       'email': email,
       'instagram': instagram,
       'x': x,
-      'tiktok': tiktok,
-      'snapchat': snapchat,
+      'website': website,
       'facebook': facebook,
       'linkedin': linkedin,
     };

@@ -19,9 +19,9 @@ class BusinessCard extends StatelessWidget {
       required this.image,
       required this.instagram,
       required this.x,
-      required this.tiktok,
+      required this.website,
+      required this.linkedin,
       required this.facebook,
-      required this.snapchat,
       required this.blur,
       this.premission,
       this.radius,
@@ -33,9 +33,9 @@ class BusinessCard extends StatelessWidget {
   final String image;
   final String instagram;
   final String x;
-  final String tiktok;
+  final String website;
   final String facebook;
-  final String snapchat;
+  final String linkedin;
   final String phone;
   final premission;
   final blur;
@@ -312,14 +312,14 @@ class BusinessCard extends StatelessWidget {
                               ? Blur(
                                   borderRadius: radius,
                                   blur: blur,
-                                  child: Text(facebook,
+                                  child: Text(website,
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 9,
                                         fontWeight: FontWeight.w600,
                                       )),
                                 )
-                              : Text(facebook,
+                              : Text(website,
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 9,
@@ -350,13 +350,13 @@ class BusinessCard extends StatelessWidget {
                                 ? Blur(
                                     borderRadius: radius,
                                     blur: blur,
-                                    child: Text(tiktok,
+                                    child: Text(linkedin,
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 9,
                                           fontWeight: FontWeight.w600,
                                         )))
-                                : Text(tiktok,
+                                : Text(linkedin,
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 9,
@@ -381,13 +381,13 @@ class BusinessCard extends StatelessWidget {
                                 ? Blur(
                                     borderRadius: radius,
                                     blur: blur,
-                                    child: Text(snapchat,
+                                    child: Text(facebook,
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 9,
                                           fontWeight: FontWeight.w600,
                                         )))
-                                : Text(snapchat,
+                                : Text(facebook,
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 9,

@@ -45,11 +45,9 @@ class ProfileController extends GetxController {
   getUser() async {
     var response = await UserApi.getUser();
     if (response.isNotEmpty) {
-      
       userModel = UserModel.fromJson(response['user']);
 
       for (var element in userModel!.profiles!) {
-
         if (element.id == profile?.id) {
           // print("AAAAAAAAAAaEEEE${element.emojis?.length}");
           profile = element;
@@ -68,13 +66,13 @@ class ProfileController extends GetxController {
   }
 
   void updateProfileBio() async {
-    if (bioController.text.isNotEmpty) {
-      var response = await ProfileApi.updateProfileBio(
-          userProfileId: profile?.id, bio: bioController.text);
-      if (response.isNotEmpty) {
-        profile = UserProfileModel.fromJson(response['profile']);
-        update();
-      }
+    var response = await ProfileApi.updateProfileBio(
+        userProfileId: profile?.id, bio: bioController.text);
+    if (response.isNotEmpty) {
+      profile = UserProfileModel.fromJson(response['profile']);
+
+      update();
+      UiUtilites.successSnackbar("Updated successfully","");
     }
   }
 

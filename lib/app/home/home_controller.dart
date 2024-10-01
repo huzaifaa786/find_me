@@ -545,8 +545,8 @@ class HomeController extends GetxController {
         imageUrl: userImage ??
             'https://avatar.iran.liara.run/public/boy?username=${userName ?? ""}',
         requestMessage: profileRequestModel.requestType == "profile"
-            ? 'Would like to take a look at your “Profile”.'.tr
-            : 'Would like to take a look at your “Social media accounts and business card”.'
+            ? 'Would like to view your profile.'.tr
+            : 'Would like to view your social media  \n accounts and business card.'
                 .tr,
         onAcceptTap: () {
           respondRequest(profileRequestModel, "accepted".tr);

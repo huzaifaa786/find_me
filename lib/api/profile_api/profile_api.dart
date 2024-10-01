@@ -127,6 +127,7 @@ class ProfileApi {
       'youtube': youtube,
       'email': email,
       'linkedin': linkedin,
+      'website':website,
     };
 
     // Make the POST request using DioService
@@ -145,8 +146,7 @@ class ProfileApi {
     String? email,
     String? instagram,
     String? x,
-    String? tiktok,
-    String? snapchat,
+    String? website,
     String? facebook,
     String? linkedin,
   }) async {
@@ -165,8 +165,7 @@ class ProfileApi {
       'email': email,
       'instagram': instagram,
       'x': x,
-      'tiktok': tiktok,
-      'snapchat': snapchat,
+      'website': website,
       'facebook': facebook,
       'linkedin': linkedin,
     };

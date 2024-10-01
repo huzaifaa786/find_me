@@ -8,6 +8,7 @@ import 'package:find_me/app/main_view/main_controller.dart';
 import 'package:find_me/components/buttons/app_button.dart';
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:find_me/components/buttons/prefix_icon_button.dart';
+import 'package:find_me/components/cards/business_card.dart';
 import 'package:find_me/components/textfields/app_textfields.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
@@ -76,7 +77,7 @@ class UiUtilites {
             children: [
               Flexible(
                 child: AppText(
-                    title: message,
+                    title: message.tr,
                     size: 12.sp,
                     fontWeight: FontWeight.w500,
                     color: AppColors.green),
@@ -1131,69 +1132,168 @@ class UiUtilites {
   }
 
   static Widget biodialog(
-      {
-      required Function() onTap,
-      required TextEditingController controller}) {
-    return Container(
-      margin: EdgeInsets.only(top: 16.0),
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(19.0),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+      {required Function() onTap, required TextEditingController controller}) {
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(19.0),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(19.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                AppText(
+                  title: " ".tr,
+                  size: 14,
+                  fontWeight: FontWeight.w600,
+                ),
+                AppText(
+                  title: "Edit Bio".tr,
+                  size: 14,
+                  fontWeight: FontWeight.w600,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: SvgPicture.asset(
+                    'assets/icons/cross.svg',
+                    width: 30.w,
+                  ),
+                ),
+              ],
+            ),
+            Gap(20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Row(
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      Get.back();
-                    },
-                    child: SvgPicture.asset(
-                      'assets/icons/cross.svg',
-                      height: 30.h,
-                      width: 30.w,
-                    ),
+                  AppText(
+                    title: 'Bio'.tr,
+                    size: 12.sp,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.black.withOpacity(0.40),
                   ),
                 ],
               ),
-              AppText(
-                title: "Edit Bio".tr,
-                size: 14,
-                fontWeight: FontWeight.w600,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Row(
-                  children: [
-                    AppText(
-                      title: 'Bio'.tr,
-                      size: 10.sp,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.black.withOpacity(0.40),
-                    ),
-                  ],
-                ),
-              ),
-              AppTextFields(
-                hintText: "Type bio".tr,
-                controller: controller,
-              ),
-              SizedBox(height: 16.0),
-              AppButton(
-                height: 50.h,
-                width: 250.w,
-                title: "Update".tr,
-                onTap: onTap,
-              )
-            ],
-          ),
+            ),
+            Gap(3),
+            AppTextFields(
+              hintText: "Type bio".tr,
+              controller: controller,
+              height: 40,
+            ),
+            Gap(20),
+            AppButton(
+              height: 50.h,
+              width: 250.w,
+              title: "Update".tr,
+              onTap: onTap,
+            )
+          ],
         ),
       ),
     );
+  }
+
+  static businessCarddialog({
+    String? name,
+    String? email,
+    String? jobTitle,
+    String? company,
+    String? image,
+    String? instagram,
+    String? x,
+    String? website,
+    String? facebook,
+    String? linkedin,
+    String? phone,
+  }) {
+    return showDialog(
+        context: Get.context!,
+        builder: (context) {
+          return Dialog(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(19.0),
+              ),
+              elevation: 0.0,
+              backgroundColor: Colors.transparent,
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(19.0),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(19.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          AppText(
+                            title: " ".tr,
+                            size: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              top: 10.0),
+                            child: Center(
+                              child: AppText(
+                                title:
+                                    "Your Business Card has created  \n successfully!"
+                                        .tr,
+                                size: 12,
+                                fontWeight: FontWeight.w600,
+                                
+                              ),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Get.back();
+                              Get.back();
+                            },
+                            child: SvgPicture.asset(
+                              'assets/icons/cross.svg',
+                              width: 30.w,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Gap(20),
+                      BusinessCard(
+                          blur: 3.0,
+                          premission: false,
+                          name: name ?? "",
+                          email: email ?? '',
+                          jobTitle: jobTitle ?? '',
+                          company: company ?? '',
+                          image: image ?? '',
+                          instagram: instagram ?? '',
+                          x: x ?? '',
+                          website: website ?? '',
+                          facebook: facebook ?? '',
+                          linkedin: linkedin ?? '',
+                          phone: phone ?? ''),
+                      Gap(20),
+                      AppButton(
+                        height: 50.h,
+                        width: 250.w,
+                        title: "Done".tr,
+                        onTap: () {
+                          Get.back();
+                          Get.back();
+                        },
+                      )
+                    ],
+                  ),
+                ),
+              ));
+        });
   }
 
   static successGreenAlert(

@@ -85,7 +85,7 @@ class EditUrlController extends GetxController {
           Get.back();
           UiUtilites.successSnackbar("Url removed successfully".tr, "");
         } else {
-          UiUtilites.successSnackbar("Updated successfully".tr, "");
+          UiUtilites.successCustomSnackbar("Updated successfully".tr,position: 40);
         }
       } else {
         UiUtilites.errorSnackbar('Error'.tr, 'Failed to update URLs'.tr);

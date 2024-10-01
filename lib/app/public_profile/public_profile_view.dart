@@ -291,13 +291,13 @@ class PublicProfileView extends StatelessWidget {
                                 SocialMediaIcon(
                                   socialMediaIcon: "assets/icons/website.svg",
                                   isEmpty:
-                                      controller.profileUrlModel!.email == null,
+                                      controller.profileUrlModel!.website == null,
                                   ontap: () {
-                                    if (controller.profileUrlModel!.email !=
+                                    if (controller.profileUrlModel!.website !=
                                             null &&
                                         controller.hasSocialAccess) {
                                       controller.launchSocialUrl(
-                                          controller.profileUrlModel!.email!);
+                                          controller.profileUrlModel!.website!);
                                     } else if (!controller.hasSocialAccess) {
                                       controller
                                           .sendRequest(controller.userModel!);
@@ -389,12 +389,12 @@ class PublicProfileView extends StatelessWidget {
                                             '',
                                         x: controller.businessCardModel!.x ??
                                             '',
-                                        tiktok: controller
-                                                .businessCardModel!.tiktok ??
+                                        linkedin: controller
+                                                .businessCardModel!.linkedin ??
                                             '',
                                         facebook:
                                             controller.businessCardModel!.facebook ?? '',
-                                        snapchat: controller.businessCardModel!.snapchat ?? '',
+                                        website: controller.businessCardModel!.website ?? '',
                                         phone: controller.businessCardModel!.phone ?? ''),
                                   )
                                 : Container(
