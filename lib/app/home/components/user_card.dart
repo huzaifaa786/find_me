@@ -70,6 +70,7 @@ class UserCard extends StatelessWidget {
               ),
             ),
             Gap(5.w),
+            if(!isBlur)
             SizedBox(
               height: 10.h,
               child: Row(

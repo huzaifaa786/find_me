@@ -97,8 +97,10 @@ class _EditAccountInformationViewState
                             ),
                           ),
                           Gap(15),
+                          if(controller.userModel != null)
                           GenderRadioButtons(
                             onGenderSelected: controller.handleGenderSelected,
+                            gender: controller.gender,
                           ),
                           Gap(80.h),
                           AppButton(

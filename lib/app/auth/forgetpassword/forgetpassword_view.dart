@@ -35,7 +35,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
               appBar: AppBar(
                 automaticallyImplyLeading: false,
                 scrolledUnderElevation: 0,
-                title: topBar(name: 'Forgot password'),
+                title: topBar(name: ''),
               ),
               body: SafeArea(
                   child: Padding(
@@ -50,9 +50,9 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                           title:
                               'Please choose how you want to reset your password'
                                   .tr,
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.w500,
                           size: 10.sp,
-                          color: AppColors.borderGrey,
+                          color: AppColors.black.withOpacity(0.55),
                         )
                       ],
                     ),

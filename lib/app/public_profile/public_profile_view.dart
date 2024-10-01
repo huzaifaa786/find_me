@@ -12,6 +12,7 @@ import 'package:find_me/app/public_profile/public_profile_controller.dart';
 import 'package:find_me/components/appbars/profile_topbar.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/cards/business_card.dart';
+import 'package:find_me/components/popups/comment_dialog.dart';
 import 'package:find_me/components/popups/report_profile_dialog.dart';
 
 import 'package:find_me/routes/app_routes.dart';
@@ -469,13 +470,14 @@ class PublicProfileView extends StatelessWidget {
                           thickness: 1.5,
                           color: AppColors.black.withOpacity(0.09),
                         ),
-                         Align(
+                        Align(
                           alignment: Alignment.centerLeft,
                           child: AppText(
-                              title: "Tap an icon to send a gift!".tr,
-                              size: 11.sp,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.black.withOpacity(0.41),),
+                            title: "Tap an icon to send a gift!".tr,
+                            size: 11.sp,
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.black.withOpacity(0.41),
+                          ),
                         ),
                         Gap(21),
                         if (controller.profile!.emojis != null &&
@@ -500,8 +502,37 @@ class PublicProfileView extends StatelessWidget {
                                         : 50;
                                 return GestureDetector(
                                   onTap: () {
-                                    controller.giftEmoji(
-                                        controller.profile!.emojis![index].id);
+                                    if (controller
+                                            .profile!.emojis![index].type ==
+                                        "paid") {
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return Dialog(
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(19.0),
+                                            ),
+                                            elevation: 0.0,
+                                            backgroundColor: Colors.transparent,
+                                            child: UiUtilites.dialogContent(
+                                                imageUrl: controller.profile!
+                                                    .emojis![index].image,
+                                                onTap: () {
+                                                  Get.back();
+                                                  controller.giftEmoji(
+                                                      controller.profile!
+                                                          .emojis![index].id);
+                                                },
+                                                controller: controller
+                                                    .commentController),
+                                          );
+                                        },
+                                      );
+                                    } else {
+                                      controller.giftEmoji(controller
+                                          .profile!.emojis![index].id);
+                                    }
                                   },
                                   child: Stack(
                                     alignment: Alignment.center,

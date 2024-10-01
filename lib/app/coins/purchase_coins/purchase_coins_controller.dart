@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:find_me/api/coin_api.dart/coin_api.dart';
+import 'package:find_me/components/helper/loading.dart';
 import 'package:find_me/models/coin_package_model.dart';
 import 'package:find_me/models/user_model.dart';
 import 'package:find_me/services/payment_service.dart';
@@ -30,6 +31,7 @@ class PurchaseCoinsController extends GetxController {
   Future<void> buyCoins(BuildContext context, Package product) async {
     try {
       CustomerInfo customerInfo = await Purchases.purchasePackage(product);
+      LoadingHelper.show();
       Map<String, int> coinPackages = {
         'coins_1000': 1000,
         'coins_1400': 1400,
@@ -41,6 +43,7 @@ class PurchaseCoinsController extends GetxController {
 
       if (coinPackages.containsKey(product.identifier)) {
         int coinsToAdd = coinPackages[product.identifier]!;
+        LoadingHelper.dismiss();
         var response = await CoinApi.buyCoinPackages(coins: coinsToAdd);
         if (response.isNotEmpty) {
           FirebaseAnalytics.instance.logEvent(
@@ -51,8 +54,11 @@ class PurchaseCoinsController extends GetxController {
           );
           UiUtilites.coinsAlert(Get.context, coinsToAdd.toString());
         }
+      } else {
+        LoadingHelper.dismiss();
       }
     } on PlatformException catch (e) {
+      LoadingHelper.dismiss();
       log(e.toString());
     }
   }

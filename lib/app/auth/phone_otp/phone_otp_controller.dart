@@ -25,10 +25,13 @@ class PhoneOtpController extends GetxController {
     var response = await OtpApi.verifyPhoneOtp(phone: phone, otp: otpCode);
     if (response.isNotEmpty) {
       Get.offAndToNamed(AppRoutes.useraccount);
-      UiUtilites.registerSuccessAlert(
-          Get.context, "Phone Number has been changed successfully".tr);
+      UiUtilites.successGreenAlert(Get.context,
+          text: "Your phone number has been changed  \n successfully.", onTapDone: () {
+        Get.back();
+      });
+    
     } else {
-      UiUtilites.errorSnackbar("error".tr, "Phone Number  Not Change".tr);
+      UiUtilites.errorSnackbar("error".tr, "Phone Number not Changed".tr);
     }
   }
 

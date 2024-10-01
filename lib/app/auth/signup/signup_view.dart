@@ -96,13 +96,13 @@ class _SignUpViewState extends State<SignUpView> {
                   ),
                   Gap(14.h),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Row(
                       children: [
                         AppText(
-                          title: 'Date of birth (optional)'.tr,
+                          title: 'Birthday (optional)'.tr,
                           size: 12.sp,
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.w600,
                         ),
                       ],
                     ),
@@ -118,13 +118,13 @@ class _SignUpViewState extends State<SignUpView> {
                   ),
                   Gap(16.h),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Row(
                       children: [
                         AppText(
                           title: 'Gender (optional)'.tr,
                           size: 12.sp,
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.w600,
                         ),
                       ],
                     ),
@@ -195,7 +195,7 @@ class _SignUpViewState extends State<SignUpView> {
                   Gap(30.h),
                   AuthRichText(
                     title: 'Already have an account?'.tr,
-                    description: 'Sign in'.tr,
+                    description: 'Log In'.tr,
                     titlesize: 14.sp,
                     titlefontweight: FontWeight.w400,
                     descriptionfontweight: FontWeight.w600,

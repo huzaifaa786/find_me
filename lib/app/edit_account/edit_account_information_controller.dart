@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bottom_picker/bottom_picker.dart';
 import 'package:bottom_picker/resources/arrays.dart';
 import 'package:find_me/api/auth_api/user_api.dart';
@@ -15,7 +17,7 @@ class EditAccountInformationController extends GetxController {
   UserModel? userModel;
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
-  String gender = "";
+  String? gender = "";
   String? firstname;
   String? lastname;
   String? Birthday;
@@ -26,11 +28,17 @@ class EditAccountInformationController extends GetxController {
   final monthController = TextEditingController();
   final yearController = TextEditingController();
 
+  final DateTime now = DateTime.now();
+  final DateTime maxDate =
+      DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+  final DateTime minDate = DateTime(
+      DateTime.now().year - 100, DateTime.now().month, DateTime.now().day);
+  DateTime initialDate = DateTime(
+      DateTime.now().year - 18, DateTime.now().month, DateTime.now().day);
+
   Future<void> selectDate(BuildContext context) async {
-    final DateTime now = DateTime.now();
     final DateTime firstDate = DateTime(now.year - 100, now.month, now.day);
     final DateTime lastDate = DateTime(now.year - 10, now.month, now.day);
-    final DateTime initialDate = lastDate;
 
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -48,10 +56,6 @@ class EditAccountInformationController extends GetxController {
   }
 
   void openDatePicker(BuildContext context) {
-    final DateTime now = DateTime.now();
-    final DateTime maxDate = DateTime(now.year, now.month, now.day);
-    final DateTime minDate = DateTime(now.year - 100, now.month, now.day);
-    final DateTime initialDate = DateTime(now.year - 18, now.month, now.day);
     BottomPicker.date(
       pickerTitle: Text(
         'Set your Birthday',
@@ -68,8 +72,8 @@ class EditAccountInformationController extends GetxController {
       minDateTime: minDate,
       pickerTextStyle: TextStyle(
         color: AppColors.primary_color,
-        fontWeight: FontWeight.bold,
-        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        fontSize: 16,
       ),
       onChange: (picked) {
         String formattedDate = DateFormat('dd MMMM yyyy').format(picked);
@@ -106,16 +110,20 @@ class EditAccountInformationController extends GetxController {
       userModel = UserModel.fromJson(response['user']);
       firstNameController.text = userModel?.firstName ?? '';
       lastNameController.text = userModel?.lastName ?? '';
-      gender = userModel?.gender ?? 'Male';
-
+      gender = userModel?.gender;
+      
+       
       if (userModel?.dob != null) {
         DateTime dob = DateTime.parse(userModel!.dob!);
+        initialDate = dob;
         String formattedDate = DateFormat('dd MMMM yyyy').format(dob);
+
         dateController.text = formattedDate;
         dayController.text = dob.day.toString().padLeft(2, '0');
         monthController.text = dob.month.toString().padLeft(2, '0');
         yearController.text = dob.year.toString();
       }
+      update();
     }
   }
 
@@ -130,8 +138,8 @@ class EditAccountInformationController extends GetxController {
       gender: gender,
     );
     if (response.isNotEmpty) {
-      UiUtilites.registerSuccessAlert(
-          Get.context, "Changes saved successfully".tr);
+      UiUtilites.successCustomSnackbar(
+           "Changes saved successfully".tr,);
     } else {
       UiUtilites.errorSnackbar(
           "Change Information Error".tr, "Information is Not Change".tr);

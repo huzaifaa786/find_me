@@ -3,6 +3,7 @@ import 'package:find_me/app/my_emojis/my_emojis_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/models/emoji_model.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
+import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -111,6 +112,16 @@ class _MyEmojisViewState extends State<MyEmojisView> {
                       title: "Favorites",
                       fontWeight: FontWeight.w600,
                       size: 16,
+                    ),
+                  ),
+                  Gap(6),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: AppText(
+                      title: "The first 6 icons will be displayed on your profile for other users on find me to view. You can arrange the icons in your preferred order.",
+                      fontWeight: FontWeight.w300,
+                      size: 12,
+                      color: AppColors.black.withOpacity(0.67),
                     ),
                   ),
                   Gap(20),

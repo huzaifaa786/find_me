@@ -160,7 +160,7 @@ class _MainViewState extends State<MainView> {
                               controller.onChange(0, isScan: true);
                             },
                             showOpacity: true,
-                            isActive: homeController.isSearching,
+                            isActive: Get.find<HomeController>().isSearching,
                           )),
 
                       Flexible(

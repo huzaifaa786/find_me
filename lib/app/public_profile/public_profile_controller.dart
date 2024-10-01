@@ -3,6 +3,7 @@ import 'package:find_me/api/block_report_api/block_report_api.dart';
 import 'package:find_me/api/emoji_api/emoji_api.dart';
 import 'package:find_me/api/profile_api/profile_api.dart';
 import 'package:find_me/api/request_api/request_api.dart';
+import 'package:find_me/components/popups/comment_dialog.dart';
 import 'package:find_me/models/profile_business_card_model.dart';
 import 'package:find_me/models/profile_url_model.dart';
 import 'package:find_me/models/user_model.dart';
@@ -16,7 +17,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class PublicProfileController extends GetxController {
   static PublicProfileController instance = Get.find();
-  TextEditingController bioController = TextEditingController();
+  TextEditingController commentController = TextEditingController();
   UserModel? userModel;
   UserProfileModel? profile;
   ProfileBusinessCardModel? businessCardModel;
@@ -88,7 +89,7 @@ class PublicProfileController extends GetxController {
 
     if (response.isNotEmpty) {
       if (response['Request'] == "Sent") {
-           FirebaseAnalytics.instance.logEvent(
+        FirebaseAnalytics.instance.logEvent(
           name: 'send_social_request',
         );
         UiUtilites.successSnackbar(
@@ -116,8 +117,11 @@ class PublicProfileController extends GetxController {
   }
 
   giftEmoji(emojiId) async {
-    var response =
-        await EmojiApi.giftEmoji(emojiId: emojiId, receiverId: profile!.id);
+   
+    var response = await EmojiApi.giftEmoji(
+        emojiId: emojiId,
+        receiverId: profile!.id,
+        comment: commentController.text);
     if (response.isNotEmpty) {
       print(response);
       if (response['error'] == true) {
@@ -126,12 +130,16 @@ class PublicProfileController extends GetxController {
         if (response['balance'] == "low") {
           UiUtilites.noCoinsEnoughAlert(Get.context);
         } else if (response['profile'] != null) {
+          commentController.text = '';
           profile = UserProfileModel.fromJson(response['profile']);
           update();
           FirebaseAnalytics.instance.logEvent(
             name: 'gifted_emoji',
           );
-          UiUtilites.successSnackbar("Emoji Gifted Successfully", "");
+           UiUtilites.successGreenAlert(Get.context,
+        text: "Message has been sent \n successfully.", onTapDone: () {
+      Get.back();
+    });
         }
       }
     }

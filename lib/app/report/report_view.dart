@@ -96,14 +96,14 @@ class ReportView extends StatelessWidget {
                         Center(
                           child: Image.file(
                             File(controller.selectedImagePath),
-                            height: 140.h,
-                            width: 140.w,
+                            height: 50.h,
+                            width: 50.w,
                             fit: BoxFit.cover,
                           ),
                         ),
                       ],
                     ),
-                  Gap(30.h),
+                  Gap(40.h),
                   AppButton(
                     title: 'Send'.tr,
                     height: 50.0.h,

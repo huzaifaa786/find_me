@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,8 +7,10 @@ import 'package:get/get.dart';
 
 class GenderRadioButtons extends StatefulWidget {
   final Function(String) onGenderSelected;
+  final String? gender;
 
-  const GenderRadioButtons({Key? key, required this.onGenderSelected})
+  const GenderRadioButtons(
+      {Key? key, required this.onGenderSelected, this.gender})
       : super(key: key);
 
   @override
@@ -15,6 +19,12 @@ class GenderRadioButtons extends StatefulWidget {
 
 class _GenderRadioButtonsState extends State<GenderRadioButtons> {
   String? selectedGender = "";
+  @override
+  void initState() {
+  
+    selectedGender = widget.gender;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +32,6 @@ class _GenderRadioButtonsState extends State<GenderRadioButtons> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Expanded(
-          
           child: Theme(
             data: Theme.of(context).copyWith(
               listTileTheme: const ListTileThemeData(
@@ -91,7 +100,6 @@ class _GenderRadioButtonsState extends State<GenderRadioButtons> {
                 title: 'Prefer not to say',
                 size: 12.sp,
                 fontWeight: FontWeight.w400,
-                
               ),
               value: 'Other',
               groupValue: selectedGender,

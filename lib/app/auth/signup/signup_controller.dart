@@ -160,8 +160,8 @@ class SignUpController extends GetxController {
       minDateTime: minDate,
       pickerTextStyle: TextStyle(
         color: AppColors.primary_color,
-        fontWeight: FontWeight.bold,
-        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        fontSize: 16,
       ),
       onChange: (picked) {
         String formattedDate = DateFormat('dd MMMM yyyy').format(picked);

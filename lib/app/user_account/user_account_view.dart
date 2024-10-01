@@ -232,7 +232,7 @@ class _UserAccountViewState extends State<UserAccountView> {
                                         onTap: () {
                                           UiUtilites.accountAlert(context,
                                               text:
-                                                  "Are you sure you want to delete your account?",
+                                                  "Are you sure you want to delete your account? This will permanently erase your account.",
                                               onTapYes: () {
                                             controller.deleteAccount();
                                           }, onTapNo: () {

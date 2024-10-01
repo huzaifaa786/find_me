@@ -339,12 +339,6 @@ class HomeController extends GetxController {
         return;
       }
     }
-    isSearching = true;
-    update();
-    // FlutterBluePlus.setLogLevel(LogLevel.verbose, color: true);
-    serviceDataKeys = [];
-    scannedUsers = [];
-    update();
     if (await FlutterBluePlus.isSupported == false) {
       isSearching = false;
       update();
@@ -352,7 +346,11 @@ class HomeController extends GetxController {
 
       return;
     }
-
+    isSearching = true;
+    update();
+    Get.find<MainController>().update();
+    serviceDataKeys = [];
+    scannedUsers = [];
     FlutterBluePlus.adapterState.listen((BluetoothAdapterState state) {
       if (state == BluetoothAdapterState.on) {
         FlutterBluePlus.onScanResults.listen(
@@ -484,6 +482,12 @@ class HomeController extends GetxController {
   }
 
   void onEvent(PusherEvent event) {
+    if (event.data != null && event.eventName == "emoji-gifted") {
+      Map<String, dynamic> data = json.decode(event.data!);
+      UiUtilites.EmojiGiftPopUp(Get.context,
+          text: data['message'] ?? "",imageUrl: data['emoji'],senderImage: data['senderImage'],senderName:data['senderName'] );
+    }
+
     if (event.data != null && event.eventName == "my-event") {
       Map<String, dynamic> data = json.decode(event.data!);
       // UserModel user = UserModel.fromJson(data['user']);
@@ -492,6 +496,7 @@ class HomeController extends GetxController {
       showPopup(
           data['message'], data['userName'], data['userImage'], requestModel);
     }
+
     if (event.data != null && event.eventName == "profile-access") {
       Map<String, dynamic> data = json.decode(event.data!);
 

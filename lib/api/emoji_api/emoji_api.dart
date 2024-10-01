@@ -27,9 +27,13 @@ class EmojiApi {
   }
 
   static Future<Map<String, dynamic>> giftEmoji(
-      {int? emojiId, int? receiverId}) async {
+      {int? emojiId, int? receiverId, String? comment}) async {
     String url = '$baseUrl/gift/emoji';
-    var data = {"emoji_id": emojiId, "receiver_id": receiverId};
+    var data = {
+      "emoji_id": emojiId,
+      "receiver_id": receiverId,
+      "comment": comment
+    };
 
     var response = await DioService.post(url: url, data: data);
     return response;

@@ -78,7 +78,7 @@ class EditProfileController extends GetxController {
       currentProfile = userModel!.currentProfile;
       update();
       updateProfiles();
-      UiUtilites.successSnackbar("Marked as default Successfully".tr, "");
+      UiUtilites.successCustomSnackbar("Marked as default Successfully".tr,position: 180);
     }
     update();
   }

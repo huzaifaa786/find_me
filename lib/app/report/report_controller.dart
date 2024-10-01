@@ -36,8 +36,9 @@ class ReportController extends GetxController {
     if (pickedFile != null) {
       selectedImagePath = pickedFile.path;
       update();
-      UiUtilites.successSnackbar(
-          'Image selected successfully'.tr, 'Success'.tr);
+      UiUtilites.successCustomSnackbar(
+        'Uploaded  successfully'.tr,
+      );
     } else {
       UiUtilites.errorSnackbar('No image selected'.tr, 'Error'.tr);
     }
@@ -67,8 +68,11 @@ class ReportController extends GetxController {
       user_id: userId,
     );
     if (response.isNotEmpty) {
-      UiUtilites.registerSuccessAlert(Get.context,
-          "Thank you for your feedback.your\n report has been submitted");
+      UiUtilites.feedBackAlert(Get.context,
+          text: "Your feedback helps make the app \n better for everyone.".tr,
+          onTapDone: () {
+        Get.back();
+      });
       clearFields();
     } else {
       UiUtilites.errorSnackbar('Could not report the problem'.tr, 'Error!'.tr);

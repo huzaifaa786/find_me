@@ -30,8 +30,11 @@ class EmailOtpController extends GetxController {
     var response = await OtpApi.verifyEmailOtp(email: email, otp: otpCode);
     if (response.isNotEmpty) {
       Get.offAndToNamed(AppRoutes.useraccount);
-      UiUtilites.registerSuccessAlert(
-          Get.context, "Your email has been changed successfully!".tr);
+      UiUtilites.successGreenAlert(Get.context,
+          text: "Your email has been changed  \n successfully.", onTapDone: () {
+        Get.back();
+      });
+      
     }
   }
 
