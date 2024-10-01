@@ -292,7 +292,7 @@ class HomeView extends StatelessWidget {
                                       fontWeight: FontWeight.w400,
                                     ),
                                   )
-                                : GridView.builder(
+                                : controller.scannedUsers.isNotEmpty ? GridView.builder(
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,
                                     physics: NeverScrollableScrollPhysics(),
@@ -453,7 +453,7 @@ class HomeView extends StatelessWidget {
                                         },
                                       );
                                     },
-                                  ),
+                                  ):Center(heightFactor: 15, child: AppText(title: "No finders nearby. Refresh or expand your radius.",size: 12,fontWeight: FontWeight.w600,textAlign: TextAlign.center,)),
                           ),
                         ),
                       ),
