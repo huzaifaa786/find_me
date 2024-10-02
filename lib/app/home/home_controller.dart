@@ -294,6 +294,7 @@ class HomeController extends GetxController {
   List<ScanResult> scanResult = [];
   List<UserModel> scannedUsers = [];
   bool isInternetChecking = false;
+  bool _hasShownBluetoothOffSnackbar = false;
 
   Future<void> checkData() async {
     isInternetChecking = true;
@@ -388,6 +389,8 @@ class HomeController extends GetxController {
     scannedUsers = [];
     FlutterBluePlus.adapterState.listen((BluetoothAdapterState state) {
       if (state == BluetoothAdapterState.on) {
+         _hasShownBluetoothOffSnackbar = false;
+
         FlutterBluePlus.onScanResults.listen(
             (results) async {
               if (results.isNotEmpty) {
@@ -430,8 +433,12 @@ class HomeController extends GetxController {
               await sendServiceDataKeysToApi();
             });
       } else {
-        // show an error to the user, etc
+       if (!_hasShownBluetoothOffSnackbar) {
+          _hasShownBluetoothOffSnackbar = true; // Set the flag to true
+          UiUtilites.errorSnackbar("", "Bluetooth is turned off.");
+        }
       }
+      return;
     });
 
     if (Platform.isAndroid) {
