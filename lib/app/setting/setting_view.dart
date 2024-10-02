@@ -73,6 +73,13 @@ class SettingView extends StatelessWidget {
                           }),
                       Gap(12.h),
                       CardSetting(
+                          text: 'Blocked Users'.tr,
+                          image: 'assets/icons/lock (1).svg',
+                          ontap: () {
+                            Get.toNamed(AppRoutes.blockedUsers);
+                          }),
+                      Gap(12.h),
+                      CardSetting(
                           text: 'Profile Privacy'.tr,
                           image: 'assets/icons/lock (1).svg',
                           ontap: () {

@@ -28,6 +28,8 @@ import 'package:find_me/app/beacon/beacon_broadcaster/beacon_broadcaster_binding
 import 'package:find_me/app/beacon/beacon_broadcaster/beacon_broadcaster_view.dart';
 import 'package:find_me/app/beacon/beacon_scanner/beacon_scanner_binding.dart';
 import 'package:find_me/app/beacon/beacon_scanner/beacon_scanner_view.dart';
+import 'package:find_me/app/blocked_user/blocked_user_binding.dart';
+import 'package:find_me/app/blocked_user/blocked_user_view.dart';
 import 'package:find_me/app/change_email/change_email_binding.dart';
 import 'package:find_me/app/change_email/change_email_view.dart';
 import 'package:find_me/app/coins/coins_store_binding.dart';
@@ -434,6 +436,11 @@ class AppPages {
       name: AppRoutes.editaccountinformation,
       page: () => EditAccountInformationView(),
       binding: EditAccountInformationBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.blockedUsers,
+      page: () => BlockedUserView(),
+      binding: BlockedUserBinding(),
     ),
   ];
 }

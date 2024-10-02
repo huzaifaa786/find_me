@@ -42,7 +42,7 @@ class ReportProfileController extends GetxController {
       return;
     }
     var response =
-        await BlockReportApi.reportProfile(profile?.id, selectedOption!);
+        await BlockReportApi.reportProfile(profile?.id, selectedOption!,descriptionController.text);
     if (response.isNotEmpty) {
       UiUtilites.registerSuccessAlert(Get.context,
           "Thank you for your feedback.Your\n report has been submitted");
