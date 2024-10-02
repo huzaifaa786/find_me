@@ -330,6 +330,8 @@ class HomeController extends GetxController {
   void initFlutterBlue() async {
     scannedUsers = [];
     update();
+        await Permission.bluetoothScan.request();
+
     // Check if location permissions are granted
     LocationPermission permission = await Geolocator.checkPermission();
 

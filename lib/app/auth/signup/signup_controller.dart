@@ -239,7 +239,7 @@ class SignUpController extends GetxController {
     // Generate a UUID for the device's beacon ID
     var uuid = const Uuid();
     String beaconId = uuid.v4();
-    if ((await _geolocator.isLocationServiceEnabled())) {
+    if ((await _geolocator.isLocationServiceEnabled() && await Permission.location.isGranted)) {
       Position position = await Geolocator.getCurrentPosition();
 
       Map<String, dynamic> response = await RegisterApi.registerUser(
@@ -260,7 +260,7 @@ class SignUpController extends GetxController {
       }
     } else {
       UiUtilites.errorSnackbar(
-          "Location Permission Not Allowed", "Please Turn on Location!");
+          "Location Permission Not Allowed", "Please Turn on Location!"); 
     }
   }
 

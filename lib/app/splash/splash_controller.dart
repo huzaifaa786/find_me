@@ -22,7 +22,8 @@ class SplashController extends GetxController {
       if (response.isNotEmpty) {
         if (response['user']['is_blocked'] == 1) {
           UiUtilites.accountBlockedAlert(Get.context);
-          return;
+          await box.remove('api_token');
+          await box.remove('beacon_id');
         } else {
           await Future.delayed(const Duration(seconds: 3), () {
             checkFirstSeen();
