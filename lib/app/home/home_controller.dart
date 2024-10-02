@@ -328,9 +328,22 @@ class HomeController extends GetxController {
   }
 
   void initFlutterBlue() async {
-    // Check if location permission is granted
-    if (!await Permission.location.isGranted) {
-      await Permission.location.request();
+    scannedUsers = [];
+    update();
+    // Check if location permissions are granted
+    LocationPermission permission = await Geolocator.checkPermission();
+
+    if (permission == LocationPermission.denied ||
+        permission == LocationPermission.deniedForever) {
+      permission = await Geolocator.requestPermission();
+
+      if (permission == LocationPermission.denied ||
+          permission == LocationPermission.deniedForever) {
+        UiUtilites.errorSnackbar("", "Location permission denied.");
+        isSearching = false;
+        update();
+        return;
+      }
     }
 
     // Check if location services are enabled
@@ -340,15 +353,17 @@ class HomeController extends GetxController {
 
       // Recheck if location services are enabled
       if (!await Geolocator.isLocationServiceEnabled()) {
-        // Location services are still disabled
         UiUtilites.errorSnackbar("", "Location services are disabled.");
+        isSearching = false;
+        update();
         return;
       }
     }
 
-    // Final check after user interaction with location services
-    if (await Permission.location.isGranted &&
-        await Geolocator.isLocationServiceEnabled()) {
+    // Final check after user interaction with location services and permissions
+    if (permission == LocationPermission.whileInUse ||
+        permission == LocationPermission.always) {
+      // Proceed with location-based functionality
     } else {
       isSearching = false;
       update();
