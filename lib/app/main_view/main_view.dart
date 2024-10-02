@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_me/app/account/profile/profile_view.dart';
 import 'package:find_me/app/auth/signup/signup_view.dart';
 import 'package:find_me/app/coins/coins_store_view.dart';
@@ -87,15 +88,28 @@ class _MainViewState extends State<MainView> {
                             ? AppColors.primary_color
                             : AppColors.black,
                       )
-                    : SvgPicture.asset(
-                        iconPath,
-                        fit: BoxFit.scaleDown,
-                        height: 27.h,
-                        width: 27.w,
-                        color: controller.navigationMenuIndex == index
-                            ? AppColors.primary_color
-                            : AppColors.black,
-                      ),
+                    : index == 3
+                        ? CircleAvatar(
+                          backgroundColor: AppColors.white,
+                            radius: 18,
+                            child: ClipOval(
+                              child: CachedNetworkImage(
+                                imageUrl: iconPath == "he" ? "https://i.ibb.co/jZmDvF1/userr.png" : iconPath,
+                                fit: BoxFit.cover,
+                                height: 27.h,
+                                width: 27.w,
+                              ),
+                            ),
+                          )
+                        : SvgPicture.asset(
+                            iconPath,
+                            fit: BoxFit.scaleDown,
+                            height: 27.h,
+                            width: 27.w,
+                            color: controller.navigationMenuIndex == index
+                                ? AppColors.primary_color
+                                : AppColors.black,
+                          ),
             Gap(4.h),
             ConstrainedBox(
               constraints: BoxConstraints(maxWidth: Get.width),
@@ -168,8 +182,18 @@ class _MainViewState extends State<MainView> {
                             'assets/icons/emojis.svg', 'Emojis'.tr, 1),
                       ),
                       Flexible(
-                        child: _buildNavigationBarItem(controller, 3,
-                            'assets/icons/profile.svg', 'Profile'.tr, 0),
+                        child: _buildNavigationBarItem(
+                            controller,
+                            3,
+                            Get.find<HomeController>().userModel != null
+                                ? Get.find<HomeController>()
+                                        .userModel
+                                        ?.currentProfile!
+                                        .imageUrl ??
+                                    "he"
+                                : "he",
+                            'Profile'.tr,
+                            0),
                       ),
 
                       //  coins

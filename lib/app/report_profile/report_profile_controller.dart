@@ -11,6 +11,8 @@ import 'package:image_picker/image_picker.dart';
 
 class ReportProfileController extends GetxController {
   static ReportProfileController instanse = Get.find();
+  TextEditingController descriptionController = TextEditingController();
+
   final List<String> reportOptions = [
     'Pretending to be someone else',
     'Bullying or harassment',
@@ -25,6 +27,7 @@ class ReportProfileController extends GetxController {
     'Other',
   ];
   String? selectedOption;
+
   @override
   UserProfileModel? profile;
   void onInit() {

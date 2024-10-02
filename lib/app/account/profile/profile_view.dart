@@ -117,8 +117,8 @@ class _ProfileViewState extends State<ProfileView> {
                                   if (!controller.isEditSelected)
                                     EditButton(
                                       title: "Edit Bio",
-                                      height: 28,
-                                      width: 90,
+                                      height: 28.h,
+                                      width: 95.w,
                                       onTap: () {
                                         showDialog(
                                             context: context,
@@ -154,13 +154,13 @@ class _ProfileViewState extends State<ProfileView> {
                                           fontWeight: FontWeight.w500),
                                       EditButton(
                                         title: "Edit",
-                                        height: 25,
+                                        height: 25.h,
                                         padding: const EdgeInsets.only(
                                             top: 4,
                                             bottom: 4,
                                             left: 7,
                                             right: 7),
-                                        width: 60,
+                                        width: 65.w,
                                         onTap: () {
                                           Get.toNamed(AppRoutes.editurl,
                                                   arguments:
@@ -278,13 +278,13 @@ class _ProfileViewState extends State<ProfileView> {
                                       controller.businessCardModel != null
                                           ? EditButton(
                                               title: "Edit",
-                                              height: 25,
+                                              height: 25.h,
                                               padding: const EdgeInsets.only(
                                                   top: 4,
                                                   bottom: 4,
                                                   left: 7,
                                                   right: 7),
-                                              width: 60,
+                                              width: 65.w,
                                               onTap: () {
                                                 Get.toNamed(
                                                         AppRoutes.createcard,

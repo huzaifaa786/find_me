@@ -2,6 +2,7 @@ import 'package:find_me/api/auth_api/login_api.dart';
 import 'package:find_me/api/auth_api/register_api.dart';
 import 'package:find_me/models/user_model.dart';
 import 'package:find_me/routes/app_routes.dart';
+import 'package:find_me/utils/ui_utils.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -38,13 +39,16 @@ class SignInController extends GetxController {
         email: emailController.text,
         token: token);
     if (response.isNotEmpty) {
+      if (response['user']['blocked'] == 1) {
+        UiUtilites.accountBlockedAlert(Get.context);
+        return;
+      }
       if (response['user']['phone_verified'] == 1) {
         box.write('api_token', response['user']['token']);
         box.write('beacon_id', response['user']['beacon_id']);
         Get.offAllNamed(AppRoutes.mainview);
       } else {
-        Get.offAllNamed(AppRoutes.otp,
-            arguments: response['user']['phone']);
+        Get.offAllNamed(AppRoutes.otp, arguments: response['user']['phone']);
       }
     }
   }

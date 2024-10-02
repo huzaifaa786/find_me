@@ -117,13 +117,11 @@ class PublicProfileController extends GetxController {
   }
 
   giftEmoji(emojiId) async {
-   
     var response = await EmojiApi.giftEmoji(
         emojiId: emojiId,
         receiverId: profile!.id,
         comment: commentController.text);
     if (response.isNotEmpty) {
-      print(response);
       if (response['error'] == true) {
         UiUtilites.errorSnackbar("Emoji Error", response['error_data']);
       } else {
@@ -136,10 +134,10 @@ class PublicProfileController extends GetxController {
           FirebaseAnalytics.instance.logEvent(
             name: 'gifted_emoji',
           );
-           UiUtilites.successGreenAlert(Get.context,
-        text: "Message has been sent \n successfully.", onTapDone: () {
-      Get.back();
-    });
+          UiUtilites.successGreenAlert(Get.context,
+              text: "Message has been sent \n successfully.", onTapDone: () {
+            Get.back();
+          });
         }
       }
     }

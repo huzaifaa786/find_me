@@ -100,7 +100,7 @@ class _SignUpViewState extends State<SignUpView> {
                     child: Row(
                       children: [
                         AppText(
-                          title: 'Birthday (optional)'.tr,
+                          title: 'Birthday'.tr,
                           size: 12.sp,
                           fontWeight: FontWeight.w600,
                         ),

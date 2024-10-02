@@ -1,6 +1,8 @@
 import 'package:find_me/app/edit_url/edit_url_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
+import 'package:find_me/components/appbars/url_topbar.dart';
 import 'package:find_me/components/textfields/app_textfields.dart';
+import 'package:find_me/components/textfields/url_textfields.dart';
 import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +26,13 @@ class _EditUrlViewState extends State<EditUrlView> {
         appBar: AppBar(
           scrolledUnderElevation: 0,
           automaticallyImplyLeading: false,
-          title: topBar(showBackIcon: true, name: "Edit URLs".tr),
+          title: urlTopBar(
+              showBackIcon: true,
+              name: "Edit URLs".tr,
+              onTap: () {
+                FocusScope.of(context).unfocus();
+                controller.updateUrls();
+              }),
         ),
         body: SafeArea(
           child: SingleChildScrollView(
@@ -54,8 +62,11 @@ class _EditUrlViewState extends State<EditUrlView> {
                       "Telegram url",
                       controller.telegramController),
                   Gap(24),
-                  buildStackedUrlField(controller, "assets/icons/whatsapp1.svg",
-                      "https://wa.me/+(Country Code - Mobile number)", controller.whatsappController),
+                  buildStackedUrlField(
+                      controller,
+                      "assets/icons/whatsapp1.svg",
+                      "https://wa.me/+(Country Code - Mobile number)",
+                      controller.whatsappController),
                   Gap(24),
                   buildStackedUrlField(
                       controller,
@@ -81,15 +92,6 @@ class _EditUrlViewState extends State<EditUrlView> {
                       "Facebook url",
                       controller.facebookController),
                   Gap(47),
-                  AppButton(
-                    onTap: () {
-                      controller.updateUrls();
-                    },
-                    height: 46.h,
-                    width: 280.w,
-                    title: "Update".tr,
-                  ),
-                  Gap(104),
                 ],
               ),
             ),
@@ -101,39 +103,26 @@ class _EditUrlViewState extends State<EditUrlView> {
 
   Widget buildStackedUrlField(EditUrlController controller, String icon,
       String hintText, TextEditingController fieldController) {
-    return Stack(
-      alignment: Alignment.centerRight,
-      children: [
-        AppTextFields(
-          icon: icon,
-          hintText: hintText.tr,
-          controller: fieldController,
-          width: 25.w,
-          height: 25.h,
-          onEditingComplete: () {
-            FocusScope.of(context).unfocus();
-
-            controller.updateUrls();
-          },
-        ),
-        if (fieldController.text.isNotEmpty)
-          Positioned(
-            right: 0,
-            child: IconButton(
-              icon: Icon(Icons.cancel, color: Colors.red),
-              onPressed: () {
-                UiUtilites.accountAlert(context,
-                    text: "Are you sure you want to remove URL", onTapNo: () {
-                  Get.back();
-                }, onTapYes: () {
-                  fieldController.clear();
-                  controller.updateUrls(isRemove: true);
-                  controller.update();
-                });
-              },
-            ),
-          ),
-      ],
+    return UrlTextFields(
+      icon: icon,
+      hintText: hintText.tr,
+      controller: fieldController,
+      // width: 25.w,
+      // height: 25.h,
+      onEditingComplete: () {
+        FocusScope.of(context).unfocus();
+        controller.updateUrls();
+      },
+      onSuffixTap: () {
+        UiUtilites.accountAlert(context,
+            text: "Are you sure you want to remove URL", onTapNo: () {
+          Get.back();
+        }, onTapYes: () {
+          fieldController.clear();
+          controller.updateUrls(isRemove: true);
+          controller.update();
+        });
+      },
     );
   }
 }

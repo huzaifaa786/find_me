@@ -13,6 +13,7 @@ class UserModel {
   String? beaconId;
   String? loginType;
   bool isPro;
+  bool isBlocked;
 
   UserProfileModel? currentProfile;
   List<UserProfileModel>? profiles;
@@ -33,6 +34,7 @@ class UserModel {
     this.profiles,
     this.wallet,
     required this.isPro,
+    required this.isBlocked,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -55,6 +57,7 @@ class UserModel {
             : null,
         profiles: profileList,
         isPro: json['is_pro'] == 1 ? true : false,
+        isBlocked: json['blocked'] == 1 ? true : false,
         wallet: json['wallet'] != null
             ? UserWalletModel.fromJson(json['wallet'])
             : null);

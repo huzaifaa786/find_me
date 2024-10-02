@@ -164,46 +164,48 @@ class HomeView extends StatelessWidget {
                                                     )
                                                   : Column(
                                                       children: [
-                                                        Row(
-                                                          children: [
-                                                            CircleAvatar(
-                                                              backgroundColor:
-                                                                  Colors.white,
-                                                              radius: 15.r,
-                                                              child: ClipOval(
-                                                                child: item.avatarUrl !=
-                                                                        null
-                                                                    ? CachedNetworkImage(
-                                                                        imageUrl:
-                                                                            item.avatarUrl ??
-                                                                                '',
-                                                                        fit: BoxFit
-                                                                            .cover,
-                                                                        width:
-                                                                            30.r,
-                                                                        height:
-                                                                            30.r,
-                                                                      )
-                                                                    : SvgPicture
-                                                                        .asset(
-                                                                            "assets/images/User.svg"),
+                                                        Flexible(
+                                                          child: Row(
+                                                            children: [
+                                                              CircleAvatar(
+                                                                backgroundColor:
+                                                                    Colors.white,
+                                                                radius: 15.r,
+                                                                child: ClipOval(
+                                                                  child: item.avatarUrl !=
+                                                                          null
+                                                                      ? CachedNetworkImage(
+                                                                          imageUrl:
+                                                                              item.avatarUrl ??
+                                                                                  '',
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                          width:
+                                                                              30.r,
+                                                                          height:
+                                                                              30.r,
+                                                                        )
+                                                                      : SvgPicture
+                                                                          .asset(
+                                                                              "assets/images/User.svg"),
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Gap(10.w),
-                                                            Text(
-                                                              item.text ?? '',
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .justify,
-                                                            ),
-                                                            Gap(3.w),
-                                                            if (item.verified)
-                                                              SvgPicture.asset(
-                                                                  'assets/icons/verified.svg'),
-                                                          ],
+                                                              Gap(10.w),
+                                                              Text(
+                                                                item.text ?? '',
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .justify,
+                                                              ),
+                                                              Gap(3.w),
+                                                              if (item.verified)
+                                                                SvgPicture.asset(
+                                                                    'assets/icons/verified.svg'),
+                                                            ],
+                                                          ),
                                                         ),
                                                         Divider(
                                                           thickness: 0.3,

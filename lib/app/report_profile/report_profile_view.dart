@@ -45,19 +45,26 @@ class ReportProfileView extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                    Container(
-                    decoration: BoxDecoration(border: Border.all(color: AppColors.borderGrey),borderRadius: BorderRadius.circular(13.r)),
+                  Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: AppColors.borderGrey),
+                        borderRadius: BorderRadius.circular(13.r)),
                     padding: EdgeInsets.all(3),
                     margin: EdgeInsets.all(20),
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton<String>(
-                        isExpanded: true, 
+                        isExpanded: true,
                         value: controller.selectedOption,
-                        hint: AppText(title: controller.selectedOption ?? "",),
+                        hint: AppText(
+                          title: controller.selectedOption ?? "",
+                        ),
                         items: controller.reportOptions.map((String option) {
                           return DropdownMenuItem<String>(
                             value: option,
-                            child: AppText(title: option,size: 14,),
+                            child: AppText(
+                              title: option,
+                              size: 14,
+                            ),
                           );
                         }).toList(),
                         onChanged: (String? newValue) {
@@ -67,26 +74,15 @@ class ReportProfileView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // SizedBox(
-                  //   height: Get.height * 0.4,
-                  //   width: Get.width * 0.9,
-                  //   child: ListView.builder(
-                  //     shrinkWrap: true,
-                  //     physics: BouncingScrollPhysics(),
-                  //     itemCount: controller.reportOptions.length,
-                  //     itemBuilder: (context, index) {
-                  //       return RadioListTile<String>(
-                  //         title: Text(controller.reportOptions[index]),
-                  //         value: controller.reportOptions[index],
-                  //         groupValue: controller.selectedOption,
-                  //         onChanged: (String? value) {
-                  //           controller.selectedOption = value;
-                  //           controller.update();
-                  //         },
-                  //       );
-                  //     },
-                  //   ),
-                  // ),
+                  if (controller.selectedOption == "Other")
+                    Container(
+                      padding: const EdgeInsets.all(3),
+                      margin: const EdgeInsets.all(20),
+                      child: ReportTextFields(
+                        hintText: 'Type here'.tr,
+                        controller: controller.descriptionController,
+                      ),
+                    ),
                   const SizedBox(height: 20),
                   Center(
                     child: AppButton(

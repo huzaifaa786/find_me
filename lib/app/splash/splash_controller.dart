@@ -1,9 +1,12 @@
+import 'package:find_me/api/auth_api/user_api.dart';
 import 'package:find_me/routes/app_routes.dart';
+import 'package:find_me/utils/ui_utils.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class SplashController extends GetxController {
   static SplashController instance = Get.find();
+  GetStorage box = GetStorage();
 
   // TODO: implement onInit
   @override
@@ -13,18 +16,29 @@ class SplashController extends GetxController {
   }
 
   void initscreen() async {
-    await Future.delayed(const Duration(seconds: 3), () {
-      checkFirstSeen();
-    });
+    String? apiToken = box.read('api_token');
+    if (apiToken != null) {
+      var response = await UserApi().checkAccountStatus();
+      if (response.isNotEmpty) {
+        if (response['user']['is_blocked'] == 1) {
+          UiUtilites.accountBlockedAlert(Get.context);
+          return;
+        } else {
+          await Future.delayed(const Duration(seconds: 3), () {
+            checkFirstSeen();
+          });
+        }
+      }
+    } else {
+      await Future.delayed(const Duration(seconds: 3), () {
+        checkFirstSeen();
+      });
+    }
   }
-
-  GetStorage box = GetStorage();
 
   Future checkFirstSeen() async {
     String? apiToken = box.read('api_token');
-    print("API:$apiToken");
-    
-     if (apiToken != null) {
+    if (apiToken != null) {
       Get.offNamed(AppRoutes.mainview);
     } else {
       Get.offNamed(AppRoutes.intro);

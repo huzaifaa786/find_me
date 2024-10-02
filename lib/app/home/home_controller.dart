@@ -145,12 +145,14 @@ class HomeController extends GetxController {
       scannedUsers = [];
     }
     update();
+    Get.find<MainController>().update();
   }
 
   void selectItem(DropdownItem item) async {
     selectedItem = item;
     var response = await ProfileApi.updateCurrentProfile(
         userProfileId: item.id, userId: userModel!.id);
+    getUser();
     if (response.isNotEmpty) {}
     update();
   }
@@ -326,19 +328,35 @@ class HomeController extends GetxController {
   }
 
   void initFlutterBlue() async {
-    await Permission.bluetoothScan.request();
+    // Check if location permission is granted
+    if (!await Permission.location.isGranted) {
+      await Permission.location.request();
+    }
+
     // Check if location services are enabled
-    if (!(await _geolocator.isLocationServiceEnabled())) {
-      await _geolocator.openLocationSettings(); // Ask user to enable location
-      // Re-check after user interaction
-      if (!(await _geolocator.isLocationServiceEnabled())) {
-        isSearching = false;
-        update();
-        print(
-            "Location services are disabled. Bluetooth scanning can't proceed.");
+    if (!await Geolocator.isLocationServiceEnabled()) {
+      // Ask the user to enable location services
+      await Geolocator.openLocationSettings();
+
+      // Recheck if location services are enabled
+      if (!await Geolocator.isLocationServiceEnabled()) {
+        // Location services are still disabled
+        UiUtilites.errorSnackbar("", "Location services are disabled.");
         return;
       }
     }
+
+    // Final check after user interaction with location services
+    if (await Permission.location.isGranted &&
+        await Geolocator.isLocationServiceEnabled()) {
+    } else {
+      isSearching = false;
+      update();
+      UiUtilites.errorSnackbar(
+          "", "Location permission denied or services are disabled.");
+      return;
+    }
+
     if (await FlutterBluePlus.isSupported == false) {
       isSearching = false;
       update();
@@ -485,7 +503,10 @@ class HomeController extends GetxController {
     if (event.data != null && event.eventName == "emoji-gifted") {
       Map<String, dynamic> data = json.decode(event.data!);
       UiUtilites.EmojiGiftPopUp(Get.context,
-          text: data['message'] ?? "",imageUrl: data['emoji'],senderImage: data['senderImage'],senderName:data['senderName'] );
+          text: data['message'] ?? "",
+          imageUrl: data['emoji'],
+          senderImage: data['senderImage'],
+          senderName: data['senderName']);
     }
 
     if (event.data != null && event.eventName == "my-event") {

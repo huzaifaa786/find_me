@@ -1076,6 +1076,48 @@ class UiUtilites {
     );
   }
 
+  static accountBlockedAlert(
+    context,
+  ) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          icon: Icon(
+            Icons.warning,
+            size: 48,
+          ),
+          iconColor: AppColors.red,
+          title: AppText(
+            title: "Account Suspended".tr,
+            size: 16,
+            fontWeight: FontWeight.w700,
+          ),
+          content: AppText(
+            title: "Your account has been blocked by administrator".tr,
+            size: 14,
+            fontWeight: FontWeight.w500,
+            color: AppColors.black.withOpacity(0.45),
+            textAlign: TextAlign.center,
+          ),
+          actionsAlignment: MainAxisAlignment.center,
+          actions: [
+            AppButton(
+                onTap: () {
+                  Get.back();
+                },
+                height: 50.h,
+                width: 100.w,
+                color: AppColors.white,
+                borderColor: AppColors.borderGrey,
+                textColors: AppColors.borderGrey,
+                title: "Close".tr),
+          ],
+        );
+      },
+    );
+  }
+
   static Widget dialogContent(
       {required String imageUrl,
       required Function() onTap,
@@ -1239,8 +1281,7 @@ class UiUtilites {
                             fontWeight: FontWeight.w600,
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(
-                              top: 10.0),
+                            padding: const EdgeInsets.only(top: 10.0),
                             child: Center(
                               child: AppText(
                                 title:
@@ -1248,7 +1289,6 @@ class UiUtilites {
                                         .tr,
                                 size: 12,
                                 fontWeight: FontWeight.w600,
-                                
                               ),
                             ),
                           ),

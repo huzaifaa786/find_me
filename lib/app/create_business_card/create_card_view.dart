@@ -152,11 +152,13 @@ class _CreateCardViewState extends State<CreateCardView> {
                           ),
                           Gap(19.h),
                           PhoneInputField(
+                            
                             onCountryChanged: controller.onCountryChanged,
                             errorText: controller.invalidNumberMessage,
                             onChanged: controller.phoneValidation,
                             controller: controller.pcontroller,
                             initialCode: controller.selectedCountry!.code,
+                            height: 80,
                           ),
                           Gap(19.h),
                           AppTextFields(

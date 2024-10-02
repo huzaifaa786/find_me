@@ -59,8 +59,7 @@ class _LocationViewState extends State<LocationView> {
                         inactiveColor: Colors.grey,
                         value: controller.isLocationEnabled,
                         onToggle: (value) {
-                          controller.toggleisLocationEnabled(value);
-                          
+                          controller.toggleIsLocationEnabled(value); 
                         },
                       ),
                     ],

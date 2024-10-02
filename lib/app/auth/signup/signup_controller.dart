@@ -250,7 +250,7 @@ class SignUpController extends GetxController {
           firstName: firstNameController.text,
           lastName: lastNameController.text,
           gender: gender,
-          dob: dob,
+          dob: dob == "--" ? null :dob,
           lat: position.latitude,
           lng: position.longitude,
           token: token,
