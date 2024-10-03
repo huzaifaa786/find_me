@@ -25,7 +25,7 @@ class SplashController extends GetxController {
           await box.remove('api_token');
           await box.remove('beacon_id');
         } else {
-          await Future.delayed(const Duration(seconds: 3), () {
+          await Future.delayed(const Duration(seconds: 1), () {
             checkFirstSeen();
           });
         }

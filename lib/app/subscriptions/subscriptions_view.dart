@@ -78,17 +78,17 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                   Gap(24),
                   Center(
                     child: Text(
-                      "Try Find Me Premium for".tr,
+                      "Upgrade to Pro".tr,
                       style:
                           TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
                     ),
                   ),
                   Center(
                     child: Text(
-                      "${controller.package?.storeProduct.priceString} / month"
+                      "1 month free, then ${controller.package?.storeProduct.priceString}/month"
                           .tr,
                       style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
+                          TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
                     ),
                   ),
 
@@ -110,7 +110,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                     groupValue: controller.selectedOption,
                     onChanged: (value) => controller.selectOption(value!),
                   ),
-                  Gap(27),
+                  Gap(20),
                   SubscriptionFeatures(
                     title: "Unlock User Profile 3 and Profile 4".tr,
                     subtitle: "Create 2 additional profiles.".tr,
@@ -118,7 +118,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                     groupValue: controller.selectedOption,
                     onChanged: (value) => controller.selectOption(value!),
                   ),
-                  Gap(32),
+                  Gap(20),
                   SubscriptionFeatures(
                     title: "Unlimited name changes".tr,
                     subtitle:
@@ -127,7 +127,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                     groupValue: controller.selectedOption,
                     onChanged: (value) => controller.selectOption(value!),
                   ),
-                  Gap(32),
+                  Gap(20),
                   SubscriptionFeatures(
                     title: "Find Out Who Sent Request".tr,
                     subtitle:
@@ -137,23 +137,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                     groupValue: controller.selectedOption,
                     onChanged: (value) => controller.selectOption(value!),
                   ),
-                  Gap(24),
-                  Center(
-                    child: Text(
-                      "1 month free trial. Then monthly plan for".tr,
-                      style:
-                          TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
-                    ),
-                  ),
-                  Center(
-                    child: Text(
-                      "${controller.package?.storeProduct.priceString} .Cancel anytime."
-                          .tr,
-                      style:
-                          TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
-                    ),
-                  ),
-                  Gap(24),
+                  Gap(10),
                   InkWell(
                     onTap: () async {
                       if (controller.package != null) {
@@ -162,33 +146,33 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                       }
                     },
                     child: Container(
-                      height: 60.12.h,
-                      width: 285.w,
+                      // height: 65.12.h,
+                      // width: 290.w,
+                      padding: EdgeInsets.all(5),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30.r),
                           color: AppColors.primary_color,
-                          border: Border.all(color: AppColors.primary_color)),
+                          border: Border.all(color: AppColors.primary_color),
+                           ),
                       child: Center(
-                        child: RichText(
-                          text: TextSpan(
-                            text: "Try 1 month for ".tr,
-                            style: TextStyle(
-                                color: AppColors.white,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 14.sp),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text:
-                                    '${controller.package?.storeProduct.currencyCode} 0'
-                                        .tr,
+                        child: Column(
+                          children: [
+                            Gap(5),
+                            Text("Try It Free ".tr,
                                 style: TextStyle(
                                     color: AppColors.white,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                    decorationThickness: 4),
-                              ),
-                            ],
-                          ),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14.sp),
+                            ),
+                            Text(
+                              "1 month free, then ${controller.package?.storeProduct.priceString}/month"
+                                  .tr,
+                                style: TextStyle(
+                                    color: AppColors.white,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 13.sp),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -232,7 +216,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                       'Payment will be charged to iTunes Account at confirmation of purchase. Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Account will be charged for renewal within 24-hours prior to the end of the current period. You can manage or turn off auto-renew in your Account settings at any time after purchase No cancellation of the current subscription is allowed during the active period.',
                       style: TextStyle(
                         color: AppColors.hintGrey,
-                        fontSize: 12,
+                        fontSize: 13,
                         fontWeight: FontWeight.w500,
                       ),
                     ),

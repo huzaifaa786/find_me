@@ -84,11 +84,17 @@ class HomeController extends GetxController {
     super.onInit();
   }
 
-  @override
-  void onClose() {
+@override
+   onClose([String? beaconId]) async {
     super.onClose();
     // WidgetsBinding.instance.removeObserver(this);
-    stopPeriodicAdvertising();
+    await stopPeriodicAdvertising();
+
+    // Check if beaconId is provided; if not, read it from the box
+    String id = beaconId ?? box.read('beacon_id') ?? '';
+    if (id.isNotEmpty) {
+      pusher.unsubscribe(channelName: 'user.$id');
+    }
   }
 
   getUser() async {
@@ -224,9 +230,9 @@ class HomeController extends GetxController {
     });
   }
 
-  void stopPeriodicAdvertising() async {
-    _advertisingTimer?.cancel(); // Cancel the timer
-    await FlutterBlePeripheral().stop(); // Stop advertising
+   stopPeriodicAdvertising() async {
+    _advertisingTimer?.cancel(); 
+    await FlutterBlePeripheral().stop();
   }
 
   Future<void> toggleAdvertise() async {
@@ -432,7 +438,8 @@ class HomeController extends GetxController {
               serviceDataKeys = serviceDataKeys.toSet().toList();
               await sendServiceDataKeysToApi();
             });
-      } else {
+      }
+       else if(state == BluetoothAdapterState.off) {
        if (!_hasShownBluetoothOffSnackbar) {
           _hasShownBluetoothOffSnackbar = true; // Set the flag to true
           UiUtilites.errorSnackbar("", "Bluetooth is turned off.");
