@@ -84,10 +84,18 @@ class HomeController extends GetxController {
     super.onInit();
   }
 
-@override
-   onClose([String? beaconId]) async {
+  @override
+  onClose([String? beaconId]) async {
     super.onClose();
     // WidgetsBinding.instance.removeObserver(this);
+    advertiseData = AdvertiseData(
+      serviceUuid: beaconId,
+      localName: "",
+      includePowerLevel: true,
+    );
+    await FlutterBlePeripheral().changeAdvertiseData(
+      advertiseData!,
+    );
     await stopPeriodicAdvertising();
 
     // Check if beaconId is provided; if not, read it from the box
@@ -230,8 +238,8 @@ class HomeController extends GetxController {
     });
   }
 
-   stopPeriodicAdvertising() async {
-    _advertisingTimer?.cancel(); 
+  stopPeriodicAdvertising() async {
+    _advertisingTimer?.cancel();
     await FlutterBlePeripheral().stop();
   }
 
@@ -337,7 +345,7 @@ class HomeController extends GetxController {
   void initFlutterBlue() async {
     scannedUsers = [];
     update();
-        await Permission.bluetoothScan.request();
+    await Permission.bluetoothScan.request();
 
     // Check if location permissions are granted
     LocationPermission permission = await Geolocator.checkPermission();
@@ -395,7 +403,7 @@ class HomeController extends GetxController {
     scannedUsers = [];
     FlutterBluePlus.adapterState.listen((BluetoothAdapterState state) {
       if (state == BluetoothAdapterState.on) {
-         _hasShownBluetoothOffSnackbar = false;
+        _hasShownBluetoothOffSnackbar = false;
 
         FlutterBluePlus.onScanResults.listen(
             (results) async {
@@ -438,9 +446,8 @@ class HomeController extends GetxController {
               serviceDataKeys = serviceDataKeys.toSet().toList();
               await sendServiceDataKeysToApi();
             });
-      }
-       else if(state == BluetoothAdapterState.off) {
-       if (!_hasShownBluetoothOffSnackbar) {
+      } else if (state == BluetoothAdapterState.off) {
+        if (!_hasShownBluetoothOffSnackbar) {
           _hasShownBluetoothOffSnackbar = true; // Set the flag to true
           UiUtilites.errorSnackbar("", "Bluetooth is turned off.");
         }
