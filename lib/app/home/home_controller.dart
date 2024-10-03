@@ -93,9 +93,7 @@ class HomeController extends GetxController {
       localName: "",
       includePowerLevel: true,
     );
-    await FlutterBlePeripheral().changeAdvertiseData(
-      advertiseData!,
-    );
+    update();
     await stopPeriodicAdvertising();
 
     // Check if beaconId is provided; if not, read it from the box
