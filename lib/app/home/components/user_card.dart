@@ -17,12 +17,19 @@ class UserCard extends StatelessWidget {
   final UserModel user;
   final onTap;
   final bool isBlur;
+  final Key key;
 
-  UserCard({required this.user, this.onTap, this.isBlur = false});
+  UserCard({
+    required this.user,
+    this.onTap,
+    this.isBlur = false,
+    required this.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      key: key,
       onTap: onTap,
       child: SizedBox(
         child: Column(
@@ -70,39 +77,39 @@ class UserCard extends StatelessWidget {
               ),
             ),
             Gap(5.w),
-            if(!isBlur)
-            SizedBox(
-              height: 10.h,
-              child: Row(
-                children: [
-                  Container(
-                    width: 7.w,
-                    height: 7.h,
-                    decoration: BoxDecoration(
-                      color: AppColors.green,
-                      shape: BoxShape.circle,
+            if (!isBlur)
+              SizedBox(
+                height: 10.h,
+                child: Row(
+                  children: [
+                    Container(
+                      width: 7.w,
+                      height: 7.h,
+                      decoration: BoxDecoration(
+                        color: AppColors.green,
+                        shape: BoxShape.circle,
+                      ),
                     ),
-                  ),
-                  Gap(4.w),
-                  Expanded(
-                    flex: 2,
-                    child: Row(
-                      children: [
-                        AppText(
-                          title: user.currentProfile!.name ?? '',
-                          overFlow: TextOverflow.visible,
-                          textAlign: TextAlign.justify,
-                          size: 10,
-                          fontWeight: FontWeight.w500,
-                        ),
-                        if(user.currentProfile!.isVerified)
-                        SvgPicture.asset('assets/icons/verified.svg'),
-                      ],
+                    Gap(4.w),
+                    Expanded(
+                      flex: 2,
+                      child: Row(
+                        children: [
+                          AppText(
+                            title: user.currentProfile!.name ?? '',
+                            overFlow: TextOverflow.visible,
+                            textAlign: TextAlign.justify,
+                            size: 10,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          if (user.currentProfile!.isVerified)
+                            SvgPicture.asset('assets/icons/verified.svg'),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
           ],
         ),
       ),

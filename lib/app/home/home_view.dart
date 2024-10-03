@@ -169,15 +169,15 @@ class HomeView extends StatelessWidget {
                                                             children: [
                                                               CircleAvatar(
                                                                 backgroundColor:
-                                                                    Colors.white,
+                                                                    Colors
+                                                                        .white,
                                                                 radius: 15.r,
                                                                 child: ClipOval(
                                                                   child: item.avatarUrl !=
                                                                           null
                                                                       ? CachedNetworkImage(
                                                                           imageUrl:
-                                                                              item.avatarUrl ??
-                                                                                  '',
+                                                                              item.avatarUrl ?? '',
                                                                           fit: BoxFit
                                                                               .cover,
                                                                           width:
@@ -294,168 +294,198 @@ class HomeView extends StatelessWidget {
                                       fontWeight: FontWeight.w400,
                                     ),
                                   )
-                                : controller.scannedUsers.isNotEmpty ? GridView.builder(
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    physics: NeverScrollableScrollPhysics(),
-                                    gridDelegate:
-                                        SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 3,
-                                      mainAxisSpacing: 15.h,
-                                      crossAxisSpacing: 15.0,
-                                      mainAxisExtent: 100.h,
-                                    ),
-                                    itemCount:
-                                        controller.scannedUsers.length,
-                                    itemBuilder: (context, index) {
-                                      bool isFreeUser =
-                                          !SubscriptionManager().isProUser;
-                                      bool isBlurred = isFreeUser && index >= 6;
-                                      return UserCard(
-                                        user: controller.scannedUsers[index],
-                                        isBlur: isBlurred,
-                                        onTap: () {
-                                          if (isFreeUser && index >= 6) {
-                                            UiUtilites.accountUpgradeAlert(
-                                                context, controller);
-                                          } else {
-                                            showModalBottomSheet(
-                                              context: context,
-                                              builder: (BuildContext context) {
-                                                return Container(
-                                                  height: 250,
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      ListTile(
-                                                        dense: true,
-                                                        minTileHeight: 48.0,
-                                                        leading: Icon(
-                                                            Icons.visibility),
-                                                        title: AppText(
-                                                          size: 14,
-                                                          title:
-                                                              'View Profile'.tr,
-                                                        ),
-                                                        onTap: () {
-                                                          Navigator.pop(
-                                                              context);
-                                                          if (controller
-                                                              .scannedUsers[
-                                                                  index]
-                                                              .currentProfile!
-                                                              .isProfilePublic) {
-                                                            Get.toNamed(
-                                                                    AppRoutes
-                                                                        .publicProfile,
-                                                                    arguments: controller
-                                                                        .scannedUsers[
-                                                                            index]
-                                                                        .currentProfile)!
-                                                                .then((value) {
-                                                              controller
-                                                                  .getUser();
-                                                            });
-                                                          } else {
-                                                            controller.sendRequest(
-                                                                controller
-                                                                        .scannedUsers[
-                                                                    index]);
-                                                          }
-                                                        },
-                                                      ),
-                                                      Divider(
-                                                        thickness: 1,
-                                                        color: AppColors.black
-                                                            .withOpacity(0.08),
-                                                      ),
-                                                      ListTile(
-                                                        dense: true,
-                                                        minTileHeight: 48.0,
-                                                        leading:
-                                                            Icon(Icons.block),
-                                                        title: AppText(
-                                                          size: 14,
-                                                          title: 'Block'.tr,
-                                                        ),
-                                                        onTap: () {
-                                                          Navigator.pop(
-                                                              context);
-                                                          UiUtilites.accountAlert(
-                                                              context,
-                                                              text:
-                                                                  "Are you sure you want to block this profile?",
-                                                              onTapYes: () {
-                                                            Get.back();
-                                                            controller.blockProfile(
-                                                                controller
-                                                                        .scannedUsers[
-                                                                    index]);
-                                                          }, onTapNo: () {
-                                                            Get.back();
-                                                          });
-                                                        },
-                                                      ),
-                                                      Divider(
-                                                        thickness: 1,
-                                                        color: AppColors.black
-                                                            .withOpacity(0.08),
-                                                      ),
-                                                      ListTile(
-                                                        dense: true,
-                                                        minTileHeight: 48.0,
-                                                        leading:
-                                                            Icon(Icons.report),
-                                                        title: AppText(
-                                                          size: 14,
-                                                          title: 'Report'.tr,
-                                                        ),
-                                                        onTap: () {
-                                                          Navigator.pop(
-                                                              context);
-                                                          Get.toNamed(
-                                                              AppRoutes
-                                                                  .reportProfile,
-                                                              arguments: controller
+                                : controller.scannedUsers.isNotEmpty
+                                    ? GridView.builder(
+                                        key: UniqueKey(),
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.vertical,
+                                        physics: NeverScrollableScrollPhysics(),
+                                        gridDelegate:
+                                            SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 3,
+                                          mainAxisSpacing: 15.h,
+                                          crossAxisSpacing: 15.0,
+                                          mainAxisExtent: 100.h,
+                                        ),
+                                        itemCount:
+                                            controller.scannedUsers.length,
+                                        itemBuilder: (context, index) {
+                                          bool isFreeUser =
+                                              !SubscriptionManager().isProUser;
+                                          bool isBlurred =
+                                              isFreeUser && index >= 6;
+                                          return UserCard(
+                                            key: UniqueKey(),
+                                            user:
+                                                controller.scannedUsers[index],
+                                            isBlur: isBlurred,
+                                            onTap: () {
+                                              if (isFreeUser && index >= 6) {
+                                                UiUtilites.accountUpgradeAlert(
+                                                    context, controller);
+                                              } else {
+                                                showModalBottomSheet(
+                                                  context: context,
+                                                  builder:
+                                                      (BuildContext context) {
+                                                    return Container(
+                                                      key: UniqueKey(),
+                                                      height: 250,
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          ListTile(
+                                                            dense: true,
+                                                            minTileHeight: 48.0,
+                                                            leading: Icon(Icons
+                                                                .visibility),
+                                                            title: AppText(
+                                                              size: 14,
+                                                              title:
+                                                                  'View Profile'
+                                                                      .tr,
+                                                            ),
+                                                            onTap: () {
+                                                              Navigator.pop(
+                                                                  context);
+                                                              if (controller
                                                                   .scannedUsers[
                                                                       index]
-                                                                  .currentProfile);
-                                                        },
+                                                                  .currentProfile!
+                                                                  .isProfilePublic) {
+                                                                Get.toNamed(
+                                                                        AppRoutes
+                                                                            .publicProfile,
+                                                                        arguments: controller
+                                                                            .scannedUsers[
+                                                                                index]
+                                                                            .currentProfile)!
+                                                                    .then(
+                                                                        (value) {
+                                                                  controller
+                                                                      .getUser();
+                                                                });
+                                                              } else {
+                                                                controller.sendRequest(
+                                                                    controller
+                                                                            .scannedUsers[
+                                                                        index]);
+                                                              }
+                                                            },
+                                                          ),
+                                                          Divider(
+                                                            thickness: 1,
+                                                            color: AppColors
+                                                                .black
+                                                                .withOpacity(
+                                                                    0.08),
+                                                          ),
+                                                          ListTile(
+                                                            dense: true,
+                                                            minTileHeight: 48.0,
+                                                            leading: Icon(
+                                                                Icons.block),
+                                                            title: AppText(
+                                                              size: 14,
+                                                              title: 'Block'.tr,
+                                                            ),
+                                                            onTap: () {
+                                                              Navigator.pop(
+                                                                  context);
+                                                              UiUtilites
+                                                                  .accountAlert(
+                                                                      context,
+                                                                      text:
+                                                                          "Are you sure you want to block this profile?",
+                                                                      onTapYes:
+                                                                          () {
+                                                                Get.back();
+                                                                controller.blockProfile(
+                                                                    controller
+                                                                            .scannedUsers[
+                                                                        index]);
+                                                              }, onTapNo: () {
+                                                                Get.back();
+                                                              });
+                                                            },
+                                                          ),
+                                                          Divider(
+                                                            thickness: 1,
+                                                            color: AppColors
+                                                                .black
+                                                                .withOpacity(
+                                                                    0.08),
+                                                          ),
+                                                          ListTile(
+                                                            dense: true,
+                                                            minTileHeight: 48.0,
+                                                            leading: Icon(
+                                                                Icons.report),
+                                                            title: AppText(
+                                                              size: 14,
+                                                              title:
+                                                                  'Report'.tr,
+                                                            ),
+                                                            onTap: () {
+                                                              Navigator.pop(
+                                                                  context);
+                                                              Get.toNamed(
+                                                                  AppRoutes
+                                                                      .reportProfile,
+                                                                  arguments: controller
+                                                                      .scannedUsers[
+                                                                          index]
+                                                                      .currentProfile);
+                                                            },
+                                                          ),
+                                                          Divider(
+                                                            thickness: 1,
+                                                            color: AppColors
+                                                                .black
+                                                                .withOpacity(
+                                                                    0.08),
+                                                          ),
+                                                          ListTile(
+                                                            dense: true,
+                                                            minTileHeight: 48.0,
+                                                            leading: Icon(
+                                                              Icons.cancel,
+                                                              color:
+                                                                  AppColors.red,
+                                                            ),
+                                                            title: AppText(
+                                                              size: 14,
+                                                              title:
+                                                                  'Cancel'.tr,
+                                                              color:
+                                                                  AppColors.red,
+                                                            ),
+                                                            onTap: () {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                          ),
+                                                        ],
                                                       ),
-                                                      Divider(
-                                                        thickness: 1,
-                                                        color: AppColors.black
-                                                            .withOpacity(0.08),
-                                                      ),
-                                                      ListTile(
-                                                        dense: true,
-                                                        minTileHeight: 48.0,
-                                                        leading: Icon(
-                                                          Icons.cancel,
-                                                          color: AppColors.red,
-                                                        ),
-                                                        title: AppText(
-                                                          size: 14,
-                                                          title: 'Cancel'.tr,
-                                                          color: AppColors.red,
-                                                        ),
-                                                        onTap: () {
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                      ),
-                                                    ],
-                                                  ),
+                                                    );
+                                                  },
                                                 );
-                                              },
-                                            );
-                                          }
+                                              }
+                                            },
+                                          );
                                         },
-                                      );
-                                    },
-                                  ):Center(heightFactor: 15, child: AppText(title: "No finders nearby. Refresh or expand your radius.",size: 12,fontWeight: FontWeight.w600,textAlign: TextAlign.center,)),
+                                      )
+                                    : Center(
+                                        heightFactor: 15,
+                                        child: AppText(
+                                          title:
+                                              "No finders nearby. Refresh or expand your radius.",
+                                          size: 12,
+                                          fontWeight: FontWeight.w600,
+                                          textAlign: TextAlign.center,
+                                        )),
                           ),
                         ),
                       ),
