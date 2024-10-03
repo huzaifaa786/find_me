@@ -239,7 +239,11 @@ class SignUpController extends GetxController {
     // Generate a UUID for the device's beacon ID
     var uuid = const Uuid();
     String beaconId = uuid.v4();
-    if ((await _geolocator.isLocationServiceEnabled() && await Permission.location.isGranted)) {
+    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (serviceEnabled &&
+        (permission == LocationPermission.whileInUse ||
+            permission == LocationPermission.always)) {
       Position position = await Geolocator.getCurrentPosition();
 
       Map<String, dynamic> response = await RegisterApi.registerUser(
@@ -250,7 +254,7 @@ class SignUpController extends GetxController {
           firstName: firstNameController.text,
           lastName: lastNameController.text,
           gender: gender,
-          dob: dob == "--" ? null :dob,
+          dob: dob == "--" ? null : dob,
           lat: position.latitude,
           lng: position.longitude,
           token: token,
@@ -259,8 +263,19 @@ class SignUpController extends GetxController {
         Get.offNamed(AppRoutes.otp, arguments: phoneController);
       }
     } else {
-      UiUtilites.errorSnackbar(
-          "Location Permission Not Allowed", "Please Turn on Location!"); 
+      if (!serviceEnabled) {
+        // Location services are disabled
+        await Geolocator.openLocationSettings();
+        UiUtilites.errorSnackbar("", "Location services are disabled.");
+      } else if (permission == LocationPermission.denied ||
+          permission == LocationPermission.deniedForever) {
+        // Request location permission
+        permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.denied ||
+            permission == LocationPermission.deniedForever) {
+          UiUtilites.errorSnackbar("", "Location permission denied.");
+        }
+      }
     }
   }
 
