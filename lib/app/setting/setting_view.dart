@@ -1,3 +1,4 @@
+import 'package:find_me/api/auth_api/user_api.dart';
 import 'package:find_me/app/home/home_controller.dart';
 import 'package:find_me/app/setting/setting_controller.dart';
 import 'package:find_me/components/appbars/topbar.dart';
@@ -27,20 +28,24 @@ class SettingView extends StatelessWidget {
                 scrolledUnderElevation: 0,
               ),
               bottomNavigationBar: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 44.0,vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 44.0, vertical: 10),
                 child: GestureDetector(
                   onTap: () async {
                     UiUtilites.logoutSuccessAlert(context, () async {
-                      GetStorage box = GetStorage();
-                
-                      final homeController = Get.find<HomeController>();
+                      var response = await UserApi().logout();
+                      if (response.isNotEmpty) {
+                        GetStorage box = GetStorage();
+
+                        final homeController = Get.find<HomeController>();
                         String beaconId = box.read('beacon_id');
 
-                      // Call onClose to clean up resources, passing the beaconId
-                       homeController.onClose(beaconId); 
-                      await box.remove('api_token');
-                      await box.remove('beacon_id');
-                      Get.offAllNamed(AppRoutes.intro);
+                        // Call onClose to clean up resources, passing the beaconId
+                        homeController.onClose(beaconId);
+                        await box.remove('api_token');
+                        await box.remove('beacon_id');
+                        Get.offAllNamed(AppRoutes.intro);
+                      }
                     }, () {
                       Get.back();
                     });

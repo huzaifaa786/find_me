@@ -13,6 +13,7 @@ import 'firebase_options.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
 void main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
   await LoadingHelper.init();
   await Firebase.initializeApp(
@@ -26,6 +27,7 @@ void main() async {
   await dotenv.load(fileName: "assets/.env");
   HttpOverrides.global = MyHttpOverrides();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
   if (Platform.isIOS) {
     StoreHelper(
       store: Store.appStore,
@@ -37,12 +39,14 @@ void main() async {
       apiKey: "goog_bYFHCOyjSHobDnWGmtsqZPUGASI",
     );
   }
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]).then((_) {
     runApp(const App());
   });
+
 }
 
 class MyHttpOverrides extends HttpOverrides {
