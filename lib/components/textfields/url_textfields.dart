@@ -9,7 +9,7 @@ class UrlTextFields extends StatefulWidget {
     Key? key,
     this.icon,
     this.controller,
-    this.hintText,
+    this.prefixText, // New parameter for non-editable URL prefix
     this.type,
     this.fieldValidator,
     this.onChanged,
@@ -25,7 +25,7 @@ class UrlTextFields extends StatefulWidget {
   final width;
   final height;
   final controller;
-  final hintText;
+  final String? prefixText; // Define the prefixText parameter
   final type;
   final fieldValidator;
   final ValueChanged<String>? onChanged;
@@ -46,15 +46,13 @@ class _UrlTextFieldsState extends State<UrlTextFields> {
   void initState() {
     super.initState();
     _focusNode = FocusNode();
-    _currentHintText = widget.hintText;
 
     // Listen to focus changes to update the hint text.
     _focusNode.addListener(() {
       setState(() {
         if (_focusNode.hasFocus) {
           _currentHintText = ''; // Clear hint when focused.
-        } else {
-          _currentHintText = widget.hintText; // Restore hint when unfocused.
+        } else {// Restore hint when unfocused.
         }
       });
     });
@@ -92,13 +90,14 @@ class _UrlTextFieldsState extends State<UrlTextFields> {
                 ),
               )
             : null,
-        suffixIcon: widget.controller.text.isNotEmpty ? GestureDetector(
-          onTap: widget.onSuffixTap,
-          child: const Icon(Icons.cancel, color: Colors.red),
-        ):null,
-        
+        prefixText: widget.prefixText, // Non-editable URL prefix
+        suffixIcon: widget.controller.text.isNotEmpty
+            ? GestureDetector(
+                onTap: widget.onSuffixTap,
+                child: const Icon(Icons.cancel, color: Colors.red),
+              )
+            : null,
         filled: true,
-        hintText: _currentHintText,
         hintStyle: TextStyle(
           color: AppColors.hintGrey,
           fontSize: 12.sp,
