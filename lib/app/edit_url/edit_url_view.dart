@@ -117,7 +117,7 @@ class _EditUrlViewState extends State<EditUrlView> {
     return UrlTextFields(
       defaultText: defaultText,
       icon: icon,
-      hintText: hintText.tr,
+      hintText: hintText,
       controller: fieldController,
       onEditingComplete: () {
         FocusScope.of(context).unfocus();
@@ -135,4 +135,5 @@ class _EditUrlViewState extends State<EditUrlView> {
       },
     );
   }
+
 }

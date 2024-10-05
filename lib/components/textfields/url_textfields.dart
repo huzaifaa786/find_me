@@ -10,13 +10,14 @@ class UrlTextFields extends StatefulWidget {
     required this.defaultText, // Non-removable default text
     this.icon,
     this.controller,
-    this.hintText,
+    this.prefixText, // New parameter for non-editable URL prefix
     this.type,
     this.fieldValidator,
     this.onChanged,
     this.onEditingComplete,
     this.onSuffixTap,
     this.enabled,
+    this.hintText,
     this.color = AppColors.black,
     this.height = 20.0,
     this.width = 20.0,
@@ -27,13 +28,14 @@ class UrlTextFields extends StatefulWidget {
   final width;
   final height;
   final controller;
-  final hintText;
+  final String? prefixText; // Define the prefixText parameter
   final type;
   final fieldValidator;
   final ValueChanged<String>? onChanged;
   final Function()? onEditingComplete;
   final Function()? onSuffixTap;
   final bool? enabled;
+  final String? hintText;
   final color;
 
   @override
@@ -50,7 +52,8 @@ class _UrlTextFieldsState extends State<UrlTextFields> {
   void initState() {
     super.initState();
     _focusNode = FocusNode();
-    _controller = widget.controller ?? TextEditingController(text: widget.defaultText);
+    _controller =
+        widget.controller ?? TextEditingController(text: widget.defaultText);
     _currentHintText = widget.hintText;
 
     // Listen for text changes to enforce non-removable default text unless it's being cleared via onSuffixTap.
@@ -70,7 +73,7 @@ class _UrlTextFieldsState extends State<UrlTextFields> {
         if (_focusNode.hasFocus) {
           _currentHintText = ''; // Clear hint when focused.
         } else {
-          _currentHintText = widget.hintText; // Restore hint when unfocused.
+          // Restore hint when unfocused.
         }
       });
     });
@@ -97,7 +100,9 @@ class _UrlTextFieldsState extends State<UrlTextFields> {
         fontSize: 12.sp,
         fontWeight: FontWeight.w500,
       ),
+      
       decoration: InputDecoration(
+        hintText: widget.hintText,
         prefixIcon: widget.icon != null
             ? Padding(
                 padding: EdgeInsets.only(left: 23.w, right: 14),
@@ -127,7 +132,6 @@ class _UrlTextFieldsState extends State<UrlTextFields> {
               )
             : null,
         filled: true,
-        hintText: _currentHintText,
         hintStyle: TextStyle(
           color: AppColors.hintGrey,
           fontSize: 12.sp,
