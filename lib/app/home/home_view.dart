@@ -6,6 +6,7 @@ import 'package:find_me/app/home/components/home_gif_button.dart';
 import 'package:find_me/app/home/components/home_appbar.dart';
 import 'package:find_me/app/home/components/user_card.dart';
 import 'package:find_me/app/main_view/main_controller.dart';
+import 'package:find_me/app/public_profile/public_profile_controller.dart';
 import 'package:find_me/components/buttons/app_button.dart';
 import 'package:find_me/helpers/subscription_manager.dart';
 import 'package:find_me/routes/app_routes.dart';
@@ -326,6 +327,8 @@ class HomeView extends StatelessWidget {
                                                 UiUtilites.accountUpgradeAlert(
                                                     context, controller);
                                               } else {
+                                                Get.delete<
+                                                    PublicProfileController>();
                                                 showModalBottomSheet(
                                                   context: context,
                                                   builder:
