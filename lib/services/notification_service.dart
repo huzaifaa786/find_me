@@ -131,11 +131,13 @@ class NotificationService extends GetxController with WidgetsBindingObserver {
         }
       } else if (type == 'emoji-gifted') {
         // Show emoji pop-up
-        UiUtilites.EmojiGiftPopUp(Get.context,
-            text: data['message'] ?? "",
-            imageUrl: data['emoji'],
-            senderImage: data['senderImage'],
-            senderName: data['senderName']);
+        if (Get.isDialogOpen != true) {
+          UiUtilites.EmojiGiftPopUp(Get.context,
+              text: data['message'] ?? "",
+              imageUrl: data['emoji_image'],
+              senderImage: data['sender_image'],
+              senderName: data['sender_name']);
+        }
       }
     }
   }
