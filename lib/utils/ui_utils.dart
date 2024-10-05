@@ -1537,11 +1537,9 @@ class UiUtilites {
     required String? senderImage,
     required String? senderName,
   }) {
-    return showDialog(
-      context: context,
-      barrierDismissible: true,
-      builder: (BuildContext context) {
-        return AlertDialog(
+    Get.dialog(
+        barrierDismissible: false,
+        AlertDialog(
           backgroundColor: Colors.white,
           surfaceTintColor: Colors.white,
           shape: RoundedRectangleBorder(
@@ -1649,9 +1647,7 @@ class UiUtilites {
               ],
             ),
           ),
-        );
-        //  );
-      },
-    );
+        ));
+    //  );
   }
 }
