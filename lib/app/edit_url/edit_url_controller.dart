@@ -62,7 +62,9 @@ class EditUrlController extends GetxController {
     super.dispose();
   }
 
-  Future<void> updateUrls({isRemove = false}) async {
+  Future<void> updateUrls({
+    isRemove = false,
+  }) async {
     try {
       var response = await ProfileApi.updateProfileUrls(
         userProfileId: profileModel?.id,
@@ -80,12 +82,13 @@ class EditUrlController extends GetxController {
       );
 
       if (response.isNotEmpty) {
-        update();
         if (isRemove) {
           Get.back();
           UiUtilites.successSnackbar("Url removed successfully".tr, "");
         } else {
-          UiUtilites.successCustomSnackbar("Updated successfully".tr,position: 10);
+          update();
+          UiUtilites.successCustomSnackbar("Updated successfully".tr,
+              position: 10);
         }
       } else {
         UiUtilites.errorSnackbar('Error'.tr, 'Failed to update URLs'.tr);

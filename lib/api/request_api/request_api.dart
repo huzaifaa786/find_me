@@ -42,7 +42,7 @@ class RequestApi {
   }
 
   static Future<Map<String, dynamic>> respondRequest({
-    ProfileRequestModel? profileRequestModel,
+    int id,
     String? status,
   }) async {
     //* URL
@@ -50,7 +50,7 @@ class RequestApi {
 
     //* DATA
     var data = {
-      'id': profileRequestModel!.id,
+      'id': id,
       'status': status,
     };
 

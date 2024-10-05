@@ -647,7 +647,7 @@ class HomeController extends GetxController {
 
   respondRequest(ProfileRequestModel requestModel, String status) async {
     var response = await RequestApi.respondRequest(
-        profileRequestModel: requestModel, status: status);
+        id: requestModel.id, status: status);
 
     if (response.isNotEmpty) {
       if (status == "accepted") {

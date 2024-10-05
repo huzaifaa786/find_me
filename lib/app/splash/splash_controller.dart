@@ -19,6 +19,7 @@ class SplashController extends GetxController {
     String? apiToken = box.read('api_token');
     if (apiToken != null) {
       var response = await UserApi().checkAccountStatus();
+      print("rrrr:$response");
       if (response.isNotEmpty) {
         if (response['user']['is_blocked'] == 1) {
           UiUtilites.accountBlockedAlert(Get.context);
@@ -29,6 +30,8 @@ class SplashController extends GetxController {
             checkFirstSeen();
           });
         }
+      } else {
+        initscreen();
       }
     } else {
       await Future.delayed(const Duration(seconds: 3), () {

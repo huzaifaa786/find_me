@@ -7,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 class UrlTextFields extends StatefulWidget {
   const UrlTextFields({
     Key? key,
+    required this.defaultText, // Non-removable default text
     this.icon,
     this.controller,
     this.hintText,
@@ -21,6 +22,7 @@ class UrlTextFields extends StatefulWidget {
     this.width = 20.0,
   }) : super(key: key);
 
+  final String defaultText;
   final icon;
   final width;
   final height;
@@ -40,13 +42,27 @@ class UrlTextFields extends StatefulWidget {
 
 class _UrlTextFieldsState extends State<UrlTextFields> {
   late FocusNode _focusNode;
+  late TextEditingController _controller;
   String? _currentHintText;
+  bool _isClearing = false; // Flag to control clearing
 
   @override
   void initState() {
     super.initState();
     _focusNode = FocusNode();
+    _controller = widget.controller ?? TextEditingController(text: widget.defaultText);
     _currentHintText = widget.hintText;
+
+    // Listen for text changes to enforce non-removable default text unless it's being cleared via onSuffixTap.
+    _controller.addListener(() {
+      if (!_isClearing && !_controller.text.startsWith(widget.defaultText)) {
+        // Ensure the default text is always present at the start unless in clear mode
+        _controller.text = widget.defaultText;
+        _controller.selection = TextSelection.fromPosition(
+          TextPosition(offset: widget.defaultText.length),
+        );
+      }
+    });
 
     // Listen to focus changes to update the hint text.
     _focusNode.addListener(() {
@@ -63,6 +79,7 @@ class _UrlTextFieldsState extends State<UrlTextFields> {
   @override
   void dispose() {
     _focusNode.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -71,7 +88,7 @@ class _UrlTextFieldsState extends State<UrlTextFields> {
     return TextFormField(
       cursorColor: AppColors.primary_color,
       focusNode: _focusNode,
-      controller: widget.controller,
+      controller: _controller,
       keyboardType: widget.type,
       autovalidateMode: widget.fieldValidator == true
           ? AutovalidateMode.always
@@ -92,11 +109,23 @@ class _UrlTextFieldsState extends State<UrlTextFields> {
                 ),
               )
             : null,
-        suffixIcon: widget.controller.text.isNotEmpty ? GestureDetector(
-          onTap: widget.onSuffixTap,
-          child: const Icon(Icons.cancel, color: Colors.red),
-        ):null,
-        
+        suffixIcon: _controller.text.isNotEmpty
+            ? GestureDetector(
+                onTap: () {
+                  // Clear the controller and unfocus the field on suffix tap
+                  setState(() {
+                    _isClearing = true;
+                    _controller.clear();
+                    FocusScope.of(context).unfocus(); // Unfocus the text field
+                    if (widget.onSuffixTap != null) {
+                      widget.onSuffixTap!();
+                    }
+                    _isClearing = false;
+                  });
+                },
+                child: const Icon(Icons.cancel, color: Colors.red),
+              )
+            : null,
         filled: true,
         hintText: _currentHintText,
         hintStyle: TextStyle(
@@ -116,6 +145,14 @@ class _UrlTextFieldsState extends State<UrlTextFields> {
       validator: widget.fieldValidator,
       onChanged: widget.onChanged,
       onEditingComplete: widget.onEditingComplete,
+      onTap: () {
+        // Ensure cursor is always placed after the default text unless clearing is allowed.
+        if (_controller.selection.start < widget.defaultText.length) {
+          _controller.selection = TextSelection.fromPosition(
+            TextPosition(offset: widget.defaultText.length),
+          );
+        }
+      },
     );
   }
 }

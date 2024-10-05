@@ -6,6 +6,7 @@ import 'package:find_me/components/textfields/url_textfields.dart';
 import 'package:find_me/utils/ui_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -42,55 +43,61 @@ class _EditUrlViewState extends State<EditUrlView> {
                 children: [
                   Gap(41),
                   buildStackedUrlField(controller, "assets/icons/snapchat.svg",
-                      "Snapchat url", controller.snapchatController),
+                      "Snapchat url", controller.snapchatController, ""),
                   Gap(24),
                   buildStackedUrlField(
                       controller,
                       "assets/icons/instagram_black.svg",
                       " https://www.instagram.com/username",
-                      controller.instagramController),
+                      controller.instagramController,
+                      "https://www.instagram.com/"),
                   Gap(24),
                   buildStackedUrlField(
                       controller,
                       "assets/icons/twitter-x 1.svg",
                       " https://www.x.com/@username",
-                      controller.xController),
+                      controller.xController,
+                      "https://x.com/"),
                   Gap(24),
                   buildStackedUrlField(
                       controller,
                       "assets/icons/telegram-plane.svg",
                       "Telegram url",
-                      controller.telegramController),
+                      controller.telegramController,
+                      ""),
                   Gap(24),
                   buildStackedUrlField(
                       controller,
                       "assets/icons/whatsapp1.svg",
                       "https://wa.me/+(Country Code - Mobile number)",
-                      controller.whatsappController),
+                      controller.whatsappController,
+                      "https://wa.me/+"),
                   Gap(24),
                   buildStackedUrlField(
                       controller,
                       "assets/icons/tiktok_black.svg",
                       "https://www.TikTok.com/@username",
-                      controller.tiktokController),
+                      controller.tiktokController,
+                      "https://www.tiktok.com/"),
                   Gap(24),
                   buildStackedUrlField(controller, "assets/icons/linkedin.svg",
-                      "LinkedIn url", controller.linkedinController),
+                      "LinkedIn url", controller.linkedinController, ""),
                   Gap(24),
                   buildStackedUrlField(controller, "assets/icons/gmail.svg",
-                      "mail:abc@abc.com", controller.emailController),
+                      "mail:abc@abc.com", controller.emailController, "mail:"),
                   Gap(24),
                   buildStackedUrlField(controller, "assets/icons/web.svg",
-                      "Website url", controller.websiteController),
+                      "Website url", controller.websiteController, ""),
                   Gap(24),
                   buildStackedUrlField(controller, "assets/icons/youtube.svg",
-                      "YouTube url", controller.youtubeController),
+                      "YouTube url", controller.youtubeController, ""),
                   Gap(24),
                   buildStackedUrlField(
                       controller,
                       "assets/icons/facebook_black.svg",
                       "Facebook url",
-                      controller.facebookController),
+                      controller.facebookController,
+                      ""),
                   Gap(47),
                 ],
               ),
@@ -101,14 +108,17 @@ class _EditUrlViewState extends State<EditUrlView> {
     );
   }
 
-  Widget buildStackedUrlField(EditUrlController controller, String icon,
-      String hintText, TextEditingController fieldController) {
+  Widget buildStackedUrlField(
+      EditUrlController controller,
+      String icon,
+      String hintText,
+      TextEditingController fieldController,
+      String defaultText) {
     return UrlTextFields(
+      defaultText: defaultText,
       icon: icon,
       hintText: hintText.tr,
       controller: fieldController,
-      // width: 25.w,
-      // height: 25.h,
       onEditingComplete: () {
         FocusScope.of(context).unfocus();
         controller.updateUrls();
@@ -119,8 +129,8 @@ class _EditUrlViewState extends State<EditUrlView> {
           Get.back();
         }, onTapYes: () {
           fieldController.clear();
-          controller.updateUrls(isRemove: true);
-          controller.update();
+          FocusScope.of(context).unfocus();
+          controller.updateUrls(isRemove: true,);
         });
       },
     );

@@ -34,7 +34,7 @@ class UserApi {
 
   Future<Map<String, dynamic>> checkAccountStatus() async {
     String url = '$baseUrl/check-user-status';
-    //! Make the POST request using ApiService
+   
     var response = await DioService.get(
       url: url,
     );

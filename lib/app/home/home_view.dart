@@ -315,11 +315,13 @@ class HomeView extends StatelessWidget {
                                           bool isBlurred =
                                               isFreeUser && index >= 6;
                                           return UserCard(
-                                            key: UniqueKey(),
+                                            key: ValueKey(controller.scannedUsers[index].id),
                                             user:
                                                 controller.scannedUsers[index],
                                             isBlur: isBlurred,
                                             onTap: () {
+                                              final selectedUser = controller.scannedUsers[index];
+
                                               if (isFreeUser && index >= 6) {
                                                 UiUtilites.accountUpgradeAlert(
                                                     context, controller);
@@ -329,7 +331,7 @@ class HomeView extends StatelessWidget {
                                                   builder:
                                                       (BuildContext context) {
                                                     return Container(
-                                                      key: UniqueKey(),
+                                                    
                                                       height: 250,
                                                       child: Column(
                                                         crossAxisAlignment:
@@ -350,17 +352,13 @@ class HomeView extends StatelessWidget {
                                                             onTap: () {
                                                               Navigator.pop(
                                                                   context);
-                                                              if (controller
-                                                                  .scannedUsers[
-                                                                      index]
+                                                              if (selectedUser
                                                                   .currentProfile!
                                                                   .isProfilePublic) {
                                                                 Get.toNamed(
                                                                         AppRoutes
                                                                             .publicProfile,
-                                                                        arguments: controller
-                                                                            .scannedUsers[
-                                                                                index]
+                                                                        arguments: selectedUser
                                                                             .currentProfile)!
                                                                     .then(
                                                                         (value) {
@@ -369,9 +367,7 @@ class HomeView extends StatelessWidget {
                                                                 });
                                                               } else {
                                                                 controller.sendRequest(
-                                                                    controller
-                                                                            .scannedUsers[
-                                                                        index]);
+                                                                   selectedUser);
                                                               }
                                                             },
                                                           ),
@@ -403,9 +399,7 @@ class HomeView extends StatelessWidget {
                                                                           () {
                                                                 Get.back();
                                                                 controller.blockProfile(
-                                                                    controller
-                                                                            .scannedUsers[
-                                                                        index]);
+                                                                   selectedUser);
                                                               }, onTapNo: () {
                                                                 Get.back();
                                                               });
@@ -434,9 +428,7 @@ class HomeView extends StatelessWidget {
                                                               Get.toNamed(
                                                                   AppRoutes
                                                                       .reportProfile,
-                                                                  arguments: controller
-                                                                      .scannedUsers[
-                                                                          index]
+                                                                  arguments: selectedUser
                                                                       .currentProfile);
                                                             },
                                                           ),

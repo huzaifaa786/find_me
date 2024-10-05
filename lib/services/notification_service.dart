@@ -1,5 +1,9 @@
 import 'dart:async';
 import 'dart:developer';
+import 'package:find_me/api/request_api/request_api.dart';
+import 'package:find_me/components/popups/profile_request_popup.dart';
+import 'package:find_me/utils/ui_utils.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +23,7 @@ class NotificationService extends GetxController with WidgetsBindingObserver {
     WidgetsFlutterBinding.ensureInitialized();
     registerNotification();
     checkForInitialMessage();
+    FirebaseMessaging.onMessageOpenedApp.listen(_handleMessageOpenedApp);
     WidgetsBinding.instance.addObserver(this); // Observe app lifecycle changes
     super.onInit();
   }
@@ -59,11 +64,10 @@ class NotificationService extends GetxController with WidgetsBindingObserver {
   }
 
   void showFlutterNotification(RemoteMessage message) {
-    
+    log("DAAAAAAAAATA:${message.data}");
 
     RemoteNotification? notification = message.notification;
     AndroidNotification? android = message.notification?.android;
-            log("DAAAAAAAAATA:${message.data.toString()}");
 
     if (notification != null && !_isInForeground && !kIsWeb) {
       const AndroidNotificationDetails androidPlatformChannelSpecifics =
@@ -100,6 +104,82 @@ class NotificationService extends GetxController with WidgetsBindingObserver {
 
     if (initialMessage != null) {
       showFlutterNotification(initialMessage);
+    }
+  }
+
+  // DATA Handling
+
+  void _handleMessageOpenedApp(RemoteMessage message) {
+    log("Notification clicked with data: ${message.data}");
+    _handleNotificationData(message.data);
+  }
+
+  void _handleNotificationData(Map<String, dynamic> data) {
+    if (data.isNotEmpty) {
+      // Decode data if necessary
+      String? type = data['type'];
+
+      if (type == 'my-event') {
+        // Extract additional fields as necessary
+        String? requestType = data['request_type'];
+        String? userName = data['user_name'];
+        String? userImage = data['user_image'];
+        String requestId = data['request_id'];
+
+        if (requestType != null) {
+          showPopup(userName, userImage, requestType, requestId);
+        }
+      } else if (type == 'emoji-gifted') {
+        // Show emoji pop-up
+        UiUtilites.EmojiGiftPopUp(Get.context,
+            text: data['message'] ?? "",
+            imageUrl: data['emoji'],
+            senderImage: data['senderImage'],
+            senderName: data['senderName']);
+      }
+    }
+  }
+
+  respondRequest(String id, String status) async {
+    var response =
+        await RequestApi.respondRequest(id: int.parse(id), status: status);
+
+    if (response.isNotEmpty) {
+      if (status == "accepted") {
+        FirebaseAnalytics.instance.logEvent(
+          name: 'accepted_profile_request',
+        );
+      } else {
+        FirebaseAnalytics.instance.logEvent(
+          name: 'rejected_profile_request',
+        );
+      }
+    }
+  }
+
+  void showPopup(String? userName, String? userImage, String requestType,
+      String requestId) {
+    if (Get.isDialogOpen != true) {
+      Get.dialog(
+        barrierDismissible: false,
+        ProfileRequestPopup(
+          name: userName ?? "",
+          imageUrl: userImage ??
+              'https://avatar.iran.liara.run/public/boy?username=${userName ?? ""}',
+          requestMessage: requestType == "profile"
+              ? 'Would like to view your profile.'.tr
+              : 'Would like to view your social media  \n accounts and business card.'
+                  .tr,
+          onAcceptTap: () {
+            respondRequest(requestId, "accepted".tr);
+            Get.back();
+          },
+          onRejectTap: () {
+            respondRequest(requestId, "rejected".tr);
+            Get.back();
+          },
+        ),
+      );
     }
   }
 

@@ -1,9 +1,7 @@
 import 'package:find_me/api/auth_api/user_api.dart';
 import 'package:find_me/api/block_report_api/block_report_api.dart';
 import 'package:find_me/api/emoji_api/emoji_api.dart';
-import 'package:find_me/api/profile_api/profile_api.dart';
 import 'package:find_me/api/request_api/request_api.dart';
-import 'package:find_me/components/popups/comment_dialog.dart';
 import 'package:find_me/models/profile_business_card_model.dart';
 import 'package:find_me/models/profile_url_model.dart';
 import 'package:find_me/models/user_model.dart';
