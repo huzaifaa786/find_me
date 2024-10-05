@@ -71,7 +71,7 @@ class SettingView extends StatelessWidget {
                       //Gap(12.h),
 
                       CardSetting(
-                          text: 'Subscriptions'.tr,
+                          text: 'Subscription'.tr,
                           image: 'assets/icons/star.svg',
                           ontap: () {
                             Get.toNamed(AppRoutes.subscriptions);
