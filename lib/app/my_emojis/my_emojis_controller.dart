@@ -37,7 +37,7 @@ class MyEmojisController extends GetxController {
     var response = await EmojiApi.updateEmojiOrder(emojiOrder);
 
     if (response.isNotEmpty && isDelete == false) {
-      UiUtilites.successSnackbar(response['message'], "");
+      UiUtilites.successSnackbar(response['message'].toString().tr, "");
     }
   }
 
@@ -46,7 +46,7 @@ class MyEmojisController extends GetxController {
     if (response.isNotEmpty) {
       allEmojis.removeWhere((emoji) => emoji.id == emojiId);
       updateEmojiOrder(isDelete: true);
-      UiUtilites.successSnackbar("Emoji removed successfully", "");
+      UiUtilites.successSnackbar("Emoji removed successfully".tr, "");
       update();
     } else {
       UiUtilites.errorSnackbar("Failed to delete emoji", response['message']);

@@ -29,12 +29,12 @@ class EmailOtpController extends GetxController {
   void verifyOtp() async {
     var response = await OtpApi.verifyEmailOtp(email: email, otp: otpCode);
     if (response.isNotEmpty) {
+      Get.back();
       Get.offAndToNamed(AppRoutes.useraccount);
       UiUtilites.successGreenAlert(Get.context,
           text: "Your email has been changed  \n successfully.", onTapDone: () {
         Get.back();
       });
-      
     }
   }
 

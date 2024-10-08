@@ -262,13 +262,13 @@ class _ProfileContainerState extends State<ProfileContainer> {
                               30 - widget.userModel!.nameChangedDays!;
                           UiUtilites.warningAlert(context,
                               text:
-                                  "You can change your name in ${remainingDays.toString()} days.");
+                                  "You can change your name in ".tr+ remainingDays.toString() +" days.".tr);
                         } else {
                           if (widget.index == 1 && widget.userModel == null) {
                             UiUtilites.warningAlert(context,
                                 showRemeber: true,
                                 text:
-                                    "Your profile name can only be changed once every 30 days.");
+                                    "Your profile name can only be changed once every 30 days.".tr);
                             setState(() {
                               isEditSelected = true;
                             });

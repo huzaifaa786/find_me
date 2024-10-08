@@ -18,13 +18,6 @@ class ChangePhoneNumberController extends GetxController {
   PhoneNumber? checkphoneController;
   String? phoneController;
 
-  onCountryChanged(Country value) {
-    selectedCountry = value;
-    pcontroller.clear();
-    update();
-    if (checkphoneController != null) phoneValidation(checkphoneController);
-  }
-
   @override
   void onClose() {
     pcontroller.clear();
@@ -43,6 +36,13 @@ class ChangePhoneNumberController extends GetxController {
     }
   }
 
+  onCountryChanged(Country value) {
+    selectedCountry = value;
+    pcontroller.clear();
+    update();
+    if (checkphoneController != null) phoneValidation(checkphoneController);
+  }
+
   phoneValidation(phone) {
     if (!isNumeric(phone.number)) {
       invalidNumberMessage = 'Use Numeric Variables'.tr;
@@ -54,7 +54,7 @@ class ChangePhoneNumberController extends GetxController {
       update();
       return invalidNumberMessage;
     } else {
-      invalidNumberMessage = 'Invalid Phone Number'.tr;
+      invalidNumberMessage = '';
     }
     checkphoneController = phone;
     update();

@@ -169,7 +169,7 @@ class CreateCardController extends GetxController {
       if (response.isNotEmpty) {
         Get.back();
         Get.back();
-        UiUtilites.successSnackbar("Delete Business Card Successfully", "");
+        UiUtilites.successSnackbar("Delete Business Card Successfully".tr, "");
       }
     } catch (e) {
       UiUtilites.errorSnackbar(

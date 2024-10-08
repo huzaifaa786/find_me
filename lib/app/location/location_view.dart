@@ -7,6 +7,7 @@ import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:get_storage/get_storage.dart';
 import 'location_controller.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
@@ -19,6 +20,7 @@ class LocationView extends StatefulWidget {
 
 class _LocationViewState extends State<LocationView> {
   final LocationController controller = Get.put(LocationController());
+  GetStorage box = GetStorage();
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,9 @@ class _LocationViewState extends State<LocationView> {
                     children: [
                       Expanded(
                         child: AppText(
-                          textAlign: TextAlign.left,
+                          textAlign: box.read('locale') != "ar"
+                              ? TextAlign.left
+                              : TextAlign.right,
                           title:
                               'Allow the application to access \nyour location'
                                   .tr,
@@ -59,14 +63,16 @@ class _LocationViewState extends State<LocationView> {
                         inactiveColor: Colors.grey,
                         value: controller.isLocationEnabled,
                         onToggle: (value) {
-                          controller.toggleIsLocationEnabled(value); 
+                          controller.toggleIsLocationEnabled(value);
                         },
                       ),
                     ],
                   ),
                   Gap(10.h),
                   Align(
-                    alignment: Alignment.centerLeft,
+                    alignment: box.read('locale') != "ar"
+                        ? Alignment.centerLeft
+                        : Alignment.centerRight,
                     child: AppText(
                       title:
                           "Keeping your location turned on will allow the app to provide the best experience, such as real-time connections, which work better when your location is available."

@@ -146,7 +146,7 @@ class SignUpController extends GetxController {
     final DateTime initialDate = DateTime(now.year - 18, now.month, now.day);
     BottomPicker.date(
       pickerTitle: Text(
-        'Set your Birthday',
+        'Set your Birthday'.tr,
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 15,

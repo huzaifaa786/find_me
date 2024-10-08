@@ -343,12 +343,349 @@ class LocaleString extends Translations {
               "When your account is public, your profile can be viewed by anyone on find me.",
           "When your profile is private, only people you grant access after receiving a request will be able to look into your profile.":
               "When your profile is private, only people you grant access after receiving a request will be able to look into your profile.",
+          "Emojis": "Emojis",
+          // New Words
+          "Edit Profiles": "Edit Profiles",
+          "Checking Connections..": "Checking Connections..",
+          "No finders nearby. Refresh or expand your radius.":
+              "No finders nearby. Refresh or expand your radius.",
+          "New profile": "New profile",
+          "Emojis for All": "Emojis for All",
+          "FindMe Picks": "FindMe Picks",
+          "Gifts": "Gifts",
+          "My emojis \n& Picks": "My emojis \n& Picks",
+          "The first 6 icons will be displayed on your profile for other users on find me to view. You can arrange the icons in your preferred order.":
+              "The first 6 icons will be displayed on your profile for other users on find me to view. You can arrange the icons in your preferred order.",
+          "The emoji will appear in\n “My Emojis & Picks”":
+              "The emoji will appear in\n “My Emojis & Picks”",
+          "Emoji order updated successfully.":
+              "Emoji order updated successfully.",
+          "Emoji removed successfully": "Emoji removed successfully",
+          "Are you sure you want to remove emoji":
+              "Are you sure you want to remove emoji",
+          "You can change your name in ": "You can change your name in ",
+          " days.": " days.",
+          "Your profile name can only be changed once every 30 days.":
+              "Your profile name can only be changed once every 30 days.",
+          "Edit Bio": "Edit Bio",
+          "Find Me on": "Find Me on",
+          "My Digital Business Card": "My Digital Business Card",
+          "My Favorites": "My Favorites",
+          "Bio": "Bio",
+          "Type bio": "Type bio",
+          "Edit URLs": "Edit URLs",
+          "Are you sure you want to remove URL":
+              "Are you sure you want to remove URL",
+          "Done": "Done",
+          "Social Media Accounts": "Social Media Accounts",
+          "Create": "Create",
+          "Your Business Card has created  \n successfully!":
+              "Your Business Card has created  \n successfully!",
+          "Delete Business Card": "Delete Business Card",
+          "Are you sure you want to Delete Business Card":
+              "Are you sure you want to Delete Business Card",
+          "Delete Business Card Successfully":
+              "Delete Business Card Successfully",
+          "Subscription": "Subscription",
+          "Upgrade to Pro": "Upgrade to Pro",
+          "1 month free, then ": "1 month free, then ",
+          "/month": "/month",
+          "Features:": "Features:",
+          "Expanded User View": "Expanded User View",
+          "Upgrade to view more than 6 users in your proximity.":
+              "Upgrade to view more than 6 users in your proximity.",
+          "Unlock User Profile 3 and Profile 4":
+              "Unlock User Profile 3 and Profile 4",
+          "Unlimited name changes": "Unlimited name changes",
+          "Change the name of profile 2, 3 and 4 at any time.":
+              "Change the name of profile 2, 3 and 4 at any time.",
+          "Find Out Who Sent Request": "Find Out Who Sent Request",
+          "Receive notifications with the username and profile image of users who request to view your profile, social media accounts, or digital business card.":
+              "Receive notifications with the username and profile image of users who request to view your profile, social media accounts, or digital business card.",
+          "Try It Free": "Try It Free",
+          "Privacy Policy": "Privacy Policy",
+          "Terms & Conditions": "Terms & Conditions",
+          "Payment will be charged to iTunes Account at confirmation of purchase. Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Account will be charged for renewal within 24-hours prior to the end of the current period. You can manage or turn off auto-renew in your Account settings at any time after purchase No cancellation of the current subscription is allowed during the active period.":
+              "Payment will be charged to iTunes Account at confirmation of purchase. Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Account will be charged for renewal within 24-hours prior to the end of the current period. You can manage or turn off auto-renew in your Account settings at any time after purchase No cancellation of the current subscription is allowed during the active period.",
+          "Name": "Name",
+          "Delete Account": "Delete Account",
+          "Change My Information": "Change My Information",
+          "Are you sure you want to delete your account? This will permanently erase your account.":
+              "Are you sure you want to delete your account? This will permanently erase your account.",
+          "Save changes": "Save changes",
+          "Current password": "Current password",
+          "New password": "New password",
+          "Confirm new password": "Confirm new password",
+          "Search country": "Search country",
+          "Enter your new email address": "Enter your new email address",
+          "Blocked Users": "Blocked Users",
+          "No Blocked User": "No Blocked User",
+          "Unblock": "Unblock",
+          "Profile Privacy": "Profile Privacy",
+          "(Not created)": "(Not created)",
+          "When turned on, others can view your profile without needing to send a request.":
+              "When turned on, others can view your profile without needing to send a request.",
+          "Social Media Accounts & Digital Business card":
+              "Social Media Accounts & Digital Business card",
+          "When turned on, others can view your social media accounts and the digital business card without needing to send a request.":
+              "When turned on, others can view your social media accounts and the digital business card without needing to send a request.",
+          "Requests for social media and \nbusiness cards":
+              "Requests for social media and \nbusiness cards",
+          "If profile request notifications are disabled, you won’t be notified when someone requests to view your profile.":
+              "If profile request notifications are disabled, you won’t be notified when someone requests to view your profile.",
+          "If social media and business cards request notifications are disabled, you won’t be notified when someone requests to view your profile.":
+              "If social media and business cards request notifications are disabled, you won’t be notified when someone requests to view your profile.",
+          "If emoji request notifications are disabled, you won’t be notified when someone requests to view your profile.":
+              "If emoji request notifications are disabled, you won’t be notified when someone requests to view your profile.",
+          "Please provide a brief description of the issue or what isn’t working properly.":
+              "Please provide a brief description of the issue or what isn’t working properly.",
+          "I think my account was compromised":
+              "I think my account was compromised",
+          "I can\'t access my account": "I can\'t access my account",
+          "I want to report an account or \n content":
+              "I want to report an account or \n content",
+          "I lost my account": "I lost my account",
+          "I found a bug": "I found a bug",
+          "I need help with a feature": "I need help with a feature",
+          "I want to report intellectual property \n infringement":
+              "I want to report intellectual property \n infringement",
+          "I have a privacy or European Digital \n Services Act related question":
+              "I have a privacy or European Digital \n Services Act related question",
+          "I want to deactivate or delete my \n account":
+              "I want to deactivate or delete my \n account",
+          "Allow the application to access \nyour location":
+              "Allow the application to access \nyour location",
+          "Keeping your location turned on will allow the app to provide the best experience, such as real-time connections, which work better when your location is available.":
+              "Keeping your location turned on will allow the app to provide the best experience, such as real-time connections, which work better when your location is available.",
+          "Contact Us": "Contact Us",
+          "Cancel": "Cancel",
+          "Report": "Report",
+          "Are you sure you want to block this profile?":
+              "Are you sure you want to block this profile?",
+          "Block": "Block",
+          "View Profile": "View Profile",
+          "Please select a reason for reporting this profile:":
+              "Please select a reason for reporting this profile:",
+          "Report Profile": "Report Profile",
+          "Pretending to be someone else": "Pretending to be someone else",
+          "Bullying or harassment": "Bullying or harassment",
+          "Nudity or sexual content": "Nudity or sexual content",
+          "Threats or violence": "Threats or violence",
+          "Hate speech or extremism": "Hate speech or extremism",
+          "Drugs or illegal items": "Drugs or illegal items",
+          "Suicide or self-harm": "Suicide or self-harm",
+          "Scam or fraud": "Scam or fraud",
+          "False information": "False information",
+          "Intellectual property violation": "Intellectual property violation",
+          "Other": "Other",
+          "Tap an icon to send a gift!": "Tap an icon to send a gift!",
+          "Type a comment": "Type a comment",
+          "Successfully": "Successfully",
+          "Message has been sent \n successfully.":
+              "Message has been sent \n successfully.",
+          "Access Social Request": "Access Social Request",
+          "Request to access Social media accounts and business card has been sent":
+              "Request to access Social media accounts and business card has been sent",
+          "Would like to view your profile.":
+              "Would like to view your profile.",
+          "Would like to view your social media  \n accounts and business card.":
+              "Would like to view your social media  \n accounts and business card.",
+          "Gender (optional)": "Gender (optional)",
+          "By tapping Sign up, you acknowledge that you have read the ":
+              "By tapping Sign up, you acknowledge that you have read the ",
+          " and agree to the ": " and agree to the ",
+          "Term of Service.": "Term of Service.",
+          "Log In": "Log In",
+          "Seize the moment": "Seize the moment",
+          "User name, Email or Phone number":
+              "User name, Email or Phone number",
+          "Forgot password?": "Forgot password?",
+          "Please choose how you want to reset your password":
+              "Please choose how you want to reset your password",
+          "Set your Birthday": "Set your Birthday",
+          "Close": "Close",
+          "Url removed successfully": "Url removed successfully",
+          "Confirm your number": "Confirm your number",
+          "Your phone number has been changed  \n successfully.":
+              "Your phone number has been changed  \n successfully.",
+          "Confirm your email": "Confirm your email",
+          "Your email has been changed  \n successfully.":"Your email has been changed  \n successfully.",
+          
         },
         'ar_AE': {
+          // New Words
+          "Your email has been changed  \n successfully.":"تم تغيير بريدك الإلكتروني \n بنجاح.",
+          "Confirm your email": "قم بتأكيد بريدك الإلكتروني",
+          "We have sent you an OTP code to your new email , please enter it to continue":"لقد أرسلنا لك رمز OTP إلى بريدك الإلكتروني الجديد، يرجى إدخاله للاستمرار.",
+          "Your phone number has been changed  \n successfully.":
+              "تم تغيير رقم هاتفك \n بنجاح.",
+          "Confirm your number": "قم بتأكيد رقم هاتفك",
+          "We have sent you an OTP code to your new phone number , please enter it to continue":
+              "لقد أرسلنا لك رمز OTP إلى رقم هاتفك الجديد، يرجى إدخاله للاستمرار.",
+          "Url removed successfully": "تمت إزالة الرابط بنجاح",
+          "Close": "إغلاق",
+          "Set your Birthday": "حدد تاريخ ميلادك",
+          "Please choose how you want to reset your password":
+              "يرجى اختيار طريقة إعادة تعيين كلمة المرور",
+          "Forgot password?": "هل نسيت كلمة المرور؟",
+          "User name, Email or Phone number":
+              "اسم المستخدم، البريد الإلكتروني أو رقم الهاتف",
+          "Seize the moment": "اغتنم الفرصة",
+          "Log In": "تسجيل الدخول",
+          "Term of Service.": "شروط الخدمة.",
+          " and agree to the ": " والموافقة على ",
+          "By tapping Sign up, you acknowledge that you have read the ":
+              " بالضغط على التسجيل، فإنك تقر بأنك قد قرأت ",
+          "Gender (optional)": "الجنس (اختياري)",
+          "Would like to view your social media  \n accounts and business card.":
+              "يرغب في عرض حسابات وسائل التواصل الاجتماعي وبطاقة الأعمال الخاصة بك.",
+          "Would like to view your profile.": "يرغب في عرض ملفك الشخصي.",
+          "No business card exist": "لا توجد بطاقة أعمال",
+          "Request to access Social media accounts and business card has been sent":
+              "تم إرسال طلب للوصول إلى حسابات وسائل التواصل الاجتماعي وبطاقة الأعمال.",
+          "Access Social Request": "طلب الوصول الاجتماعي",
+          "Message has been sent \n successfully.": "تم إرسال الرسالة \nبنجاح.",
+          "Successfully": "بنجاح",
+          "Type a comment": "اكتب تعليقاً",
+          "Tap an icon to send a gift!": "اضغط على رمز لإرسال هدية",
+          "Pretending to be someone else": " إنتحال شخصية ",
+          "Bullying or harassment": "التنمر أو المضايقة",
+          "Nudity or sexual content": "العُري أو المحتوى الجنسي",
+          "Threats or violence": "التهديدات أو العنف",
+          "Hate speech or extremism": "خطاب الكراهية أو التطرف",
+          "Drugs or illegal items": "المخدرات أو العناصر غير القانونية",
+          "Suicide or self-harm": "الانتحار أو إيذاء النفس",
+          "Scam or fraud": "الاحتيال أو الخداع",
+          "False information": "معلومات زائفة",
+          "Intellectual property violation": "انتهاك حقوق الملكية الفكرية",
+          "Other": "آخر",
+          "Report Profile": "الإبلاغ عن الملف الشخصي",
+          "Please select a reason for reporting this profile:":
+              "يرجى اختيار سبب الإبلاغ عن هذا الملف الشخصي:",
+          "View Profile": "عرض الملف الشخصي",
+          "Block": "حظر",
+          "Are you sure you want to block this profile?":
+              "هل أنت متأكد من أنك تريد حظر هذا الملف الشخصي؟",
+          "Report": "إبلاغ",
+          "Cancel": "إلغاء",
+          "Contact Us": "اتصل بنا",
+          "Keeping your location turned on will allow the app to provide the best experience, such as real-time connections, which work better when your location is available.":
+              "إبقاء موقعك قيد التشغيل سيسمح للتطبيق بتقديم أفضل تجربة، مثل الاتصالات الفورية، والتي تعمل بشكل أفضل عندما يكون موقعك متاحاً.",
+          "Allow the application to access your location":
+              "اسمح للتطبيق بالوصول إلى موقعك.",
+          "I want to deactivate or delete my \n account":
+              "أريد إلغاء تنشيط حسابي أو \nحذفه",
+          "I have a privacy or European Digital \n Services Act related question":
+              "لدي سؤال متعلق بالخصوصية أو \nقانون الخدمات الرقمية الأوروبي",
+          "I want to report intellectual property \n infringement":
+              "أريد الإبلاغ عن انتهاك \nللملكية الفكرية",
+          "I need help with a feature": "أحتاج مساعدة في ميزة",
+          "I found a bug": "وجدت خطأ",
+          "I lost my account": "فقدت حسابي",
+          "I want to report an account or \n content":
+              "أريد الإبلاغ عن حساب أو \nمحتوى",
+          "I can't access my account": "لا أستطيع الوصول إلى حسابي",
+          "I think my account was compromised":
+              "أعتقد أن حسابي قد تعرض للاختراق",
+          "Please provide a brief description of the issue or what isn’t working properly.":
+              "يرجى تقديم وصف موجز للمشكلة أو ما لا يعمل بشكل صحيح.",
+          "If emoji request notifications are disabled, you won’t be notified when someone requests to view your profile.":
+              "إذا تم تعطيل إشعارات طلب الرموز التعبيرية، فلن يتم إخطارك عندما يطلب شخص ما عرض ملفك الشخصي.",
+          "If social media and business cards request notifications are disabled, you won’t be notified when someone requests to view your profile.":
+              "إذا تم تعطيل إشعارات طلب حسابات وسائل التواصل الاجتماعي وبطاقات الأعمال، فلن يتم إخطارك عندما يطلب شخص ما عرض ملفك الشخصي.",
+          "If profile request notifications are disabled, you won’t be notified when someone requests to view your profile.":
+              "إذا تم تعطيل إشعارات طلب الملف الشخصي، فلن يتم إخطارك عندما يطلب شخص ما عرض ملفك الشخصي.",
+          "Requests for social media and business cards":
+              "طلبات لوسائل التواصل الاجتماعي وبطاقات الأعمال",
+          "When turned on, others can view your social media accounts and the digital business card without needing to send a request.":
+              "عند تفعيل هذه الخاصية، يمكن للآخرين عرض حسابات وسائل التواصل الاجتماعي وبطاقة الأعمال الرقمية الخاصة بك دون الحاجة إلى إرسال طلب",
+          "Social Media Accounts & Digital Business card":
+              "حسابات وسائل التواصل الاجتماعي وبطاقة الأعمال الرقمية",
+          "When turned on, others can view your profile without needing to send a request.":
+              "عند تفعيل هذه الخاصية، يمكن للآخرين عرض ملفك الشخصي دون الحاجة إلى إرسال طلب.",
+          "(Not created)": "(لم يتم الإنشاء)",
+          "Profile Privacy": "خصوصية الملف الشخصي",
+          "Unblock": "إلغاء الحظر",
+          "No Blocked User": "لا يوجد مستخدمون محظورون",
+          "Blocked Users": "المستخدمون المحظورون",
+          "Edit Profiles": "تعديل الملفات الشخصية",
+          "Checking Connections..": "جارِ فحص الاتصالات..",
+          "No finders nearby. Refresh or expand your radius.":
+              "لا يوجد مكتشفون بالقرب. قم بالتحديث أو توسيع النطاق",
+          "New profile": "ملف شخصي جديد",
+          "Emojis for All": "رموز تعبيرية للجميع",
+          "FindMe Picks": "Find meاختيارات",
+          "Gifts": "هدايا",
+          "My emojis \n& Picks": "رموزي التعبيرية \nواختياراتي",
+          "The first 6 icons will be displayed on your profile for other users on find me to view. You can arrange the icons in your preferred order.":
+              "سيتم عرض أول 6 رموز على ملفك الشخصي ليراها المستخدمون الآخرون و يمكنك ترتيب الرموز بالترتيب المفضل لديك",
+          "The emoji will appear in\n “My Emojis & Picks”":
+              "سيظهر الرمز التعبيري في \n“رموزي التعبيرية واختياراتي”",
+          "Emoji order updated successfully.":
+              "تم تحديث ترتيب الرموز التعبيرية بنجاح.",
+          "Emoji removed successfully": "تمت إزالة الرمز التعبيري بنجاح",
+          "Are you sure you want to remove emoji":
+              "هل أنت متأكد أنك تريد إزالة الرمز التعبيري؟",
+          "You can change your name in ": "يمكنك تغيير اسمك خلال",
+          " days.": "أيام.",
+          "Your profile name can only be changed once every 30 days.":
+              "يمكن تغيير اسم ملفك الشخصي مرة واحدة فقط كل 30 يوماً.",
+          "Edit Bio": "تعديل الوصف",
+          "Find Me on": "اعثر عليّ على",
+          "My Digital Business Card": "بطاقة الأعمال الرقمية الخاصة بي",
+          "My Favorites": "مفضلاتي",
+          "Bio": "الوصف",
+          "Type bio": "اكتب الوصف",
+          "Edit URLs": "تعديل الروابط",
+          "Are you sure you want to remove URL":
+              "هل أنت متأكد أنك تريد إزالة الرابط؟",
+          "Done": "تم",
+          "Social Media Accounts": "حسابات وسائل التواصل الاجتماعي",
+          "Create": "إنشاء",
+          "Your Business Card has created  \n successfully!":
+              "تم إنشاء بطاقة الأعمال الخاصة بك بنجاح!",
+          "Delete Business Card": "حذف بطاقة الأعمال",
+          "Are you sure you want to Delete Business Card":
+              "هل أنت متأكد أنك تريد حذف بطاقة الأعمال؟",
+          "Delete Business Card Successfully": "تم حذف بطاقة الأعمال بنجاح",
+          "Subscription": "الاشتراك",
+          "Upgrade to Pro": "الترقية إلى النسخة الاحترافية",
+          "1 month free, then ": "شهر واحد مجاناً، ثم ",
+          "/month": "/شهرياً",
+          "Features:": "المزايا:",
+          "Expanded User View": "عرض المستخدم الموسع",
+          "Upgrade to view more than 6 users in your proximity.":
+              "قم بالترقية لعرض أكثر من 6 مستخدمين في منطقتك",
+          "Unlock User Profile 3 and Profile 4":
+              "افتح الملف الشخصي 3 والملف الشخصي 4",
+          "Create 2 additional profiles.": "إنشاء ملفين شخصيين إضافيين",
+          "Unlimited name changes": "تغييرات اسم غير محدودة",
+          "Change the name of profile 2, 3 and 4 at any time.":
+              "يمكنك تغيير اسم الملف الشخصي 2، 3، و4 في أي وقت.",
+          "Find Out Who Sent Request": "اكتشف من أرسل الطلب.",
+          "Receive notifications with the username and profile image of users who request to view your profile, social media accounts, or digital business card.":
+              "تلقَ إشعارات باسم المستخدم وصورة الملف الشخصي للمستخدمين الذين يطلبون عرض ملفك الشخصي أو حسابات وسائل التواصل الاجتماعي أو بطاقة الأعمال الرقمية.",
+          "Try It Free": "جرّبها مجاناً",
+          "Privacy Policy": "سياسة الخصوصية.",
+          "Terms & Conditions": "الشروط والأحكام.",
+          "Payment will be charged to iTunes Account at confirmation of purchase. Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Account will be charged for renewal within 24-hours prior to the end of the current period. You can manage or turn off auto-renew in your Account settings at any time after purchase No cancellation of the current subscription is allowed during the active period.":
+              "سيتم خصم الدفعة من حساب آي تيونز عند تأكيد الشراء. يتم التجديد التلقائي للاشتراك ما لم يتم إيقاف التجديد التلقائي قبل 24 ساعة على الأقل من نهاية الفترة الحالية. سيتم خصم الرسوم من الحساب للتجديد خلال 24 ساعة قبل نهاية الفترة الحالية. يمكنك إدارة أو إيقاف التجديد التلقائي في إعدادات حسابك في أي وقت بعد الشراء. لا يُسمح بإلغاء الاشتراك الحالي خلال الفترة النشطة.",
+          "Name": "الاسم",
+          "Delete Account": "حذف الحساب",
+          "Are you sure you want to delete your account? This will permanently erase your account.":
+              "هل أنت متأكد أنك تريد حذف حسابك؟ سيؤدي ذلك إلى محو حسابك نهائياً.",
+          "Change My Information": "تغيير معلوماتي",
+          "Save changes": "حفظ التغييرات",
+          "Current password": "كلمة المرور الحالية",
+          "New password": "كلمة المرور الجديدة",
+          "Confirm new password": "تأكيد كلمة المرور الجديدة",
+          "Search country": "بحث عن دولة",
+          "Enter your new email address": "أدخل بريدك الإلكتروني الجديد",
+          // New Words
           "When requests for social media and business cards \n  are off you won’t be notified if someone is trying \n  to access your profile.":
               "عندما تكون طلبات وسائل التواصل الاجتماعي وبطاقات العمل متوقفة، لن يتم إشعارك إذا حاول شخص ما الوصول إلى ملفك الشخصي.",
-          "Requests for social media and  \n business cards":
-              "طلبات وسائل التواصل الاجتماعي وبطاقات العمل",
+          "Requests for social media and \nbusiness cards":
+              "طلبات وسائل التواصل الاجتماعي \nوبطاقات العمل",
           "When requests for profiles are off you won’t receive  \n requests when someone wants to view your profile.":
               "عندما تكون طلبات الملفات الشخصية متوقفة، لن تتلقى طلبات عندما يرغب شخص ما في عرض ملفك الشخصي.",
           "When emoji notifications are off then you won’t be \n  notified if you have received an emoji.":
@@ -373,7 +710,7 @@ class LocaleString extends Translations {
           "Download": "تحميل",
           "Done!": "!تم",
           "You have": "لديك",
-          "coins": "كوينز",
+
           "Back to home": "العودة إلى الصفحة الرئيسية",
           "The emoji will appear in “My emojis”":
               "سيظهر الرمز التعبيري في الرموز التعبيرية",
@@ -466,8 +803,6 @@ class LocaleString extends Translations {
           "Verify your Phone number": "قم بتأكيد رقم هاتفك",
           "We have sent you an OTP code to your phone number, please enter it to continue":
               "لقد أرسلنا لك رمز المرة الواحدة إلى رقم هاتفك، يرجى إدخاله للمتابعة",
-          "We have sent you an OTP code to your new phone number, please enter it to continue":
-              "لقد أرسلنا لك رمز المرة الواحدة  إلى رقم هاتفك الجديد، يرجى إدخاله للمتابعة",
           "Phone Number has been changed successfully":
               "تم تغيير رقم الهاتف بنجاح",
           "Phone Number Not Change": "لم يتم تغيير رقم الهاتف",
@@ -513,6 +848,7 @@ class LocaleString extends Translations {
           "My Coins": "عملاتي",
           "Purchased Coins": "العملات المشتراة",
           "AED": "درهم إماراتي",
+          "coins": "عملات",
           "Coins": "عملات",
           "Purchase Coins": "شراء العملات",
           "Checkout": "الدفع",
@@ -609,18 +945,18 @@ class LocaleString extends Translations {
           "English (United States)": "الإنجليزية (الولايات المتحدة)",
           "Default": "الافتراضي",
           "Location": "الموقع",
-          "Allow the application to access your location":
+          "Allow the application to access \nyour location":
               "اسمح للتطبيق بالوصول إلى موقعك",
           "Location permission is required to enable this feature.":
               "إذن الموقع مطلوب لتفعيل هذه الميزة.",
           "Permission Denied": "تم رفض الإذن",
           "Note that we wish to have this functionality in ON.":
               "تذكر أننا نرغب في أن تكون هذه الوظيفة مفعلة.",
-          "Home": "الصفحة الرئيسية",
+          "Home": "الرئيسية",
           "Coins Store": "متجر الكوينز",
           "Emoji Store": "متجر الرموز التعبيرية",
-          "Profile": "الملف الشخصي",
-          "Favorites": "المفضلة",
+          "Emojis": "الرموز",
+          "Profile": "الملف",
           "Notifications": "الإشعارات",
           "Today": "اليوم",
           "View Subscription": "عرض الاشتراك",
@@ -646,7 +982,6 @@ class LocaleString extends Translations {
               "وسائل التواصل الاجتماعي و بطاقة العمل",
           "When your profile is private , only people you grant access after receiving a request will be able to look  into your profile .":
               "عندما يكون ملفك الشخصي خاصًا، سيتمكن الأشخاص الذين تمنحهم الوصول بعد تلقي طلب فقط من عرض ملفك الشخصي.",
-          "No business card exist": "لا توجد بطاقة عمل",
           "Image selected successfully": "تم تحديد الصورة بنجاح",
           "No image selected": "لم يتم تحديد صورة",
           "Please provide a description or select an image":
@@ -681,7 +1016,6 @@ class LocaleString extends Translations {
           "Unlock User Frequency:": "إلغاء قفل تكرار المستخدم:",
           "View more than 8 users.": "عرض أكثر من 8 مستخدمين.",
           "Additional Profiles:": "ملفات تعريف إضافية:",
-          "Create 2 additional profiles.": "إنشاء ملفي تعريف إضافيين.",
           "Unlimited name changes:": "تغييرات اسم غير محدودة:",
           "Get unlimited name changes for your account.":
               "احصل على تغييرات اسم غير محدودة لحسابك.",

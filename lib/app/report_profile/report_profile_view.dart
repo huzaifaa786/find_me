@@ -56,13 +56,13 @@ class ReportProfileView extends StatelessWidget {
                         isExpanded: true,
                         value: controller.selectedOption,
                         hint: AppText(
-                          title: controller.selectedOption ?? "",
+                          title: controller.selectedOption ?? "".tr,
                         ),
                         items: controller.reportOptions.map((String option) {
                           return DropdownMenuItem<String>(
                             value: option,
                             child: AppText(
-                              title: option,
+                              title: option.tr,
                               size: 14,
                             ),
                           );

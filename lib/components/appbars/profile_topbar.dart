@@ -81,11 +81,11 @@ Widget profileTopBar({
           itemBuilder: (context) => [
             PopupMenuItem(
               value: 0,
-              child: Text('Block'),
+              child: Text('Block'.tr),
             ),
             PopupMenuItem(
               value: 1,
-              child: Text('Report'),
+              child: Text('Report'.tr),
             ),
           ],
         ),

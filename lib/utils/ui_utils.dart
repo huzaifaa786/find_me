@@ -608,7 +608,7 @@ class UiUtilites {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        '${coins} coins'.tr,
+                        '${coins} ' + 'Coins'.tr,
                         style: TextStyle(
                             fontSize: 13, fontWeight: FontWeight.w500),
                       ),
@@ -668,7 +668,8 @@ class UiUtilites {
                     // ),
                     Gap(10),
                     AppText(
-                      title: "The emoji will appear in\n “My Emojis & Picks”",
+                      title:
+                          "The emoji will appear in\n “My Emojis & Picks”".tr,
                       maxLines: 2,
                       textAlign: TextAlign.center,
                       fontWeight: FontWeight.w400,
@@ -1305,20 +1306,23 @@ class UiUtilites {
                         ],
                       ),
                       Gap(20),
-                      BusinessCard(
-                          blur: 3.0,
-                          premission: false,
-                          name: name ?? "",
-                          email: email ?? '',
-                          jobTitle: jobTitle ?? '',
-                          company: company ?? '',
-                          image: image ?? '',
-                          instagram: instagram ?? '',
-                          x: x ?? '',
-                          website: website ?? '',
-                          facebook: facebook ?? '',
-                          linkedin: linkedin ?? '',
-                          phone: phone ?? ''),
+                      Directionality(
+                        textDirection: TextDirection.ltr,
+                        child: BusinessCard(
+                            blur: 3.0,
+                            premission: false,
+                            name: name ?? "",
+                            email: email ?? '',
+                            jobTitle: jobTitle ?? '',
+                            company: company ?? '',
+                            image: image ?? '',
+                            instagram: instagram ?? '',
+                            x: x ?? '',
+                            website: website ?? '',
+                            facebook: facebook ?? '',
+                            linkedin: linkedin ?? '',
+                            phone: phone ?? ''),
+                      ),
                       Gap(20),
                       AppButton(
                         height: 50.h,

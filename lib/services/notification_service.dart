@@ -110,7 +110,8 @@ class NotificationService extends GetxController with WidgetsBindingObserver {
   // DATA Handling
 
   void _handleMessageOpenedApp(RemoteMessage message) {
-    log("Notification clicked with data: ${message.data}");
+    print("Notification clicked with data: ${message.data}");
+
     _handleNotificationData(message.data);
   }
 

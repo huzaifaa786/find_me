@@ -3,16 +3,12 @@
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:find_me/app/account/profile/profile_view.dart';
-import 'package:find_me/app/auth/signup/signup_view.dart';
 import 'package:find_me/app/coins/coins_store_view.dart';
 import 'package:find_me/app/edit_profile/edit_profile_view.dart';
 import 'package:find_me/app/emoji_store/emoji_store_view.dart';
 import 'package:find_me/app/home/home_controller.dart';
 import 'package:find_me/app/home/home_view.dart';
 import 'package:find_me/app/main_view/main_controller.dart';
-import 'package:find_me/app/notifications/notifications_view.dart';
-import 'package:find_me/app/report/report_view.dart';
 import 'package:find_me/components/buttons/gif_button.dart';
 import 'package:find_me/components/cards/custom_navbar.dart';
 import 'package:find_me/utils/app_text/app_text.dart';
@@ -90,11 +86,13 @@ class _MainViewState extends State<MainView> {
                       )
                     : index == 3
                         ? CircleAvatar(
-                          backgroundColor: AppColors.white,
-                            radius: 18,
+                            backgroundColor: AppColors.white,
+                            radius: 15,
                             child: ClipOval(
                               child: CachedNetworkImage(
-                                imageUrl: iconPath == "he" ? "https://i.ibb.co/jZmDvF1/userr.png" : iconPath,
+                                imageUrl: iconPath == "he"
+                                    ? "https://i.ibb.co/jZmDvF1/userr.png"
+                                    : iconPath,
                                 fit: BoxFit.cover,
                                 height: 27.h,
                                 width: 27.w,

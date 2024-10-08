@@ -2,11 +2,12 @@
 
 import 'package:find_me/utils/app_text/app_text.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
+import 'dart:ui' as ui;
 
 class UserInformationCard extends StatelessWidget {
   const UserInformationCard({
@@ -29,6 +30,7 @@ class UserInformationCard extends StatelessWidget {
   final String useremialid;
   @override
   Widget build(BuildContext context) {
+    GetStorage box = GetStorage();
     return Container(
       margin: EdgeInsets.all(4),
       decoration: BoxDecoration(
@@ -118,12 +120,20 @@ class UserInformationCard extends StatelessWidget {
             ),
             subtitle: Padding(
               padding: const EdgeInsets.only(left: 2, top: 15),
-              child: AppText(
-                  title: DateFormat('dd MMMM yyyy')
-                      .format(DateTime.parse(userbirthday)),
-                  size: 10,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.black.withOpacity(0.65)),
+              child: Align(
+                alignment: box.read("locale") != "ar"
+                    ? Alignment.bottomLeft
+                    : Alignment.bottomRight,
+                child: Directionality(
+                  textDirection: ui.TextDirection.ltr,
+                  child: AppText(
+                      title: DateFormat('dd MMMM yyyy')
+                          .format(DateTime.parse(userbirthday)),
+                      size: 10,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.black.withOpacity(0.65)),
+                ),
+              ),
             ),
           ),
           Divider(
@@ -140,11 +150,19 @@ class UserInformationCard extends StatelessWidget {
             ),
             subtitle: Padding(
               padding: const EdgeInsets.only(left: 2, top: 15),
-              child: AppText(
-                  title: usermobilenumber,
-                  size: 10,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.black.withOpacity(0.65)),
+              child: Align(
+                alignment: box.read("locale") != "ar"
+                    ? Alignment.bottomLeft
+                    : Alignment.bottomRight,
+                child: Directionality(
+                  textDirection: ui.TextDirection.ltr,
+                  child: AppText(
+                      title: usermobilenumber,
+                      size: 10,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.black.withOpacity(0.65)),
+                ),
+              ),
             ),
           ),
           Divider(

@@ -43,7 +43,7 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                     ),
                     Gap(16.h),
                     PasswordTextFields(
-                      hintText: 'New password',
+                      hintText: 'New password'.tr,
                       obscure: controller.obscureTextPassword,
                       controller: controller.passwordController,
                       toggle: controller.toggle,

@@ -54,11 +54,11 @@ class ReportView extends StatelessWidget {
                       child: DropdownButton<String>(
                         isExpanded: true,
                         value: controller.selectedOption,
-                        hint: AppText(title: controller.selectedOption ?? "",),
+                        hint: AppText(title: controller.selectedOption ?? "".tr,),
                         items: controller.reportOptions.map((String option) {
                           return DropdownMenuItem<String>(
                             value: option,
-                            child: AppText(title: option,size: 14,),
+                            child: AppText(title: option.tr,size: 14,),
                           );
                         }).toList(),
                         onChanged: (String? newValue) {

@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:find_me/api/coin_api.dart/coin_api.dart';
 import 'package:find_me/components/helper/loading.dart';
@@ -9,6 +10,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 
 class PurchaseCoinsController extends GetxController {
@@ -17,10 +19,25 @@ class PurchaseCoinsController extends GetxController {
 
   UserModel? userModel;
   Package? coinPackageModel;
+  String displayText = "";
+  GetStorage box = GetStorage();
   @override
   void onInit() {
     userModel ??= Get.arguments[0];
     coinPackageModel ??= Get.arguments[1];
+    if (box.read('locale') == 'ar') {
+      // If the locale is Arabic, translate "Coins" in title or description
+      String title =
+          coinPackageModel!.storeProduct.title.replaceFirst("Coins", "عملات");
+      String description = coinPackageModel!.storeProduct.description
+          .replaceFirst("Coins", "عملات");
+      displayText = Platform.isIOS ? title : description;
+    } else {
+      // For other locales, keep the original title or description
+      displayText = Platform.isIOS
+          ? coinPackageModel!.storeProduct.title
+          : coinPackageModel!.storeProduct.description;
+    }
     super.onInit();
   }
 
@@ -40,7 +57,7 @@ class PurchaseCoinsController extends GetxController {
         'coins_2000': 2000,
         'coins_600': 600,
       };
- 
+
       if (coinPackages.containsKey(product.identifier)) {
         int coinsToAdd = coinPackages[product.identifier]!;
         LoadingHelper.dismiss();

@@ -153,7 +153,7 @@ class HomeView extends StatelessWidget {
                                                         SizedBox(width: 10.w),
                                                         AppText(
                                                           title:
-                                                              'New profile ${controller.dropdownItems.length}'
+                                                              'New profile'.tr+' ${controller.dropdownItems.length}'
                                                                   .tr,
                                                           color: AppColors
                                                               .primary_color,
@@ -256,19 +256,7 @@ class HomeView extends StatelessWidget {
                       Gap(
                         20,
                       ),
-                      // SizedBox(
-                      //   height: 170,
-                      //   width: 250,
-                      //   child: HomeGif(
-                      //     onTap: () {
-                      //       if (!controller.isSearching) {
-                      //         controller.checkData();
-                      //       }
-                      //     },
-                      //     isSearching: controller.isSearching,
-                      //   ),
-                      // ),
-                      // Gap(25.h),
+
                       Divider(
                         color: AppColors.border_grey,
                         endIndent: 16.w,
@@ -476,7 +464,7 @@ class HomeView extends StatelessWidget {
                                         heightFactor: 15,
                                         child: AppText(
                                           title:
-                                              "No finders nearby. Refresh or expand your radius.",
+                                              "No finders nearby. Refresh or expand your radius.".tr,
                                           size: 12,
                                           fontWeight: FontWeight.w600,
                                           textAlign: TextAlign.center,

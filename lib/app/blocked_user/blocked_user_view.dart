@@ -75,7 +75,7 @@ class BlockedUserView extends StatelessWidget {
                             ],
                           );
                         },
-                      ):Center(heightFactor: 15, child: AppText(title: "No Blocked User",size: 12,fontWeight: FontWeight.w600,textAlign: TextAlign.center,)),
+                      ):Center(heightFactor: 15, child: AppText(title: "No Blocked User".tr,size: 12,fontWeight: FontWeight.w600,textAlign: TextAlign.center,)),
                     ),
                   ],
                 ),

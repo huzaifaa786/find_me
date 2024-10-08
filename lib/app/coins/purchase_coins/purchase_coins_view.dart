@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class PurchaseCoinsView extends StatefulWidget {
   const PurchaseCoinsView({super.key});
@@ -16,6 +17,7 @@ class PurchaseCoinsView extends StatefulWidget {
 }
 
 class _PurchaseCoinsViewState extends State<PurchaseCoinsView> {
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<PurchaseCoinsController>(
@@ -40,9 +42,7 @@ class _PurchaseCoinsViewState extends State<PurchaseCoinsView> {
                                 .coinPackageModel?.storeProduct.priceString ??
                             "",
                         img: 'assets/images/coin_icon_big.png',
-                        text: controller
-                                .coinPackageModel?.storeProduct.description ??
-                            "",
+                        text: controller.displayText,
                         imageHeight: 120.h,
                         imageWidth: 120.w,
                         textSize: 16.sp,

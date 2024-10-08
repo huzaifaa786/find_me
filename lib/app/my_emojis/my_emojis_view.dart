@@ -10,6 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:reorderable_grid_view/reorderable_grid_view.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -21,6 +22,7 @@ class MyEmojisView extends StatefulWidget {
 }
 
 class _MyEmojisViewState extends State<MyEmojisView> {
+  GetStorage box = GetStorage();
   String coins = "";
   Widget buildItem(EmojiModel emoji, int index, MyEmojisController controller) {
     return Container(
@@ -56,9 +58,8 @@ class _MyEmojisViewState extends State<MyEmojisView> {
                 highlightColor: Colors.grey[100]!,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)
-                  ),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10)),
                   width: 120,
                   height: 120,
                 ),
@@ -99,52 +100,60 @@ class _MyEmojisViewState extends State<MyEmojisView> {
             showBackIcon: true,
           ),
         ),
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 34.w),
-              child: Column(
-                children: [
-                  Gap(35.h),
-                  const Align(
-                    alignment: Alignment.centerLeft,
-                    child: AppText(
-                      title: "Favorites",
-                      fontWeight: FontWeight.w600,
-                      size: 16,
+        body: Directionality(
+          textDirection: box.read('locale') != 'ar'
+              ? TextDirection.ltr
+              : TextDirection.rtl,
+          child: SafeArea(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 34.w),
+                child: Column(
+                  children: [
+                    Gap(35.h),
+                    Align(
+                      alignment:  box.read('locale') != 'ar' ?Alignment.centerLeft :Alignment.centerRight,
+                      child: AppText(
+                        title: "Favorites".tr,
+                        fontWeight: FontWeight.w600,
+                        size: 16,
+                      ),
                     ),
-                  ),
-                  Gap(6),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: AppText(
-                      title: "The first 6 icons will be displayed on your profile for other users on find me to view. You can arrange the icons in your preferred order.",
-                      fontWeight: FontWeight.w300,
-                      size: 12,
-                      color: AppColors.black.withOpacity(0.67),
+                    Gap(6),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: AppText(
+                        title:
+                            "The first 6 icons will be displayed on your profile for other users on find me to view. You can arrange the icons in your preferred order."
+                                .tr,
+                        fontWeight: FontWeight.w300,
+                        size: 12,
+                        color: AppColors.black.withOpacity(0.67),
+                      ),
                     ),
-                  ),
-                  Gap(20),
-                  ReorderableGridView.count(
-                    crossAxisSpacing: 2,
-                    mainAxisSpacing: 2,
-                    crossAxisCount: 3,
-                    physics: const BouncingScrollPhysics(),
-                    shrinkWrap: true,
-                    onReorder: (oldIndex, newIndex) {
-                      setState(() {
-                        final element = controller.allEmojis.removeAt(oldIndex);
-                        controller.allEmojis.insert(newIndex, element);
-                        controller.updateEmojiOrder();
-                      });
-                    },
-                    children:
-                        List.generate(controller.allEmojis.length, (index) {
-                      return buildItem(
-                          controller.allEmojis[index], index, controller);
-                    }),
-                  ),
-                ],
+                    Gap(20),
+                    ReorderableGridView.count(
+                      crossAxisSpacing: 2,
+                      mainAxisSpacing: 2,
+                      crossAxisCount: 3,
+                      physics: const BouncingScrollPhysics(),
+                      shrinkWrap: true,
+                      onReorder: (oldIndex, newIndex) {
+                        setState(() {
+                          final element =
+                              controller.allEmojis.removeAt(oldIndex);
+                          controller.allEmojis.insert(newIndex, element);
+                          controller.updateEmojiOrder();
+                        });
+                      },
+                      children:
+                          List.generate(controller.allEmojis.length, (index) {
+                        return buildItem(
+                            controller.allEmojis[index], index, controller);
+                      }),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

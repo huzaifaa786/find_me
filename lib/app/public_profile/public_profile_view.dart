@@ -45,8 +45,8 @@ class PublicProfileView extends StatelessWidget {
                 title: profileTopBar(
                     blockAction: () {
                       UiUtilites.accountAlert(context,
-                          text: "Are you sure you want to block this profile?",
-                          onTapYes: () {
+                          text: "Are you sure you want to block this profile?"
+                              .tr, onTapYes: () {
                         Get.back();
                         controller.blockProfile();
                       }, onTapNo: () {
@@ -74,8 +74,8 @@ class PublicProfileView extends StatelessWidget {
                           decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
-                                  color: Color(
-                                      0x66000000), // #00000040 with 40 being the alpha value in hexadecimal
+                                  color: AppColors
+                                      .white, // #00000040 with 40 being the alpha value in hexadecimal
                                   blurRadius: 1.2,
                                   spreadRadius: 0,
                                   offset: Offset(0, 0),
@@ -83,8 +83,13 @@ class PublicProfileView extends StatelessWidget {
                               ],
                               borderRadius: BorderRadius.circular(40.r),
                               image: DecorationImage(
-                                  image: CachedNetworkImageProvider(
-                                      controller.profile?.imageUrl ?? ''),
+                                  image: controller.profile?.imageUrl != null
+                                      ? CachedNetworkImageProvider(
+                                          controller.profile?.imageUrl ?? '')
+                                      : Image(
+                                              image: AssetImage(
+                                                  "assets/images/userprofile.png"))
+                                          .image,
                                   fit: BoxFit.cover)),
                         ),
                         Gap(8),
@@ -291,7 +296,8 @@ class PublicProfileView extends StatelessWidget {
                                 SocialMediaIcon(
                                   socialMediaIcon: "assets/icons/website.svg",
                                   isEmpty:
-                                      controller.profileUrlModel!.website == null,
+                                      controller.profileUrlModel!.website ==
+                                          null,
                                   ontap: () {
                                     if (controller.profileUrlModel!.website !=
                                             null &&
@@ -362,40 +368,44 @@ class PublicProfileView extends StatelessWidget {
                                             .sendRequest(controller.userModel!);
                                       }
                                     },
-                                    child: BusinessCard(
-                                        blur: 5.0,
-                                        radius: BorderRadius.circular(5),
-                                        premission:
-                                            controller.profile!.isSocialPublic ||
-                                                    controller.hasSocialAccess
-                                                ? false
-                                                : true,
-                                        name:
-                                            "${controller.businessCardModel!.firstName} ${controller.businessCardModel!.lastName}",
-                                        email: controller
-                                                .businessCardModel!.email ??
-                                            '',
-                                        jobTitle:
-                                            controller.businessCardModel!.job ??
-                                                '',
-                                        company: controller
-                                                .businessCardModel!.company ??
-                                            '',
-                                        image:
-                                            controller.businessCardModel!.image ??
-                                                '',
-                                        instagram: controller
-                                                .businessCardModel!.instagram ??
-                                            '',
-                                        x: controller.businessCardModel!.x ??
-                                            '',
-                                        linkedin: controller
-                                                .businessCardModel!.linkedin ??
-                                            '',
-                                        facebook:
-                                            controller.businessCardModel!.facebook ?? '',
-                                        website: controller.businessCardModel!.website ?? '',
-                                        phone: controller.businessCardModel!.phone ?? ''),
+                                    child: Directionality(
+                                      textDirection: TextDirection.ltr,
+                                      child: BusinessCard(
+                                          blur: 5.0,
+                                          radius: BorderRadius.circular(5),
+                                          premission:
+                                              controller.profile!.isSocialPublic ||
+                                                      controller.hasSocialAccess
+                                                  ? false
+                                                  : true,
+                                          name:
+                                              "${controller.businessCardModel!.firstName} ${controller.businessCardModel!.lastName}",
+                                          email: controller
+                                                  .businessCardModel!.email ??
+                                              '',
+                                          jobTitle:
+                                              controller.businessCardModel!.job ??
+                                                  '',
+                                          company: controller
+                                                  .businessCardModel!.company ??
+                                              '',
+                                          image: controller
+                                                  .businessCardModel!.image ??
+                                              '',
+                                          instagram: controller
+                                                  .businessCardModel!
+                                                  .instagram ??
+                                              '',
+                                          x: controller.businessCardModel!.x ??
+                                              '',
+                                          linkedin: controller
+                                                  .businessCardModel!
+                                                  .linkedin ??
+                                              '',
+                                          facebook: controller.businessCardModel!.facebook ?? '',
+                                          website: controller.businessCardModel!.website ?? '',
+                                          phone: controller.businessCardModel!.phone ?? ''),
+                                    ),
                                   )
                                 : Container(
                                     height: 192.8.h,
@@ -426,7 +436,7 @@ class PublicProfileView extends StatelessWidget {
                                                     MainAxisAlignment.center,
                                                 children: [
                                                   Text(
-                                                    "No business card exist",
+                                                    "No business card exist".tr,
                                                     style: TextStyle(
                                                         color: AppColors
                                                             .primary_color,

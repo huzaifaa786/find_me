@@ -152,13 +152,12 @@ class _CreateCardViewState extends State<CreateCardView> {
                           ),
                           Gap(19.h),
                           PhoneInputField(
-                            
                             onCountryChanged: controller.onCountryChanged,
                             errorText: controller.invalidNumberMessage,
                             onChanged: controller.phoneValidation,
                             controller: controller.pcontroller,
                             initialCode: controller.selectedCountry!.code,
-                            height: 80,
+                            height: box?.read('locale') != "ar" ? 80 : 50,
                           ),
                           Gap(19.h),
                           AppTextFields(
@@ -169,7 +168,9 @@ class _CreateCardViewState extends State<CreateCardView> {
                           ),
                           Gap(25.h),
                           Align(
-                            alignment: Alignment.centerLeft,
+                            alignment: box?.read('locale') != "ar"
+                                ? Alignment.centerLeft
+                                : Alignment.centerRight,
                             child: AppText(
                               title: 'Social Media Accounts'.tr,
                               size: 12,
@@ -183,7 +184,6 @@ class _CreateCardViewState extends State<CreateCardView> {
                                 width: 135.w,
                                 child: AppTextFields(
                                   icon: 'assets/icons/instagram.svg',
-                                  
                                   hintText: 'Username'.tr,
                                   controller: controller.instagramController,
                                   color: AppColors.black,
@@ -238,7 +238,6 @@ class _CreateCardViewState extends State<CreateCardView> {
                                   color: AppColors.black,
                                 ),
                               ),
-                             
                             ],
                           ),
                           Gap(40.h),
@@ -264,8 +263,8 @@ class _CreateCardViewState extends State<CreateCardView> {
                               onTap: () {
                                 UiUtilites.accountAlert(context,
                                     text:
-                                        "Are you sure you want to Delete Business Card",
-                                    onTapNo: () {
+                                        "Are you sure you want to Delete Business Card"
+                                            .tr, onTapNo: () {
                                   Get.back();
                                 }, onTapYes: () {
                                   controller.deleteBusinessCard(
@@ -283,4 +282,3 @@ class _CreateCardViewState extends State<CreateCardView> {
             ));
   }
 }
-

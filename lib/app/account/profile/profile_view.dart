@@ -35,7 +35,7 @@ class _ProfileViewState extends State<ProfileView> {
               appBar: AppBar(
                 scrolledUnderElevation: 0,
                 automaticallyImplyLeading: false,
-                title: topBar(name: ''.tr, showBackIcon: true),
+                title: topBar(name: '', showBackIcon: true),
               ),
               body: controller.userModel != null
                   ? SafeArea(
@@ -116,7 +116,7 @@ class _ProfileViewState extends State<ProfileView> {
                                   Gap(15.h),
                                   if (!controller.isEditSelected)
                                     EditButton(
-                                      title: "Edit Bio",
+                                      title: "Edit Bio".tr,
                                       height: 28.h,
                                       width: 95.w,
                                       onTap: () {
@@ -153,7 +153,7 @@ class _ProfileViewState extends State<ProfileView> {
                                           size: 15.sp,
                                           fontWeight: FontWeight.w500),
                                       EditButton(
-                                        title: "Edit",
+                                        title: "Edit".tr,
                                         height: 25.h,
                                         padding: const EdgeInsets.only(
                                             top: 4,
@@ -241,7 +241,7 @@ class _ProfileViewState extends State<ProfileView> {
                                           isEmpty: controller
                                                   .profileUrlModel!.email ==
                                               null),
-                                              SocialMediaIcon(
+                                      SocialMediaIcon(
                                         socialMediaIcon:
                                             "assets/icons/website.svg",
                                         isEmpty: controller
@@ -254,7 +254,6 @@ class _ProfileViewState extends State<ProfileView> {
                                           isEmpty: controller
                                                   .profileUrlModel!.youtube ==
                                               null),
-                                      
                                       SocialMediaIcon(
                                         socialMediaIcon:
                                             "assets/icons/facebook_black.svg",
@@ -277,7 +276,7 @@ class _ProfileViewState extends State<ProfileView> {
                                       ),
                                       controller.businessCardModel != null
                                           ? EditButton(
-                                              title: "Edit",
+                                              title: "Edit".tr,
                                               height: 25.h,
                                               padding: const EdgeInsets.only(
                                                   top: 4,
@@ -309,43 +308,45 @@ class _ProfileViewState extends State<ProfileView> {
                                   ),
                                   Gap(22),
                                   controller.businessCardModel != null
-                                      ? BusinessCard(
-                                          blur: 3.0,
-                                          premission: false,
-                                          name:
-                                              "${controller.businessCardModel!.firstName} ${controller.businessCardModel!.lastName}",
-                                          email: controller
-                                                  .businessCardModel!.email ??
-                                              '',
-                                          jobTitle:
-                                              controller.businessCardModel!.job ??
+                                      ? Directionality(
+                                          textDirection: TextDirection.ltr,
+                                          child: BusinessCard(
+                                              blur: 3.0,
+                                              premission: false,
+                                              name:
+                                                  "${controller.businessCardModel!.firstName} ${controller.businessCardModel!.lastName}",
+                                              email: controller
+                                                      .businessCardModel!
+                                                      .email ??
                                                   '',
-                                          company: controller
-                                                  .businessCardModel!.company ??
-                                              '',
-                                          image: controller
-                                                  .businessCardModel!.image ??
-                                              '',
-                                          instagram: controller
-                                                  .businessCardModel!
-                                                  .instagram ??
-                                              '',
-                                          x: controller.businessCardModel!.x ??
-                                              '',
-                                          website: controller
-                                                  .businessCardModel!.website ??
-                                              '',
-                                          facebook: controller
-                                                  .businessCardModel!
-                                                  .facebook ??
-                                              '',
-                                          linkedin: controller
-                                                  .businessCardModel!
-                                                  .linkedin ??
-                                              '',
-                                          phone: controller
-                                                  .businessCardModel!.phone ??
-                                              '')
+                                              jobTitle: controller
+                                                      .businessCardModel!.job ??
+                                                  '',
+                                              company: controller
+                                                      .businessCardModel!
+                                                      .company ??
+                                                  '',
+                                              image: controller
+                                                      .businessCardModel!
+                                                      .image ??
+                                                  '',
+                                              instagram: controller
+                                                      .businessCardModel!
+                                                      .instagram ??
+                                                  '',
+                                              x: controller.businessCardModel!.x ??
+                                                  '',
+                                              website: controller
+                                                      .businessCardModel!
+                                                      .website ??
+                                                  '',
+                                              facebook: controller
+                                                      .businessCardModel!
+                                                      .facebook ??
+                                                  '',
+                                              linkedin: controller.businessCardModel!.linkedin ?? '',
+                                              phone: controller.businessCardModel!.phone ?? ''),
+                                        )
                                       : Container(
                                           height: 192.8.h,
                                           width: 312.w,
@@ -432,7 +433,9 @@ class _ProfileViewState extends State<ProfileView> {
                               ),
                               Gap(32.h),
                               Align(
-                                alignment: Alignment.centerLeft,
+                                alignment: box?.read('locale') != "ar"
+                                    ? Alignment.centerLeft
+                                    : Alignment.centerRight,
                                 child: Text(
                                   "My Favorites".tr,
                                   style: TextStyle(

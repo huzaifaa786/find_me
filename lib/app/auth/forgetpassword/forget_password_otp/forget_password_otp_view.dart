@@ -60,7 +60,7 @@ class _ForgetPasswordOtpViewState extends State<ForgetPasswordOtpView> {
                   children: [
                     Flexible(
                       child: SizedBox(
-                        height: 30.h,
+                        height: 50.h,
                         width: 270.w,
                         child: AppText(
                           title: type == "email"

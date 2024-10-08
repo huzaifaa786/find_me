@@ -12,6 +12,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 
 class CoinsStoreView extends StatefulWidget {
@@ -22,6 +23,7 @@ class CoinsStoreView extends StatefulWidget {
 }
 
 class _CoinsStoreViewState extends State<CoinsStoreView> {
+  GetStorage box = GetStorage();
   @override
   Widget build(BuildContext context) {
     return GetBuilder<CoinsStoreController>(
@@ -91,22 +93,34 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
                   padding: const EdgeInsets.all(8.0),
                   child: GridView.builder(
                     shrinkWrap: true,
-                    physics: AlwaysScrollableScrollPhysics(),
+                    physics: const AlwaysScrollableScrollPhysics(),
                     itemCount: controller.packages!.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        crossAxisSpacing: 3.0,
-                        mainAxisSpacing: 14.0),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            crossAxisSpacing: 3.0,
+                            mainAxisSpacing: 14.0),
                     itemBuilder: (BuildContext context, int index) {
                       Package package = controller.packages![index];
                       StoreProduct coinPackageModel = package.storeProduct;
-                      print(package.storeProduct);
+                      String displayText;
+                      if (box.read('locale') == 'ar') {
+                        String title = package.storeProduct.title
+                            .replaceFirst("Coins", "عملات");
+                        String description = package.storeProduct.description
+                            .replaceFirst("Coins", "عملات");
+                        displayText = Platform.isIOS ? title : description;
+                      } else {
+                        displayText = Platform.isIOS
+                            ? package.storeProduct.title
+                            : package.storeProduct.description;
+                      }
                       return CardCoins(
                         width: 100.w,
                         height: 100.h,
                         bottomText: coinPackageModel.priceString,
                         img: 'assets/images/coin_icon_big.png',
-                        text: Platform.isIOS ? package.storeProduct.title :  package.storeProduct.description,
+                        text: displayText,
                         imageHeight: 60.h,
                         imageWidth: 60.w,
                         onTap: () async {

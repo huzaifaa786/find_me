@@ -72,7 +72,7 @@ class ProfileController extends GetxController {
       profile = UserProfileModel.fromJson(response['profile']);
 
       update();
-      UiUtilites.successSnackbar("Updated successfully","");
+      UiUtilites.successSnackbar("Updated successfully".tr,"");
     }
   }
 

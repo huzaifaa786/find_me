@@ -32,7 +32,7 @@ class _EmojiMenuViewState extends State<EmojiMenuView> {
                 forceMaterialTransparency: true,
                 toolbarHeight: 83.h,
                 title: topBar(
-                  name:controller.emojiType == "free" ? "Emojis For All".tr :"FindMe Picks".tr,
+                  name:controller.emojiType == "free" ? "Emojis for All".tr :"FindMe Picks".tr,
                   showBackIcon: true,
                 ),
               ),

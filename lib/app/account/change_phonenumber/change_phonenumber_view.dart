@@ -23,8 +23,7 @@ class ChangePhoneNumberView extends StatelessWidget {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           forceMaterialTransparency: true,
-          title: Flexible(
-              child: topBar(name: 'Change Phone Number'.tr, fontSize: 16)),
+          title: topBar(name: 'Change Phone Number'.tr, fontSize: 16),
         ),
         body: SafeArea(
             child: SingleChildScrollView(

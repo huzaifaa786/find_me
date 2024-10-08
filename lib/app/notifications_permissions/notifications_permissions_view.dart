@@ -49,14 +49,19 @@ class _NotificationsPermissionsViewState
                           },
                         ),
                         Gap(13.h),
-                        AppText(
-                          title:
-                              "If profile request notifications are disabled, you won’t be notified when someone requests to view your profile."
-                                  .tr,
-                          size: 10,
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.hintGrey,
-                          textAlign: TextAlign.left,
+                        Align(
+                          alignment: box?.read('locale') != "ar"
+                              ? Alignment.centerLeft
+                              : Alignment.centerRight,
+                          child: AppText(
+                            title:
+                                "If profile request notifications are disabled, you won’t be notified when someone requests to view your profile."
+                                    .tr,
+                            size: 10,
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.hintGrey,
+                            textAlign: TextAlign.left,
+                          ),
                         ),
                         Gap(10),
                         Divider(
@@ -77,7 +82,9 @@ class _NotificationsPermissionsViewState
                         ),
                         Gap(15.h),
                         Align(
-                          alignment: Alignment.centerLeft,
+                          alignment: box?.read('locale') != "ar"
+                              ? Alignment.centerLeft
+                              : Alignment.centerRight,
                           child: AppText(
                             title:
                                 "If social media and business cards request notifications are disabled, you won’t be notified when someone requests to view your profile."
@@ -105,7 +112,9 @@ class _NotificationsPermissionsViewState
                         ),
                         Gap(13.h),
                         Align(
-                          alignment: Alignment.centerLeft,
+                          alignment: box?.read('locale') != "ar"
+                              ? Alignment.centerLeft
+                              : Alignment.centerRight,
                           child: AppText(
                             title:
                                 "If emoji request notifications are disabled, you won’t be notified when someone requests to view your profile."

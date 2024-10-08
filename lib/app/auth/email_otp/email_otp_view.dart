@@ -22,7 +22,7 @@ class EmailOtpView extends StatelessWidget {
       builder: (controller) => Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            scrolledUnderElevation: 0,
+            forceMaterialTransparency: true,
             title: topBar(
               name: '',
               showBackIcon: true,
@@ -42,7 +42,7 @@ class EmailOtpView extends StatelessWidget {
                 ),
                 Gap(10),
                 Padding(
-                  padding: const EdgeInsets.only(left: 18.0,right: 18),
+                  padding: const EdgeInsets.only(left: 18.0, right: 18),
                   child: AppText(
                     title:
                         'We have sent you an OTP code to your new email , please enter it to continue'
@@ -72,7 +72,6 @@ class EmailOtpView extends StatelessWidget {
                         fontWeight: FontWeight.w600),
                     onCodeChanged: (String code) {
                       controller.setOtpCode(code);
-                     
                     },
                     onSubmit: (String verificationCode) {
                       controller.setOtpCode(verificationCode);

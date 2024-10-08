@@ -91,8 +91,8 @@ class PublicProfileController extends GetxController {
           name: 'send_social_request',
         );
         UiUtilites.successSnackbar(
-            "Request to access Social media accounts and business card has been sent",
-            "Access Social Request");
+            "Request to access Social media accounts and business card has been sent".tr,
+            "Access Social Request".tr);
       } else if (response['Request'] == "Access") {
         hasSocialAccess = true;
         update();

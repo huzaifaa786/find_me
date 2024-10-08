@@ -48,7 +48,7 @@ class _EmojiStoreViewState extends State<EmojiStoreView> {
                             iconWidth: 96,
                             padding: EdgeInsets.only(top: 18, bottom: 10),
                             title: "Emojis for All".tr,
-                            subtitle: "".tr,
+                            subtitle: "",
                             show: true,
                             onTap: () {
                               Get.toNamed(AppRoutes.edit_menu,arguments: "free");
@@ -63,7 +63,7 @@ class _EmojiStoreViewState extends State<EmojiStoreView> {
                             iconHeight: 68,
                             iconWidth: 68,
                             title: "FindMe Picks".tr,
-                            subtitle: "Favorites & purchased.".tr,
+                            subtitle: "",
                             show: false,
                             onTap: () {
                               Get.toNamed(AppRoutes.edit_menu,arguments: "paid");
@@ -84,7 +84,7 @@ class _EmojiStoreViewState extends State<EmojiStoreView> {
                             iconHeight: 68,
                             iconWidth: 68,
                             title: "Gifts".tr,
-                            subtitle: "Favorites & purchased.".tr,
+                            subtitle: "",
                             show: false,
                             onTap: () {
                               Get.toNamed(AppRoutes.gifted_emoji);
@@ -99,7 +99,7 @@ class _EmojiStoreViewState extends State<EmojiStoreView> {
                             iconHeight: 80,
                             iconWidth: 80,
                             title: "My emojis \n& Picks".tr,
-                            subtitle: "Favorites & purchased.".tr,
+                            subtitle: "",
                             show: false,
                             onTap: () {
                               Get.toNamed(AppRoutes.my_emojis);

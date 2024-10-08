@@ -11,6 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:find_me/components/buttons/app_button.dart';
+import 'package:get_storage/get_storage.dart';
 
 class EditUrlView extends StatefulWidget {
   const EditUrlView({super.key});
@@ -20,6 +21,7 @@ class EditUrlView extends StatefulWidget {
 }
 
 class _EditUrlViewState extends State<EditUrlView> {
+  GetStorage box = GetStorage();
   @override
   Widget build(BuildContext context) {
     return GetBuilder<EditUrlController>(
@@ -35,71 +37,88 @@ class _EditUrlViewState extends State<EditUrlView> {
                 controller.updateUrls();
               }),
         ),
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 44.w),
-              child: Column(
-                children: [
-                  Gap(41),
-                  buildStackedUrlField(controller, "assets/icons/snapchat.svg",
-                      "Snapchat url", controller.snapchatController, ""),
-                  Gap(24),
-                  buildStackedUrlField(
-                      controller,
-                      "assets/icons/instagram_black.svg",
-                      " https://www.instagram.com/username",
-                      controller.instagramController,
-                      "https://www.instagram.com/"),
-                  Gap(24),
-                  buildStackedUrlField(
-                      controller,
-                      "assets/icons/twitter-x 1.svg",
-                      " https://www.x.com/@username",
-                      controller.xController,
-                      "https://x.com/"),
-                  Gap(24),
-                  buildStackedUrlField(
-                      controller,
-                      "assets/icons/telegram-plane.svg",
-                      "Telegram url",
-                      controller.telegramController,
-                      ""),
-                  Gap(24),
-                  buildStackedUrlField(
-                      controller,
-                      "assets/icons/whatsapp1.svg",
-                      "https://wa.me/+(Country Code - Mobile number)",
-                      controller.whatsappController,
-                      "https://wa.me/+"),
-                  Gap(24),
-                  buildStackedUrlField(
-                      controller,
-                      "assets/icons/tiktok_black.svg",
-                      "https://www.TikTok.com/@username",
-                      controller.tiktokController,
-                      "https://www.tiktok.com/"),
-                  Gap(24),
-                  buildStackedUrlField(controller, "assets/icons/linkedin.svg",
-                      "LinkedIn url", controller.linkedinController, ""),
-                  Gap(24),
-                  buildStackedUrlField(controller, "assets/icons/gmail.svg",
-                      "mail:abc@abc.com", controller.emailController, "mail:"),
-                  Gap(24),
-                  buildStackedUrlField(controller, "assets/icons/web.svg",
-                      "Website url", controller.websiteController, ""),
-                  Gap(24),
-                  buildStackedUrlField(controller, "assets/icons/youtube.svg",
-                      "YouTube url", controller.youtubeController, ""),
-                  Gap(24),
-                  buildStackedUrlField(
-                      controller,
-                      "assets/icons/facebook_black.svg",
-                      "Facebook url",
-                      controller.facebookController,
-                      ""),
-                  Gap(47),
-                ],
+        body: Directionality(
+          textDirection: 
+             TextDirection.ltr,
+          
+          child: SafeArea(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 44.w),
+                child: Column(
+                  children: [
+                    Gap(41),
+                    buildStackedUrlField(
+                        controller,
+                        "assets/icons/snapchat.svg",
+                        "Snapchat url",
+                        controller.snapchatController,
+                        ""),
+                    Gap(24),
+                    buildStackedUrlField(
+                        controller,
+                        "assets/icons/instagram_black.svg",
+                        " https://www.instagram.com/username",
+                        controller.instagramController,
+                        "https://www.instagram.com/"),
+                    Gap(24),
+                    buildStackedUrlField(
+                        controller,
+                        "assets/icons/twitter-x 1.svg",
+                        " https://www.x.com/@username",
+                        controller.xController,
+                        "https://x.com/@"),
+                    Gap(24),
+                    buildStackedUrlField(
+                        controller,
+                        "assets/icons/telegram-plane.svg",
+                        "Telegram url",
+                        controller.telegramController,
+                        ""),
+                    Gap(24),
+                    buildStackedUrlField(
+                        controller,
+                        "assets/icons/whatsapp1.svg",
+                        "https://wa.me/+(Country Code - Mobile number)",
+                        controller.whatsappController,
+                        "https://wa.me/+"),
+                    Gap(24),
+                    buildStackedUrlField(
+                        controller,
+                        "assets/icons/tiktok_black.svg",
+                        "https://www.TikTok.com/@username",
+                        controller.tiktokController,
+                        "https://www.tiktok.com/@"),
+                    Gap(24),
+                    buildStackedUrlField(
+                        controller,
+                        "assets/icons/linkedin.svg",
+                        "LinkedIn url",
+                        controller.linkedinController,
+                        ""),
+                    Gap(24),
+                    buildStackedUrlField(
+                        controller,
+                        "assets/icons/gmail.svg",
+                        "mailto :abc@abc.com",
+                        controller.emailController,
+                        "mailto:"),
+                    Gap(24),
+                    buildStackedUrlField(controller, "assets/icons/web.svg",
+                        "Website url", controller.websiteController, ""),
+                    Gap(24),
+                    buildStackedUrlField(controller, "assets/icons/youtube.svg",
+                        "YouTube url", controller.youtubeController, ""),
+                    Gap(24),
+                    buildStackedUrlField(
+                        controller,
+                        "assets/icons/facebook_black.svg",
+                        "Facebook url",
+                        controller.facebookController,
+                        ""),
+                    Gap(47),
+                  ],
+                ),
               ),
             ),
           ),
@@ -130,10 +149,11 @@ class _EditUrlViewState extends State<EditUrlView> {
         }, onTapYes: () {
           fieldController.clear();
           FocusScope.of(context).unfocus();
-          controller.updateUrls(isRemove: true,);
+          controller.updateUrls(
+            isRemove: true,
+          );
         });
       },
     );
   }
-
 }
