@@ -2,10 +2,12 @@ import 'dart:io';
 import 'package:find_me/app.dart';
 import 'package:find_me/components/helper/loading.dart';
 import 'package:find_me/helpers/store_helper.dart';
+import 'package:find_me/services/notification_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
@@ -19,6 +21,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform, 
   ).then((value) {
     FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(true);
+    Get.put(NotificationService());
   }); 
 
   await GetStorage.init();

@@ -9,6 +9,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class NotificationService extends GetxController with WidgetsBindingObserver {
   late final FirebaseMessaging _messaging;
@@ -111,8 +112,12 @@ class NotificationService extends GetxController with WidgetsBindingObserver {
 
   void _handleMessageOpenedApp(RemoteMessage message) {
     print("Notification clicked with data: ${message.data}");
+    GetStorage box = GetStorage();
 
-    _handleNotificationData(message.data);
+    String? apiToken = box.read('api_token');
+    if(apiToken != null){
+      _handleNotificationData(message.data);
+    }
   }
 
   void _handleNotificationData(Map<String, dynamic> data) {
