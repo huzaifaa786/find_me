@@ -510,10 +510,13 @@ class LocaleString extends Translations {
               "Your phone number has been changed  \n successfully.",
           "Confirm your email": "Confirm your email",
           "Your email has been changed  \n successfully.":"Your email has been changed  \n successfully.",
-          
+          "Pick Image":"Pick Image",
+          "Remove Image":"Remove Image",
         },
         'ar_AE': {
           // New Words
+          "Remove Image":"إزالة الصورة",
+          "Pick Image":"اختر صورة",
           "Your email has been changed  \n successfully.":"تم تغيير بريدك الإلكتروني \n بنجاح.",
           "Confirm your email": "قم بتأكيد بريدك الإلكتروني",
           "We have sent you an OTP code to your new email , please enter it to continue":"لقد أرسلنا لك رمز OTP إلى بريدك الإلكتروني الجديد، يرجى إدخاله للاستمرار.",

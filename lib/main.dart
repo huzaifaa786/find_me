@@ -16,7 +16,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await LoadingHelper.init();
   await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+    options: DefaultFirebaseOptions.currentPlatform, 
   ).then((value) {
     FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(true);
   }); 
