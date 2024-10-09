@@ -149,7 +149,7 @@ class _MainViewState extends State<MainView> {
                 child: Container(
                   padding: EdgeInsets.only(
                       left: 20, right: 20, bottom: Platform.isIOS ? 7 : 0),
-                  height: 134.h,
+                  height: Platform.isIOS && box.read('locale') == 'ar' ? 145.h :  134.h,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
