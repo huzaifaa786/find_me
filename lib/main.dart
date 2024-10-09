@@ -13,20 +13,21 @@ import 'firebase_options.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
 void main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
   await LoadingHelper.init();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   ).then((value) {
     FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(true);
-  });
+  }); 
 
   await GetStorage.init();
-  Stripe.publishableKey = "pk_test_51PqWumELPBv6icsjGiifpakgvyikustWRGQZo2CreTgWTApPULXrKnbmYHb01N8LlVCc98SMP0p0LRx17uI0gvnS00oD6kvMpJ";
+  Stripe.publishableKey =
+      "pk_test_51PqWumELPBv6icsjGiifpakgvyikustWRGQZo2CreTgWTApPULXrKnbmYHb01N8LlVCc98SMP0p0LRx17uI0gvnS00oD6kvMpJ";
   await dotenv.load(fileName: "assets/.env");
   HttpOverrides.global = MyHttpOverrides();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
   if (Platform.isIOS) {
     StoreHelper(
@@ -46,15 +47,13 @@ void main() async {
   ]).then((_) {
     runApp(const App());
   });
-
 }
 
 class MyHttpOverrides extends HttpOverrides {
   @override
-  HttpClient createHttpClient(SecurityContext? context) { 
+  HttpClient createHttpClient(SecurityContext? context) {
     return super.createHttpClient(context)
       ..badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
   }
 }
- 
