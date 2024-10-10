@@ -24,7 +24,7 @@ class NotificationService extends GetxController with WidgetsBindingObserver {
     WidgetsFlutterBinding.ensureInitialized();
     registerNotification();
     checkForInitialMessage();
-    FirebaseMessaging.onMessageOpenedApp.listen(_handleMessageOpenedApp);
+    FirebaseMessaging.onMessageOpenedApp.listen(handleMessageOpenedApp);
     WidgetsBinding.instance.addObserver(this); // Observe app lifecycle changes
     super.onInit();
   }
@@ -110,7 +110,7 @@ class NotificationService extends GetxController with WidgetsBindingObserver {
 
   // DATA Handling
 
-  void _handleMessageOpenedApp(RemoteMessage message) {
+  void handleMessageOpenedApp(RemoteMessage message) {
     print("Notification clicked with data: ${message.data}");
     GetStorage box = GetStorage();
 

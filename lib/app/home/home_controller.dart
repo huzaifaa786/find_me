@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-
+import 'package:find_me/services/notification_service.dart';
 import 'package:find_me/api/auth_api/user_api.dart';
 import 'package:find_me/api/block_report_api/block_report_api.dart';
 import 'package:find_me/api/bluetooth_api/bluetooth_users_api.dart';
@@ -10,7 +10,6 @@ import 'package:find_me/api/profile_api/profile_api.dart';
 import 'package:find_me/api/request_api/request_api.dart';
 import 'package:find_me/app/main_view/main_controller.dart';
 import 'package:find_me/app/public_profile/public_profile_controller.dart';
-import 'package:find_me/components/helper/loading.dart';
 import 'package:find_me/components/popups/profile_request_popup.dart';
 import 'package:find_me/helpers/subscription_manager.dart';
 import 'package:find_me/models/profile_request_model.dart';
@@ -21,6 +20,7 @@ import 'package:find_me/services/revenue_cat_service.dart';
 import 'package:find_me/utils/colors/app_colors.dart';
 import 'package:find_me/utils/ui_utils.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ble_peripheral/flutter_ble_peripheral.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
@@ -78,9 +78,11 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     // WidgetsBinding.instance.addObserver(this);
+    checkForInitialMessage();
     initPlatformState();
     getUser();
     initPusher();
+
     super.onInit();
   }
 
@@ -94,7 +96,7 @@ class HomeController extends GetxController {
       includePowerLevel: true,
     );
     update();
-    await stopPeriodicAdvertising();
+    // await stopPeriodicAdvertising();
 
     // Check if beaconId is provided; if not, read it from the box
     String id = beaconId ?? box.read('beacon_id') ?? '';
@@ -482,7 +484,7 @@ class HomeController extends GetxController {
       );
     }
     isSearching = false;
-    mainController.update();
+    Get.find<MainController>().update();
     update();
   }
 
@@ -561,22 +563,22 @@ class HomeController extends GetxController {
       String userName = data['name'];
       if (data['requestType'] == "profile") {
         if (status == "accepted") {
-          String name = "$userName "+"has accepted your request".tr;
+          String name = "$userName " + "has accepted your request".tr;
           UiUtilites.successSnackbar(
               name.toString(), "Profile Request Access".tr);
         } else {
-          String name = "$userName "+"has rejected your request".tr;
+          String name = "$userName " + "has rejected your request".tr;
           UiUtilites.errorSnackbar(
               "Profile Request Access".tr, name.toString());
         }
       } else {
         if (status == "accepted") {
-          String name = "$userName "+"has accepted your request".tr;
+          String name = "$userName " + "has accepted your request".tr;
           UiUtilites.successSnackbar(
               name.toString(), "Social Request Access".tr);
           updatePublicProfile();
         } else {
-          String name = "$userName "+"has rejected your request".tr;
+          String name = "$userName " + "has rejected your request".tr;
           UiUtilites.errorSnackbar("Social Request Access".tr, name.toString());
         }
       }
@@ -646,8 +648,8 @@ class HomeController extends GetxController {
   }
 
   respondRequest(ProfileRequestModel requestModel, String status) async {
-    var response = await RequestApi.respondRequest(
-        id: requestModel.id, status: status);
+    var response =
+        await RequestApi.respondRequest(id: requestModel.id, status: status);
 
     if (response.isNotEmpty) {
       if (status == "accepted") {
@@ -671,6 +673,18 @@ class HomeController extends GetxController {
       update();
       UiUtilites.successSnackbar(response['message'], "");
     }
+  }
+
+  // ......................................NOTIFICATION............................//
+
+  checkForInitialMessage() async {
+    FirebaseMessaging.instance
+        .getInitialMessage()
+        .then((RemoteMessage? message) {
+      if (message != null) {
+        Get.find<NotificationService>().handleMessageOpenedApp(message);
+      }
+    });
   }
 }
 
