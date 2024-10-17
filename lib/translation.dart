@@ -76,10 +76,10 @@ class LocaleString extends Translations {
           "Your email has been changed successfully!":
               "Your email has been changed successfully!",
           "Otp sent": "Otp sent",
-          "Otp Sent Successfully": "Otp Sent Successfully",
+          "Otp sent successfully": "Otp sent successfully",
           "Verify your email": "Verify your email",
-          'We have sent you an OTP code to your new email , please enter it to continue':
-              'We have sent you an OTP code to your new email , please enter it to continue',
+          'An OTP code has been sent to your new email, please enter it to continue':
+              'An OTP code has been sent to your new email, please enter it to continue',
           "Resend": "Resend",
           "Forgot password!": "Forgot password!",
           "Choose email or phone number to continue!":
@@ -159,7 +159,7 @@ class LocaleString extends Translations {
           "Checkout": "Checkout",
           "Edit business card": "Edit business card",
           "Create Business Card": "Create Business Card",
-          "Add photo": "Add photo",
+          "Add Photo": "Add Photo",
           "Optional": "Optional",
           "Company name": "Company name",
           "Job title": "Job title",
@@ -225,7 +225,7 @@ class LocaleString extends Translations {
           "Appears as": "Appears as",
           "New Profile 2": "New Profile 2",
           "Add new profile": "Add new profile",
-          "Keep searching..": "Keep searching..",
+          "Keep searching...": "Keep searching...",
           "Bluetooth": "Bluetooth",
           "Please turn on Bluetooth to start advertising":
               "Please turn on Bluetooth to start advertising",
@@ -346,7 +346,7 @@ class LocaleString extends Translations {
           "Emojis": "Emojis",
           // New Words
           "Edit Profiles": "Edit Profiles",
-          "Checking Connections..": "Checking Connections..",
+          "Checking Connections...": "Checking Connections...",
           "No finders nearby. Refresh or expand your radius.":
               "No finders nearby. Refresh or expand your radius.",
           "New profile": "New profile",
@@ -421,6 +421,7 @@ class LocaleString extends Translations {
           "Blocked Users": "Blocked Users",
           "No Blocked User": "No Blocked User",
           "Unblock": "Unblock",
+          "+ New profile ": "+ New profile ",
           "Profile Privacy": "Profile Privacy",
           "(Not created)": "(Not created)",
           "When turned on, others can view your profile without needing to send a request.":
@@ -433,10 +434,10 @@ class LocaleString extends Translations {
               "Requests for social media and \nbusiness cards",
           "If profile request notifications are disabled, you won’t be notified when someone requests to view your profile.":
               "If profile request notifications are disabled, you won’t be notified when someone requests to view your profile.",
-          "If social media and business cards request notifications are disabled, you won’t be notified when someone requests to view your profile.":
-              "If social media and business cards request notifications are disabled, you won’t be notified when someone requests to view your profile.",
-          "If emoji request notifications are disabled, you won’t be notified when someone requests to view your profile.":
-              "If emoji request notifications are disabled, you won’t be notified when someone requests to view your profile.",
+          "If social media and business cards request notifications are disabled, you won’t be notified when someone requests to view your social media and business cards.":
+              "If social media and business cards request notifications are disabled, you won’t be notified when someone requests to view your social media and business cards.",
+          "If emoji request notifications are disabled, you won’t be notified when you received an emoji.":
+              "If emoji request notifications are disabled, you won’t be notified when you received an emoji.",
           "Please provide a brief description of the issue or what isn’t working properly.":
               "Please provide a brief description of the issue or what isn’t working properly.",
           "I think my account was compromised":
@@ -479,7 +480,7 @@ class LocaleString extends Translations {
           "Intellectual property violation": "Intellectual property violation",
           "Other": "Other",
           "Tap an icon to send a gift!": "Tap an icon to send a gift!",
-          "Type a comment": "Type a comment",
+          "Write a comment": "Write a comment",
           "Successfully": "Successfully",
           "Message has been sent \n successfully.":
               "Message has been sent \n successfully.",
@@ -505,52 +506,55 @@ class LocaleString extends Translations {
           "Set your Birthday": "Set your Birthday",
           "Close": "Close",
           "Url removed successfully": "Url removed successfully",
-          "Confirm your number": "Confirm your number",
+          "Please confirm your phone number":
+              "Please confirm your phone number",
           "Your phone number has been changed  \n successfully.":
               "Your phone number has been changed  \n successfully.",
-          "Confirm your email": "Confirm your email",
-          "Your email has been changed  \n successfully.":"Your email has been changed  \n successfully.",
-          "Pick Image":"Pick Image",
-          "Remove Image":"Remove Image",
+          "Please confirm your email": "Please confirm your email",
+          "Your email has been updated  \n successfully":
+              "Your email has been updated  \n successfully",
+          "Pick Image": "Pick Image",
+          "Remove Image": "Remove Image",
         },
         'ar_AE': {
-          // New Words
-          "Remove Image":"إزالة الصورة",
-          "Pick Image":"اختر صورة",
-          "Your email has been changed  \n successfully.":"تم تغيير بريدك الإلكتروني \n بنجاح.",
-          "Confirm your email": "قم بتأكيد بريدك الإلكتروني",
-          "We have sent you an OTP code to your new email , please enter it to continue":"لقد أرسلنا لك رمز OTP إلى بريدك الإلكتروني الجديد، يرجى إدخاله للاستمرار.",
-          "Your phone number has been changed  \n successfully.":
-              "تم تغيير رقم هاتفك \n بنجاح.",
-          "Confirm your number": "قم بتأكيد رقم هاتفك",
-          "We have sent you an OTP code to your new phone number , please enter it to continue":
-              "لقد أرسلنا لك رمز OTP إلى رقم هاتفك الجديد، يرجى إدخاله للاستمرار.",
-          "Url removed successfully": "تمت إزالة الرابط بنجاح",
+          "Remove Image": "حذف الصورة",
+          "Pick Image": "اختيار صورة",
+          "Your email has been updated  \n successfully":
+              "تم تغيير بريدك الإلكتروني \n بنجاح.",
+          "Please confirm your email": "تأكيد بريدك الإلكتروني",
+          "An OTP code has been sent to your new email, please enter it to continue":
+              " تم إرسال رمز OTP إلى بريدك الإلكتروني الجديد، يرجى إدخاله للاستمرار.",
+          "Your phone number has been updated \n successfully":
+              "تم تحديث رقم هاتفك \n بنجاح.",
+          "Please confirm your phone number": "قم بتأكيد رقم هاتفك",
+          "An OTP code has been sent to your new phone number, please enter it to continue":
+              " تم إرسال رمز OTP إلى رقم هاتفك الجديد، يرجى إدخاله للاستمرار.",
+          "URL removed successfully ": "تمت إزالة الرابط بنجاح",
           "Close": "إغلاق",
           "Set your Birthday": "حدد تاريخ ميلادك",
           "Please choose how you want to reset your password":
               "يرجى اختيار طريقة إعادة تعيين كلمة المرور",
-          "Forgot password?": "هل نسيت كلمة المرور؟",
+          "Forgot password?": " نسيت كلمة المرور؟",
           "User name, Email or Phone number":
               "اسم المستخدم، البريد الإلكتروني أو رقم الهاتف",
           "Seize the moment": "اغتنم الفرصة",
           "Log In": "تسجيل الدخول",
           "Term of Service.": "شروط الخدمة.",
           " and agree to the ": " والموافقة على ",
-          "By tapping Sign up, you acknowledge that you have read the ":
+          "By clicking Sign up, you acknowledge that you have read the ":
               " بالضغط على التسجيل، فإنك تقر بأنك قد قرأت ",
           "Gender (optional)": "الجنس (اختياري)",
           "Would like to view your social media  \n accounts and business card.":
-              "يرغب في عرض حسابات وسائل التواصل الاجتماعي وبطاقة الأعمال الخاصة بك.",
-          "Would like to view your profile.": "يرغب في عرض ملفك الشخصي.",
+              "يود مشاهدة حسابات التواصل الاجتماعي وبطاقة الأعمال الخاصة بك.",
+          "Would like to view your profile.": "يود مشاهدة ملفك الشخصي.",
           "No business card exist": "لا توجد بطاقة أعمال",
           "Request to access Social media accounts and business card has been sent":
               "تم إرسال طلب للوصول إلى حسابات وسائل التواصل الاجتماعي وبطاقة الأعمال.",
           "Access Social Request": "طلب الوصول الاجتماعي",
-          "Message has been sent \n successfully.": "تم إرسال الرسالة \nبنجاح.",
+          "Message sent \n successfully.": "تم إرسال الرسالة \nبنجاح.",
           "Successfully": "بنجاح",
-          "Type a comment": "اكتب تعليقاً",
-          "Tap an icon to send a gift!": "اضغط على رمز لإرسال هدية",
+          "Write a comment": "اكتب تعليقاً",
+          "Tap an icon to send a gift!": "اضغط على رمز لإرسال اعجاب",
           "Pretending to be someone else": " إنتحال شخصية ",
           "Bullying or harassment": "التنمر أو المضايقة",
           "Nudity or sexual content": "العُري أو المحتوى الجنسي",
@@ -563,8 +567,8 @@ class LocaleString extends Translations {
           "Intellectual property violation": "انتهاك حقوق الملكية الفكرية",
           "Other": "آخر",
           "Report Profile": "الإبلاغ عن الملف الشخصي",
-          "Please select a reason for reporting this profile:":
-              "يرجى اختيار سبب الإبلاغ عن هذا الملف الشخصي:",
+          "Please choose a reason for reporting this profile:":
+              "الرجاء اختيار سبب الإبلاغ عن الملف:",
           "View Profile": "عرض الملف الشخصي",
           "Block": "حظر",
           "Are you sure you want to block this profile?":
@@ -573,7 +577,7 @@ class LocaleString extends Translations {
           "Cancel": "إلغاء",
           "Contact Us": "اتصل بنا",
           "Keeping your location turned on will allow the app to provide the best experience, such as real-time connections, which work better when your location is available.":
-              "إبقاء موقعك قيد التشغيل سيسمح للتطبيق بتقديم أفضل تجربة، مثل الاتصالات الفورية، والتي تعمل بشكل أفضل عندما يكون موقعك متاحاً.",
+              "إبقاء موقعك قيد التشغيل سيسمح للتطبيق بتقديم أفضل تجربة، مثل الاتصالات اللحظية، والتي تعمل بشكل أفضل عندما يكون موقعك متاحاً.",
           "Allow the application to access your location":
               "اسمح للتطبيق بالوصول إلى موقعك.",
           "I want to deactivate or delete my \n account":
@@ -583,7 +587,7 @@ class LocaleString extends Translations {
           "I want to report intellectual property \n infringement":
               "أريد الإبلاغ عن انتهاك \nللملكية الفكرية",
           "I need help with a feature": "أحتاج مساعدة في ميزة",
-          "I found a bug": "وجدت خطأ",
+          "I found a bug": "وجدت خلل",
           "I lost my account": "فقدت حسابي",
           "I want to report an account or \n content":
               "أريد الإبلاغ عن حساب أو \nمحتوى",
@@ -592,16 +596,16 @@ class LocaleString extends Translations {
               "أعتقد أن حسابي قد تعرض للاختراق",
           "Please provide a brief description of the issue or what isn’t working properly.":
               "يرجى تقديم وصف موجز للمشكلة أو ما لا يعمل بشكل صحيح.",
-          "If emoji request notifications are disabled, you won’t be notified when someone requests to view your profile.":
-              "إذا تم تعطيل إشعارات طلب الرموز التعبيرية، فلن يتم إخطارك عندما يطلب شخص ما عرض ملفك الشخصي.",
-          "If social media and business cards request notifications are disabled, you won’t be notified when someone requests to view your profile.":
-              "إذا تم تعطيل إشعارات طلب حسابات وسائل التواصل الاجتماعي وبطاقات الأعمال، فلن يتم إخطارك عندما يطلب شخص ما عرض ملفك الشخصي.",
+          "If emoji request notifications are disabled, you won’t be notified when you received an emoji.":
+              "إذا تم تعطيل إشعارات طلب ايموجي، فلن يتم إخطارك عندما يصلك ايموجي.",
+          "If social media and business cards request notifications are disabled, you won’t be notified when someone requests to view your social media and business cards.":
+              "إذا تم تعطيل إشعارات طلب وسائل حسابات التواصل الاجتماعي وبطاقات الأعمال، فلن يتم إخطارك عندما يطلب شخص ما مشاهدة حسابات التواصل الاجتماعي وبطاقات الأعمال الخاصة بط.",
           "If profile request notifications are disabled, you won’t be notified when someone requests to view your profile.":
               "إذا تم تعطيل إشعارات طلب الملف الشخصي، فلن يتم إخطارك عندما يطلب شخص ما عرض ملفك الشخصي.",
           "Requests for social media and business cards":
               "طلبات لوسائل التواصل الاجتماعي وبطاقات الأعمال",
           "When turned on, others can view your social media accounts and the digital business card without needing to send a request.":
-              "عند تفعيل هذه الخاصية، يمكن للآخرين عرض حسابات وسائل التواصل الاجتماعي وبطاقة الأعمال الرقمية الخاصة بك دون الحاجة إلى إرسال طلب",
+              "عند تفعيل هذه الخاصية، يمكن للآخرين مشاهدة حسابات وسائل التواصل الاجتماعي وبطاقة الأعمال الرقمية الخاصة بك دون الحاجة إلى إرسال طلب",
           "Social Media Accounts & Digital Business card":
               "حسابات وسائل التواصل الاجتماعي وبطاقة الأعمال الرقمية",
           "When turned on, others can view your profile without needing to send a request.":
@@ -612,29 +616,29 @@ class LocaleString extends Translations {
           "No Blocked User": "لا يوجد مستخدمون محظورون",
           "Blocked Users": "المستخدمون المحظورون",
           "Edit Profiles": "تعديل الملفات الشخصية",
-          "Checking Connections..": "جارِ فحص الاتصالات..",
+          "Checking Connections...": "جارِ فحص الاتصالات..",
           "No finders nearby. Refresh or expand your radius.":
               "لا يوجد مكتشفون بالقرب. قم بالتحديث أو توسيع النطاق",
           "New profile": "ملف شخصي جديد",
-          "Emojis for All": "رموز تعبيرية للجميع",
-          "FindMe Picks": "Find meاختيارات",
-          "Gifts": "هدايا",
-          "My emojis \n& Picks": "رموزي التعبيرية \nواختياراتي",
+          "+ New profile ": " ملف شخصي جديد",
+          "Emojis for All": "ايموجي للجميع",
+          "findme Picks": "اختيارات findme",
+          "Likes": "اعجاب",
+          "My emojis \n& Picks": "ايموجياتي \nواختياراتي",
           "The first 6 icons will be displayed on your profile for other users on find me to view. You can arrange the icons in your preferred order.":
               "سيتم عرض أول 6 رموز على ملفك الشخصي ليراها المستخدمون الآخرون و يمكنك ترتيب الرموز بالترتيب المفضل لديك",
           "The emoji will appear in\n “My Emojis & Picks”":
-              "سيظهر الرمز التعبيري في \n“رموزي التعبيرية واختياراتي”",
-          "Emoji order updated successfully.":
-              "تم تحديث ترتيب الرموز التعبيرية بنجاح.",
-          "Emoji removed successfully": "تمت إزالة الرمز التعبيري بنجاح",
+              "سيظهر الايموجي في \n“ايموجياتي واختياراتي”",
+          "Emoji order updated successfully.": "تم تحديث ترتيب الايموجي بنجاح.",
+          "Emoji removed successfully ": "تمت إزالة الايموجي بنجاح",
           "Are you sure you want to remove emoji":
-              "هل أنت متأكد أنك تريد إزالة الرمز التعبيري؟",
+              "هل أنت متأكد أنك تريد إزالة الاموجي ؟",
           "You can change your name in ": "يمكنك تغيير اسمك خلال",
           " days.": "أيام.",
           "Your profile name can only be changed once every 30 days.":
               "يمكن تغيير اسم ملفك الشخصي مرة واحدة فقط كل 30 يوماً.",
           "Edit Bio": "تعديل الوصف",
-          "Find Me on": "اعثر عليّ على",
+          "Find Me on": "ستجدني في",
           "My Digital Business Card": "بطاقة الأعمال الرقمية الخاصة بي",
           "My Favorites": "مفضلاتي",
           "Bio": "الوصف",
@@ -656,9 +660,9 @@ class LocaleString extends Translations {
           "1 month free, then ": "شهر واحد مجاناً، ثم ",
           "/month": "/شهرياً",
           "Features:": "المزايا:",
-          "Expanded User View": "عرض المستخدم الموسع",
+          "Expanded User View": "التوسع في عرض المستخدمين",
           "Upgrade to view more than 6 users in your proximity.":
-              "قم بالترقية لعرض أكثر من 6 مستخدمين في منطقتك",
+              "قم بالترقية لعرض أكثر من 6 مستخدمين في نطاقك",
           "Unlock User Profile 3 and Profile 4":
               "افتح الملف الشخصي 3 والملف الشخصي 4",
           "Create 2 additional profiles.": "إنشاء ملفين شخصيين إضافيين",
@@ -684,27 +688,26 @@ class LocaleString extends Translations {
           "Confirm new password": "تأكيد كلمة المرور الجديدة",
           "Search country": "بحث عن دولة",
           "Enter your new email address": "أدخل بريدك الإلكتروني الجديد",
-          // New Words
           "When requests for social media and business cards \n  are off you won’t be notified if someone is trying \n  to access your profile.":
-              "عندما تكون طلبات وسائل التواصل الاجتماعي وبطاقات العمل متوقفة، لن يتم إشعارك إذا حاول شخص ما الوصول إلى ملفك الشخصي.",
+              "عندما تكون طلبات وسائل التواصل الاجتماعي وبطاقات العمل متوقفة، لن يتم إشعارك إذا حاول شخص ما الوصول إلى وسائل التواصل الاجتماعي وبطاقات العمل.",
           "Requests for social media and \nbusiness cards":
               "طلبات وسائل التواصل الاجتماعي \nوبطاقات العمل",
           "When requests for profiles are off you won’t receive  \n requests when someone wants to view your profile.":
               "عندما تكون طلبات الملفات الشخصية متوقفة، لن تتلقى طلبات عندما يرغب شخص ما في عرض ملفك الشخصي.",
           "When emoji notifications are off then you won’t be \n  notified if you have received an emoji.":
-              "عندما تكون إشعارات الرموز التعبيرية متوقفة، لن يتم إشعارك إذا تلقيت رمزًا تعبيريًا.",
+              "عندما تكون إشعارات ايموجي متوقفة، لن يتم إشعارك إذا تلقيت ايموجي.",
           "When your account is public, your profile can be viewed by anyone on find me.":
               "عندما يكون حسابك عامًا، يمكن لأي شخص على Find Me عرض ملفك الشخصي.",
           "When your profile is private, only people you grant access after receiving a request will be able to look into your profile.":
               "عندما يكون ملفك الشخصي خاصًا، سيتمكن فقط الأشخاص الذين تمنحهم الوصول بعد تلقي طلب من عرض ملفك الشخصي.",
-          'Allow the application to access \n your location':
+          "Allow the application to access \n your location":
               "السماح للتطبيق بالوصول إلى موقعك",
-          "Briefly explain what happened\n or what’s not working .":
+          "Briefly explain what happened\n or what’s not working.":
               "اشرح بإيجاز ما حدث أو ما الذي لا يعمل",
           "Subscriptions": "الاشتراك",
           "Promo code not found": "لم يتم العثور على الرمز الترويجي",
-          "My coins": "كوينزاتي ",
-          "Purchased coins": "الكوينز المشتراة",
+          "My coins": "عملاتي",
+          "Purchased coins": "العملات المقتناة",
           "Are You Sure, you want to logout!":
               "هل أنت متأكد أنك تريد تسجيل الخروج!",
           "Yes": "نعم",
@@ -713,29 +716,28 @@ class LocaleString extends Translations {
           "Download": "تحميل",
           "Done!": "!تم",
           "You have": "لديك",
-
           "Back to home": "العودة إلى الصفحة الرئيسية",
           "The emoji will appear in “My emojis”":
               "سيظهر الرمز التعبيري في الرموز التعبيرية",
           "Confirm": "تأكيد",
-          "No coins enough!": "لا توجد كوينزات كافية",
-          "purchase some coins to get \n more emojis":
+          "Not enough coins!": "لا توجد كوينزات كافية",
+          "Purchase coins to send \n more emojis":
               "قم بشراء بعض الكوينات للحصول على المزيد من الرموز التعبيرية",
           "Purchase": "شراء",
           "error_data": "بيانات خاطئة",
           "message": "رسالة",
           "Failed to load data": "فشل في تحميل البيانات",
           "Error!": "خطأ",
-          "Password and confirm password are not same!":
+          "Password and confirm password do not match!":
               "كلمة المرور وتأكيد كلمة المرور غير متطابقين",
           "Password can't be empty": "كلمة المرور لا يمكن أن تكون فارغة",
-          "can't be empty": "لا يمكن أن يكون فارغًا",
-          "Password must be 6 characters long":
+          "Can't be empty": "لا يمكن أن يكون فارغًا",
+          "Password must be at least 6 characters long":
               "يجب أن تتكون كلمة المرور على الأقل على 6 أحرف",
-          "First name can't be empty": "الاسم الأول لا يمكن أن يكون فارغًا",
-          "Last name can't be empty": "اسم العائلة لا يمكن أن يكون فارغًا",
-          "User name can't be empty": "اسم المستخدم لا يمكن أن يكون فارغًا",
-          "Email can't be empty": "البريد الإلكتروني لا يمكن أن يكون فارغًا",
+          "First name cannot be empty": "الاسم الأول مطلوب",
+          "Last name cannot be empty": "اسم العائلة مطلوب",
+          "User name cannot be empty": "اسم المستخدم مطلوب",
+          "Email cannot be empty": "البريد الإلكتروني مطلوب",
           "Invalid Email Address": "عنوان البريد الإلكتروني غير صالح",
           "Ramei66": "Ramei66",
           "Online": "متصل",
@@ -751,18 +753,18 @@ class LocaleString extends Translations {
           "Prefer not to say": "أفضل عدم الإفصاح",
           "Female": "أنثى",
           "Male": "ذكر",
-          "Otp sent successfully": "تم إرسال رمز المرة الواحدة بنجاح",
+          "Otp sent successfully": "تم إرسال رمز التحقق المرة الواحدة بنجاح",
           "Success": "نجاح",
-          "error": "خطأ",
-          "Phone can't be empty": "الهاتف لا يمكن أن يكون فارغًا",
+          "Error": "خطأ",
+          "Phone cannot be empty": "الهاتف مطلوب ",
           "Use Numeric Variables": "استخدم المتغيرات الرقمية",
           "Invalid Phone Number": "رقم الهاتف غير صالح",
           "Change Phone Number": "تغيير رقم الهاتف",
           "Enter your new phone number": "أدخل رقم هاتفك الجديد",
-          "Emoji Gifted Successfully": "تم إهداء الرمز التعبيري بنجاح",
+          "Emoji Gifted Successfully": "تم إهداء الايموجي بنجاح",
           "Account": "الحساب",
           "Edit bio": "تعديل الوصف",
-          "Find me on:": "اعثر علي في:",
+          "Find me on:": "ستجدني في:",
           "Edit": "تعديل",
           "My business card": "بطاقة العمل",
           "Create business card": "إنشاء بطاقة عمل",
@@ -776,39 +778,31 @@ class LocaleString extends Translations {
           "Submit": "إرسال",
           "Your email has been changed successfully!":
               "تم تغيير بريدك الإلكتروني بنجاح!",
-          "Otp sent": "  تم إرسال رمز المرة الواحدة",
-          "Otp Sent Successfully": "تم إرسال رمز المرة الواحدة بنجاح",
+          "OTP sent": "  تم إرسال رمز التحقق المرة الواحدة",
+          " Otp sent successfully": "تم إرسال رمز التحقق المرة الواحدة بنجاح",
           "Verify your email": "قم بتأكيد بريدك الإلكتروني",
-          "We have sent you an OTP code to your new email, please enter it to continue":
-              "لقد أرسلنا لك رمز المرة الواحدة إلى بريدك الإلكتروني الجديد، يرجى إدخاله للمتابعة",
           "Resend": "إعادة الإرسال",
           "Forgot password!": "نسيت كلمة المرور!",
           "Choose email or phone number to continue!":
               "اختر البريد الإلكتروني أو رقم الهاتف للمتابعة!",
           "Phone Number": "رقم الهاتف",
-          "Email cannot be empty": "البريد الإلكتروني لا يمكن أن يكون فارغًا",
-          "Error": "خطأ",
-          "Failed to send OTP": "فشل في إرسال رمز المرة الواحدة",
+          "Failed to send OTP": "فشل في إرسال رمز التحقق المرة الواحدة",
           "Enter The Email": "أدخل البريد الإلكتروني",
-          "We have sent you an OTP code to your new Email, please enter it to continue":
-              "لقد أرسلنا لك رمز المرة الواحدة إلى بريدك الإلكتروني الجديد، يرجى إدخاله للمتابعة",
-          "We have sent you an OTP code to your new phone number, please enter it to continue":
-              "لقد أرسلنا لك رمز المرة الواحدة إلى رقم هاتفك الجديد، يرجى إدخاله للمتابعة",
           "Verify your Phone Number": "قم بتأكيد رقم هاتفك",
           "Verify your Email": "قم بتأكيد بريدك الإلكتروني",
-          "Fill out complete otp": "أكمل إدخال رمز المرة الواحدة ",
-          "Otp Sent not Successfully": "لم يتم إرسال رمز المرة الواحدة بنجاح",
-          "Otp sent fail": "فشل إرسال رمز المرة الواحدة",
+          "Fill out complete OTP ": "أكمل إدخال رمز التحقق المرة الواحدة ",
+          "OTP not sent successfully":
+              "لم يتم إرسال رمز التحقق المرة الواحدة بنجاح",
           "New Password": "كلمة المرور الجديدة",
-          "password updated successfully": "تم تحديث كلمة المرور بنجاح",
+          "Password updated successfully": "تم تحديث كلمة المرور بنجاح",
           "Success!": "تم بنجاح",
-          "could not update password": "تعذر تحديث كلمة المرور",
+          "Could not update password": "تعذر تحديث كلمة المرور",
           "Verify your Phone number": "قم بتأكيد رقم هاتفك",
-          "We have sent you an OTP code to your phone number, please enter it to continue":
+          "An OTP code has been sent to your phone number, please enter it to continue":
               "لقد أرسلنا لك رمز المرة الواحدة إلى رقم هاتفك، يرجى إدخاله للمتابعة",
-          "Phone Number has been changed successfully":
+          "Phone number has been updated successfully":
               "تم تغيير رقم الهاتف بنجاح",
-          "Phone Number Not Change": "لم يتم تغيير رقم الهاتف",
+          "Phone number was not updated": "لم يتم تغيير رقم الهاتف",
           "Sign In": "تسجيل الدخول",
           "This": "هذا",
           "Already have an account?": "هل لديك حساب مسجل؟",
@@ -837,37 +831,36 @@ class LocaleString extends Translations {
           "Ask if enable Bluetooth (ANDROID)": "طلب تفعيل البلوتوث (أندرويد)",
           "Request Permissions": "طلب الإذن",
           "Has permissions": "لديه الأذونات",
-          "Open bluetooth settings": "فتح إعدادات البلوتوث",
+          "Open Bluetooth settings": "فتح إعدادات البلوتوث",
           "Permissions!": "الأذونات!",
           "We don't have permissions, requesting now!":
               "لا نملك الأذونات، نطلبها الآن!",
           "Has permission:": "لديه الإذن:",
           "Beacon Scanner": "ماسح المنارة",
-          "Scaning": "جارٍ المسح",
+          "Scanning": "جارٍ المسح",
           "Scan Now": "امسح الآن",
           "Change Email": "تغيير البريد الإلكتروني",
           "Enter New Email": "أدخل بريدًا إلكترونيًا جديدًا",
           "Coins store": "متجر العملات",
           "My Coins": "عملاتي",
-          "Purchased Coins": "العملات المشتراة",
+          "Purchased Coins": "العملات المقتناة",
           "AED": "درهم إماراتي",
-          "coins": "عملات",
           "Coins": "عملات",
           "Purchase Coins": "شراء العملات",
           "Checkout": "الدفع",
           "Edit business card": "تعديل البطاقة الشخصية",
           "Create Business Card": "إنشاء بطاقة عمل",
-          "Add photo": "إضافة صورة",
+          "Add Photo": "إضافة صورة",
           "Optional": "اختياري",
           "Company name": "اسم الشركة",
-          "Job title": "المسمى الوظيفي",
+          "Job Title": "المسمى الوظيفي",
           "Social media accounts": "حسابات التواصل الاجتماعي",
           "Instagram": "إنستغرام",
           "Twitter": "تويتر",
-          "Tiktok": "تيك توك",
+          "TikTok": "تيك توك",
           "Snapchat": "سناب شات",
           "Facebook": "فيسبوك",
-          "Linkedin": "لينكدإن",
+          "LinkedIn": "لينكدإن",
           "First name is required": "الاسم الأول مطلوب",
           "Last name is required": "اسم العائلة مطلوب",
           "Phone number is required": "رقم الهاتف مطلوب",
@@ -880,7 +873,7 @@ class LocaleString extends Translations {
           "Failed to update Business Card:": "فشل في تحديث بطاقة العمل:",
           "Changes saved successfully": "تم حفظ التغييرات بنجاح",
           "Change Information Error": "خطأ في تغيير المعلومات",
-          "Information is Not changed": "لم يتم تغيير المعلومات",
+          "Information not updated ": "لم يتم تغيير المعلومات",
           "Change Information": "تغيير المعلومات",
           "Your name": "اسمك",
           "Your Date of Birth": "تاريخ ميلادك",
@@ -890,7 +883,7 @@ class LocaleString extends Translations {
           "DD": "يوم",
           "My profiles": "ملفاتي",
           "Mark as default": "تعيين كتلقائي",
-          "Marked as default Successfully": "تم التعيين كتلقائي بنجاح",
+          "Marked as default successfully": "تم التعيين كتلقائي بنجاح",
           "Profile 1": "الملف 1",
           "Profile 2": "الملف 2",
           "Profile 3": "الملف 3",
@@ -899,30 +892,30 @@ class LocaleString extends Translations {
           "Failed to update URLs": "فشل في تحديث الروابط",
           "Failed to update URLs:": "فشل في تحديث الروابط:",
           "Edit URL’s": "تعديل الروابط",
-          "Whatsapp Url": "رابط الواتساب",
-          "Linkedin Url": "رابط لينكدإن",
-          "Instagram Url": "رابط إنستغرام",
-          "TikTok Url": "رابط تيك توك",
-          "X Url": "  Xرابط",
-          "Telegram Url": "رابط تيليجرام",
-          "SnapChat Url": "رابط سناب شات",
-          "facebook Url": "رابط فيسبوك",
-          "YouTube Url": "رابط يوتيوب",
-          "Email Url": "رابط البريد الإلكتروني",
+          "WhatsApp URL": "رابط الواتساب",
+          "LinkedIn URL": "رابط لينكدإن",
+          "Instagram URL": "رابط إنستغرام",
+          "TikTok URL": "رابط تيك توك",
+          "X URL": "  Xرابط ",
+          "Telegram URL": "رابط تيليجرام",
+          "Snapchat URL": "رابط سناب شات",
+          "Facebook URL": "رابط فيسبوك",
+          "YouTube URL": "رابط يوتيوب",
+          "Email URL": "رابط البريد الإلكتروني",
           "Update": "تحديث",
           "Emoji added successfully": "تمت إضافة الرمز التعبيري بنجاح",
           "Emoji Menu": "قائمة الرموز التعبيرية",
-          "Emoji store": "متجر الرموز التعبيرية",
+          "Emoji Store": "متجر الرموز التعبيرية",
           "Emojis Menu": "قائمة الرموز التعبيرية",
           "Free & paid emojis.": "رموز تعبيرية مجانية ومدفوعة.",
           "My Emojis": "رموزي التعبيرية",
-          "Favorites & purchased.": "المفضلة والمشتراة.",
-          "Gifted emojis": "الرموز التعبيرية المهدية",
-          "Gifted Emoji": "الرمز التعبيري المهدي",
+          "Favorites & purchased.": "المفضلة والمقتناة.",
+          "Gifted emojis": "الموجي المستلم كهدية",
+          "Gifted Emoji": "الاموجي المستلم كهدية",
           "Appears as": "إظهار كـ",
           "New Profile 2": "الملف الجديد 2",
           "Add new profile": "إضافة ملف جديد",
-          "Keep searching..": "استمر في البحث..",
+          "Keep searching...": "استمر في البحث..",
           "Bluetooth": "البلوتوث",
           "Please turn on Bluetooth to start advertising":
               "يرجى تشغيل البلوتوث لبدء الإعلان",
@@ -930,20 +923,19 @@ class LocaleString extends Translations {
               "يرغب في إلقاء نظرة على \"الملف الشخصي\" الخاص بك.",
           "Would like to take a look at your “Social media accounts and business card":
               "يرغب في إلقاء نظرة على \"حسابات وسائل التواصل الاجتماعي و بطاقة العمل\" الخاصة بك",
-          "accepted": "مقبول",
-          "rejected": "مرفوض",
+          "Accepted": "مقبول",
+          "Rejected": "مرفوض",
           "Access Profile Request": "طلب الوصول إلى الملف الشخصي",
           "Request to access profile has been sent":
               "تم إرسال طلب الوصول إلى الملف الشخصي",
           "Social Request Access": "طلب الوصول الاجتماعي",
-          "has rejected your request": "رفض طلبك",
-          "has accepted your request": "قبِل طلبك",
+          "Has rejected your request": "رفض طلبك",
+          "Has accepted your request": "قبِل طلبك",
           "Profile Request Access": "طلب الوصول إلى الملف الشخصي",
           "Almarwan General Trd": "المروان للتجارة العامة",
           "Click the bubble to activate": "اضغط على الفقاعة للتفعيل",
-          "Find Me!": "اعثر علي",
+          "find me+!": "فايند مي+",
           "Easy way to find me.": "طريقة سهلة للعثور علي.",
-          "Already have an account ?": "هل لديك حساب بالفعل؟",
           "Languages": "اللغات",
           "English (United States)": "الإنجليزية (الولايات المتحدة)",
           "Default": "الافتراضي",
@@ -956,22 +948,21 @@ class LocaleString extends Translations {
           "Note that we wish to have this functionality in ON.":
               "تذكر أننا نرغب في أن تكون هذه الوظيفة مفعلة.",
           "Home": "الرئيسية",
-          "Coins Store": "متجر الكوينز",
-          "Emoji Store": "متجر الرموز التعبيرية",
-          "Emojis": "الرموز",
+          "Coins Store": "متجر العملات",
+          "Emojis": "الاموجي",
           "Profile": "الملف",
           "Notifications": "الإشعارات",
           "Today": "اليوم",
           "View Subscription": "عرض الاشتراك",
-          "Emoji notifications": "إشعارات الرموز التعبيرية",
+          "Emoji notifications": "إشعارات الاموجي",
           "When emoji notifications are off then you won’t be notified if you have received an emoji.":
-              "عند إيقاف إشعارات الرموز التعبيرية، فلن يتم إشعارك إذا تلقيت رمزًا تعبيريًا.",
+              "عند إيقاف إشعارات الاموجي، فلن يتم إشعارك إذا تلقيت اموجي.",
           "Requests for profile": "طلبات الوصول إلى الملف الشخصي",
           "When requests for social media and business cards are off you won’t be notified if someone is trying \n  to access your profile.":
-              "عند إيقاف طلبات وسائل التواصل الاجتماعي و بطاقة العمل، فلن يتم إشعارك إذا كان هناك شخص يحاول الوصول إلى ملفك الشخصي.",
+              "عند إيقاف طلبات وسائل التواصل الاجتماعي و بطاقة العمل، فلن يتم إشعارك إذا كان هناك شخص يحاول الوصول إلى وسائل التواصل الاجتماعي و بطاقة العمل.",
           "Requests for social media and   business cards":
               "طلبات وسائل التواصل الاجتماعي و بطاقات العمل",
-          "When requests for profiles are off you won’t receive  requests when someone wants to view your profile.":
+          "When requests for profiles are off you won’t receive requests when someone wants to view your profile.":
               "عند إيقاف طلبات الوصول إلى الملفات الشخصية، فلن تتلقى طلبات عندما يريد شخص ما عرض ملفك الشخصي.",
           "Conditions of use By using this app, you certify that you have read and reviewed this Agreement and that you agree to comply with its terms. If you do not want to be bound by the terms of this Agreement, you are advised to stop using the app accordingly. [company name] only grants use and access of this app, its products, and its services to those who have accepted its terms. Privacy policy Before you continue using our app, we advise you to read our privacy policy [link to privacy policy] regarding our user data collection. It will help you better understand our practices. Age restriction You must be at least 18 (eighteen) years of age before you can use this app. By using this app, you warrant that you are at least 18 years of age and you may legally adhere to this Agreement. [company name] assumes no responsibility for liabilities related to age misrepresentation. Intellectual property You agree that all materials, products, and services provided on this app are the property of [company name], its affiliates, directors, officers, employees, agents, suppliers, or licensors including all copyrights, trade secrets, trademarks, patents, and other intellectual property. You also agree that you will not reproduce or redistribute the [company name]’s intellectual property in any way, including electronic, digital, or new trademark registrations. You grant [company name] a royalty-free and non-exclusive license to display, use, copy, transmit, and broadcast the content you upload and publish. For issues regarding intellectual property claims, you should contact the company in order to come to an agreement. User accounts As a user of this app, you may be asked to register with us and provide private information. You are responsible for ensuring the accuracy of this information, and you are responsible for maintaining the safety and security of your identifying information.":
               "شروط الاستخدام باستخدامك لهذا التطبيق، فإنك تقر بأنك قرأت وراجعت هذا الاتفاق وأنك توافق على الالتزام بشروطه. إذا كنت لا ترغب في الالتزام بشروط هذا الاتفاق، ننصحك بالتوقف عن استخدام التطبيق. [اسم الشركة] يمنح استخدام هذا التطبيق، منتجاته، وخدماته فقط لأولئك الذين قبلوا شروطه. سياسة الخصوصية قبل الاستمرار في استخدام تطبيقنا، ننصحك بقراءة سياسة الخصوصية الخاصة بنا [رابط لسياسة الخصوصية] المتعلقة بجمع بيانات المستخدمين لدينا. ستساعدك هذه السياسة على فهم ممارساتنا بشكل أفضل. تقييد العمر يجب أن يكون عمرك 18 عامًا على الأقل لاستخدام هذا التطبيق. باستخدامك لهذا التطبيق، فإنك تضمن أن عمرك لا يقل عن 18 عامًا وأنك قد تتبع قانونيًا هذا الاتفاق. [اسم الشركة] لا يتحمل أي مسؤولية عن التزامات تتعلق بالتحايل على العمر. الملكية الفكرية توافق على أن جميع المواد، المنتجات، والخدمات المقدمة على هذا التطبيق هي ملكية [اسم الشركة]، الشركات التابعة لها، المدراء، الموظفين، الوكلاء، الموردين، أو المرخصين، بما في ذلك جميع حقوق الطبع والنشر، الأسرار التجارية، العلامات التجارية، براءات الاختراع، والملكية الفكرية الأخرى. كما توافق على أنك لن تعيد إنتاج أو توزيع ملكية [اسم الشركة] الفكرية بأي طريقة، بما في ذلك التسجيلات الإلكترونية، الرقمية، أو تسجيل العلامات التجارية الجديدة. تمنح [اسم الشركة] رخصة غير حصرية وغير قابلة للتنازل لعرض، استخدام، نسخ، نقل، وبث المحتوى الذي ترفعه وتنشره. لأي استفسارات تتعلق بمطالب الملكية الفكرية، يجب عليك الاتصال بالشركة للوصول إلى اتفاق. حسابات المستخدمين كأحد مستخدمي هذا التطبيق، قد يُطلب منك التسجيل لدينا وتقديم معلومات خاصة. أنت مسؤول عن ضمان دقة هذه المعلومات، وأنت مسؤول عن الحفاظ على سلامة وأمان معلومات التعريف الخاصة بك.",
@@ -979,20 +970,18 @@ class LocaleString extends Translations {
           "Privacy": "الخصوصية",
           "Privacy Error": "خطأ في الخصوصية",
           "Grant access": "منح الدخول",
-          "When your account is public , your profile can be viewed by anyone on find me .":
-              "عندما يكون حسابك عامًا، يمكن لأي شخص رؤية ملفك الشخصي على Find Me.",
+          "When your account is public, your profile can be viewed by anyone on find me+.":
+              "عندما يكون حسابك عامًا، يمكن لأي شخص رؤية ملفك الشخصي على find me+.",
           "Social media & Business card":
               "وسائل التواصل الاجتماعي و بطاقة العمل",
-          "When your profile is private , only people you grant access after receiving a request will be able to look  into your profile .":
-              "عندما يكون ملفك الشخصي خاصًا، سيتمكن الأشخاص الذين تمنحهم الوصول بعد تلقي طلب فقط من عرض ملفك الشخصي.",
           "Image selected successfully": "تم تحديد الصورة بنجاح",
           "No image selected": "لم يتم تحديد صورة",
           "Please provide a description or select an image":
               "يرجى تقديم وصف أو تحديد صورة",
-          "Report the problem Successfully": "تم الإبلاغ عن المشكلة بنجاح",
+          "Report the problem successfully": "تم الإبلاغ عن المشكلة بنجاح",
           "Could not report the problem": "تعذر الإبلاغ عن المشكلة",
           "Report a problem": "الإبلاغ عن مشكلة",
-          "Briefly explain what happened or what’s not working .":
+          "Briefly explain what happened or what’s not working.":
               "اشرح بإيجاز ما حدث أو ما الذي لا يعمل.",
           "Type here": "اكتب هنا",
           "Upload photo": "تحميل الصورة",
@@ -1003,14 +992,14 @@ class LocaleString extends Translations {
           "Support": "الدعم",
           "Log out": "تسجيل الخروج",
           "continue with": "متابعة باستخدام",
-          "You have registreted successfully!": "تم التسجيل بنجاح!",
-          "Contact via email": "التواصل  عبر البريد الإلكتروني",
+          "You have registered successfully!": "تم التسجيل بنجاح!",
+          "Contact via email": "التواصل عبر البريد الإلكتروني",
           "Enter New Phone Number": "أدخل رقم هاتف جديد",
           "My information": "معلوماتي",
           "Change my information": "تغيير معلوماتي",
           "Change mobile number": "تغيير رقم الهاتف",
           "Change email": "تغيير البريد الإلكتروني",
-          "Find Me Premium": "Find Me بريميوم",
+          "find me+ Premium": " find me+ بريميوم",
           "Try Find Me+ for 5.99 AED/ mo!":
               "جرب Find Me+ مقابل 5.99 درهم إماراتي/شهر!",
           "1-month free trial \n then AED 4.99/month .cancle any time":
@@ -1024,13 +1013,13 @@ class LocaleString extends Translations {
               "احصل على تغييرات اسم غير محدودة لحسابك.",
           "Try for": "جرب مقابل",
           "Restrictions apply.": "تنطبق القيود.",
-          "statment and retriction .no refunds for partial biling periods.":
+          "statement and restriction .no refunds for partial billing periods.":
               "بيان وتقييد. لا توجد استردادات لفترات الفوترة الجزئية",
           "Privacy ": "الخصوصية",
           "See the": "اطلع على",
           "terms.": "الشروط.",
           "18 years old and agree to these": "ثمانية عشر عاماً وتوافق على هذه",
-          "Recurring billing .By continuing , you verify that you are at least ":
+          "Recurring billing .By continuing, you verify that you are at least ":
               "الفوترة المتكررة. بالاستمرار، فإنك تؤكد أنك على الأقل",
           "AED 14.99 /mo": "14.99 درهم إماراتي/شهر",
           "AED 5.99 /mo": "5.99 درهم إماراتي/شهر"

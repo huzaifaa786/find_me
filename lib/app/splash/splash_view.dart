@@ -27,8 +27,8 @@ class _SplashViewState extends State<SplashView> {
           children: [
             Center(
               child:  SvgPicture.asset(
-                height: 36.h,
-                width: 216.w,
+                 height: 36,
+                width: 206,
                 alignment: Alignment.center,
                 "assets/icons/Logo.svg",
               ),

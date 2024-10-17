@@ -25,8 +25,8 @@ class IntroView extends StatelessWidget {
             children: [
               Gap(133.h),
               SvgPicture.asset(
-                height: 36.h,
-                width: 216.w,
+                height: 36,
+                width: 206,
                 alignment: Alignment.center,
                 "assets/icons/Logo.svg",
               ),

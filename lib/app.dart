@@ -44,7 +44,7 @@ class App extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         builder: EasyLoading.init(),
-        title: "FIND ME",
+        title: "find me+",
         initialBinding: SplashBinding(),
         home: const SplashView(),
         getPages: AppPages.pages,

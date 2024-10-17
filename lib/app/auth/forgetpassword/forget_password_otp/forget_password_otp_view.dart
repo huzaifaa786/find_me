@@ -64,8 +64,8 @@ class _ForgetPasswordOtpViewState extends State<ForgetPasswordOtpView> {
                         width: 270.w,
                         child: AppText(
                           title: type == "email"
-                              ? 'We have sent you an OTP code to your new Email, please enter it to continue'.tr
-                              : 'We have sent you an OTP code to your new phone number, please enter it to continue'.tr,
+                              ? 'An OTP code has been sent to your new email, please enter it to continue'.tr
+                              : 'An OTP code has been sent to your new phone number, please enter it to continue'.tr,
                           color: AppColors.hintGrey,
                           fontWeight: FontWeight.w500,
                           size: 12,

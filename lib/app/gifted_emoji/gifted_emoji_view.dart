@@ -25,7 +25,7 @@ class _GiftedEmojiViewState extends State<GiftedEmojiView> {
               appBar: AppBar(
                   automaticallyImplyLeading: false,
                   forceMaterialTransparency: true,
-                  title: topBar(name: "Gifted Emoji".tr, showBackIcon: true)),
+                  title: topBar(name: "Gifted emojis".tr, showBackIcon: true)),
               body: SafeArea(
                 child: SingleChildScrollView(
                   child: Padding(

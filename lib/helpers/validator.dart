@@ -10,7 +10,7 @@ class Validators {
     if (email == null) {
       return null;
     } else if (email.isEmpty) {
-      return "Email can't be empty".tr;
+      return "Email cannot be empty".tr;
     } else if (!emailRegExp.hasMatch(email)) {
       return "Invalid Email Address".tr;
     } else {

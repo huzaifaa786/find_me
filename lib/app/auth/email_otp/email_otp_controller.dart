@@ -32,7 +32,7 @@ class EmailOtpController extends GetxController {
       Get.back();
       Get.offAndToNamed(AppRoutes.useraccount);
       UiUtilites.successGreenAlert(Get.context,
-          text: "Your email has been changed  \n successfully.", onTapDone: () {
+          text: "Your email has been updated  \n successfully", onTapDone: () {
         Get.back();
       });
     }
@@ -48,7 +48,7 @@ class EmailOtpController extends GetxController {
     if (email != null) {
       var response = await ChangeEmailApi.changeEmail(email!);
       if (response.isNotEmpty) {
-        UiUtilites.successSnackbar("Otp sent".tr, "Otp Sent Successfully".tr);
+        UiUtilites.successSnackbar("Otp sent".tr, "Otp sent successfully".tr);
       }
     }
   }

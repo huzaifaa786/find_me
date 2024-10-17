@@ -34,7 +34,7 @@ class EmailOtpView extends StatelessWidget {
               child: Column(children: [
                 Gap(30),
                 AppText(
-                  title: 'Confirm your email'.tr,
+                  title: 'Please confirm your email'.tr,
                   color: AppColors.black,
                   fontWeight: FontWeight.w600,
                   size: 20,
@@ -45,7 +45,7 @@ class EmailOtpView extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 18.0, right: 18),
                   child: AppText(
                     title:
-                        'We have sent you an OTP code to your new email , please enter it to continue'
+                        'An OTP code has been sent to your new email, please enter it to continue'
                             .tr,
                     color: AppColors.hintGrey,
                     fontWeight: FontWeight.w400,

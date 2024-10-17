@@ -16,7 +16,7 @@ class ChangeEmailController extends GetxController {
         Get.toNamed(AppRoutes.email_otp, arguments: emailController.text);
       }
     } else {
-      UiUtilites.errorSnackbar("", "Email can't be empty".tr);
+      UiUtilites.errorSnackbar("", "Email cannot be empty".tr);
     }
   }
 }

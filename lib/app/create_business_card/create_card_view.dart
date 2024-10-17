@@ -101,7 +101,7 @@ class _CreateCardViewState extends State<CreateCardView> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               AppText(
-                                title: 'Add photo'.tr,
+                                title: 'Add Photo'.tr,
                                 color: AppColors.primary_color,
                                 size: 12,
                                 fontWeight: FontWeight.w500,

@@ -1,14 +1,10 @@
 import 'dart:io';
 
 import 'package:find_me/app/coins/coins_store_controller.dart';
-import 'package:find_me/app/languages/language_card.dart';
 import 'package:find_me/components/appbars/topbar.dart';
 import 'package:find_me/components/cards/coins_card.dart';
-import 'package:find_me/models/coin_package_model.dart';
 import 'package:find_me/routes/app_routes.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -106,7 +102,7 @@ class _CoinsStoreViewState extends State<CoinsStoreView> {
                       String displayText;
                       if (box.read('locale') == 'ar') {
                         String title = package.storeProduct.title
-                            .replaceFirst("Coins", "عملات");
+                            .replaceFirst("coins", "عملات");
                         String description = package.storeProduct.description
                             .replaceFirst("Coins", "عملات");
                         displayText = Platform.isIOS ? title : description;

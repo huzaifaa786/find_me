@@ -1,4 +1,3 @@
-
 import 'package:find_me/api/auth_api/forgetpassword_api.dart';
 import 'package:find_me/routes/app_routes.dart';
 import 'package:find_me/utils/ui_utils.dart';
@@ -36,7 +35,7 @@ class ForgetPasswordOtpController extends GetxController {
     var response =
         await ForgotPasswordApi.forgotpassword(type: type, email: email);
     if (response.isNotEmpty) {
-      UiUtilites.successSnackbar("Otp sent".tr, "Otp Sent Successfully".tr);
+      UiUtilites.successSnackbar("Otp sent".tr, "Otp sent successfully".tr);
     }
   }
 
@@ -67,7 +66,7 @@ class ForgetPasswordOtpController extends GetxController {
     var response =
         await ForgotPasswordApi.forgotpassword(type: type, phone: phone);
     if (response.isNotEmpty) {
-      UiUtilites.successSnackbar("Otp sent".tr, "Otp Sent Successfully".tr);
+      UiUtilites.successSnackbar("Otp sent".tr, "Otp sent successfully".tr);
     } else {
       UiUtilites.successSnackbar(
           "Otp sent fail".tr, "Otp Sent  not Successfully".tr);

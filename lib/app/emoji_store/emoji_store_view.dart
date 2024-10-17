@@ -62,7 +62,7 @@ class _EmojiStoreViewState extends State<EmojiStoreView> {
                             padding: EdgeInsets.only(top: 8, bottom: 28),
                             iconHeight: 68,
                             iconWidth: 68,
-                            title: "FindMe Picks".tr,
+                            title: "findme Picks".tr,
                             subtitle: "",
                             show: false,
                             onTap: () {
@@ -83,7 +83,7 @@ class _EmojiStoreViewState extends State<EmojiStoreView> {
                             padding: EdgeInsets.only(top: 8, bottom: 20),
                             iconHeight: 68,
                             iconWidth: 68,
-                            title: "Gifts".tr,
+                            title: "Gifted emojis".tr,
                             subtitle: "",
                             show: false,
                             onTap: () {

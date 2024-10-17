@@ -275,8 +275,8 @@ class HomeView extends StatelessWidget {
                                     heightFactor: 10.h,
                                     child: AppText(
                                       title: controller.isInternetChecking
-                                          ? 'Checking Connections..'.tr
-                                          : 'Keep searching..'.tr,
+                                          ? 'Checking Connections...'.tr
+                                          : 'Keep searching...'.tr,
                                       color: AppColors.black,
                                       textAlign: TextAlign.center,
                                       size: 14.sp,

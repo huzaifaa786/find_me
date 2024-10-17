@@ -87,7 +87,7 @@ class _NotificationsPermissionsViewState
                               : Alignment.centerRight,
                           child: AppText(
                             title:
-                                "If social media and business cards request notifications are disabled, you won’t be notified when someone requests to view your profile."
+                                "If social media and business cards request notifications are disabled, you won’t be notified when someone requests to view your social media and business cards."
                                     .tr,
                             size: 10,
                             fontWeight: FontWeight.w400,
@@ -117,7 +117,7 @@ class _NotificationsPermissionsViewState
                               : Alignment.centerRight,
                           child: AppText(
                             title:
-                                "If emoji request notifications are disabled, you won’t be notified when someone requests to view your profile."
+                                "If emoji request notifications are disabled, you won’t be notified when you received an emoji."
                                     .tr,
                             size: 10,
                             fontWeight: FontWeight.w400,

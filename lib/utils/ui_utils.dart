@@ -77,7 +77,7 @@ class UiUtilites {
             children: [
               Flexible(
                 child: AppText(
-                    title: message.tr,
+                    title: message,
                     size: 12.sp,
                     fontWeight: FontWeight.w500,
                     color: AppColors.green),
@@ -1157,7 +1157,7 @@ class UiUtilites {
               )),
               SizedBox(height: 24.0),
               AppTextFields(
-                hintText: "Type a comment".tr,
+                hintText: "Write a comment".tr,
                 controller: controller,
               ),
               SizedBox(height: 16.0),

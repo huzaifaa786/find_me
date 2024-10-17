@@ -48,7 +48,7 @@ class OtpView extends StatelessWidget {
                         width: 270.w,
                         child: AppText(
                           title:
-                              'We have sent you an OTP code to your phone number, please enter it to continue'
+                              'An OTP code has been sent to your new phone number, please enter it to continue'
                                   .tr
                                   .tr,
                           color: AppColors.hintGrey,
