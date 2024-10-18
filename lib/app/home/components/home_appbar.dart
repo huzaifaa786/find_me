@@ -19,11 +19,13 @@ Widget homeAppBar({String? name}) {
           onTap: () {
             Get.back();
           },
-          child: SvgPicture.asset(
-            alignment: Alignment.center,
-            "assets/icons/LogoHome.svg",
-            height: 21.h,
-            width: 150.w,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: SvgPicture.asset(
+              alignment: Alignment.center,
+              "assets/icons/LogoHome.svg",
+              height: 25.h,
+            ),
           ),
         ),
         Row(

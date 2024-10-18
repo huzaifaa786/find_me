@@ -563,22 +563,22 @@ class HomeController extends GetxController {
       String userName = data['name'];
       if (data['requestType'] == "profile") {
         if (status == "accepted") {
-          String name = "$userName " + "has accepted your request".tr;
+          String name = "$userName " + "Has accepted your request".tr;
           UiUtilites.successSnackbar(
               name.toString(), "Profile Request Access".tr);
         } else {
-          String name = "$userName " + "has rejected your request".tr;
+          String name = "$userName " + "Has rejected your request".tr;
           UiUtilites.errorSnackbar(
               "Profile Request Access".tr, name.toString());
         }
       } else {
         if (status == "accepted") {
-          String name = "$userName " + "has accepted your request".tr;
+          String name = "$userName " + "Has accepted your request".tr;
           UiUtilites.successSnackbar(
               name.toString(), "Social Request Access".tr);
           updatePublicProfile();
         } else {
-          String name = "$userName " + "has rejected your request".tr;
+          String name = "$userName " + "Has rejected your request".tr;
           UiUtilites.errorSnackbar("Social Request Access".tr, name.toString());
         }
       }

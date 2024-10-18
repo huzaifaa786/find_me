@@ -142,7 +142,7 @@ class _SignUpViewState extends State<SignUpView> {
                           children: [
                             TextSpan(
                               text:
-                                  'By tapping Sign up, you acknowledge that you have read the '
+                                  'By clicking Sign up, you acknowledge that you have read the '
                                       .tr,
                               style: TextStyle(
                                   fontSize: 12,

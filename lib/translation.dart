@@ -76,7 +76,7 @@ class LocaleString extends Translations {
           "Your email has been changed successfully!":
               "Your email has been changed successfully!",
           "Otp sent": "Otp sent",
-          "Otp sent successfully": "Otp sent successfully",
+       
           "Verify your email": "Verify your email",
           'An OTP code has been sent to your new email, please enter it to continue':
               'An OTP code has been sent to your new email, please enter it to continue',
@@ -123,7 +123,7 @@ class LocaleString extends Translations {
           "User name": "User name",
           "Last name": "Last name",
           "First name": "First name",
-          "Don’t have an account ?": "Don’t have an account ?",
+          "Don’t have an account?": "Don’t have an account?",
           "Forget password ?": "Forget password ?",
           "Beacon BroadCaster": "Beacon BroadCaster",
           "Is supported:": "Is supported:",
@@ -154,6 +154,7 @@ class LocaleString extends Translations {
           "My Coins": "My Coins",
           "Purchased Coins": "Purchased Coins",
           "AED": "AED",
+          "verification successfully": "verification successfully",
           "Coins": "Coins",
           "Purchase Coins": "Purchase Coins",
           "Checkout": "Checkout",
@@ -202,16 +203,16 @@ class LocaleString extends Translations {
           "Failed to update URLs": "Failed to update URLs",
           "Failed to update URLs:": "Failed to update URLs:",
           "Edit URL’s": "Edit URL’s",
-          "Whatsapp Url": "Whatsapp Url",
-          "Linkedin Url": "Linkedin Url",
-          "Instagram Url": "Instagram Url",
-          "TikTok Url": "TikTok Url",
-          "X Url": "X Url",
-          "Telegram Url": "Telegram Url",
-          "SnapChat Url": "SnapChat Url",
-          "facebook Url": "facebook Url",
-          "YouTube Url": "YouTube Url",
-          "Email Url": "Email Url",
+          "Whatsapp URL": "Whatsapp URL",
+          "Linkedin URL": "Linkedin URL",
+          "Instagram URL": "Instagram URL",
+          "TikTok URL": "TikTok URL",
+          "X URL": "X URL",
+          "Telegram URL": "Telegram URL",
+          "SnapChat URL": "SnapChat URL",
+          "facebook URL": "facebook URL",
+          "YouTube URL": "YouTube URL",
+          "Email URL": "Email URL",
           "Update": "Update",
           "Emoji added successfully": "Emoji added successfully",
           "Emoji Menu": "Emoji Menu",
@@ -239,14 +240,14 @@ class LocaleString extends Translations {
           "Request to access profile has been sent":
               "Request to access profile has been sent",
           "Social Request Access": "Social Request Access",
-          "has rejected your request": "has rejected your request",
-          "has accepted your request": "has accepted your request",
+          "Has rejected your request": "Has rejected your request",
+          "Has accepted your request": "Has accepted your request",
           "Profile Request Access": "Profile Request Access",
           "Almarwan General Trd": "Almarwan General Trd",
           "Click the bubble to activate": "Click the bubble to activate",
           "Find Me!": "Find Me!",
           "Easy way to find me.": "Easy way to find me.",
-          "Already have an account ?": "Already have an account ?",
+          
           "Languages": "Languages",
           "English (United States)": "English (United States)",
           "Default": "Default",
@@ -484,6 +485,8 @@ class LocaleString extends Translations {
           "Successfully": "Successfully",
           "Message has been sent \n successfully.":
               "Message has been sent \n successfully.",
+          "Message sent \n successfully.":
+              "Message sent \n successfully.",
           "Access Social Request": "Access Social Request",
           "Request to access Social media accounts and business card has been sent":
               "Request to access Social media accounts and business card has been sent",
@@ -778,7 +781,8 @@ class LocaleString extends Translations {
           "Submit": "إرسال",
           "Your email has been changed successfully!":
               "تم تغيير بريدك الإلكتروني بنجاح!",
-          "OTP sent": "  تم إرسال رمز التحقق المرة الواحدة",
+          "OTP sent": "تم إرسال رمز التحقق المرة الواحدة",
+          "Otp sent": "تم إرسال رمز التحقق المرة الواحدة",
           " Otp sent successfully": "تم إرسال رمز التحقق المرة الواحدة بنجاح",
           "Verify your email": "قم بتأكيد بريدك الإلكتروني",
           "Resend": "إعادة الإرسال",
@@ -1022,7 +1026,8 @@ class LocaleString extends Translations {
           "Recurring billing .By continuing, you verify that you are at least ":
               "الفوترة المتكررة. بالاستمرار، فإنك تؤكد أنك على الأقل",
           "AED 14.99 /mo": "14.99 درهم إماراتي/شهر",
-          "AED 5.99 /mo": "5.99 درهم إماراتي/شهر"
+          "AED 5.99 /mo": "5.99 درهم إماراتي/شهر",
+          "verification successfully":"التحقق تم بنجاح",
         }
       };
 }

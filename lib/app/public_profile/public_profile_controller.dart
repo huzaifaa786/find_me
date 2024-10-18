@@ -133,7 +133,7 @@ class PublicProfileController extends GetxController {
             name: 'gifted_emoji',
           );
           UiUtilites.successGreenAlert(Get.context,
-              text: "Message has been sent \n successfully.", onTapDone: () {
+              text: "Message sent \n successfully.", onTapDone: () {
             Get.back();
           });
         }

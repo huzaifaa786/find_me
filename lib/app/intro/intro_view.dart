@@ -52,7 +52,7 @@ class IntroView extends StatelessWidget {
               ),
               Gap(30.h),
               AuthRichText(
-                title: 'Already have an account ?'.tr,
+                title: 'Already have an account?'.tr,
                 description: 'Sign in'.tr,
                 titlesize: 14.sp,
                 titlefontweight: FontWeight.w500,
