@@ -532,7 +532,8 @@ class PublicProfileView extends StatelessWidget {
                                                   Get.back();
                                                   controller.giftEmoji(
                                                       controller.profile!
-                                                          .emojis![index].id);
+                                                          .emojis![index].id,controller
+                                            .profile!.emojis![index].type);
                                                 },
                                                 controller: controller
                                                     .commentController),
@@ -541,7 +542,8 @@ class PublicProfileView extends StatelessWidget {
                                       );
                                     } else {
                                       controller.giftEmoji(controller
-                                          .profile!.emojis![index].id);
+                                          .profile!.emojis![index].id,controller
+                                            .profile!.emojis![index].type);
                                     }
                                   },
                                   child: Stack(

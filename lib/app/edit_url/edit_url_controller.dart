@@ -84,7 +84,7 @@ class EditUrlController extends GetxController {
       if (response.isNotEmpty) {
         if (isRemove) {
           Get.back();
-          UiUtilites.successSnackbar("Url removed successfully".tr, "");
+          UiUtilites.successSnackbar("URL removed successfully".tr, "");
         } else {
           update();
           UiUtilites.successCustomSnackbar("Updated successfully".tr,

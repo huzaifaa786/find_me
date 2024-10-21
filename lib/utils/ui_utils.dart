@@ -146,7 +146,7 @@ class UiUtilites {
                     // Gap(20),
 
                     AppText(
-                      title: message.toString(),
+                      title: message,
                       textAlign: TextAlign.center,
                       fontWeight: FontWeight.w400,
                       size: 14.sp,

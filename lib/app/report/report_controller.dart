@@ -13,7 +13,7 @@ class ReportController extends GetxController {
   final List<String> reportOptions = [
     'I think my account was compromised',
     'I can\'t access my account',
-    'I want to report an account or \n content',
+    'I want to report an account or content',
     'I lost my account',
     'I found a bug',
     'I need help with a feature',

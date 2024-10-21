@@ -154,7 +154,7 @@ class _ProfileViewState extends State<ProfileView> {
                                           fontWeight: FontWeight.w500),
                                       EditButton(
                                         title: "Edit".tr,
-                                        height: 25.h,
+                                        height: 28.h,
                                         padding: const EdgeInsets.only(
                                             top: 4,
                                             bottom: 4,
@@ -392,6 +392,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                         children: [
                                                           SvgPicture.asset(
                                                               "assets/icons/business_card.svg"),
+                                                          Gap(5),
                                                           Text(
                                                             "Create business card"
                                                                 .tr,

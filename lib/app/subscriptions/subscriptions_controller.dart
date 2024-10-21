@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:find_me/services/revenue_cat_service.dart';
 import 'package:find_me/utils/ui_utils.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -11,9 +13,11 @@ class SubscriptionsController extends GetxController {
   static SubscriptionsController intance = Get.find();
   int selectedOption = 0;
   Package? package;
+  String plateform = "iTunes";
 
   @override
   void onInit() {
+    plateform = Platform.isIOS ? "iTunes" : "Google Play";
     getProduct();
     super.onInit();
   }

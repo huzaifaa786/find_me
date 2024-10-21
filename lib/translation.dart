@@ -4,6 +4,8 @@ class LocaleString extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
+          "Profile blocked successfully": "Profile blocked successfully",
+
           "English": "English",
           "My coins": "My coins",
           "Purchased coins": "Purchased coins",
@@ -50,7 +52,7 @@ class LocaleString extends Translations {
           "Username": "Username",
           "Reject": "Reject",
           "Accept": "Accept",
-          "Otp sent successfully": "Otp sent successfully",
+          "OTP sent successfully": "OTP sent successfully",
           "Success": "Success",
           "error": "error",
           "Phone can't be empty": "Phone can't be empty",
@@ -75,8 +77,8 @@ class LocaleString extends Translations {
           "Submit": "Submit",
           "Your email has been changed successfully!":
               "Your email has been changed successfully!",
-          "Otp sent": "Otp sent",
-       
+          "OTP sent": "OTP sent",
+
           "Verify your email": "Verify your email",
           'An OTP code has been sent to your new email, please enter it to continue':
               'An OTP code has been sent to your new email, please enter it to continue',
@@ -96,8 +98,8 @@ class LocaleString extends Translations {
           "Verify your Phone Number": "Verify your Phone Number",
           "Verify your Email": "Verify your Email",
           "Fill out complete otp": "Fill out complete otp",
-          "Otp Sent  not Successfully": "Otp Sent  not Successfully",
-          "Otp sent fail": "Otp sent fail",
+          "OTP Sent  not Successfully": "OTP Sent  not Successfully",
+          "OTP sent fail": "OTP sent fail",
           "New Password": "New Password",
           "password updated successfully": "password updated successfully",
           "Success!": "Success!",
@@ -226,6 +228,7 @@ class LocaleString extends Translations {
           "Appears as": "Appears as",
           "New Profile 2": "New Profile 2",
           "Add new profile": "Add new profile",
+          "Emoji sent successfully": "Emoji sent successfully",
           "Keep searching...": "Keep searching...",
           "Bluetooth": "Bluetooth",
           "Please turn on Bluetooth to start advertising":
@@ -247,7 +250,7 @@ class LocaleString extends Translations {
           "Click the bubble to activate": "Click the bubble to activate",
           "Find Me!": "Find Me!",
           "Easy way to find me.": "Easy way to find me.",
-          
+
           "Languages": "Languages",
           "English (United States)": "English (United States)",
           "Default": "Default",
@@ -300,6 +303,7 @@ class LocaleString extends Translations {
               "Briefly explain what happened\n or what’s not working .",
           "Type here": "Type here",
           "Upload photo": "Upload photo",
+          "Phone number was not updated": "Phone number was not updated",
           "Send": "Send",
           "Settings": "Settings",
           "Notifications Permissions": "Notifications Permissions",
@@ -404,10 +408,13 @@ class LocaleString extends Translations {
           "Receive notifications with the username and profile image of users who request to view your profile, social media accounts, or digital business card.":
               "Receive notifications with the username and profile image of users who request to view your profile, social media accounts, or digital business card.",
           "Try It Free": "Try It Free",
+           "Thank you!":"Thank you!",
           "Privacy Policy": "Privacy Policy",
           "Terms & Conditions": "Terms & Conditions",
           "Payment will be charged to iTunes Account at confirmation of purchase. Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Account will be charged for renewal within 24-hours prior to the end of the current period. You can manage or turn off auto-renew in your Account settings at any time after purchase No cancellation of the current subscription is allowed during the active period.":
               "Payment will be charged to iTunes Account at confirmation of purchase. Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Account will be charged for renewal within 24-hours prior to the end of the current period. You can manage or turn off auto-renew in your Account settings at any time after purchase No cancellation of the current subscription is allowed during the active period.",
+          "Payment will be charged to Google Play Account at confirmation of purchase. Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Account will be charged for renewal within 24-hours prior to the end of the current period. You can manage or turn off auto-renew in your Account settings at any time after purchase No cancellation of the current subscription is allowed during the active period.":
+              "Payment will be charged to Google Play Account at confirmation of purchase. Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Account will be charged for renewal within 24-hours prior to the end of the current period. You can manage or turn off auto-renew in your Account settings at any time after purchase No cancellation of the current subscription is allowed during the active period.",
           "Name": "Name",
           "Delete Account": "Delete Account",
           "Change My Information": "Change My Information",
@@ -444,8 +451,8 @@ class LocaleString extends Translations {
           "I think my account was compromised":
               "I think my account was compromised",
           "I can\'t access my account": "I can\'t access my account",
-          "I want to report an account or \n content":
-              "I want to report an account or \n content",
+          "I want to report an account or content":
+              "I want to report an account or content",
           "I lost my account": "I lost my account",
           "I found a bug": "I found a bug",
           "I need help with a feature": "I need help with a feature",
@@ -466,8 +473,8 @@ class LocaleString extends Translations {
               "Are you sure you want to block this profile?",
           "Block": "Block",
           "View Profile": "View Profile",
-          "Please select a reason for reporting this profile:":
-              "Please select a reason for reporting this profile:",
+          "Please choose a reason for reporting this profile:":
+              "Please choose a reason for reporting this profile:",
           "Report Profile": "Report Profile",
           "Pretending to be someone else": "Pretending to be someone else",
           "Bullying or harassment": "Bullying or harassment",
@@ -485,8 +492,7 @@ class LocaleString extends Translations {
           "Successfully": "Successfully",
           "Message has been sent \n successfully.":
               "Message has been sent \n successfully.",
-          "Message sent \n successfully.":
-              "Message sent \n successfully.",
+          "Message sent \n successfully.": "Message sent \n successfully.",
           "Access Social Request": "Access Social Request",
           "Request to access Social media accounts and business card has been sent":
               "Request to access Social media accounts and business card has been sent",
@@ -509,15 +515,25 @@ class LocaleString extends Translations {
           "Set your Birthday": "Set your Birthday",
           "Close": "Close",
           "Url removed successfully": "Url removed successfully",
+          "URL removed successfully": "URL removed successfully",
           "Please confirm your phone number":
               "Please confirm your phone number",
-          "Your phone number has been changed  \n successfully.":
-              "Your phone number has been changed  \n successfully.",
+          "Your phone number has been updated  \n successfully.":
+              "Your phone number has been updated  \n successfully.",
           "Please confirm your email": "Please confirm your email",
           "Your email has been updated  \n successfully":
               "Your email has been updated  \n successfully",
           "Pick Image": "Pick Image",
           "Remove Image": "Remove Image",
+          "Password updated successfully": "Password updated successfully",
+          "An OTP code has been sent to your new phone number, please enter it to continue":
+              "An OTP code has been sent to your new phone number, please enter it to continue",
+          "Thank you for your feedback.Your\n report has been submitted":
+              "Thank you for your feedback.Your\n report has been submitted",
+          "Emoji and text have been sent successfully":
+              "Emoji and text have been sent successfully",
+          "Your feedback helps make the app \n better for everyone.":
+              "Your feedback helps make the app \n better for everyone.",
         },
         'ar_AE': {
           "Remove Image": "حذف الصورة",
@@ -532,7 +548,7 @@ class LocaleString extends Translations {
           "Please confirm your phone number": "قم بتأكيد رقم هاتفك",
           "An OTP code has been sent to your new phone number, please enter it to continue":
               " تم إرسال رمز OTP إلى رقم هاتفك الجديد، يرجى إدخاله للاستمرار.",
-          "URL removed successfully ": "تمت إزالة الرابط بنجاح",
+          "URL removed successfully": "تمت إزالة الرابط بنجاح",
           "Close": "إغلاق",
           "Set your Birthday": "حدد تاريخ ميلادك",
           "Please choose how you want to reset your password":
@@ -584,16 +600,17 @@ class LocaleString extends Translations {
           "Allow the application to access your location":
               "اسمح للتطبيق بالوصول إلى موقعك.",
           "I want to deactivate or delete my \n account":
-              "أريد إلغاء تنشيط حسابي أو \nحذفه",
+              "أريد إلغاء تنشيط حسابي أو حذفه",
           "I have a privacy or European Digital \n Services Act related question":
-              "لدي سؤال متعلق بالخصوصية أو \nقانون الخدمات الرقمية الأوروبي",
+              "لدي سؤال متعلق بالخصوصية أو قانون الخدمات الرقمية \nالأوروبي",
           "I want to report intellectual property \n infringement":
-              "أريد الإبلاغ عن انتهاك \nللملكية الفكرية",
+              "أريد الإبلاغ عن انتهاك للملكية الفكرية",
           "I need help with a feature": "أحتاج مساعدة في ميزة",
           "I found a bug": "وجدت خلل",
+          "Profile blocked successfully": "تم حظر الملف الشخصي بنجاح",
           "I lost my account": "فقدت حسابي",
-          "I want to report an account or \n content":
-              "أريد الإبلاغ عن حساب أو \nمحتوى",
+          "I want to report an account or content":
+              "أريد الإبلاغ عن حساب أو محتوى",
           "I can't access my account": "لا أستطيع الوصول إلى حسابي",
           "I think my account was compromised":
               "أعتقد أن حسابي قد تعرض للاختراق",
@@ -604,7 +621,7 @@ class LocaleString extends Translations {
           "If social media and business cards request notifications are disabled, you won’t be notified when someone requests to view your social media and business cards.":
               "إذا تم تعطيل إشعارات طلب وسائل حسابات التواصل الاجتماعي وبطاقات الأعمال، فلن يتم إخطارك عندما يطلب شخص ما مشاهدة حسابات التواصل الاجتماعي وبطاقات الأعمال الخاصة بط.",
           "If profile request notifications are disabled, you won’t be notified when someone requests to view your profile.":
-              "إذا تم تعطيل إشعارات طلب الملف الشخصي، فلن يتم إخطارك عندما يطلب شخص ما عرض ملفك الشخصي.",
+              "إذا تم تعطيل إشعارات طلب الملف الشخصي، فلن يتم إخطارك عندما يطلب شخص ما مشاهدة ملفك الشخصي.",
           "Requests for social media and business cards":
               "طلبات لوسائل التواصل الاجتماعي وبطاقات الأعمال",
           "When turned on, others can view your social media accounts and the digital business card without needing to send a request.":
@@ -612,7 +629,7 @@ class LocaleString extends Translations {
           "Social Media Accounts & Digital Business card":
               "حسابات وسائل التواصل الاجتماعي وبطاقة الأعمال الرقمية",
           "When turned on, others can view your profile without needing to send a request.":
-              "عند تفعيل هذه الخاصية، يمكن للآخرين عرض ملفك الشخصي دون الحاجة إلى إرسال طلب.",
+              "عند تفعيل هذه الخاصية، يمكن للآخرين مشاهدة ملفك الشخصي دون الحاجة إلى إرسال طلب.",
           "(Not created)": "(لم يتم الإنشاء)",
           "Profile Privacy": "خصوصية الملف الشخصي",
           "Unblock": "إلغاء الحظر",
@@ -680,6 +697,8 @@ class LocaleString extends Translations {
           "Terms & Conditions": "الشروط والأحكام.",
           "Payment will be charged to iTunes Account at confirmation of purchase. Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Account will be charged for renewal within 24-hours prior to the end of the current period. You can manage or turn off auto-renew in your Account settings at any time after purchase No cancellation of the current subscription is allowed during the active period.":
               "سيتم خصم الدفعة من حساب آي تيونز عند تأكيد الشراء. يتم التجديد التلقائي للاشتراك ما لم يتم إيقاف التجديد التلقائي قبل 24 ساعة على الأقل من نهاية الفترة الحالية. سيتم خصم الرسوم من الحساب للتجديد خلال 24 ساعة قبل نهاية الفترة الحالية. يمكنك إدارة أو إيقاف التجديد التلقائي في إعدادات حسابك في أي وقت بعد الشراء. لا يُسمح بإلغاء الاشتراك الحالي خلال الفترة النشطة.",
+          "Payment will be charged to Google Play Account at confirmation of purchase. Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Account will be charged for renewal within 24-hours prior to the end of the current period. You can manage or turn off auto-renew in your Account settings at any time after purchase No cancellation of the current subscription is allowed during the active period.":
+              "سيتم خصم الدفعة من حساب جوجل بلاي عند تأكيد الشراء. يتم التجديد التلقائي للاشتراك ما لم يتم إيقاف التجديد التلقائي قبل 24 ساعة على الأقل من نهاية الفترة الحالية. سيتم خصم الرسوم من الحساب للتجديد خلال 24 ساعة قبل نهاية الفترة الحالية. يمكنك إدارة أو إيقاف التجديد التلقائي في إعدادات حسابك في أي وقت بعد الشراء. لا يُسمح بإلغاء الاشتراك الحالي خلال الفترة النشطة.",
           "Name": "الاسم",
           "Delete Account": "حذف الحساب",
           "Are you sure you want to delete your account? This will permanently erase your account.":
@@ -756,7 +775,7 @@ class LocaleString extends Translations {
           "Prefer not to say": "أفضل عدم الإفصاح",
           "Female": "أنثى",
           "Male": "ذكر",
-          "Otp sent successfully": "تم إرسال رمز التحقق المرة الواحدة بنجاح",
+          "OTP sent successfully": "تم إرسال رمز التحقق المرة الواحدة بنجاح",
           "Success": "نجاح",
           "Error": "خطأ",
           "Phone cannot be empty": "الهاتف مطلوب ",
@@ -772,7 +791,7 @@ class LocaleString extends Translations {
           "My business card": "بطاقة العمل",
           "Create business card": "إنشاء بطاقة عمل",
           "Favorites": "المفضلة",
-          "Password Changed Successfully": "تم تغيير كلمة المرور بنجاح",
+          "Password updated successfully": "تم تغيير كلمة المرور بنجاح",
           "Could Not Update Password": "تعذر تحديث كلمة المرور",
           "Change password": "تغيير كلمة المرور",
           "Old Password": "كلمة المرور القديمة",
@@ -782,8 +801,8 @@ class LocaleString extends Translations {
           "Your email has been changed successfully!":
               "تم تغيير بريدك الإلكتروني بنجاح!",
           "OTP sent": "تم إرسال رمز التحقق المرة الواحدة",
-          "Otp sent": "تم إرسال رمز التحقق المرة الواحدة",
-          " Otp sent successfully": "تم إرسال رمز التحقق المرة الواحدة بنجاح",
+          "OTP sent": "تم إرسال رمز التحقق المرة الواحدة",
+          " OTP sent successfully": "تم إرسال رمز التحقق المرة الواحدة بنجاح",
           "Verify your email": "قم بتأكيد بريدك الإلكتروني",
           "Resend": "إعادة الإرسال",
           "Forgot password!": "نسيت كلمة المرور!",
@@ -798,7 +817,6 @@ class LocaleString extends Translations {
           "OTP not sent successfully":
               "لم يتم إرسال رمز التحقق المرة الواحدة بنجاح",
           "New Password": "كلمة المرور الجديدة",
-          "Password updated successfully": "تم تحديث كلمة المرور بنجاح",
           "Success!": "تم بنجاح",
           "Could not update password": "تعذر تحديث كلمة المرور",
           "Verify your Phone number": "قم بتأكيد رقم هاتفك",
@@ -907,7 +925,7 @@ class LocaleString extends Translations {
           "YouTube URL": "رابط يوتيوب",
           "Email URL": "رابط البريد الإلكتروني",
           "Update": "تحديث",
-          "Emoji added successfully": "تمت إضافة الرمز التعبيري بنجاح",
+          "Emoji added successfully": "تمت إضافة ايموجي بنجاح",
           "Emoji Menu": "قائمة الرموز التعبيرية",
           "Emoji Store": "متجر الرموز التعبيرية",
           "Emojis Menu": "قائمة الرموز التعبيرية",
@@ -1027,7 +1045,16 @@ class LocaleString extends Translations {
               "الفوترة المتكررة. بالاستمرار، فإنك تؤكد أنك على الأقل",
           "AED 14.99 /mo": "14.99 درهم إماراتي/شهر",
           "AED 5.99 /mo": "5.99 درهم إماراتي/شهر",
-          "verification successfully":"التحقق تم بنجاح",
+          "verification successfully": "التحقق تم بنجاح",
+          "Thank you for your feedback.Your\n report has been submitted":
+              "شكرًا على ملاحظاتك.\nتم تقديم تقريرك.",
+          "Thank you!":
+              "شكرًا لك!",
+          "Emoji and text have been sent successfully":
+              "تم ارسال الاموجي والرسالة بنجاح",
+          "Emoji sent successfully": "تم ارسال الاموجي بنجاح",
+          "Your feedback helps make the app \n better for everyone.":
+              "ملاحظاتك تساعد في جعل التطبيق\nأفضل للجميع.",
         }
       };
 }

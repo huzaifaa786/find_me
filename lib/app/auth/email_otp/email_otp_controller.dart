@@ -48,7 +48,7 @@ class EmailOtpController extends GetxController {
     if (email != null) {
       var response = await ChangeEmailApi.changeEmail(email!);
       if (response.isNotEmpty) {
-        UiUtilites.successSnackbar("Otp sent".tr, "Otp sent successfully".tr);
+        UiUtilites.successSnackbar("OTP sent".tr, "OTP sent successfully".tr);
       }
     }
   }

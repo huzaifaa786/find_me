@@ -91,7 +91,8 @@ class PublicProfileController extends GetxController {
           name: 'send_social_request',
         );
         UiUtilites.successSnackbar(
-            "Request to access Social media accounts and business card has been sent".tr,
+            "Request to access Social media accounts and business card has been sent"
+                .tr,
             "Access Social Request".tr);
       } else if (response['Request'] == "Access") {
         hasSocialAccess = true;
@@ -105,7 +106,7 @@ class PublicProfileController extends GetxController {
 
     if (response.isNotEmpty) {
       Get.back();
-      UiUtilites.successSnackbar(response['message'], "");
+      UiUtilites.successSnackbar(response['message'].toString().tr, "");
     }
   }
 
@@ -114,7 +115,7 @@ class PublicProfileController extends GetxController {
     update();
   }
 
-  giftEmoji(emojiId) async {
+  giftEmoji(emojiId, type) async {
     var response = await EmojiApi.giftEmoji(
         emojiId: emojiId,
         receiverId: profile!.id,
@@ -132,10 +133,17 @@ class PublicProfileController extends GetxController {
           FirebaseAnalytics.instance.logEvent(
             name: 'gifted_emoji',
           );
-          UiUtilites.successGreenAlert(Get.context,
-              text: "Message sent \n successfully.", onTapDone: () {
-            Get.back();
-          });
+          if (type == "paid") {
+            UiUtilites.successGreenAlert(Get.context,
+                text: "Emoji and text have been sent successfully", onTapDone: () {
+              Get.back();
+            });
+          } else {
+             UiUtilites.successGreenAlert(Get.context,
+                text: "Emoji sent successfully", onTapDone: () {
+              Get.back();
+            });
+          }
         }
       }
     }

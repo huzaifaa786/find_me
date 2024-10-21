@@ -26,6 +26,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
   GetStorage box = GetStorage();
   @override
   Widget build(BuildContext context) {
+    
     return GetBuilder<SubscriptionsController>(
       builder: (controller) => Scaffold(
           body: Directionality(
@@ -229,7 +230,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                     Gap(15),
                     Center(
                       child: Text(
-                        'Payment will be charged to iTunes Account at confirmation of purchase. Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Account will be charged for renewal within 24-hours prior to the end of the current period. You can manage or turn off auto-renew in your Account settings at any time after purchase No cancellation of the current subscription is allowed during the active period.'.tr,
+                        'Payment will be charged to ${controller.plateform} Account at confirmation of purchase. Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Account will be charged for renewal within 24-hours prior to the end of the current period. You can manage or turn off auto-renew in your Account settings at any time after purchase No cancellation of the current subscription is allowed during the active period.'.tr,
                         style: TextStyle(
                           color: AppColors.hintGrey,
                           fontSize: 13,

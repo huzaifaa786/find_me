@@ -49,7 +49,7 @@ class NewPasswordController extends GetxController {
       );
 
       UiUtilites.successSnackbar(
-          'password updated successfully'.tr, 'Success!'.tr);
+          'Password updated successfully'.tr, 'Success!'.tr);
     } else {
       UiUtilites.errorSnackbar('could not update password'.tr, 'Error!'.tr);
     }

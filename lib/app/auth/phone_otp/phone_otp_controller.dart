@@ -25,12 +25,12 @@ class PhoneOtpController extends GetxController {
     if (response.isNotEmpty) {
       Get.offAndToNamed(AppRoutes.useraccount);
       UiUtilites.successGreenAlert(Get.context,
-          text: "Your phone number has been changed  \n successfully.",
+          text: "Your phone number has been updated \n successfully",
           onTapDone: () {
         Get.back();
       });
     } else {
-      UiUtilites.errorSnackbar("error".tr, "Phone Number not Changed".tr);
+      UiUtilites.errorSnackbar("Error!".tr, "Phone number was not updated".tr);
     }
   }
 
@@ -44,7 +44,7 @@ class PhoneOtpController extends GetxController {
     if (phone != null) {
       var response = await ChangePhoneApi.changePhone(phone!);
       if (response.isNotEmpty) {
-        UiUtilites.successSnackbar("Otp sent".tr, "Otp sent successfully".tr);
+        UiUtilites.successSnackbar("OTP sent".tr, "OTP sent successfully".tr);
       }
     }
   }

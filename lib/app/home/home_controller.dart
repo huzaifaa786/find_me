@@ -671,7 +671,7 @@ class HomeController extends GetxController {
     if (response.isNotEmpty) {
       scannedUsers.remove(user);
       update();
-      UiUtilites.successSnackbar(response['message'], "");
+      UiUtilites.successSnackbar(response['message'].toString().tr, "");
     }
   }
 

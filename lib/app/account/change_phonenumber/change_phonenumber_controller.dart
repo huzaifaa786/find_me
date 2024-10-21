@@ -28,7 +28,7 @@ class ChangePhoneNumberController extends GetxController {
     if (phoneController != null) {
       var response = await ChangePhoneApi.changePhone(phoneController!);
       if (response.isNotEmpty) {
-        UiUtilites.successSnackbar("Otp sent successfully".tr, "Success".tr);
+        UiUtilites.successSnackbar("OTP sent successfully".tr, "Success".tr);
         Get.toNamed(AppRoutes.phoneOtp, arguments: phoneController);
       }
     } else {

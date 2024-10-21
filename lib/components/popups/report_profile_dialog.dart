@@ -33,7 +33,7 @@ class _ReportDialogState extends State<ReportDialog> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Please select a reason for reporting this profile:',
+                'Please choose a reason for reporting this profile:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),

@@ -35,7 +35,7 @@ class ForgetPasswordOtpController extends GetxController {
     var response =
         await ForgotPasswordApi.forgotpassword(type: type, email: email);
     if (response.isNotEmpty) {
-      UiUtilites.successSnackbar("Otp sent".tr, "Otp sent successfully".tr);
+      UiUtilites.successSnackbar("OTP sent".tr, "OTP sent successfully".tr);
     }
   }
 
@@ -66,10 +66,10 @@ class ForgetPasswordOtpController extends GetxController {
     var response =
         await ForgotPasswordApi.forgotpassword(type: type, phone: phone);
     if (response.isNotEmpty) {
-      UiUtilites.successSnackbar("Otp sent".tr, "Otp sent successfully".tr);
+      UiUtilites.successSnackbar("OTP sent".tr, "OTP sent successfully".tr);
     } else {
       UiUtilites.successSnackbar(
-          "Otp sent fail".tr, "Otp Sent  not Successfully".tr);
+          "OTP sent fail".tr, "Otp Sent  not Successfully".tr);
     }
   }
 }

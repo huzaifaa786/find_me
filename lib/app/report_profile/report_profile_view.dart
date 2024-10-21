@@ -40,7 +40,7 @@ class ReportProfileView extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(18.0),
                     child: Text(
-                      'Please select a reason for reporting this profile:'.tr,
+                      'Please choose a reason for reporting this profile:'.tr,
                       style: TextStyle(fontSize: 16),
                     ),
                   ),
