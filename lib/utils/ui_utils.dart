@@ -1629,7 +1629,7 @@ class UiUtilites {
                 Padding(
                   padding: const EdgeInsets.only(right: 0.0),
                   child: AppText(
-                    title: "( \t\t\t${text.tr}\t\t\t  )",
+                    title: "( \t\t\t$text\t\t\t  )",
                     textAlign: TextAlign.center,
                     fontWeight: FontWeight.w500,
                     size: 12.sp,

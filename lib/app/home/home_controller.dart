@@ -541,7 +541,7 @@ class HomeController extends GetxController {
     if (event.data != null && event.eventName == "emoji-gifted") {
       Map<String, dynamic> data = json.decode(event.data!);
       UiUtilites.EmojiGiftPopUp(Get.context,
-          text: data['message'] ?? "",
+          text: data['message'] ?? data['senderName']+" gifted you an emoji!".tr,
           imageUrl: data['emoji'],
           senderImage: data['senderImage'],
           senderName: data['senderName']);

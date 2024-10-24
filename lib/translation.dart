@@ -408,7 +408,7 @@ class LocaleString extends Translations {
           "Receive notifications with the username and profile image of users who request to view your profile, social media accounts, or digital business card.":
               "Receive notifications with the username and profile image of users who request to view your profile, social media accounts, or digital business card.",
           "Try It Free": "Try It Free",
-           "Thank you!":"Thank you!",
+          "Thank you!": "Thank you!",
           "Privacy Policy": "Privacy Policy",
           "Terms & Conditions": "Terms & Conditions",
           "Payment will be charged to iTunes Account at confirmation of purchase. Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Account will be charged for renewal within 24-hours prior to the end of the current period. You can manage or turn off auto-renew in your Account settings at any time after purchase No cancellation of the current subscription is allowed during the active period.":
@@ -506,6 +506,7 @@ class LocaleString extends Translations {
           " and agree to the ": " and agree to the ",
           "Term of Service.": "Term of Service.",
           "Log In": "Log In",
+          " gifted you an emoji!": " gifted you an emoji!",
           "Seize the moment": "Seize the moment",
           "User name, Email or Phone number":
               "User name, Email or Phone number",
@@ -536,6 +537,7 @@ class LocaleString extends Translations {
               "Your feedback helps make the app \n better for everyone.",
         },
         'ar_AE': {
+          " gifted you an emoji!": " أهداك ايموجي!",
           "Remove Image": "حذف الصورة",
           "Pick Image": "اختيار صورة",
           "Your email has been updated  \n successfully":
@@ -585,9 +587,9 @@ class LocaleString extends Translations {
           "False information": "معلومات زائفة",
           "Intellectual property violation": "انتهاك حقوق الملكية الفكرية",
           "Other": "آخر",
-          "Report Profile": "الإبلاغ عن الملف الشخصي",
+          "Report Profile": "الإبلاغ عن الحساب الشخصي",
           "Please choose a reason for reporting this profile:":
-              "الرجاء اختيار سبب الإبلاغ عن الملف:",
+              "الرجاء اختيار سبب الإبلاغ عن الحساب:",
           "View Profile": "عرض الملف الشخصي",
           "Block": "حظر",
           "Are you sure you want to block this profile?":
@@ -619,7 +621,7 @@ class LocaleString extends Translations {
           "If emoji request notifications are disabled, you won’t be notified when you received an emoji.":
               "إذا تم تعطيل إشعارات طلب ايموجي، فلن يتم إخطارك عندما يصلك ايموجي.",
           "If social media and business cards request notifications are disabled, you won’t be notified when someone requests to view your social media and business cards.":
-              "إذا تم تعطيل إشعارات طلب وسائل حسابات التواصل الاجتماعي وبطاقات الأعمال، فلن يتم إخطارك عندما يطلب شخص ما مشاهدة حسابات التواصل الاجتماعي وبطاقات الأعمال الخاصة بط.",
+              "إذا تم تعطيل إشعارات طلب وسائل حسابات التواصل الاجتماعي وبطاقات الأعمال، فلن يتم إخطارك عندما يطلب شخص ما مشاهدة حسابات التواصل الاجتماعي وبطاقات الأعمال الخاصة بك.",
           "If profile request notifications are disabled, you won’t be notified when someone requests to view your profile.":
               "إذا تم تعطيل إشعارات طلب الملف الشخصي، فلن يتم إخطارك عندما يطلب شخص ما مشاهدة ملفك الشخصي.",
           "Requests for social media and business cards":
@@ -638,7 +640,7 @@ class LocaleString extends Translations {
           "Edit Profiles": "تعديل الملفات الشخصية",
           "Checking Connections...": "جارِ فحص الاتصالات..",
           "No finders nearby. Refresh or expand your radius.":
-              "لا يوجد مكتشفون بالقرب. قم بالتحديث أو توسيع النطاق",
+              "لا يوجد مكتشفون بالقرب منك. قم إعادة البحث او توسيع النطاق",
           "New profile": "ملف شخصي جديد",
           "+ New profile ": " ملف شخصي جديد",
           "Emojis for All": "ايموجي للجميع",
@@ -932,8 +934,8 @@ class LocaleString extends Translations {
           "Free & paid emojis.": "رموز تعبيرية مجانية ومدفوعة.",
           "My Emojis": "رموزي التعبيرية",
           "Favorites & purchased.": "المفضلة والمقتناة.",
-          "Gifted emojis": "الموجي المستلم كهدية",
-          "Gifted Emoji": "الاموجي المستلم كهدية",
+          "Gifted emojis": "الايموجي المستلم كهدية",
+          "Gifted Emoji": "الايموجي المستلم كهدية",
           "Appears as": "إظهار كـ",
           "New Profile 2": "الملف الجديد 2",
           "Add new profile": "إضافة ملف جديد",
@@ -1048,8 +1050,7 @@ class LocaleString extends Translations {
           "verification successfully": "التحقق تم بنجاح",
           "Thank you for your feedback.Your\n report has been submitted":
               "شكرًا على ملاحظاتك.\nتم تقديم تقريرك.",
-          "Thank you!":
-              "شكرًا لك!",
+          "Thank you!": "شكرًا لك!",
           "Emoji and text have been sent successfully":
               "تم ارسال الاموجي والرسالة بنجاح",
           "Emoji sent successfully": "تم ارسال الاموجي بنجاح",

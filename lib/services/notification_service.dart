@@ -139,7 +139,7 @@ class NotificationService extends GetxController with WidgetsBindingObserver {
         // Show emoji pop-up
         if (Get.isDialogOpen != true) {
           UiUtilites.EmojiGiftPopUp(Get.context,
-              text: data['message'] ?? "",
+              text: data['message'] ?? data['sender_name']+" gifted you an emoji!".tr,
               imageUrl: data['emoji_image'],
               senderImage: data['sender_image'],
               senderName: data['sender_name']);

@@ -461,7 +461,7 @@ class HomeView extends StatelessWidget {
                                         },
                                       )
                                     : Center(
-                                        heightFactor: 15,
+                                        heightFactor: 12,
                                         child: AppText(
                                           title:
                                               "No finders nearby. Refresh or expand your radius.".tr,

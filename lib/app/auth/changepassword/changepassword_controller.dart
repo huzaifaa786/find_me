@@ -41,7 +41,7 @@ class ChangePaswordController extends GetxController {
      
 
       // UiUtilites.successSnackbar('Password change successfully.', 'Success');
-      UiUtilites.successCustomSnackbar("Password changed successfully".tr);
+      UiUtilites.successCustomSnackbar("Password updated successfully".tr);
       oldpasswordController.clear();
       passwordController.clear();
       confirmPasswordController.clear();
